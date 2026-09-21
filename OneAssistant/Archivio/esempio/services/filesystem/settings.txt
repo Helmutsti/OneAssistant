@@ -1,0 +1,12 @@
+filesystem
+	# Il disco come servizio (docs/02-confini §5). Non è la memoria: quella
+	# sta in `../../memory/` ed è la testa dell'assistente. Questo è quello
+	# che è *tuo* e che lui può leggere e scrivere per conto tuo.
+
+	acceso: sì
+
+	# Le cartelle che vede. Un percorso per riga, relativo a `folders/`.
+	# Fuori da qui non guarda: un servizio spento è spento in tutti e tre i
+	# verbi, e una cartella non elencata non esiste per lui.
+	cartelle:
+		documenti

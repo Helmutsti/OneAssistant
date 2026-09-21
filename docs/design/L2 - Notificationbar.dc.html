@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  a { color: #4E6B54; text-decoration: none; }
+  a:hover { color: #37502C; }
+  .vetro {
+    background:var(--liquid-film);
+    backdrop-filter:var(--liquid-optics);
+    -webkit-backdrop-filter:var(--liquid-optics);
+    box-shadow:var(--liquid-edge);
+  }
+  .fondo { background: linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%); }
+</style>
+<link rel="stylesheet" href="./liquid-glass.css">
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L2</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 2 · componente · in fondo alla guida di destra</div>
+      </div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">NOTIFICATIONBAR</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:38em;line-height:1.55">Quello che arriva dal mondo, com’è arrivato, in una lista sola ordinata nel tempo. Una campanella con un numero; il cassetto sale da sotto di lei quando dici «apri». <strong style="color:#1A1C19;font-weight:600">Una notifica non è un task</strong>: lo diventa quando dici «me ne occupo».</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">campanella 44 · badge 16 · destra 44, bottom 44<br>cassetto 400 di larghezza · max 420 di altezza<br>apertura 420 ms · righe a cascata 40 ms<br>velo 54% · aperta, intorno si spegne</div>
+  </div>
+
+  <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14);display:flex;align-items:baseline;gap:26px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17;flex:none;padding-top:2px">Cambio di area · 17 settembre 2026</div>
+    <div style="font-size:16px;line-height:1.6;color:#3E423C">Questo documento era <strong style="color:#1A1C19;font-weight:600">Sidebar</strong>, e mostrava una pila di bolle: quelle erano già task, decisi dal filtro. Qui la tesi si rovescia — <strong style="color:#1A1C19;font-weight:600">il filtro non promuove più niente: promuovi tu</strong>. Quello che arriva si posa nel cassetto e non è niente finché non lo prendi in mano. <strong style="color:#1A1C19;font-weight:600">Deciso il 18 settembre 2026</strong>, e non è più una delle due strade: è l'unica (<span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">docs/01-modello §3</span>).<br><br>~~E il concetto di <strong style="color:#1A1C19;font-weight:600">WHEN</strong> arriva qui: le cose che hanno un'ora stanno in fondo alla stessa lista.~~ <strong style="color:#1A1C19;font-weight:600">Caduta il 18 settembre 2026</strong>: i rimandati sono <em>tuoi</em>, e il cassetto è il mondo. Stanno in SIDEBAR, come chip con un'ora (<span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">docs/01-modello §2</span>). Qui dentro non c'è più niente che sia tuo.</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Due stati, e un movimento in mezzo</div>
+      <div style="font-size:16px;color:#4A4E48">Chiusa è un numero. Aperta è tutto quello che c'è.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:20px 40px">
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:17px;font-weight:600">1 · Chiusa · la campanella e il numero</div>
+        <div class="fondo" style="width:700px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);position:relative;box-sizing:border-box">
+          <div style="position:absolute;right:24px;bottom:24px;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center" class="vetro">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1C19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+            <div style="position:absolute;top:-2px;right:-2px;min-width:16px;height:16px;padding:0 5px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:#FBFAF7;background:#B3762A;box-shadow:0 1px 3px rgba(30,36,30,0.3)">2</div>
+          </div>
+          <div style="position:absolute;left:24px;bottom:24px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(26,28,25,0.6)">NIENTE LISTA SEMPRE APERTA · SOLO UN NUMERO</div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il badge conta <strong style="color:#1A1C19;font-weight:600">solo quello che ti riguarda e non hai ancora visto</strong>: le cose che il filtro ha scartato ci sono ma non contano e non suonano. Quando arriva qualcosa la campanella squilla una volta — 640 ms, un gesto, non un'animazione in loop.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:17px;font-weight:600">2 · Aperta · «apri» · intorno si spegne</div>
+        <div class="fondo" style="width:700px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);position:relative;box-sizing:border-box">
+          <div style="position:absolute;left:24px;top:20px;font-size:19px;font-weight:600;letter-spacing:-0.03em;color:rgba(26,28,25,0.55)">09:52</div>
+          <div style="position:absolute;inset:0;background:rgba(18,22,18,0.54)"></div>
+          <div style="position:absolute;right:24px;bottom:92px;width:400px;display:flex;flex-direction:column;gap:8px">
+            <div style="border-radius:20px;padding:13px 16px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19">
+              <div style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>Proposta Acme</span><span style="margin-left:auto;letter-spacing:0.06em">Andrea Riva</span>
+              </div>
+              <div style="font-size:14px;line-height:1.35;color:#21251F;margin-top:5px">Ti mando la proposta per Acme — ci vediamo giovedì?</div>
+            </div>
+            <div style="border-radius:20px;padding:13px 16px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19;opacity:0.55">
+              <div style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>Newsletter</span><span style="margin-left:auto;letter-spacing:0.06em">09:12</span>
+              </div>
+              <div style="font-size:14px;line-height:1.35;color:#21251F;margin-top:5px">Le dieci tendenze del design per il prossimo anno.</div>
+            </div>
+            
+          </div>
+          <div style="position:absolute;right:24px;bottom:24px;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:translateY(2px) scale(0.94)" class="vetro">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1C19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Una lista sola, in ordine di arrivo: <strong style="color:#1A1C19;font-weight:600">solo cose venute da fuori</strong>, e l'ora accanto a ognuna. Quella che non ti chiede niente c'è ma non alza la voce. Aprirla azzera il badge: averle viste è averle viste.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">L'apertura · tre movimenti che partono insieme</div>
+    <div style="width:1440px;border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 12px 30px rgba(30,36,30,0.08)">
+      <div style="display:grid;grid-template-columns:230px 1fr 320px">
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.10);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Movimento</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Cosa fa</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Durata e curva</div>
+
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:17px;font-weight:500">Il cassetto</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">Non compare: <strong style="color:#1A1C19;font-weight:600">cresce verso l'alto</strong>, e il suo punto d'origine è la campanella, non il centro di sé stesso. <strong style="color:#1A1C19;font-weight:600">Non è un pannello</strong>: è una pila di bolle separate, ognuna con la sua ombra, dentro un contenitore che non si vede. Un pannello è una finestra; una pila è una cosa appoggiata lì sopra.</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">420 ms<br>cubic-bezier(.22,1,.36,1)<br>transform-origin: bottom right</div>
+
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:17px;font-weight:500">Le righe</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">Entrano una dietro l'altra, 40 ms l'una dall'altra — <strong style="color:#1A1C19;font-weight:600">lo stesso ritardo dell'onda delle bolle</strong>, e non è un caso. In chiusura i ritardi si invertono.</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">320 ms + 40 ms × i<br>cubic-bezier(.22,1,.36,1)</div>
+
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:17px;font-weight:500">La campanella</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">Si tira indietro di un niente, come una cosa che cede il passo. All'arrivo di qualcosa di nuovo squilla: una volta sola.</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">340 ms · scale 0.94<br>squillo 640 ms</div>
+
+        <div style="padding:20px 26px;font-size:17px;font-weight:500">Il velo</div>
+        <div style="padding:20px 26px;border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">Intorno si spegne tutto. Non è un fondo nero appoggiato sopra: è la luce della scrivania che cala — stessa curva e stesso tempo del cassetto, o si vedrebbero due cose invece di una.</div>
+        <div style="padding:20px 26px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">380 ms<br>rgba(18,22,18,0.54)<br>saturate .62 · brightness .86</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Regole</div>
+      <div style="font-size:16px;color:#4A4E48">Cosa distingue questo cassetto da un centro notifiche.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:1440px;font-size:15px;line-height:1.6;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Una notifica non è un task</strong><br>Non ha luogo né avanzamento: i due assi sono il modello dei task, e lei non ci sta dentro. Entra nel modello solo con «me ne occupo», e nasce <em>aspetta te</em>, a fuoco. Prendere in mano è un gesto tuo.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">La lista non resta aperta</strong><br>L'apertura è un momento, non una schermata: dopo l'azione si richiude da sé. Non esiste uno stato «sto guardando le notifiche».</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Quello che è scartato non è perso</strong><br>Ciò che il filtro non promuove entra muto: non suona, non conta nel badge, ma c'è. È la differenza fra un sistema che ti interrompe e uno che tiene le cose da parte.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Passato e futuro nella stessa fila</strong><br>Sopra quello che è arrivato, sotto quello che ha un'ora. Un posto solo per «cosa è arrivato?» e «cosa mi aspetta?», perché è la stessa domanda fatta in due tempi.</div>
+    </div>
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>

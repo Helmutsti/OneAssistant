@@ -1,0 +1,8 @@
+Questo file di impostazioni rappresenta il servizio email. 
+
+
+indirizzo: lucia.moretti@gmail.com
+
+storico:
+2026-06-10 10:22 | ricevuta | Marco | AIUTO | dammi un parere su Titanic il film perfavore, so che l hai visto.
+2026-06-15 12:32 | inviata | Mamma | Tanti auguri | Auguri di buon compleanno mamma

@@ -1,0 +1,27 @@
+# Un profilo d'esempio: copialo, rinomina la cartella col tuo id, e scrivi
+# il tuo nome qui sotto. Poi aggiungi l'id a `impostazioni.txt`.
+#
+# Questo file è l'unico dell'archivio che sta nel repo, e sta qui perché un
+# clone deve partire trovando qualcuno. Tutto il resto di `Archivio/` è tuo e
+# git non lo guarda (LEGGIMI.md).
+
+Utente: 
+	name: Lucia Moretti
+	datebirth: 1992-3-24
+	sex: female
+	language: italian
+	password: ciao
+System preferences
+	focuses:
+		Via della libertà, Bologna - Lavoro
+		Piazza della speranza, Bologna - Casa
+
+	theme: cenere
+assitant:
+	reading: on
+	settings:
+		voice: femminile
+		name: amanda
+		assistant gender: female
+	copione:
+		

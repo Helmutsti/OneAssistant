@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lucide-static@0.454.0/font/lucide.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  a { color: #4E6B54; text-decoration: none; }
+
+  /* il fondo vero, alla scala vera: queste finestre sono ritagli 1:1 dell'angolo in
+     alto a destra di uno schermo 1440 × 900. Le misure si giudicano solo così. */
+  .angolo {
+    position: relative; width: 660px; height: 380px; border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(26,28,25,0.10);
+    background: linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%);
+  }
+  .angolo::before {
+    content: ''; position: absolute; left: -200px; top: -60px; width: 1100px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(60% 60% at 30% 22%, rgba(255,255,255,0.34), rgba(255,255,255,0) 72%);
+  }
+  .guida { position: absolute; right: 44px; top: 40px; color: #1A1C19; text-shadow: 0 1px 0 rgba(255,255,255,0.38); }
+  .ora { font-weight: 200; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .ora.media { font-weight: 300; letter-spacing: -0.035em; }
+  .data { font-size: 14px; color: #3E423C; }
+  .volto { border-radius: 50%; object-fit: cover; display: block; flex: none; }
+  .sys { display: flex; align-items: center; gap: 16px; color: #4A4E48; }
+  .sys .voce { display: flex; align-items: center; gap: 6px; }
+  .sys .voce i { font-size: 14px; line-height: 1; }
+  .sys .mono, .mono { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; }
+  .sys .attento { color: #8A5A17; }
+  .misura {
+    position: absolute; left: 20px; bottom: 16px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em;
+    color: rgba(26,28,25,0.62);
+  }
+  .chip {
+    display: flex; align-items: center; gap: 9px; height: 30px; padding: 0 14px; border-radius: 20px;
+    background: linear-gradient(155deg, rgba(255,255,255,0.62), rgba(248,248,244,0.44));
+    backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 8px 20px rgba(30,36,30,0.12);
+    color: #1A1C19; font-size: 14px;
+  }
+  .prova { display: flex; flex-direction: column; gap: 12px; }
+  .prova h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; margin: 0; }
+  .prova .tesi { font-size: 15px; color: #4A4E48; line-height: 1.5; margin: -4px 0 0; }
+  .conti { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 14.5px; line-height: 1.55; color: #4A4E48; }
+  .conti .si strong { color: #3D5A43; }
+  .conti .no strong { color: #8A5A17; }
+</style>
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">PROVE</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">non è un documento · si guarda, si sceglie, poi si scrive in L2</div>
+      </div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">LA GUIDA DI DESTRA</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:40em;line-height:1.55">Sei modi di impaginare Profilebar e Systembar. Tutti con <strong style="color:#1A1C19;font-weight:600">il volto a destra e più grande</strong> e <strong style="color:#1A1C19;font-weight:600">l'ora grande</strong>; cambia il resto. I ritagli sono a grandezza vera: l'angolo in alto a destra di uno schermo 1440 × 900.</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">margine 44 · legge 08<br>numeri: 200 sopra i 60 px · L1 - Moodboard<br>icona sempre con un valore · legge 06<br>ogni componente ha il suo ancoraggio · legge 11</div>
+  </div>
+
+  <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14);display:flex;align-items:baseline;gap:26px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17;flex:none;padding-top:2px">Cosa non funziona adesso</div>
+    <div style="font-size:16px;line-height:1.6;color:#3E423C">Tre cose, e nessuna è il gusto. <strong style="color:#1A1C19;font-weight:600">Uno:</strong> i tre blocchi non hanno una larghezza in comune — l'ora misura 230, la riga di sistema 340, i chip quanto il loro nome: da lontano non è una colonna, sono tre frammenti allineati a destra per caso. <strong style="color:#1A1C19;font-weight:600">Due:</strong> il ritmo verticale è arbitrario — 86 px fra Profilebar e Systembar, 54 fra Systembar e Taskbar, e nessuno dei due è il margine 44. <strong style="color:#1A1C19;font-weight:600">Tre:</strong> il volto a 36 px sta in mezzo a una riga di testo, quindi è l'elemento più alto della riga e non si allinea a niente — ed è la cosa che dovrebbe ancorare la colonna.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(2,660px);gap:44px 40px">
+
+    <!-- A -->
+    <div class="prova">
+      <h3>A · Il ritratto in cima</h3>
+      <p class="tesi">Il volto è il primo elemento della colonna e ne fissa il bordo destro. L'ora gli sta accanto, non sotto: due cose grandi su una riga sola.</p>
+      <div class="angolo">
+        <div class="guida" style="display:flex;align-items:center;gap:18px">
+          <div style="text-align:right">
+            <div class="ora" style="font-size:64px">09:41</div>
+            <div class="data" style="margin-top:6px">lunedì 15 settembre</div>
+          </div>
+          <img class="volto" src="./volto.png" alt="" style="width:64px;height:64px">
+        </div>
+        <div class="guida sys" style="top:150px;justify-content:flex-end">
+          <span class="voce attento"><i class="icon-mic-off"></i><span class="mono">MICROFONO SPENTO</span></span>
+          <span class="voce"><i class="icon-volume-2"></i><span class="mono">40</span></span>
+          <span class="voce"><i class="icon-wifi"></i><span class="mono">TIM-CASA</span></span>
+          <span class="voce"><i class="icon-battery-full"></i><span class="mono">55%</span></span>
+        </div>
+        <div class="guida" style="top:192px;display:flex;flex-direction:column;align-items:flex-end;gap:9px">
+          <div class="chip"><i class="icon-folder" style="font-size:14px"></i>Riordino Acme<span class="mono" style="font-size:10px">128/412</span></div>
+          <div class="chip"><i class="icon-users" style="font-size:14px"></i>Revisione<span class="mono" style="font-size:10px">15:30</span></div>
+        </div>
+        <div class="misura">ORA 64/200 · VOLTO 64 · SYS A 150 · TASKBAR A 192 · COLONNA 340</div>
+      </div>
+      <div class="conti">
+        <div class="si"><strong>Regge</strong><br>Il volto e l'ora si leggono insieme in un colpo d'occhio, e il bordo destro è uno solo per tutti e tre i blocchi. La Systembar sta sotto una riga che finisce dove finisce lei.</div>
+        <div class="no"><strong>Costa</strong><br>L'ora e il volto competono: sono due poli forti alla stessa quota, e nessuno dei due vince. E il luogo — «casa · Genova» — resta senza posto: o entra nella data, o sparisce.</div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="prova">
+      <h3>B · Il volto ancora la colonna</h3>
+      <p class="tesi">Il volto diventa grande davvero (76) e sta a destra di tutto, alto quanto le due righe di testo: è lui l'ancora ottica, e la colonna gli si appoggia.</p>
+      <div class="angolo">
+        <div class="guida" style="display:flex;align-items:flex-start;gap:20px">
+          <div style="text-align:right">
+            <div class="ora" style="font-size:66px">09:41</div>
+            <div class="data" style="margin-top:8px">lunedì 15 settembre</div>
+            <div class="data" style="margin-top:3px;display:flex;align-items:center;gap:7px;justify-content:flex-end"><i class="icon-house" style="font-size:15px"></i>casa · Genova</div>
+          </div>
+          <img class="volto" src="./volto.png" alt="" style="width:76px;height:76px">
+        </div>
+        <div class="guida" style="top:168px;width:340px;display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+          <div style="width:100%;height:1px;background:rgba(26,28,25,0.14);box-shadow:0 1px 0 rgba(255,255,255,0.55)"></div>
+          <div class="sys" style="width:100%;justify-content:space-between">
+            <span class="voce attento"><i class="icon-mic-off"></i><span class="mono">SPENTO</span></span>
+            <span class="voce"><i class="icon-volume-2"></i><span class="mono">40</span></span>
+            <span class="voce"><i class="icon-wifi"></i><span class="mono">TIM-CASA</span></span>
+            <span class="voce"><i class="icon-battery-full"></i><span class="mono">55%</span></span>
+          </div>
+        </div>
+        <div class="guida" style="top:222px;display:flex;flex-direction:column;align-items:flex-end;gap:9px">
+          <div class="chip"><i class="icon-folder" style="font-size:14px"></i>Riordino Acme<span class="mono" style="font-size:10px">128/412</span></div>
+          <div class="chip"><i class="icon-users" style="font-size:14px"></i>Revisione<span class="mono" style="font-size:10px">15:30</span></div>
+        </div>
+        <div class="misura">ORA 66/200 · VOLTO 76 · COLONNA 340 DICHIARATA · INCISIONE A 168 · TASKBAR A 222</div>
+      </div>
+      <div class="conti">
+        <div class="si"><strong>Regge</strong><br>La colonna ha una larghezza dichiarata (340) e la Systembar la usa tutta, distribuendo le quattro voci: è l'unica variante in cui i due componenti si leggono come un blocco. L'incisione è la stessa della bolla — vocabolario già nostro.</div>
+        <div class="no"><strong>Costa</strong><br>L'incisione è un segno in più sulla cornice, dove finora non ce n'erano. E 76 px di volto sono tanti: diventa la cosa più grande dello schermo dopo l'ora.</div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="prova">
+      <h3>C · L'ora è il titolo</h3>
+      <p class="tesi">Una gerarchia sola e netta: l'ora enorme in cima, tutto il resto in monospaziato piccolo sotto di lei. Il volto sta sopra, staccato, come una firma.</p>
+      <div class="angolo">
+        <div class="guida" style="display:flex;flex-direction:column;align-items:flex-end;gap:14px">
+          <img class="volto" src="./volto.png" alt="" style="width:56px;height:56px">
+          <div style="text-align:right">
+            <div class="ora" style="font-size:76px">09:41</div>
+            <div class="mono" style="margin-top:10px;color:#3E423C;font-size:11px">LUNEDÌ 15 SETTEMBRE · CASA · GENOVA · LUCIA</div>
+          </div>
+        </div>
+        <div class="guida sys" style="top:236px;justify-content:flex-end;opacity:0.86">
+          <span class="voce attento"><i class="icon-mic-off"></i><span class="mono">MICROFONO SPENTO</span></span>
+          <span class="voce"><i class="icon-volume-2"></i><span class="mono">40</span></span>
+          <span class="voce"><i class="icon-wifi"></i><span class="mono">TIM-CASA</span></span>
+          <span class="voce"><i class="icon-battery-full"></i><span class="mono">55%</span></span>
+        </div>
+        <div class="guida" style="top:278px;display:flex;flex-direction:column;align-items:flex-end;gap:9px">
+          <div class="chip"><i class="icon-folder" style="font-size:14px"></i>Riordino Acme<span class="mono" style="font-size:10px">128/412</span></div>
+        </div>
+        <div class="misura">ORA 76/200 · VOLTO 56 SOPRA · UNA RIGA MONO SOLA · SYS A 236</div>
+      </div>
+      <div class="conti">
+        <div class="si"><strong>Regge</strong><br>Una sola cosa grande, e il resto è didascalia: è la gerarchia più chiara di tutte, ed è letteralmente il riferimento madre della Moodboard — «un solo pannello, numero enorme in peso 200, targhe monospaziate in fila».</div>
+        <div class="no"><strong>Costa</strong><br>Il tuo nome finisce in una riga tecnica insieme al luogo, e il volto staccato in cima sembra un bottone di account. La colonna diventa alta: la Taskbar comincia a 278, e sotto ci sono solo 380 px prima della campanella.</div>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="prova">
+      <h3>D · La Systembar in verticale</h3>
+      <p class="tesi">Se la guida è una colonna, anche la macchina si incolonna: quattro righe strette sotto il volto, una per voce, allineate a destra. La Profilebar resta larga.</p>
+      <div class="angolo">
+        <div class="guida" style="display:flex;align-items:flex-start;gap:20px">
+          <div style="text-align:right">
+            <div class="ora" style="font-size:66px">09:41</div>
+            <div class="data" style="margin-top:8px">lunedì 15 settembre · casa</div>
+          </div>
+          <img class="volto" src="./volto.png" alt="" style="width:72px;height:72px">
+        </div>
+        <div class="guida" style="top:152px;display:flex;flex-direction:column;align-items:flex-end;gap:7px;color:#4A4E48">
+          <span class="voce attento" style="display:flex;align-items:center;gap:7px"><span class="mono">MICROFONO SPENTO</span><i class="icon-mic-off" style="font-size:14px"></i></span>
+          <span class="voce" style="display:flex;align-items:center;gap:7px"><span class="mono">40</span><i class="icon-volume-2" style="font-size:14px"></i></span>
+          <span class="voce" style="display:flex;align-items:center;gap:7px"><span class="mono">TIM-CASA</span><i class="icon-wifi" style="font-size:14px"></i></span>
+          <span class="voce" style="display:flex;align-items:center;gap:7px"><span class="mono">55%</span><i class="icon-battery-full" style="font-size:14px"></i></span>
+        </div>
+        <div class="guida" style="top:152px;right:200px;display:flex;flex-direction:column;align-items:flex-end;gap:9px">
+          <div class="chip"><i class="icon-folder" style="font-size:14px"></i>Riordino Acme<span class="mono" style="font-size:10px">128/412</span></div>
+          <div class="chip"><i class="icon-users" style="font-size:14px"></i>Revisione<span class="mono" style="font-size:10px">15:30</span></div>
+        </div>
+        <div class="misura">ICONE A FILO DEL BORDO · VALORI A SINISTRA · TASKBAR ACCANTO, NON SOTTO</div>
+      </div>
+      <div class="conti">
+        <div class="si"><strong>Regge</strong><br>Le icone stanno tutte sulla stessa verticale, a filo del bordo: è la colonna più ordinata, e libera lo spazio in alto perché la Taskbar può stare <em>accanto</em> alla Systembar invece che sotto.</div>
+        <div class="no"><strong>Costa</strong><br>Quattro righe per quattro dati sono quattro volte l'altezza di una riga sola, per informazioni che guardi due volte al giorno. E l'icona dopo il valore inverte l'ordine di lettura di tutto il resto del sistema.</div>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="prova" style="grid-column:1 / -1">
+      <h3>E · Il blocco centrato — a destra, e basta <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#3D5A43;border:1px solid rgba(61,90,67,0.4);border-radius:5px;padding:3px 7px;margin-left:8px;vertical-align:middle">scelta · è nel prototipo</span></h3>
+      <p class="tesi">Tre righe incolonnate e <strong style="color:#1A1C19">centrate</strong>, non giustificate: la larghezza non si decide, tutte e tre finiscono <strong style="color:#1A1C19">sullo stesso bordo destro</strong>, e a sinistra sfrangiano come vogliono. Se un giorno la data è più larga dell'ora, esce a sinistra e non succede niente: il bordo che conta è uno solo, ed è quello da cui si legge la colonna. Il volto a destra, centrato sull'altezza del blocco.</p>
+      <div class="angolo" style="width:1364px">
+        <div class="guida" style="display:flex;align-items:center;gap:24px">
+          <div id="blocco-E" style="text-align:right">
+            <div class="ora" style="font-size:68px;letter-spacing:-0.045em">09:44</div>
+            <div style="font-size:18px;font-weight:300;letter-spacing:-0.015em;color:#3E423C;margin-top:5px">giovedì 17 settembre</div>
+            <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:9px;font-size:14px;color:#3E423C">
+              <span>Genova</span><span style="opacity:0.5">·</span><i class="icon-coffee" style="font-size:15px"></i><span>Ufficio</span>
+            </div>
+          </div>
+          <img class="volto" src="./volto.png" alt="" style="width:96px;height:96px">
+        </div>
+        <div class="guida" style="top:187px;width:292px">
+          <div class="sys" style="width:100%;justify-content:space-between;white-space:nowrap">
+            <span class="voce attento"><i class="icon-mic-off"></i><span class="mono">SPENTO</span></span>
+            <span class="voce"><i class="icon-volume-2"></i><span class="mono">40</span></span>
+            <span class="voce"><i class="icon-wifi"></i><span class="mono">TIM-CASA</span></span>
+            <span class="voce"><i class="icon-battery-full"></i><span class="mono">55%</span></span>
+          </div>
+        </div>
+        <div class="guida" style="top:245px;display:flex;flex-direction:column;align-items:flex-end;gap:9px">
+          <div class="chip"><i class="icon-folder" style="font-size:14px"></i>Riordino Acme<span class="mono" style="font-size:10px">128/412</span></div>
+          <div class="chip"><i class="icon-users" style="font-size:14px"></i>Revisione<span class="mono" style="font-size:10px">15:30</span></div>
+        </div>
+        <div class="misura">ORA 68/200 · DATA 18/300 · LUOGO 14 · VOLTO 96 · BLOCCO 172 × 125 · COLONNA 172 + 24 + 96 = 292 · SYS A 187 (+22) · TASKBAR A 245 (+44)</div>
+      </div>
+      <div class="conti" style="grid-template-columns:repeat(4,1fr)">
+        <div class="si"><strong>Regge</strong><br>Il bordo destro è uno per tutte e tre le righe, per la Systembar sotto e per i chip: <strong style="color:#1A1C19">la colonna ha finalmente un lato</strong>, ed è quello dove finiscono le cose. La Systembar sta a <strong style="color:#1A1C19">22</strong> dal blocco, non a 44: non è una regione a sé, è la coda dell'angolo dell'identità — tu e la tua macchina. I 44 restano fra la macchina e il lavoro. A sinistra può sfrangiare quanto vuole — nessuno legge una colonna dal lato aperto.</div>
+        <div class="si"><strong>Regge anche</strong><br>Centrate, le tre righe non hanno bisogno di un bordo comune per leggersi come un blocco: le tiene insieme l'asse. Il volto a 96 sta sotto l'altezza del blocco (125) e non compete più con l'ora: secondo polo, non primo.</div>
+        <div class="no"><strong>Costa</strong><br>La larghezza del blocco non è più prevedibile: è la più larga fra ora e data del giorno, e cambia col giorno. Poco male finché la colonna è dichiarata a <strong style="color:#1A1C19">292</strong> e nessuno ci costruisce sopra — ma va scritto, o qualcuno ci allineerà qualcosa.</div>
+        <div class="no"><strong>Da decidere</strong><br>Il luogo è tornato a due pezzi — <strong style="color:#1A1C19">città · icona luogo</strong> — e l'icona <strong style="color:#1A1C19">cambia col luogo</strong>: la tazzina per l'ufficio, la casa per casa. Ma la legge 06 dice sette icone in tutto il sistema, e quelle sette sono i tipi di task. O il luogo ne ha una sola e fissa, o la legge dice «sette più quelle del contesto» — e allora va riscritta.</div>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="prova" style="grid-column:1 / -1">
+      <h3>F · La macchina per prima, e il volto in cima</h3>
+      <p class="tesi">La Systembar sale <strong style="color:#1A1C19">in cima</strong>, come una riga di menu, e il volto la chiude a destra nell'angolo. A capo, sotto, il componente del tempo e del luogo: ora, data, posto. Rispetto a E cambia l'ordine di lettura — prima la macchina e chi sei, poi quando e dove.</p>
+      <div class="angolo" style="width:1364px;height:440px">
+        <div class="guida" style="right:160px;top:80px">
+          <div class="sys" style="white-space:nowrap">
+            <span class="voce attento"><i class="icon-mic-off"></i><span class="mono">MICROFONO SPENTO</span></span>
+            <span class="voce"><i class="icon-volume-2"></i><span class="mono">40</span></span>
+            <span class="voce"><i class="icon-wifi"></i><span class="mono">TIM-CASA</span></span>
+            <span class="voce"><i class="icon-battery-full"></i><span class="mono">55%</span></span>
+          </div>
+        </div>
+        <div class="guida" style="display:flex;flex-direction:column;align-items:flex-end;gap:22px">
+          <img class="volto" src="./volto.png" alt="" style="width:96px;height:96px">
+          <div style="text-align:right">
+            <div class="ora" style="font-size:68px;letter-spacing:-0.045em">09:44</div>
+            <div style="font-size:18px;font-weight:300;letter-spacing:-0.015em;color:#3E423C;margin-top:5px">giovedì 17 settembre</div>
+            <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:9px;font-size:14px;color:#3E423C">
+              <span>Genova</span><span style="opacity:0.5">·</span><i class="icon-coffee" style="font-size:15px"></i><span>Ufficio</span>
+            </div>
+          </div>
+        </div>
+        <div class="guida" style="top:327px;display:flex;flex-direction:column;align-items:flex-end;gap:9px">
+          <div class="chip"><i class="icon-folder" style="font-size:14px"></i>Riordino Acme<span class="mono" style="font-size:10px">128/412</span></div>
+          <div class="chip"><i class="icon-users" style="font-size:14px"></i>Revisione<span class="mono" style="font-size:10px">15:30</span></div>
+        </div>
+        <div class="misura">VOLTO 96 A 40 · SYS ALLA SUA QUOTA, A DESTRA 160 · BLOCCO A 158 · TASKBAR A 327 · STESSO BORDO DESTRO PER TUTTI</div>
+      </div>
+      <div class="conti" style="grid-template-columns:repeat(4,1fr)">
+        <div class="si"><strong>Regge</strong><br>La riga tecnica in cima si legge per prima e si dimentica subito — è il posto che hanno le barre di sistema da quarant'anni, e non è un caso: <strong style="color:#1A1C19">lì l'occhio passa senza fermarsi</strong>.</div>
+        <div class="si"><strong>Regge anche</strong><br>Il volto nell'angolo, alla quota della riga tecnica, è la posizione più antica che esista per un'identità. E il blocco del tempo, staccato sotto, diventa un componente suo — si legge come una cosa sola invece che come la coda del profilo.</div>
+        <div class="no"><strong>Costa</strong><br><strong style="color:#1A1C19">La colonna si allunga.</strong> Il volto occupa la prima fascia da solo, e il blocco comincia a 158: la Taskbar scende a 327, un terzo dello schermo. In E cominciava a 269, e sopra la campanella restano 60 px in meno per i chip.</div>
+        <div class="no"><strong>Costa anche</strong><br>Il volto è del Profilebar ma sta alla quota della Systembar: <strong style="color:#1A1C19">due componenti condividono una fascia</strong> senza contenerla. Funziona finché nessuno dei due cresce — ma la legge 11 dice che ognuno ha il suo ancoraggio, e qui l'ancoraggio di uno dipende dall'altro.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Quello che vale in tutte e sei</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:26px;width:1440px;font-size:15px;line-height:1.55;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Una larghezza sola</strong><br>La colonna si dichiara — 340 px — e tutti e tre i blocchi ci stanno dentro. È la cosa che manca adesso, e da sola risolve metà del problema.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Un ritmo solo</strong><br>Gli stacchi verticali diventano due valori, non tre a caso: 44 fra i blocchi di uno stesso componente, 22 dentro un blocco.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">L'ora a peso 200</strong><br>Sopra i 60 px il peso è 200, non 300: lo dice <a href="./L1 - Moodboard.dc.html">L1 - Moodboard</a>. Un'ora grande e pesante sarebbe un titolo di giornale.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Il volto non è un bottone</strong><br>Cerchio pieno, nessun bordo, nessuna ombra. Più grande sì, ma resta la prova che il sistema sa chi sei — non un menu account.</div>
+    </div>
+  </div>
+
+  <div style="width:1440px;border-radius:20px;padding:26px 30px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);font-size:16px;line-height:1.65;color:#3E423C">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58;margin-bottom:12px">Le due domande che restano</div>
+    <strong style="color:#1A1C19;font-weight:600">Dove sta il luogo.</strong> «casa · Genova» è la cosa più debole della colonna: in A non ci sta, in B ha una riga sua, in C finisce nella riga tecnica, in D si attacca alla data. Se conta poco può anche sparire quando non cambia — ma allora è una regola di comportamento, e va scritta in <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">docs/</span>, non qui.
+    <br><br>
+    <strong style="color:#1A1C19;font-weight:600">Se il nome serve.</strong> Il volto dice già chi sei. Scriverlo accanto è una ripetizione — a meno che non serva quando davanti alla macchina c'è qualcun altro, e allora non è il tuo nome: è <em>chi sta usando questo profilo</em>, che è un'altra informazione e forse va nella Systembar accanto al microfono.
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>

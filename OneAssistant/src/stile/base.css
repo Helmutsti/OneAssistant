@@ -1,0 +1,1126 @@
+/* Trascritto dai documenti di Claude Design, non inventato qui. Ogni numero ha una
+   provenienza: se manca la riga di provenienza, il numero è sbagliato.
+
+   L1 - Sistema      le leggi, gli ancoraggi, le cinque aree
+   L1 - Bubble       la primitiva: la ricetta, le quattro taglie, le tre fasce
+   L2 - *            la declinazione di ogni area
+   L3 - Composizioni le posizioni sulla scrivania
+
+   La cascata scende soltanto: se un numero di qui contraddice L1, è di qui l'errore.
+
+   Le misure di testo e icone sono state tarate a mano il 16 settembre 2026, guardando
+   tutti gli elementi insieme ai loro ancoraggi veri. Dove un numero diverge dal
+   documento, è questa taratura ad avere ragione, e il documento è da aggiornare. */
+
+:root {
+  /* L1 - Sistema, legge 04 · colore è stato, mai categoria */
+  --salvia: #4e6b54;
+  --ambra: #b3762a;
+  --rosso: #8a2e22;
+  /* L1 - Bubble · l'inchiostro dello stato, diverso dal punto */
+  --ink-salvia: #3d5643;
+  --ink-ambra: #8a5a17;
+  --ink-rosso: #8a2e22;
+  --ink-riposo: #4a4e48;
+  --punto-salvia: #5e9566;
+  --punto-ambra: #b3762a;
+  --punto-rosso: #8a2e22;
+
+  --inchiostro: #1a1c19;
+  --inchiostro-tenue: #3e423c;
+  --inchiostro-fioco: #5a5f58;
+  --inchiostro-corpo: #4a4e48;
+
+  /* L3 - Composizioni · il fondo del sistema operativo, dall'alto in basso.
+     Erano quattro numeri scritti dentro il gradiente: adesso sono nomi, perché il
+     profilo possa proporne altri e si guardino sul vetro vero (src/stile/tema.ts). */
+  --f1: #c6cbc9;
+  --f2: #b9beb9;
+  --f3: #9ba096;
+  --f4: #7c8178;
+
+  /* L1 - Moodboard · quanto si vede la tua immagine sotto, e come. Desaturata e in
+     sordina: il vetro ha bisogno di qualcosa da rifrangere, non di qualcosa che gli
+     rubi la scena (legge 05). */
+  --sfondo-quanto: 0.34;
+  --sfondo-sat: 0.42;
+  --sfondo-luce: 1.06;
+  --sfondo-contrasto: 0.92;
+  --velo: luminosity;
+
+  /* L1 - Bubble · il film di vetro: quanto è latte in alto e quanto in basso.
+     Il documento ne ha **tre**, non uno — «FILM BIANCO 62→44%» è la primitiva, e le
+     altre due sono gli stati: 74→56 quando una bolla ha il fuoco, 48→32 quando l'ha
+     ceduto. Il prototipo li aveva schiacciati tutti sul più forte, e il risultato era
+     che ogni bolla sembrava quella a fuoco: più latte, meno mondo dietro, e la luce
+     della scrivania non passava più (17 settembre 2026). */
+  --film-alto: 0.62;
+  --film-basso: 0.44;
+  --film-alto-fuoco: 0.74;
+  --film-basso-fuoco: 0.56;
+  --film-alto-via: 0.48;
+  --film-basso-via: 0.32;
+
+  /* L1 - Sistema, legge 08 · margine 44, schermate 1440 × 900 */
+  --margine: 44px;
+
+  /* L1 - Bubble · le quattro taglie */
+  --raggio-chip: 20px;
+  --raggio-carta: 22px;
+  --raggio-task: 26px;
+  --raggio-pannello: 30px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Manrope, system-ui, sans-serif;
+  color: var(--inchiostro);
+  -webkit-font-smoothing: antialiased;
+}
+
+#schermo {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #141613;
+  overflow: hidden;
+}
+
+/* Il palco è la finestra (16 settembre 2026). Prima era una tela di 1440 × 900 scalata
+   dentro, e su uno schermo 16:9 restavano due fasce di fondo ai lati. Le misure di L3
+   valgono ancora, ma come distanze dai bordi: il margine 44 è 44 da qualunque lato.
+   Misura e scala le mette `misura()` in main.ts: queste due sono solo il punto di
+   partenza, e la scala resta 1 finché la finestra è almeno grande come la tela minima. */
+#palco {
+  position: relative;
+  width: 1440px;
+  height: 900px;
+  flex: none;
+  transform: scale(var(--scala, 1));
+  transform-origin: center;
+  overflow: hidden;
+  /* L3 - Composizioni · il fondo del sistema operativo, più la luce in alto a sinistra. */
+  background:
+    radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,0.30), rgba(255,255,255,0) 72%),
+    linear-gradient(180deg, var(--f1) 0%, var(--f2) 42%, var(--f3) 68%, var(--f4) 100%);
+}
+
+/* L'immagine dell'utente, se c'è. Sta **sotto** il sistema e ci sta desaturata: il
+   moodboard lo dice per i contenuti, e il fondo non fa eccezione — il vetro satinato ha
+   bisogno di qualcosa da rifrangere, non di qualcosa che gli rubi la scena (legge 05). */
+#palco::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--sfondo, none) center / cover no-repeat;
+  filter: saturate(var(--sfondo-sat)) brightness(var(--sfondo-luce)) contrast(var(--sfondo-contrasto));
+  opacity: var(--sfondo-quanto);
+  mix-blend-mode: var(--velo);
+  pointer-events: none;
+}
+
+/* ─── la bolla · L1 - Bubble, la ricetta per intero ────────────────────── */
+
+.bolla-base {
+  background: linear-gradient(155deg,
+    rgba(255,255,255,var(--film-alto)),
+    rgba(248,248,244,var(--film-basso)));
+  backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+  -webkit-backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+  /* contorno uniforme: un anello solo, spessore costante sui quattro lati */
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.78),
+    0 20px 44px rgba(30, 36, 30, 0.24);
+}
+
+/* L1 - Sistema, legge 05 · tre livelli di opacità per schermo, mai quattro.
+   L1 - Sistema, legge 08 · un task cede attenzione, mai posizione. */
+.attenuata { opacity: 0.78; transition: opacity 340ms ease; }
+.informa { opacity: 0.62; }
+
+.mono {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.08em;
+}
+
+/* L1 - Sistema, legge 06 · **Lucide**, mai icona sola. La famiglia la imposta
+   lucide.css sulle classi `icon-*`: qui si dice solo quanto è grande. */
+.icona { line-height: 1; display: inline-block; }
+
+.salvia { color: var(--ink-salvia); }
+.ambra { color: var(--ink-ambra); }
+.rosso { color: var(--ink-rosso); }
+.riposo { color: var(--ink-riposo); }
+
+/* ─── la guida di destra ────────────────────────────────────────────────
+   Dal 17 settembre 2026 tutto quello che non è TABLE sta incolonnato sul bordo destro,
+   dall'alto in basso e in ordine di importanza: chi sei, la macchina, quello che hai in
+   mano, quello che è arrivato. Lo schermo resta sgombro a sinistra, dove vivono le
+   bolle e INPUT.
+
+   Di questa disposizione **non esiste ancora un documento di Claude Design**: le misure
+   qui sotto sono una prima proposta presa dal vocabolario che c'è già, e vanno portate
+   di là prima di considerarle vere (CLAUDE.md · la separazione). */
+
+/* ─── LA GUIDA DI DESTRA · una colonna, non quattro quote ────────────────── */
+/* Erano quattro `top` fissi — 40, 187, 245 — sommati a mano. Non possono più esserlo:
+   la Timeline cresce con due nomi lunghi, e chi le sta sotto la segue (L2 - Profilebar ·
+   «Si sposta con chi le sta sopra»). L'ancoraggio orizzontale resta fisso al pixel —
+   legge 08, ancora valida; la quota no, ed è l'unica cornice del sistema così.
+
+   Aria 22 fra le famiglie, metà del margine. Fra la macchina e il lavoro restano i 44
+   di sempre, perché lì il salto è vero: la Systembar è la coda dell'identità, la
+   Taskbar è un'altra cosa. */
+
+#guida {
+  position: absolute;
+  right: var(--margine);
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 22px;
+}
+
+/* ─── TIMELINE · L2 - Timeline · in cima alla guida ──────────────────────── */
+/* adesso 20/600 · dopo 20/500 tenue · targhe 10 mono · filo 242 × 3 · aria 12.
+   Due momenti della stessa taglia: **la gerarchia si fa col colore, non con la
+   misura**. Due righe uguali si leggono come una coppia; due di misura diversa si
+   leggono come un titolo e una didascalia. */
+
+#timeline .riepilogo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+#timeline .momento { text-align: right; }
+#timeline .targa-tl {
+  display: flex; align-items: center; justify-content: flex-end; gap: 7px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+#timeline .soggetto {
+  font-size: 20px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.14;
+  margin-top: 5px; color: var(--inchiostro);
+}
+#timeline .adesso .targa-tl { color: var(--ink-salvia); }
+#timeline .dopo .targa-tl { color: var(--inchiostro-fioco); }
+#timeline .dopo .soggetto { font-weight: 500; color: var(--inchiostro-corpo); }
+/* Dentro il preavviso il dopo va in ambra e prende peso — **e non compare niente di
+   nuovo**. È la legge 04: lo stato è cambiato, quindi è cambiato il colore. */
+#timeline .dopo.vicino .targa-tl { color: var(--ink-ambra); }
+#timeline .dopo.vicino .soggetto { color: var(--inchiostro); font-weight: 600; }
+/* Quando non stai su niente il posto non resta vuoto e non mente: dice quanto tempo
+   hai. Più piccolo dell'adesso, perché non è il nome di una cosa che stai facendo. */
+#timeline .libero .targa-tl { color: var(--inchiostro-fioco); }
+#timeline .libero .soggetto { font-size: 18px; font-weight: 500; color: var(--inchiostro-corpo); }
+
+/* Il filo: non è una decorazione e non è un grafico, è la legge 04 applicata al tempo.
+   Un tratto non ha un colore scelto — ha il colore dello stato di quello che copre. */
+#timeline .segmenti { position: relative; height: 3px; display: flex; }
+#timeline .tratto { height: 3px; border-radius: 2px; position: relative; flex: none; }
+#timeline .tratto.ora { background: var(--punto-salvia); }
+#timeline .tratto.attende { background: var(--punto-ambra); }
+#timeline .tratto.fermo { background: var(--punto-rosso); }
+#timeline .tratto.vuoto { background: rgba(26, 28, 25, 0.16); }
+/* I punti stanno agli **inizi**, non alle fini: un pallino da 9 segna quando una cosa
+   comincia. È lo stesso punto della Notificationbar e di INPUT — non serve un terzo. */
+#timeline .tratto .capo {
+  position: absolute; left: -1px; top: -3px;
+  width: 9px; height: 9px; border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+}
+#timeline .tratto.ora .capo { background: var(--punto-salvia); }
+#timeline .tratto.attende .capo { background: var(--punto-ambra); }
+#timeline .tratto.fermo .capo { background: var(--punto-rosso); }
+#timeline .tratto.vuoto .capo { display: none; }
+
+/* ─── PROFILEBAR · sotto la Timeline, una riga sola ──────────────────────── */
+/* Erano tre righe con l'ora a 68. Dal 17 settembre 2026 è **una riga a 13** e il volto
+   a 44 con anello 2 (L2 - Profilebar). La riga è larga 392 e sfonda a sinistra oltre i
+   292 della guida: l'ora a un capo, il luogo all'altro. È una deroga alla legge 08 —
+   la guida non ha più un ancoraggio solo — e va dichiarata in L1 - Sistema.
+
+   Niente stato e niente colore: qui non c'è nulla che aspetti te. */
+
+#profilebar {
+  width: 392px;
+  /* Il velo si stringe sul suo contenuto e sta a destra, dove sta la guida: una riga
+     larga 392 con dentro un velo largo 392 sarebbe una fascia, e una fascia è un
+     contenitore per davvero. */
+  display: flex;
+  justify-content: flex-end;
+  color: var(--inchiostro-tenue);
+}
+/* Il velo. Tiene insieme le tre cose del contesto — quando, dove, chi — che prima
+   stavano vicine fingendo di non stare insieme. Nessun bordo e nessun colore: il colore
+   è stato, e qui non c'è niente che aspetti te. Il raggio segue il volto, che è la cosa
+   più alta che ci sta dentro. */
+#profilebar .velo {
+  display: flex; align-items: center; gap: 14px;
+  padding: 7px 7px 7px 16px;
+  border-radius: 29px;
+  background: rgba(26, 28, 25, 0.06);
+}
+/* Quando e dove, impilati. Erano ai due capi della riga; adesso sono due righe corte,
+   e l'ora sta sopra perché si legge per prima.
+   A destra, non a sinistra: le due righe sono lunghe diverse e l'ora cambia lunghezza
+   da sola — «9:05» e «17:50» non sono larghe uguali. Appoggiate a sinistra, il bordo
+   destro ballerebbe a ogni minuto; appoggiate al volto stanno ferme, e il margine che
+   respira è quello interno, dove non lo guarda nessuno. */
+#profilebar .contesto {
+  min-width: 0;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+  font-size: 13px;
+}
+#profilebar .quando { font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Il luogo non ha più un velo suo: adesso il velo è del gruppo, e due veli uno dentro
+   l'altro sarebbero una macchia. Resta la riga, senza sfondo. */
+#profilebar .luogo {
+  display: inline-flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+}
+#profilebar .luogo .punto { opacity: 0.5; }
+#profilebar .luogo .icona { font-size: 14px; }
+/* Il volto è l'unica immagine del sistema, e l'unica che non viene mai desaturata.
+   Quarantaquattro e un anello di luce da 2 al 82%: erano 96 accanto a un'ora grande,
+   e adesso che l'ora grande non c'è più ha bisogno di staccarsi da sé dal fondo. */
+#profilebar .volto {
+  width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+  display: block; flex: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.82);
+}
+
+/* ─── SYSTEMBAR · sotto la Profilebar, più piccola ─────────────────────── */
+/* Meno importante, quindi più piccola e più tenue. L'ordine è fisso — chi ascolta,
+   volume, rete, batteria: uno stato che si sposta di posto non si legge più a colpo
+   d'occhio. La quota la decide la colonna. */
+
+#systembar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--inchiostro-tenue);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+#systembar .voce { display: flex; align-items: center; gap: 6px; }
+#systembar .icona { font-size: 14px; }
+#systembar .mono { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+#systembar .ascolto-chi { color: #2f4636; }
+#systembar .ascolto-chi .mono { font-weight: 600; }
+#systembar .non-tu { color: var(--ink-ambra); }
+/* L2 - Systembar · «Due indicatori si premono» (17 settembre 2026).
+   Si preme, e si vede che si preme: solo il cursore e un filo di vita al passaggio.
+   Non diventa un bottone — non ha bordo, non ha fondo, non ha rilievo (legge 01). */
+#systembar .premibile { cursor: pointer; }
+#systembar .premibile:hover { opacity: 0.72; }
+
+/* ─── TASKBAR · L2 - Taskbar ───────────────────────────────────────────── */
+/* chip 34 fissa · raggio 20 · padding orizz. 14 · gap 9.
+   I 22 in più fanno 44 dalla Systembar: fra la macchina e il lavoro il salto è vero. */
+
+#taskbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 9px;
+  margin-top: 22px;
+}
+.chip {
+  display: flex; align-items: center; gap: 9px;
+  height: 30px; padding: 0 14px; border-radius: var(--raggio-chip);
+  color: var(--inchiostro);
+  /* taglia chip: film più basso della bolla di lavoro */
+  background: linear-gradient(155deg, rgba(255,255,255,0.62), rgba(248,248,244,0.44));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 10px 24px rgba(30,36,30,0.18);
+}
+.chip .icona { font-size: 14px; }
+.chip .nome { font-size: 14px; line-height: 1; }
+.chip .dato { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; }
+/* il contorno pulsa una volta ogni 4 s: è come appare «in corso» */
+.chip.lavora { animation: respiro 4s ease-in-out infinite; }
+
+/* Il gruppo è un chip che ne contiene altri (docs/01-modello §6): stessa forma, stesso
+   vetro, nessuna decorazione in più — cambia solo lo spessore dietro, che dice che sotto
+   c'è altro. La misura definitiva sta in `L2 - Taskbar` e non è ancora disegnata. */
+/* Dentro un task (docs/01-modello §7): la bolla aperta mostra quello che tiene, e
+   intorno non si attenua — si spegne. Le misure vere non sono ancora disegnate di là. */
+.bolla.spenta { opacity: 0.34; }
+.bolla .intero {
+  font-size: 14px; line-height: 1.5; color: rgba(33,37,31,0.78);
+  white-space: pre-line;
+}
+
+.chip.gruppo { position: relative; }
+.chip.gruppo::before,
+.chip.gruppo::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: inherit; z-index: -1;
+  background: linear-gradient(155deg, rgba(255,255,255,0.5), rgba(248,248,244,0.34));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+.chip.gruppo::before { transform: translate(5px, 5px) scaleX(0.965); }
+.chip.gruppo::after { transform: translate(2.5px, 2.5px) scaleX(0.985); }
+@keyframes respiro {
+  0%, 92%, 100% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 10px 24px rgba(30,36,30,0.18); }
+  96% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.95), 0 10px 28px rgba(30,36,30,0.26); }
+}
+
+/* ─── TABLE · L1 - Bubble + L1 - Soap Bubbles ───────────────────────────── */
+/* taglia task: raggio 26, padding 22/24, ombra di galleggiamento più profonda.
+   È l'unica area che si muove: la cornice è terra ferma. */
+
+#cornice { position: absolute; inset: 0; }
+/* TABLE è grande come tutto il palco — le bolle si muovono e hanno bisogno di spazio —
+   ma **dove non c'è una bolla non c'è niente da premere**, e il click deve passare
+   attraverso: sotto ci sono la guida di destra e la pedana.
+   Era un guasto latente: finché nella guida non c'era niente da premere non si vedeva.
+   Si è visto il 17 settembre 2026, col microfono che diventa premibile. */
+#table { position: absolute; inset: 0; pointer-events: none; }
+#table > * { pointer-events: auto; }
+
+.bolla {
+  position: absolute;
+  border-radius: var(--raggio-task);
+  padding: 22px 24px;
+  color: var(--inchiostro);
+  /* L1 - Bubble · l'ombra è una scala, non un valore: a riposo si posa (12/26 al 16%),
+     a fuoco si alza (20/44 al 24%). Erano tutte a 28/64, cioè più alte della più alta
+     del documento, e una bolla che non c'entra niente galleggiava come quella che
+     stai guardando. */
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.78),
+    0 12px 26px rgba(30, 36, 30, 0.16);
+  /* La posizione non è una transizione: la governa il campo di forze di scrivania.ts,
+     che è quello che fa vedere le bolle spingersi invece di scivolare. Restano al CSS
+     la larghezza (fuoco · 340 ms) e l'attenuazione. */
+  transition:
+    width 340ms cubic-bezier(0.32, 0.94, 0.2, 1),
+    opacity 340ms ease;
+  transform-origin: center;
+}
+
+/* Nascita · 520 ms. La nuova comincia al 40% della sua scala e cresce. Nessun suono,
+   nessun bordo che pulsa: se il task aspetta te, lo dice la targa — non il movimento. */
+/* A fuoco il vetro si fa più fitto e l'ombra si alza: è la stessa bolla, più vicina.
+   Non serve una classe — a fuoco è quella che non ha ceduto attenzione (legge 08). */
+.bolla:not(.attenuata):not(.spenta) {
+  background: linear-gradient(155deg,
+    rgba(255,255,255,var(--film-alto-fuoco)),
+    rgba(248,248,244,var(--film-basso-fuoco)));
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.78),
+    0 20px 44px rgba(30, 36, 30, 0.24);
+}
+/* Chi ha ceduto il fuoco cede **vetro**, non solo opacità: il film si assottiglia e
+   sotto torna a vedersi la scrivania. È il terzo livello della legge 05. */
+.bolla.attenuata {
+  background: linear-gradient(155deg,
+    rgba(255,255,255,var(--film-alto-via)),
+    rgba(248,248,244,var(--film-basso-via)));
+  transition: background 340ms ease, opacity 340ms ease, box-shadow 340ms ease;
+}
+
+.bolla.nasce { animation: nascita 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes nascita {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Contrazione · 280 + 420 ms. Perde le righe e si stringe, poi diventa chip e migra
+   all'ancoraggio della Taskbar lungo un arco, non in linea retta. */
+.bolla.si-contrae {
+  transition:
+    left 420ms cubic-bezier(0.4, 0, 0.2, 1) 280ms,
+    top 420ms cubic-bezier(0.4, 0, 0.2, 1) 280ms,
+    width 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 420ms cubic-bezier(0.4, 0, 0.2, 1) 280ms,
+    opacity 300ms ease 400ms;
+  transform: translateY(-40px) scale(0.86);
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bolla.si-contrae .incisione,
+.bolla.si-contrae .puoi-dire,
+.bolla.si-contrae .frasi,
+.bolla.si-contrae .corpo { opacity: 0; transition: opacity 140ms ease; }
+
+/* Chiusura · 1500 ms. Sfuma sul posto contraendosi del 6%: non vola via, non implode. */
+.bolla.si-chiude {
+  transition: opacity 1500ms ease-out, transform 1500ms ease-out;
+  transform: scale(0.94);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* fascia 1 · targa: icona di dominio, stato, età. L'unico posto in cui vive il colore. */
+.bolla .targa {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.bolla .targa .icona { font-size: 14px; }
+.bolla .targa .eta { margin-left: auto; font-weight: 400; letter-spacing: 0.08em; color: var(--inchiostro-fioco); }
+
+/* fascia 2 · titolo: semibold, ink #1A1C19 sempre, una riga, mai due */
+.bolla .titolo {
+  font-size: 16px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15;
+  color: var(--inchiostro);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/* corpo: max due righe */
+.bolla .corpo {
+  font-size: 12px; font-weight: 400; color: var(--inchiostro-corpo);
+  line-height: 1.5; margin-top: 7px;
+}
+
+/* divisore · incisione: ombra sopra, luce sotto, da parte a parte */
+.bolla .incisione {
+  height: 1px; margin: 20px -24px 0;
+  background: rgba(26, 28, 25, 0.11);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+/* fascia 3 · voce: le frasi che si possono dire, una per riga */
+.bolla .puoi-dire {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--inchiostro-fioco);
+  margin: 19px 0 11px;
+}
+.bolla .frasi { display: flex; flex-direction: column; gap: 9px; }
+.frase {
+  display: flex; align-items: baseline; gap: 10px;
+  font-size: 12px; font-weight: 400; letter-spacing: -0.01em;
+  color: var(--inchiostro-corpo);
+  cursor: default;
+}
+.frase.probabile { color: var(--inchiostro); }
+/* il pallino verde · cerchio 8px, uno per bolla: la frase che parte se rispondi «sì» */
+.frase::before {
+  content: '';
+  width: 8px; height: 8px; border-radius: 50%; flex: none;
+  transform: translateY(-1px);
+  background: transparent;
+}
+.frase.probabile::before { background: var(--salvia); }
+
+/* ─── la pila · prima versione della NOTIFICATIONBAR · L2 - Sidebar ────── */
+/* destra 44, bottom 44 · pila max 3 · offset 11 px.
+   La larghezza scende da 496 a 400: 496 era dimensionata su un testo da 17 px, e con
+   la taratura del 16 settembre il testo della carta è 14 — la differenza era tutta
+   aria. La proporzione è la stessa, la misura no. Da riportare su `L2 - Sidebar`. */
+
+#pila {
+  position: absolute;
+  right: var(--margine);
+  bottom: var(--margine);
+  width: 400px;
+}
+#pila .carta {
+  position: absolute; right: 0; bottom: 0;
+  width: 400px;
+  border-radius: var(--raggio-carta);
+  padding: 16px 18px;
+  color: var(--inchiostro);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 18px 44px rgba(30,36,30,0.20);
+  /* entra con 6 px di traslazione e nessun suono */
+  animation: entrata 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes entrata { from { transform: translateX(6px); opacity: 0; } to { transform: none; opacity: 1; } }
+#pila .targa {
+  display: flex; align-items: center; gap: 9px; margin-bottom: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+#pila .targa .icona { font-size: 16px; }
+#pila .targa .eta { margin-left: auto; font-weight: 400; letter-spacing: 0.06em; color: var(--inchiostro-fioco); }
+#pila .testo { font-size: 14px; font-weight: 400; line-height: 1.35; color: #21251f; }
+/* sulla carta le frasi stanno su una riga sola, separate da un punto medio */
+#pila .frasi-riga { font-size: 12px; margin-top: 9px; color: var(--inchiostro-tenue); }
+#pila .frasi-riga .frase { display: inline; color: #21251f; }
+#pila .frasi-riga .frase::before { display: none; }
+#pila .frasi-riga .frase:not(.probabile) { color: var(--inchiostro-tenue); }
+
+/* ─── INPUT · L2 - INPUT ───────────────────────────────────────────────── */
+/* bottom 44 · il punto d'ascolto fuori a sinistra, come la coda di un baloon.
+   A riposo non esiste: nessun pallino in attesa, nessuna barra. */
+
+#input {
+  position: absolute;
+  left: var(--margine);
+  bottom: var(--margine);
+  max-width: 560px;
+  display: flex;
+  align-items: flex-end;
+  gap: 13px;
+}
+#input.assente { pointer-events: none; }
+/* il campo resta nel documento anche quando INPUT non c'è: è il prototipo che deve
+   sentire il primo tasto. A schermo non si vede niente. */
+#input.assente .campo,
+/* mentre scrivi, il campo vero sparisce e resta la riga: `~` e non `+`, perché fra i
+   due adesso può esserci la raccolta (la regola col `+` smetteva di valere di colpo,
+   e la frase si vedeva due volte). */
+#input .corrente ~ .campo { position: absolute; opacity: 0; width: 1px; height: 1px; padding: 0; }
+
+/* il punto: un pallino salvia pieno e nient'altro — nessun bordo, nessun alone */
+#input .punto {
+  width: 13px; height: 13px; border-radius: 50%; flex: none;
+  background: var(--punto-salvia);
+  margin-bottom: 13px;
+}
+/* pulsa a 1,2 s: di scala 13 → 15 px e di opacità 100 → 70% */
+#input .punto.sente { animation: pulsa 1.2s ease-in-out infinite; }
+
+/* ─── sta pensando · l'anello che gira ───────────────────────────── */
+/* Prende il posto del marcatore che c'è già — il punto in voce, l'icona della tastiera
+   in scrittura — e non si aggiunge: il punto d'ingresso è uno (legge 03).
+
+   Un anello e non un cerchio pieno: un cerchio che ruota non si vede ruotare, ed è
+   esattamente l'errore che si fa scrivendo `animation: gira` sul punto di sempre.
+
+   Salvia perché salvia è **in corso** (legge 04), e mentre pensa qualcosa è in corso.
+   Non è ambra: ambra aspetta te, e qui non aspetta te — aspetti tu. */
+#input .gira {
+  width: 14px; height: 14px; flex: none;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 28, 25, 0.16);
+  border-top-color: var(--salvia);
+  animation: gira 0.7s linear infinite;
+}
+/* Fuori dalla bolla, al posto del punto: 13 come il punto, e allineato come lui. */
+#input .gira.fuori { width: 13px; height: 13px; margin-bottom: 13px; }
+@keyframes gira { to { transform: rotate(360deg); } }
+/* In tastiera il punto **non c'è**. Non spento, non scarico: assente. Il punto è la
+   voce, e qui la voce non c'è (`design/L2 - INPUT` · «Senza voce»). Fuori dalla bolla
+   non resta niente, ed è l'unico caso in tutto il sistema.
+   Avevo messo un pallino grigio: teneva il posto di una cosa che non esiste. */
+#input.tastiera .punto { display: none; }
+
+/* La riga da cui entri, in fondo alla bolla: l'icona della tastiera a **14 px** e
+   accanto il campo. L'icona identifica il punto di input e sta a sinistra di dove
+   scrivi. È l'eccezione dichiarata — fuori va solo ciò che viene da te mentre lo dici,
+   e la tastiera è già scrittura, quindi è contenuto. */
+#input .scrivi { display: flex; align-items: center; gap: 9px; }
+#input .scrivi .icona { font-size: 14px; color: var(--inchiostro-fioco); flex: none; }
+#input .scrivi .campo { flex: 1; min-width: 0; }
+/* la chat sta sopra e il punto di input in fondo: fra i due un filo d'aria, così la
+   riga da cui scrivi si legge come una riga a sé e non come l'ultimo messaggio */
+#input.tastiera .scrivi { padding-top: 3px; }
+
+/* L2 - INPUT · «Gli orari dello scambio» (17 settembre 2026): 9 px, peso 500,
+   spaziatura 0.06em, inchiostro fioco, 2 px d'aria sotto. Una per giro e non per
+   messaggio, ed è l'ora **del sistema** — l'orologio di PROFILEBAR e questa devono
+   dire la stessa cosa, o sono due orologi che si smentiscono (motore.ts · Scambio). */
+#input .ora-giro {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--inchiostro-fioco);
+  margin-bottom: 2px;
+}
+
+/* I tasti davanti alle frasi. Il pallino verde sparisce: a marcare la più probabile
+   ci pensa ↵, che è il tasto con cui la diresti. Le altre prendono il loro numero. */
+#input.tastiera .frase::before { display: none; }
+#input.tastiera .frasi .frase { display: inline-flex; align-items: baseline; gap: 6px; }
+#input .tasto {
+  font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+  color: var(--inchiostro-fioco); flex: none;
+}
+@keyframes pulsa {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.154); opacity: 0.7; }
+}
+
+#input .bolla-voce {
+  flex: 1; min-width: 0;
+  border-radius: 24px;
+  padding: 13px 18px;
+  color: var(--inchiostro);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 14px 34px rgba(30,36,30,0.18);
+  /* la raccolta cresce fino a 340 px e non oltre */
+  max-height: 340px; overflow: hidden;
+  display: flex; flex-direction: column; gap: 9px;
+}
+/* la bolla nasce accanto al punto in 240 ms, come il baloon di un fumetto — **e solo
+   quando nasce**. L'animazione stava su `.bolla-voce` senza condizione, e visto che
+   `disegna()` rifà la cornice a ogni tasto, la bolla rigiocava l'entrata a ogni
+   carattere: mentre scrivevi, lampeggiava. È la regola che il resto del disegno già
+   seguiva (`.bolla.nasce`), e che qui mancava. */
+#input .bolla-voce.nasce { animation: baloon 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes baloon { from { transform: scale(0.92); opacity: 0; } to { transform: none; opacity: 1; } }
+
+#input .giro { display: flex; flex-direction: column; gap: 3px; }
+#input .tua { font-size: 13px; font-weight: 400; color: var(--inchiostro-fioco); }
+#input .sua { font-size: 13px; font-weight: 400; line-height: 1.35; color: #21251f; }
+#input .giro:last-child .sua { color: var(--inchiostro); }
+/* mentre scrivi si vede solo il messaggio di adesso */
+#input .corrente { font-size: 13px; font-weight: 400; color: #21251f; }
+#input .campo {
+  font-family: inherit; font-size: 13px; font-weight: 400; color: #21251f;
+  border: none; background: none; outline: none; padding: 0;
+  caret-color: var(--salvia);
+  width: 100%;
+}
+#input .campo::placeholder { color: rgba(26,28,25,0.32); }
+
+/* la raccolta · L2 - INPUT · la terza cosa che sta dentro INPUT: i file e i concetti
+   agganciati allo scambio. Compaiono mentre parli, uno per volta, appena il locale li
+   riconosce — quindi entrano con un movimento loro, o si vedrebbero apparire di scatto. */
+.raccolta { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.agganciata {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 2px 9px 2px 7px; border-radius: 11px;
+  background: rgba(26,28,25,0.06);
+  font-size: 12px; color: var(--inchiostro);
+}
+/* si aggancia quando **si aggancia**: prima l'animazione era su tutte, e a ogni tasto
+   tutta la raccolta rientrava da sotto (stessa causa della bolla che lampeggiava). */
+.agganciata.nuova { animation: aggancia 260ms cubic-bezier(.22,1,.36,1); }
+.agganciata .icona { font-size: 13px; color: var(--inchiostro-fioco); }
+/* noto e senza recapito: si sa chi è, non gli si può scrivere (docs/03-conoscenza §3) */
+.agganciata.senza-recapito { color: var(--inchiostro-tenue); }
+.agganciata.senza-recapito::after {
+  content: 'senza recapito';
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.06em;
+  color: var(--inchiostro-fioco);
+}
+@keyframes aggancia {
+  from { opacity: 0; transform: translateY(4px) scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+
+/* in prova: le frasi dentro INPUT invece che sotto il task (docs/00-aperte). Qui la
+   colonna sarebbe alta, quindi vanno in riga come nella carta della Notificationbar. */
+/* la stessa fascia della bolla — le regole di là sono scritte su `.bolla`, e INPUT è
+   una bolla-voce: qui si ripetono, ed è un altro motivo per cui questo è un esperimento
+   e non una decisione (il vocabolario del disegno andrebbe messo in comune). */
+#input .puoi-dire {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--inchiostro-fioco);
+  margin: 12px 0 8px;
+}
+#input .frasi { display: flex; flex-direction: row; flex-wrap: wrap; gap: 6px 16px; }
+#input .frasi .frase { font-size: 13px; }
+/* quando c'è solo la frase e non la conversazione, la bolla non deve sembrare vuota */
+#input.solo-frasi .puoi-dire { margin-top: 0; }
+
+/* ─── NOTIFICATIONBAR · seconda versione, in prova ───────────────────────
+   La campanella nell'angolo in basso a destra, e il cassetto che le esce da sotto.
+
+   **L'apertura è la cosa importante**, e sono tre movimenti che partono insieme e
+   finiscono a tempi diversi:
+
+     1. il cassetto cresce verso l'alto — non compare, *sale*, e il suo punto d'origine
+        è la campanella, non il centro di sé stesso (`transform-origin: bottom right`);
+     2. le righe entrano una dietro l'altra, 40 ms l'una dall'altra, come l'onda delle
+        bolle in `scrivania.ts`: è lo stesso ritardo, e non è un caso;
+     3. la campanella si tira indietro di un niente, come una cosa che cede il passo.
+
+   La curva è la stessa dappertutto — `cubic-bezier(.22,1,.36,1)`, entrata decisa e
+   arrivo morbido — perché un cassetto che si apre con una curva e si chiude con un'altra
+   sembra due oggetti diversi. In chiusura i ritardi si invertono: l'ultima arrivata è la
+   prima ad andarsene.
+
+   Le misure sono una **prima proposta**: di questa versione non esiste un documento di
+   Claude Design, e prima di considerarle vere vanno portate di là (CLAUDE.md). */
+
+/* Il velo · quando il cassetto si apre, tutto il resto si spegne. Non è un fondo nero
+   appoggiato sopra: è la stessa luce della scrivania che cala, e per questo entra con la
+   stessa curva e nello stesso tempo del cassetto — se il velo arrivasse prima o dopo si
+   vedrebbero due cose invece di una. */
+#velo-notifiche {
+  position: absolute; inset: 0; z-index: 3;
+  background: rgba(18, 22, 18, 0.54);
+  backdrop-filter: saturate(0.62) brightness(0.86);
+  -webkit-backdrop-filter: saturate(0.62) brightness(0.86);
+  opacity: 0; pointer-events: none;
+  transition: opacity 380ms cubic-bezier(.22,1,.36,1);
+}
+#velo-notifiche.aperto { opacity: 1; pointer-events: auto; }
+
+#notificationbar {
+  position: absolute; right: 44px; bottom: 44px;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+  z-index: 4;
+}
+#notificationbar .campanella {
+  position: relative;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform 340ms cubic-bezier(.22,1,.36,1);
+}
+#notificationbar .campanella .icona { font-size: 22px; color: var(--inchiostro); }
+#notificationbar.aperto .campanella { transform: translateY(2px) scale(0.94); }
+/* il gesto del campanello: corto, una volta sola, e non si ripete se non arriva altro */
+#notificationbar.suona .campanella .icona { animation: squilla 640ms cubic-bezier(.36,.07,.19,.97); }
+@keyframes squilla {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(-13deg); }
+  30% { transform: rotate(11deg); }
+  45% { transform: rotate(-7deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-2deg); }
+}
+
+/* il badge: un numero, non un colore. Lo stato è dei task, e una notifica non è un task */
+#notificationbar .badge {
+  position: absolute; top: -2px; right: -2px;
+  min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500;
+  color: #fbfaf7; background: var(--ink-ambra, #b8802f);
+  box-shadow: 0 1px 3px rgba(30,36,30,0.3);
+  transition: transform 260ms cubic-bezier(.22,1,.36,1), opacity 200ms linear;
+}
+#notificationbar .badge.niente { opacity: 0; transform: scale(0.4); }
+
+/* Il cassetto **non è un pannello**: è una pila di carte separate, ognuna con la sua
+   ombra, dentro un contenitore che non si vede. Era un vetro solo con dei fili in mezzo,
+   e la differenza si sente — un pannello è una finestra, una pila è una cosa che sta lì
+   sopra. Lo stato espanso della vecchia Sidebar era già così, e aveva ragione lui. */
+#notificationbar .cassetto {
+  width: 400px; max-height: 0; overflow: hidden;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 0; background: none; box-shadow: none;
+  transform-origin: bottom right;
+  transform: translateY(14px) scale(0.96);
+  opacity: 0; pointer-events: none;
+  transition:
+    max-height 420ms cubic-bezier(.22,1,.36,1),
+    transform 380ms cubic-bezier(.22,1,.36,1),
+    opacity 240ms linear;
+}
+#notificationbar.aperto .cassetto {
+  max-height: 440px; overflow-y: auto; padding: 4px 2px 2px;
+  transform: translateY(0) scale(1);
+  opacity: 1; pointer-events: auto;
+}
+
+/* una carta per notifica: opaca, raggio 20, la sua ombra. Le più in basso pesano meno,
+   come nella pila — è la stessa scala di ombre della Bubble, non una nuova. */
+#notificationbar .riga {
+  border-radius: 20px; padding: 13px 16px;
+  background: rgba(251,251,249,0.94);
+  backdrop-filter: blur(30px) saturate(1.6);
+  -webkit-backdrop-filter: blur(30px) saturate(1.6);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7), 0 14px 34px rgba(12,14,12,0.28);
+  opacity: 0; transform: translateY(10px);
+  transition:
+    opacity 260ms linear calc(var(--i) * 40ms),
+    transform 320ms cubic-bezier(.22,1,.36,1) calc(var(--i) * 40ms);
+}
+#notificationbar.aperto .riga { opacity: 1; transform: translateY(0); }
+/* quella che non ti chiede niente c'è, ma non alza la voce */
+#notificationbar .riga.muta { opacity: 0.55; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7), 0 8px 20px rgba(12,14,12,0.18); }
+#notificationbar.aperto .riga.muta { opacity: 0.55; }
+/* quella a cui parla «me ne occupo» */
+#notificationbar .riga.scelta { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7), inset 3px 0 0 var(--salvia), 0 16px 38px rgba(12,14,12,0.3); }
+#notificationbar .riga .targa {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--inchiostro-fioco);
+}
+#notificationbar .riga .targa .icona { font-size: 15px; }
+#notificationbar .riga .targa .eta { margin-left: auto; letter-spacing: 0.06em; }
+#notificationbar .riga .testo { font-size: 14px; line-height: 1.35; color: #21251F; margin-top: 5px; }
+#notificationbar .riga.vuota { background: rgba(251,251,249,0.7); box-shadow: none; }
+/* quello che deve ancora succedere: c'è, ma non è successo */
+#notificationbar .riga.futura .targa .eta { color: var(--ink-ambra); }
+#notificationbar .riga.futura .testo { color: var(--inchiostro-tenue); }
+#notificationbar .riga.vuota .testo { color: var(--inchiostro-fioco); }
+
+/* ─── l'espansione · L2 - Sidebar, quarto stato ────────────────────────── */
+
+#velo {
+  position: absolute; inset: 0;
+  background: rgba(18, 20, 18, 0.52);
+  backdrop-filter: blur(3px);
+  animation: velo 240ms ease;
+}
+@keyframes velo { from { opacity: 0; } to { opacity: 1; } }
+#elenco {
+  position: absolute; right: var(--margine); top: var(--margine); bottom: 140px;
+  width: 496px; display: flex; flex-direction: column; gap: 10px;
+}
+#elenco .intestazione {
+  display: flex; align-items: center; gap: 12px; padding: 0 4px 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #f4f3ee;
+}
+#elenco .voce {
+  border-radius: var(--raggio-carta); padding: 16px 18px; background: #fbfbf9;
+  box-shadow: 0 14px 34px rgba(12, 14, 12, 0.34);
+}
+#elenco .voce .targa {
+  display: flex; align-items: center; gap: 9px; margin-bottom: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+#elenco .voce .targa .icona { font-size: 16px; }
+#elenco .voce .testo { font-size: 14px; line-height: 1.35; color: #21251f; }
+
+/* ─── la pedana di prova · non fa parte del design ─────────────────────── */
+/* Un copione e una corsia libera. Deliberatamente non assomiglia al sistema: è un banco. */
+
+#pedana {
+  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 5;
+}
+#pallino {
+  width: 13px; height: 13px; border-radius: 50%; flex: none;
+  border: none; padding: 0; cursor: pointer;
+  background: rgba(26,28,25,0.22);
+}
+#pedana.aperta #pallino { background: var(--salvia); }
+#pedana .prove {
+  order: -1;
+  display: grid; grid-template-columns: minmax(380px, 1.6fr) minmax(220px, 1fr);
+  gap: 14px 18px;
+  padding: 12px 14px; border-radius: 12px;
+  background: rgba(20,22,19,0.88);
+  max-width: 980px;
+}
+#pedana .corsia { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-width: 0; }
+#pedana .corsia.larga { grid-column: 1 / -1; }
+#pedana .corsia.copione { gap: 0; }
+
+/* le schede dei flussi: quella scelta è accesa, le altre stanno indietro */
+#pedana .schede { flex-direction: row; flex-wrap: wrap; gap: 4px 14px; }
+#pedana .scheda {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  background: none; border: none; padding: 0 0 3px; cursor: pointer;
+  color: rgba(236,234,226,0.4); border-bottom: 1px solid transparent;
+}
+#pedana .scheda:hover { color: rgba(236,234,226,0.75); }
+#pedana .scheda.scelta { color: #eceae2; border-bottom-color: var(--salvia); }
+
+/* un passo del copione: chi parla, cosa dice, cosa ti aspetti */
+#pedana .passo {
+  display: grid; grid-template-columns: 42px 1fr; gap: 2px 8px;
+  padding: 3px 4px; border-radius: 5px; border-left: 2px solid transparent;
+}
+#pedana .passo[data-passo] { cursor: pointer; }
+#pedana .passo[data-passo]:hover { background: rgba(236,234,226,0.06); }
+#pedana .passo .chi {
+  font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(236,234,226,0.3); padding-top: 2px;
+}
+#pedana .passo .cosa {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; line-height: 1.45;
+  color: rgba(236,234,226,0.82);
+}
+#pedana .passo .attesa {
+  grid-column: 2; font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; line-height: 1.45; color: rgba(236,234,226,0.34);
+}
+#pedana .passo.lei .cosa { color: #a8d0ae; font-style: italic; }
+#pedana .passo.fatto { opacity: 0.4; }
+#pedana .passo.adesso {
+  border-left-color: var(--salvia); background: rgba(236,234,226,0.05);
+}
+#pedana .passo.adesso .cosa { color: #fff; }
+#pedana .passo.adesso .chi { color: var(--salvia); }
+#pedana .prova.forte { color: var(--salvia); }
+#pedana .prova[disabled] { color: rgba(236,234,226,0.25); cursor: default; text-decoration: none; }
+/* l'alfabeto: un elenco lungo, quindi scorre. Stessa lingua del copione — monospazio,
+   grigio, niente decorazioni: è un banco, non un'interfaccia. */
+#pedana .corsia.vocabolario { max-height: 420px; overflow-y: auto; gap: 10px; width: 100%; }
+#pedana .famiglia { display: flex; flex-direction: column; gap: 1px; width: 100%; }
+#pedana .azione {
+  padding: 4px; border-radius: 5px; cursor: pointer;
+  border-left: 2px solid transparent;
+}
+#pedana .azione:hover { background: rgba(236,234,226,0.06); border-left-color: var(--salvia); }
+#pedana .capo-azione { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+#pedana .token {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+  color: rgba(236,234,226,0.42); flex: none;
+}
+/* il token uscito davvero: è tutto quello che questo banco deve dire */
+#pedana .token.regge { color: var(--salvia); }
+#pedana .token.rotto { color: #e0364f; }
+#pedana .detta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; line-height: 1.4;
+  color: rgba(236,234,226,0.86);
+}
+#pedana .cosa-azione, #pedana .serve {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.4;
+  color: rgba(236,234,226,0.38); padding-left: 2px;
+}
+#pedana .serve { color: rgba(236,234,226,0.26); font-style: italic; }
+/* spenta non vuol dire nascosta: la parola si legge, ma adesso non si può dire.
+   Premerla non è vietato: porta il mondo dove quella frase vuol dire qualcosa. */
+#pedana .azione.spenta { opacity: 0.4; }
+#pedana .azione.spenta .detta { color: rgba(236,234,226,0.5); }
+/* mentre il banco si porta nello stato che serve: ci mette dei millisecondi veri */
+#pedana .azione.in-corso { background: rgba(168,208,174,0.1); border-left-color: var(--salvia); }
+
+/* la scia: dove è passato il task a fuoco. Le celle in fila, e sotto ognuna chi ce l'ha
+   portato — un comando, oppure il mondo. È l'unica cosa del banco che guarda indietro. */
+#pedana .scia { margin-bottom: 8px; }
+#pedana .scia.vuota { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: rgba(236,234,226,0.28); margin-bottom: 8px; }
+#pedana .scia .chi-e {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  color: rgba(236,234,226,0.86); margin-bottom: 4px;
+}
+#pedana .tappe { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 4px; }
+#pedana .tappa {
+  display: flex; flex-direction: column; gap: 1px;
+  padding: 2px 7px; border-radius: 7px;
+  border: 1px solid rgba(236,234,226,0.1); background: rgba(236,234,226,0.03);
+}
+#pedana .tappa.adesso { border-color: rgba(236,234,226,0.34); background: rgba(236,234,226,0.08); }
+#pedana .tappa .cella { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.04em; }
+#pedana .tappa.salvia .cella { color: var(--salvia); }
+#pedana .tappa.ambra .cella { color: #e0a04f; }
+#pedana .tappa.rosso .cella { color: #e0364f; }
+#pedana .tappa.riposo .cella { color: rgba(236,234,226,0.5); }
+#pedana .tappa .perche {
+  font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 0.06em;
+  color: rgba(236,234,226,0.34);
+}
+/* quello che non hai detto tu non si scrive come un comando */
+#pedana .tappa .perche.suo { font-style: italic; color: rgba(236,234,226,0.24); }
+#pedana .freccia { font-size: 9px; color: rgba(236,234,226,0.24); }
+
+/* lo stato adesso: l'elenco chiuso delle situazioni, accese o spente. Sono premibili
+   tutte — una spenta si accende costruendola, ed è l'unico modo di provare certe parole */
+#pedana .situazioni { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 6px; }
+#pedana .situazione {
+  font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; line-height: 1.5;
+  padding: 1px 6px; border-radius: 9px;
+  border: 1px solid rgba(236,234,226,0.12); background: none;
+  color: rgba(236,234,226,0.3);
+}
+#pedana button.situazione { cursor: pointer; }
+#pedana button.situazione:hover { border-color: rgba(236,234,226,0.4); color: rgba(236,234,226,0.75); }
+#pedana .situazione.ce { color: var(--salvia); border-color: rgba(168,208,174,0.4); }
+#pedana .situazione.in-corso { background: rgba(168,208,174,0.16); color: #eceae2; }
+#pedana .serve .situazione { font-style: normal; }
+/* dentro una riga: quella che manca è il motivo per cui la parola è spenta */
+#pedana .serve .situazione.manca { color: #e0a04f; border-color: rgba(224,160,79,0.35); }
+#pedana .serve { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 5px; }
+#pedana .serve.rotta { color: #e0364f; font-style: normal; }
+/* quello che ha risposto lei: una parola che non fa rispondere niente è sospetta */
+#pedana .detto {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.45;
+  color: #a8d0ae; font-style: italic; padding-left: 2px;
+}
+
+#pedana .capo.registro { margin-top: 10px; }
+#pedana .capo {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(236,234,226,0.45); margin-bottom: 2px;
+}
+#pedana .prova {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  color: #eceae2; background: none; border: none; padding: 2px 0; cursor: pointer;
+  text-align: left;
+}
+#pedana .prova:hover { color: #fff; text-decoration: underline; }
+#pedana .bottoni { display: flex; gap: 12px; margin-top: 6px; }
+#pedana .campo-prova {
+  width: 100%; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  color: #eceae2; background: rgba(236,234,226,0.08);
+  border: 1px solid rgba(236,234,226,0.18); border-radius: 6px;
+  padding: 4px 6px; outline: none;
+}
+#pedana .campo-prova:focus { border-color: var(--punto-salvia); }
+#pedana select.campo-prova { cursor: pointer; }
+/* Il banco di chi inventa: etichetta a sinistra, campo a destra, e le righe tutte
+   della stessa altezza — un modulo che si scorre con l'occhio si compila in fretta. */
+#pedana .riga-componi {
+  display: grid; grid-template-columns: 96px 1fr; align-items: center;
+  gap: 8px; margin-top: 4px;
+}
+#pedana .riga-componi > span {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9.5px;
+  color: rgba(236,234,226,0.55); letter-spacing: 0.04em;
+}
+#pedana .riga-componi.spunta { grid-template-columns: 96px auto; }
+#pedana .riga-componi input[type="checkbox"] { accent-color: var(--punto-salvia); cursor: pointer; }
+
+#pedana .anteprima {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; line-height: 1.5;
+  color: #a8d0ae; word-break: break-word;
+}
+#pedana .riga-registro {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; line-height: 1.6;
+  color: rgba(236,234,226,0.78); display: flex; gap: 8px;
+}
+#pedana .riga-registro.vuoto { color: rgba(236,234,226,0.35); }
+#pedana .ora-registro { color: rgba(236,234,226,0.38); flex: none; }
+#pedana .quando { grid-column: 1 / -1; font-size: 9.5px; color: rgba(236,234,226,0.45); }
+
+/* ─── il blocco ────────────────────────────────────────────────────────────
+   Lo schermo bloccato: copre tutto, e sotto il sistema continua a girare. Non c'è un
+   documento di Claude Design per questa schermata — quello che segue è una proposta
+   scritta col vocabolario che c'è già (lo stesso vetro, gli stessi inchiostri, lo
+   stesso margine) e va portata di là prima di considerarla vera. */
+
+#blocco {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 18px;
+  /* il fondo resta leggibile sotto, sfocato: è il tuo schermo, coperto — non spento */
+  background: rgba(20, 22, 19, 0.46);
+  backdrop-filter: blur(26px) saturate(1.2) brightness(0.92);
+  -webkit-backdrop-filter: blur(26px) saturate(1.2) brightness(0.92);
+  animation: blocco-entra 420ms ease;
+}
+@keyframes blocco-entra { from { opacity: 0; } to { opacity: 1; } }
+
+/* L'ora sta in alto come su WHEN, ma grande: da lontano è l'unica cosa che serve. */
+#blocco .orologio {
+  position: absolute; top: 12%;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: rgba(255,255,255,0.94);
+}
+#blocco .orologio .ora {
+  font-size: 92px; font-weight: 200; letter-spacing: -0.04em; line-height: 1;
+}
+#blocco .orologio .data {
+  font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.68);
+}
+
+#blocco .volto {
+  width: 148px; height: 148px; border-radius: 50%; object-fit: cover; display: block;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.5),
+    0 18px 48px rgba(12, 16, 12, 0.5);
+  animation: blocco-volto 520ms ease;
+}
+@keyframes blocco-volto {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+
+#blocco .nome {
+  font-size: 22px; font-weight: 400; letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.94);
+}
+
+/* Niente bottoni nemmeno qui: si sblocca con una frase, come tutto il resto. */
+#blocco .frase {
+  font-size: 14px; color: rgba(255,255,255,0.74); cursor: pointer;
+  padding: 7px 16px; border-radius: var(--raggio-chip);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);
+  transition: color 240ms ease, box-shadow 240ms ease;
+}
+#blocco .frase::before { display: none; }
+#blocco .frase:hover {
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.46);
+}

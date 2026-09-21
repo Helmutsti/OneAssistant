@@ -1,0 +1,1 @@
+Questo documento è vuoto, l'entripoint della parte di design si trova nella cartella "design/L0 - Sistema"

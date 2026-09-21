@@ -1,0 +1,44 @@
+/* I due materiali. Un tema è una tinta (`temi.css`), questo è la sostanza:
+   il vetro chiaro e il vetro scuro, con i loro inchiostri.
+
+   I token di base stanno in `liquid-glass.css` e valgono per il chiaro. Qui lo scuro
+   li riscrive su un ramo — `data-tema="scuro"` sul contenitore invece che sulla radice —
+   così le due colonne si vedono **nella stessa pagina**. Nel prototipo l'attributo sta
+   su `:root`; è l'unico scostamento, ed è dichiarato.
+
+   Chi lo usa: `L1 - Temi` (la tavola), `L2 - Profilebar` (il campione Eclisse) e
+   `L4 - Schermate` (l'interruttore di `composizioni.js`). Niente si ridefinisce
+   altrove: se un valore dello scuro cambia, cambia qui. */
+
+[data-tema='scuro'] {
+  --liquid-reflections:
+    radial-gradient(ellipse at 0% 0%, rgba(255,255,255,.34), rgba(255,255,255,.06) 24%, transparent 48%),
+    radial-gradient(ellipse at 100% 100%, rgba(255,255,255,.18), transparent 42%),
+    linear-gradient(118deg, transparent 12%, rgba(255,255,255,.10) 13%, rgba(255,255,255,.02) 17%, transparent 23%, transparent 76%, rgba(255,255,255,.06) 84%, transparent 91%);
+  --liquid-film: var(--liquid-reflections), linear-gradient(140deg, rgba(27,46,53,.78), rgba(21,38,46,.58) 45%, rgba(21,38,46,.54) 70%, rgba(27,46,53,.72));
+  --liquid-focus: var(--liquid-reflections), linear-gradient(140deg, rgba(27,46,53,.92), rgba(21,38,46,.78) 45%, rgba(21,38,46,.74) 70%, rgba(27,46,53,.88));
+  --liquid-quiet: var(--liquid-reflections), linear-gradient(140deg, rgba(27,46,53,.58), rgba(21,38,46,.36) 55%, rgba(27,46,53,.50));
+  --liquid-optics: blur(10px) saturate(1.35) brightness(0.92);
+  --liquid-edge:
+    inset 0 0 0 1px rgba(233,255,243,.24), inset 0 1px 1px rgba(255,255,255,.70),
+    inset 0 -1px 1px rgba(196,230,218,.30), inset 0 2px 3px -2px rgba(255,255,255,.44),
+    inset 2px 3px 6px -4px rgba(0,0,0,.44), 0 0 0 .5px rgba(0,0,0,.36),
+    0 2px 3px -1px rgba(0,0,0,.34), 0 14px 30px -12px rgba(0,0,0,.52), 0 30px 56px -22px rgba(0,0,0,.46);
+  --ink: #f1f7f4; --ink-tenue: #c7d8cf; --ink-corpo: #b4c5bd; --ink-fioco: #93a7a0;
+  --salvia: #a8c6ae; --ambra: #e8b571; --rosso: #e39184; --riposo: #b4c5bd;
+  --punto: #79b683;
+  --carta-notifica: rgba(28,42,48,.94);
+  --testo-carta: #e6efeb;
+  --incisione-ombra: rgba(0,0,0,.28); --incisione-luce: rgba(255,255,255,.10);
+}
+
+/* Il ramo chiaro, esplicito. Gli stessi valori che `liquid-glass.css` tiene sulla radice,
+   scritti qui perché la coppia si legga in un posto solo. */
+[data-tema='chiaro'] {
+  --ink: #1A1C19; --ink-tenue: #3E423C; --ink-corpo: #4A4E48; --ink-fioco: #5A5F58;
+  --salvia: #3D5643; --ambra: #8A5A17; --rosso: #8A2E22; --riposo: #4A4E48;
+  --punto: #5E9566;
+  --carta-notifica: rgba(251,251,249,.94);
+  --testo-carta: #21251F;
+  --incisione-ombra: rgba(26,28,25,.11); --incisione-luce: rgba(255,255,255,.72);
+}

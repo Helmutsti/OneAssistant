@@ -1,0 +1,25 @@
+{
+  "name": "oneassist",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "controlla": "tsc --noEmit",
+    "preview": "vite preview",
+    "scenario": "esbuild src/prova/scenario.ts --bundle --format=esm --platform=node --outfile=.lavoro/scenario.mjs --log-level=error && node .lavoro/scenario.mjs",
+    "voce": "node strumenti/prepara-voce.mjs",
+    "postinstall": "node strumenti/prepara-voce.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.126.0",
+    "espeak-ng": "^1.0.2",
+    "onnxruntime-web": "^1.30.0",
+    "phonemizer": "^1.2.1"
+  }
+}

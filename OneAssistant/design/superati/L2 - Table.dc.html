@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300,0,0&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  a { color: #4E6B54; text-decoration: none; }
+  a:hover { color: #37502C; }
+</style>
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L2</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 2 · componente</div></div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">TABLE</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:36em;line-height:1.55">Le attività. Una sola al centro dell'attenzione — la main. Le altre vivono nei componenti vicini: <a href="#">Taskbar</a> a destra se le hai iniziate tu, <a href="#">Notificationbar</a> in basso se sono arrivate da fuori.</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">taskbar colonna destra 352<br>sidebar in basso a destra 520<br>attività: inset 56 · raggio 32<br>vetro 84% + inchiostro pieno<br>colore = stato, contenuto desaturato</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">La fila dei chip · oggi vive nella colonna di destra, vedi Taskbar</div>
+    <div style="width:1440px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#AFB4AE)">
+      <div style="height:120px;display:flex;align-items:center;padding:0 44px;gap:14px;box-sizing:border-box">
+        <div style="display:flex;align-items:center;gap:9px;padding:8px 15px;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18);color:#8A5A17">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-size:14px">Mail per Elena</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;opacity:0.85">ASPETTA TE</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;padding:8px 15px;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18);color:#3D5643">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg><div style="font-size:14px">Riordino Acme</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;opacity:0.85">128/412</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;padding:8px 15px;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);color:#3E423C">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div style="font-size:14px">Revisione</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;opacity:0.8">15:30</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;padding:8px 15px;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);color:#3E423C">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><div style="font-size:14px">Proposta Acme</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;opacity:0.8">APERTA</div>
+        </div>
+        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#2A2E28">4 / 4 · OLTRE QUESTO NUMERO RAGGRUPPO</div>
+      </div>
+      <div style="padding:20px 24px;background:#F2F1EC;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:14.5px;line-height:1.5;color:#4A4E48">
+        <div><strong style="color:#1A1C19;font-weight:600">Icona = tipo</strong><br>posta, cartella, persone, documento. Sette icone in tutto il sistema.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">Colore = stato</strong><br>ambra aspetta te, verde sto lavorando, contorno programmata, piena aperta.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">Dato = una parola</strong><br>un orario, una frazione, una parola. Niente barre di avanzamento nel chip.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">Si cambia parlando</strong><br>«torna alla mail», «apri il riordino». La pillola attiva è quella con il fondo pieno.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Quattro modi di occupare il centro</div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:40px">
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">1 · Vuoto calmo</div>
+        <div style="position:relative;width:700px;height:438px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%)">
+          <div style="position:absolute;left:-40px;top:10px;width:800px;height:220px;border-radius:50%;background:radial-gradient(60% 60% at 30% 22%, rgba(255,255,255,0.34), rgba(255,255,255,0) 72%)"></div>
+          <div style="position:absolute;left:0;right:0;top:130px;text-align:center;color:#1A1C19">
+            <div style="font-size:30px;font-weight:600;letter-spacing:-0.03em">Niente in mano.</div>
+            <div style="font-size:16px;color:#3E423C;margin-top:10px">La revisione è alle 15:30. Fino ad allora sei libero.</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Nessun pannello: solo due righe sul fondo di sistema. La soglia è vuota e scompare del tutto — non resta una barra grigia a ricordare che esiste.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">2 · Una cosa che aspetta te</div>
+        <div style="position:relative;width:700px;height:438px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%)">
+          <div style="position:absolute;left:-40px;top:10px;width:800px;height:220px;border-radius:50%;background:radial-gradient(60% 60% at 30% 22%, rgba(255,255,255,0.34), rgba(255,255,255,0) 72%)"></div>
+          <div style="position:absolute;left:52px;right:52px;top:70px;border-radius:26px;overflow:hidden;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 26px 60px rgba(30,36,30,0.28);color:#1A1C19">
+            <div style="padding:20px 24px 14px;display:flex;align-items:center;gap:11px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17">Aspetta una tua parola</div>
+            </div>
+            <div style="padding:0 24px 18px">
+              <div style="font-size:12px;color:#5A5F58;margin-bottom:8px">A Elena Rossi</div>
+              <div style="font-size:19px;font-weight:400;line-height:1.5;color:#21251F;padding-left:16px">Ciao Elena, ti mando la v3 del documento. Ho bloccato venerdì dalle 15 alle 16.</div>
+            </div>
+            <div style="padding:16px 24px 20px;border-top:1px solid rgba(26,28,25,0.12);background:rgba(240,239,233,0.9);display:flex;align-items:baseline;gap:18px">
+              <div style="display:flex;align-items:baseline;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#5E9566;display:block;flex:none;transform:translateY(-4px)"></span><div style="font-size:22px;font-weight:400">«manda»</div></div>
+              <div style="font-size:15.5px;color:#3E423C">«cambia l'orario» · «lascia stare»</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il pannello non occupa tutto: 52 px di respiro ai lati e il fondo di sistema visibile sopra e sotto. Anche con una sola attività, lo schermo non è «un'app aperta».</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">3 · Tre cose insieme</div>
+        <div style="position:relative;width:700px;height:438px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%)">
+          <div style="position:absolute;left:22px;right:22px;top:16px;height:34px;display:flex;align-items:center;gap:8px;box-sizing:border-box">
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18);color:#8A5A17"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-size:12.5px">Elena</div></div>
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18);color:#3D5643"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg><div style="font-size:12.5px">128/412</div></div>
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);color:#3E423C"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div style="font-size:12.5px">15:30</div></div>
+          </div>
+          <div style="position:absolute;left:40px;top:76px;width:344px;box-sizing:border-box;border-radius:22px;padding:20px 22px;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 22px 50px rgba(30,36,30,0.26);color:#1A1C19">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">Aspetta te</div></div>
+            <div style="font-size:18px;font-weight:400;line-height:1.45;color:#21251F">La v3 per Elena, con venerdì già bloccato.</div>
+            <div style="font-size:19px;font-weight:400;margin-top:14px">«manda»</div>
+          </div>
+          <div style="position:absolute;right:40px;top:76px;width:236px;box-sizing:border-box;border-radius:20px;padding:18px 20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 18px 40px rgba(30,36,30,0.20);color:#1A1C19">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#3D5A43"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5A43">Ci lavoro</div></div>
+            <div style="font-size:16px;font-weight:400;line-height:1.4">Riordino Acme</div>
+            <div style="height:3px;border-radius:3px;background:linear-gradient(90deg,#4E6B54 31%,rgba(26,28,25,0.12) 31%);margin-top:12px"></div>
+          </div>
+          <div style="position:absolute;left:40px;right:40px;bottom:36px;border-radius:20px;padding:16px 20px;background:linear-gradient(155deg,rgba(255,255,255,0.40),rgba(248,248,244,0.26));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);color:#1A1C19;display:flex;align-items:center;gap:14px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#3E423C"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div style="font-size:16px;font-weight:400">Revisione con Elena e Marco</div>
+            <div style="font-size:14px;color:#4A4E48">15:30 · 2 decisioni aperte</div>
+            <div style="margin-left:auto;font-size:15px;color:#3E423C">«preparami»</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La gerarchia è nell'opacità del vetro: 86% ciò che aspetta te, 64% ciò che è in corso, 58% ciò che è programmato. Tre livelli, mai quattro.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">4 · Una cosa a schermo intero</div>
+        <div style="position:relative;width:700px;height:438px;border-radius:16px;overflow:hidden;background:#EDEBE5">
+          <div style="position:absolute;left:22px;right:22px;top:16px;height:34px;display:flex;align-items:center;gap:8px;box-sizing:border-box">
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 14px 30px rgba(30,36,30,0.26);color:#1A1C19"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><div style="font-size:12.5px">Proposta Acme</div></div>
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18);color:#8A5A17"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-size:12.5px">Elena</div></div>
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18);color:#3D5643"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg><div style="font-size:12.5px">128/412</div></div>
+          </div>
+          <div style="position:absolute;left:34px;right:34px;top:70px">
+            <div style="font-size:26px;font-weight:600;letter-spacing:-0.03em;line-height:1.1">Acme — proposta commerciale</div>
+            <div style="font-size:14.5px;color:#4A4E48;margin-top:6px">24 pagine · 12 giugno</div>
+            <div style="margin-top:18px;height:190px;border-radius:16px;background:linear-gradient(140deg,#DDDBD4,#C4C2BA);border:1px solid rgba(26,28,25,0.10);padding:22px;box-sizing:border-box">
+              <div style="font-size:17px;font-weight:400;color:#3E423C">Proposta di collaborazione</div>
+              <div style="height:1px;background:rgba(26,28,25,0.16);margin:14px 0"></div>
+              <div style="display:flex;flex-direction:column;gap:9px"><div style="height:7px;width:86%;border-radius:7px;background:rgba(26,28,25,0.10)"></div><div style="height:7px;width:72%;border-radius:7px;background:rgba(26,28,25,0.10)"></div></div>
+              <div style="margin-top:20px;display:flex;align-items:flex-end;gap:10px;height:58px">
+                <div style="width:32px;height:52%;border-radius:5px;background:rgba(26,28,25,0.16)"></div>
+                <div style="width:32px;height:74%;border-radius:5px;background:rgba(26,28,25,0.16)"></div>
+                <div style="width:32px;height:100%;border-radius:5px;background:#4E6B54"></div>
+                <div style="width:32px;height:64%;border-radius:5px;background:rgba(26,28,25,0.16)"></div>
+                <div style="margin-left:12px;font-size:13.5px;color:#3D5A43;align-self:center">il trimestre di cui parlavamo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">A schermo intero il contenuto è desaturato e il colore torna solo sul dato in discussione. La fila resta: il chip attivo diventa inchiostro pieno, gli altri due continuano a vivere.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Main task e side task</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:54em;line-height:1.5">La differenza non è l'importanza: è <strong style="color:#1A1C19;font-weight:600">chi ha iniziato</strong>. La main task l'hai chiesta tu e occupa il centro. La side task è arrivata da fuori — una risposta, una bozza pronta, un promemoria — e vive sul lato, senza interrompere. Può essere rimandata in NOTIFICATIONBAR o diventare main in qualsiasi momento.</div>
+    </div>
+
+    <div data-screen-label="Main e side" style="width:1440px;height:900px;border-radius:18px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%);position:relative;box-sizing:border-box">
+      <div style="position:absolute;left:-100px;top:20px;width:1700px;height:480px;border-radius:50%;background:radial-gradient(60% 60% at 34% 22%, rgba(255,255,255,0.30), rgba(255,255,255,0) 72%)"></div>
+      <div style="position:absolute;right:44px;top:40px;color:#1A1C19;text-align:right">
+        <div style="display:flex;align-items:baseline;gap:12px;justify-content:flex-end">
+          <div style="font-size:40px;font-weight:600;letter-spacing:-0.035em;font-variant-numeric:tabular-nums;line-height:1">09:52</div>
+          <div style="font-size:14px;color:#3E423C">lunedì 15 settembre</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:8px;color:#3E423C;justify-content:flex-end">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div style="font-size:14px">studio · Bologna</div>
+        <img src="volto.png" alt="Lucia Moretti" style="width:36px;height:36px;border-radius:50%;object-fit:cover;display:block"></div>
+      </div>
+      <div style="position:absolute;right:44px;top:126px;display:flex;align-items:center;gap:16px;color:#4A4E48;text-shadow:0 1px 0 rgba(255,255,255,0.38)">
+        <div style="display:flex;align-items:center;gap:7px;color:#2F4636"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.08em">SOLO TU</div></div>
+        <div style="display:flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em">40</div></div>
+        <div style="display:flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><line x1="6" x2="6" y1="11" y2="13"/><line x1="10" x2="10" y1="11" y2="13"/><line x1="14" x2="14" y1="11" y2="13"/></svg><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em">82%</div></div>
+        
+      </div>
+      <div style="position:absolute;right:44px;top:180px;display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#2A2E28;margin-bottom:2px">Taskbar</div>
+        <div style="display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;box-sizing:border-box;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 8px 20px rgba(30,36,30,0.12);color:#1A1C19">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg><div style="font-size:14px;line-height:1">Riordino Acme</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1;letter-spacing:0.06em">128/412</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;box-sizing:border-box;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 8px 20px rgba(30,36,30,0.12);color:#3E423C">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div style="font-size:14px;line-height:1">Revisione</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1;letter-spacing:0.06em">15:30</div>
+        </div>
+      </div>
+      <div style="position:absolute;left:60px;top:150px;width:664px;border-radius:28px;padding:24px 28px;box-sizing:border-box;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 30px 70px rgba(30,36,30,0.24);color:#1A1C19">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#3E423C"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58">Aperta da te · 09:41</div>
+        </div>
+        <div style="font-size:30px;font-weight:600;letter-spacing:-0.035em;line-height:1.12">Acme — proposta commerciale</div>
+        <div style="font-size:12px;color:#4A4E48;margin-top:7px">pagina 14 di 24 · 12 giugno</div>
+        <div style="margin-top:18px;height:236px;border-radius:20px;background:linear-gradient(140deg,#DDDBD4,#C4C2BA);border:1px solid rgba(26,28,25,0.10);padding:22px;box-sizing:border-box;overflow:hidden">
+          <div style="font-size:19px;font-weight:400;color:#3E423C;letter-spacing:-0.02em">Risultati del trimestre</div>
+          <div style="height:1px;background:rgba(26,28,25,0.16);margin:14px 0"></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:7px;width:82%;border-radius:7px;background:rgba(26,28,25,0.11)"></div><div style="height:7px;width:68%;border-radius:7px;background:rgba(26,28,25,0.10)"></div></div>
+          <div style="margin-top:20px;display:flex;align-items:flex-end;gap:12px;height:88px">
+            <div style="width:44px;height:46%;border-radius:6px;background:rgba(26,28,25,0.16)"></div>
+            <div style="width:44px;height:68%;border-radius:6px;background:rgba(26,28,25,0.16)"></div>
+            <div style="width:44px;height:100%;border-radius:6px;background:#4E6B54"></div>
+            <div style="width:44px;height:59%;border-radius:6px;background:rgba(26,28,25,0.16)"></div>
+            <div style="margin-left:16px;align-self:center;font-size:14px;color:#3D5A43">il trimestre di cui parlavamo</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;left:772px;top:284px;width:388px;border-radius:28px;padding:22px 24px;box-sizing:border-box;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 28px 64px rgba(30,36,30,0.24);color:#1A1C19">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#3D5A43"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5A43">Ci sto lavorando · 6 min</div>
+        </div>
+        <div style="font-size:24px;font-weight:600;letter-spacing:-0.03em;line-height:1.2">Riordino dei documenti di Acme</div>
+        <div style="height:3px;border-radius:3px;background:linear-gradient(90deg,#4E6B54 31%,rgba(26,28,25,0.12) 31%);margin-top:16px"></div>
+        <div style="font-size:12px;color:#4A4E48;margin-top:12px;line-height:1.5">128 spostati su 412 · niente cancellato</div>
+      </div>
+      <div style="position:absolute;left:44px;bottom:44px;display:flex;align-items:flex-end;gap:14px">
+        <span style="width:15px;height:15px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-bottom:15px, 0 0 0 18px rgba(26,28,25,0.06)"></span>
+        <div style="display:flex;align-items:center;gap:18px;padding:14px 22px;border-radius:26px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 18px 44px rgba(30,36,30,0.20)">
+          <div style="font-size:22px;font-weight:400;letter-spacing:-0.02em;color:#1A1C19">«leggimi le conclusioni»</div>
+          <div style="width:1px;height:20px;background:rgba(26,28,25,0.14)"></div>
+          <div style="font-size:15.5px;color:#3E423C">«vai a pagina 20» · «chiudi»</div>
+        </div>
+      </div>
+      <div style="position:absolute;right:66px;bottom:70px;width:452px;height:150px;border-radius:24px;background:rgba(246,246,242,0.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 -2px 10px rgba(30,36,30,0.10), 0 14px 30px rgba(30,36,30,0.14)"></div>
+      <div style="position:absolute;right:55px;bottom:57px;width:474px;height:150px;border-radius:24px;background:rgba(249,249,246,0.86);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 -2px 10px rgba(30,36,30,0.12), 0 14px 30px rgba(30,36,30,0.16)"></div>
+      <div style="position:absolute;right:44px;bottom:44px;width:496px;border-radius:24px;padding:18px 22px;box-sizing:border-box;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 -2px 12px rgba(30,36,30,0.10), 0 22px 50px rgba(30,36,30,0.26);color:#1A1C19">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">Side · bozza pronta</div>
+          <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5A5F58">2 min</div>
+        </div>
+        <div style="font-size:18px;font-weight:400;line-height:1.35;color:#21251F">La v3 per Elena, con venerdì già bloccato.</div>
+        <div style="font-size:15px;color:#21251F;margin-top:10px">«manda la mail» · <span style="color:#3E423C">«dopo» · «fammi vedere le altre»</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:1440px;font-size:14.5px;line-height:1.55;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Main: centro, 40px di titolo</strong><br>Una sola per volta. Ha tutto lo spazio e le frasi grandi: è l'unica cosa che «stai facendo».</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Side: pila in basso a destra</strong><br>Carte impilate, tre visibili, ingombro costante. Sono nella <a href="#">Notificationbar</a>.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Dove sta la side · deciso</strong><br>Variante <a href="#B">B</a>: in basso a destra, accanto a INPUT. Le tre alternative restano in fondo come traccia della scelta. Vetro meno opaco, barra di stato a sinistra solo se aspetta te. Frasi a 12px: presenti, non urlate.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Le side non rubano la voce</strong><br>Se dici «manda» mentre leggi il documento, il sistema chiede a quale si riferisce solo se c'è davvero ambiguità.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Promozione a main</strong><br>«portala al centro»: la side scivola al centro e il documento scende nella taskbar, non si chiude. Movimento unico, 280 ms.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Il ciclo di vita di una side task</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:50em;line-height:1.5">Arriva sul lato, e da lì può solo andare in tre posti: al centro, in NOTIFICATIONBAR, o via. Non esiste lo stato «l'ho vista e non so cosa farne».</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,342px);gap:24px">
+
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58;margin-bottom:14px">1 · Arriva</div>
+        <div style="border-radius:16px;padding:14px 16px;background:rgba(251,251,249,0.72);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10);margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-size:13.5px;color:#8A5A17">bozza pronta</div></div>
+          <div style="font-size:16px;font-weight:400;line-height:1.35">La v3 per Elena</div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Entra dal bordo destro con 6 px di traslazione e nessun suono. Il punto d'ascolto non cambia: <strong style="color:#1A1C19;font-weight:600">non è un'interruzione, è una presenza</strong>.</div>
+      </div>
+
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58;margin-bottom:14px">2 · «dopo» → NOTIFICATIONBAR</div>
+        <div style="border-radius:16px;padding:14px 16px;background:rgba(26,28,25,0.04);border:1px solid rgba(26,28,25,0.12);margin-bottom:14px">
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><div style="font-size:22px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1">14:00</div><div style="font-size:13px;color:#3E423C">oggi</div></div>
+          <div style="display:flex;align-items:center;gap:7px;color:#3E423C"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-size:14.5px">la v3 per Elena, rimandata</div></div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Sparisce dal lato e diventa la seconda riga di NOTIFICATIONBAR: un orario, non una lista. «dopo pranzo», «stasera», «quando torno» funzionano tutti.</div>
+      </div>
+
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58;margin-bottom:14px">3 · «portala al centro»</div>
+        <div style="border-radius:16px;padding:14px 16px;background:#F2F1EC;border:1px solid rgba(26,28,25,0.12);margin-bottom:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58;margin-bottom:8px">Main</div>
+          <div style="font-size:21px;font-weight:600;letter-spacing:-0.03em;line-height:1.2">La v3 per Elena</div>
+          <div style="font-size:13.5px;color:#4A4E48;margin-top:6px">testo intero, allegato, invito</div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Diventa main: cresce, si apre, prende la voce. Quella che era main scende nella taskbar <strong style="color:#1A1C19;font-weight:600">senza chiudersi</strong>: torna con «riprendi il documento».</div>
+      </div>
+
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58;margin-bottom:14px">4 · Risolta o lasciata</div>
+        <div style="border-radius:16px;padding:14px 16px;background:rgba(251,251,249,0.72);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10);margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#3D5643"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-size:15px;color:#3D5643">mandata alle 09:54</div></div>
+          <div style="font-size:13.5px;color:#3D5A43;margin-top:6px">«no, aspetta» per 10 secondi</div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Sfuma in 1,5 s lasciando una riga verde, poi il lato torna vuoto. Se invece dici «lascia stare», scompare e non ritorna: niente coda di cose ignorate.</div>
+      </div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:26px 30px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);font-size:16px;line-height:1.65;color:#3E423C">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58;margin-bottom:12px">Perché questo risolve la scheda 2</div>
+      Nella scheda 2 la bozza per Elena occupava il centro pur non essendo stata chiesta: era una notifica travestita da attività. Come side task occupa 352 px su un lato, non tocca il punto d'ascolto e ha tre uscite dichiarate — <strong style="color:#1A1C19;font-weight:600">«manda», «dopo», «portala al centro»</strong>. Il centro resta di chi lo ha chiesto: tu.
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Chi è competente di cosa</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">La sovrapposizione è reale: un appuntamento alle 15:30 potrebbe stare in NOTIFICATIONBAR, come chip nella taskbar e come side. Un task sta in <strong style="color:#1A1C19;font-weight:600">un posto solo</strong>, e l'asse che decide è: chi l'ha iniziato, e ti serve adesso.</div>
+    </div>
+
+    <div style="width:1440px;border-radius:24px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 12px 30px rgba(30,36,30,0.08)">
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr">
+        <div style="padding:18px 22px;border-bottom:1px solid rgba(26,28,25,0.10)"></div>
+        <div style="padding:18px 22px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">PROFILEBAR</div>
+        <div style="padding:18px 22px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Taskbar</div>
+        <div style="padding:18px 22px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Side in TABLE</div>
+
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:14.5px;font-weight:600">Cos'è</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">Un momento nel tempo. Non c'è niente da fare adesso.</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">Un task che <strong style="color:#1A1C19;font-weight:600">hai iniziato tu</strong> e che ora dorme o va avanti da solo.</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">Qualcosa <strong style="color:#1A1C19;font-weight:600">arrivato da fuori</strong> che vuole una tua parola adesso.</div>
+
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:14.5px;font-weight:600">Esempio</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">«alle 15:30 la revisione»</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">«riordino Acme, 128 su 412»</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">«la bozza per Elena è pronta»</div>
+
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:14.5px;font-weight:600">Quanti</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">Uno: il prossimo. Mai una lista.</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">Fino a quattro, poi raggruppa.</div>
+        <div style="padding:20px 22px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#8A5A17"><strong style="font-weight:600">Una.</strong> Due solo se la seconda è più urgente.</div>
+
+        <div style="padding:20px 22px;font-size:14.5px;font-weight:600">Come esce</div>
+        <div style="padding:20px 22px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">All'ora, diventa side. Non prima.</div>
+        <div style="padding:20px 22px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">Lo nomini e torna main. O finisce da solo.</div>
+        <div style="padding:20px 22px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;line-height:1.5;color:#3E423C">«manda» · «dopo» → NOTIFICATIONBAR · «portala al centro» → main</div>
+      </div>
+      <div style="padding:22px 26px;background:#F2F1EC;border-top:1px solid rgba(26,28,25,0.10);font-size:16px;line-height:1.6;color:#3E423C">
+        <strong style="color:#1A1C19;font-weight:600">La regola che elimina la sovrapposizione:</strong> lo stesso task non appare mai in due posti. La revisione delle 15:30 sta <em>solo</em> in NOTIFICATIONBAR finché non è l'ora; non è anche un chip. Il riordino sta <em>solo</em> nella taskbar; non è anche una side. Una side che rimandi esce dalla colonna ed entra in NOTIFICATIONBAR — <strong style="color:#1A1C19;font-weight:600">esce davvero, non si duplica</strong>.
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Tre alternative alla colonna</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">Il problema della vecchia colonna non era dove stava: era che <strong style="color:#1A1C19;font-weight:600">esisteva sempre</strong>, e uno spazio permanente per le cose in attesa diventa un centro notifiche. <strong style="color:#1A1C19;font-weight:600">Scelta: B</strong>, con una sola side per volta — le side sono ora il componente <a href="#">Notificationbar</a> e la colonna di destra è passata alla <a href="#">Taskbar</a>.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:20px 40px">
+
+      <div id="A" style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:11px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">A</div>
+          <div style="font-size:18px;font-weight:600">Colonna condizionale</div>
+          <div style="font-size:14.5px;color:#5A5F58">esiste solo mentre qualcosa aspetta</div>
+        </div>
+        <div style="width:700px;height:400px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#9BA096);display:flex;flex-direction:column;box-sizing:border-box;padding:22px;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;color:#1A1C19">
+            <div style="font-size:20px;font-weight:600;letter-spacing:-0.03em">09:52</div>
+            <div style="padding:5px 11px;border-radius:15px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#2A2E28">SYSTEMBAR</div>
+          </div>
+          <div style="flex:1;display:flex;gap:12px;min-height:0">
+            <div style="flex:1;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);padding:18px;box-sizing:border-box">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58;margin-bottom:8px">Main</div>
+              <div style="font-size:20px;font-weight:600;letter-spacing:-0.03em">Proposta Acme</div>
+            </div>
+            <div style="width:186px;flex:none;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);padding:16px;box-sizing:border-box">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A5A17">Aspetta te</div></div>
+              <div style="font-size:15px;font-weight:400;line-height:1.35">La v3 per Elena</div>
+              <div style="font-size:14px;margin-top:10px;color:#21251F">«manda»</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="padding:5px 11px;border-radius:15px;background:rgba(78,107,84,0.16);border:1px solid rgba(78,107,84,0.38);font-size:12.5px;color:#3D5643">Riordino 128/412</div>
+            <span style="width:11px;height:11px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
+            <div style="padding:9px 15px;border-radius:18px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);font-size:14px;color:#1A1C19">«leggimi le conclusioni»</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Quando niente aspetta, la colonna <strong style="color:#1A1C19;font-weight:600">non c'è</strong> e la main occupa tutta la larghezza. Max due, mai una lista. <span style="color:#3D5643">Pro:</span> nessuna sovrapposizione, la side resta visibile mentre lavori. <span style="color:#8A2E22">Contro:</span> la main cambia larghezza quando arriva qualcosa — un movimento che non hai chiesto.</div>
+      </div>
+
+      <div id="B" style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:11px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">B</div>
+          <div style="font-size:18px;font-weight:600">Niente colonna · la side sta in basso</div>
+          <div style="font-size:14.5px;color:#5A5F58">sopra la taskbar, dove si parla</div>
+        </div>
+        <div style="width:700px;height:400px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#9BA096);display:flex;flex-direction:column;box-sizing:border-box;padding:22px;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;color:#1A1C19">
+            <div style="font-size:20px;font-weight:600;letter-spacing:-0.03em">09:52</div>
+            <div style="padding:5px 11px;border-radius:15px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#2A2E28">SYSTEMBAR</div>
+          </div>
+          <div style="flex:1;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);padding:18px;box-sizing:border-box;min-height:0">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58;margin-bottom:8px">Main · tutta la larghezza, sempre</div>
+            <div style="font-size:22px;font-weight:600;letter-spacing:-0.03em">Acme — proposta commerciale</div>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:11px">
+            <div style="flex:1;border-radius:18px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);padding:13px 16px;box-sizing:border-box;display:flex;align-items:center;gap:12px">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <div style="font-size:15px;font-weight:400;color:#21251F">La v3 per Elena è pronta</div>
+              <div style="margin-left:auto;font-size:14px;color:#21251F">«manda» · «dopo»</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="padding:5px 11px;border-radius:15px;background:rgba(78,107,84,0.16);border:1px solid rgba(78,107,84,0.38);font-size:12.5px;color:#3D5643">Riordino 128/412</div>
+            <span style="width:11px;height:11px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
+            <div style="padding:9px 15px;border-radius:18px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);font-size:14px;color:#1A1C19">«leggimi le conclusioni»</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La side è una bolla larga e bassa sopra la taskbar: <strong style="color:#1A1C19;font-weight:600">una alla volta</strong>, e se ne arriva una seconda la prima si stringe in chip ambra. <span style="color:#3D5643">Pro:</span> la main non si restringe mai, e tutto ciò che «chiede» sta in basso vicino alla voce. <span style="color:#8A2E22">Contro:</span> il basso dello schermo si fa affollato — tre bolle su una riga.</div>
+      </div>
+
+      <div id="C" style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:11px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">C</div>
+          <div style="font-size:18px;font-weight:600">La side entra nella bolla della main</div>
+          <div style="font-size:14.5px;color:#5A5F58">un solo fuoco, sempre</div>
+        </div>
+        <div style="width:700px;height:400px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#9BA096);display:flex;flex-direction:column;box-sizing:border-box;padding:22px;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;color:#1A1C19">
+            <div style="font-size:20px;font-weight:600;letter-spacing:-0.03em">09:52</div>
+            <div style="padding:5px 11px;border-radius:15px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#2A2E28">SYSTEMBAR</div>
+          </div>
+          <div style="flex:1;border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,0.74),rgba(248,248,244,0.56));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);box-sizing:border-box;min-height:0;display:flex;flex-direction:column;overflow:hidden">
+            <div style="padding:18px;flex:1">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58;margin-bottom:8px">Main</div>
+              <div style="font-size:22px;font-weight:600;letter-spacing:-0.03em">Acme — proposta commerciale</div>
+            </div>
+            <div style="padding:14px 18px;border-top:1px solid rgba(26,28,25,0.12);background:rgba(251,251,249,0.34);display:flex;align-items:center;gap:12px">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <div style="font-size:14.5px;color:#8A5A17">mentre lavoravi: la v3 per Elena è pronta</div>
+              <div style="margin-left:auto;font-size:14px;color:#21251F">«manda» · «dopo»</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="padding:5px 11px;border-radius:15px;background:rgba(78,107,84,0.16);border:1px solid rgba(78,107,84,0.38);font-size:12.5px;color:#3D5643">Riordino 128/412</div>
+            <span style="width:11px;height:11px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
+            <div style="padding:9px 15px;border-radius:18px;background:linear-gradient(155deg,rgba(255,255,255,0.62),rgba(248,248,244,0.44));backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);-webkit-backdrop-filter:blur(42px) saturate(1.9) brightness(1.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78);font-size:14px;color:#1A1C19">«leggimi le conclusioni»</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La side è una fascia ambra <em>dentro</em> la bolla della main, in fondo. <span style="color:#3D5643">Pro:</span> una bolla sola a fuoco, geometria immobile, e «mentre lavoravi» dà il contesto temporale. <span style="color:#8A2E22">Contro:</span> viola la regola «una bolla, un task» — due task dentro lo stesso contenitore.</div>
+      </div>
+
+      <div style="border-radius:22px;padding:24px 26px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:14px">Dove andrei</div>
+        <div style="font-size:22px;font-weight:400;letter-spacing:-0.02em;line-height:1.35;margin-bottom:14px"><a href="#B" style="color:#F4F3EE">B</a>, con il vincolo di una sola side per volta.</div>
+        <div style="font-size:15.5px;line-height:1.6;color:#D6D4CC">La main non deve mai restringersi per qualcosa che non hai chiesto — è il difetto di <a href="#A" style="color:#F4F3EE">A</a>. E <a href="#C" style="color:#F4F3EE">C</a> rompe la regola delle bolle, che è la sola legge davvero non negoziabile. In <a href="#B" style="color:#F4F3EE">B</a> il basso dello schermo diventa la zona di ciò che chiede: side, chip, voce — tre bolle, ma su una gerarchia chiara, dal meno al più tuo da sinistra a destra.</div>
+      </div>
+    </div>
+  </div>
+
+</x-dc>
+</body>
+</html>

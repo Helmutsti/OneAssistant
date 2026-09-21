@@ -1,0 +1,44 @@
+node_modules/
+dist/
+.lavoro/
+.playwright-mcp/
+.DS_Store
+
+# I binari della voce: 58 MB, arrivano coi pacchetti. Li rimette `npm run voce`
+# (pubblico/LEGGIMI.md).
+pubblico/ort/
+
+# ─── l'archivio ───────────────────────────────────────────
+#
+# `Archivio/` è **tuo**, e dal 17 settembre 2026 non entra nel repo: il nome, la
+# faccia, lo sfondo, dove sei, cosa ti sei segnato, cosa si ricorda di te.
+#
+# Prima ne entrava la struttura — i profili e i loro settings — perché un clone
+# dovesse trovare qualcuno. Il prezzo però era che la foto e la posizione di chi
+# lavora qui finivano nella storia di git, e nella storia restano anche quando
+# cancelli il file. Non vale il comodo che dava.
+#
+# Restano due cose sole, e non sono di nessuno: le istruzioni, e un profilo
+# d'esempio senza dentro una persona. Si parte copiando quelli.
+Archivio/*
+!Archivio/LEGGIMI.md
+!Archivio/impostazioni.esempio.txt
+!Archivio/seme.esempio.txt
+!Archivio/esempio/
+# Quello che l'esempio non deve portarsi dietro: la memoria è la testa
+# dell'assistente e nasce vuota, le cartelle viste sono roba tua.
+Archivio/esempio/memory/
+Archivio/esempio/services/*/folders/
+
+# ─── le chiavi ──────────────────────────────────────────────────────────────
+#
+# Stanno in `.env`, e in nessun altro posto: è il solo file del progetto che Vite
+# nega da sé (403). `chiave.txt` — nella radice o dentro il publicDir — è invece
+# **scaricabile** dal dev server, e dal publicDir finisce anche in dist/ (provato
+# il 17 settembre 2026: GET /chiave.txt rispondeva 200). Restano qui i nomi
+# sbagliati, per chi ci arriva con l'abitudine. Il perché per intero sta in
+# env.example.
+.env
+.env.*
+chiave.txt
+pubblico/chiave.txt

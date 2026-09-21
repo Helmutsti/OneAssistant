@@ -1,0 +1,383 @@
+<title>Banco d'ascolto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --carta: #e4e1da;
+    --pannello: #fbfbf9;
+    --ink: #1a1c19;
+    --ink-tenue: #3e423c;
+    --ink-corpo: #4a4e48;
+    --ink-fioco: #5a5f58;
+    --salvia: #4e6b54;
+    --punto: #5e9566;
+    --ambra: #8a5a17;
+    --scuro: #1a1c19;
+    --scuro-riga: #262924;
+    --chiaro: #f4f3ee;
+    --fioco-scuro: #9aa096;
+    --bordo: rgba(26, 28, 25, 0.1);
+  }
+
+  html, body { background: var(--carta); }
+  body {
+    margin: 0;
+    font-family: Manrope, system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .impaginato {
+    padding-block: 28px 44px;
+    padding-left: 16px; padding-right: 16px;
+    max-width: 1080px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+
+  .etichetta {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-fioco);
+  }
+  h1 {
+    font-size: clamp(30px, 5vw, 44px); font-weight: 500; letter-spacing: -0.035em;
+    line-height: 1; margin: 10px 0 0; text-wrap: balance;
+  }
+  .sottotitolo { font-size: 17px; color: var(--ink-tenue); line-height: 1.55; max-width: 44ch; margin-top: 10px; }
+
+  h2 { font-size: 21px; font-weight: 600; letter-spacing: -0.025em; margin: 0 0 4px; }
+  .spiega { font-size: 15px; color: var(--ink-corpo); line-height: 1.55; margin: 0 0 14px; max-width: 62ch; }
+
+  .pannello {
+    background: var(--pannello); border: 1px solid var(--bordo); border-radius: 18px;
+    padding: 22px 24px;
+  }
+
+  /* ─── le voci ─────────────────────────────────────────────────────────── */
+
+  .voci { display: flex; flex-direction: column; gap: 6px; }
+  .voce {
+    display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 12px; border: 1px solid var(--bordo);
+    background: #fff; cursor: pointer; text-align: left; font: inherit; color: inherit;
+    width: 100%;
+  }
+  .voce[aria-pressed="true"] { border-color: var(--salvia); box-shadow: inset 0 0 0 1px var(--salvia); }
+  .voce .segno {
+    width: 9px; height: 9px; border-radius: 50%; background: transparent;
+    border: 1px solid rgba(26,28,25,0.22);
+  }
+  .voce[aria-pressed="true"] .segno { background: var(--salvia); border-color: var(--salvia); }
+  .voce .nome { font-size: 15.5px; letter-spacing: -0.01em; }
+  .voce .nome small {
+    display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-fioco); margin-top: 3px;
+  }
+  .medaglia {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 8px; border-radius: 20px;
+  }
+  .medaglia.neurale { background: rgba(78,107,84,0.14); color: var(--salvia); }
+  .medaglia.vecchia { background: rgba(138,90,23,0.12); color: var(--ambra); }
+  .medaglia.rete { background: rgba(26,28,25,0.07); color: var(--ink-fioco); }
+  .voce .prova {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; border: 1px solid var(--bordo); background: transparent;
+    border-radius: 8px; padding: 6px 10px; cursor: pointer; color: var(--ink);
+  }
+  .voce .prova:hover { background: rgba(26,28,25,0.05); }
+
+  .vuoto { font-size: 15px; color: var(--ink-corpo); line-height: 1.6; }
+
+  /* ─── le frasi ────────────────────────────────────────────────────────── */
+
+  .frasi { display: flex; flex-direction: column; gap: 8px; }
+  .riga-frase {
+    display: grid; grid-template-columns: 150px 1fr auto; gap: 14px; align-items: center;
+    padding: 12px 14px; border-radius: 12px; border: 1px solid var(--bordo); background: #fff;
+  }
+  .riga-frase .quando {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-fioco); line-height: 1.5;
+  }
+  .riga-frase .testo { font-size: 16px; line-height: 1.4; }
+  .riga-frase button {
+    width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--bordo);
+    background: transparent; cursor: pointer; color: var(--ink); font-size: 13px; line-height: 1;
+    display: grid; place-items: center;
+  }
+  .riga-frase button:hover { background: rgba(26,28,25,0.05); }
+  .riga-frase button:focus-visible,
+  .voce:focus-visible, .comandi button:focus-visible { outline: 2px solid var(--punto); outline-offset: 2px; }
+
+  /* ─── i comandi ───────────────────────────────────────────────────────── */
+
+  .comandi { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+  .comandi button {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; border-radius: 9px; padding: 10px 15px; cursor: pointer;
+    border: 1px solid rgba(26,28,25,0.2); background: transparent; color: var(--ink);
+  }
+  .comandi button.primario { background: var(--ink); border-color: var(--ink); color: var(--chiaro); font-weight: 600; }
+  .comandi button:hover { background: rgba(26,28,25,0.06); }
+  .comandi button.primario:hover { background: #000; }
+
+  .cursori { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+  .cursore { display: flex; flex-direction: column; gap: 6px; }
+  .cursore label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-fioco);
+    display: flex; justify-content: space-between;
+  }
+  .cursore input { width: 100%; accent-color: var(--salvia); }
+
+  /* ─── il verdetto ─────────────────────────────────────────────────────── */
+
+  .verdetto { background: var(--scuro); color: var(--chiaro); border-radius: 18px; padding: 22px 24px; }
+  .verdetto h2 { color: var(--chiaro); }
+  .verdetto p { font-size: 15px; line-height: 1.65; color: #d6d4cc; margin: 0 0 12px; max-width: 70ch; }
+  .verdetto strong { color: var(--chiaro); font-weight: 600; }
+  .strade { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 18px; }
+  .strada { background: var(--scuro-riga); border-radius: 12px; padding: 16px; }
+  .strada .capo {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--fioco-scuro); margin-bottom: 8px;
+  }
+  .strada .titolo-strada { font-size: 16.5px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .strada p { font-size: 13.5px; line-height: 1.55; margin: 0; }
+</style>
+
+<div class="impaginato">
+
+  <header>
+    <div class="etichetta">Banco d'ascolto · la bocca</div>
+    <h1>Come parla, davvero</h1>
+    <p class="sottotitolo">
+      Le frasi vere del sistema, lette dalle voci che ci sono su questa macchina. Una
+      voce non si sceglie leggendo una tabella: si sceglie sentendola dire le cose che
+      dovrà dire tutti i giorni.
+    </p>
+  </header>
+
+  <section class="pannello">
+    <h2>Le voci italiane di questo browser</h2>
+    <p class="spiega">
+      Non sono tutte uguali e non dipendono dal sito: dipendono da cosa è installato sul
+      sistema e da quale browser stai usando. Le <strong>neurali</strong> sono di
+      un'altra generazione rispetto alle vecchie SAPI — e se qui non ne vedi nessuna, è
+      quello il problema, non la scelta.
+    </p>
+    <div class="voci" id="voci"></div>
+    <div class="cursori">
+      <div class="cursore">
+        <label for="velocita">velocità <span id="v-velocita">1.04</span></label>
+        <input type="range" id="velocita" min="0.7" max="1.4" step="0.02" value="1.04">
+      </div>
+      <div class="cursore">
+        <label for="tono">tono <span id="v-tono">1.00</span></label>
+        <input type="range" id="tono" min="0.6" max="1.4" step="0.02" value="1">
+      </div>
+    </div>
+  </section>
+
+  <section class="pannello">
+    <h2>Le frasi che dirà tutti i giorni</h2>
+    <p class="spiega">
+      Sono quelle vere del prototipo, scelte dove il sintetizzatore si tradisce: una
+      domanda che deve suonare come una domanda, un nome proprio, dei numeri, un
+      fallimento da dire senza farsi consolare.
+    </p>
+    <div class="frasi" id="frasi"></div>
+    <div class="comandi">
+      <button type="button" id="tutte" class="primario">Leggile tutte di fila</button>
+      <button type="button" id="ferma">Aspetta</button>
+      <span class="etichetta" id="stato"></span>
+    </div>
+  </section>
+
+  <section class="verdetto">
+    <h2>Se qui non c'è niente di buono</h2>
+    <p id="diagnosi">Sto guardando cosa c'è…</p>
+    <div class="strade">
+      <div class="strada">
+        <div class="capo">subito, gratis</div>
+        <div class="titolo-strada">Aprilo in Edge</div>
+        <p>Edge espone le voci neurali di Microsoft — quelle che si chiamano <em>Online (Natural)</em> — e in italiano sono di un'altra categoria. Ma passano dalla rete: il testo esce dalla macchina.</p>
+      </div>
+      <div class="strada">
+        <div class="capo">un quarto d'ora</div>
+        <div class="titolo-strada">Installa le voci naturali</div>
+        <p>Windows 11 ne ha di scaricabili, in locale: Impostazioni → Accessibilità → Voce → Aggiungi voci. Restano sulla macchina, e alcune compaiono anche qui.</p>
+      </div>
+      <div class="strada">
+        <div class="capo">la strada vera</div>
+        <div class="titolo-strada">Un modello nostro</div>
+        <p>Kokoro o Piper girano dentro il browser, in locale, senza che esca niente. Si scarica un modello la prima volta e poi parla da sé — ed è l'unico modo per avere una voce buona e mantenere la promessa sui confini.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  // Le frasi vere del prototipo: quelle che il sistema dice davvero.
+  const FRASI = [
+    { quando: 'una domanda', testo: 'Le mando a Andrea Riva?' },
+    { quando: 'ha capito', testo: 'Me lo segno su Acme.' },
+    { quando: 'ha consegnato', testo: 'Mandata a Andrea Riva.' },
+    { quando: 'dei numeri', testo: 'Centoventotto file su quattrocentododici, alle 15:30 di venerdì 15 settembre.' },
+    { quando: 'non ha capito', testo: 'Non ho capito quale: la proposta Acme o le foto di Monaco?' },
+    { quando: 'si è fermata', testo: 'Non ho potuto mandarla: la posta non risponde.' },
+    { quando: 'non sei tu', testo: 'Non riconosco questa voce.' },
+    { quando: 'una cosa lunga', testo: 'Il contratto Rossi aspetta una tua lettura prima di giovedì. Ci sono due punti che non tornano con la versione di marzo, e te li ho segnati.' },
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const stato = $('stato');
+  let voci = [];
+  let scelta = null;
+
+  const neurale = (v) => /natural|neural|online/i.test(v.name);
+
+  const punteggio = (v) => {
+    let p = 0;
+    if (neurale(v)) p += 100;
+    if (/google/i.test(v.name)) p += 40;
+    if (/elsa|isabella|federica|palmira|giuseppina/i.test(v.name)) p += 20;
+    if (v.lang.toLowerCase() === 'it-it') p += 10;
+    if (v.localService) p += 5;
+    return p;
+  };
+
+  const dillo = (testo) => {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(testo);
+    u.lang = 'it-IT';
+    if (scelta) u.voice = scelta;
+    u.rate = Number($('velocita').value);
+    u.pitch = Number($('tono').value);
+    u.onstart = () => (stato.textContent = 'sta parlando');
+    u.onend = () => (stato.textContent = '');
+    speechSynthesis.speak(u);
+  };
+
+  const tutte = () => {
+    speechSynthesis.cancel();
+    stato.textContent = 'le legge tutte';
+    FRASI.forEach((f, i) => {
+      const u = new SpeechSynthesisUtterance(f.testo);
+      u.lang = 'it-IT';
+      if (scelta) u.voice = scelta;
+      u.rate = Number($('velocita').value);
+      u.pitch = Number($('tono').value);
+      if (i === FRASI.length - 1) u.onend = () => (stato.textContent = '');
+      speechSynthesis.speak(u);
+    });
+  };
+
+  const disegnaVoci = () => {
+    const elenco = $('voci');
+    if (voci.length === 0) {
+      elenco.innerHTML =
+        '<p class="vuoto">Questo browser non espone nessuna voce italiana. ' +
+        'Non è un difetto della pagina: è il sistema che non ne ha, o il browser che non le passa.</p>';
+      return;
+    }
+    elenco.innerHTML = voci
+      .map((v, i) => {
+        const tipo = neurale(v)
+          ? '<span class="medaglia neurale">neurale</span>'
+          : '<span class="medaglia vecchia">vecchia generazione</span>';
+        const dove = v.localService
+          ? '<span class="medaglia rete">locale</span>'
+          : '<span class="medaglia rete">dalla rete</span>';
+        return `
+          <button type="button" class="voce" data-voce="${i}" aria-pressed="${scelta === v}">
+            <span class="segno"></span>
+            <span class="nome">${v.name}<small>${v.lang}</small></span>
+            <span>${tipo} ${dove}</span>
+            <span class="prova" data-prova="${i}">senti</span>
+          </button>`;
+      })
+      .join('');
+  };
+
+  const diagnosi = () => {
+    const p = $('diagnosi');
+    const buone = voci.filter(neurale);
+    if (voci.length === 0) {
+      p.innerHTML = '<strong>Non c\\'è nessuna voce italiana</strong> su questo browser. Finché non ce n\\'è una, il sistema resta muto in italiano — e le tre strade qui sotto sono tutto quello che c\\'è.';
+    } else if (buone.length === 0) {
+      p.innerHTML =
+        `Ci sono <strong>${voci.length} voci italiane</strong>, e <strong>nessuna è neurale</strong>: ` +
+        'sono sintetizzatori di vecchia generazione, quelli che si sentono. Puoi tararli con velocità e tono, ' +
+        'ma resteranno quello che sono — e nessuna di queste regge un personaggio.';
+    } else {
+      p.innerHTML =
+        `Ci sono <strong>${buone.length} voci neurali</strong> su ${voci.length} italiane. ` +
+        'Quelle sì che reggono un personaggio: sentile dire la frase lunga e quella con i numeri, ' +
+        'che è dove le altre si tradiscono.';
+    }
+  };
+
+  const carica = () => {
+    voci = speechSynthesis
+      .getVoices()
+      .filter((v) => v.lang.toLowerCase().startsWith('it'))
+      .sort((a, b) => punteggio(b) - punteggio(a));
+    if (!scelta || !voci.includes(scelta)) scelta = voci[0] ?? null;
+    disegnaVoci();
+    diagnosi();
+  };
+
+  $('voci').addEventListener('click', (e) => {
+    const prova = e.target.closest('[data-prova]');
+    const riga = e.target.closest('[data-voce]');
+    if (prova) {
+      scelta = voci[Number(prova.dataset.prova)];
+      disegnaVoci();
+      dillo('Me lo segno su Acme.');
+      return;
+    }
+    if (riga) {
+      scelta = voci[Number(riga.dataset.voce)];
+      disegnaVoci();
+    }
+  });
+
+  $('frasi').innerHTML = FRASI.map(
+    (f, i) => `
+      <div class="riga-frase">
+        <div class="quando">${f.quando}</div>
+        <div class="testo">${f.testo}</div>
+        <button type="button" data-frase="${i}" aria-label="leggi: ${f.quando}">▶</button>
+      </div>`,
+  ).join('');
+
+  $('frasi').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-frase]');
+    if (b) dillo(FRASI[Number(b.dataset.frase)].testo);
+  });
+
+  $('tutte').addEventListener('click', tutte);
+  $('ferma').addEventListener('click', () => {
+    speechSynthesis.cancel();
+    stato.textContent = 'zitta';
+    setTimeout(() => (stato.textContent = ''), 1200);
+  });
+
+  for (const id of ['velocita', 'tono']) {
+    $(id).addEventListener('input', () => {
+      $('v-' + id).textContent = Number($(id).value).toFixed(2);
+    });
+  }
+
+  carica();
+  speechSynthesis.addEventListener('voiceschanged', carica);
+  // Su Chrome l'elenco arriva in ritardo, e a volte solo dopo un giro di eventi.
+  setTimeout(carica, 400);
+  setTimeout(carica, 1200);
+})();
+</script>

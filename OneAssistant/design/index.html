@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OneAssist · il design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo: #E4E1DA;
+    --carta: #FBFBF9;
+    --inchiostro: #1A1C19;
+    --tenue: #4A4E48;
+    --fioco: #5A5F58;
+    --salvia: #4E6B54;
+    --ambra: #8A5A17;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 64px 64px 96px;
+    background: var(--fondo); color: var(--inchiostro);
+    font-family: Manrope, sans-serif;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  header { max-width: 1100px; margin-bottom: 52px; }
+  .targa {
+    display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  }
+  .targa .sigla {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.1em; background: var(--inchiostro); color: #F2F1ED;
+    border-radius: 5px; padding: 4px 9px;
+  }
+  .targa .dove {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--fioco);
+  }
+  h1 { font-size: 44px; font-weight: 500; letter-spacing: -0.035em; line-height: 1; margin: 0; }
+  header p { font-size: 18px; color: #3E423C; margin: 12px 0 0; max-width: 38em; line-height: 1.55; }
+
+  .avviso {
+    max-width: 1100px; border-radius: 20px; padding: 24px 28px; margin-bottom: 52px;
+    background: #F2F1EC; border: 1px solid rgba(26,28,25,0.14);
+    display: flex; align-items: baseline; gap: 26px;
+  }
+  .avviso .capo {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--ambra);
+    flex: none; padding-top: 2px;
+  }
+  .avviso div:last-child { font-size: 16px; line-height: 1.6; color: #3E423C; }
+
+  section { margin-bottom: 52px; }
+  .capo-livello { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; }
+  .capo-livello h2 { font-size: 28px; font-weight: 500; letter-spacing: -0.025em; margin: 0; }
+  .capo-livello p { font-size: 16px; color: var(--tenue); margin: 0; max-width: 48em; line-height: 1.5; }
+
+  .griglia { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; max-width: 1440px; }
+
+  .scheda {
+    display: block; border-radius: 22px; padding: 24px 26px;
+    background: var(--carta); border: 1px solid rgba(26,28,25,0.09);
+    box-shadow: 0 10px 26px rgba(30,36,30,0.07);
+    transition: transform 240ms cubic-bezier(.22,1,.36,1), box-shadow 240ms cubic-bezier(.22,1,.36,1);
+  }
+  .scheda:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(30,36,30,0.12); }
+  .scheda .nome { font-size: 21px; font-weight: 600; letter-spacing: -0.025em; }
+  .scheda .riga { font-size: 15px; color: var(--tenue); line-height: 1.55; margin-top: 8px; }
+  .scheda .stato {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--salvia);
+    margin-top: 14px; display: block;
+  }
+  .scheda .stato.nuovo { color: var(--ambra); }
+  .scheda.superata { background: none; box-shadow: none; border-style: dashed; }
+  .scheda.superata .nome { font-weight: 500; color: var(--fioco); }
+
+  footer {
+    max-width: 1100px; border-top: 1px solid rgba(26,28,25,0.14); padding-top: 24px;
+    font-size: 15px; color: var(--tenue); line-height: 1.6;
+  }
+  code {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13.5px;
+    background: rgba(26,28,25,0.06); border-radius: 4px; padding: 1px 5px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="targa">
+    <span class="sigla">L0 · L1 · L2 · L3</span>
+    <span class="dove">il design di OneAssist · adesso vive qui</span>
+  </div>
+  <h1>IL DESIGN</h1>
+  <p>Le fondamenta, i componenti, i flussi, le schermate. Portati nel repo il 17 settembre
+  2026 e <strong>riordinati il 18</strong>: i livelli sono quattro, e ognuno dice una cosa
+  sola.</p>
+</header>
+
+<div class="avviso">
+  <div class="capo">Liquid glass</div>
+  <div><strong>Stessi componenti, stesse forme, stesse posizioni.</strong> Cambia solo il materiale: vetro traslucido, riflessi sui bordi e ombre di contatto. <a href="./L3 - Schermate.dc.html"><strong>Apri le quattro schermate →</strong></a> · <a href="./Profilebar - Esplorazioni.html"><strong>Sei interpretazioni grafiche del profilo →</strong></a><br>La specifica del materiale è in <a href="./Liquid glass.md"><strong>Liquid glass</strong></a>; la geometria resta quella dei documenti originali.</div>
+</div>
+
+<section>
+  <div class="capo-livello">
+    <h2>L0 · le fondamenta</h2>
+    <p>Non contengono componenti disegnati, e non si modificano per cascata.</p>
+  </div>
+  <div class="griglia">
+    <a class="scheda" href="./L0 - Sistema.md">
+      <div class="nome">Sistema</div>
+      <div class="riga">Le undici leggi, i quattro livelli, la tabella delle sei aree. Dal 18 settembre è un file di testo: erano righe, non un componente.</div>
+      <span class="stato nuovo">riscritto · ora è markdown</span>
+    </a>
+    <a class="scheda" href="./L0 - Moodboard.dc.html">
+      <div class="nome">Moodboard</div>
+      <div class="riga">Come deve apparire: vetro satinato, fondo neutro caldo, salvia sordo. I tre riferimenti, e le due tavolozze a confronto — questa e quella del prototipo.</div>
+      <span class="stato nuovo">aggiornata · e i bottoni sono spariti</span>
+    </a>
+    <a class="scheda" href="./L0 - Icone.dc.html">
+      <div class="nome">Icone</div>
+      <div class="riga">Le sette icone del sistema a confronto fra sei famiglie, alla misura vera e sul vetro vero. Ha deciso Lucide.</div>
+      <span class="stato">com'era</span>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="capo-livello">
+    <h2>L1 · i componenti</h2>
+    <p>La primitiva e le sei aree. Anatomia, stati, misure, movimento. Sono la fonte di verità per L2 e L3.</p>
+  </div>
+  <div class="griglia">
+    <a class="scheda" href="./L1 - Bubble.dc.html">
+      <div class="nome">Bubble</div>
+      <div class="riga">La primitiva: il vetro, il contorno, le tre taglie, le sette facce, e il movimento — le bolle si fanno spazio a vicenda.</div>
+      <span class="stato nuovo">rifatta · tre taglie, e la cartina</span>
+    </a>
+    <a class="scheda" href="./L1 - Notificationbar.dc.html">
+      <div class="nome">Notificationbar</div>
+      <div class="riga">Il mondo: quello che arriva dai servizi, com’è arrivato. Una notifica non è un task — lo diventa quando dici «me ne occupo».</div>
+      <span class="stato nuovo">aggiornata · campanella 44</span>
+    </a>
+    <a class="scheda" href="./L1 - INPUT.dc.html">
+      <div class="nome">INPUT</div>
+      <div class="riga">La voce e le parole che puoi dire. Tre stati, la raccolta di quello che riconosce mentre parli, la modalità tastiera.</div>
+      <span class="stato">com'era</span>
+    </a>
+    <a class="scheda" href="./L1 - Profilebar.dc.html">
+      <div class="nome">Profilebar</div>
+      <div class="riga">Quando sono, dove sono, chi sono. Un velo solo che tiene le tre cose, due righe a 13 e il volto a 44.</div>
+      <span class="stato nuovo">riscritta · letta dal codice</span>
+    </a>
+    <a class="scheda" href="./L1 - Systembar.dc.html">
+      <div class="nome">Systembar</div>
+      <div class="riga">La macchina: microfono, volume, rete, batteria. Subito sotto la Profilebar, più piccola perché conta meno.</div>
+      <span class="stato">com'era</span>
+    </a>
+    <a class="scheda" href="./L1 - TASKBAR.dc.html">
+      <div class="nome">Taskbar</div>
+      <div class="riga">Quello che hai in mano: i chip, i flussi, e da oggi anche i rimandati. Un chip è una bolla che si è stretta.</div>
+      <span class="stato nuovo">aggiornata · i rimandati stanno qui</span>
+    </a>
+    <a class="scheda" href="./L1 - TIMELINE.dc.html">
+      <div class="nome">Timeline</div>
+      <div class="riga">Cosa stai facendo, cosa viene dopo, e dove sei dentro la giornata. Sta dentro la guida di destra.</div>
+      <span class="stato">com'era</span>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="capo-livello">
+    <h2>L2 · i flussi</h2>
+    <p>Un giro intero, dal principio alla fine. Non inventano componenti: li mettono in fila.</p>
+  </div>
+  <div class="griglia">
+    <a class="scheda" href="./L2 - Flusso task.dc.html">
+      <div class="nome">Flusso task</div>
+      <div class="riga">Un task dalla prima parola all’ultima: otto battute, una sola bolla che attraversa gli stati e le taglie senza diventare altro.</div>
+      <span class="stato nuovo">nuovo · era dentro Bubble</span>
+    </a>
+    <a class="scheda" href="./L2 - Flusso input.dc.html">
+      <div class="nome">Flusso input</div>
+      <div class="riga">Dal silenzio al silenzio: cosa fa INPUT mentre parli, mentre pensa, e dopo. Sei momenti, e il terzo è quello dove non succede niente apposta.</div>
+      <span class="stato nuovo">nuovo · 18 settembre 2026</span>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="capo-livello">
+    <h2>L3 · le schermate</h2>
+    <p>Tutti i componenti insieme, in un momento vero. Non inventa niente: ogni pixel viene da un componente di L1.</p>
+  </div>
+  <div class="griglia">
+    <a class="scheda" href="./L3 - Schermate.dc.html">
+      <div class="nome">Composizioni / Schermate</div>
+      <div class="riga">Quattro momenti con il nuovo Profilebar: a riposo, in ascolto, al lavoro e il cassetto aperto. Confronto Luna / Eclisse direttamente nelle composizioni.</div>
+      <span class="stato nuovo">rifatto · ricomposto dai componenti</span>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="capo-livello">
+    <h2>Superati</h2>
+    <p>Non si buttano: dicono da dove viene quello che c’è adesso.</p>
+  </div>
+  <div class="griglia">
+    <a class="scheda superata" href="./superati/L1 - Sistema.dc.html">
+      <div class="nome">Sistema, grafico</div>
+      <div class="riga">Le leggi disegnate come se fossero un componente. Il contenuto è passato in L0 - Sistema.md il 18 settembre 2026.</div>
+    </a>
+    <a class="scheda superata" href="./superati/L1 - Soap Bubbles.dc.html">
+      <div class="nome">Soap Bubbles</div>
+      <div class="riga">Il movimento, quando era un documento a sé. È rientrato dentro Bubble: come si muove un componente non è un altro componente.</div>
+    </a>
+    <a class="scheda superata" href="./superati/L2 - Table.dc.html">
+      <div class="nome">TABLE</div>
+      <div class="riga">L’area centrale come componente. Non serve un file per il concetto di tavola: le regole stanno in L0 e le bolle in Bubble.</div>
+    </a>
+    <a class="scheda superata" href="./superati/L2 - Sidebar.dc.html">
+      <div class="nome">Sidebar</div>
+      <div class="riga">La pila di carte: quelle erano già task. La Notificationbar rovescia la tesi — il filtro non promuove, promuovi tu.</div>
+    </a>
+    <a class="scheda superata" href="./superati/L2 - WHO.dc.html">
+      <div class="nome">WHO</div>
+      <div class="riga">Teneva insieme la macchina e te. Dal 17 settembre 2026 sono due componenti: Systembar e Profilebar.</div>
+    </a>
+    <a class="scheda superata" href="./superati/prove - la guida di destra.dc.html">
+      <div class="nome">Prova · la guida di destra</div>
+      <div class="riga">Quattro modi di impaginare Profilebar e Systembar. La prova ha fatto il suo lavoro: quello che ha vinto sta nei componenti.</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <strong>Dove sta cosa.</strong> Il design è qui, in <code>design/</code>. La logica sta
+  in <code>docs/</code>: quando una cosa diventa un'altra, chi lo decide, cosa entra nel
+  sistema. Il prototipo che la esegue è <code>src/</code>, e si guarda con
+  <code>npm run dev</code>.
+  <br><br>
+  <strong>Il test, quando non è ovvio:</strong> se la frase contiene <em>quando</em>,
+  <em>se</em>, <em>dopo N minuti</em>, <em>allora</em> — è logica e sta in
+  <code>docs/</code>. Se contiene <em>è largo</em>, <em>è salvia</em>, <em>sta a 44 px</em>,
+  <em>dura 340 ms</em> — è design e sta qui.
+</footer>
+
+</body>
+</html>

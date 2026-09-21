@@ -1,0 +1,48 @@
+/* PROFILEBAR — **è una bolla** (19 settembre 2026), e quindi qui non c'è quasi più niente.
+ *
+ * Questo foglio teneva due materiali — **Luna** chiaro ed **Eclisse** scuro — e una
+ * geometria. I due materiali sono caduti insieme alla deroga alla legge zero: la
+ * Profilebar non è più una cornice senza contenitore, è una bolla, e prende la ricetta
+ * condivisa come tutte le altre. Luna ed Eclisse non sono spariti — sono diventati il
+ * vetro chiaro e il vetro scuro **di tutti** (`L1 - Temi`).
+ *
+ * Quello che resta è la geometria, ed era la parte vera del documento. Soprattutto una
+ * riga: **si stringe sul suo contenuto**. Una riga larga 392 con dentro una bolla larga
+ * 392 sarebbe una fascia, ed è la cosa più facile da perdere rifacendo il componente. */
+
+.profile-veil {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 16px;
+  padding: 8px 12px 8px 24px;
+  border-radius: 30px;
+  color: var(--ink, #1A1C19);
+  background: var(--liquid-film);
+  -webkit-backdrop-filter: var(--liquid-optics);
+  backdrop-filter: var(--liquid-optics);
+  box-shadow: var(--liquid-edge);
+}
+
+.profile-context { min-width:0; display:flex; flex-direction:column; align-items:flex-end; gap:4px; font-size:13px; line-height:18px; }
+.profile-date,.profile-location { display:flex; align-items:center; justify-content:flex-end; white-space:nowrap; line-height:1; }
+.profile-date { gap:12px; }
+.profile-date time { font-variant-numeric:tabular-nums; font-weight:500; }
+.profile-date > span { color:var(--ink-tenue, #3E423C); }
+.profile-location { gap:12px; color:var(--ink-tenue, #3E423C); }
+.profile-place { display:inline-flex; align-items:center; gap:4px; font-weight:400; }
+/* La modalità attiva è l'unica eccezione tipografica dichiarata: semibold 600, nessun
+   badge e nessun separatore — solo i 12 px che la staccano. */
+.profile-focus { font-weight:600; color:var(--ink, #1A1C19); }
+.profile-place svg, .profile-place i { width:14px; height:14px; font-size:14px; flex:none; display:block; }
+/* Il volto: l'unica immagine del sistema, e l'unica che non viene mai desaturata. */
+.profile-avatar { display:block; width:44px; height:44px; border-radius:50%; flex:none; object-fit:cover; box-shadow:0 0 0 2px rgba(255,255,255,.78); }
+
+/* L'impaginazione della tavola di L2 - Profilebar, che non è il componente. */
+.profile-variants { width:1440px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.profile-variant { display:flex; flex-direction:column; gap:16px; }
+.profile-variant h2 { font-size:24px; font-weight:500; margin:0; letter-spacing:-.03em; }
+.profile-variant p { font-size:15px; line-height:1.6; color:#4A4E48; margin:0; }
+.profile-stage { height:220px; padding:32px; border-radius:24px; display:flex; align-items:center; justify-content:flex-end; background:linear-gradient(180deg,#CACACA 0%,#BCBCBC 42%,#9C9C9C 68%,#7F7F7F 100%); }
+/* La scena scura porta i token dello scuro sul proprio ramo, come fa materiali.css. */
+.profile-stage--eclipse { background:linear-gradient(180deg,#2B3D42 0%,#22333A 42%,#192A30 68%,#111D22 100%); --ink:#f1f7f4; --ink-tenue:#c7d8cf; }

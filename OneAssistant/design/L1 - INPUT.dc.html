@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300,0,0&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  a { color: #4E6B54; text-decoration: none; }
+  a:hover { color: #37502C; }
+</style>
+<link rel="stylesheet" href="./liquid-glass.css">
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L1</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 1 · componente</div></div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">INPUT</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:36em;line-height:1.55">La voce, e le parole che puoi dire. Non è una barra di comandi e non è sempre lì: a riposo INPUT non esiste. Compare come bolla satinata quando ascolta, e cresce solo quando serve mostrarti cosa ha capito.</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">ancoraggio bottom 44 · centrato<br>a riposo: non esiste · ascolto: 380<br>trascrizione: max 2 righe<br>nessun bottone, mai</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Sei stati · dal punto alla frase</div>
+    <div style="display:grid;grid-template-columns:repeat(3,456px);gap:36px">
+
+      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;color:rgba(26,28,25,0.45)">NIENTE</div>
+        </div>
+        <div style="padding:20px 22px">
+          <div style="font-size:18px;font-weight:500;margin-bottom:6px">A riposo · non esiste</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Nessun pallino in attesa, nessun invito, nessuna barra: il fondo di sistema resta libero. Il microfono è aperto ma INPUT non occupa un pixel finché non ha qualcosa da mostrarti.</div>
+        </div>
+      </div>
+
+      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center">
+          <div style="display:flex;align-items:center;gap:13px">
+            <span style="width:14px;height:14px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
+            <div style="padding:13px 20px;border-radius:26px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+              <div style="font-size:13px;font-weight:400;color:#21251F">ti ascolto</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:20px 22px">
+          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Ti ascolto</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto compare per primo e pulsa a 1,2 s — <strong style="color:#1A1C19;font-weight:600">un pallino salvia pieno e nient'altro</strong>: nessun bordo, nessun alone, nessuna ombra. Pulsa di scala, 13 → 15 px, e di opacità, 100 → 70%. La bolla nasce accanto a lui in 240 ms, come il baloon di un fumetto.</div>
+        </div>
+      </div>
+
+      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
+          <div style="width:100%;display:flex;align-items:center;gap:12px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
+            <div style="flex:1;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+              <div style="font-size:13px;font-weight:400;color:#21251F">manda a Elena la v3 <span style="color:#8B908A">e fissa venerdì…</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:20px 22px">
+          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Trascrizione</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto resta fuori, fermo, e la bolla si allunga accanto a lui. Parole confermate a inchiostro pieno, parole in volo in grigio. Max due righe: oltre, sale in TABLE.</div>
+        </div>
+      </div>
+
+      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
+          <div style="width:100%;display:flex;align-items:center;gap:12px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
+            <div style="flex:1;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+                <div style="font-size:13px;color:#2F332C">sto facendo tre cose</div>
+                <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.08em;color:#5A5F58">2 DI 3</div>
+              </div>
+              <div style="height:3px;border-radius:3px;background:linear-gradient(90deg,#4E6B54 62%,rgba(26,28,25,0.12) 62%)"></div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:20px 22px">
+          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Sto lavorando</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto resta salvia — lo stato sta fuori, nel punto, non in una targa. Dentro: una linea che avanza e il conteggio dei passi. Nessuno spinner, nessun log: i dettagli si chiedono a voce.</div>
+        </div>
+      </div>
+
+      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
+          <div style="width:100%;display:flex;align-items:center;gap:12px">
+            <span style="width:13px;height:13px;border-radius:50%;border:2px solid #B3762A;position:relative;z-index:2;box-sizing:border-box;display:block;flex:none"></span>
+            <div style="flex:1;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
+              <div style="font-size:13px;color:#1A1C19">aspetto che mi dica tu</div>
+              <div style="margin-left:auto;font-size:15px;font-weight:400;color:#1A1C19">«manda»</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:20px 22px">
+          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Aspetta te</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55"><strong style="color:#1A1C19;font-weight:600">Il punto si svuota</strong>: da pieno che ascolta ad anello ambra che aspetta. È l'unico ambra di INPUT, e sta fuori dalla bolla — dentro, l'inchiostro resta nero e la parola da dire è già scritta.</div>
+        </div>
+      </div>
+
+      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
+          <div style="width:100%;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:11px">
+            <span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;color:#3E423C;flex:none">keyboard</span>
+            <div style="font-size:13px;font-weight:400;color:#1A1C19">manda a elena la v3<span style="display:inline-block;width:2px;height:17px;background:#1A1C19;vertical-align:-3px;margin-left:3px"></span></div>
+          </div>
+        </div>
+        <div style="padding:20px 22px">
+          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Senza voce</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto d'ascolto sparisce — <strong style="color:#1A1C19;font-weight:600">nessun pallino</strong>, perché il punto è la voce e qui la voce non c'è. L'icona della tastiera prende il suo significato ma sta <strong style="color:#1A1C19;font-weight:600">dentro</strong> la bolla: è l'unico segno di provenienza che vive all'interno.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Modalità tastiera</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">Non è un&rsquo;interfaccia alternativa: è la stessa bolla, nello stesso posto, senza il punto. <strong style="color:#1A1C19;font-weight:600">Il punto è la voce: senza voce non c&rsquo;è punto</strong> — e l&rsquo;icona della tastiera, 14 px, sta <strong style="color:#1A1C19;font-weight:600">dentro</strong> la bolla. È l&rsquo;eccezione dichiarata: fuori va solo ciò che viene da te mentre lo dici; la tastiera è già scrittura, quindi è contenuto.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:700px 1fr;gap:36px;width:1440px;align-items:start">
+      <div style="position:relative;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
+        <div style="position:absolute;left:34px;right:34px;bottom:120px;padding:13px 20px;border-radius:24px;box-sizing:border-box;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
+          <span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;color:#3E423C;flex:none">keyboard</span>
+          <div style="font-size:17px;font-weight:400;color:#1A1C19">manda a elena la v3<span style="display:inline-block;width:2px;height:18px;background:#1A1C19;vertical-align:-3px;margin-left:3px"></span></div>
+        </div>
+        <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px">
+          <div style="flex:1;padding:14px 20px;border-radius:24px;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:16px">
+            <div style="display:flex;align-items:baseline;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#3D5643;padding:2px 7px;border-radius:5px;background:rgba(78,107,84,0.14)">↵</div><div style="font-size:12px;color:#1A1C19">«manda la mail»</div></div>
+            <div style="display:flex;align-items:baseline;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#5A5F58;padding:2px 7px;border-radius:5px;background:rgba(26,28,25,0.08)">2</div><div style="font-size:12px;color:#4A4E48">«leggila»</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Niente pallini, fuori niente</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Sparisce il punto d&rsquo;ascolto e sparisce anche il pallino verde davanti alla prima frase: a marcare quella più probabile ci pensa <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">↵</span>. Fuori dalla bolla non resta niente — è l&rsquo;unico caso.</div>
+        </div>
+        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Le virgolette restano</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Le frasi sono ancora frasi, non bottoni: i tasti sono scorciatoie per dirle, non etichette di comandi. Scritte identiche a quelle che pronunceresti.</div>
+        </div>
+        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Nessun verbo d&rsquo;apertura</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Scrivendo non serve «senti»: il primo carattere fa nascere la bolla. Il verbo serviva a dire <em>a chi</em> stai parlando, e la tastiera lo dice da sé.</div>
+        </div>
+        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8A5A17;margin-bottom:10px">Si esce parlando</div>
+          <div style="font-size:14.5px;color:#3E423C;line-height:1.55">Appena parli, l&rsquo;icona torna punto e la bolla resta la stessa — con dentro quello che avevi scritto. Nessuna conferma, nessun passaggio di modalità.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">«Puoi dire» · il posto delle parole, al posto dei bottoni</div>
+    <div style="display:grid;grid-template-columns:720px 1fr;gap:36px;width:1440px;align-items:start">
+      <div style="border-radius:24px;padding:28px 30px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 12px 30px rgba(30,36,30,0.08)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58;margin-bottom:20px">Puoi dire</div>
+        <div style="display:flex;flex-direction:column;gap:15px">
+          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:10px;height:10px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;transform:translateY(-5px)"></span><div style="font-size:30px;font-weight:400;letter-spacing:-0.025em">«manda»</div></div>
+          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:9px;flex:none"></span><div style="font-size:23px;font-weight:400;color:#3E423C">«cambia l'orario»</div></div>
+          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:9px;flex:none"></span><div style="font-size:23px;font-weight:400;color:#3E423C">«leggimi cosa hai scritto»</div></div>
+          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:9px;flex:none"></span><div style="font-size:23px;font-weight:400;color:#3E423C">«lascia stare»</div></div>
+        </div>
+        <div style="height:1px;background:rgba(26,28,25,0.10);margin:24px 0 16px"></div>
+        <div style="font-size:15px;color:#4A4E48;line-height:1.6">Sono esempi di lingua, non un menu: qualunque frase con lo stesso senso funziona. La prima porta il punto verde perché è quella che farei io.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;font-size:15px;line-height:1.6;color:#4A4E48">
+        <div><strong style="color:#1A1C19;font-weight:600">Mai più di quattro frasi</strong><br>E mai due che fanno la stessa cosa. Se servono cinque scelte, la domanda è mal posta.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">Le virgolette sono l'affordance</strong><br>Il testo fra «» significa «questo puoi dirlo». Nessun rettangolo, nessun bordo, nessun verbo imperativo rivolto a te.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">Vivono dove serve</strong><br>Se l'attività è in TABLE, le frasi stanno in fondo al suo pannello. Se non c'è attività, stanno sopra il punto d'ascolto.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">La tastiera è una scorciatoia, non un'alternativa</strong><br><span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">↵</span> esegue la prima frase, i numeri scelgono fra i candidati. Sempre presenti, mai mostrati in evidenza.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">INPUT che mostra dati</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">Sei idee per la fase di raccolta: mentre parli, il sistema tira su documenti, immagini e persone. Cresce verso l'alto dal punto d'ascolto, resta sotto i 340 px: oltre quella soglia l'attività si promuove in TABLE.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:40px">
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">Idea 1 · La raccolta</div>
+        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
+          <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px"><span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span><div style="flex:1;padding:16px 18px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+            <div style="margin-bottom:14px">
+              <div style="font-size:13px;font-weight:400;color:#21251F">tutto quello che ho mandato ad Acme <span style="color:#8B908A">quest'anno…</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:52px;height:64px;border-radius:7px;background:repeating-linear-gradient(135deg,#DCDAD2,#DCDAD2 5px,#CFCDC4 5px,#CFCDC4 10px);border:1px solid rgba(26,28,25,0.12);display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#5A5F58">PDF</div>
+              <div style="width:52px;height:64px;border-radius:7px;background:repeating-linear-gradient(135deg,#DCDAD2,#DCDAD2 5px,#CFCDC4 5px,#CFCDC4 10px);border:1px solid rgba(26,28,25,0.12);display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#5A5F58">FOTO</div>
+              <div style="width:52px;height:64px;border-radius:7px;background:repeating-linear-gradient(135deg,#DCDAD2,#DCDAD2 5px,#CFCDC4 5px,#CFCDC4 10px);border:1px solid rgba(26,28,25,0.12);display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#5A5F58">XLS</div>
+              <div style="width:52px;height:64px;border-radius:7px;border:1px dashed rgba(26,28,25,0.28);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5A5F58">+4</div>
+              <div style="margin-left:auto;text-align:right">
+                <div style="font-size:26px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1">7</div>
+                <div style="font-size:13px;color:#4A4E48">trovati mentre parli</div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Le tessere entrano da destra una alla volta, 140 ms l'una, e si fermano. Il contatore è l'unico numero. Formato in monospaziato sulla tessera, mai un'icona di app. <strong style="color:#1A1C19;font-weight:600">Per raccolte fino a 8 elementi.</strong></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">Idea 2 · Il setaccio</div>
+        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
+          <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px"><span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span><div style="flex:1;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+            <div style="margin-bottom:18px">
+              <div style="font-size:13px;font-weight:400;color:#21251F">quella per Acme, di prima dell'estate, con i numeri <span style="color:#8B908A">del trimestre…</span></div>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:22px">
+              <div><div style="font-size:30px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#9AA096">412</div><div style="font-size:12.5px;color:#5A5F58;margin-top:4px">documenti</div></div>
+              <div style="font-size:19px;color:#9AA096;padding-bottom:8px">→</div>
+              <div><div style="font-size:30px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#6B6F68">37</div><div style="font-size:12.5px;color:#5A5F58;margin-top:4px">di Acme</div></div>
+              <div style="font-size:19px;color:#9AA096;padding-bottom:8px">→</div>
+              <div><div style="font-size:30px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#3E423C">9</div><div style="font-size:12.5px;color:#5A5F58;margin-top:4px">prima di luglio</div></div>
+              <div style="font-size:19px;color:#9AA096;padding-bottom:8px">→</div>
+              <div><div style="font-size:38px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#1A1C19">3</div><div style="font-size:12.5px;color:#3D5A43;margin-top:4px">con quei numeri</div></div>
+              <div style="margin-left:auto;font-size:14px;color:#4A4E48;text-align:right;max-width:9em;line-height:1.4">ogni parola che aggiungi stringe il numero</div>
+            </div>
+          </div></div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Nessuna anteprima: solo il numero che scende mentre parli, con l'ultimo passo in inchiostro pieno. È il modo più leggibile di mostrare che ti sta capendo. <strong style="color:#1A1C19;font-weight:600">Per ricerche su molti elementi.</strong></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">Idea 3 · I gruppi che si formano</div>
+        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
+          <div style="position:absolute;left:34px;right:34px;bottom:34px;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+              <span style="font-family:'Material Symbols Rounded';font-size:14px;color:#3D5A43;line-height:1">workspaces</span>
+              <div style="font-size:13px;color:#2F332C">li sto mettendo in ordine · 412 documenti</div>
+              <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.08em;color:#5A5F58">3 GRUPPI</div>
+            </div>
+            <div style="display:flex;gap:12px">
+              <div style="flex:1;border-radius:14px;padding:12px 14px;background:rgba(26,28,25,0.05);border:1px solid rgba(26,28,25,0.10)">
+                <div style="display:flex;gap:5px;margin-bottom:10px">
+                  <div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div>
+                </div>
+                <div style="font-size:13px;font-weight:400">Contratti</div><div style="font-size:13px;color:#4A4E48">148 · 2023–2026</div>
+              </div>
+              <div style="flex:1;border-radius:14px;padding:12px 14px;background:rgba(251,251,249,0.72);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">
+                <div style="display:flex;gap:5px;margin-bottom:10px">
+                  <div style="width:22px;height:28px;border-radius:4px;background:#A9BBAC"></div><div style="width:22px;height:28px;border-radius:4px;background:#A9BBAC"></div><div style="width:22px;height:28px;border-radius:4px;background:#A9BBAC"></div>
+                </div>
+                <div style="font-size:13px;font-weight:400;color:#3D5643">Proposte</div><div style="font-size:13px;color:#3D5A43">37 · quella che cerchi è qui</div>
+              </div>
+              <div style="flex:1;border-radius:14px;padding:12px 14px;background:rgba(26,28,25,0.05);border:1px solid rgba(26,28,25,0.10)">
+                <div style="display:flex;gap:5px;margin-bottom:10px">
+                  <div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div>
+                </div>
+                <div style="font-size:13px;font-weight:400">Fatture</div><div style="font-size:13px;color:#4A4E48">227 · per anno</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il «thinking» diventa un raggruppamento visibile: le tessere volano nel loro gruppo e il gruppo giusto si tinge di verde. È ragionamento mostrato come ordine, non come testo. <strong style="color:#1A1C19;font-weight:600">Per riordini e archivi.</strong></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">Idea 4 · Il mazzo</div>
+        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
+          <div style="position:absolute;left:34px;right:34px;bottom:34px;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+            <div style="display:flex;align-items:center;gap:20px">
+              <div style="position:relative;width:150px;height:94px;flex:none">
+                <div style="position:absolute;left:0;top:10px;width:70px;height:84px;border-radius:8px;background:#D5D3CA;border:1px solid rgba(26,28,25,0.12);transform:rotate(-9deg)"></div>
+                <div style="position:absolute;left:20px;top:6px;width:70px;height:84px;border-radius:8px;background:#DEDCD4;border:1px solid rgba(26,28,25,0.12);transform:rotate(-3deg)"></div>
+                <div style="position:absolute;left:42px;top:2px;width:70px;height:84px;border-radius:8px;background:repeating-linear-gradient(135deg,#E8E6DE,#E8E6DE 5px,#DCDAD2 5px,#DCDAD2 10px);border:1px solid rgba(26,28,25,0.14);display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#5A5F58">12 GIUGNO</div>
+              </div>
+              <div style="flex:1">
+                <div style="font-size:23px;font-weight:400;letter-spacing:-0.02em;line-height:1.3">Ne ho 12 che potrebbero essere quella.</div>
+                <div style="font-size:13px;color:#4A4E48;margin-top:6px">Sopra c'è la più probabile: 12 giugno, mandata ad Andrea.</div>
+                <div style="font-size:19px;font-weight:400;margin-top:12px;color:#21251F">«sfogliale» · «solo quelle di giugno»</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Quando i candidati sono troppi per essere mostrati ma troppi anche per sceglierne uno: si impilano come carte, la prima in cima è la scommessa del sistema. Si sfoglia parlando. <strong style="color:#1A1C19;font-weight:600">Per 8–30 candidati.</strong></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">Idea 5 · L'anteprima che vale la pena</div>
+        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
+          <div style="position:absolute;left:34px;right:34px;bottom:34px;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+            <div style="display:flex;gap:18px;align-items:stretch">
+              <div style="width:180px;height:116px;border-radius:12px;flex:none;background:linear-gradient(140deg,#DDDBD4,#C4C2BA);border:1px solid rgba(26,28,25,0.12);padding:12px;box-sizing:border-box">
+                <div style="display:flex;flex-direction:column;gap:6px"><div style="height:5px;width:70%;border-radius:5px;background:rgba(26,28,25,0.14)"></div><div style="height:5px;width:52%;border-radius:5px;background:rgba(26,28,25,0.10)"></div></div>
+                <div style="display:flex;align-items:flex-end;gap:6px;height:52px;margin-top:14px">
+                  <div style="width:18px;height:46%;border-radius:3px;background:rgba(26,28,25,0.16)"></div>
+                  <div style="width:18px;height:70%;border-radius:3px;background:rgba(26,28,25,0.16)"></div>
+                  <div style="width:18px;height:100%;border-radius:3px;background:#4E6B54"></div>
+                  <div style="width:18px;height:58%;border-radius:3px;background:rgba(26,28,25,0.16)"></div>
+                </div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3D5A43;margin-bottom:8px">Il pezzo di cui parlavi</div>
+                <div style="font-size:21px;font-weight:400;letter-spacing:-0.02em;line-height:1.3">Pagina 14 · il trimestre chiuso meglio</div>
+                <div style="font-size:14.5px;color:#4A4E48;margin-top:6px;line-height:1.5">Il resto della pagina è desaturato: a colori c'è solo la colonna che stavi cercando.</div>
+                <div style="font-size:18px;font-weight:400;margin-top:auto;color:#21251F">«aprila a pagina 14»</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">L'anteprima compare solo quando un singolo elemento è decisivo, e mostra <em>il punto</em>, non il documento: contenuto desaturato, colore solo sul dato citato. <strong style="color:#1A1C19;font-weight:600">Per un solo risultato certo.</strong></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:600">Idea 6 · Gli scarti restano recuperabili</div>
+        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
+          <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px"><span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span><div style="flex:1;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+            <div style="margin-bottom:16px">
+              <div style="font-size:13px;font-weight:400;color:#21251F">no, non quella dei contratti <span style="color:#8B908A">…</span></div>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:10px">
+              <div style="width:62px;height:76px;border-radius:8px;background:repeating-linear-gradient(135deg,#E8E6DE,#E8E6DE 5px,#DCDAD2 5px,#DCDAD2 10px);border:1.5px solid #4E6B54;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#3D5A43">TENUTA</div>
+              <div style="width:48px;height:58px;border-radius:7px;background:#D6D4CC;opacity:0.5;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#5A5F58">SCARTO</div>
+              <div style="width:48px;height:58px;border-radius:7px;background:#D6D4CC;opacity:0.5"></div>
+              <div style="width:48px;height:58px;border-radius:7px;background:#D6D4CC;opacity:0.5"></div>
+              <div style="margin-left:auto;font-size:14.5px;color:#4A4E48;text-align:right;max-width:13em;line-height:1.45">gli scartati si spengono ma restano: <span style="color:#21251F">«riprendi quello grigio»</span></div>
+            </div>
+          </div></div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Niente svanisce durante la raccolta: chi esce dal filtro si desatura e si rimpicciolisce, e resta richiamabile a voce per tutta la conversazione. È la rete di sicurezza del parlato. <strong style="color:#1A1C19;font-weight:600">Sempre attiva, in ogni idea.</strong></div>
+      </div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:26px 30px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:repeat(4,1fr);gap:26px;font-size:15px;line-height:1.55;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Quando usare quale</strong><br>≤8 elementi: raccolta. Molti elementi: setaccio. Archivi: gruppi. 8–30 candidati: mazzo. Uno solo: anteprima.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">La raccolta è effimera</strong><br>Vive dentro INPUT e svanisce con la risposta. Se ti serve dopo, diventa un'attività e sale nella soglia di TABLE.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Tessere, non icone d'app</strong><br>Ogni tessera è la forma del documento con il formato in monospaziato. Nessun logo, nessun mimetismo di app.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Un solo verde per schermo</strong><br>Il colore marca ciò che il sistema ha scelto: un gruppo, una colonna, una tessera. Tutto il resto resta desaturato.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Le parole che aprono</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">INPUT a riposo non esiste: serve una parola per farlo nascere. Di fabbrica sono cinque verbi, uno per intenzione — <strong style="color:#1A1C19;font-weight:600">ma le parole sono tue e si cambiano parlando</strong>, nome dell'assistente compreso. Quello che non cambia è la regola: la parola apre <em>e</em> porta già la frase con sé.</div>
+    </div>
+
+    <div style="width:1440px;border-radius:24px;padding:36px 40px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#9AA096;margin-bottom:22px">Valori di fabbrica · cinque verbi, uno per intenzione</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:26px">
+        <div>
+          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«senti»</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Comando</div>
+          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Sto per chiederti di fare una cosa. È il verbo più usato: apre la bolla in modalità comando, pronta a una catena di azioni.</div>
+        </div>
+        <div>
+          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«trova»</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Ricerca</div>
+          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Apre già in raccolta: il setaccio parte alla prima parola e il numero scende mentre parli. Salta un passaggio.</div>
+        </div>
+        <div>
+          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«scrivi»</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Dettatura</div>
+          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Tutto quello che dico dopo è testo, non comando. Il sistema smette di interpretare e trascrive.</div>
+        </div>
+        <div>
+          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«dimmi»</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Domanda</div>
+          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Voglio una risposta, non un'azione. Niente parte, niente cambia: la bolla si chiude con la risposta.</div>
+        </div>
+        <div>
+          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«aspetta»</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Interruzione</div>
+          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Ferma tutto ciò che sta partendo. Funziona anche quando INPUT non è aperto: è l'unica parola sempre in ascolto.</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:32px;padding-top:26px;border-top:1px solid rgba(244,243,238,0.22);font-size:16px;line-height:1.6;color:#D6D4CC">
+        <div><strong style="color:#F4F3EE;font-weight:600">Il nome è ammesso, ma non è un risveglio.</strong> Se lo vuoi, il nome è una sesta parola che apre esattamente come «senti» — non un personaggio da salutare e da aspettare. Detto da solo non fa niente.</div>
+        <div><strong style="color:#F4F3EE;font-weight:600">Il verbo è già il primo pezzo della frase.</strong> «Senti, manda a Elena la v3» è una frase sola: non c'è un risveglio e poi un comando. Non si attende un suono di conferma per parlare.</div>
+        <div><strong style="color:#F4F3EE;font-weight:600">Cinque intenzioni, non cinquanta parole.</strong> Fare, cercare, dettare, sapere, fermare: le intenzioni restano cinque anche quando le parole diventano dodici. Si aggiungono sinonimi, non funzioni.</div>
+      </div>
+    </div>
+
+
+    <div style="display:grid;grid-template-columns:660px 1fr;gap:36px;width:1440px;align-items:start">
+
+      <div style="position:relative;border-radius:22px;overflow:hidden;padding:28px;box-sizing:border-box">
+        <div style="position:absolute;inset:0;background:radial-gradient(46% 54% at 12% 14%,#8FA487,transparent 66%),radial-gradient(44% 48% at 94% 8%,#E0B871,transparent 70%),radial-gradient(58% 64% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div>
+        <div style="position:relative;display:flex;align-items:flex-start;gap:14px">
+          <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;flex:none;margin-top:14px"></span>
+          <div style="flex:1;border-radius:26px;padding:20px 22px;box-sizing:border-box;color:#1A1C19;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+            <div style="font-family:Manrope,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.035em;line-height:1.15">«senti, da adesso chiamami anche Ada»</div>
+            <div style="font-size:13px;color:#4A4E48;line-height:1.5;margin-top:10px">Ada apre il sistema come «senti». Non risponde al nome da solo: se dici soltanto «Ada», non succede niente.</div>
+            <div style="height:1px;margin:20px -22px 0;background:rgba(26,28,25,0.11);box-shadow:0 1px 0 rgba(255,255,255,0.72)"></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin:19px 0 11px">Puoi dire</div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:baseline;gap:10px"><span style="width:8px;height:8px;border-radius:50%;background:#5E9566;flex:none;transform:translateY(-1px)"></span><div style="font-size:12px;color:#1A1C19">«va bene»</div></div>
+              <div style="display:flex;align-items:baseline;gap:10px"><span style="width:8px;flex:none"></span><div style="font-size:12px;color:#4A4E48">«solo per i comandi»</div></div>
+              <div style="display:flex;align-items:baseline;gap:10px"><span style="width:8px;flex:none"></span><div style="font-size:12px;color:#4A4E48">«lascia stare»</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="border-radius:22px;padding:26px 28px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:14px">La regola del nome</div>
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.03em;line-height:1.25;margin-bottom:12px">Un nome che apre, non un nome che risponde.</div>
+          <div style="font-size:15.5px;line-height:1.6;color:#D6D4CC">Il nome è un alias: fa esattamente quello che fa «senti», niente di più. <strong style="color:#F4F3EE;font-weight:600">Detto da solo non apre niente</strong> — nessun «sì?», nessun bip, nessuna attesa. Sta all'inizio di una frase vera, come tutte le altre parole d'apertura: «Ada, manda la v3 a Elena». Così resta un modo di parlare al computer e non diventa qualcuno con cui parlare.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Perché serviva</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Con più persone nella stanza, o con un altro assistente acceso, i verbi generici non bastano: «senti» lo dici anche a un collega. Il nome è ciò che disambigua a chi stai parlando.</div>
+          </div>
+          <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8A5A17;margin-bottom:10px">Contraddice L1</div>
+            <div style="font-size:14.5px;color:#3E423C;line-height:1.55">Il documento <strong style="color:#1A1C19;font-weight:600">Sistema</strong> dice «nessun nome proprio: il sistema non è qualcuno». Questa pagina lo supera in un punto solo — il nome come alias d'apertura. Da riportare in L1 prima che diventi legge.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.12)">
+      <div style="display:grid;grid-template-columns:150px 1fr 320px;gap:22px;padding:15px 22px;background:#F2F1EC;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58">
+        <div>Intenzione</div><div>Parole che la aprono · la prima è quella di fabbrica</div><div>Cosa non si può cambiare</div>
+      </div>
+      
+        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Comando</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«senti»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«ok»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«Ada»</div></div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che sia la prima parola della frase. Un comando a metà frase non apre niente.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Ricerca</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«trova»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«cerca»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«dove»</div></div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che apra già in raccolta: il setaccio parte alla prima parola.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Dettatura</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«scrivi»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«detta»</div></div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che da lì in poi il sistema smetta di interpretare: dentro una dettatura non si esegue nulla.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Domanda</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«dimmi»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«quanto»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«chi»</div></div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che non parta niente: una domanda non cambia mai lo stato delle cose.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A2E22">Interruzione</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«aspetta»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«ferma»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«no»</div></div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che sia sempre in ascolto, anche a bolla chiusa, e che non si possa disattivare. L'unica parola non cancellabile.</div>
+        </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:20px 40px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:17px;font-weight:600">Il verbo determina come nasce la bolla</div>
+        <div style="width:700px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#B3B8B4,#9BA096);position:relative;box-sizing:border-box">
+          <div style="position:absolute;left:26px;bottom:172px;display:flex;align-items:flex-start;gap:13px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px"></span>
+            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
+              <div style="font-size:17px;font-weight:400;color:#21251F"><span style="color:#3D5A43">senti</span>, manda a Elena la v3 <span style="color:#8B908A">e fissa…</span></div>
+            </div>
+          </div>
+          <div style="position:absolute;left:26px;bottom:96px;display:flex;align-items:flex-start;gap:13px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px"></span>
+            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:16px">
+              <div style="font-size:17px;font-weight:400;color:#21251F"><span style="color:#3D5A43">trova</span> la proposta per Acme</div>
+              <div style="width:1px;height:20px;background:rgba(26,28,25,0.14)"></div>
+              <div style="display:flex;align-items:baseline;gap:8px"><div style="font-size:22px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1">37</div><div style="font-size:13px;color:#5A5F58">su 412</div></div>
+            </div>
+          </div>
+          <div style="position:absolute;left:26px;bottom:20px;display:flex;align-items:flex-start;gap:13px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px"></span>
+            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
+              <span style="font-family:'Material Symbols Rounded';font-size:14px;color:#3E423C;line-height:1">edit_note</span>
+              <div style="font-size:17px;font-weight:400;color:#21251F">Ciao Andrea, venerdì va benissimo<span style="display:inline-block;width:2px;height:17px;background:#1A1C19;vertical-align:-3px;margin-left:3px"></span></div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il verbo resta visibile in verde salvia nella trascrizione: è la prova di <em>come</em> il sistema ti ha inteso. Con «scrivi» la bolla cambia icona e non mostra il verbo, perché da lì in poi è tutto testo tuo.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:17px;font-weight:600">Quando il verbo non serve</div>
+        <div style="width:700px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#B3B8B4,#9BA096);position:relative;box-sizing:border-box">
+          <div style="position:absolute;right:24px;top:24px;width:420px;border-radius:22px;padding:16px 18px;box-sizing:border-box;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">Aspetta te</div>
+            </div>
+            <div style="font-size:16px;font-weight:400;line-height:1.35;color:#21251F">La v3 per Elena, pronta da mandare.</div>
+          </div>
+          <div style="position:absolute;left:26px;bottom:24px;display:flex;align-items:flex-start;gap:13px">
+            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px, 0 0 0 16px rgba(26,28,25,0.06)"></span>
+            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);font-size:17px;font-weight:400;color:#21251F">«manda»</div>
+          </div>
+          <div style="position:absolute;right:24px;bottom:30px;width:300px;font-size:14px;color:#2F332C;line-height:1.5;text-align:right">Finché una bolla aspetta una tua parola, le sue frasi funzionano nude: non devi ripetere il verbo d'ingresso.</div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Dentro una conversazione già aperta il verbo è superfluo: «manda», «la seconda», «no, aspetta» bastano da sé, per 30 secondi dall'ultimo scambio. Poi la finestra si chiude e serve di nuovo aprire.</div>
+      </div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:26px 30px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:repeat(4,1fr);gap:26px;font-size:15px;line-height:1.55;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Si cambiano parlando</strong><br>Nessun pannello impostazioni: «da adesso, per cercare dico <em>cerca</em>» basta. La modifica nasce come bolla, te la fa rileggere, e la confermi a voce.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">«aspetta» è sempre in ascolto</strong><br>L'unica parola riconosciuta anche a bolla chiusa e durante un compito in background. Un sistema che agisce deve poter essere fermato senza preamboli.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Nessun suono di risveglio</strong><br>La conferma è visiva: il punto d'ascolto appare e la bolla nasce accanto. Un bip obbligherebbe ad aspettarlo prima di parlare.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Se sbagli parola non importa</strong><br>«dimmi, manda a Elena…» funziona comunque: la parola d'apertura è un indizio sull'intenzione, non una sintassi. Il senso vince sulla forma — vale anche per il nome.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;margin-top:40px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Gli orari dello scambio · 17 settembre 2026</div>
+    <div style="font-size:16px;line-height:1.6;color:#3E423C;max-width:1100px">Dentro la bolla, ogni giro di botta e risposta porta la sua ora: <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">9 px</span>, peso 500, spaziatura <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">0.06em</span>, inchiostro fioco, <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">2 px</span> d’aria sotto. In colonna dal più vecchio al più recente, sopra la riga da cui scrivi.</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;width:1380px;font-size:15px;line-height:1.55;color:#4A4E48">
+      <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Una per giro, non per messaggio</div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La domanda e la risposta sono lo stesso momento. Scrivere l’ora due volte a tre pixel di distanza è rumore, non informazione.</div>
+      </div>
+      <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">È l’ora del sistema</div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Quella che segna la Profilebar, non l’ora vera della macchina. Due orologi sullo stesso schermo che dicono cose diverse sono un errore che si vede subito e non si spiega.</div>
+      </div>
+      <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Non è una quarta cosa</div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Dentro INPUT stanno il testo, la raccolta e lo scambio. L’ora non si aggiunge a quei tre: appartiene allo scambio, come la fonte appartiene a una carta.</div>
+      </div>
+    </div>
+  </div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Banco delle voci — le quattro italiane di Piper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --carta: #e4e1da;
+    --pannello: #fbfbf9;
+    --ink: #1a1c19;
+    --ink-corpo: #4a4e48;
+    --ink-fioco: #5a5f58;
+    --salvia: #4e6b54;
+    --ambra: #8a5a17;
+    --terra: #8a3a2a;
+    --bordo: rgba(26, 28, 25, 0.1);
+  }
+  html, body { background: var(--carta); }
+  body {
+    margin: 0; font-family: Manrope, system-ui, sans-serif; color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .impaginato {
+    padding: 28px 16px 44px; max-width: 880px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .etichetta {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-fioco);
+  }
+  h1 {
+    font-size: clamp(30px, 5vw, 44px); font-weight: 500; letter-spacing: -0.035em;
+    line-height: 1; margin: 10px 0 0; text-wrap: balance;
+  }
+  h2 { font-size: 20px; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 4px; }
+  p { color: var(--ink-corpo); line-height: 1.55; margin: 8px 0 0; max-width: 68ch; }
+  .pannello {
+    background: var(--pannello); border: 1px solid var(--bordo); border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .frasi { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .frase {
+    border: 1px solid var(--bordo); background: transparent; border-radius: 999px;
+    padding: 7px 14px; font: inherit; font-size: 13.5px; color: var(--ink-corpo);
+    cursor: pointer; transition: background 140ms, color 140ms, border-color 140ms;
+  }
+  .frase:hover { border-color: rgba(26, 28, 25, 0.28); }
+  .frase[aria-pressed="true"] { background: var(--salvia); border-color: var(--salvia); color: #f4f3ee; }
+  #testo {
+    width: 100%; box-sizing: border-box; margin-top: 14px; padding: 12px 14px;
+    font: inherit; font-size: 15px; color: var(--ink); background: transparent;
+    border: 1px solid var(--bordo); border-radius: 10px; resize: vertical; min-height: 64px;
+  }
+  .voce {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
+    padding: 14px 0; border-top: 1px solid var(--bordo);
+  }
+  .voce:first-of-type { border-top: 0; }
+  .voce[data-adesso="si"] .nome::after {
+    content: 'in uso'; margin-left: 9px; font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--salvia); vertical-align: 1px;
+  }
+  .nome { font-size: 15px; }
+  .sotto {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--ink-fioco);
+    margin-top: 3px; letter-spacing: 0.02em;
+  }
+  .ascolta {
+    border: 1px solid var(--bordo); background: transparent; border-radius: 999px;
+    padding: 8px 16px; font: inherit; font-size: 13.5px; color: var(--ink);
+    cursor: pointer; white-space: nowrap; min-width: 108px;
+  }
+  .ascolta:hover:not(:disabled) { background: rgba(26, 28, 25, 0.045); }
+  .ascolta:disabled { opacity: 0.45; cursor: default; }
+  .misura { color: var(--salvia); }
+  .guasto { color: var(--terra); }
+  .avviso { color: var(--ambra); }
+  audio { width: 100%; margin-top: 8px; grid-column: 1 / -1; }
+  code { font-family: 'IBM Plex Mono', monospace; font-size: 0.92em; }
+</style>
+
+<div class="impaginato">
+  <header>
+    <div class="etichetta">strumenti · banco delle voci</div>
+    <h1>Le quattro italiane di Piper</h1>
+    <p>
+      Sono quattro e sono tutte: nel catalogo di Piper l'italiano non ha altro. Qui le
+      senti dire le stesse frasi, quelle vere del prototipo, e accanto a ognuna c'è il
+      tempo che ci ha messo a <strong>generare</strong>. Per una cosa che si usa
+      parlando quel numero conta quanto il timbro: una voce bellissima che ci mette
+      otto secondi fa sembrare il sistema rotto.
+    </p>
+    <p>
+      Girano <strong>in locale</strong>, dentro questa pagina: non esce niente dalla
+      macchina. Il modello si scarica la prima volta che premi <em>ascolta</em> e poi
+      resta nella cache del browser — quindi il primo ascolto è lento e gli altri no.
+    </p>
+  </header>
+
+  <section class="pannello">
+    <h2>Cosa gli fai dire</h2>
+    <p>
+      Le frasi vere del prototipo. I numeri, l'ora e la domanda sono i punti dove le
+      voci sintetiche cadono: è lì che vanno ascoltate, non su «prova prova».
+    </p>
+    <div class="frasi" id="frasi"></div>
+    <textarea id="testo" spellcheck="false"></textarea>
+  </section>
+
+  <section class="pannello">
+    <h2>Le voci</h2>
+    <div id="piper"></div>
+  </section>
+
+  <section class="pannello">
+    <h2>Perché non c'è Kokoro</h2>
+    <p>
+      C'era, il 17 settembre 2026, e se n'è andato lo stesso giorno: <code>kokoro-js</code>
+      spedisce 28 voci e <strong>sono tutte inglesi</strong>. Le due italiane esistono nel
+      modello su Hugging Face ma la libreria non le espone, perché Kokoro fuori
+      dall'inglese vuole un fonemizzatore per lingua e la libreria ne implementa uno solo.
+    </p>
+    <p>
+      Misurato prima di toglierlo: sull'inglese ci metteva <strong>dodici secondi</strong>
+      per una frase che Piper fa in uno. Anche se un giorno gli si desse l'italiano —
+      passando per eSpeak NG, che il progetto già spedisce — resterebbe quel numero.
+      È scritto qui perché la prossima volta che qualcuno legge «Kokoro, italiano buono»
+      sappia che è stato provato.
+    </p>
+  </section>
+</div>
+
+<script type="module">
+  import { Piper, inWav } from '/src/voce/piper.ts';
+
+  // Le frasi vere del prototipo, le stesse di `banco-ascolto.html`: una domanda, dei
+  // numeri, un nome proprio, una cosa lunga. Sono i punti dove una voce sintetica
+  // cade, ed è lì che va ascoltata.
+  const FRASI = [
+    'Me lo segno su Acme.',
+    'Le mando a Andrea Riva?',
+    'Non ho capito quale: la proposta Acme o le foto di Monaco?',
+    'Centoventotto file su quattrocentododici, alle 15:30 di venerdì 15 settembre.',
+    'Non ho potuto mandarla: la posta non risponde.',
+    'Il contratto Rossi aspetta una tua lettura prima di giovedì. Ci sono due punti che non tornano con la versione di marzo, e te li ho segnati.',
+  ];
+
+  // Tutte e quattro quelle che esistono. Le due in uso sono `VOCI` in
+  // `src/voce/piper.ts`; le altre due restano qui per poterle riascoltare il giorno
+  // che la scelta si rimette in discussione.
+  const VOCI_PIPER = [
+    { id: 'it/it_IT/serena/high/it_IT-serena-high', nome: 'Serena', sotto: 'high · 114 MB', adesso: 'si' },
+    { id: 'it/it_IT/serena/medium/it_IT-serena-medium', nome: 'Serena', sotto: 'medium · 63 MB' },
+    { id: 'it/it_IT/paola/medium/it_IT-paola-medium', nome: 'Paola', sotto: 'medium · 63 MB' },
+    { id: 'it/it_IT/riccardo/x_low/it_IT-riccardo-x_low', nome: 'Riccardo', sotto: 'x_low · 28 MB · l\'unica maschile che esista', adesso: 'si' },
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const testo = $('testo');
+  testo.value = FRASI[0];
+
+  // ─── le frasi ────────────────────────────────────────────────────────────────
+
+  for (const f of FRASI) {
+    const b = document.createElement('button');
+    b.className = 'frase';
+    b.type = 'button';
+    b.textContent = f.length > 46 ? f.slice(0, 44) + '…' : f;
+    b.title = f;
+    b.setAttribute('aria-pressed', String(f === FRASI[0]));
+    b.addEventListener('click', () => {
+      testo.value = f;
+      for (const altro of document.querySelectorAll('.frase')) altro.setAttribute('aria-pressed', 'false');
+      b.setAttribute('aria-pressed', 'true');
+    });
+    $('frasi').append(b);
+  }
+
+  // ─── una riga per voce ───────────────────────────────────────────────────────
+
+  for (const voce of VOCI_PIPER) {
+    const motore = new Piper();
+    let pronto = false;
+
+    const el = document.createElement('div');
+    el.className = 'voce';
+    if (voce.adesso) el.dataset.adesso = voce.adesso;
+    el.innerHTML = `<div><div class="nome"></div><div class="sotto"></div></div>
+                    <button class="ascolta" type="button">ascolta</button>`;
+    el.querySelector('.nome').textContent = voce.nome;
+    const sotto = el.querySelector('.sotto');
+    sotto.textContent = voce.sotto;
+    const bottone = el.querySelector('.ascolta');
+
+    bottone.addEventListener('click', async () => {
+      bottone.disabled = true;
+      try {
+        if (!pronto) {
+          // Il modello si scarica una volta nella vita. Il tempo che conta è l'altro.
+          sotto.textContent = 'scarico il modello, la prima volta ci mette…';
+          sotto.className = 'sotto avviso';
+          await motore.prepara(voce.id);
+          pronto = true;
+        }
+        sotto.textContent = 'genero…';
+        sotto.className = 'sotto avviso';
+
+        const partito = performance.now();
+        const { campioni, frequenza } = await motore.genera(testo.value.trim() || FRASI[0]);
+        const quanto = ((performance.now() - partito) / 1000).toFixed(2);
+
+        let audio = el.querySelector('audio');
+        if (!audio) {
+          audio = document.createElement('audio');
+          audio.controls = true;
+          el.append(audio);
+        }
+        audio.src = URL.createObjectURL(inWav(campioni, frequenza));
+        await audio.play().catch(() => undefined);
+
+        sotto.textContent = `${voce.sotto} · generata in ${quanto} s`;
+        sotto.className = 'sotto misura';
+      } catch (e) {
+        // Quasi sempre una di due: niente rete, o il modello che non si scarica.
+        sotto.textContent = `non ce l'ha fatta: ${e?.message ?? e}`;
+        sotto.className = 'sotto guasto';
+        console.error(voce.id, e);
+      } finally {
+        bottone.disabled = false;
+      }
+    });
+
+    $('piper').append(el);
+  }
+</script>

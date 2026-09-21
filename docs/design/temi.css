@@ -1,0 +1,169 @@
+/* I dodici temi. Un tema cambia **il fondo e l'inchiostro**, e nient'altro.
+ *
+ * Quello che **non** cambia, e non è una limitazione ma la ragione per cui questi si
+ * possono scegliere senza rompere niente:
+ *
+ *   - **gli stati.** Salvia, ambra e rosso terra restano quelli, in tutti e dodici. La
+ *     legge 04 non dice solo quanti sono, dice quali sono, e il colore è come il sistema
+ *     dice di chi è la palla — non una scelta di gusto (`design/L0 - Sistema`);
+ *   - **le ombre.** Restano neutre. Provate il 19 settembre 2026 in cinque tinte a
+ *     luminanza identica, e a quelle opacità — 48%, 12%, 32% su pochi pixel di contorno —
+ *     la differenza non si vede. Tingerle per tema sarebbe lavoro che non arriva a schermo;
+ *   - **le geometrie.** Niente si sposta di un pixel.
+ *
+ * Le quote di luminosità sono **le stesse per tutti**: cambia la tinta, non quanto è
+ * chiaro. Così due temi si confrontano davvero, e nessuno vince perché è più contrastato.
+ * L'inchiostro porta la tinta a un terzo del fondo: abbastanza da appartenergli, poco
+ * abbastanza da restare inchiostro.
+ *
+ * Si sceglie nel profilo — `preferences.txt`, `settings`, riga `colori:` — e vale in
+ * chiaro e in scuro insieme: un tema è una tinta, non un materiale.
+ *
+ * **Generato**, non scritto a mano: `strumenti/genera-temi.py`. Se una tinta va corretta si
+ * corregge lì e si rigenera, o i dodici smettono di essere confrontabili fra loro.
+ */
+
+/* ── ardesia · grigio freddo, il vetro come lo fa il cielo ── */
+:root[data-colori='ardesia'] {
+  --f1: #ced1d4; --f2: #b8bcc1; --f3: #979da5; --f4: #777e88;
+  --inchiostro: #19191a; --inchiostro-tenue: #3c3d3f;
+  --inchiostro-corpo: #4b4c4e; --inchiostro-fioco: #5c5e61;
+}
+:root[data-tema='scuro'][data-colori='ardesia'] {
+  --f1: #34373c; --f2: #282b2e; --f3: #1c1e21; --f4: #131416;
+  --inchiostro: #f2f2f3; --inchiostro-tenue: #d3d3d5;
+  --inchiostro-corpo: #c0c2c3; --inchiostro-fioco: #a6a8aa;
+}
+
+/* ── cenere · grigio caldo, la temperatura della moodboard ── */
+:root[data-colori='cenere'] {
+  --f1: #d4d1ce; --f2: #c1bcb9; --f3: #a49e98; --f4: #877f78;
+  --inchiostro: #1a1919; --inchiostro-tenue: #3e3d3c;
+  --inchiostro-corpo: #4e4c4b; --inchiostro-fioco: #605e5c;
+}
+:root[data-tema='scuro'][data-colori='cenere'] {
+  --f1: #3b3835; --f2: #2e2b29; --f3: #201e1d; --f4: #161413;
+  --inchiostro: #f3f2f2; --inchiostro-tenue: #d5d4d3;
+  --inchiostro-corpo: #c3c2c1; --inchiostro-fioco: #aaa8a7;
+}
+
+/* ── salvia · il verde del documento, tornato di sua volontà ── */
+:root[data-colori='salvia'] {
+  --f1: #ced4ce; --f2: #b8c1b8; --f3: #97a597; --f4: #778877;
+  --inchiostro: #191a19; --inchiostro-tenue: #3c3f3c;
+  --inchiostro-corpo: #4b4e4b; --inchiostro-fioco: #5c615c;
+}
+:root[data-tema='scuro'][data-colori='salvia'] {
+  --f1: #343c34; --f2: #282e28; --f3: #1c211c; --f4: #131613;
+  --inchiostro: #f2f3f2; --inchiostro-tenue: #d3d5d3;
+  --inchiostro-corpo: #c0c3c0; --inchiostro-fioco: #a6aaa6;
+}
+
+/* ── nebbia · quasi neutro, un soffio di azzurro ── */
+:root[data-colori='nebbia'] {
+  --f1: #cfd1d3; --f2: #babdbf; --f3: #9a9fa2; --f4: #7a8085;
+  --inchiostro: #191a1a; --inchiostro-tenue: #3c3d3e;
+  --inchiostro-corpo: #4b4d4e; --inchiostro-fioco: #5d5f60;
+}
+:root[data-tema='scuro'][data-colori='nebbia'] {
+  --f1: #36383a; --f2: #2a2c2d; --f3: #1d1f20; --f4: #141515;
+  --inchiostro: #f2f2f2; --inchiostro-tenue: #d3d4d4;
+  --inchiostro-corpo: #c1c2c3; --inchiostro-fioco: #a7a8a9;
+}
+
+/* ── sabbia · caldo chiaro, luce di pomeriggio ── */
+:root[data-colori='sabbia'] {
+  --f1: #d7d3cc; --f2: #c5bfb5; --f3: #aaa192; --f4: #8f8470;
+  --inchiostro: #1b1a18; --inchiostro-tenue: #403e3b;
+  --inchiostro-corpo: #504d49; --inchiostro-fioco: #625f5b;
+}
+:root[data-tema='scuro'][data-colori='sabbia'] {
+  --f1: #3f3a31; --f2: #312d26; --f3: #22201b; --f4: #171512;
+  --inchiostro: #f3f2f2; --inchiostro-tenue: #d5d4d2;
+  --inchiostro-corpo: #c4c2bf; --inchiostro-fioco: #aca9a5;
+}
+
+/* ── lavanda · il malva del primo riferimento ── */
+:root[data-colori='lavanda'] {
+  --f1: #d2cdd5; --f2: #bfb7c3; --f3: #a195a7; --f4: #83748b;
+  --inchiostro: #1a191a; --inchiostro-tenue: #3e3b3f;
+  --inchiostro-corpo: #4d4a4f; --inchiostro-fioco: #5f5c61;
+}
+:root[data-tema='scuro'][data-colori='lavanda'] {
+  --f1: #3a333d; --f2: #2d272f; --f3: #201c21; --f4: #151316;
+  --inchiostro: #f2f2f3; --inchiostro-tenue: #d4d2d5;
+  --inchiostro-corpo: #c2c0c4; --inchiostro-fioco: #a9a6ab;
+}
+
+/* ── marea · il verde-azzurro di Eclisse ── */
+:root[data-colori='marea'] {
+  --f1: #ccd4d6; --f2: #b5c2c4; --f3: #93a5a9; --f4: #71898e;
+  --inchiostro: #191a1a; --inchiostro-tenue: #3b3f3f;
+  --inchiostro-corpo: #4a4e4f; --inchiostro-fioco: #5b6162;
+}
+:root[data-tema='scuro'][data-colori='marea'] {
+  --f1: #323c3e; --f2: #272f30; --f3: #1b2122; --f4: #121617;
+  --inchiostro: #f2f3f3; --inchiostro-tenue: #d2d5d5;
+  --inchiostro-corpo: #c0c3c4; --inchiostro-fioco: #a5aaab;
+}
+
+/* ── rame · terracotta, il più caldo dei dodici ── */
+:root[data-colori='rame'] {
+  --f1: #d8cfcb; --f2: #c6bab3; --f3: #ac9a91; --f4: #917a6e;
+  --inchiostro: #1b1918; --inchiostro-tenue: #403c3a;
+  --inchiostro-corpo: #504b49; --inchiostro-fioco: #635d5a;
+}
+:root[data-tema='scuro'][data-colori='rame'] {
+  --f1: #403530; --f2: #312925; --f3: #231d1a; --f4: #171312;
+  --inchiostro: #f3f2f2; --inchiostro-tenue: #d6d3d2;
+  --inchiostro-corpo: #c5c1bf; --inchiostro-fioco: #aca7a4;
+}
+
+/* ── bosco · verde profondo, più scuro che vivo ── */
+:root[data-colori='bosco'] {
+  --f1: #ccd7d0; --f2: #b5c5bb; --f3: #92aa9c; --f4: #708f7d;
+  --inchiostro: #181b19; --inchiostro-tenue: #3b403d;
+  --inchiostro-corpo: #49504c; --inchiostro-fioco: #5b625e;
+}
+:root[data-tema='scuro'][data-colori='bosco'] {
+  --f1: #313f37; --f2: #26312a; --f3: #1b221e; --f4: #121714;
+  --inchiostro: #f2f3f2; --inchiostro-tenue: #d2d5d3;
+  --inchiostro-corpo: #bfc4c1; --inchiostro-fioco: #a5aca8;
+}
+
+/* ── inchiostro · neutro puro: nessuna temperatura ── */
+:root[data-colori='inchiostro'] {
+  --f1: #d1d1d1; --f2: #bdbdbd; --f3: #9e9e9e; --f4: #808080;
+  --inchiostro: #1a1a1a; --inchiostro-tenue: #3d3d3d;
+  --inchiostro-corpo: #4c4c4c; --inchiostro-fioco: #5e5e5e;
+}
+:root[data-tema='scuro'][data-colori='inchiostro'] {
+  --f1: #383838; --f2: #2b2b2b; --f3: #1f1f1f; --f4: #141414;
+  --inchiostro: #f2f2f2; --inchiostro-tenue: #d4d4d4;
+  --inchiostro-corpo: #c2c2c2; --inchiostro-fioco: #a8a8a8;
+}
+
+/* ── argilla · rosso spento, mattone lavato ── */
+:root[data-colori='argilla'] {
+  --f1: #d5cdce; --f2: #c2b7b8; --f3: #a69698; --f4: #8a7577;
+  --inchiostro: #1a1919; --inchiostro-tenue: #3f3c3c;
+  --inchiostro-corpo: #4f4a4b; --inchiostro-fioco: #615c5c;
+}
+:root[data-tema='scuro'][data-colori='argilla'] {
+  --f1: #3d3434; --f2: #2f2828; --f3: #211c1d; --f4: #161313;
+  --inchiostro: #f3f2f2; --inchiostro-tenue: #d5d2d3;
+  --inchiostro-corpo: #c3c0c0; --inchiostro-fioco: #aba6a6;
+}
+
+/* ── brina · azzurro pallido, il più freddo ── */
+:root[data-colori='brina'] {
+  --f1: #cdd3d6; --f2: #b6c0c3; --f3: #94a3a8; --f4: #73868c;
+  --inchiostro: #191a1a; --inchiostro-tenue: #3b3e3f;
+  --inchiostro-corpo: #4a4e4f; --inchiostro-fioco: #5b6061;
+}
+:root[data-tema='scuro'][data-colori='brina'] {
+  --f1: #323b3e; --f2: #272e30; --f3: #1c2022; --f4: #121516;
+  --inchiostro: #f2f2f3; --inchiostro-tenue: #d2d4d5;
+  --inchiostro-corpo: #c0c3c4; --inchiostro-fioco: #a5aaab;
+}
+

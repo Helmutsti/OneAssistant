@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  a { color: #4E6B54; text-decoration: none; }
+  a:hover { color: #37502C; }
+</style>
+<link rel="stylesheet" href="./liquid-glass.css">
+<link href="https://cdn.jsdelivr.net/npm/lucide-static@0.454.0/font/lucide.css" rel="stylesheet">
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:52px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L2</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 2 · la primitiva · la declinano gli altri componenti</div>
+      </div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">BUBBLE</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:38em;line-height:1.55">L'unico contenitore del sistema. Non è «la card dei task»: è la forma con cui qualsiasi cosa <em>nostra</em> diventa leggibile — un task, un chip, il cassetto, la trascrizione della tua voce. Una sola primitiva, tre taglie, quattro stati e sette facce. Quello che non è nostro non è una bolla, ed è uno solo: il mondo che arriva.</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">la primitiva di L2<br>sistema (L0): come si comporta<br>moodDESK (L1): come appare<br>temi (L1): di che materiale<br>bubble: di cosa è fatta</div>
+  </div>
+
+  <div style="width:1440px;border-radius:24px;padding:36px 40px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#9AA096;margin-bottom:20px">La definizione</div>
+    <div style="font-size:64px;font-weight:500;letter-spacing:-0.04em;line-height:1">UNA BOLLA È UN PEZZO<br>DI MONDO CIRCOSCRITTO</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:30px;font-size:16.5px;line-height:1.6;color:#D6D4CC">
+      <div><strong style="color:#F4F3EE;font-weight:600">Contiene sempre tre cose.</strong> Di cosa si tratta, da dove viene, cosa ci si può fare. Se una delle tre sta fuori dal bordo, non è una bolla: è una scritta flottante.</div>
+      <div><strong style="color:#F4F3EE;font-weight:600">Non contiene altre bolle.</strong> Un vetro non si annida in un vetro. Dentro una bolla ci sono testo, dati, anteprime desaturate — mai un secondo contenitore satinato con un suo bordo.</div>
+      <div><strong style="color:#F4F3EE;font-weight:600">Cambia taglia, non natura.</strong> Un chip nella Sidebar e un task al centro sono la stessa bolla a due livelli di contrazione: stesso materiale, stessa famiglia di raggi, stesso ordine interno.</div>
+    </div>
+  </div>
+
+
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+      <div>
+        <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">La bolla canonica · nove decisioni in un disegno solo</div>
+        <div style="font-size:16px;color:#4A4E48;max-width:54em;line-height:1.5;margin-top:8px">Questo è l&rsquo;esemplare: taglia Task, stato <span style="font-family:'IBM Plex Mono',monospace;font-size:0.92em">T_ATTESA · di te</span>, tutte le fasce presenti. Ogni scelta che abbiamo preso è numerata qui sopra e spiegata accanto. Qualunque bolla, in qualunque altro componente L2, è questa con qualcosa in meno — mai con qualcosa in più.</div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4A4E48;text-align:right;line-height:1.7">un esemplare, non cinque<br>tre fasce, mai invertite<br>si perde dall&rsquo;alto verso il basso</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:764px 1fr;gap:24px;width:1440px;align-items:stretch">
+
+      <div style="position:relative;border-radius:24px;overflow:hidden;padding:66px 150px;box-sizing:border-box;display:flex;align-items:center">
+        <div style="position:absolute;inset:0;background:radial-gradient(42% 52% at 10% 14%,#8FA487,transparent 66%),radial-gradient(40% 46% at 94% 10%,#E0B871,transparent 70%),radial-gradient(52% 60% at 84% 96%,#3E4A3C,transparent 68%),radial-gradient(36% 40% at 44% 74%,#C96F4A,transparent 72%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div>
+        <div style="position:absolute;left:34px;top:196px;width:132px;height:132px;border-radius:50%;background:linear-gradient(140deg,#2B3128,#5D6B57)"></div>
+        <div style="position:absolute;right:28px;top:56px;width:104px;height:104px;border-radius:50%;background:linear-gradient(140deg,#F0E2C4,#C79A4E)"></div>
+
+        <div style="position:relative;width:464px;border-radius:26px;padding:20px 22px;box-sizing:border-box;color:#1A1C19;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
+          <span style="position:absolute;right:100%;top:22%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span>
+          <span style="position:absolute;right:calc(100% + 34px);top:22%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">1</span>
+          <span style="position:absolute;right:100%;top:52%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span>
+          <span style="position:absolute;right:calc(100% + 34px);top:52%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">2</span>
+          <span style="position:absolute;right:100%;top:82%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span>
+          <span style="position:absolute;right:calc(100% + 34px);top:82%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">3</span>
+
+          <div style="position:relative;display:flex;align-items:center;gap:9px;margin-bottom:13px">
+            <span style="position:absolute;left:100%;top:50%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span><span style="position:absolute;left:calc(100% + 34px);top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">4</span>
+            <i class="icon-mail" style="font-size:19px;line-height:1;color:#8A5A17"></i>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17">Bozza pronta</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;margin-left:auto;color:#4A4E48">2 min</div>
+          </div>
+          <div style="position:relative;font-family:Manrope,sans-serif;font-size:27px;font-weight:600;letter-spacing:-0.035em;line-height:1.1"><span style="position:absolute;left:100%;top:50%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span><span style="position:absolute;left:calc(100% + 34px);top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">5</span>La v3 per Elena</div>
+          <div style="position:relative;font-size:15.5px;font-weight:400;color:#4A4E48;line-height:1.5;margin-top:10px"><span style="position:absolute;left:100%;top:50%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span><span style="position:absolute;left:calc(100% + 34px);top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">6</span>Con venerdì dalle 15 già bloccato. Aspetta solo la tua parola: non parte da sé.</div>
+          <div style="position:relative;height:1px;margin:20px -22px 0;background:rgba(26,28,25,0.11);box-shadow:0 1px 0 rgba(255,255,255,0.72)"><span style="position:absolute;left:100%;top:50%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span><span style="position:absolute;left:calc(100% + 34px);top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">7</span></div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin:19px 0 11px">Puoi dire</div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:9px">
+            <span style="position:absolute;left:100%;top:50%;width:34px;height:1px;background:rgba(26,28,25,0.28)"></span><span style="position:absolute;left:calc(100% + 34px);top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">8</span>
+            <div style="display:flex;align-items:baseline;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#5E9566;flex:none;transform:translateY(-1px)"></span><div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:400;letter-spacing:-0.01em;color:#1A1C19">«manda la mail»</div></div>
+            <div style="display:flex;align-items:baseline;gap:10px"><span style="width:9px;flex:none"></span><div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:400;letter-spacing:-0.01em;color:#4A4E48">«leggila»</div></div>
+            <div style="display:flex;align-items:baseline;gap:10px"><span style="width:9px;flex:none"></span><div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:400;letter-spacing:-0.01em;color:#4A4E48">«cambia il venerdì»</div></div>
+            <div style="display:flex;align-items:baseline;gap:10px"><span style="width:9px;flex:none"></span><div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:400;letter-spacing:-0.01em;color:#4A4E48">«dopo»</div></div>
+          </div>
+          <span style="position:absolute;left:22px;bottom:-34px;width:1px;height:26px;background:rgba(26,28,25,0.28)"></span>
+          <span style="position:absolute;left:11px;bottom:-62px;width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">9</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="border-radius:22px;padding:26px 28px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:1fr 1fr;gap:22px 28px">
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">1</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Materiale / liquid glass</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">FILM MULTISTRATO / CENTRO 8% + RIFLESSI<br>BLUR 12 / SAT 1.65 / BRT 1.06</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il film è basso di proposito: dietro si vede il mondo, sfocato e saturo. Non è un rettangolo opaco appoggiato sopra, è vetro attraverso cui passa la luce della scrivania.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">2</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Bordo ottico e riflessi</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">FILO 1px / BIANCO 64% + RIFLESSI INTERNI</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Un filo continuo, riflessi agli angoli e una micro-ombra interna suggeriscono lo spessore del vetro. La luce inferiore chiude il bordo; il centro resta trasparente. Nessun bordo geometrico aggiunto.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">3</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Ombra di galleggiamento</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">0 14px 30px -12px rgba(28,40,32,.32)<br>0 30px 56px -22px rgba(28,40,32,.28)</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Ombra di contatto e due ombre diffuse separano il vetro dal piano. La ricetta è condivisa da chip, bolle e pannelli; non cambia con lo stato.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">4</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Targa · contesto</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">IBM PLEX MONO 10 / 500 / +0.16em<br>ICONA 19px · ETÀ A DESTRA</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Icona di dominio, stato, età: da dove viene e dov&rsquo;è arrivata. <strong style="color:#1A1C19;font-weight:600">È l&rsquo;unico posto in cui vive il colore.</strong> Prima a comparire, ultima a sparire.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">5</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Titolo</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">MANROPE 600 / 27 px / −0.035em<br>INK #1A1C19 SEMPRE</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Semibold, non nero: stacca dalle altre fasce senza diventare un&rsquo;insegna. Una riga, 32 caratteri, l&rsquo;inchiostro non cambia mai con lo stato.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">6</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Corpo</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">MANROPE 400 / 15,5 px / INK 70%<br>MAX 2 RIGHE</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Cosa c&rsquo;è dentro e perché ti riguarda. Facoltativo, tranne quando la bolla è bloccata: lì il perché è obbligatorio.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">7</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Divisore · incisione</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">1px INK 11% + 1px LUCE 72%<br>MARGIN 20px −22px 0</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Ombra sopra, luce sotto: non una riga disegnata, il vetro che ha uno spessore inciso. Da parte a parte, uno solo per bolla, mai sopra il titolo.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">8</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Voce · virgolette basse</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">MANROPE 400 / 16 px<br>« » · MAX 4 FRASI</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Le virgolette sono l&rsquo;affordance: dicono «questa è una cosa che puoi pronunciare». Nessun bottone, in nessuna taglia, in nessuno stato.</div>
+          </div>
+        </div>
+          
+        <div style="display:flex;gap:14px">
+          <span style="width:24px;height:24px;border-radius:50%;background:#1A1C19;color:#F2F1ED;flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;margin-top:2px">9</span>
+          <div>
+            <div style="font-size:16.5px;font-weight:600;letter-spacing:-0.02em;color:#1A1C19">Il pallino verde</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#5A5F58;margin:6px 0 7px;line-height:1.7">CERCHIO 8px · #4E6B54<br>UNO PER BOLLA</div>
+            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Marca la frase che il sistema si aspetta — quella che parte se rispondi «sì». Le altre restano valide, solo meno probabili. Se le uscite sono equivalenti, il pallino non c&rsquo;è.</div>
+          </div>
+        </div>
+        </div>
+        <div style="border-radius:22px;padding:24px 28px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE;flex:1;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:14px">La ricetta, per intero</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.95;color:#D6D4CC">border-radius: 26px&nbsp;&nbsp;<span style="color:#8C9287">/* 20 chip · 26 task · 30 pannello */</span><br>background: var(--liquid-film)<br>backdrop-filter: var(--liquid-optics)<br>box-shadow: var(--liquid-edge)<br>/* ricetta condivisa: liquid-glass.css */<br>padding: 20px 22px&nbsp;&nbsp;<span style="color:#8C9287">/* il divisore lo annulla con −22 */</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+      <div>
+        <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Catalogo dei titoli · colori e icone ammessi</div>
+        <div style="font-size:16px;color:#4A4E48;max-width:54em;line-height:1.5;margin-top:8px">Il titolo è l'unica riga che l'utente legge davvero. <strong style="color:#1A1C19;font-weight:600">L'inchiostro del titolo è sempre <span style="font-family:'IBM Plex Mono',monospace;font-size:14.5px">#1A1C19</span>, in ogni stato</strong>: il colore vive nell'icona e nella targa accanto, mai nelle lettere. Così due bolle di stato diverso restano leggibili allo stesso modo e il colore resta un segnale, non una decorazione.</div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4A4E48;text-align:right;line-height:1.7">max 32 caratteri<br>una riga, mai due<br>mai il nome dell'app</div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.12);overflow:hidden">
+      <div style="display:grid;grid-template-columns:52px 300px 216px 128px 1fr;gap:20px;padding:15px 22px;background:#F2F1EC;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58">
+        <div>Icona</div><div>Titolo</div><div>Asse 2 · stato e forma</div><div>Colore</div><div>Quando</div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:52px 300px 216px 128px 1fr;align-items:center;gap:20px;padding:16px 22px;border-top:1px solid rgba(26,28,25,0.10)">
+        <div style="width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#4E6B541F"><i class="icon-mail" style="font-size:20px;line-height:1;color:#3D5643"></i></div>
+        <div style="font-family:Manrope,sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.03em;color:#1A1C19">Sto scrivendo la v3</div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:11px;height:11px;border-radius:50%;background:#5E9566;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">T_LAVORAZIONE</div></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#4A4E48">#4E6B54<br><span style="color:#6E7269">ink #3D5643</span></div>
+        <div style="font-size:15px;color:#4A4E48;line-height:1.5">Il sistema sta lavorando. È il default: la maggioranza delle bolle vive qui.</div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:52px 300px 216px 128px 1fr;align-items:center;gap:20px;padding:16px 22px;border-top:1px solid rgba(26,28,25,0.10)">
+        <div style="width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#4E6B541F"><i class="icon-mail" style="font-size:20px;line-height:1;color:#3D5643"></i></div>
+        <div style="font-family:Manrope,sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.03em;color:#1A1C19">Mail mandata a Elena</div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:11px;height:11px;border-radius:50%;background:#5E9566;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">T_CONCLUSIONE</div></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#4A4E48">#4E6B54<br><span style="color:#6E7269">ink #3D5643</span></div>
+        <div style="font-size:15px;color:#4A4E48;line-height:1.5">Ha smesso di dover succedere. Sei secondi, poi si contrae in chip; il chip vive 90 s nella Sidebar e poi lascia l’interfaccia. Il task non viene archiviato automaticamente: la sua esecuzione può soltanto produrre informazioni utili per la Memory Engine selettiva dell’utente attivo. Stesso verde: fare e aver fatto sono lo stesso colore — e <em>dentro</em> e <em>fuori</em>, le sue due forme, si disegnano identiche: solo la seconda si può annullare.</div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:52px 300px 216px 128px 1fr;align-items:center;gap:20px;padding:16px 22px;border-top:1px solid rgba(26,28,25,0.10)">
+        <div style="width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#B3762A1F"><i class="icon-mail" style="font-size:20px;line-height:1;color:#8A5A17"></i></div>
+        <div style="font-family:Manrope,sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.03em;color:#1A1C19">La v3 per Elena</div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:11px;height:11px;border-radius:50%;background:#B3762A;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">T_ATTESA &middot; di te</div></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#4A4E48">#B3762A<br><span style="color:#6E7269">ink #8A5A17</span></div>
+        <div style="font-size:15px;color:#4A4E48;line-height:1.5">Serve una tua parola: c&rsquo;è qualcosa di pronto, o una domanda da chiudere. Unica forma che può alzare la voce; mai più di due per schermo.</div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:52px 300px 216px 128px 1fr;align-items:center;gap:20px;padding:16px 22px;border-top:1px solid rgba(26,28,25,0.10)">
+        <div style="width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#8A2E221F"><i class="icon-mail" style="font-size:20px;line-height:1;color:#8A2E22"></i></div>
+        <div style="font-family:Manrope,sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.03em;color:#1A1C19">Firma mancante sul PDF</div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:11px;height:11px;border-radius:50%;background:#8A2E22;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A2E22">T_ATTESA &middot; bloccato</div></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#4A4E48">#8A2E22<br><span style="color:#6E7269">ink #8A2E22</span></div>
+        <div style="font-size:15px;color:#4A4E48;line-height:1.5">Aspetta anche lui, ma non una decisione: una parola per poter ripartire. Il corpo della bolla scrive sempre il perché.</div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:52px 300px 216px 128px 1fr;align-items:center;gap:20px;padding:16px 22px;border-top:1px solid rgba(26,28,25,0.10)">
+        <div style="width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:#8A8D861F"><i class="icon-mail" style="font-size:20px;line-height:1;color:#4A4E48"></i></div>
+        <div style="font-family:Manrope,sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.03em;color:#1A1C19">Rassegna del mattino</div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:11px;height:11px;border-radius:50%;background:#8A8D86;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A4E48">senza colore</div></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#4A4E48">#8A8D86<br><span style="color:#6E7269">ink #4A4E48</span></div>
+        <div style="font-size:15px;color:#4A4E48;line-height:1.5">Due forme lo sono, e non è un caso: <strong style="color:#1A1C19;font-weight:600">T_NUOVO</strong>, che esiste e non chiede ancora niente, e <strong style="color:#1A1C19;font-weight:600">T_ATTESA &middot; di un&rsquo;ora</strong>, che l&rsquo;hai rimandata e torna da sé. Grigio vuol dire non chiede niente — e per una cosa che non chiede, il colore sarebbe una bugia.</div>
+      </div>
+    </div>
+
+
+    <div style="display:flex;align-items:baseline;gap:14px;margin-top:6px">
+      <div style="font-size:20px;font-weight:600;letter-spacing:-0.02em">Come si incrociano</div>
+      <div style="font-size:15px;color:#4A4E48;line-height:1.5;max-width:58em">Le due tabelle sono due assi, non due elenchi alternativi: ogni bolla ha <strong style="color:#1A1C19;font-weight:600">un dominio</strong> (che materia è) e <strong style="color:#1A1C19;font-weight:600">uno stato</strong> (a che punto è). Il dominio sceglie l&rsquo;icona, lo stato ne sceglie il colore — <strong style="color:#1A1C19;font-weight:600">il segno non cambia mai, cambia solo l&rsquo;inchiostro</strong>. Le parole della targa nascono dall&rsquo;incrocio.</div>
+    </div>
+    <div style="width:1440px;border-radius:20px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.12)">
+      <div style="display:grid;grid-template-columns:260px repeat(5,1fr)">
+        <div style="padding:14px 18px;background:#F2F1EC;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58">Dominio ↓ · stato →</div>
+        <div style="background:#F2F1EC;padding:14px 16px;border-left:1px solid rgba(26,28,25,0.10);display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#5E9566;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">T_LAVORAZIONE</div></div><div style="background:#F2F1EC;padding:14px 16px;border-left:1px solid rgba(26,28,25,0.10);display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#5E9566;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">T_CONCLUSIONE</div></div><div style="background:#F2F1EC;padding:14px 16px;border-left:1px solid rgba(26,28,25,0.10);display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#B3762A;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">T_ATTESA &middot; di te</div></div><div style="background:#F2F1EC;padding:14px 16px;border-left:1px solid rgba(26,28,25,0.10);display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#8A2E22;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A2E22">T_ATTESA &middot; bloccato</div></div><div style="background:#F2F1EC;padding:14px 16px;border-left:1px solid rgba(26,28,25,0.10);display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#8A8D86;flex:none"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A4E48">senza colore</div></div>
+        <div style="padding:16px 18px;display:flex;flex-direction:column;gap:5px;background:#F6F5F1">
+          <div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19">La v3 per Elena</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269">mail</div>
+        </div><div style="border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-mail" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Sto scrivendo</div>
+        </div><div style="border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-mail" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Mandata</div>
+        </div><div style="border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-mail" style="font-size:18px;line-height:1;color:#8A5A17"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A5A17">Bozza pronta</div>
+        </div><div style="border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-mail" style="font-size:18px;line-height:1;color:#8A2E22"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A2E22">Indirizzo errato</div>
+        </div><div style="border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-mail" style="font-size:18px;line-height:1;color:#4A4E48"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#4A4E48">Arrivata</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;flex-direction:column;gap:5px;background:#F6F5F1">
+          <div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19">Call con il consiglio</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269">event</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-calendar" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Sto spostando</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-calendar" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Spostata</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-calendar" style="font-size:18px;line-height:1;color:#8A5A17"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A5A17">Conferma tu</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-calendar" style="font-size:18px;line-height:1;color:#8A2E22"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A2E22">Sala occupata</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-calendar" style="font-size:18px;line-height:1;color:#4A4E48"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#4A4E48">Domani</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;flex-direction:column;gap:5px;background:#F6F5F1">
+          <div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19">Contratto Rossi</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269">description</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-file-text" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Sto leggendo</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-file-text" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Pronto</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-file-text" style="font-size:18px;line-height:1;color:#8A5A17"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A5A17">Rivedilo</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-file-text" style="font-size:18px;line-height:1;color:#8A2E22"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A2E22">Serve la firma</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-file-text" style="font-size:18px;line-height:1;color:#4A4E48"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#4A4E48">Archiviato</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;flex-direction:column;gap:5px;background:#F6F5F1">
+          <div style="font-family:Manrope,sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19">Rimborso 240 €</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269">payments</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-banknote" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Sto pagando</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-banknote" style="font-size:18px;line-height:1;color:#3D5643"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5643">Pagato</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-banknote" style="font-size:18px;line-height:1;color:#8A5A17"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A5A17">Autorizza</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-banknote" style="font-size:18px;line-height:1;color:#8A2E22"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A2E22">Carta scaduta</div>
+        </div><div style="border-top:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);padding:16px 18px;display:flex;align-items:center;gap:8px">
+          <i class="icon-banknote" style="font-size:18px;line-height:1;color:#4A4E48"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#4A4E48">In scadenza</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:baseline;gap:14px;margin-top:6px">
+      <div style="font-size:20px;font-weight:600;letter-spacing:-0.02em">Le icone di dominio</div>
+      <div style="font-size:15px;color:#4A4E48;line-height:1.5">Asse 2. <strong style="color:#1A1C19;font-weight:600">Lucide</strong> — tratto uniforme, terminazioni arrotondate — 18–20 px: dice di che materia è la task. Il colore che assume lo decide lo stato, mai il dominio. La famiglia era Material Symbols Rounded 300 fino al 16 settembre 2026 (<span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">L1 - Icone</span>).</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,342px);gap:16px;width:1440px">
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-mail" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">La v3 per Elena</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">mail</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Mail: sempre il destinatario nel titolo, mai l&rsquo;oggetto per esteso.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-calendar" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Call con il consiglio</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">event</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Appuntamenti. L&rsquo;ora sta nella targa, non nel titolo.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-file-text" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Contratto Rossi</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">description</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Documenti. Il nome del file va riscritto in italiano leggibile.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-search" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Fatture di marzo</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">search</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Ricerche: il titolo è la domanda, non il numero di risultati.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-phone" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Elena ha chiamato</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">call</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Telefonate. Chi, non il numero.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-message-circle" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Tre messaggi da Marco</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">forum</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Conversazioni. Il conteggio nel titolo è ammesso solo qui.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-banknote" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Rimborso 240 €</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">payments</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Denaro. La cifra sta sempre nel titolo, valuta per esteso.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-plane-takeoff" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Milano, giovedì</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">flight_takeoff</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Viaggi. Destinazione e giorno, mai il codice volo.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-package" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Pacco in consegna</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">inventory_2</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Spedizioni, ordini, consegne.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-users" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Team di progetto</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">groups</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Persone al plurale. Per una persona sola vince il volto in SYSTEMBAR.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-list-checks" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Quattro cose per oggi</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">checklist</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Liste. Il numero è ammesso, i pallini no.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-mic" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">«scrivi a Elena»</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">mic</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Trascrizione: il titolo è la tua frase, fra virgolette, com&rsquo;è uscita.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-map-pin" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Sei a 12 minuti</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">location_on</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Posizione e tragitti. Vive quasi sempre in PROFILEBAR.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-zap" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Batteria al 14%</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">bolt</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Sistema e dispositivo. La sola famiglia che può nascere senza che tu chieda.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-images" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Foto di sabato</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">photo_library</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Media. L&rsquo;anteprima resta desaturata finché non la nomini.</div>
+        </div>
+      </div>
+      
+      <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 16px;border-radius:14px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+        <div style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(26,28,25,0.06)"><i class="icon-circle-help" style="font-size:19px;line-height:1;color:#3E423C"></i></div>
+        <div style="min-width:0">
+          <div style="font-family:Manrope,sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-0.025em;color:#1A1C19;line-height:1.2">Cos&rsquo;è il TFR</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6E7269;margin-top:5px">help</div>
+          <div style="font-size:13.5px;color:#4A4E48;line-height:1.45;margin-top:6px">Domande a «dimmi». Il titolo è la domanda, la risposta sta nel corpo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:24px 26px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE;display:grid;grid-template-columns:repeat(4,1fr);gap:28px">
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:9px">Lunghezza</div><div style="font-size:15px;line-height:1.55;color:#D6D4CC">32 caratteri, una riga sola. Se non ci sta, il titolo è sbagliato: quel che avanza è contesto e va nella targa.</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:9px">Mai nel titolo</div><div style="font-size:15px;line-height:1.55;color:#D6D4CC">Il nome dell'app, l'ora, lo stato scritto a parole, i puntini di sospensione. Quelle quattro cose hanno già un posto.</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:9px">Un'icona sola</div><div style="font-size:15px;line-height:1.55;color:#D6D4CC">Il dominio, a sinistra della targa. L'icona di stato non si aggiunge: è la stessa icona che cambia colore.</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:9px">Due colori</div><div style="font-size:15px;line-height:1.55;color:#D6D4CC">Su uno schermo intero vivono al massimo due icone colorate. La terza task che chiede attenzione diventa grigia e aspetta il suo turno.</div></div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Tre taglie</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:48em;line-height:1.5">Una sola scala continua: contrarre una bolla significa scendere di taglia perdendo una fascia, non passare a un altro componente. <strong style="color:#1A1C19;font-weight:600">Erano quattro fino al 18 settembre 2026</strong>: la <em>carta</em> serviva ai task nella Notificationbar, e lì i task non ci sono più.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,462px);gap:24px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="position:relative;height:210px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div>
+          <div style="position:relative;display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;box-sizing:border-box;border-radius:20px;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#2A2E28">
+            <i class="icon-folder" style="font-size:18px;line-height:1"></i><div style="font-size:15px;line-height:1">Riordino</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1;letter-spacing:0.06em">128/412</div>
+          </div>
+        </div>
+        <div style="border-radius:18px;padding:18px 20px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+          <div style="font-size:17px;font-weight:600;margin-bottom:8px">1 · Chip</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.08em;color:#5A5F58;margin-bottom:10px">H 30 · R 20 · SOLO CONTESTO</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Resta icona, nome e un dato. Nessuna frase: non si comanda, si nomina. La usa la <strong style="color:#1A1C19;font-weight:600">Sidebar</strong> per tutto quello che hai in mano: quello che lavora, il <strong style="color:#1A1C19;font-weight:600">rimandato</strong> — che al posto del dato porta un&rsquo;ora — e il <strong style="color:#1A1C19;font-weight:600">flusso</strong>, che al posto del dato porta quanti sono.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="position:relative;height:210px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div>
+          <div style="position:relative;width:100%;border-radius:26px;padding:20px 22px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+              <i class="icon-folder" style="font-size:18px;color:#3D5A43;line-height:1"></i>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#3D5A43">Ci sto lavorando · 6 min</div>
+            </div>
+            <div style="font-size:22px;font-weight:600;letter-spacing:-0.035em;line-height:1.2">Riordino dei documenti di Acme</div>
+            <div style="height:3px;border-radius:3px;background:linear-gradient(90deg,#4E6B54 31%,rgba(26,28,25,0.12) 31%);margin-top:14px"></div>
+            <div style="font-size:14.5px;color:#4A4E48;margin-top:11px;line-height:1.5">128 su 412 · niente cancellato</div>
+          </div>
+        </div>
+        <div style="border-radius:18px;padding:18px 20px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+          <div style="font-size:17px;font-weight:600;margin-bottom:8px">2 · Task</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.08em;color:#5A5F58;margin-bottom:10px">W 348–452 · R 26 · CORPO LIBERO</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La taglia della scrivania: corpo con dati o anteprima. Le frasi compaiono solo se ha il fuoco. La usa <strong style="color:#1A1C19;font-weight:600">DESK</strong>.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="position:relative;height:210px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div>
+          <div style="position:relative;width:100%;border-radius:30px;padding:22px 24px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58;margin-bottom:12px">Aperta da te · 09:41</div>
+            <div style="font-size:24px;font-weight:600;letter-spacing:-0.035em;line-height:1.14">Acme — proposta commerciale</div>
+            <div style="margin-top:14px;height:74px;border-radius:16px;background:linear-gradient(140deg,rgba(214,212,204,0.82),rgba(184,182,174,0.82));box-shadow:inset 0 0 0 1px rgba(255,255,255,0.5);padding:14px;box-sizing:border-box;overflow:hidden">
+              <div style="display:flex;align-items:flex-end;gap:8px;height:46px">
+                <div style="width:24px;height:46%;border-radius:4px;background:rgba(26,28,25,0.16)"></div>
+                <div style="width:24px;height:68%;border-radius:4px;background:rgba(26,28,25,0.16)"></div>
+                <div style="width:24px;height:100%;border-radius:4px;background:#4E6B54"></div>
+                <div style="width:24px;height:59%;border-radius:4px;background:rgba(26,28,25,0.16)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="border-radius:18px;padding:18px 20px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
+          <div style="font-size:17px;font-weight:600;margin-bottom:8px">3 · Pannello</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.08em;color:#5A5F58;margin-bottom:10px">W 496–720 · R 30 · CON ANTEPRIMA</div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Quando serve leggere o vedere davvero: contiene un'anteprima desaturata. La taglia del task col fuoco, e di <strong style="color:#1A1C19;font-weight:600">INPUT</strong> in raccolta. Il cassetto <em>non</em> la usa: non è un pannello, è una pila di bolle dentro un contenitore che non si vede.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div style="width:1440px;border-radius:20px;padding:26px 28px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.12);display:grid;grid-template-columns:400px 1fr;gap:34px;align-items:start">
+      <div>
+        <div style="font-size:20px;font-weight:600;letter-spacing:-0.025em;margin-bottom:10px">Una bolla sola può percorrerle tutte?</div>
+        <div style="font-size:15px;color:#4A4E48;line-height:1.55">Sì, ma per una strada sola e mai a salti: <strong style="color:#1A1C19;font-weight:600">un gradino alla volta</strong>. Salire ha bisogno di una causa dichiarata — sei tu a promuoverla, o è lei a prendere il fuoco. Scendere ne ha una sola: si è esaurita. Il viaggio più lungo è Task → Pannello → Chip: quella che apri davvero, e che poi si congeda.<br><br>Il gradino che manca da questo elenco è quello prima di tutti, e non è un gradino: <strong style="color:#1A1C19;font-weight:600">una bolla nasce già task</strong>. Prima di lei non c&rsquo;era una bolla più piccola — c&rsquo;era una riga nel cassetto, che è una bolla ma non è tua, o non c&rsquo;era niente.<br><br>Le nascite sono <strong style="color:#1A1C19;font-weight:600">due</strong>, e si somigliano solo da fuori: una la chiedi tu, l&rsquo;altra è il <strong style="color:#1A1C19;font-weight:600">fork</strong> — il sistema che apre una cosa perché gliene serviva un&rsquo;altra prima.</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.05em;color:#6E7269;line-height:1.8;margin-top:14px">NESSUN SALTO: CHIP → PANNELLO NON ESISTE<br>IL CHIP È L&rsquo;UNICO CAPOLINEA<br>OGNI PASSAGGIO HA UNA CAUSA DICHIARABILE</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.06em;color:#1A1C19;width:132px;flex:none">niente → Task</div>
+          <div style="flex:1;height:1px;background:rgba(26,28,25,0.14);position:relative"><span style="position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-radius:50%;background:#5E9566"></span></div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.5;width:470px;flex:none"><strong style="color:#1A1C19;font-weight:600">Nascita, non promozione.</strong> Dici «me ne occupo» su una riga del cassetto, e una bolla comincia a esistere. La riga resta dov&rsquo;era: il mondo non si consuma quando lo guardi.</div>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.06em;color:#1A1C19;width:132px;flex:none">niente → Task</div>
+          <div style="flex:1;height:1px;background:rgba(26,28,25,0.14);position:relative"><span style="position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-radius:50%;background:#5E9566"></span></div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.5;width:470px;flex:none"><strong style="color:#1A1C19;font-weight:600">Il fork: una nascita che non hai chiesto.</strong> Il sistema, lavorando, scopre che gli serve prima un&rsquo;altra cosa e apre una bolla sua, accanto a quella che l&rsquo;ha generata. &Egrave; l&rsquo;unica che compare senza una tua parola, quindi &egrave; l&rsquo;unica che deve dire <em>da dove viene</em> &mdash; e come lo dica non &egrave; ancora disegnato.</div>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.06em;color:#1A1C19;width:132px;flex:none">Task → Pannello</div>
+          <div style="flex:1;height:1px;background:rgba(26,28,25,0.14);position:relative"><span style="position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-radius:50%;background:#5E9566"></span></div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.5;width:470px;flex:none">Fuoco con contenuto da vedere: la nomini e dentro c&rsquo;è un documento, un&rsquo;immagine, una lista lunga. Cresce per mostrarlo, non per importanza.</div>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.06em;color:#1A1C19;width:132px;flex:none">Pannello → Task</div>
+          <div style="flex:1;height:1px;background:rgba(26,28,25,0.14);position:relative"><span style="position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-radius:50%;background:#B3762A"></span></div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.5;width:470px;flex:none">Perde il fuoco: un&rsquo;altra bolla viene nominata. Torna alla sua misura, non alla sua posizione — quella non si tocca.</div>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.06em;color:#1A1C19;width:132px;flex:none">Task → Chip</div>
+          <div style="flex:1;height:1px;background:rgba(26,28,25,0.14);position:relative"><span style="position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-radius:50%;background:#8A8D86"></span></div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.5;width:470px;flex:none">Esaurimento: ha finito, sei secondi e si contrae nella Sidebar. Perde le fasce dall&rsquo;alto verso il basso.</div>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.06em;color:#1A1C19;width:132px;flex:none">Chip → Task</div>
+          <div style="flex:1;height:1px;background:rgba(26,28,25,0.14);position:relative"><span style="position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-radius:50%;background:#5E9566"></span></div>
+          <div style="font-size:14.5px;color:#4A4E48;line-height:1.5;width:470px;flex:none">La nomini di nuovo: risale esattamente dove stava, con le fasce che aveva. È l&rsquo;unica risalita dal capolinea.</div>
+        </div>
+      </div>
+    </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Tutto quello che si legge è una bolla</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5;margin-top:8px">Non c&rsquo;è un secondo contenitore, e dal 19 settembre 2026 non c&rsquo;è più nemmeno un&rsquo;eccezione di materiale.</div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14);display:flex;align-items:baseline;gap:26px;margin-top:18px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17;flex:none;padding-top:2px;width:210px">La cartina &egrave; caduta<br>19 settembre 2026</div>
+      <div style="font-size:16px;line-height:1.6;color:#3E423C">Qui c&rsquo;era una quarta forma: la <strong style="color:#1A1C19;font-weight:600">cartina</strong>, il contenitore delle cose arrivate dal mondo — opaca, «perch&eacute; non &egrave; nostra». Doveva essere «la differenza che regge tutto il resto». Non lo era.<br><br><strong style="color:#1A1C19;font-weight:600">Il materiale non era il posto dove dirlo.</strong> Una cosa arrivata da fuori resta di qualcun altro anche vista attraverso il vetro: l&rsquo;opacit&agrave; non aggiungeva niente al significato, e toglieva una cosa vera — la riga del cassetto sembrava di un altro sistema. A dire che non &egrave; tua restano due cose, e sono pi&ugrave; solide: <strong style="color:#1A1C19;font-weight:600">il contenuto</strong>, che &egrave; mittente e oggetto veri e non si riscrive mai, e <strong style="color:#1A1C19;font-weight:600">il comportamento</strong> — non migra, non ha stato, resta dov&rsquo;&egrave; anche dopo che l&rsquo;hai presa.<br><br>Con lei &egrave; caduta anche l&rsquo;altra deroga alla legge zero: la <strong style="color:#1A1C19;font-weight:600">PROFILEBAR &egrave; una bolla</strong>. Ne resta una sola, la SYSTEMBAR, che non ha contenitore perch&eacute; non &egrave; un task ma la macchina che si dichiara (<span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">L0 - Sistema</span>).</div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE;margin-top:16px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.05em;line-height:2">UNA SOLA FAMIGLIA DI VETRO: STESSO FILM, STESSO BORDO, STESSE OMBRE<br>CHI E COSA, VERI: MAI RISCRITTI DA LEI<br>QUANDO LA PRENDI, LA RIGA RESTA E NASCE UNA BOLLA</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Chi la declina, e come</div>
+      <div style="font-size:16px;color:#4A4E48">Sette componenti, sei che la usano. Solo la SYSTEMBAR resta a inchiostro diretto. Nessuno la reinventa: scelgono taglia e fasce &mdash; e dal 18 settembre 2026 la NOTIFICATIONBAR ne usa <em>una sola</em>, per tenerci dentro delle righe.</div>
+    </div>
+
+    <div style="width:1440px;border-radius:24px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 12px 30px rgba(30,36,30,0.08)">
+      <div style="display:grid;grid-template-columns:180px 150px 1fr 1fr">
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.10);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Componente</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Taglia</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Fasce usate</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Deroga concessa</div>
+
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:16px;font-weight:500">DESK</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C">Task → Pannello</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Contesto + corpo; le frasi solo con il fuoco</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Posizione libera e sovrapposizione di bordo (legge 09)</div>
+
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:16px;font-weight:500">NOTIFICATIONBAR</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C">Task</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Una riga del cassetto <strong style="color:#1A1C19;font-weight:600">è una bolla</strong>: contesto e corpo, nessuna frase</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Nessuna. Che il contenuto non sia tuo lo dicono il testo e il comportamento, mai il materiale</div>
+
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:16px;font-weight:500">SIDEBAR</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C">Chip</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Solo contesto, su una riga</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Altezza fissa e padding 0/14</div>
+
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:16px;font-weight:500">INPUT</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C">Task → Pannello</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Corpo + frasi; nessun contesto — il contesto è la tua voce</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Il punto d'ascolto sta fuori dal bordo, a sinistra</div>
+
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:16px;font-weight:500;color:#8A5A17">SYSTEMBAR</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#8A5A17">Nessuna</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Inchiostro diretto sul fondo</div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">È la sola rimasta senza bolla: non è un task, è la macchina che si dichiara</div>
+
+        <div style="padding:18px 24px;font-size:16px;font-weight:500;color:#8A5A17">PROFILEBAR</div>
+        <div style="padding:18px 24px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#8A5A17">Task</div>
+        <div style="padding:18px 24px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Contesto su una riga: quando, dove, chi</div>
+        <div style="padding:18px 24px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;line-height:1.5">Si stringe sul contenuto e non si allarga sulla riga che la contiene</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Sei facce</div>
+      <div style="font-size:16px;color:#4A4E48">Cambia il riempimento e la targa di contesto, non la forma né il bordo. Quattro sono stati del modello; <em>a fuoco</em> è un momento dell’interfaccia e <em>esaurita</em> è un passaggio — stanno qui perché si vedono, non perché siano la stessa cosa.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:20px;width:1440px">
+      <div>
+        <div style="position:relative;height:106px;border-radius:22px;overflow:hidden;padding:16px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(52% 62% at 14% 18%,#8FA487,transparent 68%),radial-gradient(48% 54% at 92% 10%,#E0B871,transparent 70%),radial-gradient(58% 66% at 82% 96%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;height:74px;border-radius:20px;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)"></div></div>
+        <div style="font-size:15.5px;font-weight:600;margin-top:12px">Senza colore</div>
+        <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Film --liquid-film, targa neutra, nessuna frase. È T_NUOVO, ed è anche il rimandato.</div>
+      </div>
+      <div>
+        <div style="position:relative;height:106px;border-radius:22px;overflow:hidden;padding:16px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(52% 62% at 14% 18%,#8FA487,transparent 68%),radial-gradient(48% 54% at 92% 10%,#E0B871,transparent 70%),radial-gradient(58% 66% at 82% 96%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;height:74px;border-radius:20px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)"></div></div>
+        <div style="font-size:15.5px;font-weight:600;margin-top:12px">A fuoco</div>
+        <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Film --liquid-focus più denso, frasi visibili. Bordo e ombra condivisi. Non è uno stato: è UI_FOCUS.</div>
+      </div>
+      <div>
+        <div style="position:relative;height:106px;border-radius:22px;overflow:hidden;padding:16px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(52% 62% at 14% 18%,#8FA487,transparent 68%),radial-gradient(48% 54% at 92% 10%,#E0B871,transparent 70%),radial-gradient(58% 66% at 82% 96%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;height:74px;border-radius:20px;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:flex-start;gap:8px;padding:14px 16px;box-sizing:border-box"><span style="width:8px;height:8px;border-radius:50%;background:#B3762A;flex:none;margin-top:3px"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A5A17">Bozza pronta</div></div></div>
+        <div style="font-size:15.5px;font-weight:600;margin-top:12px">T_ATTESA &middot; di te</div>
+        <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Targa ambra in contesto, la frase è già scritta.</div>
+      </div>
+      <div>
+        <div style="position:relative;height:106px;border-radius:22px;overflow:hidden;padding:16px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(52% 62% at 14% 18%,#8FA487,transparent 68%),radial-gradient(48% 54% at 92% 10%,#E0B871,transparent 70%),radial-gradient(58% 66% at 82% 96%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;height:74px;border-radius:20px;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);overflow:hidden"><div style="position:absolute;left:18px;right:18px;bottom:20px;height:3px;border-radius:3px;background:linear-gradient(90deg,#4E6B54 38%,rgba(26,28,25,0.12) 38%)"></div></div></div>
+        <div style="font-size:15.5px;font-weight:600;margin-top:12px">T_LAVORAZIONE</div>
+        <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Linea salvia nel corpo, bordo che pulsa ogni 4 s.</div>
+      </div>
+      <div>
+        <div style="position:relative;height:106px;border-radius:22px;overflow:hidden;padding:16px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(52% 62% at 14% 18%,#8FA487,transparent 68%),radial-gradient(48% 54% at 92% 10%,#E0B871,transparent 70%),radial-gradient(58% 66% at 82% 96%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;height:74px;border-radius:20px;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:flex-start;gap:8px;padding:14px 16px;box-sizing:border-box"><span style="width:8px;height:8px;border-radius:50%;background:#8A2E22;flex:none;margin-top:3px"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8A2E22">Serve la firma</div></div></div>
+        <div style="font-size:15.5px;font-weight:600;margin-top:12px">T_ATTESA &middot; bloccato</div>
+        <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Targa rosso terra e il motivo scritto nel corpo.</div>
+      </div>
+      <div>
+        <div style="position:relative;height:106px;border-radius:22px;overflow:hidden;padding:16px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(52% 62% at 14% 18%,#8FA487,transparent 68%),radial-gradient(48% 54% at 92% 10%,#E0B871,transparent 70%),radial-gradient(58% 66% at 82% 96%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;height:74px;border-radius:20px;background:var(--liquid-quiet);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)"></div></div>
+        <div style="font-size:15.5px;font-weight:600;margin-top:12px">Esaurita &rarr; chip</div>
+        <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Film --liquid-quiet più trasparente, perde le fasce e si contrae in chip.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Il movimento &middot; soap bubbles</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:54em;line-height:1.5">I task si comportano come bolle di sapone su una superficie d&rsquo;acqua: hanno volume, si fanno spazio a vicenda, non si attraversano mai. <strong style="color:#1A1C19;font-weight:600">Era un documento a s&eacute;</strong>, ed &egrave; rientrato qui il 18 settembre 2026: come si muove un componente non &egrave; un altro componente.</div>
+    </div>
+  </div>
+
+
+  <div style="width:1440px;border-radius:24px;padding:40px 44px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#9AA096;margin-bottom:20px">Il principio</div>
+    <div style="font-size:76px;font-weight:500;letter-spacing:-0.045em;line-height:0.96">LE BOLLE SI FANNO<br>SPAZIO A VICENDA</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:32px;font-size:16.5px;line-height:1.6;color:#D6D4CC">
+      <div><strong style="color:#F4F3EE;font-weight:600">Occupano volume, non celle.</strong> Una bolla non sta in una posizione assegnata: sta dove c'è spazio. Se un'altra cresce, si allontana; se un'altra sparisce, si riavvicina — ma solo quando il movimento ha una causa.</div>
+      <div><strong style="color:#F4F3EE;font-weight:600">Non si attraversano mai.</strong> Nessuna bolla passa sopra un'altra durante un movimento: si spostano, si comprimono leggermente, ruotano attorno. La sovrapposizione di bordo è ammessa a riposo, la collisione in movimento no.</div>
+      <div><strong style="color:#F4F3EE;font-weight:600">Nessun movimento senza causa.</strong> Ogni spostamento ha un motivo dichiarabile a parole: è nata una bolla, ne stai nominando una, una si è esaurita. Niente respiro decorativo, niente galleggiamento perpetuo.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Nascita · l'onda</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:48em;line-height:1.5">Una bolla nuova non appare sopra le altre: entra nella superficie e le sposta, come un corpo che entra nell'acqua. Lo spostamento è piccolo — 12 px al massimo — e decresce con la distanza.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,456px);gap:36px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58">0 ms · prima</div>
+        <div style="width:456px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#A2A79F);position:relative">
+          <div style="position:absolute;left:36px;top:46px;width:200px;height:96px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:264px;top:120px;width:158px;height:84px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:78px;top:180px;width:172px;height:80px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Tre bolle a riposo, ferme. Nessuna animazione di attesa.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">0–180 ms · l'onda</div>
+        <div style="width:456px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#A2A79F);position:relative">
+          <div style="position:absolute;left:206px;top:104px;width:140px;height:140px;border-radius:50%;border:1.5px dashed rgba(179,118,42,0.75)"></div>
+          <div style="position:absolute;left:246px;top:144px;width:60px;height:60px;border-radius:50%;background:rgba(251,251,249,0.62);border:1px solid rgba(255,255,255,0.9);box-shadow:0 10px 22px rgba(30,36,30,0.16)"></div>
+          <div style="position:absolute;left:30px;top:42px;width:200px;height:96px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:276px;top:112px;width:158px;height:84px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:70px;top:190px;width:172px;height:80px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:36px;bottom:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:rgba(26,28,25,0.6)">−6 / −8 / −12 PX, IN DIREZIONE OPPOSTA AL PUNTO DI NASCITA</div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La bolla nuova comincia al 40% della sua scala e cresce; le vicine si allontanano lungo la retta che le unisce al punto di nascita. Le più vicine si spostano di più.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3D5A43">180–520 ms · assestamento</div>
+        <div style="width:456px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#A2A79F);position:relative">
+          <div style="position:absolute;left:32px;top:44px;width:200px;height:96px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:272px;top:116px;width:158px;height:84px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:74px;top:186px;width:172px;height:80px;border-radius:22px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 34px rgba(30,36,30,0.18)"></div>
+          <div style="position:absolute;left:196px;top:96px;width:64px;height:64px;border-radius:20px;background:rgba(251,251,249,0.86);border:1px solid rgba(255,255,255,0.92);box-shadow:0 18px 38px rgba(30,36,30,0.22);display:flex;align-items:center;justify-content:center"><i class="icon-mail" style="font-size:22px;color:#3D5A43;line-height:1"></i></div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Le vicine <strong style="color:#1A1C19;font-weight:600">non tornano al punto di partenza</strong>: restano dove l'onda le ha lasciate, con un rientro del 40%. La scrivania ha una nuova configurazione, non un rimbalzo.</div>
+      </div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:14.5px;line-height:1.55;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Curva</strong><br><span style="font-family:'IBM Plex Mono',monospace;font-size:13px">cubic-bezier(.22,1,.36,1)</span>: parte veloce e si spegne. Nessun rimbalzo elastico — l'acqua non rimbalza.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Ritardo a cascata</strong><br>Ogni vicina parte 40 ms dopo la precedente, in ordine di distanza. È quello che fa leggere il movimento come un'onda e non come uno scatto simultaneo.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Nessun suono, nessun lampo</strong><br>La nascita non ha suono né bordo che pulsa. Se il task aspetta te, lo dice la barra ambra — non il movimento.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Dove nasce</strong><br>Nel punto più libero della scrivania, non al centro. Una bolla nasce dove c'è posto, come una cosa appoggiata su un tavolo occupato.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Fuoco · quando parli di una bolla</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:48em;line-height:1.5">Appena INPUT riconosce di quale task stai parlando, quella bolla diventa la main: cresce, si porta verso il centro e mostra più cose. Le altre cedono spazio e si spingono verso i bordi — senza rimpicciolirsi.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:20px 40px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58">Prima · quattro bolle pari</div>
+        <div style="width:700px;height:400px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#A2A79F);position:relative">
+          <div style="position:absolute;left:44px;top:52px;width:250px;height:126px;border-radius:24px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px rgba(30,36,30,0.18);padding:16px;box-sizing:border-box">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Aperta da te</div>
+            <div style="font-size:18px;font-weight:200;letter-spacing:-0.025em;margin-top:8px;line-height:1.2">Proposta Acme</div>
+          </div>
+          <div style="position:absolute;left:330px;top:106px;width:216px;height:112px;border-radius:24px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px rgba(30,36,30,0.18);padding:16px;box-sizing:border-box">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#3D5A43">Ci lavoro</div>
+            <div style="font-size:18px;font-weight:200;letter-spacing:-0.025em;margin-top:8px;line-height:1.2">Riordino Acme</div>
+          </div>
+          <div style="position:absolute;left:96px;top:230px;width:230px;height:112px;border-radius:24px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px rgba(30,36,30,0.18);padding:16px;box-sizing:border-box">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Alle 15:30</div>
+            <div style="font-size:18px;font-weight:200;letter-spacing:-0.025em;margin-top:8px;line-height:1.2">Revisione</div>
+          </div>
+          <div style="position:absolute;left:452px;top:262px;width:206px;height:104px;border-radius:24px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px rgba(30,36,30,0.18);padding:16px;box-sizing:border-box">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Chieste da te</div>
+            <div style="font-size:18px;font-weight:200;letter-spacing:-0.025em;margin-top:8px;line-height:1.2">Foto Monaco</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Stesso vetro, stesso raggio: nessuna è più importante. Le dimensioni differiscono per quanto contengono.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">Dopo · «a che punto sei col riordino?»</div>
+        <div style="width:700px;height:400px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#C6CBC9,#A2A79F);position:relative">
+          <div style="position:absolute;left:18px;top:34px;width:250px;height:126px;border-radius:24px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px rgba(30,36,30,0.18);padding:16px;box-sizing:border-box">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Aperta da te</div>
+            <div style="font-size:18px;font-weight:200;letter-spacing:-0.025em;margin-top:8px;line-height:1.2">Proposta Acme</div>
+          </div>
+          <div style="position:absolute;left:52px;top:264px;width:230px;height:112px;border-radius:24px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px rgba(30,36,30,0.18);padding:16px;box-sizing:border-box">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Alle 15:30</div>
+            <div style="font-size:18px;font-weight:200;letter-spacing:-0.025em;margin-top:8px;line-height:1.2">Revisione</div>
+          </div>
+          <div style="position:absolute;left:520px;top:290px;width:206px;height:104px;border-radius:24px;background:rgba(251,251,249,0.84);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px rgba(30,36,30,0.18);padding:16px;box-sizing:border-box">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Chieste da te</div>
+            <div style="font-size:18px;font-weight:200;letter-spacing:-0.025em;margin-top:8px;line-height:1.2">Foto Monaco</div>
+          </div>
+          <div style="position:absolute;left:296px;top:78px;width:368px;border-radius:26px;background:rgba(251,251,249,0.88);border:1px solid rgba(255,255,255,0.94);box-shadow:0 26px 58px rgba(30,36,30,0.28);padding:20px 22px;box-sizing:border-box">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
+              <i class="icon-folder" style="font-size:18px;color:#3D5A43;line-height:1"></i>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#3D5A43">Ci sto lavorando · 6 min</div>
+            </div>
+            <div style="font-size:24px;font-weight:200;letter-spacing:-0.03em;line-height:1.2">Riordino dei documenti di Acme</div>
+            <div style="height:3px;border-radius:3px;background:linear-gradient(90deg,#4E6B54 31%,rgba(26,28,25,0.12) 31%);margin-top:14px"></div>
+            <div style="font-size:14.5px;color:#4A4E48;margin-top:11px;line-height:1.5">128 spostati su 412 · contratti, proposte, fatture</div>
+            <div style="font-size:14.5px;color:#4A4E48;margin-top:6px;line-height:1.5">nessun file cancellato, niente rinominato</div>
+          </div>
+          <div style="position:absolute;left:18px;bottom:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:rgba(26,28,25,0.6)">LEI: +52% AREA, VERSO IL CENTRO · LE ALTRE: −26 / −34 / −68 PX VERSO I BORDI</div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La bolla nominata cresce e mostra due righe in più; le altre <strong style="color:#1A1C19;font-weight:600">si spostano ma non si rimpiccioliscono</strong>: restano leggibili e allo stesso peso. Perdono spazio, non dignità.</div>
+      </div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:14.5px;line-height:1.55;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Innesco</strong><br>Basta il riconoscimento, non il comando: mentre stai ancora parlando, la bolla si muove. È il modo in cui il sistema ti dice «ti ho capito».</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Durata 340 ms</strong><br>Crescita e spostamenti insieme, stessa curva. Abbastanza da vedersi, non tanto da aspettare.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Se hai capito male</strong><br>Dici «no, l'altra»: il fuoco passa e il movimento si inverte in 200 ms. Nessuna conferma da dare, nessun errore da annullare.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Una sola cresciuta</strong><br>Mai due bolle grandi insieme: quando una prende il fuoco, quella che l'aveva torna alla sua dimensione di riposo.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Esaurimento · la discesa nella Sidebar</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:48em;line-height:1.5">Una bolla di cui non si parla più e che non ha niente da dire si contrae fino a diventare un chip. Non scompare: cambia forma. E se la nomini, risale.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,342px);gap:24px">
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58;margin-bottom:14px">1 · Dimenticata</div>
+        <div style="height:92px;display:flex;align-items:center">
+          <div style="width:100%;border-radius:18px;padding:14px 16px;box-sizing:border-box;background:rgba(246,246,242,0.90);border:1px solid rgba(26,28,25,0.10)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Chieste da te · 40 min</div>
+            <div style="font-size:17px;font-weight:200;letter-spacing:-0.025em;margin-top:7px">Foto Monaco</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55;margin-top:14px">Dopo 30 minuti senza essere nominata né aggiornata, una bolla è «fredda». Nessun segno visibile ancora: il sistema non mette timer sotto gli occhi.</div>
+      </div>
+
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17;margin-bottom:14px">2 · Si contrae · 280 ms</div>
+        <div style="height:92px;display:flex;align-items:center">
+          <div style="width:74%;border-radius:18px;padding:11px 14px;box-sizing:border-box;background:rgba(246,246,242,0.78);border:1px solid rgba(26,28,25,0.10)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Chieste da te</div>
+            <div style="font-size:15px;font-weight:300;margin-top:5px">Foto Monaco</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55;margin-top:14px">Perde le righe di dettaglio una alla volta, non tutte insieme: prima il contesto, poi l'anteprima, infine resta nome e dato. La contrazione è leggibile.</div>
+      </div>
+
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17;margin-bottom:14px">3 · Migra · 420 ms</div>
+        <div style="height:92px;display:flex;align-items:center;justify-content:flex-end">
+          <div style="display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;box-sizing:border-box;border-radius:20px;background:rgba(251,251,249,0.86);border:1px solid rgba(255,255,255,0.9);color:#3E423C;box-shadow:0 8px 20px rgba(30,36,30,0.12)">
+            <i class="icon-image" style="font-size:18px;line-height:1"></i><div style="font-size:15px;line-height:1">Foto Monaco</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1;letter-spacing:0.06em">24</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55;margin-top:14px">Diventa chip e vola all'ancoraggio della Sidebar lungo un arco, non in linea retta. Le bolle rimaste si riavvicinano del 40% dello spazio liberato: un'onda al contrario.</div>
+      </div>
+
+      <div style="border-radius:22px;padding:22px 24px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#3D5A43;margin-bottom:14px">4 · Risale · «riprendi le foto»</div>
+        <div style="height:92px;display:flex;align-items:center">
+          <div style="width:100%;border-radius:18px;padding:14px 16px;box-sizing:border-box;background:rgba(251,251,249,0.92);border:1px solid rgba(255,255,255,0.94);box-shadow:0 12px 26px rgba(30,36,30,0.16)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">Riaperta · 10:31</div>
+            <div style="font-size:17px;font-weight:200;letter-spacing:-0.025em;margin-top:7px">Foto Monaco</div>
+          </div>
+        </div>
+        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55;margin-top:14px">Rinasce con l'onda, come una bolla nuova, ma <strong style="color:#1A1C19;font-weight:600">nel punto dove stava</strong> se è ancora libero. La scrivania ha memoria delle posizioni per un'ora.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Le regole del movimento</div>
+      <div style="font-size:16px;color:#4A4E48">Cosa vale sempre, in ogni transizione.</div>
+    </div>
+
+    <div style="width:1440px;border-radius:24px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 12px 30px rgba(30,36,30,0.08)">
+      <div style="display:grid;grid-template-columns:230px 1fr 1fr">
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.10);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Movimento</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Cosa fa</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#2A2E28">Durata e curva</div>
+
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:17px;font-weight:500">Nascita</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">La nuova cresce dal 40%; le vicine si allontanano di 6–12 px con 40 ms di ritardo l'una dall'altra e restano dove l'onda le lascia.</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">520 ms<br>cubic-bezier(.22,1,.36,1)</div>
+
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:17px;font-weight:500">Fuoco</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">La nominata cresce fino a +50% d'area, si porta verso il centro e mostra più righe; le altre si spostano verso i bordi senza rimpicciolirsi.</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">340 ms<br>cubic-bezier(.32,.94,.2,1)</div>
+
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);font-size:17px;font-weight:500">Contrazione</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">Perde le righe una alla volta e si stringe; poi diventa chip e migra all'ancoraggio della Sidebar lungo un arco.</div>
+        <div style="padding:20px 26px;border-bottom:1px solid rgba(26,28,25,0.08);border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">280 + 420 ms<br>cubic-bezier(.4,0,.2,1)</div>
+
+        <div style="padding:20px 26px;font-size:17px;font-weight:500">Chiusura</div>
+        <div style="padding:20px 26px;border-left:1px solid rgba(26,28,25,0.08);font-size:15.5px;color:#3E423C;line-height:1.55">Un task finito o congedato sfuma sul posto mentre si contrae del 6%: non vola via, non implode. Le vicine si riavvicinano del 40%.</div>
+        <div style="padding:20px 26px;border-left:1px solid rgba(26,28,25,0.08);font-size:15px;color:#3E423C;font-family:'IBM Plex Mono',monospace;line-height:1.7">1500 ms<br>ease-out</div>
+      </div>
+      <div style="padding:24px 28px;background:#F2F1EC;border-top:1px solid rgba(26,28,25,0.10);display:grid;grid-template-columns:repeat(3,1fr);gap:26px;font-size:15px;line-height:1.6;color:#3E423C">
+        <div><strong style="color:#1A1C19;font-weight:600">Solo DESK si muove.</strong> NOTIFICATIONBAR, SYSTEMBAR, INPUT, Sidebar e Notificationbar non partecipano: nessuna onda li tocca, nessun fuoco li sposta. La cornice è terra ferma.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">Mai due movimenti insieme.</strong> Se una bolla nasce mentre un'altra prende il fuoco, la nascita aspetta il suo turno: la scrivania non è mai in agitazione.</div>
+        <div><strong style="color:#1A1C19;font-weight:600">Il movimento è la risposta.</strong> Prima che il sistema dica una parola, la bolla che si muove ha già detto «ho capito di cosa parli». È la latenza percepita più bassa possibile.</div>
+      </div>
+    </div>
+  </div>
+
+
+</x-dc>
+</body>
+</html>

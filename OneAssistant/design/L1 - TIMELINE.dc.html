@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lucide-static@0.454.0/font/lucide.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  a { color: #4E6B54; text-decoration: none; }
+  a:hover { color: #37502C; }
+
+  .angolo {
+    position: relative; width: 660px; height: 300px; border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(26,28,25,0.10);
+    background: linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%);
+  }
+  .angolo.intero { width: 1440px; height: 420px; }
+  .angolo::before {
+    content: ''; position: absolute; left: -200px; top: -60px; width: 1100px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(60% 60% at 30% 22%, rgba(255,255,255,0.34), rgba(255,255,255,0) 72%);
+  }
+  .guida { position: absolute; right: 44px; top: 40px; color: #1A1C19; text-shadow: 0 1px 0 rgba(255,255,255,0.38); }
+  .guida.colonna { display: flex; flex-direction: column; align-items: flex-end; gap: 22px; }
+  .guida.colonna .sys { justify-content: flex-end; }
+  .volto { border-radius: 50%; object-fit: cover; display: block; flex: none; box-shadow: 0 0 0 2px rgba(255,255,255,0.82); }
+  .sys { display: flex; align-items: center; gap: 12px; color: #4A4E48; }
+  .sys .voce { display: flex; align-items: center; gap: 6px; }
+  .sys .voce i { font-size: 14px; line-height: 1; }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .sys .attento { color: #8A5A17; }
+  .sys .premibile { color: #2F4636; }
+  .misura {
+    position: absolute; left: 20px; bottom: 16px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em;
+    color: rgba(26,28,25,0.62);
+  }
+  .etichetta {
+    position: absolute; left: 20px; top: 16px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: rgba(26,28,25,0.52);
+  }
+  .chip {
+    display: flex; align-items: center; gap: 9px; height: 34px; padding: 0 14px; border-radius: 20px;
+    background:var(--liquid-film);
+    backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);
+    box-shadow:var(--liquid-edge);
+    color: #1A1C19; font-size: 14px;
+  }
+  .bolla {
+    position: absolute; width: 388px; border-radius: 26px; padding: 22px 24px; box-sizing: border-box;
+    background:var(--liquid-film);
+    backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);
+    box-shadow:var(--liquid-edge);
+  }
+  .bolla .targa {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #3D5643;
+  }
+  .bolla .nome { font-size: 16px; font-weight: 600; letter-spacing: -0.03em; margin-top: 10px; }
+  .bolla .corpo { font-size: 12px; color: #4A4E48; margin-top: 6px; line-height: 1.5; }
+  .bolla .frasi { margin-top: 12px; font-size: 12px; color: #4A4E48; display: flex; gap: 14px; }
+  .bolla .frasi .prima { color: #1A1C19; }
+
+  /* ─── il componente ─────────────────────────────────────────────────────── */
+  .riepilogo { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .momento { text-align: right; }
+  .momento .targa-tl {
+    display: flex; align-items: center; justify-content: flex-end; gap: 7px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .momento .targa-tl i { font-size: 12px; }
+  .momento.adesso .targa-tl { color: #3D5643; }
+  .momento.dopo .targa-tl { color: #5A5F58; }
+  .momento.dopo.vicino .targa-tl { color: #8A5A17; }
+  .momento .soggetto { font-size: 20px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.14; margin-top: 5px; color: #1A1C19; }
+  .momento.dopo .soggetto { font-weight: 500; color: #4A4E48; }
+  .momento.dopo.vicino .soggetto { color: #1A1C19; font-weight: 600; }
+  .momento.libero .targa-tl { color: #5A5F58; }
+  .momento.libero .soggetto { font-size: 18px; font-weight: 500; color: #4A4E48; }
+
+  .segmenti { position: relative; height: 3px; display: flex; }
+  .segmenti .tratto { height: 3px; border-radius: 2px; position: relative; }
+  .segmenti .tratto.ora { background: #5E9566; }
+  .segmenti .tratto.attende { background: #B3762A; }
+  .segmenti .tratto.fermo { background: #8A2E22; }
+  .segmenti .tratto.vuoto { background: rgba(26,28,25,0.16); }
+  .segmenti .tratto .capo {
+    position: absolute; left: -1px; top: -3px; width: 9px; height: 9px; border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.7);
+  }
+  .segmenti .tratto.ora .capo { background: #5E9566; }
+  .segmenti .tratto.attende .capo { background: #B3762A; }
+  .segmenti .tratto.fermo .capo { background: #8A2E22; }
+
+  .riga-base { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .riga-base .quando { font-size: 13px; color: #3E423C; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .luogo {
+    display: flex; align-items: center; gap: 9px;
+    height: 30px; padding: 0 12px; border-radius: 15px;
+    background: rgba(255,255,255,0.42);
+    font-size: 13px; color: #1A1C19; white-space: nowrap;
+  }
+  .luogo i { font-size: 14px; color: #4A4E48; }
+
+  .sezione { display: flex; flex-direction: column; gap: 14px; }
+  .sezione > .capo {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: #5A5F58;
+  }
+  .regole { display: grid; grid-template-columns: repeat(4,1fr); gap: 26px; width: 1380px; font-size: 15px; line-height: 1.55; color: #4A4E48; }
+  .regole strong { color: #1A1C19; font-weight: 600; }
+  .cartello {
+    width: 1440px; border-radius: 20px; padding: 24px 28px; box-sizing: border-box;
+    background: #F2F1EC; border: 1px solid rgba(26,28,25,0.14);
+    display: flex; align-items: baseline; gap: 26px;
+  }
+  .cartello .capo {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #8A5A17;
+    flex: none; padding-top: 2px; width: 210px;
+  }
+  .cartello .corpo { font-size: 16px; line-height: 1.6; color: #3E423C; }
+  .cartello.verde .capo { color: #3D5A43; }
+  code { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; background: rgba(26,28,25,0.06); padding: 1px 5px; border-radius: 4px; }
+
+  .tabella { width: 1380px; border-collapse: collapse; font-size: 15px; color: #4A4E48; }
+  .tabella th {
+    text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #5A5F58;
+    padding: 0 18px 10px 0; border-bottom: 1px solid rgba(26,28,25,0.12);
+  }
+  .tabella td { padding: 11px 18px 11px 0; border-bottom: 1px solid rgba(26,28,25,0.07); vertical-align: top; line-height: 1.5; }
+  .tabella td:first-child { color: #1A1C19; font-weight: 600; white-space: nowrap; }
+  .pallino { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+</style>
+<link rel="stylesheet" href="./liquid-glass.css">
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L1</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">livello 2 · componente · cornice</div>
+      </div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">TIMELINE</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:44em;line-height:1.55">Cosa stai facendo, cosa viene dopo, e dove sei dentro la giornata. <strong style="color:#1A1C19;font-weight:600">Non è una bolla</strong>: sta in cima alla guida di destra, inchiostro diretto sul fondo, e non finisce mai — come la <a href="#">Profilebar</a> sotto di lei.<br><br>Nata il 17 settembre 2026 nel posto che ha lasciato libero l'ora grande.</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">ancoraggio destra 44 · top 40<br>adesso 20/600 · dopo 20/500 tenue<br>targhe 10 mono · filo 242 × 3<br>non si contrae, non si preme</div>
+  </div>
+
+  <div class="cartello verde">
+    <div class="capo">Perché esiste</div>
+    <div class="corpo">Fino al 17 settembre 2026 la cima della guida era l'<strong style="color:#1A1C19;font-weight:600">ora, a 68 px</strong>: la cosa più grande dello schermo, e l'unica che vuol dire sempre la stessa cosa. Sotto di lei il nome di un task stava a 16 e quello che potevi dire a 12.<br><br>Questo componente nasce da quel rovesciamento. L'ora è scesa nella riga quieta della Profilebar — non sparisce, serve — e al suo posto c'è <strong style="color:#1A1C19;font-weight:600">quello che stai facendo</strong>. Da quel giorno la cosa più grande della guida è una cosa che ti riguarda.<br><br>Il suo mestiere in una riga: <strong style="color:#1A1C19;font-weight:600">situarti nel tempo</strong>. E situarsi non vuol dire sapere che ore sono — vuol dire sapere quanto tempo hai.</div>
+  </div>
+
+  <!-- ─── in posizione ───────────────────────────────────────────────────── -->
+
+  <div class="sezione">
+    <div class="capo">In posizione · in cima alla guida, col lavoro accanto</div>
+    <div class="angolo intero">
+      <div class="bolla" style="left:96px;top:120px">
+        <div class="targa"><i class="icon-folder" style="font-size:14px"></i><span>ci sto lavorando</span><span style="margin-left:auto;font-weight:500;letter-spacing:0.06em">128/412</span></div>
+        <div class="nome">Riordino Acme</div>
+        <div class="corpo">Sto mettendo in ordine i file del progetto, cartella per cartella.</div>
+        <div class="frasi"><span class="prima">«come va»</span><span>«lascia stare»</span></div>
+      </div>
+      <div class="guida colonna">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div class="riepilogo">
+            <div class="momento adesso">
+              <div class="targa-tl"><i class="icon-loader"></i><span>adesso · da 25 min</span></div>
+              <div class="soggetto">Riordino Acme</div>
+            </div>
+            <div class="momento dopo">
+              <div class="targa-tl"><i class="icon-clock"></i><span>dopo · tra 1 h</span></div>
+              <div class="soggetto">Revisione</div>
+            </div>
+            <div class="segmenti" style="width:242px;margin-top:2px">
+              <div class="tratto ora" style="width:22%"><span class="capo"></span></div>
+              <div class="tratto vuoto" style="width:6%"></div>
+              <div class="tratto attende" style="width:16%"><span class="capo"></span></div>
+              <div class="tratto vuoto" style="width:14%"></div>
+              <div class="tratto fermo" style="width:4%"><span class="capo"></span></div>
+              <div class="tratto vuoto" style="width:38%"></div>
+            </div>
+          </div>
+          <img class="volto" src="./volto.png" alt="Lucia Moretti" style="width:44px;height:44px">
+        </div>
+        <div class="riga-base" style="width:392px">
+          <span class="quando">11:47 · mer 17 set</span>
+          <span class="luogo">Genova, casa <i class="icon-house"></i></span>
+        </div>
+        <div class="sys">
+          <span class="voce attento"><i class="icon-mic-off"></i><span class="mono">SCRIVI</span></span>
+          <span class="voce premibile"><i class="icon-volume-2"></i><span class="mono">40</span></span>
+          <span class="voce"><i class="icon-wifi"></i><span class="mono">TIM-CASA</span></span>
+          <span class="voce"><i class="icon-battery-full"></i><span class="mono">55%</span></span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:9px">
+          <div class="chip"><i class="icon-folder" style="font-size:14px"></i>Riordino Acme<span class="mono">128/412</span></div>
+        </div>
+      </div>
+      <div class="misura">ADESSO 20/600 · DOPO 20/500 TENUE · TARGHE 10 MONO · FILO 242 × 3 · ARIA 22 · VOLTO 44</div>
+      <div class="etichetta">a grandezza vera · 1440 × 420 dello schermo</div>
+    </div>
+  </div>
+
+  <!-- ─── l'anatomia ─────────────────────────────────────────────────────── -->
+
+  <div class="sezione">
+    <div class="capo">Anatomia · due momenti e un filo</div>
+    <div class="regole">
+      <div><strong>Adesso, e la sua durata</strong><br>La targa dice da quanto ci stai — <code>da 25 min</code> — e il soggetto è il nome del task <em>in corso</em>. È la riga più forte del componente, e quindi della guida.</div>
+      <div><strong>Dopo, e quanto manca</strong><br>Stessa taglia, peso 500 e inchiostro tenue: <strong>la gerarchia si fa col colore, non con la misura</strong>. Due righe uguali si leggono come una coppia; due di misura diversa si leggono come un titolo e una didascalia.</div>
+      <div><strong>Niente prima</strong><br>Il passato è l'unica informazione che riguarda una cosa che non si può più cambiare. Fuori. Se serve sapere cosa stavi facendo, lo dice l'<em>adesso</em> con un'altra apertura — <em>stavi su Acme</em> — quando non c'è più niente in corso.</div>
+      <div><strong>Il filo, in fondo</strong><br>La giornata di lavoro come un segmento, e i tratti colorati dicono cosa la occupa. È l'unica parte che si <em>guarda</em> invece di leggersi: dice <strong>dove sei</strong>, non <em>cosa</em>.</div>
+    </div>
+  </div>
+
+  <!-- ─── il filo ────────────────────────────────────────────────────────── -->
+
+  <div class="sezione">
+    <div class="capo">Il filo · ogni tratto porta il colore del suo stato</div>
+    <div style="font-size:16px;line-height:1.6;color:#3E423C;max-width:64em">Non è una decorazione e non è un grafico: è la <strong style="color:#1A1C19;font-weight:600">legge 04 applicata al tempo</strong>. Un tratto non ha un colore scelto — ha il colore dello stato di quello che copre, esattamente come una bolla. Per questo un tratto rosso non vuol dire «la fine»: vuol dire che a quell'ora c'è qualcosa di <em>fermo</em>.</div>
+    <table class="tabella">
+      <tr><th style="width:190px">tratto</th><th style="width:200px">cosa copre</th><th style="width:150px">stato</th><th>e quindi</th></tr>
+      <tr>
+        <td><span class="pallino" style="background:#5E9566"></span>salvia</td>
+        <td>quello su cui stai</td>
+        <td><em>in corso</em></td>
+        <td>c'è sempre al massimo uno: un task in corso alla volta. Comincia dove sei, e la sua lunghezza è da quanto ci stai.</td>
+      </tr>
+      <tr>
+        <td><span class="pallino" style="background:#B3762A"></span>ambra</td>
+        <td>quello che ti aspetta</td>
+        <td><em>aspetta te</em></td>
+        <td>compare quando il modello lo ha già promosso, cioè dentro il preavviso di 15 minuti. Prima è grigio.</td>
+      </tr>
+      <tr>
+        <td><span class="pallino" style="background:#8A2E22"></span>rosso terra</td>
+        <td>quello che è fermo</td>
+        <td><em>bloccato</em></td>
+        <td>solo se qualcosa è davvero bloccato a quell'ora. Se non c'è niente di fermo, nel filo non c'è rosso.</td>
+      </tr>
+      <tr>
+        <td><span class="pallino" style="background:rgba(26,28,25,0.16)"></span>grigio</td>
+        <td>quello che ha solo un'ora</td>
+        <td><em>programmato</em></td>
+        <td>programmato non ha colore (legge 04), e qui non ne prende uno: resta il fondo del filo.</td>
+      </tr>
+    </table>
+    <div style="font-size:15px;line-height:1.55;color:#4A4E48;max-width:64em"><strong style="color:#1A1C19;font-weight:600">I punti stanno agli inizi, non alle fini.</strong> Un pallino da 9 px segna quando una cosa comincia, con l'anello di luce che lo stacca dal fondo — è lo stesso punto della Notificationbar e di INPUT, e non serve un terzo segno.</div>
+  </div>
+
+  <!-- ─── gli stati ──────────────────────────────────────────────────────── -->
+
+  <div class="sezione">
+    <div class="capo">Gli stati · un posto solo, e il soggetto cambia</div>
+    <div style="font-size:16px;line-height:1.6;color:#3E423C;max-width:64em">La fluidità è tutta qui: <strong style="color:#1A1C19;font-weight:600">il componente non cambia forma, cambia soggetto</strong>. Non è un elenco che scorre e non è un pannello che si apre — è la stessa struttura che dice la cosa più utile adesso.</div>
+    <div style="display:grid;grid-template-columns:repeat(2,660px);gap:40px">
+
+      <div class="angolo">
+        <div class="guida colonna">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <div class="riepilogo">
+              <div class="momento adesso">
+                <div class="targa-tl"><i class="icon-loader"></i><span>adesso · da 25 min</span></div>
+                <div class="soggetto">Riordino Acme</div>
+              </div>
+              <div class="momento dopo vicino">
+                <div class="targa-tl"><i class="icon-alarm-clock"></i><span>dopo · fra 12 min</span></div>
+                <div class="soggetto">Revisione con Andrea</div>
+              </div>
+              <div class="segmenti" style="width:242px;margin-top:2px">
+                <div class="tratto ora" style="width:22%"><span class="capo"></span></div>
+                <div class="tratto attende" style="width:20%"><span class="capo"></span></div>
+                <div class="tratto vuoto" style="width:58%"></div>
+              </div>
+            </div>
+            <img class="volto" src="./volto.png" alt="" style="width:44px;height:44px">
+          </div>
+          <div class="riga-base" style="width:392px">
+            <span class="quando">11:47 · mer 17 set</span>
+            <span class="luogo">Genova, casa <i class="icon-house"></i></span>
+          </div>
+        </div>
+        <div class="misura">IL DOPO VA IN AMBRA E PRENDE PESO · NESSUN ELEMENTO NUOVO</div>
+        <div class="etichetta">dentro il preavviso · meno di 15 min</div>
+      </div>
+
+      <div class="angolo">
+        <div class="guida colonna">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <div class="riepilogo">
+              <div class="momento libero">
+                <div class="targa-tl"><i class="icon-circle-dashed"></i><span>libero</span></div>
+                <div class="soggetto">2 ore e 48</div>
+              </div>
+              <div class="momento dopo">
+                <div class="targa-tl"><i class="icon-clock"></i><span>dopo · 14:35</span></div>
+                <div class="soggetto">Revisione</div>
+              </div>
+              <div class="segmenti" style="width:242px;margin-top:2px">
+                <div class="tratto vuoto" style="width:56%"></div>
+                <div class="tratto attende" style="width:14%"><span class="capo"></span></div>
+                <div class="tratto vuoto" style="width:30%"></div>
+              </div>
+            </div>
+            <img class="volto" src="./volto.png" alt="" style="width:44px;height:44px">
+          </div>
+          <div class="riga-base" style="width:392px">
+            <span class="quando">11:47 · mer 17 set</span>
+            <span class="luogo">Genova, casa <i class="icon-house"></i></span>
+          </div>
+        </div>
+        <div class="misura">L'ADESSO DIVENTA IL TEMPO LIBERO · 18/500 · NIENTE SALVIA NEL FILO</div>
+        <div class="etichetta">niente in corso · la frase che conta di più</div>
+      </div>
+
+    </div>
+    <div style="font-size:15px;line-height:1.55;color:#4A4E48;max-width:64em">Lo stato di destra è quello per cui il componente esiste: <strong style="color:#1A1C19;font-weight:600">«2 ore e 48»</strong> è la frase che un calendario non dice mai, e che trasforma la guida da cruscotto in strumento per concentrarsi. Quando non stai su niente, il posto non resta vuoto e non mente: dice quanto tempo hai.</div>
+  </div>
+
+  <!-- ─── le regole ──────────────────────────────────────────────────────── -->
+
+  <div class="sezione">
+    <div class="capo">Regole del componente</div>
+    <div class="regole">
+      <div><strong>Non è un task, e non ne mostra uno</strong><br>Mostra <em>il tempo, etichettato da cosa succede</em>. Un task che aspetta te ha già il suo posto (legge 03), e averlo in due sarebbe una duplicazione. Quindi: <strong>nessuna frase offerta, non si preme, non migra</strong>. Se una delle tre cade, è un task in due posti.</div>
+      <div><strong>Non si apre</strong><br>Nessun pannello, nessun calendario che scende. Quello che chiedi al tuo tempo diventa una bolla in TABLE, come qualsiasi altra risposta.</div>
+      <div><strong>Non si contrae</strong><br>Non è una bolla, quindi non scende di taglia e non diventa chip. Cambia soggetto, non forma.</div>
+      <div><strong>Cambia altezza, e chi sta sotto la segue</strong><br>Due nomi lunghi la fanno crescere. L'aria fra le famiglie della guida è <strong>22</strong> — metà del margine — e la Profilebar e la Systembar scorrono con lei. È l'unica cornice del sistema la cui quota non è un numero fisso.</div>
+    </div>
+  </div>
+
+  <div class="cartello">
+    <div class="capo">Quello che resta da decidere</div>
+    <div class="corpo"><strong style="color:#1A1C19;font-weight:600">Chi sceglie cosa dice. <s>Aperta</s> — scritta il 17 settembre 2026.</strong> I soggetti possibili sono più di due — le ore libere, l’impegno vicino, da quanto stai su una cosa, un rinvio che torna, quanto resta della giornata — e il posto è uno. Un ordine di precedenza contiene «quando» e «se», quindi è <strong style="color:#1A1C19;font-weight:600">logica e non disegno</strong>: sta in <code>docs/01-modello §8</code>, e da qui si cita e non si ricopia. In una riga: vince la cosa più vicina nel tempo, e il preavviso di 15 minuti scavalca tutto.<br><br><strong style="color:#1A1C19;font-weight:600">Quanto orizzonte copre il filo.</strong> Qui è la giornata di lavoro, <code>8–19</code>: undici ore in 242 px, quindi una revisione di mezz'ora è cinque pixel. Il filo promette una precisione che non ha. Da provare: un orizzonte più corto — le prossime quattro ore — dove cinque pixel diventano venti.<br><br><strong style="color:#1A1C19;font-weight:600">Le frasi che la chiamano.</strong> Ogni cosa a schermo in questo sistema ha una frase che la nomina. «Quanto tempo ho» e «cosa stavo facendo» sono due frasi ovvie, e non esistono ancora: se questo componente entra, entrano anche loro.</div>
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,200..300,0,0&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/iconoir@7.10.1/css/iconoir.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lucide-static@0.454.0/font/lucide.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  .ms { font-family: 'Material Symbols Rounded'; line-height: 1; }
+  .ms.w300 { font-variation-settings: 'wght' 300, 'opsz' 24; }
+  .ms.w200 { font-variation-settings: 'wght' 200, 'opsz' 48; }
+  .riga-icone { display: grid; grid-template-columns: repeat(7, 1fr); align-items: center; justify-items: center; }
+  .riga-icone > * { font-size: 19px; line-height: 1; color: #1A1C19; }
+  .vetro {
+    background:var(--liquid-focus);
+    backdrop-filter:var(--liquid-optics);
+    -webkit-backdrop-filter:var(--liquid-optics);
+    box-shadow:var(--liquid-edge);
+  }
+  .fondo {
+    background: linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 42%,#9BA096 68%,#7C8178 100%);
+  }
+  .nome { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #6E7269; }
+</style>
+<link rel="stylesheet" href="./liquid-glass.css">
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L1</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 1 · la famiglia delle icone · decisa il 16 settembre 2026 · legge 06</div>
+      </div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">ICONE</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:38em;line-height:1.55">Sette icone in tutto il sistema, e nient'altro. La famiglia è <strong style="color:#1A1C19;font-weight:600">Lucide</strong>. Qui si vedono affiancate, alla misura vera — 19 px — e sul vetro vero: è lì che si è deciso, non ingrandite su un fondo bianco.</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">posta · cartella · documento<br>persone · conversazione<br>immagine · sveglia<br>19 px · sempre con un valore accanto</div>
+  </div>
+
+  <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14);display:flex;align-items:baseline;gap:26px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3D5A43;flex:none;padding-top:2px">Decisa · 16 settembre 2026</div>
+    <div style="font-size:16px;line-height:1.6;color:#3E423C">La famiglia è <strong style="color:#1A1C19;font-weight:600">Lucide</strong> — tratto uniforme, terminazioni arrotondate, licenza MIT. La <strong style="color:#1A1C19;font-weight:600">legge 06</strong> in <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">L0 - Sistema</span> è già riscritta, e il prototipo la porta da quel giorno: <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">index.html</span> carica <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">lucide-static</span>, e tutte e sette le sagome esistono con quel nome.<br><br>Questo documento diceva ancora l'opposto — «la legge 06 nomina Material Symbols Rounded … finché non è deciso, resta valida quella di adesso» — e per due giorni la legge e le fondamenta si sono contraddette. <strong style="color:#1A1C19;font-weight:600">Due documenti di fondamenta che dicono due cose diverse sono peggio di uno che manca</strong>: chi legge non sa a quale obbedire, e il prototipo ne ha seguito uno solo.<br><br>Le altre cinque famiglie restano qui sotto: servono a sapere cosa si è guardato e perché non è stato scelto. La cascata è salita nella stessa mossa — <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">L2 - Bubble</span>, <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">L2 - INPUT</span> e <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">L3 - Flusso task</span> disegnano Lucide.</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Le sette, a confronto</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:46em;line-height:1.5">Stessa misura, stesso inchiostro, stesso ordine. Guarda le sagome, non il tratto: è la busta a essere un rettangolo, non la linea a essere spessa.</div>
+    </div>
+
+    <div style="width:1440px;border-radius:20px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.12)">
+      <div style="display:grid;grid-template-columns:300px 1fr;gap:0">
+        <div style="padding:15px 22px;background:#F2F1EC;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58">Famiglia</div>
+        <div style="padding:15px 22px;background:#F2F1EC;border-left:1px solid rgba(26,28,25,0.10)">
+          <div class="riga-icone"><div class="nome">posta</div><div class="nome">cartella</div><div class="nome">documento</div><div class="nome">persone</div><div class="nome">conversaz.</div><div class="nome">immagine</div><div class="nome">sveglia</div></div>
+        </div>
+
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10)">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">Material Symbols Rounded 300</div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Quella di prima, fino al 16 settembre 2026. Sagome su griglia geometrica: restano squadrate anche con gli angoli smussati.</div>
+        </div>
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08)">
+          <div class="riga-icone"><span class="ms w300">mail</span><span class="ms w300">folder_open</span><span class="ms w300">description</span><span class="ms w300">groups</span><span class="ms w300">forum</span><span class="ms w300">image</span><span class="ms w300">alarm</span></div>
+        </div>
+
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10)">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">Material Symbols Rounded 200</div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">La stessa, alleggerita al peso 200 e ottica 48. Nessun cambio di famiglia, nessuna cascata: le sagome però sono identiche.</div>
+        </div>
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08)">
+          <div class="riga-icone"><span class="ms w200">mail</span><span class="ms w200">folder_open</span><span class="ms w200">description</span><span class="ms w200">groups</span><span class="ms w200">forum</span><span class="ms w200">image</span><span class="ms w200">alarm</span></div>
+        </div>
+
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10)">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">Phosphor Light</div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Raccordi e terminazioni tutti arrotondati, curvatura costante. È la più vicina a «curvo, lineare, moderno».</div>
+        </div>
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08)">
+          <div class="riga-icone"><i class="ph-light ph-envelope-simple"></i><i class="ph-light ph-folder-simple"></i><i class="ph-light ph-file-text"></i><i class="ph-light ph-users-three"></i><i class="ph-light ph-chat-circle"></i><i class="ph-light ph-image-square"></i><i class="ph-light ph-alarm"></i></div>
+        </div>
+
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10)">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">Phosphor Thin</div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">La stessa, tratto più sottile. Più futuristica — ma sul vetro satinato può diventare troppo tenue.</div>
+        </div>
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08)">
+          <div class="riga-icone"><i class="ph-thin ph-envelope-simple"></i><i class="ph-thin ph-folder-simple"></i><i class="ph-thin ph-file-text"></i><i class="ph-thin ph-users-three"></i><i class="ph-thin ph-chat-circle"></i><i class="ph-thin ph-image-square"></i><i class="ph-thin ph-alarm"></i></div>
+        </div>
+
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10)">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">Iconoir</div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Sottile e architettonica, quasi tecnica. Molto moderna, meno morbida di Phosphor.</div>
+        </div>
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08)">
+          <div class="riga-icone"><i class="iconoir-mail"></i><i class="iconoir-folder"></i><i class="iconoir-page"></i><i class="iconoir-community"></i><i class="iconoir-chat-bubble"></i><i class="iconoir-media-image"></i><i class="iconoir-alarm"></i></div>
+        </div>
+
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10)">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.02em" style="color:#3D5A43">Lucide · la scelta</div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Terminazioni arrotondate ma silhouette geometriche: sta a metà fra Material e Phosphor. <strong style="color:#1A1C19;font-weight:600">È questa.</strong> I sette qui accanto sono i glifi veri, alla misura vera.</div>
+        </div>
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08)">
+          <div class="riga-icone"><i class="icon-mail"></i><i class="icon-folder"></i><i class="icon-file-text"></i><i class="icon-users"></i><i class="icon-message-circle"></i><i class="icon-image"></i><i class="icon-alarm-clock"></i></div>
+        </div>
+
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10)">
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">Remix Icon</div>
+          <div style="font-size:14px;color:#4A4E48;line-height:1.5;margin-top:5px">Neutra e leggibile, la più «da interfaccia» delle sei. Poco curva.</div>
+        </div>
+        <div style="padding:22px;border-top:1px solid rgba(26,28,25,0.10);border-left:1px solid rgba(26,28,25,0.08)">
+          <div class="riga-icone"><i class="ri-mail-line"></i><i class="ri-folder-line"></i><i class="ri-file-text-line"></i><i class="ri-group-line"></i><i class="ri-chat-3-line"></i><i class="ri-image-line"></i><i class="ri-alarm-line"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:14px">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Sul vetro, dove vivono davvero</div>
+      <div style="font-size:16px;color:#4A4E48;max-width:46em;line-height:1.5">Un'icona non si incontra mai da sola: sta nella targa, accanto a una parola, sopra un fondo che si muove. La prova vera è questa.</div>
+    </div>
+
+    <div class="fondo" style="width:1440px;border-radius:20px;padding:36px;box-sizing:border-box;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+
+      <div class="vetro" style="border-radius:26px;padding:20px 22px;color:#1A1C19">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:13px">
+          <span class="ms w300" style="font-size:19px;color:#8A5A17">mail</span>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17">Bozza pronta</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;margin-left:auto;color:#4A4E48">2 min</div>
+        </div>
+        <div style="font-size:27px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">La v3 per Elena</div>
+        <div style="font-size:15.5px;color:#4A4E48;line-height:1.5;margin-top:10px">Material Symbols Rounded 300 — quella di adesso.</div>
+      </div>
+
+      <div class="vetro" style="border-radius:26px;padding:20px 22px;color:#1A1C19">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:13px">
+          <i class="ph-light ph-envelope-simple" style="font-size:19px;color:#8A5A17"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17">Bozza pronta</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;margin-left:auto;color:#4A4E48">2 min</div>
+        </div>
+        <div style="font-size:27px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">La v3 per Elena</div>
+        <div style="font-size:15.5px;color:#4A4E48;line-height:1.5;margin-top:10px">Phosphor Light — raccordi arrotondati, curvatura costante.</div>
+      </div>
+
+      <div class="vetro" style="border-radius:26px;padding:20px 22px;color:#1A1C19">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:13px">
+          <i class="iconoir-mail" style="font-size:19px;color:#8A5A17"></i>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17">Bozza pronta</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;margin-left:auto;color:#4A4E48">2 min</div>
+        </div>
+        <div style="font-size:27px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">La v3 per Elena</div>
+        <div style="font-size:15.5px;color:#4A4E48;line-height:1.5;margin-top:10px">Iconoir — più sottile, più tecnica.</div>
+      </div>
+
+      <div style="grid-column:1 / -1;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
+        <div class="vetro" style="display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;border-radius:20px;color:#1A1C19;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18)">
+          <span class="ms w300" style="font-size:18px;color:#3D5643">folder_open</span><span style="font-size:15px">Riordino Acme</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:#3D5643">128/412</span>
+        </div>
+        <div class="vetro" style="display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;border-radius:20px;color:#1A1C19;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18)">
+          <i class="ph-light ph-folder-simple" style="font-size:18px;color:#3D5643"></i><span style="font-size:15px">Riordino Acme</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:#3D5643">128/412</span>
+        </div>
+        <div class="vetro" style="display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;border-radius:20px;color:#1A1C19;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18)">
+          <i class="iconoir-folder" style="font-size:18px;color:#3D5643"></i><span style="font-size:15px">Riordino Acme</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:#3D5643">128/412</span>
+        </div>
+        <div class="vetro" style="display:flex;align-items:center;gap:9px;height:30px;padding:0 14px;border-radius:20px;color:#1A1C19;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.78),0 10px 24px rgba(30,36,30,0.18)">
+          <i class="icon-folder" style="font-size:18px;color:#3D5643"></i><span style="font-size:15px">Riordino Acme</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:#3D5643">128/412</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Come scegliere</div>
+    <div style="width:1440px;border-radius:20px;padding:26px 30px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:repeat(4,1fr);gap:26px;font-size:15px;line-height:1.6;color:#4A4E48">
+      <div><strong style="color:#1A1C19;font-weight:600">Si guarda la sagoma</strong><br>Il tratto si cambia in un minuto, la forma no. La domanda è: la busta è un rettangolo o una curva? La cartella ha spigoli o raccordi?</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Si guarda sul vetro</strong><br>Sul fondo bianco sono tutte belle. A 19 px su vetro satinato, un tratto troppo sottile sparisce — ed è il caso d'uso vero.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">Sette, non settemila</strong><br>Qualunque famiglia le ha tutte e sette. Non serve una libreria grande: serve che queste sette stiano bene insieme.</div>
+      <div><strong style="color:#1A1C19;font-weight:600">La coerenza col raggio</strong><br>Le bolle hanno raggi 20–30. Un'icona con gli stessi raccordi sembra dello stesso disegno; una squadrata sembra presa in prestito.</div>
+    </div>
+  </div>
+
+  <div style="width:1440px;border-radius:20px;padding:22px 28px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.12);font-size:14.5px;line-height:1.6;color:#4A4E48">
+    <strong style="color:#1A1C19;font-weight:600">Nota tecnica:</strong> le famiglie diverse da Material arrivano da CDN (jsDelivr). Se una riga appare vuota, non è un giudizio sulla famiglia: è il font che non si è caricato, o il nome di un simbolo che in quella libreria si chiama diversamente. Sono tutte libere e usabili senza licenza: Phosphor, Lucide e Iconoir sono MIT, Remix Icon è Apache 2.0, Material Symbols è Apache 2.0.
+  </div>
+
+</section>
+</x-dc>
+</body>
+</html>

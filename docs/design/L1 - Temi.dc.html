@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./liquid-glass.css">
+<link rel="stylesheet" href="./materiali.css">
+<link rel="stylesheet" href="./temi.css">
+<style>
+  /* L'impaginazione di questa tavola, e basta: i materiali stanno in materiali.css,
+     le dodici tinte in temi.css, i token del vetro in liquid-glass.css. */
+.cs-sezione { display: flex; flex-direction: column; gap: 18px; width: 1440px; }
+.cs-capo { display: flex; align-items: baseline; gap: 14px; }
+.cs-capo h2 { font-size: 28px; font-weight: 500; letter-spacing: -.025em; margin: 0; }
+.cs-capo p { font-size: 16px; color: #4A4E48; margin: 0; max-width: 46em; line-height: 1.5; }
+
+.cs-tabella { width: 1440px; border-collapse: collapse; font-size: 14.5px; color: #4A4E48; }
+.cs-tabella th {
+  text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: #5A5F58;
+  padding: 0 18px 10px 0; border-bottom: 1px solid rgba(26,28,25,.12);
+}
+.cs-tabella td { padding: 10px 18px 10px 0; border-bottom: 1px solid rgba(26,28,25,.07); vertical-align: top; line-height: 1.45; }
+.cs-tabella td:first-child { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: #1A1C19; white-space: nowrap; }
+
+.cs-regole { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.cs-regole > div { border-radius: 18px; padding: 20px 22px; background: #FBFBF9; border: 1px solid rgba(26,28,25,.09); }
+.cs-regole .t { font-size: 17px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 7px; }
+.cs-regole .c { font-size: 14.5px; color: #4A4E48; line-height: 1.55; }
+.cs-regole .c strong { color: #1A1C19; font-weight: 600; }
+.cs-regole .m, .cs-tabella .m { font-family: 'IBM Plex Mono', monospace; font-size: .92em; }
+
+  /* La tavola dei dodici: una carta per tema, chiaro sopra e scuro sotto. Le tinte
+     arrivano in linea da strumenti/genera-temi.py, la stessa sorgente del prototipo:
+     se le due divergono, è perché qualcuno ha scritto a mano. */
+.t-griglia { width: 1440px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.t-carta { display: flex; flex-direction: column; gap: 0; border-radius: 18px; overflow: hidden; background: #FBFBF9; border: 1px solid rgba(26,28,25,.09); }
+.t-nome {
+  display: flex; flex-direction: column; gap: 2px; padding: 12px 14px 10px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; color: #1A1C19;
+}
+.t-nome span { font-weight: 400; font-size: 10px; letter-spacing: .04em; text-transform: none; color: #6E7269; }
+.t-quadro { height: 104px; padding: 14px; box-sizing: border-box; display: flex; align-items: center; }
+.t-bolla {
+  width: 100%; border-radius: 22px; padding: 11px 13px; box-sizing: border-box;
+  background: var(--liquid-film);
+  backdrop-filter: var(--liquid-optics); -webkit-backdrop-filter: var(--liquid-optics);
+  box-shadow: var(--liquid-edge);
+}
+.t-t { font-size: 13px; font-weight: 600; letter-spacing: -.03em; }
+.t-c { font-size: 10.5px; margin-top: 3px; line-height: 1.35; }
+.t-f { display: flex; align-items: center; gap: 7px; margin-top: 7px; font-size: 11px; }
+/* Il pallino resta salvia in tutti e dodici: è uno stato, e gli stati non sono un tema. */
+.t-p { width: 7px; height: 7px; border-radius: 50%; background: #5E9566; flex: none; }
+.t-val {
+  padding: 9px 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px;
+  line-height: 1.7; color: #8A8D86;
+}
+</style>
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L1</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 1 &middot; il colore e il materiale &middot; si sceglie nel profilo</div>
+      </div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">TEMI</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:44em;line-height:1.55">Dodici tinte, ognuna in chiaro e in scuro. Un tema cambia <strong style="color:#1A1C19;font-weight:600">il fondo e l&rsquo;inchiostro</strong>, e nient&rsquo;altro: gli stati restano tre e restano quelli, in tutti e dodici.<br><br>Dal 21 settembre 2026 questo documento tiene anche <strong style="color:#1A1C19;font-weight:600">i due materiali</strong>: erano in <em>Chiaro e scuro</em>, che mostrava la stessa cosa due volte. I sedici valori che separano il vetro chiaro dal vetro scuro, e le quattro regole che li tengono, stanno in fondo.</div>
+    </div>
+    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">24 combinazioni<br>16 valori fra i due materiali<br>stesse quote di luminosit&agrave;<br>ombre neutre ovunque<br>si dichiara: <b>colori:</b> nel profilo</div>
+  </div>
+
+  <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14);font-size:16px;line-height:1.6;color:#3E423C">
+    <strong style="color:#1A1C19;font-weight:600">Le quote di luminosit&agrave; sono identiche per tutti.</strong> Il fondo scende sempre da 82% a 50% in chiaro e da 22% a 8% in scuro: cambia la <em>tinta</em>, non quanto &egrave; chiaro. Cos&igrave; due temi si confrontano davvero, e nessuno vince perch&eacute; &egrave; pi&ugrave; contrastato.<br><br>L&rsquo;inchiostro porta la tinta <strong style="color:#1A1C19;font-weight:600">a un terzo</strong> del fondo: abbastanza da appartenergli, poco abbastanza da restare inchiostro. Le ombre restano <strong style="color:#1A1C19;font-weight:600">neutre in tutti e dodici</strong> &mdash; provate in cinque tinte il 19 settembre 2026, a quelle opacit&agrave; non si vedono, e tingerle per tema sarebbe lavoro che non arriva a schermo.<br><br>Sono <strong style="color:#1A1C19;font-weight:600">generati</strong>, non scelti a mano: <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">strumenti/genera-temi.py</span>. Una tinta si corregge l&igrave; e si rigenera, o i dodici smettono di essere confrontabili.
+  </div>
+
+  <div class="t-griglia">
+      <div class="t-carta">
+        <div class="t-nome">ardesia<span>grigio freddo, il vetro come lo fa il cielo</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#ced1d4 0%,#b8bcc1 42%,#979da5 68%,#777e88 100%)">
+          <div class="t-bolla" style="color:#19191a"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4b4c4e">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#34373c 0%,#282b2e 42%,#1c1e21 68%,#131416 100%)">
+          <div class="t-bolla" style="color:#f2f2f3"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c0c2c3">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#ced1d4 · #777e88<br>#34373c · #131416</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">cenere<span>grigio caldo, la temperatura della moodboard</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#d4d1ce 0%,#c1bcb9 42%,#a49e98 68%,#877f78 100%)">
+          <div class="t-bolla" style="color:#1a1919"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4e4c4b">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#3b3835 0%,#2e2b29 42%,#201e1d 68%,#161413 100%)">
+          <div class="t-bolla" style="color:#f3f2f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c3c2c1">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#d4d1ce · #877f78<br>#3b3835 · #161413</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">salvia<span>il verde del documento, tornato di sua volontà</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#ced4ce 0%,#b8c1b8 42%,#97a597 68%,#778877 100%)">
+          <div class="t-bolla" style="color:#191a19"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4b4e4b">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#343c34 0%,#282e28 42%,#1c211c 68%,#131613 100%)">
+          <div class="t-bolla" style="color:#f2f3f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c0c3c0">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#ced4ce · #778877<br>#343c34 · #131613</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">nebbia<span>quasi neutro, un soffio di azzurro</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#cfd1d3 0%,#babdbf 42%,#9a9fa2 68%,#7a8085 100%)">
+          <div class="t-bolla" style="color:#191a1a"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4b4d4e">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#36383a 0%,#2a2c2d 42%,#1d1f20 68%,#141515 100%)">
+          <div class="t-bolla" style="color:#f2f2f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c1c2c3">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#cfd1d3 · #7a8085<br>#36383a · #141515</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">sabbia<span>caldo chiaro, luce di pomeriggio</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#d7d3cc 0%,#c5bfb5 42%,#aaa192 68%,#8f8470 100%)">
+          <div class="t-bolla" style="color:#1b1a18"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#504d49">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#3f3a31 0%,#312d26 42%,#22201b 68%,#171512 100%)">
+          <div class="t-bolla" style="color:#f3f2f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c4c2bf">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#d7d3cc · #8f8470<br>#3f3a31 · #171512</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">lavanda<span>il malva del primo riferimento</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#d2cdd5 0%,#bfb7c3 42%,#a195a7 68%,#83748b 100%)">
+          <div class="t-bolla" style="color:#1a191a"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4d4a4f">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#3a333d 0%,#2d272f 42%,#201c21 68%,#151316 100%)">
+          <div class="t-bolla" style="color:#f2f2f3"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c2c0c4">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#d2cdd5 · #83748b<br>#3a333d · #151316</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">marea<span>il verde-azzurro di Eclisse</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#ccd4d6 0%,#b5c2c4 42%,#93a5a9 68%,#71898e 100%)">
+          <div class="t-bolla" style="color:#191a1a"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4a4e4f">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#323c3e 0%,#272f30 42%,#1b2122 68%,#121617 100%)">
+          <div class="t-bolla" style="color:#f2f3f3"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c0c3c4">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#ccd4d6 · #71898e<br>#323c3e · #121617</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">rame<span>terracotta, il più caldo dei dodici</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#d8cfcb 0%,#c6bab3 42%,#ac9a91 68%,#917a6e 100%)">
+          <div class="t-bolla" style="color:#1b1918"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#504b49">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#403530 0%,#312925 42%,#231d1a 68%,#171312 100%)">
+          <div class="t-bolla" style="color:#f3f2f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c5c1bf">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#d8cfcb · #917a6e<br>#403530 · #171312</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">bosco<span>verde profondo, più scuro che vivo</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#ccd7d0 0%,#b5c5bb 42%,#92aa9c 68%,#708f7d 100%)">
+          <div class="t-bolla" style="color:#181b19"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#49504c">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#313f37 0%,#26312a 42%,#1b221e 68%,#121714 100%)">
+          <div class="t-bolla" style="color:#f2f3f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#bfc4c1">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#ccd7d0 · #708f7d<br>#313f37 · #121714</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">inchiostro<span>neutro puro: nessuna temperatura</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#d1d1d1 0%,#bdbdbd 42%,#9e9e9e 68%,#808080 100%)">
+          <div class="t-bolla" style="color:#1a1a1a"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4c4c4c">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#383838 0%,#2b2b2b 42%,#1f1f1f 68%,#141414 100%)">
+          <div class="t-bolla" style="color:#f2f2f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c2c2c2">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#d1d1d1 · #808080<br>#383838 · #141414</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">argilla<span>rosso spento, mattone lavato</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#d5cdce 0%,#c2b7b8 42%,#a69698 68%,#8a7577 100%)">
+          <div class="t-bolla" style="color:#1a1919"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4f4a4b">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#3d3434 0%,#2f2828 42%,#211c1d 68%,#161313 100%)">
+          <div class="t-bolla" style="color:#f3f2f2"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c3c0c0">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#d5cdce · #8a7577<br>#3d3434 · #161313</div>
+      </div>
+      <div class="t-carta">
+        <div class="t-nome">brina<span>azzurro pallido, il più freddo</span></div>
+        <div class="t-quadro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 72%),linear-gradient(180deg,#cdd3d6 0%,#b6c0c3 42%,#94a3a8 68%,#73868c 100%)">
+          <div class="t-bolla" style="color:#191a1a"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#4a4e4f">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-quadro" data-tema="scuro" style="background:radial-gradient(60% 34% at 34% 16%, rgba(255,255,255,.10), rgba(255,255,255,0) 72%),linear-gradient(180deg,#323b3e 0%,#272e30 42%,#1c2022 68%,#121516 100%)">
+          <div class="t-bolla" style="color:#f2f2f3"><div class="t-t">La v3 per Elena</div><div class="t-c" style="color:#c0c3c4">Con venerdì dalle 15 già bloccato.</div><div class="t-f"><span class="t-p"></span><span>«manda la mail»</span></div></div>
+        </div>
+        <div class="t-val">#cdd3d6 · #73868c<br>#323b3e · #121516</div>
+      </div>
+  </div>
+
+
+  <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14);display:flex;align-items:baseline;gap:26px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A5A17;flex:none;padding-top:2px">Da dove viene</div>
+    <div style="font-size:16px;line-height:1.6;color:#3E423C">Lo scuro non è inventato qui: è <strong style="color:#1A1C19;font-weight:600">Eclisse</strong>, il velo della PROFILEBAR, portato agli altri componenti. Base fumé <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">#1b2e35 → #15262e</span>, luci bianche bassissime sul perimetro, inchiostro <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">#f1f7f4</span> e tenue <span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">#c7d8cf</span>. Quel componente <strong style="color:#1A1C19;font-weight:600">non si tocca</strong>: era già la scelta definitiva del suo documento, e questo foglio la estende invece di rifarla.<br><br>La sfocatura scende da 12 a 10, come in Eclisse: un fondo scuro sfocato di più diventa una macchia, e il senso del vetro è che dietro si riconosca qualcosa.</div>
+  </div>
+
+
+  <div class="cs-sezione">
+    <div class="cs-capo"><h2>Cosa cambia, per intero</h2><p>Sedici valori. Tutto il resto del sistema è identico nei due temi.</p></div>
+    <table class="cs-tabella">
+      <thead><tr><th>token</th><th>chiaro</th><th>scuro</th><th>cosa</th></tr></thead>
+      <tbody>
+        <tr><td>--liquid-film</td><td>bianco 34→24%</td><td>fumé 78→72%</td><td>il vetro di una bolla a riposo</td></tr>
+        <tr><td>--liquid-focus</td><td>bianco 48→36%</td><td>fumé 92→88%</td><td>il vetro di chi ha il fuoco, e di INPUT</td></tr>
+        <tr><td>--liquid-quiet</td><td>bianco 24→16%</td><td>fumé 58→50%</td><td>chi ha ceduto il fuoco, e il rimandato</td></tr>
+        <tr><td>--liquid-optics</td><td>blur 12 · sat 1.65 · brt 1.06</td><td>blur 10 · sat 1.35 · brt 0.92</td><td>quanto si vede il fondo attraverso</td></tr>
+        <tr><td>--liquid-edge</td><td>filo bianco 64%</td><td>filo verde-chiaro 24%, ombre più profonde</td><td>il menisco, e quanto galleggia</td></tr>
+        <tr><td>--inchiostro</td><td>#1a1c19</td><td>#f1f7f4</td><td>il titolo, sempre pieno</td></tr>
+        <tr><td>--inchiostro-tenue</td><td>#3e423c</td><td>#c7d8cf</td><td>la Profilebar, l'icona della tastiera</td></tr>
+        <tr><td>--inchiostro-corpo</td><td>#4a4e48</td><td>#b4c5bd</td><td>il corpo delle bolle</td></tr>
+        <tr><td>--inchiostro-fioco</td><td>#5a5f58</td><td>#93a7a0</td><td>le targhe, l'età, «Puoi dire»</td></tr>
+        <tr><td>--ink-salvia</td><td>#3d5643</td><td>#a8c6ae</td><td>in corso, o fatto</td></tr>
+        <tr><td>--ink-ambra</td><td>#8a5a17</td><td>#e8b571</td><td>aspetta te</td></tr>
+        <tr><td>--ink-rosso</td><td>#8a2e22</td><td>#e39184</td><td>bloccato</td></tr>
+        <tr><td>--punto-*</td><td>#5e9566 · #b3762a · #8a2e22</td><td>#79b683 · #e0a45a · #d2705f</td><td>i pallini e i capi del filo</td></tr>
+        <tr><td>--f1 … --f4</td><td>#c6cbc9 → #7c8178</td><td>#2b3d42 → #111d22</td><td>il fondo del sistema operativo</td></tr>
+        <tr><td>il cassetto</td><td>--liquid-film</td><td>--liquid-film</td><td>una riga è una bolla: nessun valore suo</td></tr>
+        <tr><td>il velo del cassetto</td><td>nero 54%</td><td>nero 58%</td><td>quando intorno si spegne</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── regole ────────────────────────────────────────────────────────── -->
+
+  <div class="cs-sezione">
+    <div class="cs-capo"><h2>Le regole</h2><p>Quattro, e la prima è quella che tiene in piedi le altre.</p></div>
+    <div class="cs-regole">
+      <div><div class="t">Non è un secondo design</div><div class="c">Geometrie, misure, raggi, ancoraggi, durate e curve <strong>non cambiano di un pixel</strong>. Se una riga del tema scuro sposta qualcosa, è sbagliata quella riga. Due temi che divergono di forma sono due prodotti, e si smettono di aggiornare insieme il giorno dopo.</div></div>
+      <div><div class="t">Gli stati restano tre, e restano quelli</div><div class="c">Salvia, ambra, rosso terra non cambiano tinta: cambia l'<em>inchiostro</em> con cui si scrivono, perché <span class="m">#3D5643</span> su vetro fumé non si legge. È lo stesso colore letto su un fondo diverso — non un colore nuovo, e la legge 04 regge.</div></div>
+      <div><div class="t">Si dichiara, non si deduce</div><div class="c">Nessuna selezione automatica dal tema del dispositivo. È la stessa regola che <span class="m">L2 - Profilebar</span> scrive per Eclisse, e vale per tutto: il sistema copre lo schermo intero, e cambiare materiale da solo mentre guardi è una cosa che succede sotto le mani.</div></div>
+      <div><div class="t">Una sola famiglia di vetro</div><div class="c">Bolle, chip, INPUT, le righe del cassetto e la PROFILEBAR usano <strong>gli stessi tre film</strong>. Non ci sono contenitori con un materiale proprio: se una cosa si legge, è di vetro, e il vetro è uno.<br><br>C'è stata una quarta forma — la <em>cartina</em>, opaca, per dire «questa non è nostra» — ed è caduta il 19 settembre 2026: una cosa arrivata da fuori resta di qualcun altro anche vista attraverso il vetro, e il materiale non era il posto dove dirlo. A dirlo restano il contenuto e il fatto che non migra. Va tolta da <span class="m">L2 - Bubble</span>, che la descrive ancora.</div></div>
+    </div>
+  </div>
+
+  <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.05em;line-height:2">UN TEMA &Egrave; UNA TINTA, NON UN MATERIALE: VALE IN CHIARO E IN SCURO<br>GLI STATI NON SONO UN TEMA &mdash; TRE, E SEMPRE QUELLI<br>SI SCEGLIE NEL PROFILO, NON SI DEDUCE DA NIENTE</div>
+  </div>
+
+</section>
+</x-dc>
+</body>
+</html>

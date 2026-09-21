@@ -1,0 +1,6 @@
+microfono: spento
+batteria: 55%
+WIFI: collegato a "WIFI-lucia", linea veloce.
+ethernet: off
+VOLUME: 40%
+gps: Piazza della speranza, Bologna

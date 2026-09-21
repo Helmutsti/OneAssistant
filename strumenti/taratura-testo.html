@@ -1,0 +1,577 @@
+<title>Taratura OneAssist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Il sistema è già deciso: qui non si inventa una palette, si usa la sua.
+     L1 - Moodboard per il vetro e il fondo, L1 - Bubble per la ricetta, L2 per le aree. */
+  :root {
+    --fondo-1: #c6cbc9; --fondo-2: #b9beb9; --fondo-3: #9ba096; --fondo-4: #7c8178;
+    --inchiostro: #1a1c19;
+    --ink-tenue: #3e423c;
+    --ink-corpo: #4a4e48;
+    --ink-fioco: #5a5f58;
+    --salvia: #4e6b54; --ink-salvia: #3d5643; --punto-salvia: #5e9566;
+    --ambra: #b3762a; --ink-ambra: #8a5a17;
+    --consolle: #1a1c19;
+    --consolle-riga: #262924;
+    --consolle-testo: #f4f3ee;
+    --consolle-fioco: #9aa096;
+    --carta: #e4e1da;
+  }
+
+  html, body { background: var(--carta); }
+  body {
+    margin: 0;
+    font-family: Manrope, system-ui, sans-serif;
+    color: var(--inchiostro);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .impaginato {
+    padding-block: 28px 40px;
+    padding-left: 16px; padding-right: 16px;
+    max-width: 1560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ─── intestazione ───────────────────────────────────────────────────── */
+
+  .testa { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .etichetta {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-fioco);
+  }
+  h1 {
+    font-size: clamp(30px, 5vw, 44px); font-weight: 500; letter-spacing: -0.035em;
+    line-height: 1; margin: 10px 0 0; text-wrap: balance;
+  }
+  .sottotitolo { font-size: 17px; color: var(--ink-tenue); line-height: 1.55; max-width: 34em; margin-top: 10px; }
+  .istruzioni {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.8;
+    color: var(--ink-corpo); text-align: right;
+  }
+  .istruzioni b { font-weight: 600; color: var(--inchiostro); }
+
+  /* ─── il palco: 1440 × 900, scalato per stare nella pagina ───────────── */
+
+  .cornice-palco {
+    position: relative; width: 100%; overflow: hidden;
+    border-radius: 18px; border: 1px solid rgba(26,28,25,0.12);
+    aspect-ratio: 1440 / 900; max-width: 100%;
+  }
+  #palco {
+    position: absolute; left: 0; top: 0; width: 1440px; height: 900px;
+    transform-origin: 0 0;
+    background: linear-gradient(180deg, var(--fondo-1) 0%, var(--fondo-2) 42%, var(--fondo-3) 68%, var(--fondo-4) 100%);
+  }
+  #palco::before {
+    content: ''; position: absolute; left: -100px; top: 20px; width: 1700px; height: 480px;
+    border-radius: 50%; pointer-events: none;
+    background: radial-gradient(60% 60% at 34% 22%, rgba(255,255,255,0.30), rgba(255,255,255,0) 72%);
+  }
+
+  .vetro {
+    background: linear-gradient(155deg, rgba(255,255,255,0.74), rgba(248,248,244,0.56));
+    backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+    -webkit-backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 20px 44px rgba(30,36,30,0.24);
+  }
+
+  .ico { display: inline-block; flex: none; }
+  .ico svg { display: block; width: 100%; height: 100%; }
+
+  /* WHEN / WHERE — ancoraggio 44, 40 */
+  #quando { position: absolute; left: 44px; top: 40px; }
+  #quando .riga { display: flex; align-items: baseline; gap: 14px; }
+  #quando .ora { font-weight: 300; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; line-height: 1; }
+  #quando .data { color: var(--ink-tenue); }
+  #quando .dove { display: flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--ink-tenue); }
+
+  /* WHO — ancoraggio destra 44, top 38 */
+  #chi {
+    position: absolute; right: 44px; top: 38px;
+    display: flex; align-items: center; gap: 20px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.38);
+  }
+  #chi .voce { display: flex; align-items: center; gap: 7px; }
+  #chi .mono { font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; }
+  #chi .ascolta { color: #2f4636; }
+  #chi .ascolta .mono { font-weight: 600; }
+  #chi .volto {
+    width: 36px; height: 36px; border-radius: 50%; flex: none;
+    background: linear-gradient(150deg, #b8a892, #7d6f5e);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+  }
+
+  /* TASKBAR — destra 44, top 132 */
+  #taskbar { position: absolute; right: 44px; top: 132px; display: flex; flex-direction: column; align-items: flex-end; gap: 9px; }
+  .chip {
+    display: flex; align-items: center; gap: 9px; padding: 0 14px; border-radius: 20px;
+    background: linear-gradient(155deg, rgba(255,255,255,0.62), rgba(248,248,244,0.44));
+    backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+    -webkit-backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 10px 24px rgba(30,36,30,0.18);
+  }
+  .chip .nome { line-height: 1; }
+  .chip .dato { font-family: 'IBM Plex Mono', monospace; font-weight: 600; letter-spacing: 0.08em; }
+
+  /* WHAT — la bolla canonica */
+  .bolla {
+    position: absolute; border-radius: 26px; padding: 22px 24px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 28px 64px rgba(30,36,30,0.24);
+  }
+  .bolla.attenuata { opacity: 0.78; }
+  .targa {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .targa .eta { margin-left: auto; font-weight: 400; letter-spacing: 0.08em; color: var(--ink-fioco); }
+  .titolo { font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
+  .corpo { color: var(--ink-corpo); line-height: 1.5; margin-top: 7px; }
+  .incisione {
+    height: 1px; margin: 20px -24px 0;
+    background: rgba(26,28,25,0.11); box-shadow: 0 1px 0 rgba(255,255,255,0.72);
+  }
+  .puoi-dire {
+    font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-fioco);
+    margin: 19px 0 11px;
+  }
+  .frasi { display: flex; flex-direction: column; gap: 9px; }
+  .frase { display: flex; align-items: baseline; gap: 10px; letter-spacing: -0.01em; color: var(--ink-corpo); }
+  .frase::before { content: ''; width: 8px; height: 8px; border-radius: 50%; flex: none; transform: translateY(-1px); background: transparent; }
+  .frase.probabile { color: var(--inchiostro); }
+  .frase.probabile::before { background: var(--salvia); }
+
+  /* SIDEBAR — destra 44, bottom 44, carta 496 */
+  #sidebar { position: absolute; right: 44px; bottom: 44px; width: 496px; }
+  .carta-side { border-radius: 22px; padding: 16px 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 18px 44px rgba(30,36,30,0.20); }
+  .carta-side .targa { margin-bottom: 9px; }
+  .carta-side .testo { line-height: 1.35; color: #21251f; }
+  .frasi-riga { margin-top: 9px; color: var(--ink-tenue); }
+  .frasi-riga .frase { display: inline; color: #21251f; }
+  .frasi-riga .frase::before { display: none; }
+  .frasi-riga .frase.secondaria { color: var(--ink-tenue); }
+
+  /* INPUT — basso a sinistra, punto fuori */
+  #input { position: absolute; left: 44px; bottom: 44px; width: 420px; display: flex; align-items: flex-end; gap: 13px; }
+  #input .punto { width: 13px; height: 13px; border-radius: 50%; flex: none; background: var(--punto-salvia); margin-bottom: 13px; }
+  #input .bolla-voce {
+    flex: 1; border-radius: 24px; padding: 13px 18px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 14px 34px rgba(30,36,30,0.18);
+    display: flex; flex-direction: column; gap: 9px;
+  }
+  #input .giro { display: flex; flex-direction: column; gap: 3px; }
+  #input .tua { color: var(--ink-fioco); }
+  #input .sua { color: #21251f; line-height: 1.35; }
+
+  /* ─── la consolle: non fa parte del design ───────────────────────────── */
+
+  .consolle {
+    background: var(--consolle); color: var(--consolle-testo);
+    border-radius: 20px; padding: 22px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .consolle h2 {
+    font-size: 19px; font-weight: 600; letter-spacing: -0.02em; margin: 0;
+  }
+  .consolle .nota { font-size: 13.5px; line-height: 1.55; color: var(--consolle-fioco); margin: 6px 0 0; }
+  .gruppi { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .gruppo { display: flex; flex-direction: column; gap: 3px; }
+  .gruppo > .titolo-gruppo {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--consolle-fioco);
+    padding: 0 0 6px 2px;
+  }
+  .token {
+    display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 8px;
+    background: var(--consolle-riga); border-radius: 10px; padding: 7px 8px 7px 12px;
+  }
+  .token .nome-token { font-size: 13.5px; line-height: 1.25; }
+  .token .nome-token span { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--consolle-fioco); text-transform: uppercase; margin-top: 2px; }
+  .token .valore {
+    font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;
+    font-variant-numeric: tabular-nums; min-width: 4.2ch; text-align: right;
+  }
+  .token .valore.cambiato { color: #a8d0ae; }
+  .token button {
+    width: 28px; height: 28px; border-radius: 8px; flex: none; cursor: pointer;
+    border: 1px solid rgba(244,243,238,0.22); background: transparent;
+    color: var(--consolle-testo); font-size: 16px; line-height: 1;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .token button:hover { background: rgba(244,243,238,0.12); }
+  .token button:focus-visible { outline: 2px solid var(--punto-salvia); outline-offset: 2px; }
+
+  .barra { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .barra button {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; cursor: pointer;
+    border-radius: 9px; padding: 9px 14px;
+    border: 1px solid rgba(244,243,238,0.24); background: transparent; color: var(--consolle-testo);
+  }
+  .barra button:hover { background: rgba(244,243,238,0.12); }
+  .barra button.primario { background: var(--punto-salvia); border-color: var(--punto-salvia); color: #10170f; font-weight: 600; }
+  .barra .esito { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--consolle-fioco); }
+
+  pre.token-scelti {
+    margin: 0; padding: 16px; border-radius: 12px;
+    background: #101210; color: #d6d4cc;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.7;
+    overflow-x: auto; white-space: pre;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .token .valore { transition: color 200ms ease; }
+  }
+</style>
+
+<div class="impaginato">
+
+  <header class="testa">
+    <div>
+      <div class="etichetta">Taratura · misure di testo e icone</div>
+      <h1>Quanto grande, esattamente</h1>
+      <p class="sottotitolo">
+        Tutti gli elementi del sistema ai loro ancoraggi veri, su 1440 × 900. Cambia una misura
+        e la vedi cambiare dove vive davvero — non su un campione. Quando ti piace, i valori
+        scelti sono in fondo, pronti da dettare.
+      </p>
+    </div>
+    <div class="istruzioni">
+      <b>−</b> e <b>+</b> per cambiare<br>
+      <b>↑ ↓</b> quando un bottone è a fuoco<br>
+      il verde segna ciò che hai mosso
+    </div>
+  </header>
+
+  <div class="cornice-palco" id="cornice-palco">
+    <div id="palco">
+
+      <div id="quando">
+        <div class="riga">
+          <div class="ora" data-t="whenOra">09:41</div>
+          <div class="data" data-t="whenData">lunedì 15 settembre</div>
+        </div>
+        <div class="dove">
+          <span class="ico" data-icona="house" data-t="iconaCornice"></span>
+          <div data-t="whenData">studio · Bologna</div>
+        </div>
+      </div>
+
+      <div id="chi">
+        <div class="voce ascolta">
+          <span class="ico" data-icona="mic" data-t="iconaWho"></span>
+          <span class="mono" data-t="whoMono">SOLO TU</span>
+        </div>
+        <div class="voce">
+          <span class="ico" data-icona="volume-2" data-t="iconaWho"></span>
+          <span class="mono" data-t="whoMono">40</span>
+        </div>
+        <div class="voce">
+          <span class="ico" data-icona="wifi" data-t="iconaWho"></span>
+          <span class="mono" data-t="whoMono">CASA</span>
+        </div>
+        <div class="voce">
+          <span class="ico" data-icona="battery-full" data-t="iconaWho"></span>
+          <span class="mono" data-t="whoMono">82%</span>
+        </div>
+        <div class="volto" title="il ritratto"></div>
+      </div>
+
+      <div id="taskbar">
+        <div class="chip" data-t="chipAltezza">
+          <span class="ico salvia" data-icona="folder" data-t="iconaChip" style="color:var(--ink-salvia)"></span>
+          <span class="nome" data-t="chipNome">Riordino Acme</span>
+          <span class="dato" data-t="chipDato" style="color:var(--ink-salvia)">128/412</span>
+        </div>
+        <div class="chip" data-t="chipAltezza">
+          <span class="ico" data-icona="mail" data-t="iconaChip" style="color:var(--ink-salvia)"></span>
+          <span class="nome" data-t="chipNome">Risposta Andrea</span>
+          <span class="dato" data-t="chipDato" style="color:var(--ink-salvia)">FATTO</span>
+        </div>
+      </div>
+
+      <!-- la bolla a fuoco -->
+      <div class="bolla vetro" style="left:60px; top:168px; width:452px;">
+        <div class="targa" data-t="bollaTarga" style="color:var(--ink-ambra)">
+          <span class="ico" data-icona="mail" data-t="iconaTipo"></span>
+          <span>Bozza pronta</span>
+          <span class="eta">2 min</span>
+        </div>
+        <div class="titolo" data-t="bollaTitolo">La v3 per Elena</div>
+        <div class="corpo" data-t="bollaCorpo">Con venerdì dalle 15 già bloccato. Aspetta solo la tua parola: non parte da sé.</div>
+        <div class="incisione"></div>
+        <div class="puoi-dire" data-t="bollaEtichetta">Puoi dire</div>
+        <div class="frasi" data-t="bollaFrasi">
+          <span class="frase probabile">«manda la mail»</span>
+          <span class="frase">«leggila»</span>
+          <span class="frase">«cambia il venerdì»</span>
+        </div>
+      </div>
+
+      <!-- una bolla che non ha il fuoco -->
+      <div class="bolla vetro attenuata" style="left:556px; top:262px; width:388px;">
+        <div class="targa" data-t="bollaTarga" style="color:var(--ink-salvia)">
+          <span class="ico" data-icona="folder" data-t="iconaTipo"></span>
+          <span>Ci sto lavorando</span>
+          <span class="eta">6 min</span>
+        </div>
+        <div class="titolo" data-t="bollaTitolo">Riordino dei documenti</div>
+        <div class="corpo" data-t="bollaCorpo">Centoventotto file su quattrocentododici, per data e per progetto.</div>
+      </div>
+
+      <div id="sidebar">
+        <div class="carta-side vetro">
+          <div class="targa" data-t="cartaTarga" style="color:var(--ink-ambra)">
+            <span class="ico" data-icona="file-text" data-t="iconaCarta"></span>
+            <span>Aspetta te</span>
+            <span class="eta">studio legale</span>
+          </div>
+          <div class="testo" data-t="cartaTesto">Il contratto Rossi aspetta una tua lettura prima di giovedì.</div>
+          <div class="frasi-riga" data-t="cartaFrasi">
+            <span class="frase">«manda»</span> · <span class="frase secondaria">«dopo»</span> ·
+            <span class="frase secondaria">«portala al centro»</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="input">
+        <div class="punto"></div>
+        <div class="bolla-voce vetro">
+          <div class="giro">
+            <div class="tua" data-t="inputTua">porta al centro la revisione</div>
+            <div class="sua" data-t="inputSua">Il contratto Rossi aspetta una tua lettura prima di giovedì.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="consolle">
+    <div>
+      <h2>La consolle</h2>
+      <p class="nota">
+        Diciannove misure, raggruppate per area. Non c'è niente da salvare: quando i valori
+        ti piacciono, me li detti dal riquadro in fondo.
+      </p>
+    </div>
+
+    <div class="gruppi" id="gruppi"></div>
+
+    <div class="barra">
+      <button type="button" id="copia" class="primario">Copia i token</button>
+      <button type="button" id="azzera">Torna ai valori di oggi</button>
+      <button type="button" id="tutto-su">Tutto +1</button>
+      <button type="button" id="tutto-giu">Tutto −1</button>
+      <span class="esito" id="esito"></span>
+    </div>
+
+    <pre class="token-scelti" id="scelti"></pre>
+  </section>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  // Le forme sono quelle ufficiali di Lucide (MIT): 24 × 24, tratto 2, terminazioni tonde.
+  const FORME = {
+    'mail': '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+    'folder': '<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
+    'file-text': '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+    'users': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    'message-circle': '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+    'image': '<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>',
+    'alarm-clock': '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/><path d="M6.38 18.7 4 21"/><path d="M17.64 18.67 20 21"/>',
+    'house': '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    'mic': '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/>',
+    'volume-2': '<path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/>',
+    'wifi': '<path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/>',
+    'battery-full': '<rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><line x1="6" x2="6" y1="11" y2="13"/><line x1="10" x2="10" y1="11" y2="13"/><line x1="14" x2="14" y1="11" y2="13"/>',
+  };
+
+  // I valori di oggi vengono dai documenti: L1 - Bubble, L2 - Taskbar, L2 - Sidebar,
+  // L2 - INPUT, L2 - WHEN/WHERE, L2 - WHO.
+  const TOKEN = [
+    { gruppo: 'Icone', chiave: 'iconaTipo', nome: 'tipo, nella bolla', dove: 'L1 - Bubble', oggi: 19, passo: 0.5 },
+    { gruppo: 'Icone', chiave: 'iconaChip', nome: 'tipo, nel chip', dove: 'L2 - Taskbar', oggi: 18, passo: 0.5 },
+    { gruppo: 'Icone', chiave: 'iconaCarta', nome: 'tipo, nella carta', dove: 'L2 - Sidebar', oggi: 17, passo: 0.5 },
+    { gruppo: 'Icone', chiave: 'iconaCornice', nome: 'luogo, in WHEN', dove: 'L2 - WHEN/WHERE', oggi: 19, passo: 0.5 },
+    { gruppo: 'Icone', chiave: 'iconaWho', nome: 'stato, in WHO', dove: 'L2 - WHO', oggi: 20, passo: 0.5 },
+
+    { gruppo: 'La bolla', chiave: 'bollaTarga', nome: 'targa', dove: 'mono 600 · +0.14em', oggi: 11, passo: 0.5 },
+    { gruppo: 'La bolla', chiave: 'bollaTitolo', nome: 'titolo', dove: 'Manrope 600 · −0.03em', oggi: 26, passo: 1 },
+    { gruppo: 'La bolla', chiave: 'bollaCorpo', nome: 'corpo', dove: 'Manrope 400', oggi: 15, passo: 0.5 },
+    { gruppo: 'La bolla', chiave: 'bollaEtichetta', nome: 'etichetta «puoi dire»', dove: 'mono 500 · +0.2em', oggi: 9.5, passo: 0.5 },
+    { gruppo: 'La bolla', chiave: 'bollaFrasi', nome: 'frasi', dove: 'Manrope 400', oggi: 16, passo: 0.5 },
+
+    { gruppo: 'Il chip', chiave: 'chipAltezza', nome: 'altezza', dove: 'raggio 20', oggi: 34, passo: 1 },
+    { gruppo: 'Il chip', chiave: 'chipNome', nome: 'nome', dove: 'Manrope 400', oggi: 15, passo: 0.5 },
+    { gruppo: 'Il chip', chiave: 'chipDato', nome: 'dato', dove: 'mono 600', oggi: 11.5, passo: 0.5 },
+
+    { gruppo: 'La carta', chiave: 'cartaTarga', nome: 'targa', dove: 'mono 600 · +0.14em', oggi: 10, passo: 0.5 },
+    { gruppo: 'La carta', chiave: 'cartaTesto', nome: 'testo', dove: 'Manrope 400', oggi: 17, passo: 0.5 },
+    { gruppo: 'La carta', chiave: 'cartaFrasi', nome: 'frasi', dove: 'su una riga', oggi: 14.5, passo: 0.5 },
+
+    { gruppo: 'INPUT e cornice', chiave: 'inputTua', nome: 'quello che hai detto', dove: 'L2 - INPUT', oggi: 15, passo: 0.5 },
+    { gruppo: 'INPUT e cornice', chiave: 'inputSua', nome: 'quello che risponde', dove: 'L2 - INPUT', oggi: 16, passo: 0.5 },
+    { gruppo: 'INPUT e cornice', chiave: 'whenOra', nome: 'l’ora', dove: 'Manrope 300', oggi: 34, passo: 1 },
+    { gruppo: 'INPUT e cornice', chiave: 'whenData', nome: 'data e luogo', dove: 'Manrope 400', oggi: 16, passo: 0.5 },
+    { gruppo: 'INPUT e cornice', chiave: 'whoMono', nome: 'i dati di WHO', dove: 'mono 500', oggi: 12.5, passo: 0.5 },
+  ];
+
+  const valori = {};
+  TOKEN.forEach((t) => (valori[t.chiave] = t.oggi));
+
+  // Le prove in corso restano nel browser di chi guarda, e basta.
+  try {
+    const salvato = JSON.parse(localStorage.getItem('taratura') || '{}');
+    TOKEN.forEach((t) => {
+      if (typeof salvato[t.chiave] === 'number') valori[t.chiave] = salvato[t.chiave];
+    });
+  } catch (e) { /* va bene anche senza */ }
+
+  const disegnaIcone = () => {
+    document.querySelectorAll('[data-icona]').forEach((n) => {
+      if (n.dataset.disegnata) return;
+      n.dataset.disegnata = '1';
+      n.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+        'stroke-linecap="round" stroke-linejoin="round">' + (FORME[n.dataset.icona] || '') + '</svg>';
+    });
+  };
+
+  const applica = () => {
+    document.querySelectorAll('[data-t]').forEach((n) => {
+      const v = valori[n.dataset.t];
+      if (typeof v !== 'number') return;
+      if (n.classList.contains('ico')) {
+        n.style.width = v + 'px';
+        n.style.height = v + 'px';
+      } else if (n.classList.contains('chip')) {
+        n.style.height = v + 'px';
+      } else {
+        n.style.fontSize = v + 'px';
+      }
+    });
+    TOKEN.forEach((t) => {
+      const campo = document.getElementById('v-' + t.chiave);
+      if (!campo) return;
+      campo.textContent = valori[t.chiave];
+      campo.classList.toggle('cambiato', valori[t.chiave] !== t.oggi);
+    });
+    scrivinTesto();
+    try { localStorage.setItem('taratura', JSON.stringify(valori)); } catch (e) { /* pazienza */ }
+  };
+
+  const scrivinTesto = () => {
+    const righe = [];
+    let gruppoCorrente = '';
+    TOKEN.forEach((t) => {
+      if (t.gruppo !== gruppoCorrente) {
+        gruppoCorrente = t.gruppo;
+        righe.push((righe.length ? '\n' : '') + '# ' + gruppoCorrente.toLowerCase());
+      }
+      const v = valori[t.chiave];
+      const segno = v === t.oggi ? '   ' : ' · ';
+      righe.push(
+        (t.chiave + ':').padEnd(17) + String(v).padStart(5) + ' px' + segno +
+        (v === t.oggi ? '' : 'era ' + t.oggi)
+      );
+    });
+    const mossi = TOKEN.filter((t) => valori[t.chiave] !== t.oggi).length;
+    righe.push('\n# ' + (mossi === 0 ? 'niente cambiato' : mossi === 1 ? 'una misura cambiata' : mossi + ' misure cambiate'));
+    document.getElementById('scelti').textContent = righe.join('\n');
+  };
+
+  const cambia = (chiave, verso) => {
+    const t = TOKEN.find((x) => x.chiave === chiave);
+    if (!t) return;
+    const minimo = t.chiave === 'chipAltezza' ? 20 : 6;
+    valori[chiave] = Math.max(minimo, Math.round((valori[chiave] + verso * t.passo) * 10) / 10);
+    applica();
+  };
+
+  // la consolle
+  const contenitore = document.getElementById('gruppi');
+  const gruppi = [...new Set(TOKEN.map((t) => t.gruppo))];
+  contenitore.innerHTML = gruppi
+    .map((g) => {
+      const righe = TOKEN.filter((t) => t.gruppo === g)
+        .map(
+          (t) => `
+        <div class="token">
+          <div class="nome-token">${t.nome}<span>${t.dove}</span></div>
+          <button type="button" data-giu="${t.chiave}" aria-label="diminuisci ${t.nome}">−</button>
+          <div class="valore" id="v-${t.chiave}">${valori[t.chiave]}</div>
+          <button type="button" data-su="${t.chiave}" aria-label="aumenta ${t.nome}">+</button>
+        </div>`
+        )
+        .join('');
+      return `<div class="gruppo"><div class="titolo-gruppo">${g}</div>${righe}</div>`;
+    })
+    .join('');
+
+  contenitore.addEventListener('click', (e) => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.su) cambia(b.dataset.su, +1);
+    if (b.dataset.giu) cambia(b.dataset.giu, -1);
+  });
+  contenitore.addEventListener('keydown', (e) => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    const chiave = b.dataset.su || b.dataset.giu;
+    if (e.key === 'ArrowUp') { e.preventDefault(); cambia(chiave, +1); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); cambia(chiave, -1); }
+  });
+
+  const esito = document.getElementById('esito');
+  const dillo = (t) => {
+    esito.textContent = t;
+    setTimeout(() => (esito.textContent = ''), 2600);
+  };
+
+  document.getElementById('azzera').addEventListener('click', () => {
+    TOKEN.forEach((t) => (valori[t.chiave] = t.oggi));
+    applica();
+    dillo('tornata ai valori dei documenti');
+  });
+  document.getElementById('tutto-su').addEventListener('click', () => {
+    TOKEN.forEach((t) => (valori[t.chiave] = Math.round((valori[t.chiave] + 1) * 10) / 10));
+    applica();
+  });
+  document.getElementById('tutto-giu').addEventListener('click', () => {
+    TOKEN.forEach((t) => (valori[t.chiave] = Math.max(6, Math.round((valori[t.chiave] - 1) * 10) / 10)));
+    applica();
+  });
+  document.getElementById('copia').addEventListener('click', async () => {
+    const testo = document.getElementById('scelti').textContent;
+    try {
+      await navigator.clipboard.writeText(testo);
+      dillo('copiati');
+    } catch (e) {
+      dillo('copia a mano dal riquadro qui sotto');
+    }
+  });
+
+  // il palco sta a 1440 × 900 e si scala nella pagina, così ogni ancoraggio resta al pixel
+  const scala = () => {
+    const c = document.getElementById('cornice-palco');
+    const s = c.clientWidth / 1440;
+    document.getElementById('palco').style.transform = 'scale(' + s + ')';
+  };
+  window.addEventListener('resize', scala);
+
+  disegnaIcone();
+  applica();
+  scala();
+})();
+</script>

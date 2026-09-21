@@ -1,0 +1,26 @@
+node_modules/
+dist/
+.lavoro/
+.playwright-mcp/
+.DS_Store
+
+# I binari della voce: 58 MB, arrivano coi pacchetti. Li rimette `npm run voce`
+# (pubblico/LEGGIMI.md).
+pubblico/ort/
+
+# ─── dati dell'utente ──────────────────────────────────────
+# La chat raw e' persistente ma non entra nel repository.
+Archivio/users/*/chat-raw/*.jsonl
+
+# ─── le chiavi ──────────────────────────────────────────────────────────────
+#
+# Stanno in `.env`, e in nessun altro posto: è il solo file del progetto che Vite
+# nega da sé (403). `chiave.txt` — nella radice o dentro il publicDir — è invece
+# **scaricabile** dal dev server, e dal publicDir finisce anche in dist/ (provato
+# il 17 settembre 2026: GET /chiave.txt rispondeva 200). Restano qui i nomi
+# sbagliati, per chi ci arriva con l'abitudine. Il perché per intero sta in
+# env.example.
+.env
+.env.*
+chiave.txt
+pubblico/chiave.txt
