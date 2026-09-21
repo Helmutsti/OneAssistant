@@ -1,0 +1,1146 @@
+src/archivio/archivio.ts:66:export const PROVE_PER_PROPORRE = 3;
+src/archivio/archivio.ts:69:export const TETTO_ESTRATTO = 8;
+src/archivio/archivio.ts:71:export class Archivio {
+src/archivio/archivio.ts:72:  private readonly entita = new Map<string, Entita>();
+src/archivio/archivio.ts:73:  private readonly ipotesi = new Map<string, Ipotesi>();
+src/archivio/archivio.ts:74:  private readonly dichiarate = new Map<string, string>();
+src/archivio/archivio.ts:76:  private readonly menzioni = new Map<string, { nome: string; righe: string[] }>();
+src/archivio/archivio.ts:81:  constructor(
+src/archivio/archivio.ts:95:  annota(
+src/archivio/archivio.ts:132:  daRicordare(): { nome: string; quante: number } | undefined {
+src/archivio/archivio.ts:141:  ricorda(nome: string, quando: Date, chi: string): boolean {
+src/archivio/archivio.ts:154:  ancora(nome: string): boolean {
+src/archivio/archivio.ts:168:  racconta(nome: string): string {
+src/archivio/archivio.ts:178:  raccontaUltima(): string {
+src/archivio/archivio.ts:187:  dimentica(quando: Date): string | undefined {
+src/archivio/archivio.ts:209:  contenuti(nomi: readonly string[]): string[] {
+src/archivio/archivio.ts:243:  nomi(): string[] {
+src/archivio/archivio.ts:247:  cosaSa(nome: string): Entita | undefined {
+src/archivio/archivio.ts:254:  osservaAbitudine(chiaveAbitudine: string, testo: string, quando: Date): Ipotesi {
+src/archivio/archivio.ts:266:  daProporre(chiaveAbitudine: string): Ipotesi | undefined {
+src/archivio/archivio.ts:273:  promuovi(chiaveAbitudine: string): boolean {
+src/archivio/archivio.ts:284:  revoca(chiaveAbitudine: string): boolean {
+src/archivio/archivio.ts:290:  dichiarato(chiaveAbitudine: string): boolean {
+src/archivio/archivio.ts:295:  raccontaPreferenze(): string {
+src/archivio/archivio.ts:310:  private semina(): void {
+src/archivio/archivio.ts:330:  private salva(_e: Entita): void {}
+src/archivio/archivio.ts:332:  private salvaOsservato(): void {}
+src/archivio/archivio.ts:334:  private salvaPreferenze(): void {}
+src/archivio/archivio.ts:343:export function chiave(nome: string): string {
+src/archivio/archivio.ts:354:  const t = r.testo.trim();
+src/archivio/archivio.ts:355:  return /[.!?]$/.test(t) ? t : `${t}.`;
+src/archivio/archivio.ts:360:  const s = t.trim().replace(/[.!?]$/, '');
+src/archivio/archivio.ts:361:  return s.charAt(0).toLowerCase() + s.slice(1);
+src/archivio/archivio.ts:366:  if (cose.length <= 1) return cose[0] ?? '';
+src/archivio/archivio.ts:367:  return `${cose.slice(0, -1).join(', ')} e ${cose.at(-1)}`;
+src/archivio/chat-raw.ts:3:export function salvaMessaggio(role: RuoloChat, text: string): void {
+src/archivio/chat-raw.ts:4:  if (typeof window === 'undefined' || !text) return;
+src/archivio/chat-raw.ts:6:  void fetch('/chat-raw', {
+src/ai-engine/testi.ts:20:export function riassumi(corpo: string): string {
+src/ai-engine/testi.ts:25:  const tutto = frasi.join(' ') || corpo.trim();
+src/ai-engine/testi.ts:26:  if (tutto.length <= 140) return tutto;
+src/ai-engine/testi.ts:29:  const taglio = tutto.slice(0, 170);
+src/ai-engine/testi.ts:30:  const stacco = Math.max(taglio.lastIndexOf(', '), taglio.lastIndexOf(': '), taglio.lastIndexOf('; '));
+src/ai-engine/testi.ts:31:  return `${stacco > 80 ? taglio.slice(0, stacco) : taglio.trimEnd()}…`;
+src/ai-engine/testi.ts:59:export function componi(richiesta: string, chi: string, giro = 0): string {
+src/ai-engine/testi.ts:67:  r = r.replace(
+src/ai-engine/testi.ts:72:  const domanda = /^(a che ora|quando|come|dove|chi|cosa|quanto|perché|se |ti va|va bene)/i.test(r);
+src/ai-engine/testi.ts:73:  const corpo = r.charAt(0).toLowerCase() + r.slice(1);
+src/ai-engine/testi.ts:75:  const aperture = [`Ciao ${chi.toLowerCase()}, `, `Ehi ${chi.toLowerCase()}, `, `${chi}, senti: `];
+src/ai-engine/testi.ts:84:export function aggiungiAl(testo: string, cosa: string): string {
+src/ai-engine/testi.ts:85:  const c = cosa.toLowerCase();
+src/ai-engine/testi.ts:86:  for (const [parola, segno] of Object.entries(EMOJI)) {
+src/ai-engine/testi.ts:89:  for (const [parola, formula] of Object.entries(FORMULE)) {
+src/ai-engine/testi.ts:93:  const pulito = cosa.replace(/^(?:un[ao]?|il|lo|la|del|della)\s+/i, '').trim();
+src/ai-engine/testi.ts:94:  return pulito ? `${testo} ${pulito.charAt(0).toUpperCase()}${pulito.slice(1)}.` : testo;
+src/ai-engine/strumenti.ts:67:export const FAMIGLIE: readonly Famiglia[] = [
+src/ai-engine/strumenti.ts:547:export const MOSSE_SECONDARIE: readonly string[] = ['guarda', 'ricorda', 'riporta'];
+src/ai-engine/strumenti.ts:565:export const STRUMENTI: readonly Strumento[] = [
+src/ai-engine/strumenti.ts:581:export const MOSSE_PRINCIPALI: readonly string[] = FAMIGLIE.flatMap((f) =>
+src/ai-engine/strumenti.ts:582:  f.strumenti.map((s) => s.nome),
+src/ai-engine/strumenti.ts:586:export function arnesiPer(permesso: readonly string[]): readonly Strumento[] {
+src/ai-engine/strumenti.ts:587:  return STRUMENTI.filter((s) => permesso.includes(s.nome));
+src/ai-engine/strumenti.ts:590:export function strumento(nome: string): Strumento | undefined {
+src/ai-engine/strumenti.ts:591:  return STRUMENTI.find((s) => s.nome === nome);
+src/ai-engine/strumenti.ts:627:  const nome = p?.nome?.trim();
+src/ai-engine/strumenti.ts:630:  const suo = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : undefined;
+src/ai-engine/strumenti.ts:638:  const carattere = p?.copione?.trim()
+src/ai-engine/strumenti.ts:697:  const fra = a.fra ? ` (${a.fra.join(' | ')})` : '';
+src/ai-engine/strumenti.ts:708:export function istruzioni(p?: Personaggio): string {
+src/ai-engine/strumenti.ts:709:  const righe: string[] = [chi(p), '', '# Le mosse', ''];
+src/ai-engine/strumenti.ts:710:  for (const f of FAMIGLIE) {
+src/ai-engine/strumenti.ts:721:  return righe.join('\n');
+src/ai-engine/ai-engine.ts:48:  passo(d: Dialogo): readonly Chiamata[] | Promise<readonly Chiamata[]>;
+src/ai-engine/ai-engine.ts:74:export function staPensando(): boolean {
+src/ai-engine/ai-engine.ts:79:export function quandoPensa(fn: () => void): void {
+src/ai-engine/ai-engine.ts:84:  if (!apri(frase, m)) return;
+src/ai-engine/ai-engine.ts:86:  avvisa?.();
+src/ai-engine/ai-engine.ts:108:export function turnoSubito(g: AiEngineSincrono, frase: string, m: Motore, o: Orologio): void {
+src/ai-engine/ai-engine.ts:109:  if (!apri(frase, m)) return;
+src/ai-engine/ai-engine.ts:111:  for (let i = 0; i < PASSI; i++) {
+src/ai-engine/ai-engine.ts:120:  passo(d: Dialogo): readonly Chiamata[];
+src/ai-engine/ai-engine.ts:129:  m.haiDetto(frase);
+src/ai-engine/ai-engine.ts:130:  if (soloTu(contesto)) return true;
+src/ai-engine/ai-engine.ts:131:  m.lasciaDetto(frase);
+src/ai-engine/ai-engine.ts:142:  for (const c of chiamate) {
+src/ai-engine/ai-engine.ts:164:export class Porta implements AiEngine {
+src/ai-engine/ai-engine.ts:181:  constructor(
+src/ai-engine/ai-engine.ts:188:  async passo(d: Dialogo): Promise<readonly Chiamata[]> {
+src/ai-engine/vista.ts:40:  if (t.id === fuoco) pezzi.push('· A FUOCO');
+src/ai-engine/vista.ts:41:  if (t.gruppo) pezzi.push(`· gruppo ${t.gruppo}`);
+src/ai-engine/vista.ts:42:  if (t.forma) pezzi.push(`· ${t.forma}`);
+src/ai-engine/vista.ts:43:  if (t.ora) pezzi.push(`· ${orario(t.ora)}, fra ${fraQuanto(t.ora.getTime() - o.adesso().getTime())}`);
+src/ai-engine/vista.ts:44:  if (t.dato) pezzi.push(`· ${t.dato}`);
+src/ai-engine/vista.ts:45:  if (t.uscita) {
+src/ai-engine/vista.ts:48:  const righe = [pezzi.join(' ')];
+src/ai-engine/vista.ts:49:  const dentro = dentroSiVede(t);
+src/ai-engine/vista.ts:50:  if (dentro) righe.push(`      ${dentro}`);
+src/ai-engine/vista.ts:52:  if (t.ingresso && t.ingresso !== dentro) {
+src/ai-engine/vista.ts:55:  if (t.alternative?.length) {
+src/ai-engine/vista.ts:58:  if (t.frasi.length) {
+src/ai-engine/vista.ts:61:  return righe.join('\n');
+src/ai-engine/vista.ts:68:export function guarda(m: Motore, o: Orologio): string {
+src/ai-engine/vista.ts:69:  const adesso = o.adesso();
+src/ai-engine/vista.ts:70:  const fuoco = m.aFuoco()?.id;
+src/ai-engine/vista.ts:73:  righe.push(`Adesso sono le ${orario(adesso)} di ${giorno(adesso)}.`);
+src/ai-engine/vista.ts:74:  righe.push(`Chi lo usa: ${contesto.utilizzatore}${contesto.dove ? `, ${contesto.dove}` : ''}.`);
+src/ai-engine/vista.ts:75:  if (contesto.ascoltatore.chi !== 'tu') {
+src/ai-engine/vista.ts:78:  righe.push('');
+src/ai-engine/vista.ts:82:  for (const [luogo, titolo] of AREE) {
+src/ai-engine/vista.ts:90:  if (vuoto) righe.push('Lo schermo è vuoto: non c\'è nessun task.', '');
+src/ai-engine/vista.ts:93:  const gruppi = m.gruppi();
+src/ai-engine/vista.ts:94:  if (gruppi.length) {
+src/ai-engine/vista.ts:109:  if (m.conCassetto) {
+src/ai-engine/vista.ts:131:  const visibile = m.scambioVisibile();
+src/ai-engine/vista.ts:132:  if (visibile.length) {
+src/ai-engine/vista.ts:141:  const frasi = m.frasiCorrenti();
+src/ai-engine/vista.ts:142:  if (frasi.length) {
+src/ai-engine/vista.ts:145:  if (m.domandaInSospeso()) {
+src/ai-engine/vista.ts:149:  return righe.join('\n').trim();
+src/ai-engine/vista.ts:159:  return `${GIORNI[d.getDay()]} ${d.getDate()} ${MESI[d.getMonth()]}`;
+src/ai-engine/regole.ts:33:export const VERBI = ['senti', 'trova', 'scrivi', 'dimmi', 'aspetta'] as const;
+src/ai-engine/regole.ts:43:export function interpreta(frase: string, m: Motore): Lettura {
+src/ai-engine/regole.ts:44:  const f = pulisci(frase);
+src/ai-engine/regole.ts:47:  const grezza = frase.toLowerCase().replace(/[«»"'.!?]/g, '').replace(/\s+/g, ' ').trim();
+src/ai-engine/regole.ts:48:  if (!f) return { tipo: 'aperta', frase };
+src/ai-engine/regole.ts:53:  const catena = f.match(/^(.+?) e (invia|inviala|invialo|mandalo|mandala|manda|spediscil[ao])$/);
+src/ai-engine/regole.ts:54:  if (catena?.[1]) {
+src/ai-engine/regole.ts:64:  const scrittura = grezza.match(
+src/ai-engine/regole.ts:67:  if (scrittura?.[1]) {
+src/ai-engine/regole.ts:76:  if (/^(torna (?:su|sulla|sul|a|al|alla) (?:quell[ao] |la |il )?(?:task |bolla |cosa )?(?:precedente|di prima)|torna indietro|dicevamo)/.test(f)) {
+src/ai-engine/regole.ts:82:  if (/^(no|no grazie|nemmeno|per adesso no)$/.test(f)) return { tipo: 'no' };
+src/ai-engine/regole.ts:85:  if (/^no,? ?aspetta/.test(f)) {
+src/ai-engine/regole.ts:91:  if (f === 'aspetta') return { tipo: 'aspetta' };
+src/ai-engine/regole.ts:96:  if (/^(non ascoltare|non mi ascoltare|scrivo|adesso scrivo|preferisco scrivere|spegni il microfono)$/.test(f)) {
+src/ai-engine/regole.ts:101:  if (/^(non leggere|non leggermelo|taci|stai zitta|silenzio|spegni la voce|niente voce)$/.test(f)) {
+src/ai-engine/regole.ts:104:  if (/^(torna a leggere|leggi ad alta voce|riaccendi la voce|parla|puoi parlare)$/.test(f)) {
+src/ai-engine/regole.ts:108:  if (/^chiudi/.test(f)) return { tipo: 'chiudi' };
+src/ai-engine/regole.ts:114:  if (/^(apri|apri le notifiche|apri il cassetto|cosa è arrivato|cos è arrivato)$/.test(f)) {
+src/ai-engine/regole.ts:117:  if (/^(me ne occupo|tienila|tienilo|prendila|prendilo|falla diventare un task)$/.test(f)) {
+src/ai-engine/regole.ts:126:  const inDubbio = m.task.find((t) => t.alternative?.length);
+src/ai-engine/regole.ts:127:  if (inDubbio?.alternative) {
+src/ai-engine/regole.ts:136:  if (/^(cosa (ti sei segnato|hai segnato)|che cosa ti sei segnato)/.test(f)) {
+src/ai-engine/regole.ts:139:  if (/^cosa fai da solo/.test(f)) return { tipo: 'racconta', su: 'preferenze' };
+src/ai-engine/regole.ts:140:  const su = f.match(/^cosa (?:sai|ti ricordi) (?:di|su|della|del|dello) (.+)$/);
+src/ai-engine/regole.ts:141:  if (su?.[1]) return { tipo: 'racconta', su: su[1] };
+src/ai-engine/regole.ts:142:  if (/^(dimenticalo|dimenticala|dimentica|non è vero|non e vero)$/.test(f)) {
+src/ai-engine/regole.ts:145:  if (/^(chiedimi sempre|non fare da solo|chiedimelo sempre)$/.test(f)) return { tipo: 'revoca' };
+src/ai-engine/regole.ts:150:  if (/^(sì|si|va bene|fai pure|certo|d'accordo|daccordo)(,? (è vero|e vero|fai pure|va bene|certo|grazie|giusto))?$/.test(f)) {
+src/ai-engine/regole.ts:156:  const nota = f.match(/^(?:segnati|segnatelo|ricordati|prendi nota)(?: che| di)? (.+)$/);
+src/ai-engine/regole.ts:157:  if (nota?.[1]) return { tipo: 'aperta', frase: nota[1] };
+src/ai-engine/regole.ts:158:  const appunto = f.match(/^(?:mettilo nelle note|salva nelle note|nelle note)[: ]?(.*)$/);
+src/ai-engine/regole.ts:159:  if (appunto) return { tipo: 'salva-nota', testo: (appunto[1] ?? '').trim() || frase };
+src/ai-engine/regole.ts:160:  if (/(fammi vedere le altre|le altre|cosa aspetta)/.test(f)) {
+src/ai-engine/regole.ts:163:  if (/cosa (hai|ho) in mano/.test(f)) return { tipo: 'mostra', area: 'TASKBAR' };
+src/ai-engine/regole.ts:166:  if (/cosa mi aspetta/.test(f)) return { tipo: 'mostra', area: 'NOTIFICATIONBAR' };
+src/ai-engine/regole.ts:168:  const ordinale = f.match(/^(?:la |il )?(prima|seconda|terza|quarta)$/);
+src/ai-engine/regole.ts:169:  if (ordinale?.[1]) {
+src/ai-engine/regole.ts:174:  const richiamo = f.match(/^(?:torna (?:a|al|alla) |riprendi (?:il |la )?)(.+)$/);
+src/ai-engine/regole.ts:175:  if (richiamo?.[1]) return { tipo: 'richiama', nome: richiamo[1] };
+src/ai-engine/regole.ts:181:  const aperto = m.gruppoAperto();
+src/ai-engine/regole.ts:182:  if (aperto) {
+src/ai-engine/regole.ts:192:  if (/^manda tutte/.test(f)) {
+src/ai-engine/regole.ts:201:  const messa = f.match(/^mett(?:ila|ilo|i) (?:con|in|dentro|nel gruppo|insieme a) (.+)$/);
+src/ai-engine/regole.ts:202:  if (messa?.[1]) {
+src/ai-engine/regole.ts:207:  if (/^(aprila|aprilo|guardiamola|guardiamolo|fammi vedere cosa c.è dentro|mostramela per intero)$/.test(f)) {
+src/ai-engine/regole.ts:211:  const apertura = f.match(/^(?:apri|fammi vedere)(?: il gruppo| quelle di| quelli di)? (.+)$/);
+src/ai-engine/regole.ts:212:  if (apertura?.[1]) {
+src/ai-engine/regole.ts:217:  const separa = f.match(/^(?:separa|dividi|sciogli il gruppo) (.+)$/);
+src/ai-engine/regole.ts:218:  if (separa?.[1]) {
+src/ai-engine/regole.ts:224:  const bersaglio = m.aFuoco();
+src/ai-engine/regole.ts:226:  if (/^riprova/.test(f)) {
+src/ai-engine/regole.ts:230:  if (/^lascia stare/.test(f)) {
+src/ai-engine/regole.ts:237:  if (/^(leggi|leggila|leggilo|leggimel[ao]|leggimi)/.test(f)) {
+src/ai-engine/regole.ts:243:  if (!bersaglio) return { tipo: 'aperta', frase };
+src/ai-engine/regole.ts:246:  if (/(riassum|riassunto|di cosa si tratta|cosa c.è scritto|cosa dice)/.test(f)) {
+src/ai-engine/regole.ts:252:  if (/(metti da parte|mettil[ao] da parte|ci penso (dopo|poi|più tardi|piu tardi))/.test(f)) {
+src/ai-engine/regole.ts:256:  const aggiunta = f.match(/^aggiungi(?:ci)? (.+)$/);
+src/ai-engine/regole.ts:257:  if (aggiunta?.[1]) return { tipo: 'aggiungi', task: bersaglio.id, cosa: aggiunta[1] };
+src/ai-engine/regole.ts:259:  if (/^(riscrivil[ao]|riscrivi|dillo in un altro modo|cambia le parole)/.test(f)) {
+src/ai-engine/regole.ts:263:  if (/^manda/.test(f)) return { tipo: 'consegna', task: bersaglio.id };
+src/ai-engine/regole.ts:264:  if (/^(dopo|rimandala|più tardi|piu tardi)/.test(f)) {
+src/ai-engine/regole.ts:267:  if (/(portala al centro|al centro|portala qui)/.test(f)) {
+src/ai-engine/regole.ts:280:  let o = frase.replace(/[«»"'.!?]/g, '').replace(/\s+/g, ' ').trim();
+src/ai-engine/regole.ts:281:  const basso = o.toLowerCase();
+src/ai-engine/regole.ts:282:  for (const v of VERBI) {
+src/ai-engine/regole.ts:288:  return o.slice(o.length - quante);
+src/ai-engine/regole.ts:298:  for (const v of VERBI) {
+src/ai-engine/api.ts:40:export function chiama(
+src/ai-engine/api.ts:56:  const s = strumento(c.nome);
+src/ai-engine/api.ts:57:  if (!s) return male(`Non ho una mossa che si chiama ${c.nome}.`);
+src/ai-engine/api.ts:58:  if (permesso && !permesso.includes(c.nome)) {
+src/ai-engine/api.ts:66:  for (const a of s.argomenti ?? []) {
+src/ai-engine/api.ts:76:  const testo = (nome: string): string => String(c.argomenti[nome] ?? '');
+src/ai-engine/api.ts:77:  const elenco = (nome: string): string[] => {
+src/ai-engine/api.ts:83:  const ilTask = (): string | undefined => {
+src/ai-engine/api.ts:88:  switch (c.nome) {
+src/ai-engine/api.ts:140:  testo: (n: string) => string,
+src/ai-engine/api.ts:141:  elenco: (n: string) => string[],
+src/ai-engine/api.ts:142:  ilTask: () => string | undefined,
+src/ai-engine/api.ts:145:  const conTask = (fn: (task: string) => Comando): Comando | Esito => {
+src/ai-engine/api.ts:152:  const conGruppo = (fn: (gruppo: string) => Comando): Comando | Esito => {
+src/ai-engine/api.ts:158:  switch (c.nome) {
+src/aree/testo.ts:11:export function esc(s: string): string {
+src/aree/testo.ts:12:  return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+src/ai-engine/finto.ts:24:export class AiEngineFinto implements AiEngineSincrono {
+src/ai-engine/finto.ts:27:  constructor(private readonly m: Motore) {}
+src/ai-engine/finto.ts:33:  passo(d: Dialogo): readonly Chiamata[] {
+src/ai-engine/finto.ts:38:  private mosse(frase: string): Chiamata[] {
+src/ai-engine/finto.ts:84:  private tradotte(c: Lettura, frase: string): Chiamata[] {
+src/ai-engine/finto.ts:181:  private senzaPensare(frase: string): Chiamata[] {
+src/ai-engine/finto.ts:225:  private trovaNomi(frase: string): string[] {
+src/ai-engine/finto.ts:252:  private generePer(nome: string): Genere {
+src/voce/espeak-ng.d.ts:6:  export default function ESpeakNg(opzioni: {
+src/prova/scia.ts:36:export class Scia {
+src/prova/scia.ts:37:  private readonly passi = new Map<string, Passaggio[]>();
+src/prova/scia.ts:38:  private readonly nomi = new Map<string, string>();
+src/prova/scia.ts:44:  constructor(
+src/prova/scia.ts:51:  private guarda(): void {
+src/prova/scia.ts:82:  daGuardare(): string | undefined {
+src/prova/scia.ts:86:  nome(id: string): string {
+src/prova/scia.ts:90:  di(id: string): readonly Passaggio[] {
+src/prova/scia.ts:95:  azzera(): void {
+src/conoscenza/canali.ts:62:export function sente(): boolean {
+src/conoscenza/canali.ts:63:  return orecchio ?? profilo().macchina.microfono;
+src/conoscenza/canali.ts:66:export function modo(): Modo {
+src/conoscenza/canali.ts:67:  return sente() ? 'voce' : 'tastiera';
+src/conoscenza/canali.ts:74:export function nonAscoltare(): void {
+src/conoscenza/canali.ts:82:export function ascolta(): void {
+src/conoscenza/canali.ts:89:export function legge(): boolean {
+src/conoscenza/canali.ts:90:  return bocca ?? profilo().assistente.lettura;
+src/conoscenza/canali.ts:98:export function leggiAVoce(accesa: boolean): void {
+src/conoscenza/canali.ts:105:export function comeIlProfilo(): void {
+src/aree/timeline.ts:53:  return m.task.find((t) => t.avanzamento === 'in corso');
+src/aree/timeline.ts:68:  const minuti = Math.floor(ms / MINUTO);
+src/aree/timeline.ts:69:  if (minuti < 1) return 'appena cominciato';
+src/aree/timeline.ts:70:  if (minuti < 60) return `da ${minuti} min`;
+src/aree/timeline.ts:71:  const ore = Math.floor(minuti / 60);
+src/aree/timeline.ts:82:  const minuti = Math.round(ms / MINUTO);
+src/aree/timeline.ts:83:  return minuti < 60 ? `fra ${minuti} min` : orario(quando);
+src/aree/timeline.ts:88:  const minuti = Math.max(0, Math.floor(ms / MINUTO));
+src/aree/timeline.ts:89:  if (minuti < 60) return `${minuti} min`;
+src/aree/timeline.ts:90:  const ore = Math.floor(minuti / 60);
+src/aree/timeline.ts:98:  const d = new Date(adesso);
+src/aree/timeline.ts:99:  d.setHours(contesto.oreDiLavoro.a, 0, 0, 0);
+src/aree/timeline.ts:104:  const d = new Date(adesso);
+src/aree/timeline.ts:105:  d.setHours(contesto.oreDiLavoro.da, 0, 0, 0);
+src/aree/timeline.ts:127:  const corrente = inCorso(m);
+src/aree/timeline.ts:128:  if (corrente) {
+src/aree/timeline.ts:134:  for (const t of m.task) {
+src/aree/timeline.ts:156:  const da = inizioGiornata(adesso).getTime();
+src/aree/timeline.ts:157:  const a = fineGiornata(adesso).getTime();
+src/aree/timeline.ts:159:  if (larghezza <= 0) return '';
+src/aree/timeline.ts:161:  const px = (ms: number) => Math.max(0, Math.min(FILO, ((ms - da) / larghezza) * FILO));
+src/aree/timeline.ts:164:  const pezzi = tratti(m, adesso)
+src/aree/timeline.ts:171:  for (const p of pezzi) {
+src/aree/timeline.ts:184:  if (cursore < FILO) html.push(`<div class="tratto vuoto" style="width:${(FILO - cursore).toFixed(1)}px"></div>`);
+src/aree/timeline.ts:185:  return `<div class="segmenti" style="width:${FILO}px">${html.join('')}</div>`;
+src/aree/timeline.ts:194:export function timeline(m: Motore, o: Orologio): string {
+src/aree/timeline.ts:195:  const adesso = o.adesso();
+src/aree/timeline.ts:196:  const corrente = inCorso(m);
+src/aree/timeline.ts:197:  const dopo = ilDopo(m, adesso);
+src/aree/timeline.ts:221:  const manca = dopo?.ora ? dopo.ora.getTime() - adesso.getTime() : undefined;
+src/modello/tipi.ts:39:export function combinazioneLegale(luogo: Luogo, avanzamento: Avanzamento): boolean {
+src/modello/tipi.ts:40:  return LEGALI[luogo].includes(avanzamento);
+src/modello/tipi.ts:44:export function colore(avanzamento: Avanzamento): 'salvia' | 'ambra' | 'rosso' | 'nessuno' {
+src/modello/tipi.ts:45:  switch (avanzamento) {
+src/modello/tipi.ts:85:export function chiParla(membri: readonly Task[]): Task {
+src/modello/tipi.ts:86:  return membri.reduce((a, b) => (URGENZA[a.avanzamento] <= URGENZA[b.avanzamento] ? a : b));
+src/modello/tipi.ts:94:export function dentroSiVede(t: Task): string | undefined {
+src/modello/tipi.ts:125:export function autorizzabile(u: Uscita): boolean {
+src/modello/tipi.ts:126:  return AUTORIZZABILI.includes(u.destinazione) && !u.destinatari?.length;
+src/modello/tipi.ts:235:export const COMANDI = [
+src/ai-engine/secondari.ts:56:  for (let i = 0; i < PASSI; i++) {
+src/ai-engine/secondari.ts:78:  throw new Error('non ha riportato niente');
+src/ai-engine/secondari.ts:104:export class SecondarioFinto implements AiEngine {
+src/ai-engine/secondari.ts:107:  constructor(
+src/ai-engine/secondari.ts:114:  async passo(d: {
+src/ai-engine/secondari.ts:134:  const prima = testo.split(/(?<=[.?!])\s+/)[0]?.trim() ?? '';
+src/ai-engine/secondari.ts:135:  const uno = prima || testo.trim() || 'non c’era niente da leggere';
+src/ai-engine/secondari.ts:136:  return uno.length <= 140 ? uno : `${uno.slice(0, 137).trimEnd()}…`;
+src/voce/turno.ts:22:export class Turno {
+src/voce/turno.ts:28:  private readonly zitto: Array<() => void> = [];
+src/voce/turno.ts:35:  constructor(
+src/voce/turno.ts:44:  quandoTace(fn: () => void): void {
+src/voce/turno.ts:48:  staParlando(): boolean {
+src/voce/turno.ts:53:  quanteDaParte(): number {
+src/voce/turno.ts:61:  dici(testo: string): void {
+src/voce/turno.ts:74:  private async giro(primo: string): Promise<void> {
+src/voce/turno.ts:97:  svuota(): void {
+src/voce/turno.ts:112:export function riepiloga(pezzi: readonly string[]): string {
+src/voce/turno.ts:113:  const puliti = pezzi.map((p) => p.trim()).filter(Boolean);
+src/voce/turno.ts:114:  if (puliti.length <= 1) return puliti[0] ?? '';
+src/voce/turno.ts:117:  if (ultima.endsWith('?')) return ultima;
+src/voce/turno.ts:119:  const domanda = puliti.slice(0, -1).reverse().find((p) => p.endsWith('?'));
+src/prova/timeline-prova.ts:18:  return [...html.matchAll(/class="tratto [^"]*" style="width:([\d.]+)px"/g)].map((m) => Number(m[1]));
+src/prova/timeline-prova.ts:21:export function provaLaTimeline(
+src/prova/timeline-prova.ts:24:  verifica: (cosa: string, atteso: unknown, ottenuto: unknown, dettaglio?: unknown) => void,
+src/prova/timeline-prova.ts:26:  const html = timeline(m, o);
+src/prova/timeline-prova.ts:31:  const pezzi = larghezze(html);
+src/prova/timeline-prova.ts:32:  const somma = Math.round(pezzi.reduce((a, b) => a + b, 0));
+src/prova/timeline-prova.ts:33:  verifica('il filo della giornata somma 242', FILO, somma, pezzi);
+src/prova/timeline-prova.ts:37:  verifica(
+src/prova/timeline-prova.ts:47:  verifica('c’è sempre un adesso', true, /class="momento (adesso|libero)"/.test(html));
+src/prova/timeline-prova.ts:48:  verifica('c’è sempre un dopo', true, /class="momento dopo/.test(html));
+src/prova/timeline-prova.ts:52:  verifica('non offre frasi', false, html.includes('class="frase'));
+src/prova/timeline-prova.ts:53:  verifica('non si preme', false, html.includes('premibile') || html.includes('data-'));
+src/prova/timeline-prova.ts:58:  verifica('niente «prima»', false, /class="momento prima/.test(html));
+src/prova/timeline-prova.ts:62:export function provaIlLibero(
+src/prova/timeline-prova.ts:65:  verifica: (cosa: string, atteso: unknown, ottenuto: unknown, dettaglio?: unknown) => void,
+src/prova/timeline-prova.ts:67:  const html = timeline(m, o);
+src/prova/timeline-prova.ts:68:  if (!html.includes('class="momento libero"')) return;
+src/prova/timeline-prova.ts:69:  const dice = /class="soggetto">([^<]+)</.exec(html)?.[1] ?? '';
+src/prova/timeline-prova.ts:70:  verifica(
+src/stile/tema.ts:64:export function applicaTema(tema: Readonly<Record<string, string>>): readonly string[] {
+src/stile/tema.ts:67:  for (const [chiave, valore] of Object.entries(tema)) {
+src/conoscenza/profilo.ts:107:export const PREDEFINITO: Profilo = {
+src/conoscenza/profilo.ts:138:export function codiceLingua(lingua: string): string {
+src/conoscenza/profilo.ts:139:  return LINGUE[lingua.trim().toLowerCase()] ?? 'it-IT';
+src/conoscenza/profilo.ts:161:export function leggiProfilo(testo: string): Profilo {
+src/conoscenza/profilo.ts:163:  for (const r of testo.replace(/\r/g, '').split('\n')) {
+src/conoscenza/profilo.ts:179:  const c = (chiave: string) => righe.find((r) => r.chiave === chiave)?.valore;
+src/conoscenza/profilo.ts:182:  const figli = (chiave: string): Riga[] => {
+src/conoscenza/profilo.ts:197:  const prosa = (chiave: string): string =>
+src/conoscenza/profilo.ts:204:  const accesi = (chiave: string) =>
+src/conoscenza/profilo.ts:207:  const spento = (v?: string) => /^(off|no|spent|false)/i.test((v ?? '').trim());
+src/conoscenza/profilo.ts:208:  const numero = (v: string | undefined, quando: number) => {
+src/conoscenza/profilo.ts:213:  const gps = c('gps');
+src/conoscenza/profilo.ts:215:  const luogo = figli('location from gps').find((r) => acceso(r.valore))?.chiave;
+src/conoscenza/profilo.ts:216:  const wifi = c('wifi');
+src/conoscenza/profilo.ts:217:  const rete = spento(wifi) ? undefined : wifi?.match(/"([^"]+)"/)?.[1] ?? wifi?.split(',')[0]?.trim();
+src/conoscenza/profilo.ts:223:  if (c('accent color')) {
+src/conoscenza/profilo.ts:229:  const nome = figli('preferenze').find((r) => r.chiave === 'nome')?.valore;
+src/conoscenza/profilo.ts:232:  const suoi = figli('notifications');
+src/conoscenza/profilo.ts:233:  const modo = /silen|muto|spent/i.test(suoi.find((r) => r.chiave === 'set')?.valore ?? '')
+src/conoscenza/profilo.ts:240:  for (const r of figli('tema')) {
+src/conoscenza/profilo.ts:279:  return /^(on|s[iì]|acceso|attivo|true|yes)$/i.test(v.trim());
+src/conoscenza/profilo.ts:307:  const p = percorso?.trim().replace(/\\/g, '/');
+src/conoscenza/profilo.ts:308:  if (!p) return undefined;
+src/conoscenza/profilo.ts:309:  if (/^https?:\/\//i.test(p)) return p;
+src/conoscenza/profilo.ts:311:  const assoluto = /^([a-z]:|\/)/i.test(p);
+src/conoscenza/profilo.ts:312:  if (!assoluto) {
+src/conoscenza/profilo.ts:317:  const nome = p.split('/').pop();
+src/conoscenza/profilo.ts:318:  if (!nome) return undefined;
+src/conoscenza/profilo.ts:319:  if (/\.(mp3|wav|ogg|m4a)$/i.test(nome)) return `/suoni/${nome}`;
+src/conoscenza/profilo.ts:320:  if (/\.(jpe?g|png|webp|avif)$/i.test(nome)) return dellUtente(`filesystem/Home/${nome}`);
+src/conoscenza/profilo.ts:342:export function profilo(): Profilo {
+src/conoscenza/profilo.ts:356:export function utenteChiesto(): string | undefined {
+src/conoscenza/profilo.ts:367:export function utenteInCorso(): string | undefined {
+src/confini/promemoria.ts:25:export class Promemoria implements Sorgente {
+src/confini/promemoria.ts:32:  private annuncia?: (p: Proposta) => void;
+src/confini/promemoria.ts:35:  constructor(private readonly adesso: () => Date = () => new Date()) {}
+src/confini/promemoria.ts:37:  osserva(annuncia: (p: Proposta) => void): void {
+src/confini/promemoria.ts:41:  cosaPuoArrivare(): readonly string[] {
+src/confini/promemoria.ts:45:  fai(nome: string): void {
+src/confini/promemoria.ts:60:  inventa(p: Proposta): void {
+src/confini/promemoria.ts:64:  async consegna(_u: Uscita, cosa: string): Promise<void> {
+src/confini/promemoria.ts:75:  leggi(): readonly string[] {
+src/confini/promemoria.ts:79:  private scenario(): readonly Proposta[] {
+src/confini/promemoria.ts:111:  const x = a.toLowerCase().trim();
+src/confini/promemoria.ts:112:  const y = b.toLowerCase().trim();
+src/confini/promemoria.ts:113:  return x.includes(y) || y.includes(x);
+src/confini/promemoria.ts:117:  return new Promise((r) => setTimeout(r, ms));
+src/aree/schermo.ts:35:  cancelAnimationFrame(assestamento);
+src/aree/schermo.ts:39:  const fine = performance.now() + 3000;
+src/aree/schermo.ts:40:  const passo = () => {
+src/aree/schermo.ts:62:  assestamento = requestAnimationFrame(passo);
+src/aree/schermo.ts:70:export function ridimensiona(radice: HTMLElement): void {
+src/aree/schermo.ts:71:  misuraPalco(radice.clientWidth, radice.clientHeight);
+src/aree/schermo.ts:72:  scrivania.rientra();
+src/aree/schermo.ts:73:  const area = radice.querySelector<HTMLElement>('#table');
+src/aree/schermo.ts:74:  if (area) assesta(area, fuocoPrecedente);
+src/aree/schermo.ts:95:export function disegna(radice: HTMLElement, m: Motore, o: Orologio, p: Pedana): void {
+src/aree/schermo.ts:96:  const scritto = radice.querySelector<HTMLInputElement>('#scrittura');
+src/aree/schermo.ts:102:  let cornice = radice.querySelector<HTMLElement>('#cornice');
+src/aree/schermo.ts:103:  if (!cornice) {
+src/aree/schermo.ts:129:  inputCera = cornice.querySelector('#input:not(.assente)') !== null;
+src/aree/schermo.ts:132:  table(radice, m, o, p.frasi === 'sotto');
+src/aree/schermo.ts:135:  notificationbar(radice, m, o);
+src/aree/schermo.ts:137:  const nuovo = radice.querySelector<HTMLInputElement>('#scrittura');
+src/aree/schermo.ts:138:  if (nuovo) {
+src/aree/schermo.ts:182:  const d = o.adesso();
+src/aree/schermo.ts:183:  const chi = profilo();
+src/aree/schermo.ts:222:  const [posto = '', citta = ''] = contesto.dove.split('·').map((x) => x.trim());
+src/aree/schermo.ts:232:  return pezzi.filter(Boolean).join('');
+src/aree/schermo.ts:257:  const macchina = profilo().macchina;
+src/aree/schermo.ts:259:  const acceso = sente();
+src/aree/schermo.ts:263:  const parla = legge();
+src/aree/schermo.ts:299:  const fila = m.elementi().slice(0, 4);
+src/aree/schermo.ts:300:  if (fila.length === 0) return '<div id="taskbar"></div>';
+src/aree/schermo.ts:301:  const altrove = m.aFuoco() ? 'attenuata' : '';
+src/aree/schermo.ts:302:  const disegnati = fila.map((e) => ('gruppo' in e ? unGruppo(e.gruppo) : unChip(e.task, o)));
+src/aree/schermo.ts:303:  return `<div id="taskbar" class="${altrove}">${disegnati.join('')}</div>`;
+src/aree/schermo.ts:312:  const c = tinta(g.parla);
+src/aree/schermo.ts:323:  const c = tinta(t);
+src/aree/schermo.ts:339:  let area = radice.querySelector<HTMLElement>('#table');
+src/aree/schermo.ts:340:  if (!area) {
+src/aree/schermo.ts:345:  const adesso = Date.now();
+src/aree/schermo.ts:346:  const main = m.main();
+src/aree/schermo.ts:347:  const tasks = main ? [main, ...m.in('APERTO')] : m.in('APERTO');
+src/aree/schermo.ts:348:  const vivi = new Set(tasks.map((t) => t.id));
+src/aree/schermo.ts:351:  for (const nodo of [...area.children] as HTMLElement[]) {
+src/aree/schermo.ts:375:  for (const t of tasks) {
+src/aree/schermo.ts:396:  const aFuoco = m.aFuoco();
+src/aree/schermo.ts:397:  const suo = aFuoco && vivi.has(aFuoco.id) ? aFuoco.id : undefined;
+src/aree/schermo.ts:400:  const dentro = m.aperto()?.id;
+src/aree/schermo.ts:401:  if (suo !== fuocoPrecedente || dentro !== dentroPrecedente) {
+src/aree/schermo.ts:409:  for (const t of tasks) {
+src/aree/schermo.ts:414:  for (const t of tasks) {
+src/aree/schermo.ts:426:  assesta(area, suo);
+src/aree/schermo.ts:434:  const c = tinta(t);
+src/aree/schermo.ts:435:  const suo = m.aFuoco()?.id === t.id;
+src/aree/schermo.ts:439:  const frasi = suo && conFrasi ? m.frasiCorrenti() : [];
+src/aree/schermo.ts:441:  const intero = m.aperto()?.id === t.id ? dentroSiVede(t) : undefined;
+src/aree/schermo.ts:469:export function pila(m: Motore, o: Orologio, conFrasi = true): string {
+src/aree/schermo.ts:470:  const carte = m.in('CARTA');
+src/aree/schermo.ts:471:  if (carte.length === 0) return '<div id="pila"></div>';
+src/aree/schermo.ts:473:  const visibili = carte.slice(-3);
+src/aree/schermo.ts:475:  const dietro = visibili.slice(0, -1).reverse();
+src/aree/schermo.ts:484:  const c = tinta(cima);
+src/aree/schermo.ts:485:  const sua = m.aFuoco()?.id === cima.id;
+src/aree/schermo.ts:486:  const frasi = sua && conFrasi ? m.frasiCorrenti() : [];
+src/aree/schermo.ts:511:  if (!m.espansa) return '';
+src/aree/schermo.ts:514:  if (m.conCassetto && m.espansa === 'NOTIFICATIONBAR') return '';
+src/aree/schermo.ts:515:  const g = m.gruppoAperto();
+src/aree/schermo.ts:518:  if (typeof m.espansa !== 'string' && !g) return '';
+src/aree/schermo.ts:566:  const gia = radice.querySelector<HTMLElement>('#notificationbar');
+src/aree/schermo.ts:567:  if (!m.conCassetto) {
+src/aree/schermo.ts:573:  const barra = gia ?? nuovaBarra(radice);
+src/aree/schermo.ts:574:  const aperto = m.cassettoAperto();
+src/aree/schermo.ts:575:  const quante = m.daVedere();
+src/aree/schermo.ts:579:  if (quante > notificheViste) {
+src/aree/schermo.ts:585:  const scelta = m.notificaAFuoco();
+src/aree/schermo.ts:612:  const cassetto = barra.querySelector<HTMLElement>('.cassetto')!;
+src/aree/schermo.ts:629:  const campanella = barra.querySelector<HTMLElement>('.campanella')!;
+src/aree/schermo.ts:631:  const badge = barra.querySelector<HTMLElement>('.badge')!;
+src/aree/schermo.ts:632:  badge.textContent = String(quante);
+src/aree/schermo.ts:633:  badge.classList.toggle('niente', quante === 0);
+src/aree/schermo.ts:635:  barra.classList.toggle('aperto', aperto);
+src/aree/schermo.ts:637:  radice.querySelector('#velo-notifiche')?.classList.toggle('aperto', aperto);
+src/aree/schermo.ts:645:  const velo = document.createElement('div');
+src/aree/schermo.ts:647:  radice.appendChild(velo);
+src/aree/schermo.ts:648:  const barra = document.createElement('div');
+src/aree/schermo.ts:656:  radice.appendChild(barra);
+src/aree/schermo.ts:692:  const tastiera = modo() === 'tastiera';
+src/aree/schermo.ts:704:  const pensa = staPensando();
+src/aree/schermo.ts:705:  const stai = scritto.trim().length > 0;
+src/aree/schermo.ts:706:  const aperta = m.conversazioneAperta();
+src/aree/schermo.ts:708:  const frasi = dove === 'sotto' ? [] : m.frasiCorrenti();
+src/aree/schermo.ts:728:  const bolla = (dentro: string): string =>
+src/aree/schermo.ts:742:  const rigaScrivi = (invita: boolean): string =>
+src/aree/schermo.ts:757:  if (!aperta && tastiera) {
+src/aree/schermo.ts:764:  if (!stai && !aperta) {
+src/aree/schermo.ts:780:  const raccolta = laRaccolta(m, scritto, stai);
+src/aree/schermo.ts:785:  if (tastiera) {
+src/aree/schermo.ts:829:  const args = Object.entries(x.chiamata.argomenti)
+src/aree/schermo.ts:835:  const visto = x.visto.split('\n')[0] ?? '';
+src/aree/schermo.ts:836:  const coda = visto && visto !== 'fatto' ? ` → ${visto.slice(0, 64)}` : '';
+src/aree/schermo.ts:842:  const visibile = m.scambioVisibile();
+src/aree/schermo.ts:843:  const frase = stai ? scritto : (visibile[visibile.length - 1]?.tua ?? '');
+src/aree/schermo.ts:844:  const riferimenti: readonly Riferimento[] = frase ? raccolta(frase, m) : [];
+src/aree/schermo.ts:845:  if (riferimenti.length === 0) {
+src/aree/schermo.ts:851:  const visti = new Set<string>();
+src/aree/schermo.ts:877:  const placeholder = invita && scritto.length === 0 ? (tastiera ? 'scrivi' : 'dillo o scrivilo') : '';
+src/aree/schermo.ts:914:  if (!p.bloccato) return '';
+src/aree/schermo.ts:915:  const d = o.adesso();
+src/aree/schermo.ts:916:  const chi = profilo();
+src/aree/schermo.ts:956:  const id = p.scia.daGuardare();
+src/aree/schermo.ts:957:  const passi = id ? p.scia.di(id) : [];
+src/aree/schermo.ts:958:  if (!id || passi.length === 0) {
+src/aree/schermo.ts:984:  const situazioni = CHIAVI.map((k) => {
+src/aree/schermo.ts:1061:  const opzioni = (valori: readonly string[], scelto: string) =>
+src/aree/schermo.ts:1064:  const campo = (id: string, etichetta: string, valore: string, segnaposto = '') => `
+src/aree/schermo.ts:1069:  const spunta = (id: string, etichetta: string, acceso: boolean) => `
+src/aree/schermo.ts:1107:  if (!p.aperta) return `<div id="pedana"><button id="pallino" title="prova"></button></div>`;
+src/aree/schermo.ts:1215:  const d = new Date(ms);
+src/aree/schermo.ts:1216:  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`;
+src/aree/schermo.ts:1223:  const c = colore(t.avanzamento);
+src/aree/schermo.ts:1229:  switch (t.avanzamento) {
+src/aree/schermo.ts:1241:  const minuti = Math.floor((o.adesso().getTime() - t.nascita.getTime()) / 60000);
+src/aree/schermo.ts:1242:  if (minuti < 1) return 'adesso';
+src/aree/schermo.ts:1243:  if (minuti < 60) return `${minuti} min`;
+src/aree/schermo.ts:1244:  return orario(t.nascita);
+src/prova/pedana.ts:51:export function dove(famiglia: number, azione: number): string {
+src/prova/pedana.ts:55:export class Pedana {
+src/prova/pedana.ts:137:  constructor(
+src/prova/pedana.ts:145:  get flusso(): Flusso | undefined {
+src/prova/pedana.ts:149:  scegli(indice: number): void {
+src/prova/pedana.ts:161:  vocabolario(): void {
+src/prova/pedana.ts:170:  compositore(): void {
+src/prova/pedana.ts:186:  proposta(adesso: Date): Proposta {
+src/prova/pedana.ts:207:  giraLeFrasi(): void {
+src/prova/pedana.ts:215:  svuota(): void {
+src/prova/pedana.ts:220:  daccapo(): void {
+src/prova/pedana.ts:229:  vai(indice = this.passo): void {
+src/prova/pedana.ts:237:  private prossimo(da: number): number {
+src/modello/tempo.ts:22:export const MINUTO = 60_000;
+src/modello/tempo.ts:23:export const SECONDO = 1_000;
+src/modello/tempo.ts:28:  readonly fn: () => void;
+src/modello/tempo.ts:31:export class Orologio {
+src/modello/tempo.ts:44:  constructor(partenza?: Date) {
+src/modello/tempo.ts:49:  adesso(): Date {
+src/modello/tempo.ts:57:  get ms(): number {
+src/modello/tempo.ts:62:  salta(ms: number): void {
+src/modello/tempo.ts:72:  batti(): void {
+src/modello/tempo.ts:77:  fra(ms: number, fn: () => void): number {
+src/modello/tempo.ts:83:  annulla(id: number): void {
+src/modello/tempo.ts:88:  prossima(): number | undefined {
+src/modello/tempo.ts:93:  private scuoti(): void {
+src/modello/motore.ts:36:export const REGOLE = {
+src/modello/motore.ts:87:export const CONVERSAZIONE_APERTA = 30 * SECONDO;
+src/modello/motore.ts:93:export const abitudineDi = (u: Uscita) => `consegna-${u.destinazione}`;
+src/modello/motore.ts:95:export class Motore {
+src/modello/motore.ts:135:  private osservatori: Array<() => void> = [];
+src/modello/motore.ts:136:  private voci: Array<(testo: string) => void> = [];
+src/modello/motore.ts:137:  private arrivi: Array<() => void> = [];
+src/modello/motore.ts:155:  private delegato?: (lavoro: string, dentro: Task, quale: number) => Promise<string>;
+src/modello/motore.ts:157:  constructor(
+src/modello/motore.ts:165:  conSecondari(fn: (lavoro: string, dentro: Task, quale: number) => Promise<string>): void {
+src/modello/motore.ts:188:  delega(id: string, lavori: readonly string[]): number {
+src/modello/motore.ts:224:  private hannoFinito(t: Task, riporti: readonly string[]): void {
+src/modello/motore.ts:241:  ascolta(fn: () => void): void {
+src/modello/motore.ts:249:  scambioVisibile(): readonly Scambio[] {
+src/modello/motore.ts:263:  memoria(): readonly Scambio[] {
+src/modello/motore.ts:276:  private potaLaMemoria(): void {
+src/modello/motore.ts:307:  conversazioneAperta(): boolean {
+src/modello/motore.ts:314:  fraQuantoSiChiude(): number {
+src/modello/motore.ts:321:  inAscoltoDelleRisposte(fn: (testo: string) => void): void {
+src/modello/motore.ts:330:  inAscoltoDegliArrivi(fn: () => void): void {
+src/modello/motore.ts:337:  accogli(p: Proposta): void {
+src/modello/motore.ts:384:  private nelCassetto(p: Proposta, esito: Esito): void {
+src/modello/motore.ts:406:  daVedere(): number {
+src/modello/motore.ts:411:  notificaAFuoco(): Notifica | undefined {
+src/modello/motore.ts:420:  rubrica(): Contatti | undefined {
+src/modello/motore.ts:425:  cassettoAperto(): boolean {
+src/modello/motore.ts:430:  haiDetto(frase: string): void {
+src/modello/motore.ts:442:  segna(
+src/modello/motore.ts:460:  parla(testo: string): void {
+src/modello/motore.ts:470:  segnati(
+src/modello/motore.ts:494:  ricordami(cosa: string, fraMinuti: number): boolean {
+src/modello/motore.ts:525:  lasciaDetto(frase: string): void {
+src/modello/motore.ts:548:  chiedi(fra: readonly string[]): void {
+src/modello/motore.ts:564:  private sciogli(id: string): void {
+src/modello/motore.ts:575:  esegui(c: Comando): void {
+src/modello/motore.ts:669:  private nonAscolto(): void {
+src/modello/motore.ts:687:  private laVoce(accesa: boolean): void {
+src/modello/motore.ts:698:  private racconta(su: string): void {
+src/modello/motore.ts:705:  private dimentica(): void {
+src/modello/motore.ts:711:  private conferma(): void {
+src/modello/motore.ts:722:  private revocaAbitudine(): void {
+src/modello/motore.ts:732:  private salvaNota(testo: string): void {
+src/modello/motore.ts:765:  rientro(id: string, testo: string): void {
+src/modello/motore.ts:778:  private consegna(id: string, lotto?: string): void {
+src/modello/motore.ts:830:  private chiudiLotto(lotto: string): void {
+src/modello/motore.ts:857:  private forseProponi(u: Uscita): string {
+src/modello/motore.ts:867:  private blocca(t: Task, perche: string): void {
+src/modello/motore.ts:874:  private rimanda(id: string): void {
+src/modello/motore.ts:885:  private rimandaUno(t: Task): void {
+src/modello/motore.ts:899:  private alCentro(id: string, parla = true): void {
+src/modello/motore.ts:911:  private richiama(nome: string): void {
+src/modello/motore.ts:921:  private annulla(id: string): void {
+src/modello/motore.ts:945:  private lascia(id: string): void {
+src/modello/motore.ts:953:  private scegli(indice: number): void {
+src/modello/motore.ts:991:  private riassunto(id: string): void {
+src/modello/motore.ts:1046:  private estrai(id: string): void {
+src/modello/motore.ts:1079:  private leggi(id: string): void {
+src/modello/motore.ts:1090:  private indietro(): void {
+src/modello/motore.ts:1105:  private componiMessaggio(a: string, richiesta: string, scritto?: string): void {
+src/modello/motore.ts:1149:  private aggiungi(id: string, cosa: string): void {
+src/modello/motore.ts:1162:  private riscrivi(id: string): void {
+src/modello/motore.ts:1181:  azzera(): void {
+src/modello/motore.ts:1197:  private sposta(t: Task, luogo: Luogo, avanzamento: Avanzamento): void {
+src/modello/motore.ts:1214:  in(luogo: Luogo): Task[] {
+src/modello/motore.ts:1223:  gruppi(): Gruppo[] {
+src/modello/motore.ts:1234:  gruppoAperto(): Gruppo | undefined {
+src/modello/motore.ts:1241:  aperto(): Task | undefined {
+src/modello/motore.ts:1251:  private entra(id: string): void {
+src/modello/motore.ts:1267:  elementi(): Array<{ readonly gruppo: Gruppo } | { readonly task: Task }> {
+src/modello/motore.ts:1286:  private metti(id: string, nome: string): void {
+src/modello/motore.ts:1308:  private apri(nome: string): void {
+src/modello/motore.ts:1320:  private separa(nome: string): void {
+src/modello/motore.ts:1341:  private consegnaGruppo(nome: string): void {
+src/modello/motore.ts:1357:  private rimandaGruppo(nome: string): void {
+src/modello/motore.ts:1370:  main(): Task | undefined {
+src/modello/motore.ts:1375:  inCima(): Task | undefined {
+src/modello/motore.ts:1384:  aFuoco(): Task | undefined {
+src/modello/motore.ts:1392:  fuocoDiPrima(): Task | undefined {
+src/modello/motore.ts:1401:  domandaInSospeso(): boolean {
+src/modello/motore.ts:1406:  frasiCorrenti(): Frase[] {
+src/modello/motore.ts:1442:  private trova(id: string): Task | undefined {
+src/modello/motore.ts:1446:  private aggiornaFrasi(): void {
+src/modello/motore.ts:1457:  private descriviVista(area: 'NOTIFICATIONBAR' | 'TASKBAR'): string {
+src/modello/motore.ts:1474:  private rispondi(testo: string): void {
+src/modello/motore.ts:1486:  private cambiato(): void {
+src/modello/motore.ts:1499:  if (g.membri.every((t) => t.avanzamento === 'aspetta te' && t.uscita)) {
+src/modello/motore.ts:1502:  f.push({ testo: 'dopo', comando: { tipo: 'rimanda-gruppo', gruppo: g.nome } });
+src/modello/motore.ts:1503:  f.push({ testo: 'separale', comando: { tipo: 'separa', gruppo: g.nome } });
+src/modello/motore.ts:1504:  f.push({ testo: 'chiudi', comando: { tipo: 'chiudi' } });
+src/modello/motore.ts:1510:  if (t.luogo === 'CARTA') {
+src/modello/motore.ts:1517:  if (t.avanzamento === 'bloccato') {
+src/modello/motore.ts:1529:  if (t.avanzamento === 'consegnato') {
+src/modello/motore.ts:1534:  if (t.forma === 'composizione' && t.avanzamento === 'aspetta te') {
+src/modello/motore.ts:1541:  if (t.forma === 'riassunto' && t.avanzamento === 'aspetta te') {
+src/modello/motore.ts:1547:  if (t.luogo === 'MAIN' && t.uscita) {
+src/modello/motore.ts:1555:export function fraQuanto(ms: number): string {
+src/modello/motore.ts:1556:  const minuti = Math.round(ms / MINUTO);
+src/modello/motore.ts:1557:  if (minuti < 60) return `fra ${minuti} minuti`;
+src/modello/motore.ts:1558:  const ore = Math.round(minuti / 60);
+src/modello/motore.ts:1559:  return ore === 1 ? 'fra un’ora' : `fra ${numero(ore)} ore`;
+src/modello/motore.ts:1571:  return n === 1 ? 'una cosa' : `${numero(n)} cose`;
+src/modello/motore.ts:1575:export function primoNome(intero: string): string {
+src/modello/motore.ts:1576:  return intero.split(' ')[0] ?? intero;
+src/modello/motore.ts:1579:export function orario(d: Date): string {
+src/modello/motore.ts:1580:  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+src/stile/base.css:81:  color: var(--inchiostro);
+src/stile/base.css:104:  transform: scale(var(--scala, 1));
+src/stile/base.css:119:  background: var(--sfondo, none) center / cover no-repeat;
+src/stile/base.css:120:  filter: saturate(var(--sfondo-sat)) brightness(var(--sfondo-luce)) contrast(var(--sfondo-contrasto));
+src/stile/base.css:121:  opacity: var(--sfondo-quanto);
+src/stile/base.css:122:  mix-blend-mode: var(--velo);
+src/stile/base.css:129:  background: linear-gradient(155deg,
+src/stile/base.css:132:  backdrop-filter: blur(42px) saturate(1.9) brightness(1.14);
+src/stile/base.css:181:  right: var(--margine);
+src/stile/base.css:209:  margin-top: 5px; color: var(--inchiostro);
+src/stile/base.css:236:  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+src/stile/base.css:258:  color: var(--inchiostro-tenue);
+src/stile/base.css:268:  background: rgba(26, 28, 25, 0.06);
+src/stile/base.css:296:  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.82);
+src/stile/base.css:308:  color: var(--inchiostro-tenue);
+src/stile/base.css:309:  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.38);
+src/stile/base.css:336:  height: 30px; padding: 0 14px; border-radius: var(--raggio-chip);
+src/stile/base.css:337:  color: var(--inchiostro);
+src/stile/base.css:339:  background: linear-gradient(155deg, rgba(255,255,255,0.62), rgba(248,248,244,0.44));
+src/stile/base.css:340:  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 10px 24px rgba(30,36,30,0.18);
+src/stile/base.css:355:  font-size: 14px; line-height: 1.5; color: rgba(33,37,31,0.78);
+src/stile/base.css:364:  background: linear-gradient(155deg, rgba(255,255,255,0.5), rgba(248,248,244,0.34));
+src/stile/base.css:365:  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+src/stile/base.css:389:  border-radius: var(--raggio-task);
+src/stile/base.css:391:  color: var(--inchiostro);
+src/stile/base.css:413:  background: linear-gradient(155deg,
+src/stile/base.css:423:  background: linear-gradient(155deg,
+src/stile/base.css:431:  from { transform: scale(0.4); opacity: 0; }
+src/stile/base.css:432:  to { transform: scale(1); opacity: 1; }
+src/stile/base.css:444:  transform: translateY(-40px) scale(0.86);
+src/stile/base.css:457:  transform: scale(0.94);
+src/stile/base.css:474:  color: var(--inchiostro);
+src/stile/base.css:479:  font-size: 12px; font-weight: 400; color: var(--inchiostro-corpo);
+src/stile/base.css:486:  background: rgba(26, 28, 25, 0.11);
+src/stile/base.css:487:  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+src/stile/base.css:494:  color: var(--inchiostro-fioco);
+src/stile/base.css:501:  color: var(--inchiostro-corpo);
+src/stile/base.css:509:  transform: translateY(-1px);
+src/stile/base.css:522:  right: var(--margine);
+src/stile/base.css:523:  bottom: var(--margine);
+src/stile/base.css:529:  border-radius: var(--raggio-carta);
+src/stile/base.css:531:  color: var(--inchiostro);
+src/stile/base.css:532:  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 18px 44px rgba(30,36,30,0.20);
+src/stile/base.css:534:  animation: entrata 340ms cubic-bezier(0.22, 1, 0.36, 1);
+src/stile/base.css:557:  left: var(--margine);
+src/stile/base.css:558:  bottom: var(--margine);
+src/stile/base.css:576:  background: var(--punto-salvia);
+src/stile/base.css:594:  border: 2px solid rgba(26, 28, 25, 0.16);
+src/stile/base.css:595:  border-top-color: var(--salvia);
+src/stile/base.css:624:  color: var(--inchiostro-fioco);
+src/stile/base.css:634:  color: var(--inchiostro-fioco); flex: none;
+src/stile/base.css:645:  color: var(--inchiostro);
+src/stile/base.css:646:  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.78), 0 14px 34px rgba(30,36,30,0.18);
+src/stile/base.css:668:  caret-color: var(--salvia);
+src/stile/base.css:680:  background: rgba(26,28,25,0.06);
+src/stile/base.css:681:  font-size: 12px; color: var(--inchiostro);
+src/stile/base.css:692:  color: var(--inchiostro-fioco);
+src/stile/base.css:695:  from { opacity: 0; transform: translateY(4px) scale(0.94); }
+src/stile/base.css:707:  color: var(--inchiostro-fioco);
+src/stile/base.css:741:  background: rgba(18, 22, 18, 0.54);
+src/stile/base.css:742:  backdrop-filter: saturate(0.62) brightness(0.86);
+src/stile/base.css:745:  transition: opacity 380ms cubic-bezier(.22,1,.36,1);
+src/stile/base.css:759:  transition: transform 340ms cubic-bezier(.22,1,.36,1);
+src/stile/base.css:780:  color: #fbfaf7; background: var(--ink-ambra, #b8802f);
+src/stile/base.css:781:  box-shadow: 0 1px 3px rgba(30,36,30,0.3);
+src/stile/base.css:782:  transition: transform 260ms cubic-bezier(.22,1,.36,1), opacity 200ms linear;
+src/stile/base.css:795:  transform: translateY(14px) scale(0.96);
+src/stile/base.css:804:  transform: translateY(0) scale(1);
+src/stile/base.css:812:  background: rgba(251,251,249,0.94);
+src/stile/base.css:813:  backdrop-filter: blur(30px) saturate(1.6);
+src/stile/base.css:815:  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7), 0 14px 34px rgba(12,14,12,0.28);
+src/stile/base.css:816:  opacity: 0; transform: translateY(10px);
+src/stile/base.css:830:  text-transform: uppercase; color: var(--inchiostro-fioco);
+src/stile/base.css:845:  background: rgba(18, 20, 18, 0.52);
+src/stile/base.css:846:  backdrop-filter: blur(3px);
+src/stile/base.css:851:  position: absolute; right: var(--margine); top: var(--margine); bottom: 140px;
+src/stile/base.css:861:  border-radius: var(--raggio-carta); padding: 16px 18px; background: #fbfbf9;
+src/stile/base.css:862:  box-shadow: 0 14px 34px rgba(12, 14, 12, 0.34);
+src/stile/base.css:876:  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+src/stile/base.css:883:  background: rgba(26,28,25,0.22);
+src/stile/base.css:888:  display: grid; grid-template-columns: minmax(380px, 1.6fr) minmax(220px, 1fr);
+src/stile/base.css:891:  background: rgba(20,22,19,0.88);
+src/stile/base.css:903:  color: rgba(236,234,226,0.4); border-bottom: 1px solid transparent;
+src/stile/base.css:917:  text-transform: uppercase; color: rgba(236,234,226,0.3); padding-top: 2px;
+src/stile/base.css:921:  color: rgba(236,234,226,0.82);
+src/stile/base.css:925:  font-size: 9px; line-height: 1.45; color: rgba(236,234,226,0.34);
+src/stile/base.css:930:  border-left-color: var(--salvia); background: rgba(236,234,226,0.05);
+src/stile/base.css:948:  color: rgba(236,234,226,0.42); flex: none;
+src/stile/base.css:955:  color: rgba(236,234,226,0.86);
+src/stile/base.css:959:  color: rgba(236,234,226,0.38); padding-left: 2px;
+src/stile/base.css:975:  color: rgba(236,234,226,0.86); margin-bottom: 4px;
+src/stile/base.css:981:  border: 1px solid rgba(236,234,226,0.1); background: rgba(236,234,226,0.03);
+src/stile/base.css:991:  color: rgba(236,234,226,0.34);
+src/stile/base.css:1003:  border: 1px solid rgba(236,234,226,0.12); background: none;
+src/stile/base.css:1004:  color: rgba(236,234,226,0.3);
+src/stile/base.css:1024:  text-transform: uppercase; color: rgba(236,234,226,0.45); margin-bottom: 2px;
+src/stile/base.css:1035:  color: #eceae2; background: rgba(236,234,226,0.08);
+src/stile/base.css:1036:  border: 1px solid rgba(236,234,226,0.18); border-radius: 6px;
+src/stile/base.css:1049:  color: rgba(236,234,226,0.55); letter-spacing: 0.04em;
+src/stile/base.css:1060:  color: rgba(236,234,226,0.78); display: flex; gap: 8px;
+src/stile/base.css:1078:  background: rgba(20, 22, 19, 0.46);
+src/stile/base.css:1079:  backdrop-filter: blur(26px) saturate(1.2) brightness(0.92);
+src/stile/base.css:1089:  color: rgba(255,255,255,0.94);
+src/stile/base.css:1095:  font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.68);
+src/stile/base.css:1106:  from { opacity: 0; transform: scale(0.94); }
+src/stile/base.css:1112:  color: rgba(255,255,255,0.94);
+src/stile/base.css:1117:  font-size: 14px; color: rgba(255,255,255,0.74); cursor: pointer;
+src/stile/base.css:1118:  padding: 7px 16px; border-radius: var(--raggio-chip);
+src/stile/base.css:1119:  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);
+src/stile/base.css:1125:  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.46);
+src/prova/alfabeto.ts:43:  readonly frase: string | ((m: Motore) => string);
+src/prova/alfabeto.ts:52:  readonly fai?: (a: Attrezzi) => void | Promise<void>;
+src/prova/alfabeto.ts:62:export function dilla(az: Azione, m: Motore): string {
+src/prova/alfabeto.ts:63:  return typeof az.frase === 'function' ? az.frase(m) : az.frase;
+src/prova/alfabeto.ts:86:  if (az.fai) {
+src/prova/alfabeto.ts:90:  const pronta = await porta(a, az.serve);
+src/prova/alfabeto.ts:91:  const detta = dilla(az, a.motore);
+src/prova/alfabeto.ts:96:  a.dillo(detta);
+src/prova/alfabeto.ts:97:  const fatte = a.motore.mosse.slice(prima).filter((x) => x.comando !== undefined);
+src/prova/alfabeto.ts:112:export const ALFABETO: readonly Famiglia[] = [
+src/prova/alfabeto.ts:292:  return { comando, frase, cosa, ...(serve ? { serve } : {}) };
+src/prova/alfabeto.ts:297:  return { frase: `detta · ${frase}`, cosa, fai: (a) => a.detta?.(frase) };
+src/prova/alfabeto.ts:307:  const bloccato = m.task.find((t) => t.alternative?.length);
+src/prova/alfabeto.ts:309:  return m.task.find((t) => t.id === id)?.nome.toLowerCase() ?? 'proposta acme';
+src/voce/piper.ts:47:export const VOCI = {
+src/voce/piper.ts:64:export class Piper {
+src/voce/piper.ts:69:  async prepara(voce: string): Promise<void> {
+src/voce/piper.ts:81:  pronto(): boolean {
+src/voce/piper.ts:92:  async genera(testo: string): Promise<{ campioni: Float32Array; frequenza: number }> {
+src/voce/piper.ts:128:  const espeak = await ESpeakNg({
+src/voce/piper.ts:145:  return (espeak.FS.readFile('fonemi', { encoding: 'utf8' }) as string)
+src/voce/piper.ts:151:export function inWav(campioni: Float32Array, frequenza: number): Blob {
+src/voce/piper.ts:152:  const buffer = new ArrayBuffer(44 + campioni.length * 2);
+src/voce/piper.ts:153:  const v = new DataView(buffer);
+src/voce/piper.ts:154:  const scrivi = (pos: number, s: string) => {
+src/voce/piper.ts:157:  scrivi(0, 'RIFF');
+src/voce/piper.ts:158:  v.setUint32(4, 36 + campioni.length * 2, true);
+src/voce/piper.ts:159:  scrivi(8, 'WAVEfmt ');
+src/voce/piper.ts:160:  v.setUint32(16, 16, true);
+src/voce/piper.ts:161:  v.setUint16(20, 1, true); // PCM
+src/voce/piper.ts:162:  v.setUint16(22, 1, true); // un canale
+src/voce/piper.ts:163:  v.setUint32(24, frequenza, true);
+src/voce/piper.ts:164:  v.setUint32(28, frequenza * 2, true);
+src/voce/piper.ts:165:  v.setUint16(32, 2, true);
+src/voce/piper.ts:166:  v.setUint16(34, 16, true);
+src/voce/piper.ts:167:  scrivi(36, 'data');
+src/voce/piper.ts:168:  v.setUint32(40, campioni.length * 2, true);
+src/voce/piper.ts:169:  for (let i = 0; i < campioni.length; i++) {
+src/voce/piper.ts:173:  return new Blob([buffer], { type: 'audio/wav' });
+src/confini/filtro.ts:20:export const TETTO_CARTE = 5;
+src/confini/filtro.ts:22:export function filtra(
+src/confini/filtro.ts:29:  if (!p.perTe) {
+src/confini/filtro.ts:34:  if (!p.azionabile) {
+src/confini/filtro.ts:39:  if (p.ora && p.ora.getTime() - adesso.getTime() > 60 * 60_000) {
+src/confini/filtro.ts:43:  if (!dentroLOrario(c, adesso)) {
+src/confini/filtro.ts:49:  if (carteAperte >= TETTO_CARTE) {
+src/confini/disco.ts:30:export class Disco {
+src/confini/disco.ts:32:  private readonly file = new Map<string, string>();
+src/confini/disco.ts:43:  constructor(private readonly chi?: string) {}
+src/confini/disco.ts:62:  async accendi(): Promise<void> {
+src/confini/disco.ts:80:  leggi(percorso: string): string | undefined {
+src/confini/disco.ts:85:  scrivi(percorso: string, testo: string): void {
+src/confini/disco.ts:91:  esiste(percorso: string): boolean {
+src/confini/disco.ts:96:  elenca(prefisso: string): string[] {
+src/confini/disco.ts:101:  quanti(): number {
+src/confini/disco.ts:110:  private async posa(percorso: string, testo: string): Promise<void> {
+src/conoscenza/contesto.ts:26:export const contesto: Contesto = {
+src/conoscenza/contesto.ts:35:export function soloTu(c: Contesto): boolean {
+src/conoscenza/contesto.ts:40:export function nomeDiChiParla(c: Contesto): string {
+src/conoscenza/contesto.ts:48:export function dentroLOrario(c: Contesto, quando: Date): boolean {
+src/conoscenza/contesto.ts:49:  const ora = quando.getHours();
+src/confini/posta.ts:17:export class Posta implements Sorgente {
+src/confini/posta.ts:24:  private annuncia?: (p: Proposta) => void;
+src/confini/posta.ts:28:  osserva(annuncia: (p: Proposta) => void): void {
+src/confini/posta.ts:33:  cosaPuoArrivare(): readonly string[] {
+src/confini/posta.ts:38:  fai(nome: string): void {
+src/confini/posta.ts:47:  inventa(p: Proposta): void {
+src/confini/posta.ts:51:  async consegna(u: Uscita, cosa: string): Promise<void> {
+src/confini/posta.ts:60:  leggi(): readonly string[] {
+src/confini/posta.ts:64:  private scenario(): Evento[] {
+src/confini/posta.ts:171:  return new Promise((r) => setTimeout(r, ms));
+src/voce/bocca.ts:23:  pronta(): boolean;
+src/voce/bocca.ts:31:  dillo(testo: string): Promise<void>;
+src/voce/bocca.ts:33:  zittisci(): void;
+src/voce/bocca.ts:44:  const n = v.name.toLowerCase();
+src/voce/bocca.ts:46:  if (/natural|neural|online/.test(n)) p += 100;
+src/voce/bocca.ts:47:  if (/google/.test(n)) p += 40;
+src/voce/bocca.ts:48:  if (/elsa|isabella|federica|palmira|giuseppina/.test(n)) p += 20;
+src/voce/bocca.ts:49:  if (v.lang.toLowerCase() === lingua.toLowerCase()) p += 10;
+src/voce/bocca.ts:50:  if (v.localService) p += 5;
+src/voce/bocca.ts:51:  const f = /elsa|isabella|federica|palmira|giuseppina|alice|sara|lucia/.test(n);
+src/voce/bocca.ts:52:  if (femminile === f) p += 60;
+src/voce/bocca.ts:56:export class BoccaDiSistema implements Bocca {
+src/voce/bocca.ts:64:  constructor() {
+src/voce/bocca.ts:71:  perGenere(voce?: string): void {
+src/voce/bocca.ts:77:  perLingua(codice: string): void {
+src/voce/bocca.ts:82:  private scegli(): void {
+src/voce/bocca.ts:93:  pronta(): boolean {
+src/voce/bocca.ts:105:  dillo(testo: string): Promise<void> {
+src/voce/bocca.ts:141:  zittisci(): void {
+src/voce/bocca.ts:148:export class BoccaInLocale implements Bocca {
+src/voce/bocca.ts:151:  private readonly piper = new Piper();
+src/voce/bocca.ts:157:  perGenere(voce?: string): void {
+src/voce/bocca.ts:166:  async prepara(): Promise<boolean> {
+src/voce/bocca.ts:177:  pronta(): boolean {
+src/voce/bocca.ts:188:  async dillo(testo: string): Promise<void> {
+src/voce/bocca.ts:210:  private suona(blob: Blob, mio: number): Promise<void> {
+src/voce/bocca.ts:238:  zittisci(): void {
+src/aree/scrivania.ts:42:export const palco = { larghezza: 1440, altezza: 900 };
+src/aree/scrivania.ts:62:export function misuraPalco(larghezza: number, altezza: number): void {
+src/aree/scrivania.ts:88:export const RITARDO_CASCATA = 40;
+src/aree/scrivania.ts:91:export const LARGA_RIPOSO = 388;
+src/aree/scrivania.ts:92:export const LARGA_FUOCO = 452;
+src/aree/scrivania.ts:94:export const LARGA_DENTRO = 560;
+src/aree/scrivania.ts:138:export class Scrivania {
+src/aree/scrivania.ts:139:  private readonly bolle = new Map<string, Bolla>();
+src/aree/scrivania.ts:140:  private readonly ricordi = new Map<string, { posto: Posto; quando: number }>();
+src/aree/scrivania.ts:142:  posto(id: string): Posto | undefined {
+src/aree/scrivania.ts:147:  compressione(id: string): number {
+src/aree/scrivania.ts:152:  misura(id: string, altezza: number): void {
+src/aree/scrivania.ts:162:  accogli(id: string, adesso: number): Posto {
+src/aree/scrivania.ts:183:  onda(nato: string, adesso: number): void {
+src/aree/scrivania.ts:199:  fuoco(id: string, larghezza = LARGA_FUOCO): void {
+src/aree/scrivania.ts:225:  rientra(): void {
+src/aree/scrivania.ts:238:  togli(id: string, adesso: number): void {
+src/aree/scrivania.ts:261:  passo(adesso: number, fuoco?: string): boolean {
+src/aree/scrivania.ts:347:  private spazio(b: Bolla, dx: number, dy: number): number {
+src/aree/scrivania.ts:357:  private vicine(id: string, centro: { x: number; y: number }) {
+src/aree/scrivania.ts:370:  private centroDi(b: Bolla) {
+src/aree/scrivania.ts:374:  private centro(id: string): { x: number; y: number } | undefined {
+src/aree/scrivania.ts:383:  private puntoPiuLibero(larghezza: number, altezza: number): Posto {
+src/voce/suono.ts:22:export class Campanello {
+src/voce/suono.ts:26:  private modello = new Audio(PREDEFINITO);
+src/voce/suono.ts:28:  private laVoceParla: () => boolean = () => false;
+src/voce/suono.ts:33:  private inCorso: Promise<void> = Promise.resolve();
+src/voce/suono.ts:35:  constructor() {
+src/voce/suono.ts:40:  perVolume(percento: number): void {
+src/voce/suono.ts:48:  secondoIlProfilo(n: { modo: 'sound' | 'silent'; suono?: string }): void {
+src/voce/suono.ts:57:  seguiLaVoce(parla: () => boolean): void {
+src/voce/suono.ts:66:  finitoDiSuonare(): Promise<void> {
+src/voce/suono.ts:75:  suona(): void {
+src/voce/suono.ts:86:  appenaTace(): void {
+src/voce/suono.ts:92:  private tocca(): void {
+src/confini/contatti.ts:26:export class Contatti implements Servizio {
+src/confini/contatti.ts:32:  osserva(_annuncia: (p: Proposta) => void): void {}
+src/confini/contatti.ts:35:  async consegna(u: Uscita, _cosa: string): Promise<void> {
+src/confini/contatti.ts:40:  leggi(): readonly string[] {
+src/confini/contatti.ts:48:  cerca(detto: string): Contatto | undefined {
+src/confini/contatti.ts:57:  nominati(frase: string): ReadonlyArray<{ readonly chi: Contatto; readonly detto: string }> {
+src/confini/contatti.ts:71:  private tutti(): readonly Contatto[] {
+src/voce/lettura.ts:16:export class Lettura {
+src/voce/lettura.ts:23:  get accesa(): boolean {
+src/voce/lettura.ts:27:  private readonly sistema = new BoccaDiSistema();
+src/voce/lettura.ts:28:  private readonly locale = new BoccaInLocale();
+src/voce/lettura.ts:32:  private readonly turno = new Turno(
+src/voce/lettura.ts:38:  private viaLibera: () => Promise<void> = () => Promise.resolve();
+src/voce/lettura.ts:41:  aspetta(chi: () => Promise<void>): void {
+src/voce/lettura.ts:46:  qualeVoce(): string {
+src/voce/lettura.ts:51:  staParlando(): boolean {
+src/voce/lettura.ts:56:  quandoTace(fn: () => void): void {
+src/voce/lettura.ts:67:  secondoIlProfilo(a: Assistente, lingua: string, avvisa?: (come: string) => void): void {
+src/voce/lettura.ts:81:  leggi(testo: string): void {
+src/voce/lettura.ts:88:  zittisci(): void {
+src/aree/raccolta.ts:38:export function nominati(frase: string, m: Motore) {
+src/aree/raccolta.ts:39:  const f = frase.toLowerCase();
+src/aree/raccolta.ts:40:  return m.task.filter((t) => f.includes(t.nome.toLowerCase()));
+src/aree/raccolta.ts:47:export function raccolta(frase: string, m: Motore): Riferimento[] {
+src/aree/raccolta.ts:48:  const f = frase.toLowerCase();
+src/aree/raccolta.ts:51:  for (const t of nominati(frase, m)) {
+src/aree/raccolta.ts:57:  for (const nome of m.archivio.nomi()) {
+src/aree/raccolta.ts:70:  for (const { chi, detto } of m.rubrica()?.nominati(frase) ?? []) {
+src/prova/scenario.ts:52:  const ok = JSON.stringify(atteso) === JSON.stringify(ottenuto);
+src/prova/scenario.ts:53:  if (!ok) errori++;
+src/prova/scenario.ts:54:  const perche = dettaglio === undefined ? '' : ` · ${JSON.stringify(dettaglio)}`;
+src/prova/scenario.ts:55:  console.log(`${ok ? '  ok ' : '  NO '} ${cosa}${ok ? '' : ` — atteso ${JSON.stringify(atteso)}, ottenuto ${JSON.stringify(ottenuto)}${perche}`}`);
+src/prova/scenario.ts:65:  lavora(new SecondarioFinto(motore, () => dentro, quale), lavoro, motore, orologio, dentro),
+src/prova/scenario.ts:68:  turnoSubito(pensiero, frase, motore, orologio);
+src/prova/scenario.ts:76:  const suo = new Posta();
+src/prova/scenario.ts:77:  const sue = new Contatti();
+src/prova/scenario.ts:78:  const suoCalendario = new Calendario(() => orologio.adesso());
+src/prova/scenario.ts:79:  const suoiPromemoria = new Promemoria(() => orologio.adesso());
+src/prova/scenario.ts:80:  const m = new Motore(
+src/prova/scenario.ts:85:  suo.osserva((p) => m.accogli(p));
+src/prova/scenario.ts:86:  suoCalendario.osserva((p) => m.accogli(p));
+src/prova/scenario.ts:87:  suoiPromemoria.osserva((p) => m.accogli(p));
+src/prova/scenario.ts:89:  const suoPensiero = new AiEngineFinto(m);
+src/prova/scenario.ts:92:  m.conSecondari((lavoro, dentro, quale) =>
+src/prova/scenario.ts:95:  const dillo = (frase: string) => turnoSubito(suoPensiero, frase, m, orologio);
+src/prova/scenario.ts:114:  console.log('\nuna mail che arriva, passa il filtro e viene consegnata\n');
+src/prova/scenario.ts:117:  posta.fai('Proposta Acme');
+src/prova/scenario.ts:118:  verifica('la mail passa il filtro e diventa una carta', 1, motore.in('CARTA').length);
+src/prova/scenario.ts:119:  verifica('la carta aspetta te', 'aspetta te', motore.inCima()?.avanzamento);
+src/prova/scenario.ts:120:  verifica('le frasi sono tre', ['manda', 'dopo', 'portala al centro'], motore.inCima()?.frasi.map((f) => f.testo));
+src/prova/scenario.ts:122:  posta.fai('Newsletter');
+src/prova/scenario.ts:123:  posta.fai('Fattura Acme');
+src/prova/scenario.ts:124:  verifica('newsletter e fattura non passano il filtro', 1, motore.in('CARTA').length);
+src/prova/scenario.ts:126:  console.log('\nnominare un task lo porta a fuoco, e nient’altro\n');
+src/prova/scenario.ts:127:  const prima = motore.inCima()!.avanzamento;
+src/prova/scenario.ts:128:  dillo('della proposta acme che ne facciamo');
+src/prova/scenario.ts:129:  verifica('il task nominato prende il fuoco', 'MAIN', motore.main()?.luogo);
+src/prova/scenario.ts:130:  verifica('l’avanzamento non si muove', prima, motore.main()?.avanzamento);
+src/prova/scenario.ts:131:  verifica('le frasi sono le sue', true, motore.frasiCorrenti() === motore.main()?.frasi);
+src/prova/scenario.ts:132:  verifica('lo scambio resta in INPUT', 'della proposta acme che ne facciamo', motore.scambio[motore.scambio.length - 1]?.tua);
+src/prova/scenario.ts:134:  dillo('manda');
+src/prova/scenario.ts:135:  verifica('è uscita dalla pila', 0, motore.in('CARTA').length);
+src/prova/scenario.ts:136:  verifica('va avanti da sola come chip', ['CHIP', 'in corso'], [motore.in('CHIP')[0]?.luogo, motore.in('CHIP')[0]?.avanzamento]);
+src/prova/scenario.ts:138:  await attesa(700);
+src/prova/scenario.ts:139:  verifica('la consegna è andata', 'consegnato', motore.in('CHIP')[0]?.avanzamento);
+src/prova/scenario.ts:140:  verifica('la risposta è dicibile', true, /Mandata a Andrea Riva/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:141:  verifica('offre di annullare', ['no, aspetta'], motore.in('CHIP')[0]?.frasi.map((f) => f.testo));
+src/prova/scenario.ts:143:  avanza(2 * MINUTO);
+src/prova/scenario.ts:144:  verifica('dopo 90 secondi cade nella memoria', 1, motore.in('MEMORIA').length);
+src/prova/scenario.ts:145:  verifica('la posta ricorda la consegna', 1, posta.leggi().length);
+src/prova/scenario.ts:147:  console.log('\nuna consegna che fallisce\n');
+src/prova/scenario.ts:149:  avanza(0);
+src/prova/scenario.ts:154:  dillo('manda');
+src/prova/scenario.ts:155:  await attesa(700);
+src/prova/scenario.ts:156:  verifica('il task si blocca', 'bloccato', motore.in('CHIP')[0]?.avanzamento);
+src/prova/scenario.ts:157:  verifica('il blocco ha sempre un’uscita', ['riprova', 'lascia stare'], motore.in('CHIP')[0]?.frasi.map((f) => f.testo));
+src/prova/scenario.ts:159:  dillo('lascia stare');
+src/prova/scenario.ts:160:  verifica('lasciata stare', 'concluso', motore.in('MEMORIA')[0]?.avanzamento);
+src/prova/scenario.ts:162:  console.log('\nil calendario e i promemoria: due confini che prima non c’erano\n');
+src/prova/scenario.ts:185:  console.log('\nil disco resta un confine, anche adesso che nessuno ci scrive\n');
+src/prova/scenario.ts:195:  console.log('\nla memoria sospesa: dura quanto la sessione (docs/07-memoria §6)\n');
+src/prova/scenario.ts:215:  console.log('\nil seme: il contesto minimo, e si pesca per nome\n');
+src/prova/scenario.ts:229:  console.log('\nl’archivio: si scrive, ma non si mostra\n');
+src/prova/scenario.ts:231:  dillo('Paolo dice che il preventivo Acme è alto');
+src/prova/scenario.ts:232:  const acme = archivio.cosaSa('Acme');
+src/prova/scenario.ts:233:  verifica('ha capito di cosa parlavi', ['Acme', 'Progetti'], [acme?.nome, acme?.genere]);
+src/prova/scenario.ts:234:  verifica('ha collegato Paolo', true, acme?.righe.at(-1)?.collegamenti.includes('paolo'));
+src/prova/scenario.ts:235:  verifica('chi l’ha detto se lo segna', contesto.utilizzatore, acme?.righe.at(-1)?.chi);
+src/prova/scenario.ts:236:  verifica('e dice solo dove l’ha messo, non come', 'Me lo segno su Acme.', motore.ultimaRisposta);
+src/prova/scenario.ts:237:  verifica('nessun percorso esce mai', false, /\/|\.md/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:239:  dillo('cosa sai di acme');
+src/prova/scenario.ts:240:  verifica('racconta contenuti', true, /preventivo/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:241:  verifica('e mai posizioni', false, /\/|\.md|archivio/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:243:  dillo('dimenticalo');
+src/prova/scenario.ts:244:  const smentita = archivio.cosaSa('Acme')?.righe.at(-1);
+src/prova/scenario.ts:245:  verifica('smentisce, non cancella', true, !!smentita && !!smentita.smentita);
+src/prova/scenario.ts:246:  verifica('la riga resta dov’era', true, (archivio.cosaSa('Acme')?.righe.length ?? 0) > 0);
+src/prova/scenario.ts:247:  dillo('cosa sai di acme');
+src/prova/scenario.ts:248:  verifica('e smette di pescarla', false, /preventivo/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:250:  console.log('\nfra profili non passa niente\n');
+src/prova/scenario.ts:254:  const marco = new Archivio(new Disco(), 'Marco Neri');
+src/prova/scenario.ts:255:  verifica('un altro profilo non sa niente di te', 0, marco.nomi().length);
+src/prova/scenario.ts:256:  verifica('e la tua memoria resta piena', true, archivio.nomi().length > 0);
+src/prova/scenario.ts:258:  console.log('\nle autorizzazioni: alla terza volta lo propone\n');
+src/prova/scenario.ts:261:  for (let giro = 1; giro <= 3; giro++) {
+src/prova/scenario.ts:267:  verifica('alla terza propone di farlo da solo', true, /d’ora in poi/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:268:  verifica('e intanto le note sono uscite', 3, note.leggi().length);
+src/prova/scenario.ts:270:  dillo('sì');
+src/prova/scenario.ts:271:  verifica('promossa in preferenze', true, archivio.dichiarato('consegna-note'));
+src/prova/scenario.ts:272:  dillo('nelle note: rinnovare il dominio');
+src/prova/scenario.ts:273:  await attesa(200);
+src/prova/scenario.ts:274:  verifica('la quarta parte da sola', 4, note.leggi().length);
+src/prova/scenario.ts:275:  verifica('e non ha chiesto niente', false, /\?/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:277:  dillo('cosa fai da solo');
+src/prova/scenario.ts:278:  verifica('lo racconta a parole', true, /note/.test(motore.ultimaRisposta));
+src/prova/scenario.ts:279:  dillo('chiedimi sempre');
+src/prova/scenario.ts:280:  verifica('e si revoca a voce', false, archivio.dichiarato('consegna-note'));
+src/prova/scenario.ts:282:  console.log('\nuna risposta a una delega sa dove tornare\n');
+src/prova/scenario.ts:284:  const tardiva = motore.task.find((t) => t.luogo === 'MEMORIA');
+src/prova/scenario.ts:285:  if (tardiva) {
+src/prova/scenario.ts:291:  console.log('\nchi non ha la sessione non comanda\n');
+src/prova/scenario.ts:295:  dillo('manda');
+src/prova/scenario.ts:296:  verifica('una voce che non conosce non muove niente', primaDi, motore.task.length);
+src/prova/scenario.ts:297:  verifica('e il sistema lo dice', true, /non riconosco/i.test(motore.ultimaRisposta));
+src/prova/scenario.ts:300:  dillo('digli che il contratto e pronto');
+src/prova/scenario.ts:301:  verifica('chi conosce lascia un messaggio', primaDi + 1, motore.task.length);
+src/prova/scenario.ts:302:  const messaggio = motore.task.at(-1);
+src/prova/scenario.ts:303:  verifica('e un task, non una riga di memoria', ['CARTA', 'conversazione'], [messaggio?.luogo, messaggio?.tipo]);
+src/prova/scenario.ts:304:  verifica('con la fonte scritta', 'Giulia, a voce', messaggio?.fonte);
+src/prova/scenario.ts:307:  console.log('\ni flussi · il riassunto (docs/09-catene §2)\n');
+src/prova/scenario.ts:338:  console.log('\ni flussi · due cose insieme, e un messaggio (docs/09-catene §3)\n');
+src/prova/scenario.ts:382:  console.log('\nla voce · una cosa alla volta (docs/08-voce §3.1)\n');
+src/prova/scenario.ts:446:  console.log('\nil profilo · una riga si cambia e si ricarica (docs/07-memoria §3)\n');
+src/prova/scenario.ts:514:  console.log('\nil gruppo · l’ordine è tuo, non suo (docs/01-modello §6)\n');
+src/prova/scenario.ts:552:  console.log('\nun gruppo misto non si manda tutto insieme\n');
+src/prova/scenario.ts:569:  console.log('\nciò che parte insieme si annulla insieme\n');
+src/prova/scenario.ts:599:  console.log('\ni contenuti · due, non quattro (docs/01-modello §1)\n');
+src/prova/scenario.ts:616:  console.log('\nun task che non ha ancora prodotto niente mostra il suo ingresso\n');
+src/prova/scenario.ts:633:  console.log('\nnessuno aspetta te a proposito di niente\n');
+src/prova/scenario.ts:647:  console.log('\ndentro un task · attivo non vuol dire aperto (docs/01-modello §7)\n');
+src/prova/scenario.ts:677:  console.log('\nun task senza niente dentro non si apre\n');
+src/prova/scenario.ts:689:  console.log('\nl’alfabeto · la lingua è chiusa, si pronuncia tutta, e si prova tutta\n');
+src/prova/scenario.ts:783:  console.log('\nla timeline situa nel tempo\n');
+src/prova/scenario.ts:784:  provaLaTimeline(motore, orologio, verifica);
+src/prova/scenario.ts:785:  provaIlLibero(motore, orologio, verifica);
+src/prova/scenario.ts:787:  console.log('\nquello che ancora non gira\n');
+src/prova/scenario.ts:788:  for (const manca of [
+src/prova/scenario.ts:796:  console.log(errori === 0 ? '\ntutto a posto\n' : `\n${errori} verifiche fallite\n`);
+src/confini/calendario.ts:28:export class Calendario implements Sorgente {
+src/confini/calendario.ts:36:  private annuncia?: (p: Proposta) => void;
+src/confini/calendario.ts:43:  constructor(private readonly adesso: () => Date = () => new Date()) {}
+src/confini/calendario.ts:45:  osserva(annuncia: (p: Proposta) => void): void {
+src/confini/calendario.ts:50:  cosaPuoArrivare(): readonly string[] {
+src/confini/calendario.ts:55:  fai(nome: string): void {
+src/confini/calendario.ts:64:  inventa(p: Proposta): void {
+src/confini/calendario.ts:68:  async consegna(u: Uscita, cosa: string): Promise<void> {
+src/confini/calendario.ts:78:  leggi(): readonly string[] {
+src/confini/calendario.ts:95:  private scenario(): readonly Proposta[] {
+src/confini/calendario.ts:140:  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+src/confini/calendario.ts:144:  return new Promise((r) => setTimeout(r, ms));
+src/confini/note.ts:11:export class Note implements Servizio {
+src/confini/note.ts:17:  osserva(_annuncia: (p: Proposta) => void): void {}
+src/confini/note.ts:19:  async consegna(_u: Uscita, cosa: string): Promise<void> {
+src/confini/note.ts:25:  leggi(): readonly string[] {
+src/main.ts:56:  const scala = Math.min(
+src/main.ts:63:  document.documentElement.style.setProperty('--scala', String(scala));
+src/main.ts:64:  ridimensiona(radice!);
+src/main.ts:138:  lavora(new SecondarioFinto(motore, () => dentro, quale), lavoro, motore, orologio, dentro),
+src/main.ts:170:  dillo: (f: string) => dillo(f),
+src/main.ts:171:  detta: (f: string) => detta(f),
+src/main.ts:177:  flussi(attrezzi),
+src/main.ts:202:  if (p.macchina.sfondo) document.documentElement.style.setProperty('--sfondo', `url(${p.macchina.sfondo})`);
+src/main.ts:203:  if (p.temaNome) document.documentElement.dataset.colori = p.temaNome;
+src/main.ts:206:  lettura.secondoIlProfilo(p.assistente, codiceLingua(p.lingua), (come) =>
+src/main.ts:211:  campanello.perVolume(p.macchina.volume);
+src/main.ts:212:  campanello.secondoIlProfilo(p.macchina.notifiche);
+src/main.ts:215:  const caduti = applicaTema(p.tema);
+src/main.ts:216:  if (caduti.length) console.warn('profilo · nomi del tema che non conosco:', caduti);
+src/main.ts:218:  for (const c of p.contrasti) console.warn('profilo · contrasto con una legge:', c);
+src/main.ts:235:  orologio.batti();
+src/main.ts:236:  ridisegna();
+src/main.ts:243:  ridisegna();
+src/main.ts:244:  clearTimeout(chiusura);
+src/main.ts:245:  chiusura = window.setTimeout(ridisegna, motore.fraQuantoSiChiude() + 50);
+src/main.ts:252:  if (c instanceof HTMLSelectElement) return scegliComposto(c);
+src/main.ts:253:  if (!(c instanceof HTMLInputElement)) return;
+src/main.ts:254:  if (c.id === 'scrittura') ridisegna();
+src/main.ts:255:  if (c.id === 'pedana-frase') pedana.frase = c.value;
+src/main.ts:256:  scegliComposto(c);
+src/main.ts:266:  if (!k.startsWith('componi-')) return;
+src/main.ts:271:  if (k === 'componi-fonte') x.fonte = v as Fonte;
+src/main.ts:272:  else if (k === 'componi-tipo') x.tipo = v as Tipo;
+src/main.ts:273:  else if (k === 'componi-perte') x.perTe = acceso;
+src/main.ts:274:  else if (k === 'componi-azionabile') x.azionabile = acceso;
+src/main.ts:275:  else if (k === 'componi-fra') x.fra = v;
+src/main.ts:276:  else if (k === 'componi-nome') x.nome = v;
+src/main.ts:277:  else if (k === 'componi-testo') x.testo = v;
+src/main.ts:278:  else if (k === 'componi-dachi') x.daChi = v;
+src/main.ts:279:  else if (k === 'componi-ingresso') x.ingresso = v;
+src/main.ts:280:  else if (k === 'componi-esito') x.esito = v;
+src/main.ts:281:  else if (k === 'componi-a') x.a = v;
+src/main.ts:286:  if (!(campo instanceof HTMLInputElement) || campo.id !== 'scrittura') return;
+src/main.ts:287:  const battuto = campo.value.trim();
+src/main.ts:297:  if (!battuto && modo() === 'tastiera') {
+src/main.ts:307:  if (e.key !== 'Enter') return;
+src/main.ts:309:  if (!battuto) return;
+src/main.ts:310:  if (/^aspetta$/i.test(battuto)) lettura.zittisci();
+src/main.ts:311:  dillo(battuto);
+src/main.ts:324:  void turno(aiEngine, frase, motore, orologio);
+src/main.ts:338:  const parole = frase.split(' ');
+src/main.ts:339:  for (let i = 1; i <= parole.length; i++) {
+src/main.ts:358:  const [fam, i] = posto.split(':').map(Number);
+src/main.ts:360:  if (!az) return;
+src/main.ts:362:  ridisegna();
+src/main.ts:363:  const esito = await prova(attrezzi, az);
+src/main.ts:365:  if (esito && az.comando) pedana.esiti[posto] = esito;
+src/main.ts:366:  ridisegna();
+src/main.ts:372:  ridisegna();
+src/main.ts:373:  await porta(attrezzi, [k]);
+src/main.ts:375:  ridisegna();
+src/main.ts:381:  if (!(bersaglio instanceof HTMLElement)) return;
+src/main.ts:387:  if (bersaglio.closest('[data-voce]')) {
+src/main.ts:391:  if (bersaglio.id === 'pallino') {
+src/main.ts:397:  if (flusso !== undefined) {
+src/main.ts:401:  if (bersaglio.dataset.vocabolario) {
+src/main.ts:405:  if (bersaglio.dataset.componi) {
+src/main.ts:412:  if (bersaglio.dataset.inventa) {
+src/main.ts:420:  const azione = bersaglio.closest<HTMLElement>('[data-azione]')?.dataset.azione;
+src/main.ts:421:  if (azione) {
+src/main.ts:427:  if (situazione && situazione in CONDIZIONI) {
+src/main.ts:431:  if (bersaglio.dataset.filtro) {
+src/main.ts:438:  if (bersaglio.dataset.cassetto) {
+src/main.ts:445:  if (bersaglio.dataset.frasi) {
+src/main.ts:449:  if (bersaglio.dataset.svuota) {
+src/main.ts:453:  if (bersaglio.dataset.avanti) {
+src/main.ts:457:  if (bersaglio.dataset.daccapo) {
+src/main.ts:461:  const passo = bersaglio.closest<HTMLElement>('[data-passo]')?.dataset.passo;
+src/main.ts:462:  if (passo !== undefined) {
+src/main.ts:470:  if (bersaglio.dataset.leggi) {
+src/main.ts:476:  if (bersaglio.dataset.blocca) {
+src/main.ts:480:  if (bersaglio.dataset.sblocca) {
+src/main.ts:484:  if (bersaglio.dataset.applicaFrase) {
+src/main.ts:491:  const detta = bersaglio.closest<HTMLElement>('[data-dillo]')?.dataset.dillo;
+src/main.ts:492:  if (detta) {
+src/main.ts:496:  if (!bersaglio.classList.contains('frase')) return;
+src/main.ts:497:  const testo = bersaglio.textContent?.replace(/[«»]/g, '').trim() ?? '';
+src/main.ts:498:  if (testo) dillo(testo);
+src/confini/servizio.ts:34:  osserva(annuncia: (p: Proposta) => void): void;
+src/confini/servizio.ts:41:  consegna(u: Uscita, cosa: string): Promise<void>;
+src/confini/servizio.ts:43:  leggi(): readonly string[];
+src/confini/servizio.ts:59:  cosaPuoArrivare(): readonly string[];
+src/confini/servizio.ts:61:  fai(nome: string): void;
+src/confini/servizio.ts:63:  inventa(p: Proposta): void;
+src/confini/servizio.ts:67:export class ConsegnaFallita extends Error {
+src/confini/servizio.ts:68:  constructor(public readonly perche: string) {
+src/prova/stato.ts:38:  const gia = new Set([
+src/prova/stato.ts:42:  a.posta.fai(CHE_PASSANO.find((n) => !gia.has(n)) ?? CHE_PASSANO[0] ?? '');
+src/prova/stato.ts:86:  readonly ce: (m: Motore) => boolean;
+src/prova/stato.ts:94:  readonly come?: (a: Attrezzi) => void | Promise<void>;
+src/prova/stato.ts:97:export const CONDIZIONI: Record<Chiave, Condizione> = {
+src/prova/stato.ts:289:export const CHIAVI = Object.keys(CONDIZIONI) as readonly Chiave[];
+src/prova/stato.ts:297:export function daRichiamare(m: Motore): Task | undefined {
+src/prova/stato.ts:298:  const fuori = m.task.filter((t) => t.luogo !== 'MAIN' && t.luogo !== 'MEMORIA');
+src/prova/stato.ts:299:  const sola = (t: Task) =>
+src/prova/stato.ts:301:  return fuori.find(sola) ?? fuori[0];
+src/prova/stato.ts:306:  const sole = m.task.filter(
+src/prova/stato.ts:309:  return sole.slice(0, 2);
+src/prova/stato.ts:313:export function mancano(m: Motore, chiavi: readonly Chiave[] = []): readonly Chiave[] {
+src/prova/stato.ts:314:  return chiavi.filter((k) => !CONDIZIONI[k].ce(m));
+src/prova/stato.ts:325:  for (const k of chiavi) {
+src/prova/stato.ts:333:  if (c.ce(a.motore)) return true;
+src/prova/stato.ts:336:  if (visti.has(k)) return false;
+src/prova/stato.ts:337:  visti.add(k);
+src/prova/stato.ts:339:  for (const d of c.serve ?? []) await portaUna(a, d, visti);
+src/prova/stato.ts:340:  if (c.ce(a.motore)) return true;
+src/prova/stato.ts:341:  if (!c.come) return false;
+src/prova/stato.ts:343:  await c.come(a);
+src/prova/stato.ts:344:  await finoA(a.motore, c.ce);
+src/prova/stato.ts:345:  return c.ce(a.motore);
+src/prova/stato.ts:355:  test: (m: Motore) => boolean,
+src/prova/stato.ts:358:  const scadenza = Date.now() + entro;
+src/prova/stato.ts:359:  while (!test(m) && Date.now() < scadenza) {
+src/prova/stato.ts:362:  return test(m);
+src/prova/flussi.ts:35:  readonly fai?: () => void;
+src/prova/flussi.ts:53:  readonly dillo: (frase: string) => void;
+src/prova/flussi.ts:61:  readonly detta?: (frase: string) => Promise<void>;
+src/prova/flussi.ts:64:export function flussi(a: Attrezzi): readonly Flusso[] {
+src/prova/flussi.ts:66:  const arriva = (nome: string, attesa: string): Passo => ({
+src/prova/flussi.ts:74:  const dici = (frase: string, attesa: string): Passo => ({
+src/prova/flussi.ts:82:  const lei = (cosa: string, attesa?: string): Passo => ({ chi: 'lei', cosa, attesa });

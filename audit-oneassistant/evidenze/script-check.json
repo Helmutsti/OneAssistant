@@ -1,0 +1,26 @@
+[
+  {
+    "file": "strumenti/taratura-materia.html",
+    "line": 435,
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "file": "strumenti/taratura-testo.html",
+    "line": 380,
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "file": "strumenti/banco-voci.html",
+    "line": 135,
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "file": "strumenti/banco-ascolto.html",
+    "line": 221,
+    "exit": 1,
+    "output": "/private/tmp/oneassist-audit/banco-ascolto-script0.mjs:91\n      p.innerHTML = '<strong>Non c\\\\'\u00e8 nessuna voce italiana</strong> su questo browser. Finch\u00e9 non ce n\\\\'\u00e8 una, il sistema resta muto in italiano \u2014 e le tre strade qui sotto sono tutto quello che c\\\\'\u00e8.';\n                                     ^\n\nSyntaxError: Unexpected identifier '\u00e8'\n    at checkSyntax (node:internal/main/check_syntax:84:5)\n\nNode.js v24.21.0\n"
+  }
+]

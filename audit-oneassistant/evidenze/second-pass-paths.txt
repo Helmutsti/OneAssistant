@@ -1,0 +1,64 @@
+vite.config.ts:127:  } catch {
+vite.config.ts:217:  return riga || process.env[nome] || undefined;
+vite.config.ts:388:  } catch {
+vite.config.ts:615:            } catch (e) {
+vite.config.ts:755:          } catch (errore) {
+vite.config.ts:811:            } catch (e) {
+src/archivio/archivio.ts:144:    if (!m || this.entita.has(k)) return false;
+src/archivio/archivio.ts:156:    if (!e || e.ancoraggio === 'ancorata') return false;
+src/archivio/archivio.ts:275:    if (!i) return false;
+src/archivio/archivio.ts:285:    if (!this.dichiarate.delete(chiaveAbitudine)) return false;
+src/archivio/chat-raw.ts:16:  }).catch((errore: unknown) => {
+src/main.ts:234:window.setInterval(() => {
+src/main.ts:245:  chiusura = window.setTimeout(ridisegna, motore.fraQuantoSiChiude() + 50);
+src/main.ts:345:    await new Promise((r) => setTimeout(r, 190));
+src/main.ts:439:    motore.conCassetto = !motore.conCassetto;
+src/modello/tempo.ts:77:  fra(ms: number, fn: () => void): number {
+src/conoscenza/profilo.ts:397:  } catch (e) {
+src/ai-engine/vista.ts:109:  if (m.conCassetto) {
+src/aree/schermo.ts:366:      setTimeout(() => nodo.remove(), 700);
+src/aree/schermo.ts:370:      setTimeout(() => nodo.remove(), 1500);
+src/aree/schermo.ts:389:      setTimeout(() => nodo?.classList.remove('nasce'), 520);
+src/aree/schermo.ts:514:  if (m.conCassetto && m.espansa === 'NOTIFICATIONBAR') return '';
+src/aree/schermo.ts:567:  if (!m.conCassetto) {
+src/aree/schermo.ts:581:    setTimeout(() => barra.classList.remove('suona'), 700);
+src/aree/schermo.ts:1171:              m.conCassetto ? 'la campanella e il cassetto' : 'la pila delle carte'
+src/modello/motore.ts:109:  conCassetto = false;
+src/modello/motore.ts:205:        .catch(() => {})
+src/modello/motore.ts:309:    if (!ultimo) return false;
+src/modello/motore.ts:343:    if (this.conCassetto && giudizio.esito !== 'ORARIO') return this.nelCassetto(p, giudizio.esito);
+src/modello/motore.ts:369:      this.orologio.fra(REGOLE.cartaSenzaRisposta, () => {
+src/modello/motore.ts:426:    return this.conCassetto && this.espansa === 'NOTIFICATIONBAR';
+src/modello/motore.ts:497:    if (!servizio || !('inventa' in servizio)) return false;
+src/modello/motore.ts:810:          this.orologio.fra(REGOLE.annullamento, () => {
+src/modello/motore.ts:817:      .catch((e: unknown) => {
+src/modello/motore.ts:843:    this.orologio.fra(REGOLE.annullamento, () => {
+src/modello/motore.ts:890:    this.orologio.fra(REGOLE.rinvio - REGOLE.preavviso, () => {
+src/modello/motore.ts:1020:      setTimeout(() => {
+src/modello/motore.ts:1026:    setTimeout(() => {
+src/modello/motore.ts:1420:    if (this.conCassetto && this.daVedere() > 0 && !this.aFuoco()) {
+src/modello/motore.ts:1463:    const arrivate = this.conCassetto ? this.notifiche.length : this.in('CARTA').length;
+src/modello/motore.ts:1466:    const ultima = this.conCassetto
+src/ai-engine/ai-engine.ts:132:  return false;
+src/ai-engine/ai-engine.ts:153:  return false;
+src/ai-engine/ai-engine.ts:251:    } catch (e) {
+src/confini/promemoria.ts:117:  return new Promise((r) => setTimeout(r, ms));
+src/voce/suono.ts:100:      const rete = setTimeout(finito, 2500);
+src/voce/suono.ts:109:      void s.play().catch(chiudi);
+src/voce/turno.ts:83:    } catch (e) {
+src/confini/posta.ts:171:  return new Promise((r) => setTimeout(r, ms));
+src/confini/calendario.ts:144:  return new Promise((r) => setTimeout(r, ms));
+src/voce/bocca.ts:123:      const rete = setTimeout(() => {
+src/voce/bocca.ts:170:    } catch (e) {
+src/voce/bocca.ts:173:      return false;
+src/voce/bocca.ts:204:      prossima?.catch(() => undefined);
+src/voce/bocca.ts:230:      void a.play().catch(chiudi);
+src/ai-engine/secondari.ts:119:    await new Promise((r) => setTimeout(r, QUANTO + SCARTO * this.quale));
+src/confini/disco.ts:71:    } catch (e) {
+src/confini/disco.ts:118:    } catch (e) {
+src/prova/stato.ts:233:    ce: (m) => m.conCassetto,
+src/prova/stato.ts:235:      a.motore.conCassetto = true;
+src/prova/stato.ts:336:  if (visti.has(k)) return false;
+src/prova/stato.ts:341:  if (!c.come) return false;
+src/prova/stato.ts:360:    await new Promise((r) => setTimeout(r, 30));
+src/prova/scenario.ts:48:const attesa = (ms: number) => new Promise((r) => setTimeout(r, ms));

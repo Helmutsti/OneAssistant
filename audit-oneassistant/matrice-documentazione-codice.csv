@@ -1,0 +1,113 @@
+id,documento,riga,requisito,implementazione,stato,findings
+R001,docs/L00-lo_scopo.md,8,"Assistente personale conversazionale, lavoro mediante task","main, Motore, AI engine",Parziale,A003 A004
+R002,docs/L00-lo_scopo.md,35,Più intenzioni/task concorrenti e raccolta di contesto,"turno, delega, raccolta",Divergente,A014 A021 A022
+R003,docs/L00-lo_scopo.md,42,Grammatica chiusa; non indovinare in caso di incertezza,"STRUMENTI, chiama, Contatti, AiEngineFinto",Parziale,A017 A024 A090
+R004,docs/L01-struttura_e_task.md,3,Memoria e servizi simulati tramite documenti; non integrazioni reali,"ilPrompt, Archivio, Registro",Conflittuale,A023 A026 A091
+R005,docs/L01-struttura_e_task.md,20,Input tastiera e invio nel prototipo,main keydown scrittura,Presente; percorsi legacy ulteriori,A059
+R006,docs/L01-struttura_e_task.md,22,Salvare prompt e intero scambio in chat raw,"haiDetto, rispondi, salvaMessaggio, chatRaw",Parziale,A034 A035 A036
+R007,docs/L01-struttura_e_task.md,23,"Separare richiesta da contesto e arricchire con memoria, desk, servizi","istruzioni, guarda, ilPrompt, tool loop",Parziale,A004 A023 A028
+R008,docs/L01-struttura_e_task.md,29,Richiesta operativa e contesto formano task,creazioni specializzate nel Motore,Parziale,A004
+R009,docs/L01-struttura_e_task.md,41,T_NUOVO prima della lavorazione,"tipi, costruttori task",Mancante,A003
+R010,docs/L01-struttura_e_task.md,42,Comprensione ed esecuzione nello stesso T_LAVORAZIONE,avanzamenti e AI engine separati,Divergente,A003 A004
+R011,docs/L01-struttura_e_task.md,43,T_ATTESA e aggiornamento contesto all’arrivo input,"rientro, sciogli, rimanda",Parziale,A003 A011
+R012,docs/L01-struttura_e_task.md,44,T_CONCLUSIONE quando scopo terminato,consegnato/concluso,Divergente,A001 A003 A005
+R013,docs/L01-struttura_e_task.md,50,Transizioni di lifecycle definite,Motore.sposta e combinazioneLegale,Divergente,A003 A012 A013
+R014,docs/L01-struttura_e_task.md,53,Sotto-task autonomo T_NUOVO,delega/SecondarioFinto,Mancante come contratto autonomo,A004 A021
+R015,docs/L01-struttura_e_task.md,58,"Delay su tutti i servizi di invio/pubblicazione, letture escluse",Motore.consegna; read tool indipendenti,Divergente sugli invii; letture separate,A001
+R016,docs/L01-struttura_e_task.md,62,90s prima della chiamata effettiva,timer dopo .consegna,Divergente,A001
+R017,docs/L01-struttura_e_task.md,63,"No, aspetta impedisce l’invio e permette modifica",annulla,Divergente,A001 A013
+R018,docs/L01-struttura_e_task.md,66,"Bypass esplicito, definitivo, solo singolo invio",nessun campo o API,Mancante,A002
+R019,docs/L01-struttura_e_task.md,73,Scambi attraverso comunicazione assistente/utente,"INPUT, rispondi, Lettura, pedana",Parziale,A014 A020 A044 A063
+R020,docs/L02-componenti.md,8,INPUT: raccolta e testo; voce ingresso/occhi futuri,"main, canali, raccolta",Parziale,A057 A059
+R021,docs/L02-componenti.md,11,"Contesto da general, preferences, system, services","ilPrompt, caricaProfilo",Parziale,A028 A029
+R022,docs/L02-componenti.md,15,Desk ospita le attività,schermo.table e Scrivania,Presente con modello divergente,A003 A005 A051
+R023,docs/L02-componenti.md,18,Timeline della giornata,timeline.ts,Parziale,A060 A061
+R024,docs/L02-componenti.md,22,"Profilebar ora, data, posizione e WorkMode",profilebar/profilo,Parziale,A031 A048
+R025,docs/L02-componenti.md,26,"Systembar: microfono, volume, rete, batteria; stato simulato",systembar e system.txt,Parziale,A030 A059
+R026,docs/L02-componenti.md,34,Sidebar per sospesi e rimandati,CHIP taskbar; ORARIO fuori,Divergente,A003 A011 A049
+R027,docs/L02-componenti.md,38,Notificationbar prima della promozione a task,conCassetto/accogli,Divergente,A006 A007 A008 A010
+R028,docs/L03-archivio.md,19,Struttura Archivio/users/user_123 e cartelle previste,albero Archivio,Presente; chat-raw creata al primo messaggio,
+R029,docs/L03-archivio.md,37,system-settings.txt vuoto in questa fase,file vuoto,Verificato staticamente,
+R030,docs/L03-archivio.md,38,Campanello in system-storage,"asset presente, runtime altro path",Divergente,A064
+R031,docs/L03-archivio.md,41,Un solo utente principale user_123,costanti lato server e frontend,Presente,
+R032,docs/L03-archivio.md,44,"JSONL giornaliero, timestamp/role/testo, append",chatRaw endpoint,Struttura presente; integrità parziale,A034 A035 A036
+R033,docs/L03-archivio.md,45,"Memoria selettiva futura, general.txt contesto attuale",ilPrompt + SEME=general.txt,Lettura presente; comportamento aggiuntivo,A026 A027
+R034,docs/L03-archivio.md,48,Services come documenti di contesto,ilPrompt e services/*.txt,Lettura presente; dati operativi conflittuali,A023 A091
+R035,docs/L03-archivio.md,49,"Preferenze stabili, lingua, tema, voce, luoghi",leggiProfilo,Parziale,A028 A029 A031
+R036,docs/L03-archivio.md,52,Password locale non inviata all’AI,ilPrompt serializza solo p.assistente,Verificato staticamente per percorso previsto,
+R037,docs/L03-archivio.md,53,System.txt stato macchina simulato,caricaProfilo e ilPrompt,Presente con default/validazioni problematici,A030
+R038,docs/L03-archivio.md,56,Filesystem.txt contesto e filesystem cartella dati,file presenti; reader non collegato,Parziale,A025
+R039,docs/L03-archivio.md,59,Filesystem servizio obbligatorio,Registro senza disco/filesystem,Mancante nel flusso assistente,A025
+R040,docs/L04-aspetti_tecnici.md,15,Node24,verifiche effettuate con24.21.0,"Compatibile nella prova, vincolo assente",A040
+R041,docs/L04-aspetti_tecnici.md,16,Whisper e eye tracking fuori scope,nessuna integrazione operativa,Corretta esclusione; simulazione UI da separare,A059
+R042,docs/L04-aspetti_tecnici.md,19,OpenRouter unico provider attivo,fornitore e viaChat/messages,Presente staticamente; remoto non provato,A019 A042
+R043,docs/L04-aspetti_tecnici.md,26,Chat raw distinta dalla memoria semantica,cartella separata; nessuna lettura raw in ilPrompt,Separazione presente; affidabilità parziale,A034 A035
+R044,docs/L04-aspetti_tecnici.md,29,"React, Vite, Tailwind","Vite, TS e DOM/CSS manuali",Divergente,A038
+R045,docs/L04-aspetti_tecnici.md,30,Contenitore desktop futuro da decidere,nessun wrapper desktop,Fuori scope attuale; non mancanza,
+R046,docs/L04-aspetti_tecnici.md,31,Accesso locale attraverso Node soltanto all’utente attivo,archivio middleware,"Divergente, riprodotto",A032 A033
+R047,docs/L04-aspetti_tecnici.md,33,Autenticazione e cambio utente futuri,utente fisso; nessun login,Fuori scope attuale; non mancanza,
+R048,docs/L04-aspetti_tecnici.md,38,Preferences/system letti localmente da Node,endpoint + ilPrompt,Presente; selezione campi errata,A028 A029
+R049,docs/L04-aspetti_tecnici.md,44,Piper Serena HIGH,Piper e espeak/ONNX,"Presente, alternative extra e runtime non ascoltato",A062 A065 A067
+R050,docs/design/L0 - Sistema.md,3,Gerarchia L0>L1>L2>L3>L4,confronto normativo applicato nell’audit,Conflitti interni ancora da risolvere,A079 A080 A081 A082 A084 A085
+R051,docs/design/L0 - Sistema.md,60,Tutto ciò che si legge in bolla salvo Systembar,"Timeline fuori bolla, Profilebar velo",Ambiguo nei documenti e divergente in parte,A045 A048 A079
+R052,docs/design/L0 - Sistema.md,105,"Massimo4 frasi, nessun bottone salvo eccezioni",frasi e scorciatoie; controlli volume/pedana,Parziale; eccezioni discordanti,A044 A058 A074
+R053,docs/design/L0 - Sistema.md,131,Un task in un solo luogo visibile desk/sidebar,Luogo e proiezioni,Modello divergente,A003 A005 A006
+R054,docs/design/L0 - Sistema.md,153,Terminati verso l’esterno lasciano dopo invio effettivo/Delay,consegna CHIP poi MEMORIA,Divergente,A001 A005
+R055,docs/design/L0 - Sistema.md,164,"Colori semantici, max2 punti colore",tinta per singolo componente e override,Parziale,A047 A052 A083
+R056,docs/design/L0 - Sistema.md,181,Leggibilità del materiale vetro,CSS app e CSS docs,Parziale; render multipiattaforma non verificato,A045 A089
+R057,docs/design/L0 - Sistema.md,197,"Lucide14–16, sette icone di tipo",sprite ICONE e CSS14,Famiglia presente; tavole discordanti,A082
+R058,docs/design/L0 - Sistema.md,206,"Manrope e IBM Plex Mono, pesi ammessi","Google Fonts/index, CSS",Font presenti; pesi in conflitto,A082
+R059,docs/design/L0 - Sistema.md,213,Cornice a margine44 su riferimento1440x900,CSS e misuraPalco,Staticamente presente; varianti quote ambigue,A081
+R060,docs/design/L0 - Sistema.md,217,Nessun task si muove mentre si acquisisce la frase,raccolta senza mutazioni; turno dopo Enter,Percorso tastiera coerente; documenti contrastanti,A085
+R061,docs/design/L0 - Sistema.md,222,"Scrivania irregolare, contenuto determina dimensione","campo molle, larghezze per focus",Parziale,A051
+R062,docs/design/L0 - Sistema.md,247,Componenti indipendenti senza colonna comune,guida flex,Non determinabile per conflitto interno,A080
+R063,docs/design/L0 - Sistema.md,263,"Timeline destra44/top40, altezza contenuto; seguaci22px",guida/timeline CSS,Impostazione presente; conflitto con autonomia,A080 A081
+R064,docs/design/L0 - Sistema.md,285,INPUT basso sinistra e assente a riposo,scrittura resta in modalità tastiera,Eccezione tastiera ammessa da revisione INPUT,A081
+R065,docs/design/L0 - Sistema.md,294,Notifiche originali senza riscrittura,Proposta/Notifica e rendering,Parziale,A010
+R066,docs/design/Liquid glass.md,7,Ricetta ottica comune liquid-glass.css,docs condividono; app duplica,Divergente,A045
+R067,docs/design/Liquid glass.md,14,Nessun movimento hover gratuito,CSS app/scene,Non osservata violazione statica specifica; runtime non verificato,
+R068,docs/design/Liquid glass.md,16,Fallback opaco con trasparenza ridotta/no backdrop,root token docs; app ricetta precedente,Parziale,A045 A089
+R069,docs/design/Liquid glass.md,37,Geometria Profilebar60/r30/gap16/avatar44,profilebar.css canonico vs base.css,Divergente,A048
+R070,docs/design/Liquid glass.md,42,Niente punti mediani nei gruppi Profilebar,template profilebar,Divergente,A048
+R071,docs/design/Liquid glass.md,47,Luogo noto Casa e Deep600 eccezione,ilLuogo/profilo,Parziale,A031 A048
+R072,docs/design/Liquid glass.md,76,Materiali chiaro/scuro su tutti i componenti,materiali.css soltanto nelle tavole,Mancante in app,A046
+R073,docs/design/Liquid glass.md,81,Notificationbar stessa materia degli altri componenti,CSS cassetto locale,Divergente,A045
+R074,docs/design/Liquid glass.md,86,Dodici temi; tinta separata da materiale,temi.css e data-colori,Palette presenti; scuro/generazione incompleti,A046 A088
+R075,docs/design/L2 - Bubble.dc.html,138,"Anatomia, misure testo, padding e contenuto principale",dentroLaBolla/base.css,Divergente,A051 A053 A082
+R076,docs/design/L2 - Bubble.dc.html,175,Frase primaria verde e sì coerente,frasiPer/regole,Divergente,A058
+R077,docs/design/L2 - Bubble.dc.html,583,"Conclusione6s e successivo chip, da riconciliare con Delay",nessun timer6s,Parziale/contraddittorio,A055 A084
+R078,docs/design/L2 - Bubble.dc.html,768,Focus e aumento dimensione durante parola,fuoco dopo turno,Tavola subordinata contraddice L0/revisione INPUT,A085
+R079,docs/design/L2 - Bubble.dc.html,850,Riposo automatico dopo30min,nessun timer30min,Mancante,A055
+R080,docs/design/L2 - Bubble.dc.html,882,Memoria posizioni1h e ritorno libero,Scrivania ricordi/MEMORIA,Presente; race DOM non coperta,A054
+R081,docs/design/L2 - Bubble.dc.html,917,Movimenti non simultanei e causali,campo forze e timers CSS,Parziale; coreografia non verificata in browser,A054 A085
+R082,docs/design/L2 - INPUT.dc.html,32,Ancoraggio e durata30s,main/schermo,Quote ambigue; timeout errato per risposte lente,A015 A081
+R083,docs/design/L2 - INPUT.dc.html,194,"Proposte raccolta, anteprima e grandi insiemi",raccolta.ts,Parziale; decisione su idee ancora necessaria,A057
+R084,docs/design/L2 - INPUT.dc.html,437,Risveglio/voce e verbi configurabili,regole/canali simulati,Parte vocale futura; dettagli non implementati non contati come obblighi,A059
+R085,docs/design/L2 - INPUT.dc.html,548,Sei momenti: tastiera resta; attesa interpretazione; risposta testo/voce,main/turno/schermo,Parziale,A015 A056 A063
+R086,docs/design/L2 - INPUT.dc.html,556,"Solo parole/raccolta/scambio, niente task o virgolette; domanda semplice non crea task",INPUT e varianti pedana,Parziale; scambio semplice legittimo,A004 A056
+R087,docs/design/L2 - Notificationbar.dc.html,41,Campanella44/badge16/cassetto400max420/animazione420 e stagger40,CSS cassetto,Percorso alternativo presente; ricetta e default divergenti,A006 A045
+R088,docs/design/L2 - Notificationbar.dc.html,66,Filtro silenzioso conserva arrivi,accogli/nelCassetto,Dipende da flag,A007
+R089,docs/design/L2 - Notificationbar.dc.html,95,"Mittente originale, oggetto, ora e ordine leggibile",righe cassetto,Parziale,A009 A010
+R090,docs/design/L2 - Notificationbar.dc.html,133,Promozione esplicita conserva notifica,estrai,Divergente,A008
+R091,docs/design/L2 - Profilebar.dc.html,55,Bolla intrinseca e geometria canonica,profilebar/base.css,Divergente,A048
+R092,docs/design/L2 - Profilebar.dc.html,70,Luoghi registrati e modalità focus,profilo/ilLuogo,Mancante in parte,A031
+R093,docs/design/L2 - Profilebar.dc.html,80,Raccontami chi sono e follow verticale,tool parla/generazione generica; guida,Nessuna proiezione profilo specializzata; geometria ambigua,A080 A095
+R094,docs/design/L2 - Sidebar.dc.html,31,Chip30/r20/pad14/gap9 con icona nome dato,taskbar/base.css,Dimensioni base presenti; ricetta diversa,A045
+R095,docs/design/L2 - Sidebar.dc.html,55,Nome corto max due parole e mai troncato,"nome da task/fixture, nessun vincolo",Parziale,A093
+R096,docs/design/L2 - Sidebar.dc.html,62,Niente duplicato del task principale,elementi esclude MAIN,"Presente, salvo eccezione fullscreen documentale da chiarire",A003
+R097,docs/design/L2 - Sidebar.dc.html,114,"Task rimandati qui, non cassetto",ORARIO nel cassetto,Divergente,A011 A086
+R098,docs/design/L2 - Sidebar.dc.html,204,Attenuazione45% durante raccolta,aFuoco/attenuata,Divergente,A050
+R099,docs/design/L2 - Sidebar.dc.html,205,Quattro chip e +N,"slice(0,4)",Parziale,A049
+R100,docs/design/L2 - Systembar.dc.html,30,"Ordine fisso mic/volume/rete/batteria, mono11/icon14",systembar CSS mono10/icon14,Parziale,A030 A059 A094
+R101,docs/design/L2 - Systembar.dc.html,119,SCRIVI/MUTA e comandi coerenti,"canali, template, click voce",Parziale,A059 A063 A074
+R102,docs/design/L2 - TIMELINE.dc.html,162,Tipografia/filo242x3/colonna fluida,timeline/CSS,"Presenza statica, materiale e legge0 da chiarire",A079
+R103,docs/design/L2 - TIMELINE.dc.html,229,Niente passato; timeline non cronologia,tratti e filtri,Divergente,A061
+R104,docs/design/L2 - TIMELINE.dc.html,335,Tempo libero e prossimo lavoro valido,ilDopo/inCorso,Parziale,A060
+R105,docs/design/L2 - TIMELINE.dc.html,352,Preavviso15 e criterio del prossimo,REGOLE.preavviso e sort ora,Presente in parte; rinvio non riparte,A011 A060
+R106,docs/design/L3 - Flusso task.dc.html,87,Scene del ciclo task e voce,motore/scrivania,Contengono descrizioni superate; non normative contro L0,A071 A084 A085
+R107,docs/design/L4 - Schermate.dc.html,58,Quattro scene integrate con materiali comuni,app non importa ricetta condivisa,Divergente; equivalenza visiva non testata,A045 A046 A048
+R108,docs/L04-aspetti_tecnici.md,3,"Decisioni tecniche esplicite, nessun valore dedotto dal codice",API/tool/parametri/servizi,Dettagli non determinabili,A043 A073 A076 A077 A087
+R109,docs/design/L1 - Temi.dc.html,87,CSS temi generato dal tool citato,genera-temi.py assente,Mancante,A088
+R110,docs/L05-design.md,1,Documento di collegamento design,vuoto,Nessun requisito estraibile,A087
+R111,docs/design/L2 - Sidebar.dc.html,192,Validità del campione di raccolta/chip,margin inline invalido,Divergente,A096
+R112,docs/design/L2 - INPUT.dc.html,507,Validità del campione del punto esterno,margin inline invalido,Divergente,A096

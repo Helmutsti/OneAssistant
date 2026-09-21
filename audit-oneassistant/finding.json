@@ -1,0 +1,3418 @@
+[
+  {
+    "id": "A001",
+    "titolo": "Delay applicato dopo la consegna, annullamento soltanto locale",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 778
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 921
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 58
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 41
+      }
+    ],
+    "previsto": "Attendere 90 secondi prima di chiamare il servizio; no, aspetta impedisce la chiamata.",
+    "effettivo": "consegna chiama subito servizio.consegna; il timer parte nella then. annulla cambia stato e dichiara che nulla è uscito, senza ritirare la consegna.",
+    "divergenza": "Delay applicato dopo la consegna, annullamento soltanto locale",
+    "impatto": "Garanzia principale di sicurezza falsa, anche se oggi i servizi sono simulati.",
+    "evidenza": "reproduce.json: elapsed=0, calls=1; dopo 91 s «Annullata… non è uscita» con calls=2. Nessun invio esterno eseguito dall’audit.",
+    "correzione": "Accodare prima del confine; cancellare la chiamata pendente e descrivere fedelmente gli esiti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A002",
+    "titolo": "Bypass esplicito per singolo invio assente",
+    "categoria": "DOC_MISSING_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/modello/tipi.ts",
+        "line": 229
+      },
+      {
+        "file": "src/ai-engine/api.ts",
+        "line": 180
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 778
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 66
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 41
+      }
+    ],
+    "previsto": "Richiesta esplicita: invio immediato definitivo soltanto per quel task.",
+    "effettivo": "Né Comando, Uscita, strumenti né consegna rappresentano bypass, irrevocabilità o autorizzazione per invio.",
+    "divergenza": "Bypass esplicito per singolo invio assente",
+    "impatto": "Impossibile distinguere le due modalità prescritte.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Introdurre contratto e transizione del bypass con ambito limitato al singolo invio.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A003",
+    "titolo": "Modello di stati e luoghi rimasto al contratto precedente",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/modello/tipi.ts",
+        "line": 18
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 337
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 1106
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 38
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 131
+      }
+    ],
+    "previsto": "Quattro stati T_NUOVO, T_LAVORAZIONE, T_ATTESA, T_CONCLUSIONE; task su desk o sidebar.",
+    "effettivo": "Sei avanzamenti e luoghi CARTA, ORARIO, MEMORIA, MAIN, APERTO, CHIP; task creati direttamente in attesa/programmato; comprensione non rappresentata nel ciclo prescritto.",
+    "divergenza": "Modello di stati e luoghi rimasto al contratto precedente",
+    "impatto": "Transizioni, viste, API e test parlano un modello differente.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Riallineare modello e consumatori; non rinominare semplicemente gli enum.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A004",
+    "titolo": "Richiesta e contesto non formano sistematicamente un task",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 83
+      },
+      {
+        "file": "src/ai-engine/strumenti.ts",
+        "line": 1
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 1106
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 23
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 50
+      }
+    ],
+    "previsto": "Separare richiesta/contesto, creare task e sotto-task autonomi nel flusso previsto.",
+    "effettivo": "Il ciclo esegue tool su stato globale; crea task per composizioni, riassunti e fixture, non espone una creazione generale T_NUOVO; delega lavora dentro il task padre.",
+    "divergenza": "Richiesta e contesto non formano sistematicamente un task",
+    "impatto": "Richieste operative fuori dai casi speciali mancano di un ciclo generale tracciabile. Le semplici domande possono legittimamente restare scambi (INPUT:556), quindi non sono contate come task mancanti.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire ed implementare il percorso generale e il rapporto fra task/sotto-task, senza dedurlo dalle specializzazioni esistenti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A005",
+    "titolo": "Task terminati conservati e richiamabili come archivio operativo",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 810
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 911
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 945
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 141
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 11
+      }
+    ],
+    "previsto": "La memoria non è un terzo luogo dei task; conoscenza selettiva distinta dai task conclusi.",
+    "effettivo": "MEMORIA conserva gli oggetti nell’array; richiama cerca anche quelli conclusi/consegnati.",
+    "divergenza": "Task terminati conservati e richiamabili come archivio operativo",
+    "impatto": "Task archiviati rientrano in esecuzione e interferiscono con ricerca, selezione e timeline.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Separare ciclo di vita e storia/contesto; impedire selezioni operative di task terminati.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A006",
+    "titolo": "Notifiche trasformate automaticamente in task; modello corretto dietro flag spento",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 109
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 337
+      },
+      {
+        "file": "src/main.ts",
+        "line": 439
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 567
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 38
+      },
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 46
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 294
+      }
+    ],
+    "previsto": "Arrivi esterni nella Notificationbar; promozione a task solo per scelta dell’utente.",
+    "effettivo": "conCassetto=false predefinito: arrivo crea CARTA/ORARIO; campanella assente. Il banco permette di alternare due modelli incompatibili.",
+    "divergenza": "Notifiche trasformate automaticamente in task; modello corretto dietro flag spento",
+    "impatto": "Il comportamento normativo non è quello avviato dal prodotto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Rendere unico il flusso documentato, rimuovere o confinare esplicitamente il modello legacy.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A007",
+    "titolo": "Notifiche silenziose perse nel percorso predefinito",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 343
+      },
+      {
+        "file": "src/confini/filtro.ts",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 66
+      }
+    ],
+    "previsto": "Un arrivo filtrato non disturba ma resta consultabile nel cassetto.",
+    "effettivo": "Con flag spento, esito niente ritorna prima di salvare l’arrivo.",
+    "divergenza": "Notifiche silenziose perse nel percorso predefinito",
+    "impatto": "Informazioni eliminate senza possibilità di recupero.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Conservare l’arrivo separatamente dalla decisione di notificare.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A008",
+    "titolo": "Promozione rimuove la notifica originale",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 1053
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 133
+      }
+    ],
+    "previsto": "La notifica resta nel cassetto dopo me ne occupo; nasce un task distinto.",
+    "effettivo": "estrai elimina la notifica dall’array mentre crea il task.",
+    "divergenza": "Promozione rimuove la notifica originale",
+    "impatto": "Si perde la traccia del messaggio originale.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Conservare la notifica con collegamento al task e stato di presa in carico.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A009",
+    "titolo": "Ordinale delle notifiche diverso dall’ordine mostrato",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 610
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 954
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 95
+      },
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 42
+      }
+    ],
+    "previsto": "Una selezione ordinale identifica la riga visibile corrispondente.",
+    "effettivo": "Rendering ordina per data crescente e include ORARIO; scegli usa solo notifiche in ordine inverso.",
+    "divergenza": "Ordinale delle notifiche diverso dall’ordine mostrato",
+    "impatto": "La prima/la seconda può selezionare un messaggio diverso da quello letto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Usare una sola proiezione ordinata e gli stessi identificatori nella vista e nella selezione.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A010",
+    "titolo": "Notifiche senza contratto completo di mittente, oggetto e ora",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/tipi.ts",
+        "line": 190
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 618
+      },
+      {
+        "file": "src/confini/posta.ts",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 294
+      },
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 95
+      }
+    ],
+    "previsto": "Mittente e oggetto originali, ora, testo non riscritto dall’assistente.",
+    "effettivo": "Nome/testo delle fixture sono sintetici; non esiste campo oggetto originale; chi sostituisce l’ora tramite chi ?? orario.",
+    "divergenza": "Notifiche senza contratto completo di mittente, oggetto e ora",
+    "impatto": "Non si ricostruisce con precisione la provenienza e il momento dell’arrivo.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Separare e conservare i dati originali, renderizzandoli tutti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A011",
+    "titolo": "Rinvio e arrivi futuri non tornano al lavoro alla scadenza",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 337
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 369
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 885
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 50
+      },
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 34
+      }
+    ],
+    "previsto": "Attesa in sidebar; al verificarsi dell’input/condizione si aggiorna il task e riparte la lavorazione.",
+    "effettivo": "rimanda programma solo il preavviso a 105 min; a 120 non accade nulla. Arrivi ORARIO senza timer; CARTA dopo 60 min diventa ORARIO anche senza ora.",
+    "divergenza": "Rinvio e arrivi futuri non tornano al lavoro alla scadenza",
+    "impatto": "Lavori differiti diventano invisibili o restano in attesa indefinita.",
+    "evidenza": "reproduce.json: dopo 121 minuti luogo ORARIO, avanzamento aspetta te; ramo accogli non pianifica le scadenze future.",
+    "correzione": "Schedulare la condizione effettiva, luogo sidebar e transizione di ripresa; eliminare il timer CARTA obsoleto.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A012",
+    "titolo": "Invii duplicati e completamenti asincroni dopo abbandono",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 778
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 945
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 830
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 50
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 58
+      }
+    ],
+    "previsto": "Una operazione ha una sola esecuzione e gli esiti rispettano lo stato corrente.",
+    "effettivo": "consegna non controlla stato/pending/versione; due chiamate inviano due volte; then riporta un task abbandonato a CHIP/consegnato.",
+    "divergenza": "Invii duplicati e completamenti asincroni dopo abbandono",
+    "impatto": "Duplicazioni e resurrezione di task cancellati; lotti esposti allo stesso problema.",
+    "evidenza": "reproduce.json: duplicate_send_while_pending calls=2; completion_after_leave=CHIP/consegnato.",
+    "correzione": "Idempotenza per operazione e versionamento/cancellazione dei callback.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A013",
+    "titolo": "Annullamento senza scadenza e timer di invii precedenti ancora validi",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 810
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 921
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 63
+      }
+    ],
+    "previsto": "Annullabile soltanto durante la finestra dell’invio corrente.",
+    "effettivo": "annulla verifica soltanto consegnato, anche in MEMORIA dopo 90 s; il timer controlla stato ma non l’identità dell’invio.",
+    "divergenza": "Annullamento senza scadenza e timer di invii precedenti ancora validi",
+    "impatto": "Falso annullamento tardivo; una riconsegna può essere archiviata dal vecchio timer.",
+    "evidenza": "Annullamento oltre deadline riprodotto in reproduce.json; interferenza fra timer derivata dal callback che legge soltanto t.avanzamento.",
+    "correzione": "Associare deadline e token al singolo invio e invalidare i timer precedenti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A014",
+    "titolo": "Risposte assegnate al turno sbagliato in conversazioni concorrenti",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 83
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 1474
+      },
+      {
+        "file": "src/main.ts",
+        "line": 323
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 35
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 73
+      }
+    ],
+    "previsto": "Più richieste possono convivere mantenendo contesto e risposta correttamente associati.",
+    "effettivo": "turno non identifica lo scambio; rispondi riempie l’ultimo non risposto, indipendentemente dalla richiesta che ha prodotto l’esito.",
+    "divergenza": "Risposte assegnate al turno sbagliato in conversazioni concorrenti",
+    "impatto": "Domande e risposte si mescolano; i turni successivi ricevono una cronologia errata.",
+    "evidenza": "races.log: risposta alla prima assegnata a seconda domanda; risposta alla seconda aggiunta con domanda vuota.",
+    "correzione": "ID del turno, contesto isolato e collegamento esplicito dei risultati.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A015",
+    "titolo": "Scadenza INPUT calcolata dall’invio dell’utente, non dall’ultimo scambio",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 307
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 1478
+      },
+      {
+        "file": "src/main.ts",
+        "line": 245
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 548
+      }
+    ],
+    "previsto": "Lo scambio resta visibile 30 secondi dall’ultimo scambio.",
+    "effettivo": "Riempire risposta non aggiorna quando; una risposta lenta può arrivare a conversazione già chiusa.",
+    "divergenza": "Scadenza INPUT calcolata dall’invio dell’utente, non dall’ultimo scambio",
+    "impatto": "Risposta appena prodotta scompare o non rimane leggibile per il tempo previsto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Aggiornare l’attività alla risposta con un orologio coerente e riprogrammare la chiusura.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A016",
+    "titolo": "Aspetta non interrompe la lavorazione pendente",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 608
+      },
+      {
+        "file": "src/main.ts",
+        "line": 310
+      },
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 83
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 437
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 63
+      }
+    ],
+    "previsto": "Interruzione e annullamento devono avere un significato operativo coerente, soprattutto nella finestra Delay.",
+    "effettivo": "aspetta dice Aspetto senza cancellare turni; solo la stringa esatta digitata spegne la voce. Nessun AbortController del turno.",
+    "divergenza": "Aspetta non interrompe la lavorazione pendente",
+    "impatto": "Azioni o risposte possono arrivare dopo l’apparente arresto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Separare pausa voce/cancellazione lavoro/annullamento invio nel contratto e applicare la semantica documentata; non estendere implicitamente aspetta.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A017",
+    "titolo": "Validazione dei tool incompleta e valori malformati accettati",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/ai-engine/api.ts",
+        "line": 66
+      },
+      {
+        "file": "src/ai-engine/api.ts",
+        "line": 165
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 55
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 42
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 50
+      }
+    ],
+    "previsto": "Grammatica chiusa, argomenti validi e domanda in caso non determinabile.",
+    "effettivo": "Sono controllati presenza ed enum, non tipi/interi/proprietà extra; null causa TypeError; 1.5 è un indice accettato.",
+    "divergenza": "Validazione dei tool incompleta e valori malformati accettati",
+    "impatto": "Crash del turno o azioni non sensate da output AI malformato.",
+    "evidenza": "reproduce.json: null_arguments TypeError e fractional_tool_index restituisce fatto.",
+    "correzione": "Validare schema completo e vincoli prima dell’esecuzione, restituire errore tipizzato.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A018",
+    "titolo": "Risultato API fatto non riflette esito o mancata esecuzione",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/ai-engine/api.ts",
+        "line": 125
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 778
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 73
+      },
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 42
+      }
+    ],
+    "previsto": "L’assistente deve conoscere ciò che è stato realmente eseguito.",
+    "effettivo": "m.esegui restituisce void; l’API risponde fatto anche per no-op, blocco o invio ancora pendente.",
+    "divergenza": "Risultato API fatto non riflette esito o mancata esecuzione",
+    "impatto": "Il modello può annunciare un successo mai avvenuto o proseguire su premesse false.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Restituire esito distinto fra accettato, in corso, rifiutato, concluso e fallito.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A019",
+    "titolo": "Fallback permanente e silenzioso a interprete finto",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 188
+      },
+      {
+        "file": "src/main.ts",
+        "line": 129
+      },
+      {
+        "file": "src/main.ts",
+        "line": 177
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 19
+      }
+    ],
+    "previsto": "Prompt analizzato via OpenRouter; simulazione documentata per memoria e servizi, non sostituzione implicita del ragionamento.",
+    "effettivo": "Dopo 503 o tre errori passa alle regex per tutta la sessione; solo console/nome interno ne danno notizia, il nome non è passato alla pedana.",
+    "divergenza": "Fallback permanente e silenzioso a interprete finto",
+    "impatto": "L’utente non distingue un guasto da un cambiamento radicale di capacità.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decidere modalità offline esplicita o errore recuperabile; rendere visibile stato e ripristino.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A020",
+    "titolo": "Turni senza risposta a limite passi, output vuoto o fetch sospeso",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 56
+      },
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 90
+      },
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 250
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 400
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 73
+      }
+    ],
+    "previsto": "Scambio comprensibile anche quando il lavoro non riesce.",
+    "effettivo": "Massimo 10 passi poi ritorno senza spiegazione; zero mosse termina in silenzio; fetch chat/browser senza timeout esplicito.",
+    "divergenza": "Turni senza risposta a limite passi, output vuoto o fetch sospeso",
+    "impatto": "Lavoro apparentemente fermo senza esito; durata non controllata.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire timeout, budget e risultato terminale esplicito; distinguere errori da nessuna azione.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A021",
+    "titolo": "Secondari sempre simulati e non autonomi",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/main.ts",
+        "line": 137
+      },
+      {
+        "file": "src/ai-engine/secondari.ts",
+        "line": 97
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 188
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 53
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 19
+      }
+    ],
+    "previsto": "Durante lavorazione possono nascere sotto-task autonomi; elaborazione AI nel connettore.",
+    "effettivo": "Sempre SecondarioFinto anche con OpenRouter attivo, ritardi fissi e estratti testuali; nessun ciclo autonomo T_NUOVO.",
+    "divergenza": "Secondari sempre simulati e non autonomi",
+    "impatto": "Preparazioni complesse sembrano eseguite ma sono fixture euristiche.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Implementare il percorso previsto oppure limitare e dichiarare la simulazione nel contratto del prototipo.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A022",
+    "titolo": "Deleghe: errori soppressi e risultati in ordine di completamento",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 199
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 224
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 50
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 73
+      }
+    ],
+    "previsto": "Fallimenti e risultati identificabili per lavoro.",
+    "effettivo": "catch vuoto; se almeno uno riesce annuncia Ho finito; push dei risultati segue l’ordine di risoluzione, senza ID del sotto-lavoro né controllo di abbandono.",
+    "divergenza": "Deleghe: errori soppressi e risultati in ordine di completamento",
+    "impatto": "Successi parziali presentati come completi; testo instabile; callback tardivi cambiano task terminati.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Conservare risultati per ID, riportare errori parziali e verificare generazione/stato del task.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A023",
+    "titolo": "Rubrica e servizi operativi indipendenti dai documenti di contesto",
+    "categoria": "CONFLICTING_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/confini/contatti.ts",
+        "line": 77
+      },
+      {
+        "file": "src/confini/posta.ts",
+        "line": 1
+      },
+      {
+        "file": "src/main.ts",
+        "line": 96
+      },
+      {
+        "file": "Archivio/users/user_123/services/contacts.txt",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 30
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 22
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 48
+      }
+    ],
+    "previsto": "Dati simulati ricavati dai documenti del singolo utente.",
+    "effettivo": "AI legge services; motore usa RUBRICA hardcoded e fixture in memoria. Mamma ha un recapito diverso; Marco presente nei documenti non è risolvibile dal motore.",
+    "divergenza": "Rubrica e servizi operativi indipendenti dai documenti di contesto",
+    "impatto": "L’assistente conosce dati che non può usare e può selezionare destinatari diversi dal contesto.",
+    "evidenza": "reproduce.json: Marco=null; confronto fra contacts.txt e RUBRICA. Nessun recapito è stato contattato.",
+    "correzione": "Unificare sorgente delle simulazioni sui documenti e dichiarare quali operazioni sono solo dimostrazioni.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A024",
+    "titolo": "Ricerca contatti per sottostringa senza disambiguazione",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/confini/contatti.ts",
+        "line": 48
+      },
+      {
+        "file": "src/confini/contatti.ts",
+        "line": 57
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 42
+      }
+    ],
+    "previsto": "Non indovinare persone o destinatari in caso di incertezza.",
+    "effettivo": "includes riconosce Giulia in Giuliano e Capo in capolavoro; la prima corrispondenza più lunga vince.",
+    "divergenza": "Ricerca contatti per sottostringa senza disambiguazione",
+    "impatto": "Possibile destinatario errato già nella composizione.",
+    "evidenza": "reproduce.json: Giuliano→Giulia; capolavoro→Capo.",
+    "correzione": "Risoluzione per entità/parole intere e richiesta esplicita nei casi ambigui.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A025",
+    "titolo": "Filesystem obbligatorio non collegato al flusso dei servizi",
+    "categoria": "DOC_MISSING_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/main.ts",
+        "line": 124
+      },
+      {
+        "file": "src/confini/disco.ts",
+        "line": 1
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 112
+      },
+      {
+        "file": "Archivio/users/user_123/filesystem.txt",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 56
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 59
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 15
+      }
+    ],
+    "previsto": "Filesystem sempre disponibile e contesto letto dal documento dedicato.",
+    "effettivo": "Disco è usato per memoria ma manca dal Registro; filesystem.txt non entra nel prompt; la porta HTTP serve file noti, non implementa il percorso cerca documento.",
+    "divergenza": "Filesystem obbligatorio non collegato al flusso dei servizi",
+    "impatto": "Servizio fondamentale non utilizzabile tramite l’assistente come definito.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Collegare contesto e operazioni filesystem nel perimetro del prototipo, mantenendo il confine utente.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A026",
+    "titolo": "Memoria semantica temporanea e abitudini automatiche non autorizzate",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/archivio/archivio.ts",
+        "line": 67
+      },
+      {
+        "file": "src/archivio/archivio.ts",
+        "line": 100
+      },
+      {
+        "file": "src/ai-engine/finto.ts",
+        "line": 160
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 857
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 11
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 22
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 45
+      }
+    ],
+    "previsto": "Nel prototipo documenti di contesto; selezione automatica futura ancora da definire.",
+    "effettivo": "Entità, collegamenti, smentite, ipotesi, tre prove, conferma di abitudini e salvataggi automatici attivi in memoria.",
+    "divergenza": "Memoria semantica temporanea e abitudini automatiche non autorizzate",
+    "impatto": "Architettura semantica e regole di autonomia anticipate senza decisione documentale; dati persi al reload nonostante formule me lo segno.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Sospendere/segregare i comportamenti non decisi o documentarli dopo decisione; non inventare ora una persistenza intelligente.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A027",
+    "titolo": "Raccolta non indicizza le entità del documento general.txt",
+    "categoria": "CONFLICTING_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/archivio/archivio.ts",
+        "line": 243
+      },
+      {
+        "file": "src/archivio/archivio.ts",
+        "line": 309
+      },
+      {
+        "file": "src/aree/raccolta.ts",
+        "line": 58
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 45
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 23
+      }
+    ],
+    "previsto": "Unica memoria simulata in memory/general.txt.",
+    "effettivo": "general.txt è correttamente letto sia dal server sia da Archivio.semina; tuttavia nomi() restituisce soltanto entità annotate nella sessione e raccolta usa nomi(), non il seme.",
+    "divergenza": "Raccolta non indicizza le entità del documento general.txt",
+    "impatto": "Risposta dipende dal percorso AI/test/locale, pur usando lo stesso utente.",
+    "evidenza": "Archivio.semina usa SEME=general.txt (riga339); contenuti cerca nel seme, nomi legge soltanto entita. I due test falliti dipendono dalla fixture seme.txt obsoleta, non da un mancato caricamento general.txt.",
+    "correzione": "Definire l’indicizzazione dei nomi noti nel contesto per la raccolta; conservare la lettura di general.txt già corretta.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A028",
+    "titolo": "Contesto AI privo delle preferenze stabili dell’utente",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "vite.config.ts",
+        "line": 110
+      },
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 263
+      },
+      {
+        "file": "src/ai-engine/strumenti.ts",
+        "line": 630
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 11
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 49
+      }
+    ],
+    "previsto": "Leggere preferenze, lingua, luoghi e contesto; password esclusa dall’AI.",
+    "effettivo": "Il prompt passa soltanto p.assistente a istruzioni e aggiunge system/memory/services; preferenze dell’utente e luoghi registrati non sono serializzati.",
+    "divergenza": "Contesto AI privo delle preferenze stabili dell’utente",
+    "impatto": "Richieste non informate da dati che la documentazione dichiara disponibili.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Passare un contesto utente esplicito filtrato; mantenere l’esclusione della password.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A029",
+    "titolo": "Parser preferenze incompatibile con il file distribuito",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 229
+      },
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 263
+      },
+      {
+        "file": "Archivio/users/user_123/preferences.txt",
+        "line": 20
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 49
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 38
+      }
+    ],
+    "previsto": "Preferenze e voce configurate dal documento locale.",
+    "effettivo": "Il file usa assitant/reading/settings; parser legge lettura e figli(preferenze).voce/nome/sesso; focuses ignorati.",
+    "divergenza": "Parser preferenze incompatibile con il file distribuito",
+    "impatto": "Lettura off e identità/voce scelte non hanno effetto.",
+    "evidenza": "reproduce.json: assitant: reading: off produce lettura=true; assistente del file attuale contiene soltanto lettura.",
+    "correzione": "Definire un solo schema testuale e allineare parser, fixture e validazione.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A030",
+    "titolo": "Valori di sistema mancanti o malformati trasformati in dati inventati",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 207
+      },
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 255
+      },
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 384
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 53
+      },
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 26
+      }
+    ],
+    "previsto": "Mostrare lo stato simulato indicato, senza attribuire capacità non disponibili.",
+    "effettivo": "numero elimina segni e separatori; microfono/ethernet assenti diventano true; caricamento fallito conserva un profilo predefinito senza avviso.",
+    "divergenza": "Valori di sistema mancanti o malformati trasformati in dati inventati",
+    "impatto": "Stato macchina o identità fuorviante, valori fuori range e falso ascolto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Validare range/schema e distinguere assente, sconosciuto, spento ed errore di lettura.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A031",
+    "titolo": "WorkMode e riconoscimento dei luoghi registrati assenti",
+    "categoria": "DOC_MISSING_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 213
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 199
+      },
+      {
+        "file": "src/conoscenza/contesto.ts",
+        "line": 30
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 22
+      },
+      {
+        "file": "docs/design/L2 - Profilebar.dc.html",
+        "line": 70
+      },
+      {
+        "file": "docs/design/Liquid glass.md",
+        "line": 47
+      }
+    ],
+    "previsto": "Luogo noto senza città ridondante; WorkMode ricavato da posizione/orario, ad esempio Deep.",
+    "effettivo": "Nessuna risoluzione fra focuses e GPS, nessun WorkMode; luogo composto da due stringhe e punto mediano.",
+    "divergenza": "WorkMode e riconoscimento dei luoghi registrati assenti",
+    "impatto": "Profilebar non comunica il contesto operativo previsto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Implementare le regole da preferenze; chiarire la precedenza fra più modalità sovrapposte.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A032",
+    "titolo": "Attraversamento dei percorsi oltre utente e oltre memory",
+    "categoria": "SECURITY",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "vite.config.ts",
+        "line": 687
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 795
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 31
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 11
+      }
+    ],
+    "previsto": "Node espone soltanto file dell’utente attivo; scrittura dichiarata limitata a memory.",
+    "effettivo": "La regex accetta ..; resolve è confinato a users, non a user_123 né memory; POST permette ../services e ../../altro-utente.",
+    "divergenza": "Attraversamento dei percorsi oltre utente e oltre memory",
+    "impatto": "Lettura/sovrascrittura fuori dal perimetro autorizzato. Nel prototipo esiste un solo utente, ma il controllo non garantisce il confine.",
+    "evidenza": "http-test.log: GET del file sintetico dell’utente fratello=200; POST fuori memory e altro utente=200; entrambi i file verificati.",
+    "correzione": "Rifiutare segmenti speciali; confinare path normalizzato/reale alla radice specifica dell’operazione e gestire symlink.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A033",
+    "titolo": "Symlink non considerati dal controllo di confinamento",
+    "categoria": "SECURITY",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "vite.config.ts",
+        "line": 694
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 842
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 807
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 31
+      }
+    ],
+    "previsto": "Il file effettivo deve appartenere al perimetro utente.",
+    "effettivo": "Confronto lessicale del path; readFileSync/writeFileSync seguono link senza realpath/lstat del percorso effettivo.",
+    "divergenza": "Symlink non considerati dal controllo di confinamento",
+    "impatto": "Un link presente nell’archivio può aggirare il controllo anche eliminando ..; prerequisito: link creato localmente.",
+    "evidenza": "Analisi statica; non è stata creata una catena di symlink verso dati reali.",
+    "correzione": "Confinare percorso reale e directory genitrici, con politica esplicita sui link.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A034",
+    "titolo": "Chat raw può perdere messaggi senza blocco o recupero",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/archivio/chat-raw.ts",
+        "line": 6
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 430
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 22
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 44
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 26
+      }
+    ],
+    "previsto": "Archivio integrale e persistente di ogni scambio.",
+    "effettivo": "fetch fire-and-forget, errori solo console, nessun retry/ack/coda; il lavoro prosegue anche se la scrittura fallisce.",
+    "divergenza": "Chat raw può perdere messaggi senza blocco o recupero",
+    "impatto": "Conversazione non recuperabile dopo errore/reload; integrità non garantita.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Consegna affidabile con ID e coda/ack; segnalare e recuperare i salvataggi mancati.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A035",
+    "titolo": "Ordine cronologico della chat raw non garantito",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/archivio/chat-raw.ts",
+        "line": 6
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 739
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 44
+      }
+    ],
+    "previsto": "Append cronologico dei messaggi originali.",
+    "effettivo": "Richieste concorrenti, timestamp dal client e append in ordine di arrivo senza sequenza/controllo.",
+    "divergenza": "Ordine cronologico della chat raw non garantito",
+    "impatto": "Righe possono risultare temporalmente invertite.",
+    "evidenza": "http-test.log: due POST con timestamp decrescente accettati; file JSONL della copia conserva l’ordine inverso.",
+    "correzione": "Assegnare sequenza monotona e gestire riordino/duplicati definendo il contratto temporale.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A036",
+    "titolo": "Il testo originale viene normalizzato prima dell’archiviazione",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/main.ts",
+        "line": 290
+      },
+      {
+        "file": "src/archivio/chat-raw.ts",
+        "line": 3
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 26
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 44
+      }
+    ],
+    "previsto": "Conservare testo originale integrale.",
+    "effettivo": "Il campo tastiera è trim prima del turno; salvaMessaggio scarta testi vuoti.",
+    "divergenza": "Il testo originale viene normalizzato prima dell’archiviazione",
+    "impatto": "Spazi iniziali/finali non sono conservati; definizione di originale violata o da precisare.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Separare testo grezzo registrato dal testo normalizzato per interpretazione.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A037",
+    "titolo": "Scrittura memoria HTTP attiva benché la memoria intelligente sia sospesa",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "vite.config.ts",
+        "line": 781
+      },
+      {
+        "file": "src/confini/disco.ts",
+        "line": 97
+      },
+      {
+        "file": "src/archivio/archivio.ts",
+        "line": 330
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 22
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 45
+      }
+    ],
+    "previsto": "Prototipo basato su documenti preparati, non su memoria automatica già funzionante.",
+    "effettivo": "Endpoint POST crea/sovrascrive markdown; percorsi produttivi dell’Archivio sono invece no-op; contratto dell’API non documentato.",
+    "divergenza": "Scrittura memoria HTTP attiva benché la memoria intelligente sia sospesa",
+    "impatto": "Superficie di mutazione reale scollegata dalle capacità dichiarate; ambiguità sulla persistenza.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decidere ed esplicitare l’API consentita; disattivare i percorsi non usati o documentarne scopo e limiti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A038",
+    "titolo": "Stack React e Tailwind assente",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "package.json",
+        "line": 1
+      },
+      {
+        "file": "src/main.ts",
+        "line": 1
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 1
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 29
+      }
+    ],
+    "previsto": "Sito React, Vite e Tailwind.",
+    "effettivo": "Vite/TypeScript con costruzione imperativa del DOM e CSS manuale; React e Tailwind non sono dipendenze né componenti.",
+    "divergenza": "Stack React e Tailwind assente",
+    "impatto": "Scelta architetturale centrale diversa dalla decisione di progetto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decidere migrazione allo stack prescritto; non dichiarare conforme lo stack esistente senza cambiare formalmente il requisito.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A039",
+    "titolo": "Build e preview non includono il backend del prototipo",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "package.json",
+        "line": 7
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 480
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 713
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 765
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 26
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 31
+      }
+    ],
+    "previsto": "Accesso Node ai documenti e chat raw funzionanti nell’esecuzione supportata.",
+    "effettivo": "Tutti gli endpoint sono configureServer; dist è statico e configurePreviewServer manca.",
+    "divergenza": "Build e preview non includono il backend del prototipo",
+    "impatto": "npm preview non offre archivio/AI/chat raw; il frontend degrada a default/finto o perde salvataggi.",
+    "evidenza": "Build tsc+Vite riuscita; analisi di tutti i plugin: nessun backend emesso o handler preview. Preview non testato via browser.",
+    "correzione": "Documentare ed implementare il runtime supportato dopo build; testare gli endpoint in quell’ambiente.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A040",
+    "titolo": "Node 24 non vincolato e script scenario dipendente da esbuild transitivo",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "package.json",
+        "line": 1
+      },
+      {
+        "file": "package.json",
+        "line": 10
+      },
+      {
+        "file": "package-lock.json",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 15
+      }
+    ],
+    "previsto": "Runtime Node 24 riproducibile.",
+    "effettivo": "Nessun engines/version file; scenario invoca esbuild presente solo tramite Vite.",
+    "divergenza": "Node 24 non vincolato e script scenario dipendente da esbuild transitivo",
+    "impatto": "Installazione/esecuzione possono usare runtime o toolchain diversi senza avviso.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Dichiarare requisito runtime e dipendenza diretta del comando di test.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A041",
+    "titolo": "Dipendenza phonemizer priva di riferimenti",
+    "categoria": "DEAD_CODE",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "package.json",
+        "line": 22
+      },
+      {
+        "file": "package-lock.json",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 44
+      }
+    ],
+    "previsto": "Dipendenze motivate da funzionalità previste.",
+    "effettivo": "phonemizer presente nel manifest/lock ma nessun import o riferimento operativo nei sorgenti/script; fonemizzazione usa espeak-ng.",
+    "divergenza": "Dipendenza phonemizer priva di riferimenti",
+    "impatto": "Superficie e manutenzione non giustificate.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Confermare uso esterno non presente nel repo oppure rimuovere la dipendenza.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A042",
+    "titolo": "Ramo provider nativo irraggiungibile e commenti multi-provider obsoleti",
+    "categoria": "DEAD_CODE",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "vite.config.ts",
+        "line": 140
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 259
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 541
+      },
+      {
+        "file": "src/ai-engine/finto.ts",
+        "line": 3
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 19
+      }
+    ],
+    "previsto": "OpenRouter unico provider del prototipo; altri provider futuri.",
+    "effettivo": "nativo sempre false, ramo betas/fallback/effort morto; commenti dichiarano ANTHROPIC_API_KEY/provider diretto ancora attivo.",
+    "divergenza": "Ramo provider nativo irraggiungibile e commenti multi-provider obsoleti",
+    "impatto": "Fa credere disponibili fallback e provider inesistenti; aumenta costo di manutenzione.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Rimuovere o separare sperimentazioni non attive e correggere i commenti. SDK Anthropic usato con OpenRouter non è di per sé un provider aggiuntivo.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A043",
+    "titolo": "Parametri e API del motore non specificati nei documenti attuali",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/ai-engine/strumenti.ts",
+        "line": 1
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 36
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 188
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 280
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 42
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 19
+      }
+    ],
+    "previsto": "Grammatica chiusa prevista, ma scelte concrete devono essere giustificate dalla documentazione.",
+    "effettivo": "Decine di tool/permessi, gruppi/lotti, rinvio fisso 2h, massimo 10 passi, cache 1h, max_tokens4000 e scelta modello/dialetto sono definiti solo da codice/env e riferimenti rimossi.",
+    "divergenza": "Parametri e API del motore non specificati nei documenti attuali",
+    "impatto": "Non è determinabile quali dettagli siano autorizzati e quali residui legacy.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Approvare un contratto API e un registro dei parametri; rimuovere le estensioni non adottate. Non si propone di inventare valori alternativi.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A044",
+    "titolo": "Diagnostica e fixture di sviluppo incluse nel prodotto senza separazione di build",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/main.ts",
+        "line": 38
+      },
+      {
+        "file": "src/main.ts",
+        "line": 175
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 1090
+      },
+      {
+        "file": "src/prova/pedana.ts",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 105
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 7
+      }
+    ],
+    "previsto": "Flusso tramite assistente; banco di taratura separato dal prodotto secondo strumenti/LEGGIMI.",
+    "effettivo": "Pedana, scia, reset, iniezione arrivi, salti temporali, toggle cassetto/frasi sono importati nell’entry point anche nella build.",
+    "divergenza": "Diagnostica e fixture di sviluppo incluse nel prodotto senza separazione di build",
+    "impatto": "Modalità alternativa può cambiare mondo e regole; architettura di debug non definita in docs.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire perimetro demo e separare attivazione/artefatti di prova dal comportamento di prodotto.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A045",
+    "titolo": "Ricetta Liquid glass attuale non usata dall’applicazione",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/stile/base.css",
+        "line": 1
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 395
+      },
+      {
+        "file": "src/main.ts",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/Liquid glass.md",
+        "line": 7
+      },
+      {
+        "file": "docs/design/liquid-glass.css",
+        "line": 18
+      },
+      {
+        "file": "docs/design/materiali.css",
+        "line": 1
+      }
+    ],
+    "previsto": "Unica ricetta condivisa per bubble, chip, INPUT, Profilebar e Notificationbar.",
+    "effettivo": "App duplica gradienti/ombre ottiche precedenti; blur42 e film diversi, non importa liquid-glass/materiali/profilebar.",
+    "divergenza": "Ricetta Liquid glass attuale non usata dall’applicazione",
+    "impatto": "Prototipo visivamente diverso dalle decisioni correnti e drift fra componenti.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Collegare token canonici e rimuovere duplicazioni; verifica visiva successiva sulle scene documentate.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A046",
+    "titolo": "Materiale scuro non implementato nell’applicazione",
+    "categoria": "DOC_MISSING_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/stile/tema.ts",
+        "line": 21
+      },
+      {
+        "file": "src/main.ts",
+        "line": 201
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/Liquid glass.md",
+        "line": 76
+      },
+      {
+        "file": "docs/design/L1 - Temi.dc.html",
+        "line": 221
+      }
+    ],
+    "previsto": "Tutti i componenti supportano vetro chiaro e scuro con inchiostri dedicati.",
+    "effettivo": "App imposta palette data-colori ma non il ramo materiale data-tema né materiali.css.",
+    "divergenza": "Materiale scuro non implementato nell’applicazione",
+    "impatto": "Temi scuri documentati non corrispondono al sistema in esecuzione.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Implementare scelta e propagazione del materiale separatamente dalla tinta.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A047",
+    "titolo": "Override arbitrari dei colori semantici ammessi",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/stile/tema.ts",
+        "line": 21
+      },
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 222
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 164
+      },
+      {
+        "file": "docs/design/L1 - Temi.dc.html",
+        "line": 248
+      }
+    ],
+    "previsto": "Colore esprime stato e tavolozze rispettano semantica invariata.",
+    "effettivo": "Il blocco tema può riscrivere salvia/ambra/rosso e relativi inchiostri; il controllo segnala solo accent color.",
+    "divergenza": "Override arbitrari dei colori semantici ammessi",
+    "impatto": "Profilo locale può annullare il significato degli stati senza segnalazione.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Limitare override ai token consentiti dal contratto e validare palette/contrasti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A048",
+    "titolo": "Geometria e contenuto della Profilebar non aggiornati",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 199
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 268
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/Liquid glass.md",
+        "line": 37
+      },
+      {
+        "file": "docs/design/L2 - Profilebar.dc.html",
+        "line": 55
+      },
+      {
+        "file": "docs/design/profilebar.css",
+        "line": 13
+      }
+    ],
+    "previsto": "Altezza60, raggio30, padding8/12/8/24, gap16/12, avatar44; nessun punto mediano; bolla condivisa.",
+    "effettivo": "Velo legacy, padding e distanze diversi, ora/data unite da punto mediano; città e luogo ripetuti.",
+    "divergenza": "Geometria e contenuto della Profilebar non aggiornati",
+    "impatto": "Componente identificativo non corrisponde alla tavola corrente.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Applicare geometria condivisa e separare gruppi di dati come nella tavola; WorkMode trattato in A031.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A049",
+    "titolo": "Sidebar tronca oltre quattro elementi senza +N",
+    "categoria": "DOC_MISSING_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 299
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 205
+      },
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 34
+      }
+    ],
+    "previsto": "Quattro chip visibili e indicazione +N dei restanti.",
+    "effettivo": "slice(0,4) scarta il resto senza overflow numerico.",
+    "divergenza": "Sidebar tronca oltre quattro elementi senza +N",
+    "impatto": "L’utente non può capire quanti task sono fuori vista.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Mostrare +N e percorso conversazionale per accedere al resto.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A050",
+    "titolo": "Sidebar attenuata per qualsiasi focus anziché per raccolta",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 306
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 204
+      }
+    ],
+    "previsto": "Attenuazione45% quando la raccolta chiede attenzione.",
+    "effettivo": "Classe attenuata legata a aFuoco e opacity diversa; compare anche nel lavoro ordinario.",
+    "divergenza": "Sidebar attenuata per qualsiasi focus anziché per raccolta",
+    "impatto": "Gerarchia visiva non corrispondente alla situazione semantica prevista.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Collegare attenuazione allo stato della raccolta e usare il valore documentato.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A051",
+    "titolo": "Bolle con geometria e gerarchia testuale precedenti",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/stile/base.css",
+        "line": 386
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 490
+      },
+      {
+        "file": "src/aree/scrivania.ts",
+        "line": 94
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 138
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 222
+      }
+    ],
+    "previsto": "Misure tipografiche e spazi della tavola corrente; dimensioni determinate dal contenuto.",
+    "effettivo": "Padding22/24, titoli16/corpo12/frasi12; larghezze fisse388/452/560 secondo fuoco.",
+    "divergenza": "Bolle con geometria e gerarchia testuale precedenti",
+    "impatto": "Densità, leggibilità e spazio assegnato cambiano in base al focus invece del contenuto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Allineare misure non ambigue; risolvere il conflitto L0/L2 sui pesi prima di fissare la tipografia.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A052",
+    "titolo": "Max due punti colorati non garantito",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 1
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 174
+      }
+    ],
+    "previsto": "Non più di due punti colorati nello schermo.",
+    "effettivo": "Ogni task/chip/targa riceve la tinta dal proprio stato indipendentemente dagli altri.",
+    "divergenza": "Max due punti colorati non garantito",
+    "impatto": "Più task in attesa/lavoro producono simultaneamente più richiami cromatici.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire priorità visiva globale coerente con la legge, senza perdere stato accessibile.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A053",
+    "titolo": "Contenuti lunghi e apertura interna non seguono il contratto di una sola cosa",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 430
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 480
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 699
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 138
+      },
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 604
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 556
+      }
+    ],
+    "previsto": "Corpo breve, lettura estesa controllata; INPUT solo parole/raccolta/scambio.",
+    "effettivo": "Vista interna aggiunge testo esteso e separatori al corpo già presente; INPUT ha altezza massima con overflow hidden senza garanzia di accesso agli scambi lunghi.",
+    "divergenza": "Contenuti lunghi e apertura interna non seguono il contratto di una sola cosa",
+    "impatto": "Duplicazione e contenuti potenzialmente tagliati; limite quantitativo non gestito.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Unica proiezione del contenuto, overflow/scorrimento e promozione al desk coerenti con il contratto.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A054",
+    "titolo": "Timer di uscita può eliminare una bolla tornata attiva",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 352
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 375
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 882
+      }
+    ],
+    "previsto": "Richiamo ripristina il task nella scrivania e conserva posizione quando possibile.",
+    "effettivo": "Un nodo in uscita viene riusato prima dei700/1500ms; dataset.uscita e timeout non annullati, Scrivania.togli già eseguito.",
+    "divergenza": "Timer di uscita può eliminare una bolla tornata attiva",
+    "impatto": "La bolla richiamata può sparire dal DOM pur essendo attiva nel modello.",
+    "evidenza": "Sequenza statica togli→timer remove→querySelector riusa nodo; non verificata con browser.",
+    "correzione": "Annullare uscita/timer al rientro e riallineare modello geometrico e nodo.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A055",
+    "titolo": "Tempi di conclusione e riposo automatico della bolla mancanti",
+    "categoria": "DOC_MISSING_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 36
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 352
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 583
+      },
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 850
+      }
+    ],
+    "previsto": "La tavola descrive conclusione visibile6s e riposo dopo30min; invio comunque soggetto al Delay normativo.",
+    "effettivo": "Non esistono timer6s/30min; solo90s,60min,120min e timer animazioni.",
+    "divergenza": "Tempi di conclusione e riposo automatico della bolla mancanti",
+    "impatto": "Ciclo di presenza della bolla non segue la specifica visiva.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Riconciliare prima la sequenza conclusione/Delay nei documenti, poi implementare timer e riposo; non copiare l’invio anticipato della vecchia tavola.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A056",
+    "titolo": "INPUT mostra spinner e varianti di frasi non previste dall’ultima revisione",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 773
+      },
+      {
+        "file": "src/main.ts",
+        "line": 444
+      },
+      {
+        "file": "src/prova/pedana.ts",
+        "line": 69
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 548
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 556
+      }
+    ],
+    "previsto": "Nell’ultima revisione INPUT raccoglie parole, raccolta e scambio; nessun avanzamento task o frasi operative.",
+    "effettivo": "gira durante il pensiero; banco può spostare frasi/task in INPUT, mantenendo varianti precedenti.",
+    "divergenza": "INPUT mostra spinner e varianti di frasi non previste dall’ultima revisione",
+    "impatto": "Una stessa area assume contratti incompatibili.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Adottare revisione finale e isolare le varianti storiche dal prodotto.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A057",
+    "titolo": "Raccolta limitata a nomi già noti e senza selezione completa documentata",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/raccolta.ts",
+        "line": 43
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 690
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 194
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 349
+      }
+    ],
+    "previsto": "Raccolta di contenuti agganciati allo scambio, con limiti/selezione/anteprima descritti nelle proposte di interazione.",
+    "effettivo": "Ricerca per sottostringa in task/memoria/rubrica; nessuna raccolta di file da filesystem né percorso completo dei gruppi/recupero scarti.",
+    "divergenza": "Raccolta limitata a nomi già noti e senza selezione completa documentata",
+    "impatto": "Le scene esplorative non sono realizzate dal riconoscimento di nomi.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decidere quali idee di raccolta sono requisiti approvati; implementare quelle adottate, non considerare tutte le proposte obbligatorie.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A058",
+    "titolo": "Sì e prima frase verde hanno effetti diversi nella composizione",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/motore.ts",
+        "line": 1533
+      },
+      {
+        "file": "src/ai-engine/regole.ts",
+        "line": 150
+      },
+      {
+        "file": "src/main.ts",
+        "line": 301
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 175
+      }
+    ],
+    "previsto": "La prima frase è quella probabile, seguita dal sì/azione primaria indicata.",
+    "effettivo": "Prima frase aggiunge un cuore; sì invia. La domanda Vuoi che lo invii non ha una frase di invio fra le quattro.",
+    "divergenza": "Sì e prima frase verde hanno effetti diversi nella composizione",
+    "impatto": "Azioni suggerite e conferma verbale non sono equivalenti.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Allineare domanda, prima frase e conferma al medesimo intento.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A059",
+    "titolo": "Controllo microfono reso interattivo ma non gestito e fuori scope",
+    "categoria": "LEGACY_OR_UNKNOWN",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 273
+      },
+      {
+        "file": "src/main.ts",
+        "line": 355
+      },
+      {
+        "file": "src/conoscenza/canali.ts",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 16
+      },
+      {
+        "file": "docs/design/L2 - Systembar.dc.html",
+        "line": 119
+      }
+    ],
+    "previsto": "Prototipo soltanto tastiera; indicazione SCRIVI coerente con l’assenza di ricezione vocale.",
+    "effettivo": "UI può mostrare SOLO TU e premi per tornare a voce, ma il data-microfono non ha handler; identità dell’ascoltatore simulata influenza l’accettazione dell’input.",
+    "divergenza": "Controllo microfono reso interattivo ma non gestito e fuori scope",
+    "impatto": "Controllo non funzionante e capacità di riconoscimento implicita inesistente.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Rimuovere/segregare simulazione di ascolto e mantenere percorso tastiera; non aggiungere ora Whisper.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A060",
+    "titolo": "Timeline sceglie task conclusi e misura durata dall’ultimo tocco",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/aree/timeline.ts",
+        "line": 52
+      },
+      {
+        "file": "src/aree/timeline.ts",
+        "line": 60
+      },
+      {
+        "file": "src/aree/timeline.ts",
+        "line": 206
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 898
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - TIMELINE.dc.html",
+        "line": 229
+      },
+      {
+        "file": "docs/design/L2 - TIMELINE.dc.html",
+        "line": 335
+      }
+    ],
+    "previsto": "Mostrare lavoro attuale, prossimo impegno valido e tempo libero corretto.",
+    "effettivo": "inCorso prende il primo, ilDopo considera ogni task con ora futura anche concluso; durata usa tocco aggiornato dai cambi di focus.",
+    "divergenza": "Timeline sceglie task conclusi e misura durata dall’ultimo tocco",
+    "impatto": "Agenda o tempo libero falsi; attività pare ricominciare semplicemente richiamandola.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Filtrare lifecycle e distinguere inizio lavoro da ultimo cambio vista; definire scelta fra lavori concorrenti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A061",
+    "titolo": "Timeline disegna marcatori vecchi nell’inizio della giornata",
+    "categoria": "BUG",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/aree/timeline.ts",
+        "line": 134
+      },
+      {
+        "file": "src/aree/timeline.ts",
+        "line": 161
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - TIMELINE.dc.html",
+        "line": 229
+      }
+    ],
+    "previsto": "Niente passato nella rappresentazione descritta.",
+    "effettivo": "tratti include attese con ora passata e blocchi senza controllo di giornata; px li clampa al bordo0.",
+    "divergenza": "Timeline disegna marcatori vecchi nell’inizio della giornata",
+    "impatto": "Impegni vecchi possono sembrare eventi odierni.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Filtrare intervallo temporale prima della proiezione e distinguere arretrati se richiesti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A062",
+    "titolo": "Voce di sistema e voce maschile sono alternative non documentate a Serena HIGH",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/voce/lettura.ts",
+        "line": 27
+      },
+      {
+        "file": "src/voce/bocca.ts",
+        "line": 43
+      },
+      {
+        "file": "src/voce/piper.ts",
+        "line": 28
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 44
+      }
+    ],
+    "previsto": "Voce dell’assistente Piper Serena HIGH.",
+    "effettivo": "Browser TTS parla finché Piper non è pronto o fallisce; scelta maschile Riccardo; scoring privilegia voci online.",
+    "divergenza": "Voce di sistema e voce maschile sono alternative non documentate a Serena HIGH",
+    "impatto": "Identità/qualità voce variabili; possibile uso di sintesi non locale da decidere.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire esplicitamente fallback e privacy oppure limitare al percorso previsto. Non è stato verificato traffico di sintesi online.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A063",
+    "titolo": "Coda vocale omette risposte e può ripartire dopo silenzio",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/voce/turno.ts",
+        "line": 75
+      },
+      {
+        "file": "src/voce/turno.ts",
+        "line": 112
+      },
+      {
+        "file": "src/voce/lettura.ts",
+        "line": 77
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 663
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 73
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 548
+      }
+    ],
+    "previsto": "Canale vocale coerente con lo scambio scritto; comando di silenzio effettivo.",
+    "effettivo": "riepiloga tiene solo ultimo testo/domanda; lettura controlla accesa solo in ingresso. giro può superare viaLibera dopo svuota e chiamare comunque dillo.",
+    "divergenza": "Coda vocale omette risposte e può ripartire dopo silenzio",
+    "impatto": "Risposte perse in voce, audio residuo dopo spegnimento.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Associare coda ai turni, rivalutare accesa e cancellazione prima di parlare, esplicitare eventuale sintesi delle risposte.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A064",
+    "titolo": "Campanello punta a un asset inesistente e ignora system-storage",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/voce/suono.ts",
+        "line": 16
+      },
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 261
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 687
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 38
+      }
+    ],
+    "previsto": "Suono predefinito Archivio/system-storage/campanello.mp3.",
+    "effettivo": "Default /media/suoni/notifica.mp3 assente; endpoint archivio rifiuta system-storage; errori audio assorbiti.",
+    "divergenza": "Campanello punta a un asset inesistente e ignora system-storage",
+    "impatto": "Nessun campanello nella configurazione predefinita.",
+    "evidenza": "http-test.log: default restituisce HTML, non audio; /archivio/system-storage/campanello.mp3 restituisce400.",
+    "correzione": "Servire in modo esplicito il solo asset di sistema previsto e usarlo come default.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A065",
+    "titolo": "Download vocale non fissato a revisione e caricamento anche con lettura spenta",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/voce/piper.ts",
+        "line": 40
+      },
+      {
+        "file": "src/voce/piper.ts",
+        "line": 76
+      },
+      {
+        "file": "src/voce/lettura.ts",
+        "line": 65
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 44
+      }
+    ],
+    "previsto": "Piper documentato; politiche di acquisizione modello e avvio da definire.",
+    "effettivo": "Modelli scaricati da Hugging Face resolve/main; prepara chiamato sempre, senza condizione lettura.",
+    "divergenza": "Download vocale non fissato a revisione e caricamento anche con lettura spenta",
+    "impatto": "Dipendenza di rete/versione implicita e costo di caricamento anche quando la voce non serve.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Documentare/distribuire versione e politica cache/caricamento; validare gli errori HTTP.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A066",
+    "titolo": "Banco d’ascolto bloccato da errore di sintassi",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "strumenti/banco-ascolto.html",
+        "line": 311
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "strumenti/LEGGIMI.md",
+        "line": 11
+      }
+    ],
+    "previsto": "Banco apribile e funzionante per confrontare voci.",
+    "effettivo": "Stringa single-quoted contiene backslash duplicato prima dell’apostrofo, termina la stringa e produce SyntaxError.",
+    "divergenza": "Banco d’ascolto bloccato da errore di sintassi",
+    "impatto": "Nessuno script del banco viene eseguito.",
+    "evidenza": "script-check.json: node --check sullo script estratto, Unexpected identifier è; altri3 script sintatticamente validi.",
+    "correzione": "Correggere quoting e aggiungere controllo sintattico degli script delle pagine.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A067",
+    "titolo": "Preparazione voce dichiara successo anche con binari mancanti",
+    "categoria": "BUG",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "strumenti/prepara-voce.mjs",
+        "line": 23
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "pubblico/LEGGIMI.md",
+        "line": 1
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 44
+      }
+    ],
+    "previsto": "Asset necessari presenti per voce funzionante.",
+    "effettivo": "File assenti saltati con continue e uscita0; stampa pronta anche con0 file.",
+    "divergenza": "Preparazione voce dichiara successo anche con binari mancanti",
+    "impatto": "Installazione incompleta apparentemente riuscita; guasto scoperto soltanto al runtime.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Verificare tutti gli asset richiesti, fallire o dichiarare stato parziale. Nella copia audit sono stati copiati correttamente5 file.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A068",
+    "titolo": "Test codificano il modello legacy e la suite fallisce",
+    "categoria": "TEST_MISMATCH",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/prova/scenario.ts",
+        "line": 1
+      },
+      {
+        "file": "src/prova/stato.ts",
+        "line": 1
+      },
+      {
+        "file": "src/prova/alfabeto.ts",
+        "line": 1
+      },
+      {
+        "file": "src/prova/flussi.ts",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 38
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 58
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 23
+      }
+    ],
+    "previsto": "Test derivati dai requisiti attuali, incluso invio differito e percorsi attuali.",
+    "effettivo": "Test basati su CARTA/MEMORIA/ORARIO, invio prima di undo, seme e storage precedenti;3 verifiche falliscono.",
+    "divergenza": "Test codificano il modello legacy e la suite fallisce",
+    "impatto": "Una suite verde dopo correzioni cosmetiche potrebbe ancora proteggere comportamenti non conformi.",
+    "evidenza": "scenario.log e scenario-npm.log:2 errori seme e1 path Windows atteso storage/foresta.jpg contro /archivio/user_123/filesystem/Home/foresta.jpg.",
+    "correzione": "Ricostruire matrice requisiti-test e sostituire aspettative obsolete; coprire Delay, confini e concorrenza.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A069",
+    "titolo": "Scia attribuisce ai cambiamenti la mossa precedente",
+    "categoria": "BUG",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/prova/scia.ts",
+        "line": 51
+      },
+      {
+        "file": "src/ai-engine/ai-engine.ts",
+        "line": 145
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 448
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 42
+      }
+    ],
+    "previsto": "Diagnostica deve rappresentare causalità reale; nessun contratto attuale della scia in docs.",
+    "effettivo": "chiama modifica e notifica prima di m.segna; Scia legge il registro precedente. Oltre24 mosse la lunghezza non cresce più.",
+    "divergenza": "Scia attribuisce ai cambiamenti la mossa precedente",
+    "impatto": "Il banco fornisce evidenze di causalità ingannevoli.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Registrare ID/evento causale con la transizione, senza inferirlo dalla lunghezza di una coda limitata.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A070",
+    "titolo": "Prove interattive non attendono il turno AI",
+    "categoria": "TEST_MISMATCH",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/main.ts",
+        "line": 323
+      },
+      {
+        "file": "src/prova/alfabeto.ts",
+        "line": 84
+      },
+      {
+        "file": "src/prova/pedana.ts",
+        "line": 135
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 73
+      }
+    ],
+    "previsto": "Verifiche valutano l’esito dopo completamento della richiesta.",
+    "effettivo": "dillo è void e avvia turno asincrono; verifiche del banco leggono mosse/stato subito, mentre scenario usa turnoSubito.",
+    "divergenza": "Prove interattive non attendono il turno AI",
+    "impatto": "Stessa prova può fallire o leggere esiti precedenti soltanto nel browser.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Restituire/attendere completamento con ID del turno; distinguere verifiche sincrone e asincrone.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A071",
+    "titolo": "Riferimenti documentali rimossi usati come autorità nei commenti",
+    "categoria": "LEGACY_OR_UNKNOWN",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/modello/tipi.ts",
+        "line": 1
+      },
+      {
+        "file": "src/ai-engine/finto.ts",
+        "line": 3
+      },
+      {
+        "file": "src/archivio/archivio.ts",
+        "line": 1
+      },
+      {
+        "file": "strumenti/LEGGIMI.md",
+        "line": 37
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "README.md",
+        "line": 11
+      }
+    ],
+    "previsto": "docs attuali fonte di verità; riferimenti risolvibili.",
+    "effettivo": "243 occorrenze candidate di docs numerati/percorsi non presenti; interi contratti citano docs/01-modello,07-memoria,08-voce ecc.",
+    "divergenza": "Riferimenti documentali rimossi usati come autorità nei commenti",
+    "impatto": "Manutentore e test possono seguire decisioni non più disponibili.",
+    "evidenza": "broken-doc-refs.json conserva file/riga/target di ogni occorrenza; lista euristica da verificare per singolo link, non243 bug distinti.",
+    "correzione": "Mappare/rimuovere riferimenti dopo riallineamento; non ripristinare vecchie regole automaticamente.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A072",
+    "titolo": "Funzioni/stub legacy mantenuti senza consumatori di prodotto",
+    "categoria": "LEGACY_OR_UNKNOWN",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 356
+      },
+      {
+        "file": "src/archivio/archivio.ts",
+        "line": 330
+      },
+      {
+        "file": "src/confini/disco.ts",
+        "line": 97
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 33
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 22
+      }
+    ],
+    "previsto": "Un solo utente e memoria documentale nel prototipo.",
+    "effettivo": "utenteChiesto restituisce sempre undefined; salva/rilegge di Archivio no-op; API Disco di scrittura scollegata dal flusso Archivio corrente.",
+    "divergenza": "Funzioni/stub legacy mantenuti senza consumatori di prodotto",
+    "impatto": "Nomi e interfacce suggeriscono capacità assenti.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Inventariare consumatori esterni prima di rimuovere; semplificare il contratto e distinguere stub futuri da funzionalità reali.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A073",
+    "titolo": "Orario lavorativo, profilo e filtri hardcoded fuori dalle preferenze",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/conoscenza/contesto.ts",
+        "line": 23
+      },
+      {
+        "file": "src/confini/filtro.ts",
+        "line": 20
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 276
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 49
+      },
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 22
+      }
+    ],
+    "previsto": "Preferenze e contesto dell’utente determinano funzionamento; dettagli non definiti richiedono decisione.",
+    "effettivo": "8–19, progetti Acme/Aurora, criteri perTe/azionabile e tetto carte guidano filtro e memoria conversazionale; non derivano da focuses.",
+    "divergenza": "Orario lavorativo, profilo e filtri hardcoded fuori dalle preferenze",
+    "impatto": "Perdita/visibilità del contesto e notifiche dipendono da regole non approvate.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire regole del prototipo e ricavarle dalla fonte prevista; non usare esempi di tavola come business rule.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A074",
+    "titolo": "Controlli cliccabili privi di semantica e accesso tastiera proprio",
+    "categoria": "BUG",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 273
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 640
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 16
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 112
+      }
+    ],
+    "previsto": "Tastiera supportata; controlli interattivi identificabili e azionabili.",
+    "effettivo": "Indicatori e campanella sono div con click/dataset, senza ruolo/button/tabindex/key handler dedicato.",
+    "divergenza": "Controlli cliccabili privi di semantica e accesso tastiera proprio",
+    "impatto": "Navigazione Tab e tecnologie assistive non identificano/azionano questi controlli; comandi testuali parziali non equivalgono al controllo.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Usare controlli semantici conservando il disegno e verificare tastiera; audit non certifica WCAG.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A075",
+    "titolo": "URL immagine interpolato in HTML senza escape dell’attributo",
+    "categoria": "SECURITY",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/conoscenza/profilo.ts",
+        "line": 306
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 207
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 923
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 49
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 31
+      }
+    ],
+    "previsto": "Dati del profilo rappresentati come dati, non markup eseguibile.",
+    "effettivo": "nomeFile accetta stringhe http e src è interpolato senza esc; virgolette interne possono chiudere l’attributo.",
+    "divergenza": "URL immagine interpolato in HTML senza escape dell’attributo",
+    "impatto": "Possibile HTML injection da file preferenze alterato; richiede controllo locale del documento, non è provata una via remota.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Creare nodo e assegnare src via proprietà con URL validato oppure escape corretto.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A076",
+    "titolo": "Payload HTTP senza limiti e classificazione errori troppo generica",
+    "categoria": "BUG",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "vite.config.ts",
+        "line": 497
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 722
+      },
+      {
+        "file": "vite.config.ts",
+        "line": 795
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 31
+      }
+    ],
+    "previsto": "Contratti validati; errori distinguibili. I limiti numerici non sono definiti dai docs.",
+    "effettivo": "Body accumulato senza limite; JSON/shape errati spesso diventano500/502; sincrone letture/scritture bloccano event loop su contenuti grandi.",
+    "divergenza": "Payload HTTP senza limiti e classificazione errori troppo generica",
+    "impatto": "Esaurimento memoria/blocco del server locale con input grande; diagnosi errata degli errori client.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire limiti e schema degli endpoint; errori400/413 coerenti e I/O proporzionato.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A077",
+    "titolo": "Log secondario del testo conversazionale non documentato",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "vite.config.ts",
+        "line": 605
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 44
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 26
+      }
+    ],
+    "previsto": "Chat raw archivio esplicito degli scambi; altre destinazioni non definite.",
+    "effettivo": "console.info stampa frase integrale a ogni passo insieme ai contatori.",
+    "divergenza": "Log secondario del testo conversazionale non documentato",
+    "impatto": "Copie del contenuto nei log terminale/host con durata e accesso non stabiliti.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decidere politica diagnostica e minimizzazione del testo; documentare l’eventuale copia.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A078",
+    "titolo": "Copia multipla di asset e strumenti non elencati coerentemente",
+    "categoria": "LEGACY_OR_UNKNOWN",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "pubblico/volto.png",
+        "line": 1
+      },
+      {
+        "file": "docs/design/volto.png",
+        "line": 1
+      },
+      {
+        "file": "strumenti/LEGGIMI.md",
+        "line": 3
+      },
+      {
+        "file": "strumenti/banco-voci.html",
+        "line": 136
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 38
+      },
+      {
+        "file": "strumenti/LEGGIMI.md",
+        "line": 9
+      }
+    ],
+    "previsto": "Asset di sistema e strumenti chiaramente inventariati.",
+    "effettivo": "Volto duplicato; campanello duplicato nel public con nome diverso; LEGGIMI parla di due pagine ma ne elenca tre ed esiste anche banco-voci.",
+    "divergenza": "Copia multipla di asset e strumenti non elencati coerentemente",
+    "impatto": "Ambiguità su asset canonico e strumenti supportati.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Indicare asset canonici, copie intenzionali e inventario aggiornato; nessuna cancellazione automatica durante audit.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A079",
+    "titolo": "Legge delle bolle contraddetta dalla Timeline e da descrizioni residue",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 60
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 263
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 60
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 263
+      },
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 33
+      }
+    ],
+    "previsto": "Legge0: ogni contenuto leggibile in bolla, sola eccezione Systembar.",
+    "effettivo": "Lo stesso L0 definisce Timeline inchiostro diretto; Bubble conserva eccezioni mondo/cornice antecedenti alla revisione glass.",
+    "divergenza": "Legge delle bolle contraddetta dalla Timeline e da descrizioni residue",
+    "impatto": "Non si può certificare conformità della Timeline rispetto a entrambe le regole.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decidere l’eccezione e aggiornare la norma o il componente. Il codice non decide la precedenza interna a L0.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A080",
+    "titolo": "Autonomia dei componenti incompatibile con la guida verticale condivisa",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 247
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 157
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 247
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 263
+      },
+      {
+        "file": "docs/design/L2 - Profilebar.dc.html",
+        "line": 80
+      }
+    ],
+    "previsto": "Niente contenitori/colonne condivise, scomparsa di un componente non muove altri.",
+    "effettivo": "L0 chiede anche Profilebar/Systembar che seguono l’altezza della Timeline a22px; codice implementa una guida flex.",
+    "divergenza": "Autonomia dei componenti incompatibile con la guida verticale condivisa",
+    "impatto": "Impossibile soddisfare simultaneamente indipendenza e propagazione delle quote.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Specificare quali ancoraggi sono autonomi e quali dipendono dalla Timeline; non classificare la colonna automaticamente conforme.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A081",
+    "titolo": "Quote e posizioni discordanti fra norme, testo e scene",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 130
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 32
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 275
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 291
+      },
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 130
+      },
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 150
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 32
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 285
+      }
+    ],
+    "previsto": "Un ancoraggio verificabile per componente.",
+    "effettivo": "Sidebar132 nel testo e180 nella scena/L0; Systembar126 insieme a guida dinamica; INPUT centrato nel titolo ma a sinistra in L0/scene.",
+    "divergenza": "Quote e posizioni discordanti fra norme, testo e scene",
+    "impatto": "Controlli al pixel senza criterio unico.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Tabella finale delle quote e marcatura delle scene superate; applicare gerarchia L0 dove risolve, segnalare conflitti interni.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A082",
+    "titolo": "Tipografia e icone: campioni non coerenti con leggi superiori",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "docs/design/L1 - Icone.dc.html",
+        "line": 1
+      },
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 138
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 197
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 206
+      },
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 138
+      },
+      {
+        "file": "docs/design/L2 - Profilebar.dc.html",
+        "line": 70
+      }
+    ],
+    "previsto": "Lucide14–16 e Manrope200/300/500; eccezione Deep600 esplicita.",
+    "effettivo": "Campioni/header usano19px e titoli600/27px; vecchie scene conservano pesi/misure diversi.",
+    "divergenza": "Tipografia e icone: campioni non coerenti con leggi superiori",
+    "impatto": "Non tutte le misure del mockup possono essere considerate normative contemporaneamente.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Riconciliare campioni e regole; catalogare eccezioni esplicite senza estenderle ad altri testi.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A083",
+    "titolo": "Tavolozza descritta sia irrisolta sia già riconciliata",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 177
+      },
+      {
+        "file": "docs/design/L1 - Moodboard.dc.html",
+        "line": 163
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 177
+      },
+      {
+        "file": "docs/design/L1 - Moodboard.dc.html",
+        "line": 163
+      },
+      {
+        "file": "docs/design/Liquid glass.md",
+        "line": 24
+      }
+    ],
+    "previsto": "Un’unica palette approvata.",
+    "effettivo": "L0 rimanda a docs/11-aperte inesistente e palette vivida; Moodboard/revisioni la danno riconciliata.",
+    "divergenza": "Tavolozza descritta sia irrisolta sia già riconciliata",
+    "impatto": "Dubbio sull’autorità degli override ancora implementati.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Rimuovere avviso superato o riaprire formalmente decisione con riferimenti esistenti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A084",
+    "titolo": "Flusso visivo consegna/undo conserva la semantica precedente al Delay",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 583
+      },
+      {
+        "file": "docs/design/L3 - Flusso task.dc.html",
+        "line": 178
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 58
+      },
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 153
+      },
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 583
+      },
+      {
+        "file": "docs/design/L3 - Flusso task.dc.html",
+        "line": 178
+      }
+    ],
+    "previsto": "Delay prima della chiamata; nessuna promessa di ritiro dopo consegna reale.",
+    "effettivo": "Scene raccontano fatto6s e chip undo90s dopo consegna. La gerarchia risolve a favore del requisito superiore ma le scene restano fuorvianti.",
+    "divergenza": "Flusso visivo consegna/undo conserva la semantica precedente al Delay",
+    "impatto": "Una realizzazione fedele alle scene riproduce il difetto A001.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Ridisegnare la sequenza visiva con conclusione, attesa Delay, invio e irrevocabilità distinti.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A085",
+    "titolo": "Focus mentre si parla contraddice l’ultima revisione INPUT",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 768
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 548
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L0 - Sistema.md",
+        "line": 217
+      },
+      {
+        "file": "docs/design/L2 - Bubble.dc.html",
+        "line": 768
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 548
+      }
+    ],
+    "previsto": "Durante acquisizione cambiano solo parole/raccolta; azioni dopo interpretazione.",
+    "effettivo": "Bubble/L3 descrivono fuoco immediato e aumento50% durante parola; INPUT finale dice nessuna bolla/fuoco prima del turno.",
+    "divergenza": "Focus mentre si parla contraddice l’ultima revisione INPUT",
+    "impatto": "Timing e geometria non certificabili contro entrambe le scene.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Marcare superata la sequenza anticipata e uniformare le animazioni all’ultima decisione.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A086",
+    "titolo": "Notifiche future ancora descritte nel cassetto dopo trasferimento in Sidebar",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 136
+      },
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 114
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 46
+      },
+      {
+        "file": "docs/design/L2 - Notificationbar.dc.html",
+        "line": 136
+      },
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 114
+      },
+      {
+        "file": "docs/L02-componenti.md",
+        "line": 34
+      }
+    ],
+    "previsto": "Notificationbar=mondo esterno, rinvii dell’utente in sidebar.",
+    "effettivo": "Regole residue del cassetto continuano a includere eventi futuri nella stessa lista.",
+    "divergenza": "Notifiche future ancora descritte nel cassetto dopo trasferimento in Sidebar",
+    "impatto": "Due percorsi possibili, uno ancora implementato.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Distinguere evento esterno futuro da task rinviato e aggiornare testo, scene e casi di selezione.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A087",
+    "titolo": "Criteri di memoria selettiva e contratti tecnici restano da decidere",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 11
+      },
+      {
+        "file": "docs/L05-design.md",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 11
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 45
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 3
+      }
+    ],
+    "previsto": "Le lacune devono essere dichiarate, senza usare implementazione come specifica.",
+    "effettivo": "Confine conoscenza utile esplicitamente aperto; L05 vuoto; mancano schemi API/errori, idempotenza, sovrapposizioni WorkMode, calendario, timezone, distribuzione e recupero chat.",
+    "divergenza": "Criteri di memoria selettiva e contratti tecnici restano da decidere",
+    "impatto": "Diverse scelte del codice sono non determinabili e non automaticamente corrette.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decisioni umane e contratti minimi per prototipo; non segnalare come obbligatorie feature future non decise.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A088",
+    "titolo": "Generatore temi citato ma assente",
+    "categoria": "DOC_MISSING_IMPLEMENTATION",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "docs/design/temi.css",
+        "line": 23
+      },
+      {
+        "file": "docs/design/L1 - Temi.dc.html",
+        "line": 87
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L1 - Temi.dc.html",
+        "line": 87
+      },
+      {
+        "file": "docs/design/temi.css",
+        "line": 23
+      }
+    ],
+    "previsto": "Token rigenerabili con il generatore indicato dalla tavola.",
+    "effettivo": "strumenti/genera-temi.py non esiste fra file tracciati/non tracciati.",
+    "divergenza": "Generatore temi citato ma assente",
+    "impatto": "Ricetta di generazione non riproducibile; CSS può divergere dalle tabelle.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Ripristinare il generatore o documentare correttamente il processo manuale approvato.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A089",
+    "titolo": "Fallback opaco dei mockup non copre il ramo scuro",
+    "categoria": "BUG",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "docs/design/liquid-glass.css",
+        "line": 42
+      },
+      {
+        "file": "docs/design/materiali.css",
+        "line": 13
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/Liquid glass.md",
+        "line": 16
+      }
+    ],
+    "previsto": "In assenza backdrop o con trasparenza ridotta, fallback opaco coerente per i materiali.",
+    "effettivo": "Fallback modifica token su root; data-tema=scuro nei contenitori ridefinisce film trasparenti e ottiche.",
+    "divergenza": "Fallback opaco dei mockup non copre il ramo scuro",
+    "impatto": "Scene scure ignorano fallback ereditato; documentazione eseguibile diversa dalla regola.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Applicare fallback anche ai rami materiale; verificare la cascata con media/supports simulati.",
+    "certezza": "forte evidenza"
+  },
+  {
+    "id": "A090",
+    "titolo": "Interprete finto invia il task precedente anziché quello nominato",
+    "categoria": "BUG",
+    "severita": "Alta",
+    "codice": [
+      {
+        "file": "src/ai-engine/finto.ts",
+        "line": 77
+      },
+      {
+        "file": "src/ai-engine/regole.ts",
+        "line": 224
+      },
+      {
+        "file": "src/ai-engine/regole.ts",
+        "line": 264
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L00-lo_scopo.md",
+        "line": 42
+      },
+      {
+        "file": "docs/L01-struttura_e_task.md",
+        "line": 23
+      }
+    ],
+    "previsto": "Il destinatario dell’azione coincide con il task indicato dall’utente.",
+    "effettivo": "Accoda al_centro sul task nominato ma interpreta prima di eseguirlo, quindi consegna contiene l’ID del vecchio focus.",
+    "divergenza": "Interprete finto invia il task precedente anziché quello nominato",
+    "impatto": "Invio del contenuto sbagliato quando è attivo il fallback.",
+    "evidenza": "races.log: manda Messaggio mamma produce al_centro t1 e consegna t2, con named=t1 e focused=t2.",
+    "correzione": "Risolvere il bersaglio esplicito prima della traduzione; evitare dipendenza dall’esecuzione futura di al_centro.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A091",
+    "titolo": "Servizi simulati assumono date e identità delle operazioni non presenti nel contratto",
+    "categoria": "UNDOCUMENTED_IMPLEMENTATION",
+    "severita": "Media",
+    "codice": [
+      {
+        "file": "src/confini/calendario.ts",
+        "line": 68
+      },
+      {
+        "file": "src/confini/promemoria.ts",
+        "line": 110
+      },
+      {
+        "file": "src/confini/contatti.ts",
+        "line": 35
+      },
+      {
+        "file": "src/confini/note.ts",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 22
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 48
+      }
+    ],
+    "previsto": "Simulazione basata sui documenti; semantica delle future operazioni da definire.",
+    "effettivo": "Calendario registra consegna all’istante corrente; promemoria uguaglia testi per inclusione; contatti aggiunti senza recapito; note appendono stringhe.",
+    "divergenza": "Servizi simulati assumono date e identità delle operazioni non presenti nel contratto",
+    "impatto": "Le risposte fatto non equivalgono a creare l’evento/data/contatto richiesto; fixture diventano regole implicite.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Definire il contratto minimo delle simulazioni e distinguere dimostrazione, lettura contesto e operazione futura.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A092",
+    "titolo": "Documenti utente tracciati senza distinzione operativa fra fixture e dati reali",
+    "categoria": "DOCUMENTATION_AMBIGUITY",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": ".gitignore",
+        "line": 12
+      },
+      {
+        "file": "Archivio/users/user_123/preferences.txt",
+        "line": 1
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 41
+      },
+      {
+        "file": "docs/L03-archivio.md",
+        "line": 49
+      },
+      {
+        "file": "docs/L04-aspetti_tecnici.md",
+        "line": 22
+      }
+    ],
+    "previsto": "Dati fittizi del prototipo distinti da dati locali reali; password locale non inviata all’AI.",
+    "effettivo": "File profilo/sistema/servizi/media sono tracciati; soltanto chat-raw è ignorata. Non è specificato come sostituire fixture con dati personali evitando commit.",
+    "divergenza": "Documenti utente tracciati senza distinzione operativa fra fixture e dati reali",
+    "impatto": "Uso successivo può introdurre dati locali nel repository; nessuna esposizione reale è stata dedotta dai valori fittizi.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Decidere politica fixture/locali e procedura di personalizzazione. Nessun valore di password è riportato negli artefatti audit.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A093",
+    "titolo": "Nomi chip non vincolati a due parole e dato non protetto dall’overflow",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 318
+      },
+      {
+        "file": "src/modello/motore.ts",
+        "line": 346
+      },
+      {
+        "file": "src/stile/base.css",
+        "line": 342
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 55
+      },
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 64
+      }
+    ],
+    "previsto": "Nome massimo due parole; se lungo, tagliare il dato e non il nome.",
+    "effettivo": "Template mostra nome integrale non normalizzato; fixture contengono più parole; nessuna politica dedicata di overflow del dato.",
+    "divergenza": "Nomi chip non vincolati a due parole e dato non protetto dall’overflow",
+    "impatto": "Chip possono invadere spazio riservato; denominazione non segue il vocabolario breve richiesto.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Generare nome breve separato dal titolo completo e applicare overflow al solo dato.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A094",
+    "titolo": "Systembar mono10px contro misura dichiarata11px",
+    "categoria": "DOC_CODE_MISMATCH",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/stile/base.css",
+        "line": 309
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Systembar.dc.html",
+        "line": 30
+      }
+    ],
+    "previsto": "Valori Systembar in monospaziato11px.",
+    "effettivo": "CSS applica10px; la tavola Timeline usa a sua volta10px, ulteriore incoerenza fra campioni.",
+    "divergenza": "Systembar mono10px contro misura dichiarata11px",
+    "impatto": "Piccola divergenza di leggibilità/scala.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Allineare tavole e misura canonica prima della correzione; non dedurre11 dal codice.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A095",
+    "titolo": "Raccontami chi sono non dispone della vista profilo descritta",
+    "categoria": "PARTIAL_IMPLEMENTATION",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "src/ai-engine/strumenti.ts",
+        "line": 67
+      },
+      {
+        "file": "src/aree/schermo.ts",
+        "line": 430
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Profilebar.dc.html",
+        "line": 80
+      }
+    ],
+    "previsto": "Profilo esteso raccontato in una bolla Desk con ritratto54px.",
+    "effettivo": "Risposta testuale generica possibile via parla, ma nessun task/vista dedicata al profilo né anatomia ritratto54.",
+    "divergenza": "Raccontami chi sono non dispone della vista profilo descritta",
+    "impatto": "La scena/azione documentata non è realizzata; qualità del testo AI non verificata.",
+    "evidenza": "Analisi statica dei punti indicati; confronto con il contratto citato.",
+    "correzione": "Implementare la presentazione prevista o qualificare esplicitamente la scena come futura.",
+    "certezza": "fatto verificato"
+  },
+  {
+    "id": "A096",
+    "titolo": "Due dichiarazioni CSS delle tavole sono sintatticamente invalide",
+    "categoria": "BUG",
+    "severita": "Bassa",
+    "codice": [
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 192
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 507
+      }
+    ],
+    "documentazione": [
+      {
+        "file": "docs/design/L2 - Sidebar.dc.html",
+        "line": 192
+      },
+      {
+        "file": "docs/design/L2 - INPUT.dc.html",
+        "line": 507
+      }
+    ],
+    "previsto": "Campioni renderizzabili secondo le misure indicate.",
+    "effettivo": "margin-bottom:15px, 0 0 0 18px rgba(...), e margin-top:14px, 0 0 0 16px rgba(...) usano valori da ombra non ammessi nei margini.",
+    "divergenza": "Due dichiarazioni CSS delle tavole sono sintatticamente invalide",
+    "impatto": "Browser scarta le dichiarazioni; scena non rappresenta l’intenzione del markup.",
+    "evidenza": "Estrazione completa degli attributi style: html-style-values.json; valori individuati nelle due righe originali.",
+    "correzione": "Separare margin e box-shadow nei due attributi; verificare layout.",
+    "certezza": "fatto verificato"
+  }
+]

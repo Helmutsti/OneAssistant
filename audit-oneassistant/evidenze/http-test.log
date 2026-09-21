@@ -1,0 +1,59 @@
+[
+  {
+    "method": "GET",
+    "path": "/archivio/user_123/../audit_sibling/probe.txt",
+    "status": 200,
+    "type": "text/plain; charset=utf-8",
+    "body": "SYNTHETIC_SIBLING_DATA"
+  },
+  {
+    "method": "POST",
+    "path": "/archivio/user_123/memory",
+    "status": 200,
+    "type": "application/json",
+    "body": "{\"scritto\":\"../services/audit-probe.md\"}"
+  },
+  {
+    "method": "POST",
+    "path": "/archivio/user_123/memory",
+    "status": 200,
+    "type": "application/json",
+    "body": "{\"scritto\":\"../../audit_sibling/audit-probe.md\"}"
+  },
+  {
+    "method": "GET",
+    "path": "/media/suoni/notifica.mp3",
+    "status": 200,
+    "type": "text/html",
+    "body": "<!doctype html>\n<html lang=\"it\">\n  <head>\n    <script type=\"module\" src=\"/@vite/client\"></script>\n\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-widt"
+  },
+  {
+    "method": "GET",
+    "path": "/archivio/system-storage/campanello.mp3",
+    "status": 400,
+    "type": "application/json",
+    "body": "{\"perche\":\"percorso non valido\"}"
+  },
+  {
+    "method": "GET",
+    "path": "/Archivio/users/audit_sibling/probe.txt",
+    "status": 400,
+    "type": "application/json",
+    "body": "{\"perche\":\"percorso non valido\"}"
+  },
+  {
+    "method": "POST",
+    "path": "/chat-raw",
+    "status": 204,
+    "type": null,
+    "body": ""
+  },
+  {
+    "method": "POST",
+    "path": "/chat-raw",
+    "status": 204,
+    "type": null,
+    "body": ""
+  }
+]
+writes_verified True True

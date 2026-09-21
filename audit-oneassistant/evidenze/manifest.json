@@ -1,0 +1,532 @@
+[
+  {
+    "file": ".gitignore",
+    "bytes": 1088,
+    "sha256": "72d9c26585f4e9079b6971f0ffedc0e095c58f851485b7caeeb3d95e1eb943fe"
+  },
+  {
+    "file": "Archivio/system-settings.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "Archivio/system-storage/campanello.mp3",
+    "bytes": 39288,
+    "sha256": "524f7c541a7268b5d3e6868606b37f6f7cdf7c43571d285205341d7fc5207469"
+  },
+  {
+    "file": "Archivio/users/user_123/filesystem.txt",
+    "bytes": 139,
+    "sha256": "a4f1bfe958ebe9fe3f8072f6c9333e1b1570f56a7645f7a97868ae42ec3962de"
+  },
+  {
+    "file": "Archivio/users/user_123/filesystem/Home/avatar.jpg",
+    "bytes": 58044,
+    "sha256": "05e88f095abbd44a466c77effbc78baf83300d602b171564e3a6fbad17a28ef5"
+  },
+  {
+    "file": "Archivio/users/user_123/filesystem/Home/wallpaper.jpg",
+    "bytes": 2008762,
+    "sha256": "bc5f79b45d6a610bf3d530b38957635a475e8c506873c68a6d360d46be98ba28"
+  },
+  {
+    "file": "Archivio/users/user_123/memory/general.txt",
+    "bytes": 614,
+    "sha256": "8eb7868c5e0cfcb60814576c5bbc7222a20effd2007505bd7a2df846e64c4b41"
+  },
+  {
+    "file": "Archivio/users/user_123/preferences.txt",
+    "bytes": 665,
+    "sha256": "ff8f816e8e3dfa0f9d64713eb1fcb87ae6a85fbadc3a3bf6c5778b28cecc4d1a"
+  },
+  {
+    "file": "Archivio/users/user_123/services/contacts.txt",
+    "bytes": 112,
+    "sha256": "e492ada0e1602aa8bc5a1c7c0110759513bf367f997b6b6291e6c5adaac54c58"
+  },
+  {
+    "file": "Archivio/users/user_123/services/email.txt",
+    "bytes": 302,
+    "sha256": "cd001899ae81ecc4d369c8b9c8d31a4377a6e20c9ab9f6fae935259ca9934b37"
+  },
+  {
+    "file": "Archivio/users/user_123/system.txt",
+    "bytes": 139,
+    "sha256": "a4f1bfe958ebe9fe3f8072f6c9333e1b1570f56a7645f7a97868ae42ec3962de"
+  },
+  {
+    "file": "README.md",
+    "bytes": 1489,
+    "sha256": "68eaa37ad0b9dee9e6c2288c777ec4f5f04f7fec454ecee2eb556513cb82d7e8"
+  },
+  {
+    "file": "docs/L00-lo_scopo.md",
+    "bytes": 2887,
+    "sha256": "929295fa503b88663055fafd5d0b66a7edd35b751439dbf15d131898e4e5e767"
+  },
+  {
+    "file": "docs/L01-struttura_e_task.md",
+    "bytes": 5445,
+    "sha256": "482bd5f7ab4e87b88555bc1ad28613a6312e6d7d5d81464bc968517542689dc4"
+  },
+  {
+    "file": "docs/L02-componenti.md",
+    "bytes": 3186,
+    "sha256": "1dbac2c68a169ae6c64175f2eeff33ebc5a99b9e09d87c43a5ea8873c44d7836"
+  },
+  {
+    "file": "docs/L03-archivio.md",
+    "bytes": 3891,
+    "sha256": "3321b44b7598a9cdcf2ab52e0f596b3e359e49e5afb65c8df3b357612860dc31"
+  },
+  {
+    "file": "docs/L04-aspetti_tecnici.md",
+    "bytes": 2851,
+    "sha256": "9036cfd2671ef58d36b7dae8a1e1442c08ffa4f2674019604d40f6bfb5f2fa36"
+  },
+  {
+    "file": "docs/L05-design.md",
+    "bytes": 107,
+    "sha256": "89747ca65b1909a4f88fd8ab768584fc0dde4f9669afe4b9fe6df0cf460d0c59"
+  },
+  {
+    "file": "docs/design/L0 - Sistema.md",
+    "bytes": 15053,
+    "sha256": "1ec2319c18a32e6e62c23d656f3f44abc65a5d9478ca27cc083c5bc00e3bd029"
+  },
+  {
+    "file": "docs/design/L1 - Icone.dc.html",
+    "bytes": 19832,
+    "sha256": "679a1ce82541b627bfb1d9282d3639e26a1e7cb88f81ddbd020d5b81c96cc13a"
+  },
+  {
+    "file": "docs/design/L1 - Moodboard.dc.html",
+    "bytes": 26169,
+    "sha256": "690b540f2eb675cf5e5dbfc9542f229a13c6625132e8e5d3d85c72b3bf8bfdbd"
+  },
+  {
+    "file": "docs/design/L1 - Temi.dc.html",
+    "bytes": 27506,
+    "sha256": "2abc51408b70cdf3c4b88df622b22e7fa77a4c18ce5e79d3a921887512ce5f38"
+  },
+  {
+    "file": "docs/design/L2 - Bubble.dc.html",
+    "bytes": 118232,
+    "sha256": "609eb468e796093d4767c22c6ef6af7a7b4b596448e5c83595ee465d1bd19a70"
+  },
+  {
+    "file": "docs/design/L2 - INPUT.dc.html",
+    "bytes": 78625,
+    "sha256": "e0c26bad468110fa160f5475fc196f61f541df76ff2f961b2c0fae310c9a15ff"
+  },
+  {
+    "file": "docs/design/L2 - Notificationbar.dc.html",
+    "bytes": 16084,
+    "sha256": "14620bc1ef6bbf0e181cf878bd72d7048850ade6c11be32414f0f453cf619337"
+  },
+  {
+    "file": "docs/design/L2 - Profilebar.dc.html",
+    "bytes": 18144,
+    "sha256": "6f6415c4dabd5cae4f3b1dc2dda5cc427ac93b4b39b8d466b80503ed5b64f953"
+  },
+  {
+    "file": "docs/design/L2 - Sidebar.dc.html",
+    "bytes": 33212,
+    "sha256": "ffb1811158eeef326dfee6dbaddd503589653691963f5ad79a1ae4e371899689"
+  },
+  {
+    "file": "docs/design/L2 - Systembar.dc.html",
+    "bytes": 19020,
+    "sha256": "403f9f17001f348273e2d135d1ddacc5e3eca37ed664fa57e95d6a5f1d9e1649"
+  },
+  {
+    "file": "docs/design/L2 - TIMELINE.dc.html",
+    "bytes": 24313,
+    "sha256": "acc9d8fb07da4c00f71d8c283389bb4308079d9a553c180086ae6c0abf002704"
+  },
+  {
+    "file": "docs/design/L3 - Flusso task.dc.html",
+    "bytes": 46685,
+    "sha256": "5f2f8d8416fb1285cf8fa8a2a6ba678d8963145975b218b1e2f5c6d420e7f631"
+  },
+  {
+    "file": "docs/design/L4 - Schermate.dc.html",
+    "bytes": 54430,
+    "sha256": "b4ceeba790622f764278edcbba6c6310fb68afb71b603a7bfd7ca0dc6968dddc"
+  },
+  {
+    "file": "docs/design/Liquid glass.md",
+    "bytes": 7532,
+    "sha256": "8f10cdc78ab89ddcae947f01bc1838cd10c666506d05e04a4dee77c7e9cc66ee"
+  },
+  {
+    "file": "docs/design/composizioni.js",
+    "bytes": 1038,
+    "sha256": "ccea915ce2b1e46deb34cc8bc98aac94ad6dd5f6541a5dc69081d57ab49fdd0b"
+  },
+  {
+    "file": "docs/design/image-slot.js",
+    "bytes": 1322,
+    "sha256": "e2381be5540567b7e24165596618191454d98eefe7f9c83eec9c01e59de38671"
+  },
+  {
+    "file": "docs/design/index.html",
+    "bytes": 11178,
+    "sha256": "d81a7aa44da98ccc40e4bcbd50fa2a166a60895aefd07f1210635ac7fd08eb88"
+  },
+  {
+    "file": "docs/design/liquid-glass.css",
+    "bytes": 3077,
+    "sha256": "0a4c9907b0217b6310a7df88ed0947291b50eb7ccb584459cae54cd1e4c950c8"
+  },
+  {
+    "file": "docs/design/materiali.css",
+    "bytes": 2818,
+    "sha256": "e3519a844ff36284de090bb3a9bef8b27207f7bc78c359b699009d8faa95522b"
+  },
+  {
+    "file": "docs/design/profilebar.css",
+    "bytes": 3122,
+    "sha256": "9f1a9b5cb3f32b5111905259c4522eab56a1e9d33cb22c122b3c116e2c817403"
+  },
+  {
+    "file": "docs/design/support.js",
+    "bytes": 1710,
+    "sha256": "050bf8ad5d460d654398c4b5954952016d264bd99acd0dfa507269d79f79c4cf"
+  },
+  {
+    "file": "docs/design/temi.css",
+    "bytes": 7492,
+    "sha256": "9273d4d7b39165e6dfe43b1723cb1d729b4add28a0c6cae9b50874a1dc466839"
+  },
+  {
+    "file": "docs/design/volto.png",
+    "bytes": 476591,
+    "sha256": "92c362d0b87f3b9168ed668947f905ea597c2b5f6e7ba2b3d435cfb1847a3bbe"
+  },
+  {
+    "file": "env.example",
+    "bytes": 326,
+    "sha256": "773c36b91bb14841e42e693969eaaefe11787fd7fdc73bd70f62e99c55c8dd22"
+  },
+  {
+    "file": "index.html",
+    "bytes": 912,
+    "sha256": "0cc373bd0005c65cd8b350efaf17c89cf2bc661e69f528e37243d26d83b5870b"
+  },
+  {
+    "file": "package-lock.json",
+    "bytes": 42257,
+    "sha256": "0dfba6e2cdf752e1015d7d7d1eea423c25afde65d458812519c3b1721c48fc6d"
+  },
+  {
+    "file": "package.json",
+    "bytes": 726,
+    "sha256": "c8e48ae64a2a4c35b16cb8c884c914f566ee37155b0050702f14c6135be839ba"
+  },
+  {
+    "file": "pubblico/LEGGIMI.md",
+    "bytes": 1493,
+    "sha256": "47f19ddbf0a14e4466694c0f568c49e3005b2ad124d7f0f11f59594923f2b658"
+  },
+  {
+    "file": "pubblico/suoni/notifica.mp3",
+    "bytes": 40704,
+    "sha256": "5be19a030c39e9fef9084d247e1bda23cb947e9e430abfc2e97376e04ff868b3"
+  },
+  {
+    "file": "pubblico/suoni/soundshelfstudio-ui-click-deep-512211.mp3",
+    "bytes": 39288,
+    "sha256": "524f7c541a7268b5d3e6868606b37f6f7cdf7c43571d285205341d7fc5207469"
+  },
+  {
+    "file": "pubblico/volto.png",
+    "bytes": 476591,
+    "sha256": "92c362d0b87f3b9168ed668947f905ea597c2b5f6e7ba2b3d435cfb1847a3bbe"
+  },
+  {
+    "file": "src/ai-engine/ai-engine.ts",
+    "bytes": 10684,
+    "sha256": "775fd2e7d943782c4f0383210e39532b49b2d59cef0d16cedbd8aa3183613088"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "bytes": 11767,
+    "sha256": "0fb6dcca9214fcda41561aa02e0cbf96d2fc5ba578d159cc8a3a885429b01fe2"
+  },
+  {
+    "file": "src/ai-engine/finto.ts",
+    "bytes": 10312,
+    "sha256": "48f6543fb624fb4f941912604a527f50e7792ce6fa019a778f8e54b86388f68b"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "bytes": 14409,
+    "sha256": "96686ff41221bc944ba818bacabc66d04e843c508f69c914e74656594bb262cd"
+  },
+  {
+    "file": "src/ai-engine/secondari.ts",
+    "bytes": 6178,
+    "sha256": "89b30058c50ba89230617dab6dc3aa0c7d1a451788fb0b516e304b5f2137627c"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "bytes": 28662,
+    "sha256": "f5d5330794276a56b79ea1d471a9693880df00000e4c8f15122eb5622367891d"
+  },
+  {
+    "file": "src/ai-engine/testi.ts",
+    "bytes": 4224,
+    "sha256": "50f121fdad18e408dace7866a262e59d78b3cf15078e499ced50dfee8a1738a6"
+  },
+  {
+    "file": "src/ai-engine/vista.ts",
+    "bytes": 7238,
+    "sha256": "bd5ee52b4e7097f084f0bd8dfd1d2c04c5cb1effc632ff63173eff99f626f9eb"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "bytes": 14725,
+    "sha256": "a70a4ef7f50b614a769ea8d31ca729bbff4c8c778200c52fa5f2f2eb48ffd6d5"
+  },
+  {
+    "file": "src/archivio/chat-raw.ts",
+    "bytes": 595,
+    "sha256": "e234aab85251c74b434a1ba428a538e808a6a0e62e5252eb44acc7b8ae5c897a"
+  },
+  {
+    "file": "src/aree/raccolta.ts",
+    "bytes": 3347,
+    "sha256": "0df455183731dc2a8f428d485446a0af4f32be46931211d2ea7affb15e12eaa6"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "bytes": 58192,
+    "sha256": "2b5f136b7fbaa0faceeecceaa3e4c67cb190b350c8ecfc0ca47072c5bb894e05"
+  },
+  {
+    "file": "src/aree/scrivania.ts",
+    "bytes": 16461,
+    "sha256": "f5a18ab3d66f2b524736887c1a7466a6ea6670b4c7c9901da55ae7bb04a15d81"
+  },
+  {
+    "file": "src/aree/testo.ts",
+    "bytes": 714,
+    "sha256": "a691947cc07f348446f5a4977c00aa3b8d44a18257901a7acc7fc72f6b3d179a"
+  },
+  {
+    "file": "src/aree/timeline.ts",
+    "bytes": 11366,
+    "sha256": "467370576101c75324f4bc1bc5d634bd93aa43f08b8eea79e4b297de4754ccdf"
+  },
+  {
+    "file": "src/confini/calendario.ts",
+    "bytes": 5841,
+    "sha256": "2f45ae20fc50c19c27683c88ad1d5405552d28c41dd8cb1c8f3baff7e12700cb"
+  },
+  {
+    "file": "src/confini/contatti.ts",
+    "bytes": 3993,
+    "sha256": "46dd4fe2d6ab34b39ade02393cdf9ae94c58e0b0e8d432c3d9c235aaa235f443"
+  },
+  {
+    "file": "src/confini/disco.ts",
+    "bytes": 5316,
+    "sha256": "60be2998f3105c9dccfcaa1908fd81e3bb3ceb553bcc08a4739c7624942016a9"
+  },
+  {
+    "file": "src/confini/filtro.ts",
+    "bytes": 1816,
+    "sha256": "440eba254194371011dc87557317f83ffca74f2eb908b9305f87142973db5abb"
+  },
+  {
+    "file": "src/confini/note.ts",
+    "bytes": 1105,
+    "sha256": "864152b92914d976da3efe4e21ff474775faaf069751eaab929f1310c0b02aa0"
+  },
+  {
+    "file": "src/confini/posta.ts",
+    "bytes": 5908,
+    "sha256": "835c3e4007e8aebed7fe5ace51ca994923ac6b044f4be32753eb6f90f74b1ec9"
+  },
+  {
+    "file": "src/confini/promemoria.ts",
+    "bytes": 4058,
+    "sha256": "847d187b6b380e1f69aedd237c2729d6686008eb11298f8ec992946a0630f4b5"
+  },
+  {
+    "file": "src/confini/servizio.ts",
+    "bytes": 3119,
+    "sha256": "aefe3ae8caf1cf5394e61cfd8bbd7027c5df2b4a2eafbc4f8c4a85e2c681c236"
+  },
+  {
+    "file": "src/conoscenza/canali.ts",
+    "bytes": 5226,
+    "sha256": "b44aa1e4f10b1f517412e341538fc2a26fa67f478292e2031b83b06b6e992a2a"
+  },
+  {
+    "file": "src/conoscenza/contesto.ts",
+    "bytes": 1713,
+    "sha256": "15abb5deba60d4a96e45e4f8ed48bc5ea306265b3b22c7f32276e03f4b2c5e16"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "bytes": 16920,
+    "sha256": "bd7476692c12a5a64e4d2983a225dec81f193d0262a8ea4ad73008faa27c9401"
+  },
+  {
+    "file": "src/main.ts",
+    "bytes": 22792,
+    "sha256": "adf99e33eac7d9b5cd941971b257bb1f2226e478c94f19f3eea43c0323934e39"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "bytes": 61990,
+    "sha256": "d43b2217d1a4fef5c7e770fe0bea0fcca4ba11cf4851bdf5f96e4f4b517f7b3c"
+  },
+  {
+    "file": "src/modello/tempo.ts",
+    "bytes": 3830,
+    "sha256": "4b759118e037f6b11bca3a56861d10ad8ca67f5925b0bbff8692ee284ada0df7"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "bytes": 15154,
+    "sha256": "2f1112cb192a685b0b34ec929da105d32bf77e9323216536ac02969c0f4d5e7a"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "bytes": 16739,
+    "sha256": "090ef39980e855e6dcdf30a33675de5c56d723fe406a5bf48a6f742556f471a0"
+  },
+  {
+    "file": "src/prova/flussi.ts",
+    "bytes": 9450,
+    "sha256": "6aa4c10e24d7c464c074a989aee04dc5381b709684f182ee02020406a43ed2d9"
+  },
+  {
+    "file": "src/prova/pedana.ts",
+    "bytes": 9635,
+    "sha256": "94e52bd033256a8bc5829643c0e7d571d1206271298bc0267214291689585e78"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "bytes": 37545,
+    "sha256": "ebc30f1041b7f5afe944c030c0eb6ba7a00c6213d25d65effd1278ba60ea6a36"
+  },
+  {
+    "file": "src/prova/scia.ts",
+    "bytes": 4179,
+    "sha256": "ee9ad9a2539edb500def49c6fc2fd73cb86f87d8382bfabd56e5ca942a3f7847"
+  },
+  {
+    "file": "src/prova/stato.ts",
+    "bytes": 13499,
+    "sha256": "f962e67c3c2ded6ce81b0d0d8270fe095cd1c67df7b11290784fecf7ae218b9e"
+  },
+  {
+    "file": "src/prova/timeline-prova.ts",
+    "bytes": 3616,
+    "sha256": "d7638408ddff60ef0c5222b56b82383838e201a6c5611f7164b0f3fe87e8a9bc"
+  },
+  {
+    "file": "src/stile/base.css",
+    "bytes": 52621,
+    "sha256": "ae5620af2d0266de7884c8d13df8e63ad0f74478aeec6888f6811ac49f0c13f2"
+  },
+  {
+    "file": "src/stile/tema.ts",
+    "bytes": 2730,
+    "sha256": "9e982b68f69e6a652f0a10bc2dc054ea91b5ba240a3cbe66073a90571a59ef63"
+  },
+  {
+    "file": "src/voce/bocca.ts",
+    "bytes": 9442,
+    "sha256": "5bda17f198e680bdaedd47cbdcc502d84536977582b5c1f3f20c121f3e80f6e7"
+  },
+  {
+    "file": "src/voce/espeak-ng.d.ts",
+    "bytes": 346,
+    "sha256": "ea6706388e4176ae032d013a66019ff045eadbe8b3a4e03249659c2cb8baafcd"
+  },
+  {
+    "file": "src/voce/lettura.ts",
+    "bytes": 3372,
+    "sha256": "1565376e3fa583967822e85b32f579d31a99d809d540006d7b2f835ef6323617"
+  },
+  {
+    "file": "src/voce/piper.ts",
+    "bytes": 7773,
+    "sha256": "6927f94f30c493c9b60e66f227965d3cdb27019ed6487280d14c047012474c8d"
+  },
+  {
+    "file": "src/voce/suono.ts",
+    "bytes": 4267,
+    "sha256": "8e2085057ba4580afb1c12361fd48731b1b7d5ec2868356e27a1fb70df947704"
+  },
+  {
+    "file": "src/voce/turno.ts",
+    "bytes": 4372,
+    "sha256": "fe988ad042aada88abe6315874013170d1b070647ed7fbf432529ad354bd4d6e"
+  },
+  {
+    "file": "strumenti/LEGGIMI.md",
+    "bytes": 2483,
+    "sha256": "70ec7a929e5885525df0ffd442f0ca67852c2ceb360b88d98f4ae3a2b9a9a435"
+  },
+  {
+    "file": "strumenti/banco-ascolto.html",
+    "bytes": 16510,
+    "sha256": "fc3c2d9a635835d09aaca59487a1eb07a3361d2aa151b4d46a03408c35dca9e0"
+  },
+  {
+    "file": "strumenti/banco-voci.html",
+    "bytes": 10241,
+    "sha256": "5e252706f2ec05a8923ec865e51d664d26113eaf27f4fbb2cc3359cdcd63a097"
+  },
+  {
+    "file": "strumenti/prepara-voce.mjs",
+    "bytes": 1185,
+    "sha256": "70e0045e037ce1ee05fab1e07b183447d8041a28d84ad5bdc892d1930a9d783d"
+  },
+  {
+    "file": "strumenti/taratura-materia.html",
+    "bytes": 40501,
+    "sha256": "6c51009f8e7ca0b4471d720ad47ca72af0a31986f83504e68f9f4d93361e8a9d"
+  },
+  {
+    "file": "strumenti/taratura-testo.html",
+    "bytes": 27343,
+    "sha256": "cf79b20589b14c1a932b770a2f3e146ff273494793c7ad6a986e71bd6397abae"
+  },
+  {
+    "file": "tasks/da_definire.md",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "tasks/future.md",
+    "bytes": 7934,
+    "sha256": "ca8d2e2c5518fcd01760fb9d86aba744693579b6a1cfe25ff409f3fab0564a19"
+  },
+  {
+    "file": "tasks/pronti_per_lo_sviluppo.md",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "tasks/storico.md",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "tsconfig.json",
+    "bytes": 541,
+    "sha256": "76f2a49af4afb09833813ea1d3c7b934a36349cea5a000e39d80157055dbec1f"
+  },
+  {
+    "file": "vite.config.ts",
+    "bytes": 40836,
+    "sha256": "c46b5e7011187675942a6732b4f606fcbe48873dd980ee3e6a26f7e1dcfdd4c8"
+  }
+]
