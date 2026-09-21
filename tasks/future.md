@@ -1,12 +1,12 @@
 # Future
 
-## Regola per l'importazione della vecchia versione
+## Regola per il codice importato
 
-La cartella `OneAssistant/` contiene una vecchia versione del progetto. Da questa cartella
-si può importare e riutilizzare **soltanto il codice**. La sua documentazione, il design,
-`CLAUDE.md`, i dati di esempio e le decisioni incorporate nei commenti non sono fonti di
-verità. Il codice importato deve essere adattato alla documentazione presente nella root
-di questo progetto.
+La vecchia versione del progetto è stata importata selettivamente e la sua copia locale
+è stata rimossa. Il codice presente nella root può essere riutilizzato soltanto dopo
+l'allineamento alla documentazione presente nella root di questo progetto. La
+documentazione, il design, `CLAUDE.md`, i dati di esempio e le decisioni incorporate nei
+commenti della vecchia versione non sono fonti di verità.
 
 ## Gap da chiarire nella documentazione root
 
@@ -44,9 +44,9 @@ di questo progetto.
 
 ## Importazione e adattamento del codice
 
-- [x] **Preparare l'importazione selettiva.** Copiare dalla vecchia `OneAssistant/`
-  soltanto i sorgenti e gli asset tecnici ancora utili. Non importare `docs/`,
-  `docs_old/`, `design/`, `CLAUDE.md` o altre specifiche della vecchia versione.
+- [x] **Preparare l'importazione selettiva.** Sono stati copiati soltanto i sorgenti e
+  gli asset tecnici ancora utili. Le vecchie specifiche non sono state adottate come
+  documentazione del progetto e la relativa copia locale è stata rimossa.
 - [ ] **Rimuovere i riferimenti alle vecchie fonti.** Aggiornare commenti, nomi e
   collegamenti del codice affinché puntino esclusivamente alla documentazione root.
 - [ ] **Allineare la terminologia.** Usare `DESK` per l'area centrale e `SIDEBAR` per i
@@ -105,6 +105,5 @@ di questo progetto.
   eseguire il controllo TypeScript e aggiungere test automatici per modello, motore,
   archivio e confini dei servizi.
 - [ ] **Verifica finale di conformità.** Considerare completata la migrazione soltanto
-  quando il codice non contiene più comportamenti derivati dalla documentazione interna
-  alla vecchia `OneAssistant/` e ogni area osservabile corrisponde alla documentazione
-  della root.
+  quando il codice non contiene più comportamenti non definiti dalla documentazione
+  della root e ogni area osservabile corrisponde alla documentazione della root.
