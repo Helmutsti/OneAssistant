@@ -11,555 +11,275 @@
 <meta name="design_doc_mode" content="canvas">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  body { margin: 0; background: #E4E1DA; }
-  a { color: #4E6B54; text-decoration: none; }
-  a:hover { color: #37502C; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./liquid-glass.css">
-<link href="https://cdn.jsdelivr.net/npm/lucide-static@0.454.0/font/lucide.css" rel="stylesheet">
+<link rel="stylesheet" href="./materiali.css">
+<style>
+  :root{
+    --carta:#E4E1DA; --scheda:#FBFBF9; --rilievo:#F2F1EC;
+    --inchiostro:#1A1C19; --tenue:#3E423C; --fioco:#4A4E48; --spento:#5A5F58;
+    --filo:rgba(26,28,25,0.09); --filo-forte:rgba(26,28,25,0.14);
+    --salvia:#4E6B54; --ambra:#8A5A17; --ambra-viva:#C08A2E;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--carta);color:var(--inchiostro);font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .foglio{padding:64px;display:flex;flex-direction:column;gap:52px;align-items:center}
+  .banda{width:1440px;max-width:100%}
+  mono,.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .targa{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.1em;background:var(--inchiostro);color:#F2F1ED;border-radius:5px;padding:4px 9px}
+  .occhiello{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--spento)}
+  h1{font-size:44px;font-weight:500;letter-spacing:-.035em;line-height:1;margin:0}
+  h2{font-size:28px;font-weight:500;letter-spacing:-.025em;margin:0}
+  h3{font-size:17px;font-weight:600;letter-spacing:-.02em;margin:0 0 7px}
+  p{margin:0}
+  .sommario{font-size:18px;color:var(--tenue);margin-top:12px;max-width:40em;line-height:1.55}
+  .meta{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--fioco);line-height:1.7;text-align:right;letter-spacing:.02em}
+  .testata{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .titolo-sez{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .titolo-sez .spiega{font-size:16px;color:var(--fioco)}
+  .scheda{border-radius:18px;padding:20px 22px;background:var(--scheda);border:1px solid var(--filo)}
+  .scheda p{font-size:14.5px;color:var(--fioco);line-height:1.55}
+  .avviso{border-radius:20px;padding:24px 28px;background:var(--rilievo);border:1px solid var(--filo-forte);display:flex;align-items:baseline;gap:26px;flex-wrap:wrap}
+  .avviso .etichetta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ambra);flex:none;padding-top:2px}
+  .avviso .corpo{font-size:16px;line-height:1.6;color:var(--tenue);flex:1;min-width:280px}
+  .griglia-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .griglia-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  table{border-collapse:collapse;width:100%;font-size:14.5px}
+  th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--filo)}
+  th{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--spento);font-weight:600}
+  td.chiave{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--inchiostro);white-space:nowrap}
+  td .fonte{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--fioco)}
+  .palco{position:relative;height:250px;border-radius:20px;overflow:hidden;background:
+    radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),
+    radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),
+    radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),
+    linear-gradient(158deg,#EDEAE1,#B9B6AB)}
+  .bolla{position:absolute;left:26px;bottom:26px;right:26px;border-radius:26px;padding:14px 18px;
+    background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)}
+  .campo{position:absolute;left:26px;bottom:26px;border-radius:22px;padding:9px 16px;min-width:200px;
+    background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);
+    font-size:15px;color:rgba(26,28,25,.40);display:flex;align-items:center;gap:9px}
+  .cursore{display:inline-block;width:1.5px;height:17px;background:var(--inchiostro);animation:batte 1.1s steps(1,end) infinite;vertical-align:-3px}
+  @keyframes batte{0%,50%{opacity:1}51%,100%{opacity:0}}
+  @media (prefers-reduced-motion: reduce){ .cursore{animation:none} }
+  .frase{font-size:16px;line-height:1.5;color:var(--inchiostro)}
+  .segno-pieno{border-bottom:2px solid var(--salvia);padding-bottom:1px}
+  .segno-punti{border-bottom:2px dotted rgba(26,28,25,.45);padding-bottom:1px}
+  .dicibili{display:flex;gap:14px;margin:12px -18px -14px;padding:10px 18px 14px;border-top:1px solid rgba(26,28,25,.16);flex-wrap:wrap;font-size:14.5px;color:var(--tenue)}
+  .dicibili .prima{color:var(--inchiostro)}
+  .pallino{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--salvia);vertical-align:2px;margin-right:5px}
+  .anello{display:inline-block;width:11px;height:11px;border-radius:50%;border:2.5px solid var(--ambra-viva);vertical-align:-1px;margin-right:6px}
+  .conteggio{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 8px;border-radius:999px;background:rgba(255,255,255,.62);border:1px solid rgba(26,28,25,.12);font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;color:var(--salvia);flex:none}
+  .dropzone{border-radius:22px;padding:12px 14px;
+    background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)}
+  .dropzone .testa{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .dropzone .testa svg{width:14px;height:14px;flex:none;color:var(--tenue)}
+  .dropzone .titolo{font-size:15px;font-weight:500}
+  .dropzone .righe{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .draft{font-size:12.5px;font-weight:400;color:var(--spento);font-style:italic}
+  .basso{width:100%}
+  .palco.alto{height:300px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:26px}
+  .palco.alto .dropzone{width:100%}
+  .palco.alto .porta,.palco.alto .bolla,.palco.alto .campo{position:static;left:auto;right:auto;bottom:auto}
+  .porta{position:absolute;left:26px;bottom:26px;display:flex;align-items:center;gap:11px}
+  .porta .campo{position:static;left:auto;bottom:auto}
+  .basso .porta,.basso .bolla{position:static;left:auto;right:auto;bottom:auto}
+  .ascolto{display:inline-block;width:9px;height:9px;border-radius:50%;background:#4E6B54;flex:none}
+  .pensiero{width:15px;height:15px;border-radius:50%;border:2px solid rgba(26,28,25,.16);border-top-color:#4E6B54;animation:gira .85s linear infinite;flex:none}
+  @keyframes gira{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion: reduce){ .pensiero{animation-duration:2.4s} }
+  .divisoria{border-top:1px solid rgba(26,28,25,.16);margin-top:12px;padding-top:10px}
+  .nota-riga{font-size:13.5px;color:var(--fioco);display:flex;align-items:center;gap:8px}
+  .tessera{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:7px 11px;background:rgba(255,255,255,.62);border:1px solid rgba(26,28,25,.12)}
+  .tessera svg{width:14px;height:14px;flex:none;color:var(--tenue)}
+  .tessera .corpo-t{display:flex;flex-direction:column;gap:2px;line-height:1.15}
+  .tessera .nome{font-size:13.5px;font-weight:500;white-space:nowrap}
+  .tessera .tipo{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--spento);white-space:nowrap}
+  .tessera .dato{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fioco);margin-left:4px;padding-left:9px;border-left:1px solid rgba(26,28,25,.14)}
+  .tessera.ricordo{border-style:dashed;background:rgba(255,255,255,.40)}
+  .tessera.ricordo svg{opacity:.5}
+  .tessera.ricordo .nome{color:var(--fioco)}
+  .tessera.task{background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);border-color:rgba(255,255,255,.7);box-shadow:0 1px 2px rgba(37,37,37,.10),inset 0 0 0 1px rgba(255,255,255,.5)}
+  .stato{display:inline-block;width:7px;height:7px;border-radius:50%;flex:none}
+  .stato.salvia{background:#4E6B54} .stato.ambra{background:#B3762A} .stato.rosso{background:#8A2E22}
+  .stato.nessuno{background:transparent;border:1.5px solid rgba(26,28,25,.28)}
+  .piu{display:inline-flex;align-items:center;border-radius:12px;padding:7px 11px;background:rgba(255,255,255,.34);border:1px solid rgba(26,28,25,.10);font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--fioco)}
+  .vetrina{display:flex;flex-wrap:wrap;gap:10px;padding:18px 20px;border-radius:18px;background:var(--scheda);border:1px solid var(--filo);align-items:center}
+  .vetrina.su-vetro{background:
+    radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),
+    radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),
+    linear-gradient(158deg,#EDEAE1,#B9B6AB);border-color:transparent}
+  .didascalia{font-size:14px;color:var(--fioco);line-height:1.5;margin-top:10px}
+  .scelto{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#F2F1ED;background:#3D5A43;border-radius:5px;padding:3px 8px}
+  .sbiadito{opacity:.42}
+  .riga-raccolta{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--tenue);letter-spacing:.02em}
+  .opzione{display:flex;flex-direction:column;gap:14px}
+  .cartiglio{display:flex;align-items:baseline;gap:10px}
+  .lettera{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.14em;color:#F2F1ED;background:var(--salvia);border-radius:5px;padding:3px 8px}
+  .cade{border-radius:18px;padding:18px 20px;background:var(--rilievo);border:1px solid var(--filo-forte)}
+  .cade p{font-size:14.5px;color:var(--tenue);line-height:1.55}
+  .barrato{text-decoration:line-through;color:var(--spento)}
+  .chiusa{border-radius:18px;padding:20px 22px;background:var(--rilievo);border:1px solid var(--filo-forte)}
+  .chiusa .etichetta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px}
+  .chiusa.verde .etichetta{color:#3D5A43}
+  .chiusa.ambra .etichetta{color:var(--ambra)}
+  .chiusa .corpo{font-size:15px;color:var(--tenue);line-height:1.6}
+  .coda{border-radius:20px;padding:24px 28px;background:var(--inchiostro);color:#F4F3EE;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.05em;line-height:2}
+  @media (max-width:1560px){ .foglio{padding:28px} }
+  @media (max-width:980px){ .griglia-3{grid-template-columns:1fr 1fr} }
+  @media (max-width:760px){
+    .foglio{padding:16px;gap:36px}
+    .griglia-3,.griglia-2{grid-template-columns:1fr}
+    h1{font-size:34px} .meta{text-align:left}
+    .palco{height:220px}
+    table{font-size:13.5px} th,td{padding:8px 9px}
+    .avviso{padding:18px 20px;gap:14px}
+  }
+</style>
 </helmet>
 
-<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+<div class="foglio">
 
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;width:1440px">
+  <header class="banda testata">
     <div>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L2</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 2 · componente</div></div>
-      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">INPUT</div>
-      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:36em;line-height:1.55">La voce, e le parole che puoi dire. Non è una barra di comandi e non è sempre lì: a riposo INPUT non esiste. Compare come bolla satinata quando ascolta, e cresce solo quando serve mostrarti cosa ha capito.</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span class="targa">L2</span>
+        <span class="occhiello">Livello 2 / componente / basso a sinistra</span>
+      </div>
+      <h1>INPUT</h1>
+      <p class="sommario">Quello che hai scritto, la raccolta, lo scambio. Non &egrave; una barra di comandi e non &egrave; sempre l&igrave;: a riposo resta solo la bolla in cui scrivi. <strong style="font-weight:600">Solo tastiera</strong> &mdash; la voce &egrave; una fase futura, e con lei se ne va met&agrave; del documento precedente.</p>
     </div>
-    <div style="font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em">ancoraggio bottom 44 · centrato<br>a riposo: non esiste · ascolto: 380<br>trascrizione: max 2 righe<br>lo scambio dura 30 s, poi INPUT sparisce<br>nessun bottone, mai</div>
+    <div class="meta">basso a sinistra &middot; ancoraggio fisso<br>due bolle: INPUT, e la dropzone sopra<br>la pila cresce verso l&rsquo;alto &middot; aria 12<br>nessun bottone, mai</div>
+  </header>
+
+  <section class="banda">
+    <div class="titolo-sez">
+      <h2>Sette momenti, dal silenzio al silenzio</h2>
+      <span class="spiega">INPUT non si occupa mai: quello che si compone vive nella sua seconda bolla.</span>
+    </div>
+
+    <div class="griglia-3">
+
+      <article class="opzione">
+        <div class="cartiglio"><span class="occhiello">1 &middot; a riposo</span></div>
+        <div class="palco"><div class="porta"><span class="ascolto"></span><div class="campo"><span class="cursore"></span><span>scrivi</span></div></div></div>
+        <div class="scheda"><h3>Il campo, e il pallino che ascolta</h3><p>Il pallino verde, <strong style="color:var(--inchiostro)">fuori dal campo a sinistra</strong>, dice che l&rsquo;ascolto attivo &egrave; acceso. Il campo &egrave; la modalit&agrave; tastiera, l&rsquo;unica implementata. Nessuna dropzone: non c&rsquo;&egrave; niente in formazione.</p></div>
+      </article>
+
+      <article class="opzione">
+        <div class="cartiglio"><span class="occhiello">2 &middot; mentre scrivi</span></div>
+        <div class="palco">
+          <div class="bolla">
+            <div class="frase">manda a Paolo la v3 del preventivo e aggiorna il task di Acme, poi fissa la consegna per venerd&igrave;<span class="cursore"></span></div>
+          </div>
+        </div>
+        <div class="scheda"><h3>La bolla si espande, e non sale</h3><p>Nessuna sottolineatura, nessuna tessera: <strong style="color:var(--inchiostro)">finch&eacute; scrivi, il sistema non ha ancora letto niente</strong>. Se il testo cresce la bolla si espande sul posto &mdash; non si promuove in DESK, o sembrerebbe diventata un task quando non lo &egrave;.</p></div>
+      </article>
+
+      <article class="opzione">
+        <div class="cartiglio"><span class="occhiello">3 &middot; il turno</span></div>
+        <div class="palco">
+          <div class="bolla">
+            <div class="frase" style="color:var(--fioco)">manda a Paolo la v3 del preventivo</div>
+            <div class="nota-riga" style="margin-top:12px"><span class="pensiero"></span><span>sto pensando</span></div>
+          </div>
+        </div>
+        <div class="scheda"><h3>L&rsquo;unica cosa che si muove</h3><p>Un anello che gira, salvia su grigio. <strong style="color:var(--inchiostro)">&Egrave; qui che il motore legge il testo</strong>, una volta sola e a prompt finito: analizzarlo mentre scrivi vorrebbe dire chiamarlo a ogni tasto.</p></div>
+      </article>
+
+      <article class="opzione">
+        <div class="cartiglio"><span class="occhiello">4 &middot; si apre la dropzone</span></div>
+        <div class="palco alto">
+          <div class="dropzone">
+            <div class="testa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="titolo">Mandare la v3 a Paolo</span><span class="draft">Bozza</span></div>
+            <div class="righe"><span class="tessera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="corpo-t"><span class="nome">Paolo Neri</span><span class="tipo">contatto</span></span></span><span class="tessera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="corpo-t"><span class="nome">preventivo-v3</span><span class="tipo">documento</span></span></span><span class="conteggio">+2</span></div>
+          </div>
+          <div class="basso"><div class="porta"><span class="ascolto"></span><div class="campo"><span class="cursore"></span><span>scrivi</span></div></div></div>
+        </div>
+        <div class="scheda"><h3>Si apre la seconda bolla</h3><p>Quello che il motore ha letto diventa <strong style="color:var(--inchiostro)">un task in <mono>T_DRAFT</mono></strong> con le sue tessere, e apre la dropzone sopra di sé. <strong style="color:var(--inchiostro)">La bolla di INPUT torna vuota nello stesso istante</strong>: non &egrave; mai occupata da ci&ograve; che si sta componendo.</p></div>
+      </article>
+
+      <article class="opzione">
+        <div class="cartiglio"><span class="occhiello">5 &middot; e intanto parli</span></div>
+        <div class="palco alto">
+          <div class="dropzone">
+            <div class="testa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="titolo">Mandare la v3 a Paolo</span><span class="draft">Bozza</span></div>
+            <div class="righe"><span class="tessera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="corpo-t"><span class="nome">Paolo Neri</span><span class="tipo">contatto</span></span></span><span class="tessera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="corpo-t"><span class="nome">preventivo-v3</span><span class="tipo">documento</span></span></span><span class="tessera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="corpo-t"><span class="nome">preventivo-v2</span><span class="tipo">documento</span></span></span><span class="conteggio">+3</span></div>
+          </div>
+          <div class="basso">
+            <div class="bolla">
+              <div class="frase">mostrami le altre versioni del preventivo<span class="cursore"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scheda"><h3>Il motivo per cui la dropzone esiste</h3><p>Il draft resta dov&rsquo;&egrave; e tu continui a parlare: chiedi altre carte, ne togli una, cambi il destinatario. <strong style="color:var(--inchiostro)">La dropzone cambia, INPUT resta libero</strong>. Con le tessere dentro INPUT questa frase non si sarebbe potuta scrivere.</p></div>
+      </article>
+
+      <article class="opzione">
+        <div class="cartiglio"><span class="occhiello">6 &middot; il task se ne va</span></div>
+        <div class="palco alto">
+          <div class="dropzone" style="opacity:.34">
+            <div class="testa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="titolo">Mandare la v3 a Paolo</span></div>
+            <div class="righe"><span class="tessera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="corpo-t"><span class="nome">Paolo Neri</span><span class="tipo">contatto</span></span></span></div>
+          </div>
+          <div class="basso">
+            <div class="bolla">
+              <div class="frase">Pronta. La mando fra 90 secondi.</div>
+              <div class="dicibili"><span class="prima"><span class="pallino"></span>&laquo;manda subito&raquo;</span><span>&laquo;no, aspetta&raquo;</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scheda"><h3>Da <mono>T_DRAFT</mono> a task vero</h3><p>Alla conferma il draft <strong style="color:var(--inchiostro)">lascia la dropzone e diventa una bolla in DESK</strong>, e la dropzone si svuota e sparisce. La risposta in INPUT &egrave; facoltativa e serve solo a fermarlo: le frasi stanno sotto la barra, che va da bordo a bordo.</p></div>
+      </article>
+
+      <article class="opzione">
+        <div class="cartiglio"><span class="occhiello">7 &middot; e torna a non esserci</span></div>
+        <div class="palco"><div class="porta"><span class="ascolto"></span><div class="campo"><span class="cursore"></span><span>scrivi</span></div></div></div>
+        <div class="scheda"><h3>Lo scambio lascia lo schermo</h3><p>Resta integralmente nella chat raw dell&rsquo;utente attivo. Niente dropzone, niente bolla: il campo e il pallino, come al momento 1.</p></div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <section class="banda">
+    <div class="titolo-sez">
+      <h2>Variante &middot; senza ascolto</h2>
+      <span class="spiega">Ascolto spento: sparisce il pallino, e l&rsquo;icona della tastiera prende il suo significato &mdash; ma sta dentro la bolla, perch&eacute; scrivere &egrave; gi&agrave; contenuto.</span>
+    </div>
+    <div class="palco">
+      <div class="porta"><div class="campo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;flex:none;color:var(--tenue)"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M7 16h10"/></svg><span class="cursore"></span><span>scrivi</span></div></div>
+    </div>
+  </section>
+
+  <section class="banda">
+    <div class="titolo-sez">
+      <h2>Le tessere</h2>
+      <span class="spiega">Carta per le cose raccolte, vetro per i task gi&agrave; a schermo, filo tratteggiato per ci&ograve; che esiste solo nella memoria. Un dato solo in coda, dove serve.</span>
+    </div>
+    <div class="vetrina"><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="corpo-t"><span class="nome">Elena Ricci</span><span class="tipo">posta</span></span><span class="dato">3 non lette</span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg><span class="corpo-t"><span class="nome">Preventivi 2026</span><span class="tipo">cartella</span></span><span class="dato">14 file</span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="corpo-t"><span class="nome">preventivo-v3</span><span class="tipo">documento</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="corpo-t"><span class="nome">Paolo Neri</span><span class="tipo">contatto</span></span><span class="dato">paolo@acme.it</span></span><span class="tessera ricordo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="corpo-t"><span class="nome">Paolo</span><span class="tipo">ricordo</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="corpo-t"><span class="nome">Team Acme</span><span class="tipo">persone</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span class="corpo-t"><span class="nome">gioved&igrave; con Paolo</span><span class="tipo">conversazione</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg><span class="corpo-t"><span class="nome">cantiere-04</span><span class="tipo">immagine</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/><path d="M6.38 18.7 4 21"/><path d="M17.64 18.67 20 21"/></svg><span class="corpo-t"><span class="nome">richiamare Elena</span><span class="tipo">sveglia</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="corpo-t"><span class="nome">Via Garibaldi 12</span><span class="tipo">indirizzo</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg><span class="corpo-t"><span class="nome">Consegna Acme</span><span class="tipo">appuntamento</span></span><span class="dato">ven 14:00</span></span><span class="tessera task"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="corpo-t"><span class="nome">Preventivo Acme</span><span class="tipo">task</span></span></span></div>
+  </section>
+
+  <section class="banda">
+    <div class="titolo-sez">
+      <h2>Tutto insieme, a grandezza vera</h2>
+    </div>
+    <div class="palco alto" style="height:340px">
+      <div class="dropzone">
+        <div class="testa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="titolo">Mandare la v3 a Paolo</span><span class="draft">Bozza</span></div>
+        <div class="righe"><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="corpo-t"><span class="nome">Paolo Neri</span><span class="tipo">contatto</span></span><span class="dato">paolo@acme.it</span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="corpo-t"><span class="nome">preventivo-v3</span><span class="tipo">documento</span></span></span><span class="tessera "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg><span class="corpo-t"><span class="nome">Consegna Acme</span><span class="tipo">appuntamento</span></span><span class="dato">ven 14:00</span></span><span class="tessera task"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span class="corpo-t"><span class="nome">Preventivo Acme</span><span class="tipo">task</span></span></span><span class="piu">+3</span><span class="conteggio">+7</span></div>
+      </div>
+      <div class="basso"><div class="porta"><span class="ascolto"></span><div class="campo"><span class="cursore"></span><span>scrivi</span></div></div></div>
+    </div>
+  </section>
+
+  <div class="banda coda">
+    DUE BOLLE: INPUT SOTTO, LA DROPZONE SOPRA &middot; LA PILA CRESCE VERSO L&rsquo;ALTO<br>
+    INPUT NON SI OCCUPA MAI, QUALUNQUE COSA SI STIA COMPONENDO<br>
+    INPUT PORTA LE PAROLE, DESK PORTA LE COSE
   </div>
 
-  <div style="display:flex;flex-direction:column;gap:14px">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Sei stati · dal punto alla frase</div>
-    <div style="display:grid;grid-template-columns:repeat(3,456px);gap:36px">
-
-      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
-        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.16em;color:rgba(26,28,25,0.45)">NIENTE</div>
-        </div>
-        <div style="padding:20px 22px">
-          <div style="font-size:18px;font-weight:500;margin-bottom:6px">A riposo · non esiste</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Nessun pallino in attesa, nessun invito, nessuna barra: il fondo di sistema resta libero. Il microfono è aperto ma INPUT non occupa un pixel finché non ha qualcosa da mostrarti.</div>
-        </div>
-      </div>
-
-      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
-        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center">
-          <div style="display:flex;align-items:center;gap:13px">
-            <span style="width:14px;height:14px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
-            <div style="padding:13px 20px;border-radius:26px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-              <div style="font-size:13px;font-weight:400;color:#21251F">ti ascolto</div>
-            </div>
-          </div>
-        </div>
-        <div style="padding:20px 22px">
-          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Ti ascolto</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto compare per primo e pulsa a 1,2 s — <strong style="color:#1A1C19;font-weight:600">un pallino salvia pieno e nient'altro</strong>: nessun bordo, nessun alone, nessuna ombra. Pulsa di scala, 13 → 15 px, e di opacità, 100 → 70%. La bolla nasce accanto a lui in 240 ms, come il baloon di un fumetto.</div>
-        </div>
-      </div>
-
-      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
-        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
-          <div style="width:100%;display:flex;align-items:center;gap:12px">
-            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
-            <div style="flex:1;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-              <div style="font-size:13px;font-weight:400;color:#21251F">manda a Elena la v3 <span style="color:#8B908A">e fissa venerdì…</span></div>
-            </div>
-          </div>
-        </div>
-        <div style="padding:20px 22px">
-          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Trascrizione</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto resta fuori, fermo, e la bolla si allunga accanto a lui. Parole confermate a inchiostro pieno, parole in volo in grigio. Max due righe: oltre, sale in DESK.</div>
-        </div>
-      </div>
-
-      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
-        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
-          <div style="width:100%;display:flex;align-items:center;gap:12px">
-            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span>
-            <div style="flex:1;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-                <div style="font-size:13px;color:#2F332C">sto facendo tre cose</div>
-                <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.08em;color:#5A5F58">2 DI 3</div>
-              </div>
-              <div style="height:3px;border-radius:3px;background:linear-gradient(90deg,#4E6B54 62%,rgba(26,28,25,0.12) 62%)"></div>
-            </div>
-          </div>
-        </div>
-        <div style="padding:20px 22px">
-          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Sto lavorando</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto resta salvia — lo stato sta fuori, nel punto, non in una targa. Dentro: una linea che avanza e il conteggio dei passi. Nessuno spinner, nessun log: i dettagli si chiedono a voce.</div>
-        </div>
-      </div>
-
-      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
-        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
-          <div style="width:100%;display:flex;align-items:center;gap:12px">
-            <span style="width:13px;height:13px;border-radius:50%;border:2px solid #B3762A;position:relative;z-index:2;box-sizing:border-box;display:block;flex:none"></span>
-            <div style="flex:1;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
-              <div style="font-size:13px;color:#1A1C19">aspetto che mi dica tu</div>
-              <div style="margin-left:auto;font-size:15px;font-weight:400;color:#1A1C19">«manda»</div>
-            </div>
-          </div>
-        </div>
-        <div style="padding:20px 22px">
-          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Aspetta te</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55"><strong style="color:#1A1C19;font-weight:600">Il punto si svuota</strong>: da pieno che ascolta ad anello ambra che aspetta. È l'unico ambra di INPUT, e sta fuori dalla bolla — dentro, l'inchiostro resta nero e la parola da dire è già scritta.</div>
-        </div>
-      </div>
-
-      <div style="border-radius:22px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 10px 26px rgba(30,36,30,0.07)">
-        <div style="height:150px;background:linear-gradient(180deg,#BEC3C1,#9BA096);display:flex;align-items:center;justify-content:center;padding:0 24px">
-          <div style="width:100%;padding:12px 18px;border-radius:22px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:11px">
-            <i class="icon-keyDESK" style="font-size:14px;line-height:1;color:#3E423C;flex:none"></i>
-            <div style="font-size:13px;font-weight:400;color:#1A1C19">manda a elena la v3<span style="display:inline-block;width:2px;height:17px;background:#1A1C19;vertical-align:-3px;margin-left:3px"></span></div>
-          </div>
-        </div>
-        <div style="padding:20px 22px">
-          <div style="font-size:18px;font-weight:500;margin-bottom:6px">Senza voce</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto d'ascolto sparisce — <strong style="color:#1A1C19;font-weight:600">nessun pallino</strong>, perché il punto è la voce e qui la voce non c'è. L'icona della tastiera prende il suo significato ma sta <strong style="color:#1A1C19;font-weight:600">dentro</strong> la bolla: è l'unico segno di provenienza che vive all'interno.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div style="display:flex;flex-direction:column;gap:14px">
-    <div style="display:flex;align-items:baseline;gap:14px">
-      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Modalità tastiera</div>
-      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">Non è un&rsquo;interfaccia alternativa: è la stessa bolla, nello stesso posto, senza il punto. <strong style="color:#1A1C19;font-weight:600">Il punto è la voce: senza voce non c&rsquo;è punto</strong> — e l&rsquo;icona della tastiera, 14 px, sta <strong style="color:#1A1C19;font-weight:600">dentro</strong> la bolla. È l&rsquo;eccezione dichiarata: fuori va solo ciò che viene da te mentre lo dici; la tastiera è già scrittura, quindi è contenuto.</div>
-    </div>
-    <div style="display:grid;grid-template-columns:700px 1fr;gap:36px;width:1440px;align-items:start">
-      <div style="position:relative;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
-        <div style="position:absolute;left:34px;right:34px;bottom:120px;padding:13px 20px;border-radius:24px;box-sizing:border-box;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
-          <i class="icon-keyDESK" style="font-size:14px;line-height:1;color:#3E423C;flex:none"></i>
-          <div style="font-size:17px;font-weight:400;color:#1A1C19">manda a elena la v3<span style="display:inline-block;width:2px;height:18px;background:#1A1C19;vertical-align:-3px;margin-left:3px"></span></div>
-        </div>
-        <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px">
-          <div style="flex:1;padding:14px 20px;border-radius:24px;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:16px">
-            <div style="display:flex;align-items:baseline;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#3D5643;padding:2px 7px;border-radius:5px;background:rgba(78,107,84,0.14)">↵</div><div style="font-size:12px;color:#1A1C19">«manda la mail»</div></div>
-            <div style="display:flex;align-items:baseline;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#5A5F58;padding:2px 7px;border-radius:5px;background:rgba(26,28,25,0.08)">2</div><div style="font-size:12px;color:#4A4E48">«leggila»</div></div>
-          </div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
-        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Niente pallini, fuori niente</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Sparisce il punto d&rsquo;ascolto e sparisce anche il pallino verde davanti alla prima frase: a marcare quella più probabile ci pensa <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">↵</span>. Fuori dalla bolla non resta niente — è l&rsquo;unico caso.</div>
-        </div>
-        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Le virgolette restano</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Le frasi sono ancora frasi, non bottoni: i tasti sono scorciatoie per dirle, non etichette di comandi. Scritte identiche a quelle che pronunceresti.</div>
-        </div>
-        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Nessun verbo d&rsquo;apertura</div>
-          <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Scrivendo non serve «senti»: il primo carattere fa nascere la bolla. Il verbo serviva a dire <em>a chi</em> stai parlando, e la tastiera lo dice da sé.</div>
-        </div>
-        <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8A5A17;margin-bottom:10px">Si esce parlando</div>
-          <div style="font-size:14.5px;color:#3E423C;line-height:1.55">Appena parli, l&rsquo;icona torna punto e la bolla resta la stessa — con dentro quello che avevi scritto. Nessuna conferma, nessun passaggio di modalità.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:14px">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">«Puoi dire» · il posto delle parole, al posto dei bottoni</div>
-    <div style="display:grid;grid-template-columns:720px 1fr;gap:36px;width:1440px;align-items:start">
-      <div style="border-radius:24px;padding:28px 30px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);box-shadow:0 12px 30px rgba(30,36,30,0.08)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58;margin-bottom:20px">Puoi dire</div>
-        <div style="display:flex;flex-direction:column;gap:15px">
-          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:10px;height:10px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;transform:translateY(-5px)"></span><div style="font-size:30px;font-weight:400;letter-spacing:-0.025em">«manda»</div></div>
-          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:9px;flex:none"></span><div style="font-size:23px;font-weight:400;color:#3E423C">«cambia l'orario»</div></div>
-          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:9px;flex:none"></span><div style="font-size:23px;font-weight:400;color:#3E423C">«leggimi cosa hai scritto»</div></div>
-          <div style="display:flex;align-items:baseline;gap:14px"><span style="width:9px;flex:none"></span><div style="font-size:23px;font-weight:400;color:#3E423C">«lascia stare»</div></div>
-        </div>
-        <div style="height:1px;background:rgba(26,28,25,0.10);margin:24px 0 16px"></div>
-        <div style="font-size:15px;color:#4A4E48;line-height:1.6">Sono esempi di lingua, non un menu: qualunque frase con lo stesso senso funziona. La prima porta il punto verde perché è quella che farei io.</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:20px;font-size:15px;line-height:1.6;color:#4A4E48">
-        <div><strong style="color:#1A1C19;font-weight:600">Mai più di quattro frasi</strong><br>E mai due che fanno la stessa cosa. Se servono cinque scelte, la domanda è mal posta.</div>
-        <div><strong style="color:#1A1C19;font-weight:600">Le virgolette sono l'affordance</strong><br>Il testo fra «» significa «questo puoi dirlo». Nessun rettangolo, nessun bordo, nessun verbo imperativo rivolto a te.</div>
-        <div><strong style="color:#1A1C19;font-weight:600">Vivono dove serve</strong><br>Se l'attività è in DESK, le frasi stanno in fondo al suo pannello. Se non c'è attività, stanno sopra il punto d'ascolto.</div>
-        <div><strong style="color:#1A1C19;font-weight:600">La tastiera è una scorciatoia, non un'alternativa</strong><br><span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px">↵</span> esegue la prima frase, i numeri scelgono fra i candidati. Sempre presenti, mai mostrati in evidenza.</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:14px">
-    <div style="display:flex;align-items:baseline;gap:14px">
-      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">INPUT che mostra dati</div>
-      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">Sei idee per la fase di raccolta: mentre parli, il sistema tira su documenti, immagini e persone. Cresce verso l'alto dal punto d'ascolto, resta sotto i 340 px: oltre quella soglia l'attività si promuove in DESK.</div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:40px">
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:16px;font-weight:600">Idea 1 · La raccolta</div>
-        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
-          <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px"><span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span><div style="flex:1;padding:16px 18px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-            <div style="margin-bottom:14px">
-              <div style="font-size:13px;font-weight:400;color:#21251F">tutto quello che ho mandato ad Acme <span style="color:#8B908A">quest'anno…</span></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px">
-              <div style="width:52px;height:64px;border-radius:7px;background:repeating-linear-gradient(135deg,#DCDAD2,#DCDAD2 5px,#CFCDC4 5px,#CFCDC4 10px);border:1px solid rgba(26,28,25,0.12);display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#5A5F58">PDF</div>
-              <div style="width:52px;height:64px;border-radius:7px;background:repeating-linear-gradient(135deg,#DCDAD2,#DCDAD2 5px,#CFCDC4 5px,#CFCDC4 10px);border:1px solid rgba(26,28,25,0.12);display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#5A5F58">FOTO</div>
-              <div style="width:52px;height:64px;border-radius:7px;background:repeating-linear-gradient(135deg,#DCDAD2,#DCDAD2 5px,#CFCDC4 5px,#CFCDC4 10px);border:1px solid rgba(26,28,25,0.12);display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#5A5F58">XLS</div>
-              <div style="width:52px;height:64px;border-radius:7px;border:1px dashed rgba(26,28,25,0.28);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5A5F58">+4</div>
-              <div style="margin-left:auto;text-align:right">
-                <div style="font-size:26px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1">7</div>
-                <div style="font-size:13px;color:#4A4E48">trovati mentre parli</div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Le tessere entrano da destra una alla volta, 140 ms l'una, e si fermano. Il contatore è l'unico numero. Formato in monospaziato sulla tessera, mai un'icona di app. <strong style="color:#1A1C19;font-weight:600">Per raccolte fino a 8 elementi.</strong></div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:16px;font-weight:600">Idea 2 · Il setaccio</div>
-        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
-          <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px"><span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span><div style="flex:1;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-            <div style="margin-bottom:18px">
-              <div style="font-size:13px;font-weight:400;color:#21251F">quella per Acme, di prima dell'estate, con i numeri <span style="color:#8B908A">del trimestre…</span></div>
-            </div>
-            <div style="display:flex;align-items:flex-end;gap:22px">
-              <div><div style="font-size:30px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#9AA096">412</div><div style="font-size:12.5px;color:#5A5F58;margin-top:4px">documenti</div></div>
-              <div style="font-size:19px;color:#9AA096;padding-bottom:8px">→</div>
-              <div><div style="font-size:30px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#6B6F68">37</div><div style="font-size:12.5px;color:#5A5F58;margin-top:4px">di Acme</div></div>
-              <div style="font-size:19px;color:#9AA096;padding-bottom:8px">→</div>
-              <div><div style="font-size:30px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#3E423C">9</div><div style="font-size:12.5px;color:#5A5F58;margin-top:4px">prima di luglio</div></div>
-              <div style="font-size:19px;color:#9AA096;padding-bottom:8px">→</div>
-              <div><div style="font-size:38px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1;color:#1A1C19">3</div><div style="font-size:12.5px;color:#3D5A43;margin-top:4px">con quei numeri</div></div>
-              <div style="margin-left:auto;font-size:14px;color:#4A4E48;text-align:right;max-width:9em;line-height:1.4">ogni parola che aggiungi stringe il numero</div>
-            </div>
-          </div></div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Nessuna anteprima: solo il numero che scende mentre parli, con l'ultimo passo in inchiostro pieno. È il modo più leggibile di mostrare che ti sta capendo. <strong style="color:#1A1C19;font-weight:600">Per ricerche su molti elementi.</strong></div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:16px;font-weight:600">Idea 3 · I gruppi che si formano</div>
-        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
-          <div style="position:absolute;left:34px;right:34px;bottom:34px;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-              <i class="icon-layout-grid" style="font-size:14px;color:#3D5A43;line-height:1"></i>
-              <div style="font-size:13px;color:#2F332C">li sto mettendo in ordine · 412 documenti</div>
-              <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.08em;color:#5A5F58">3 GRUPPI</div>
-            </div>
-            <div style="display:flex;gap:12px">
-              <div style="flex:1;border-radius:14px;padding:12px 14px;background:rgba(26,28,25,0.05);border:1px solid rgba(26,28,25,0.10)">
-                <div style="display:flex;gap:5px;margin-bottom:10px">
-                  <div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div>
-                </div>
-                <div style="font-size:13px;font-weight:400">Contratti</div><div style="font-size:13px;color:#4A4E48">148 · 2023–2026</div>
-              </div>
-              <div style="flex:1;border-radius:14px;padding:12px 14px;background:rgba(251,251,249,0.72);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">
-                <div style="display:flex;gap:5px;margin-bottom:10px">
-                  <div style="width:22px;height:28px;border-radius:4px;background:#A9BBAC"></div><div style="width:22px;height:28px;border-radius:4px;background:#A9BBAC"></div><div style="width:22px;height:28px;border-radius:4px;background:#A9BBAC"></div>
-                </div>
-                <div style="font-size:13px;font-weight:400;color:#3D5643">Proposte</div><div style="font-size:13px;color:#3D5A43">37 · quella che cerchi è qui</div>
-              </div>
-              <div style="flex:1;border-radius:14px;padding:12px 14px;background:rgba(26,28,25,0.05);border:1px solid rgba(26,28,25,0.10)">
-                <div style="display:flex;gap:5px;margin-bottom:10px">
-                  <div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div><div style="width:22px;height:28px;border-radius:4px;background:#CFCDC4"></div>
-                </div>
-                <div style="font-size:13px;font-weight:400">Fatture</div><div style="font-size:13px;color:#4A4E48">227 · per anno</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il «thinking» diventa un raggruppamento visibile: le tessere volano nel loro gruppo e il gruppo giusto si tinge di verde. È ragionamento mostrato come ordine, non come testo. <strong style="color:#1A1C19;font-weight:600">Per riordini e archivi.</strong></div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:16px;font-weight:600">Idea 4 · Il mazzo</div>
-        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
-          <div style="position:absolute;left:34px;right:34px;bottom:34px;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-            <div style="display:flex;align-items:center;gap:20px">
-              <div style="position:relative;width:150px;height:94px;flex:none">
-                <div style="position:absolute;left:0;top:10px;width:70px;height:84px;border-radius:8px;background:#D5D3CA;border:1px solid rgba(26,28,25,0.12);transform:rotate(-9deg)"></div>
-                <div style="position:absolute;left:20px;top:6px;width:70px;height:84px;border-radius:8px;background:#DEDCD4;border:1px solid rgba(26,28,25,0.12);transform:rotate(-3deg)"></div>
-                <div style="position:absolute;left:42px;top:2px;width:70px;height:84px;border-radius:8px;background:repeating-linear-gradient(135deg,#E8E6DE,#E8E6DE 5px,#DCDAD2 5px,#DCDAD2 10px);border:1px solid rgba(26,28,25,0.14);display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#5A5F58">12 GIUGNO</div>
-              </div>
-              <div style="flex:1">
-                <div style="font-size:23px;font-weight:400;letter-spacing:-0.02em;line-height:1.3">Ne ho 12 che potrebbero essere quella.</div>
-                <div style="font-size:13px;color:#4A4E48;margin-top:6px">Sopra c'è la più probabile: 12 giugno, mandata ad Andrea.</div>
-                <div style="font-size:19px;font-weight:400;margin-top:12px;color:#21251F">«sfogliale» · «solo quelle di giugno»</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Quando i candidati sono troppi per essere mostrati ma troppi anche per sceglierne uno: si impilano come carte, la prima in cima è la scommessa del sistema. Si sfoglia parlando. <strong style="color:#1A1C19;font-weight:600">Per 8–30 candidati.</strong></div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:16px;font-weight:600">Idea 5 · L'anteprima che vale la pena</div>
-        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
-          <div style="position:absolute;left:34px;right:34px;bottom:34px;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-            <div style="display:flex;gap:18px;align-items:stretch">
-              <div style="width:180px;height:116px;border-radius:12px;flex:none;background:linear-gradient(140deg,#DDDBD4,#C4C2BA);border:1px solid rgba(26,28,25,0.12);padding:12px;box-sizing:border-box">
-                <div style="display:flex;flex-direction:column;gap:6px"><div style="height:5px;width:70%;border-radius:5px;background:rgba(26,28,25,0.14)"></div><div style="height:5px;width:52%;border-radius:5px;background:rgba(26,28,25,0.10)"></div></div>
-                <div style="display:flex;align-items:flex-end;gap:6px;height:52px;margin-top:14px">
-                  <div style="width:18px;height:46%;border-radius:3px;background:rgba(26,28,25,0.16)"></div>
-                  <div style="width:18px;height:70%;border-radius:3px;background:rgba(26,28,25,0.16)"></div>
-                  <div style="width:18px;height:100%;border-radius:3px;background:#4E6B54"></div>
-                  <div style="width:18px;height:58%;border-radius:3px;background:rgba(26,28,25,0.16)"></div>
-                </div>
-              </div>
-              <div style="flex:1;display:flex;flex-direction:column">
-                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3D5A43;margin-bottom:8px">Il pezzo di cui parlavi</div>
-                <div style="font-size:21px;font-weight:400;letter-spacing:-0.02em;line-height:1.3">Pagina 14 · il trimestre chiuso meglio</div>
-                <div style="font-size:14.5px;color:#4A4E48;margin-top:6px;line-height:1.5">Il resto della pagina è desaturato: a colori c'è solo la colonna che stavi cercando.</div>
-                <div style="font-size:18px;font-weight:400;margin-top:auto;color:#21251F">«aprila a pagina 14»</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">L'anteprima compare solo quando un singolo elemento è decisivo, e mostra <em>il punto</em>, non il documento: contenuto desaturato, colore solo sul dato citato. <strong style="color:#1A1C19;font-weight:600">Per un solo risultato certo.</strong></div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="font-size:16px;font-weight:600">Idea 6 · Gli scarti restano recuperabili</div>
-        <div style="position:relative;width:700px;height:300px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#C6CBC9 0%,#B9BEB9 46%,#9BA096 100%)">
-          <div style="position:absolute;left:34px;right:34px;bottom:34px;display:flex;align-items:center;gap:13px"><span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none"></span><div style="flex:1;padding:18px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-            <div style="margin-bottom:16px">
-              <div style="font-size:13px;font-weight:400;color:#21251F">no, non quella dei contratti <span style="color:#8B908A">…</span></div>
-            </div>
-            <div style="display:flex;align-items:flex-end;gap:10px">
-              <div style="width:62px;height:76px;border-radius:8px;background:repeating-linear-gradient(135deg,#E8E6DE,#E8E6DE 5px,#DCDAD2 5px,#DCDAD2 10px);border:1.5px solid #4E6B54;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#3D5A43">TENUTA</div>
-              <div style="width:48px;height:58px;border-radius:7px;background:#D6D4CC;opacity:0.5;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#5A5F58">SCARTO</div>
-              <div style="width:48px;height:58px;border-radius:7px;background:#D6D4CC;opacity:0.5"></div>
-              <div style="width:48px;height:58px;border-radius:7px;background:#D6D4CC;opacity:0.5"></div>
-              <div style="margin-left:auto;font-size:14.5px;color:#4A4E48;text-align:right;max-width:13em;line-height:1.45">gli scartati si spengono ma restano: <span style="color:#21251F">«riprendi quello grigio»</span></div>
-            </div>
-          </div></div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Niente svanisce durante la raccolta: chi esce dal filtro si desatura e si rimpicciolisce, e resta richiamabile a voce per tutta la conversazione. È la rete di sicurezza del parlato. <strong style="color:#1A1C19;font-weight:600">Sempre attiva, in ogni idea.</strong></div>
-      </div>
-    </div>
-
-    <div style="width:1440px;border-radius:20px;padding:26px 30px;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:repeat(4,1fr);gap:26px;font-size:15px;line-height:1.55;color:#4A4E48">
-      <div><strong style="color:#1A1C19;font-weight:600">Quando usare quale</strong><br>≤8 elementi: raccolta. Molti elementi: setaccio. Archivi: gruppi. 8–30 candidati: mazzo. Uno solo: anteprima.</div>
-      <div><strong style="color:#1A1C19;font-weight:600">La raccolta è effimera</strong><br>Vive dentro INPUT e svanisce con la risposta. Se ti serve dopo, diventa un'attività e sale nella soglia di DESK.</div>
-      <div><strong style="color:#1A1C19;font-weight:600">Tessere, non icone d'app</strong><br>Ogni tessera è la forma del documento con il formato in monospaziato. Nessun logo, nessun mimetismo di app.</div>
-      <div><strong style="color:#1A1C19;font-weight:600">Un solo verde per schermo</strong><br>Il colore marca ciò che il sistema ha scelto: un gruppo, una colonna, una tessera. Tutto il resto resta desaturato.</div>
-    </div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:18px">
-    <div style="display:flex;align-items:baseline;gap:14px">
-      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Le parole che aprono</div>
-      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">INPUT a riposo non esiste: serve una parola per farlo nascere. Di fabbrica sono cinque verbi, uno per intenzione — <strong style="color:#1A1C19;font-weight:600">ma le parole sono tue e si cambiano parlando</strong>, nome dell'assistente compreso. Quello che non cambia è la regola: la parola apre <em>e</em> porta già la frase con sé.</div>
-    </div>
-
-    <div style="width:1440px;border-radius:24px;padding:36px 40px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#9AA096;margin-bottom:22px">Valori di fabbrica · cinque verbi, uno per intenzione</div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:26px">
-        <div>
-          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«senti»</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Comando</div>
-          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Sto per chiederti di fare una cosa. È il verbo più usato: apre la bolla in modalità comando, pronta a una catena di azioni.</div>
-        </div>
-        <div>
-          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«trova»</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Ricerca</div>
-          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Apre già in raccolta: il setaccio parte alla prima parola e il numero scende mentre parli. Salta un passaggio.</div>
-        </div>
-        <div>
-          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«scrivi»</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Dettatura</div>
-          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Tutto quello che dico dopo è testo, non comando. Il sistema smette di interpretare e trascrive.</div>
-        </div>
-        <div>
-          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«dimmi»</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Domanda</div>
-          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Voglio una risposta, non un'azione. Niente parte, niente cambia: la bolla si chiude con la risposta.</div>
-        </div>
-        <div>
-          <div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.1">«aspetta»</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#9AA096;margin-top:12px;margin-bottom:8px">Interruzione</div>
-          <div style="font-size:15px;line-height:1.55;color:#D6D4CC">Ferma tutto ciò che sta partendo. Funziona anche quando INPUT non è aperto: è l'unica parola sempre in ascolto.</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:32px;padding-top:26px;border-top:1px solid rgba(244,243,238,0.22);font-size:16px;line-height:1.6;color:#D6D4CC">
-        <div><strong style="color:#F4F3EE;font-weight:600">Il nome è ammesso, ma non è un risveglio.</strong> Se lo vuoi, il nome è una sesta parola che apre esattamente come «senti» — non un personaggio da salutare e da aspettare. Detto da solo non fa niente.</div>
-        <div><strong style="color:#F4F3EE;font-weight:600">Il verbo è già il primo pezzo della frase.</strong> «Senti, manda a Elena la v3» è una frase sola: non c'è un risveglio e poi un comando. Non si attende un suono di conferma per parlare.</div>
-        <div><strong style="color:#F4F3EE;font-weight:600">Cinque intenzioni, non cinquanta parole.</strong> Fare, cercare, dettare, sapere, fermare: le intenzioni restano cinque anche quando le parole diventano dodici. Si aggiungono sinonimi, non funzioni.</div>
-      </div>
-    </div>
-
-
-    <div style="display:grid;grid-template-columns:660px 1fr;gap:36px;width:1440px;align-items:start">
-
-      <div style="position:relative;border-radius:22px;overflow:hidden;padding:28px;box-sizing:border-box">
-        <div style="position:absolute;inset:0;background:radial-gradient(46% 54% at 12% 14%,#8FA487,transparent 66%),radial-gradient(44% 48% at 94% 8%,#E0B871,transparent 70%),radial-gradient(58% 64% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div>
-        <div style="position:relative;display:flex;align-items:flex-start;gap:14px">
-          <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;flex:none;margin-top:14px"></span>
-          <div style="flex:1;border-radius:26px;padding:20px 22px;box-sizing:border-box;color:#1A1C19;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge)">
-            <div style="font-family:Manrope,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.035em;line-height:1.15">«senti, da adesso chiamami anche Ada»</div>
-            <div style="font-size:13px;color:#4A4E48;line-height:1.5;margin-top:10px">Ada apre il sistema come «senti». Non risponde al nome da solo: se dici soltanto «Ada», non succede niente.</div>
-            <div style="height:1px;margin:20px -22px 0;background:rgba(26,28,25,0.11);box-shadow:0 1px 0 rgba(255,255,255,0.72)"></div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin:19px 0 11px">Puoi dire</div>
-            <div style="display:flex;flex-direction:column;gap:9px">
-              <div style="display:flex;align-items:baseline;gap:10px"><span style="width:8px;height:8px;border-radius:50%;background:#5E9566;flex:none;transform:translateY(-1px)"></span><div style="font-size:12px;color:#1A1C19">«va bene»</div></div>
-              <div style="display:flex;align-items:baseline;gap:10px"><span style="width:8px;flex:none"></span><div style="font-size:12px;color:#4A4E48">«solo per i comandi»</div></div>
-              <div style="display:flex;align-items:baseline;gap:10px"><span style="width:8px;flex:none"></span><div style="font-size:12px;color:#4A4E48">«lascia stare»</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:18px">
-        <div style="border-radius:22px;padding:26px 28px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#9AA096;margin-bottom:14px">La regola del nome</div>
-          <div style="font-size:22px;font-weight:600;letter-spacing:-0.03em;line-height:1.25;margin-bottom:12px">Un nome che apre, non un nome che risponde.</div>
-          <div style="font-size:15.5px;line-height:1.6;color:#D6D4CC">Il nome è un alias: fa esattamente quello che fa «senti», niente di più. <strong style="color:#F4F3EE;font-weight:600">Detto da solo non apre niente</strong> — nessun «sì?», nessun bip, nessuna attesa. Sta all'inizio di una frase vera, come tutte le altre parole d'apertura: «Ada, manda la v3 a Elena». Così resta un modo di parlare al computer e non diventa qualcuno con cui parlare.</div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
-          <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Perché serviva</div>
-            <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Con più persone nella stanza, o con un altro assistente acceso, i verbi generici non bastano: «senti» lo dici anche a un collega. Il nome è ciò che disambigua a chi stai parlando.</div>
-          </div>
-          <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#F2F1EC;border:1px solid rgba(26,28,25,0.14)">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8A5A17;margin-bottom:10px">Contraddice L0</div>
-            <div style="font-size:14.5px;color:#3E423C;line-height:1.55">Il documento <strong style="color:#1A1C19;font-weight:600">Sistema</strong> dice «nessun nome proprio: il sistema non è qualcuno». Questa pagina lo supera in un punto solo — il nome come alias d'apertura. Da riportare in L0 prima che diventi legge.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="width:1440px;border-radius:20px;overflow:hidden;background:#FBFBF9;border:1px solid rgba(26,28,25,0.12)">
-      <div style="display:grid;grid-template-columns:150px 1fr 320px;gap:22px;padding:15px 22px;background:#F2F1EC;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#5A5F58">
-        <div>Intenzione</div><div>Parole che la aprono · la prima è quella di fabbrica</div><div>Cosa non si può cambiare</div>
-      </div>
-      
-        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Comando</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«senti»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«ok»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«Ada»</div></div>
-          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che sia la prima parola della frase. Un comando a metà frase non apre niente.</div>
-        </div>
-        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Ricerca</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«trova»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«cerca»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«dove»</div></div>
-          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che apra già in raccolta: il setaccio parte alla prima parola.</div>
-        </div>
-        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Dettatura</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«scrivi»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«detta»</div></div>
-          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che da lì in poi il sistema smetta di interpretare: dentro una dettatura non si esegue nulla.</div>
-        </div>
-        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3D5643">Domanda</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«dimmi»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«quanto»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«chi»</div></div>
-          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che non parta niente: una domanda non cambia mai lo stato delle cose.</div>
-        </div>
-        <div style="display:grid;grid-template-columns:150px 1fr 320px;align-items:center;gap:22px;padding:15px 22px;border-top:1px solid rgba(26,28,25,0.09)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A2E22">Interruzione</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px"><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:600;color:#1A1C19;padding:5px 12px;border-radius:999px;background:rgba(26,28,25,0.07);box-shadow:inset 0 0 0 1px rgba(26,28,25,0.10)">«aspetta»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«ferma»</div><div style="font-family:Manrope,sans-serif;font-size:15px;font-weight:400;color:#4A4E48;padding:5px 12px;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(26,28,25,0.14)">«no»</div></div>
-          <div style="font-size:14px;color:#4A4E48;line-height:1.5">Che sia sempre in ascolto, anche a bolla chiusa, e che non si possa disattivare. L'unica parola non cancellabile.</div>
-        </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(2,700px);gap:20px 40px">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div style="font-size:17px;font-weight:600">Il verbo determina come nasce la bolla</div>
-        <div style="width:700px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#B3B8B4,#9BA096);position:relative;box-sizing:border-box">
-          <div style="position:absolute;left:26px;bottom:172px;display:flex;align-items:flex-start;gap:13px">
-            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px"></span>
-            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
-              <div style="font-size:17px;font-weight:400;color:#21251F"><span style="color:#3D5A43">senti</span>, manda a Elena la v3 <span style="color:#8B908A">e fissa…</span></div>
-            </div>
-          </div>
-          <div style="position:absolute;left:26px;bottom:96px;display:flex;align-items:flex-start;gap:13px">
-            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px"></span>
-            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:16px">
-              <div style="font-size:17px;font-weight:400;color:#21251F"><span style="color:#3D5A43">trova</span> la proposta per Acme</div>
-              <div style="width:1px;height:20px;background:rgba(26,28,25,0.14)"></div>
-              <div style="display:flex;align-items:baseline;gap:8px"><div style="font-size:22px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1">37</div><div style="font-size:13px;color:#5A5F58">su 412</div></div>
-            </div>
-          </div>
-          <div style="position:absolute;left:26px;bottom:20px;display:flex;align-items:flex-start;gap:13px">
-            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px"></span>
-            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);display:flex;align-items:center;gap:12px">
-              <i class="icon-pen-line" style="font-size:14px;color:#3E423C;line-height:1"></i>
-              <div style="font-size:17px;font-weight:400;color:#21251F">Ciao Andrea, venerdì va benissimo<span style="display:inline-block;width:2px;height:17px;background:#1A1C19;vertical-align:-3px;margin-left:3px"></span></div>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il verbo resta visibile in verde salvia nella trascrizione: è la prova di <em>come</em> il sistema ti ha inteso. Con «scrivi» la bolla cambia icona e non mostra il verbo, perché da lì in poi è tutto testo tuo.</div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div style="font-size:17px;font-weight:600">Quando il verbo non serve</div>
-        <div style="width:700px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(26,28,25,0.10);background:linear-gradient(180deg,#B3B8B4,#9BA096);position:relative;box-sizing:border-box">
-          <div style="position:absolute;right:24px;top:24px;width:420px;border-radius:22px;padding:16px 18px;box-sizing:border-box;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19">
-            <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;color:#8A5A17"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A17">Aspetta te</div>
-            </div>
-            <div style="font-size:16px;font-weight:400;line-height:1.35;color:#21251F">La v3 per Elena, pronta da mandare.</div>
-          </div>
-          <div style="position:absolute;left:26px;bottom:24px;display:flex;align-items:flex-start;gap:13px">
-            <span style="width:13px;height:13px;border-radius:50%;background:#5E9566;position:relative;z-index:2;display:block;flex:none;margin-top:14px, 0 0 0 16px rgba(26,28,25,0.06)"></span>
-            <div style="padding:13px 20px;border-radius:24px;background:var(--liquid-focus);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);font-size:17px;font-weight:400;color:#21251F">«manda»</div>
-          </div>
-          <div style="position:absolute;right:24px;bottom:30px;width:300px;font-size:14px;color:#2F332C;line-height:1.5;text-align:right">Finché una bolla aspetta una tua parola, le sue frasi funzionano nude: non devi ripetere il verbo d'ingresso.</div>
-        </div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Dentro una conversazione già aperta il verbo è superfluo: «manda», «la seconda», «no, aspetta» bastano da sé, per 30 secondi dall'ultimo scambio. Poi la finestra si chiude e serve di nuovo aprire.</div>
-      </div>
-    </div>
-
-    <div style="width:1440px;border-radius:20px;padding:26px 30px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09);display:grid;grid-template-columns:repeat(4,1fr);gap:26px;font-size:15px;line-height:1.55;color:#4A4E48">
-      <div><strong style="color:#1A1C19;font-weight:600">Si cambiano parlando</strong><br>Nessun pannello impostazioni: «da adesso, per cercare dico <em>cerca</em>» basta. La modifica nasce come bolla, te la fa rileggere, e la confermi a voce.</div>
-      <div><strong style="color:#1A1C19;font-weight:600">«aspetta» è sempre in ascolto</strong><br>L'unica parola riconosciuta anche a bolla chiusa e durante un compito in background. Un sistema che agisce deve poter essere fermato senza preamboli.</div>
-      <div><strong style="color:#1A1C19;font-weight:600">Nessun suono di risveglio</strong><br>La conferma è visiva: il punto d'ascolto appare e la bolla nasce accanto. Un bip obbligherebbe ad aspettarlo prima di parlare.</div>
-      <div><strong style="color:#1A1C19;font-weight:600">Se sbagli parola non importa</strong><br>«dimmi, manda a Elena…» funziona comunque: la parola d'apertura è un indizio sull'intenzione, non una sintassi. Il senso vince sulla forma — vale anche per il nome.</div>
-    </div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:14px;margin-top:40px">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Gli orari dello scambio · 17 settembre 2026</div>
-    <div style="font-size:16px;line-height:1.6;color:#3E423C;max-width:1100px">Dentro la bolla, ogni giro di botta e risposta porta la sua ora: <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">9 px</span>, peso 500, spaziatura <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">0.06em</span>, inchiostro fioco, <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">2 px</span> d’aria sotto. In colonna dal più vecchio al più recente, sopra la riga da cui scrivi.</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;width:1380px;font-size:15px;line-height:1.55;color:#4A4E48">
-      <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Una per giro, non per messaggio</div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La domanda e la risposta sono lo stesso momento. Scrivere l’ora due volte a tre pixel di distanza è rumore, non informazione.</div>
-      </div>
-      <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">È l’ora del sistema</div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Quella che segna la Profilebar, non l’ora vera della macchina. Due orologi sullo stesso schermo che dicono cose diverse sono un errore che si vede subito e non si spiega.</div>
-      </div>
-      <div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#5A5F58;margin-bottom:10px">Non è una quarta cosa</div>
-        <div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Dentro INPUT stanno il testo, la raccolta e lo scambio. L’ora non si aggiunge a quei tre: appartiene allo scambio, come la fonte appartiene a una carta.</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:18px;margin-top:40px">
-    <div style="display:flex;align-items:baseline;gap:14px">
-      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Il flusso, dal silenzio al silenzio</div>
-      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">Cosa fa INPUT mentre parli, mentre pensa, e dopo. <strong style="color:#1A1C19;font-weight:600">Sei momenti</strong> &mdash; i tre stati tagliati da due momenti dell&rsquo;interfaccia &mdash; e il pi&ugrave; importante &egrave; il terzo, dove non succede niente apposta.</div>
-    </div>
-    <div style="width:1440px;display:grid;grid-template-columns:repeat(3,462px);gap:26px 24px"><div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.12em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:3px 7px">1</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">silenzio</div></div><div style="position:relative;height:172px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;width:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(26,28,25,0.5);padding:18px 2px">INPUT NON ESISTE</div></div></div><div style="font-size:16px;font-weight:600;letter-spacing:-0.02em">Non c&rsquo;&egrave; niente da dire</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Nessun pallino in attesa, nessuna barra pronta a ricevere. In tastiera resta il campo, perch&eacute; l&igrave; &egrave; l&rsquo;unica porta d&rsquo;ingresso.</div></div><div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.12em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:3px 7px">2</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">ui_creacontesto</div></div><div style="position:relative;height:172px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;width:100%"><div style="position:relative;border-radius:26px;padding:16px 18px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19"><span style="position:absolute;left:-17px;top:50%;width:9px;height:9px;border-radius:50%;background:#4E6B54"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58;margin-bottom:7px">Ti sto sentendo</div><div style="font-size:15px;line-height:1.3">scrivi a Marco per le foto di ieri</div><div style="display:flex;gap:6px;margin-top:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 8px;border-radius:9px;background:rgba(26,28,25,0.07);color:#3E423C">Marco</div></div></div></div></div><div style="font-size:16px;font-weight:600;letter-spacing:-0.02em">Parli, e si muove una cosa sola</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La frase cresce e la <strong style="color:#1A1C19;font-weight:600">raccolta</strong> aggancia i nomi che il sistema gi&agrave; conosce. &Egrave; una ricerca in un elenco, non una comprensione: nessuna bolla nasce, nessun fuoco si sposta.</div></div><div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.12em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:3px 7px">3</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">il turno</div></div><div style="position:relative;height:172px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;width:100%"><div style="position:relative;border-radius:26px;padding:16px 18px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19"><span style="position:absolute;left:-17px;top:50%;width:9px;height:9px;border-radius:50%;background:#4E6B54"></span><div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5A5F58;margin-bottom:7px">Sto pensando</div><div style="font-size:15px;line-height:1.3;color:#4A4E48">scrivi a Marco per le foto di ieri</div></div></div></div><div style="font-size:16px;font-weight:600;letter-spacing:-0.02em">Finisci, e lo schermo sta fermo</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il punto pulsa. Non si muove nient&rsquo;altro: la frase si capisce <strong style="color:#1A1C19;font-weight:600">una volta sola</strong>, e finch&eacute; non ha capito il sistema non indovina.</div></div><div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.12em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:3px 7px">4</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">ui_aggiorna</div></div><div style="position:relative;height:172px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;width:100%"><div style="position:relative;border-radius:26px;padding:16px 18px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19"><div style="font-size:14px;line-height:1.35;color:#4A4E48">scrivi a Marco per le foto di ieri</div><div style="height:1px;margin:11px -18px;background:rgba(26,28,25,0.11)"></div><div style="font-size:15px;line-height:1.35">Ne ho trovate sei, fra le sette e le undici.</div></div></div></div><div style="font-size:16px;font-weight:600;letter-spacing:-0.02em">La risposta, e quello che ne segue</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Il testo compare subito e la voce lo legge in parallelo. Se nasce un task, nasce <strong style="color:#1A1C19;font-weight:600">sulla DESK</strong> &mdash; non dentro INPUT: INPUT porta le parole, DESK porta le cose.</div></div><div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.12em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:3px 7px">5</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">attesa</div></div><div style="position:relative;height:172px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;width:100%"><div style="position:relative;border-radius:26px;padding:16px 18px;box-sizing:border-box;background:var(--liquid-film);backdrop-filter:var(--liquid-optics);-webkit-backdrop-filter:var(--liquid-optics);box-shadow:var(--liquid-edge);color:#1A1C19"><div style="font-size:14px;line-height:1.35;color:#4A4E48">scrivi a Marco per le foto di ieri</div><div style="height:1px;margin:11px -18px;background:rgba(26,28,25,0.11)"></div><div style="font-size:15px;line-height:1.35">Ne ho trovate sei, fra le sette e le undici.</div></div></div></div><div style="font-size:16px;font-weight:600;letter-spacing:-0.02em">Lo scambio resta, per trenta secondi</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La conversazione &egrave; aperta: non serve ripetere il verbo. Passati i trenta secondi dall&rsquo;ultimo scambio non c&rsquo;&egrave; pi&ugrave; niente da ricordare a schermo.</div></div><div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:9px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.12em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:3px 7px">6</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#5A5F58">assente</div></div><div style="position:relative;height:172px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:18px;box-sizing:border-box"><div style="position:absolute;inset:0;background:radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),linear-gradient(158deg,#EDEAE1,#B9B6AB)"></div><div style="position:relative;width:100%"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(26,28,25,0.5);padding:18px 2px">INPUT NON ESISTE</div></div></div><div style="font-size:16px;font-weight:600;letter-spacing:-0.02em">E torna a non esserci</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Lo scambio lascia lo schermo, ma resta integralmente nella chat raw dell&rsquo;utente attivo. Separatamente, l&rsquo;AI pu&ograve; conservare nella sua Memory Engine permanente soltanto le informazioni utili selezionate dalla conversazione. <strong style="color:#1A1C19;font-weight:600">I due archivi sono distinti</strong> e non scadono con la sessione.</div></div></div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:18px;margin-top:40px">
-    <div style="display:flex;align-items:baseline;gap:14px">
-      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Quattro regole, tutte negative</div>
-      <div style="font-size:16px;color:#4A4E48;max-width:52em;line-height:1.5">Quello che INPUT non fa &egrave; ci&ograve; che gli impedisce di diventare una chat.</div>
-    </div>
-    <div style="width:1440px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px"><div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)"><div style="font-size:17px;font-weight:600;letter-spacing:-0.02em;margin-bottom:7px">Mentre parli non si capisce niente</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">La sola cosa che si muove &egrave; la raccolta, e non decide: si vede <em>che</em> hai nominato Marco. Capire a met&agrave; vorrebbe dire agire a met&agrave;, e agire su una frase non finita &egrave; il modo pi&ugrave; rapido di fare la cosa sbagliata con l&rsquo;aria di essere svegli.</div></div><div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)"><div style="font-size:17px;font-weight:600;letter-spacing:-0.02em;margin-bottom:7px">Niente di un task entra in INPUT</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Stato, avanzamento, frasi, progresso: stanno sulla bolla di quel task. Dentro INPUT ci sono tre cose sole &mdash; quello che hai detto, la raccolta, e lo scambio.</div></div><div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)"><div style="font-size:17px;font-weight:600;letter-spacing:-0.02em;margin-bottom:7px">Niente virgolette, qui</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Le &laquo;&raquo; marcano ci&ograve; che <em>puoi dire</em>, e stanno sotto la bolla a cui INPUT parla. Le tue parole non le portano, e nemmeno le risposte.</div></div><div style="border-radius:18px;padding:20px 22px;box-sizing:border-box;background:#FBFBF9;border:1px solid rgba(26,28,25,0.09)"><div style="font-size:17px;font-weight:600;letter-spacing:-0.02em;margin-bottom:7px">Uno scambio non &egrave; un task</div><div style="font-size:14.5px;color:#4A4E48;line-height:1.55">Una domanda a cui il sistema risponde e basta resta uno scambio, e muore l&igrave;. Se ogni frase lasciasse una bolla, la scrivania sarebbe la cronologia di una chat.</div></div></div>
-  </div>
-
-  <div style="width:1440px;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE;margin-top:40px">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.05em;line-height:2">LO SCHERMO &Egrave; IMMEDIATO, LA VOCE &Egrave; ORDINATA<br>INPUT PORTA LE PAROLE, DESK PORTA LE COSE<br>QUANDO NON C&rsquo;&Egrave; NIENTE DA DIRE, NON C&rsquo;&Egrave;</div>
-  </div>
-
+</div>
 
 </x-dc>
 </body>

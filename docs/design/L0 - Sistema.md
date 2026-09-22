@@ -67,10 +67,12 @@ del suo task.
 **Una bolla, un task.** Due task non condividono una bolla e un task non si spezza in due.
 Il vetro satinato è il bordo del pensiero: dove finisce la bolla, finisce l'argomento.
 
-**L'eccezione è una sola** — e il 19 settembre 2026 erano tre.
+**Le eccezioni sono due** — e il 19 settembre 2026 erano tre.
 
 - **SYSTEMBAR** non ha bolla: non è un task, è la macchina che si dichiara, e vive a
   inchiostro diretto sul fondo.
+- **TIMELINE** non ha bolla: non è un task, è dove sei dentro la giornata, e vive anche lei
+  a inchiostro diretto sul fondo.
 
 Le altre due sono cadute, e vale la pena sapere come, perché tutte e due erano finzioni
 che si vedevano solo a parole:
@@ -90,9 +92,10 @@ si legge sta in una bolla, e le bolle sono fatte tutte della stessa cosa.** Il m
 non distingue più niente — lo fanno il contenuto e il comportamento
 (`L1 - Temi`).
 
-INPUT invece la bolla ce l'ha, e quando non c'è niente da dire non esiste affatto: nessun
-pallino in attesa. Il punto d'ascolto sta fuori dalla bolla, a sinistra, come la coda di un
-balloon.
+INPUT invece la bolla ce l'ha, e **c'è sempre**: è l'unica via di scambio fra sistema e
+utente, e non si può togliere di mezzo. A riposo è ridotta al minimo — il posto dove
+scrivere, e nient'altro. Quando l'ascolto attivo è acceso, un **pallino verde** sta fuori
+dalla bolla, a sinistra, come la coda di un balloon; quando è spento, non c'è.
 
 ---
 
@@ -109,7 +112,7 @@ nessun rettangolo, nessun bordo, nessun verbo imperativo rivolto all'utente.
 
 ~~La tastiera è una scorciatoia, non un'alternativa.~~ **Caduta il 17 settembre 2026**: voce
 e scrittura sono di pari grado in ingresso, e spegnere il microfono toglie un canale su due,
-non una funzione (`docs/05-interfaccia §1`).
+non una funzione (`docs/L02`).
 
 Due eccezioni, tutte e due gesti che non possono avere una frase: **la campanella**, che si
 preme e ha anche una frase, e **il microfono**, che si preme e basta — col microfono spento
@@ -119,14 +122,15 @@ non esiste una frase che possa arrivare.
 
 ~~Main e side: conta chi ha iniziato.~~ **Riscritta il 18 settembre 2026**, perché le *side*
 non esistono più: quello che arriva non è un task finché non lo prendi
-(`docs/01-modello §3`).
+(`docs/L02`).
 
 Quello che resta, ed è la parte che valeva: **l'origine non è una gerarchia**. Un task che
 hai chiesto tu e uno nato da una cosa arrivata hanno lo stesso vetro, lo stesso raggio, lo
 stesso inchiostro. L'origine si sa, non si vede.
 
-La **main** è la bolla a cui INPUT sta parlando — una sola per volta — e si riconosce da un
-segno solo: il punto d'ascolto puntato verso di lei, mai dall'essere il doppio delle altre.
+La **active** è la bolla a cui INPUT sta parlando — una sola per volta — e si riconosce da
+un segno solo: **un pallino verde accanto al suo titolo**, mai dall'essere il doppio delle
+altre.
 
 ### 03 · Un task in un posto solo
 
@@ -161,22 +165,24 @@ Quando un task cambia stato, **migra**: esce da un'area ed entra nell'altra, non
 
 | | | |
 |---|---|---|
-| **salvia** | `#4E6B54` | il sistema sta lavorando, o ha finito |
-| **ambra** | `#B3762A` | la palla è tua |
-| **rosso terra** | `#8A2E22` | si è fermato e non può proseguire da solo |
-| **nessun colore** | | esiste e non chiede niente: appena nato, o rimandato |
+| **grigio** | `#94968E` | non è ancora partito: è una bozza |
+| **azzurro** | `#009DD6` | il sistema sta lavorando |
+| **ambra** | `#EDA31C` | la palla è tua |
+| **nessun colore** | | non chiede niente: ha finito, oppure l'hai rimandato |
 
-Nessun colore «di app», nessun colore decorativo. **Massimo due punti di colore per
-schermo**: contenuti e immagini si mostrano desaturati, e il colore torna solo sul dato in
-discussione.
+Grigio e azzurro stanno alla stessa luminanza — 0,30 e 0,29 — così sullo stesso vetro
+nessuno dei due pesa più dell'altro. L'ambra è più chiara apposta: è l'unica che chiede
+qualcosa a te.
 
-Il colore segue le **sette facce** del modello, non i quattro stati: `T_NUOVO` e
-`T_ATTESA · di un'ora` non hanno colore perché non chiedono niente, e per una cosa che non
-chiede il colore sarebbe una bugia (`docs/01-modello §2`).
+Il **verde** `#00A878` non compare in questa tabella perché non è uno stato: è il pallino
+della bolla **active**, accanto al titolo e all'icona. È l'unico posto in cui il verde
+esiste, ed è per questo che si riconosce da lontano.
 
-> La tavolozza del prototipo è più viva di questa — `#00a878`, `#eda31c`, `#e0364f` — e vive
-> nel profilo, non qui. Finché le due non si riconciliano, i due posti dicono due cose
-> diverse: è in `docs/11-aperte`.
+Nessun colore «di app», nessun colore decorativo: contenuti e immagini si mostrano
+desaturati, e il colore torna solo sul dato in discussione.
+
+**Quale stato porta quale colore sta in `docs/L01`.** Qui stanno i valori e il modo in cui
+si comportano sul vetro.
 
 ### 05 · Leggibilità sopra il vetro
 
@@ -276,14 +282,19 @@ primo; **il colore qui significa privacy**. Subito sotto la Profilebar, **44 / 1
 Inchiostro, nessun contenitore. Più piccola perché conta meno.
 
 ### DESK
-Quello che sta andando avanti: le bolle. La **main** è una sola per volta ed è quella a cui
+Quello che sta andando avanti: le bolle. La **active** è una sola per volta ed è quella a cui
 INPUT sta parlando; le altre restano sulla scrivania, intere. Centro, nessun ancoraggio:
 è l'unica area senza griglia (legge 09).
 
 ### INPUT
-La voce, lo scambio, la raccolta. Le frasi sono quelle della main: cambia la main, cambiano
-le frasi. Basso a sinistra, bolla, con il punto d'ascolto fuori a sinistra. Quando la
-conversazione è finita non esiste.
+Quello che dici, e quello che si sta formando. Due bolle, impilate in basso a sinistra:
+sotto INPUT, dove si scrive e dove compare la risposta; sopra la **dropzone**, che c'è solo
+quando un task si sta componendo e ne mostra uno alla volta. INPUT non si occupa mai:
+qualunque cosa ci sia nella dropzone, resta pronto per la frase successiva.
+
+**Le frasi che puoi dire stanno qui, e solo qui** — sono quelle della bolla **active**, e
+cambiano con lei. Il pallino verde dell'ascolto sta fuori a sinistra quando l'ascolto è
+acceso.
 
 ### SIDEBAR
 Quello che hai in mano: i chip, i flussi, e i rimandati. Un chip è **una bolla che si è

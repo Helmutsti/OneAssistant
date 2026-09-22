@@ -41,5 +41,8 @@ invece un archivio distinto che conserva integralmente gli scambi dell'utente at
 - La Funzione Delay rinvia di 90 secondi la chiamata reale per ogni operazione che invia
   o pubblica contenuti verso l'esterno. Un bypass richiesto esplicitamente dall'utente
   produce invece un invio immediato e non annullabile.
+- Il tema si sceglie nel profilo dell'utente. **Nessuna selezione automatica dal tema del
+  dispositivo**: il sistema copre lo schermo intero, e cambiare materiale da solo mentre
+  l'utente guarda è una cosa che succede sotto le mani.
 - Nel prototipo è presente la voce dell'assistente con Piper e Serena HIGH. In futuro si
   potrà adottare un modello vocale più performante e a pagamento.

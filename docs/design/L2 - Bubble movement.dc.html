@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E4E1DA; }
+  a { color: #4E6B54; text-decoration: none; }
+  .palco { position:relative; height:250px; border-radius:20px; overflow:hidden;
+    background:
+      radial-gradient(44% 56% at 12% 16%,#8FA487,transparent 68%),
+      radial-gradient(40% 46% at 92% 8%,#E0B871,transparent 70%),
+      radial-gradient(54% 62% at 84% 98%,#3E4A3C,transparent 68%),
+      linear-gradient(158deg,#EDEAE1,#B9B6AB); }
+  .b { position:absolute; border-radius:26px; padding:11px 14px; box-sizing:border-box;
+    background:var(--liquid-film); backdrop-filter:var(--liquid-optics);
+    -webkit-backdrop-filter:var(--liquid-optics); box-shadow:var(--liquid-edge); }
+  .b .n { font-size:13.5px; font-weight:500; letter-spacing:-0.02em; color:#1A1C19; line-height:1.25; }
+  .b .d { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.06em; color:#6E7269; margin-top:4px; }
+  .b.alta { box-shadow: var(--liquid-edge), 0 18px 34px -14px rgba(37,37,37,.38); }
+  .b.via { opacity:.26; }
+  .pv { display:inline-block; width:9px; height:9px; border-radius:50%; background:#00A878;
+    flex:none; margin-right:6px; vertical-align:0px; }
+  .drop { position:absolute; left:20px; bottom:20px; right:auto; width:210px; border-radius:18px;
+    padding:9px 12px; box-sizing:border-box; background:var(--liquid-film);
+    backdrop-filter:var(--liquid-optics); -webkit-backdrop-filter:var(--liquid-optics);
+    box-shadow:var(--liquid-edge); }
+  .chip { position:absolute; height:30px; border-radius:20px; padding:0 13px; display:flex;
+    align-items:center; gap:7px; box-sizing:border-box; background:var(--liquid-film);
+    backdrop-filter:var(--liquid-optics); -webkit-backdrop-filter:var(--liquid-optics);
+    box-shadow:var(--liquid-edge); font-size:11.5px; color:#2A2E28; }
+  .arco { position:absolute; stroke:rgba(26,28,25,0.34); stroke-width:1.5; fill:none;
+    stroke-dasharray:4 4; }
+  .freccia { position:absolute; font-family:'IBM Plex Mono',monospace; font-size:10px;
+    letter-spacing:0.1em; text-transform:uppercase; color:#4A4E48; background:rgba(251,251,249,.82);
+    border-radius:5px; padding:3px 7px; }
+  .scheda { border-radius:18px; padding:20px 22px; background:#FBFBF9; border:1px solid rgba(26,28,25,0.09); }
+  .scheda h3 { font-size:17px; font-weight:600; letter-spacing:-0.02em; margin:0 0 7px; }
+  .scheda p { margin:0; font-size:14.5px; color:#4A4E48; line-height:1.55; }
+  .scheda b { color:#1A1C19; font-weight:600; }
+  .misure { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.05em;
+    color:#5A5F58; line-height:1.7; margin-top:10px; }
+  .occhiello { font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.16em;
+    text-transform:uppercase; color:#5A5F58; }
+</style>
+<link rel="stylesheet" href="./liquid-glass.css">
+<link rel="stylesheet" href="./materiali.css">
+</helmet>
+
+<section style="width:max-content;padding:64px;font-family:Manrope,sans-serif;color:#1A1C19;display:flex;flex-direction:column;gap:48px;background:#E4E1DA">
+
+  <div style="width:1440px;max-width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.1em;background:#1A1C19;color:#F2F1ED;border-radius:5px;padding:4px 9px">L2</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#5A5F58">Livello 2 / componente / come si muove una bolla</div>
+      </div>
+      <div style="font-size:44px;font-weight:500;letter-spacing:-0.035em;line-height:1">BUBBLE MOVEMENT</div>
+      <div style="font-size:18px;color:#3E423C;margin-top:12px;max-width:42em;line-height:1.55">I task si comportano come bolle di sapone su una superficie d&rsquo;acqua: hanno volume, si fanno spazio a vicenda, non si attraversano mai. <strong style="font-weight:600">Quattro movimenti, e nessuno senza una causa.</strong></div>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;color:#4A4E48;line-height:1.7;text-align:right;letter-spacing:0.02em">onda 12 px &middot; sfalsamento 40 ms<br>rientro 40% &middot; contrazione 280 ms<br>migrazione 420 ms<br>le misure stanno in L1 - Token</div>
+  </div>
+
+  <!-- LE QUATTRO REGOLE -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">Le regole, prima dei movimenti</div>
+      <div style="font-size:16px;color:#4A4E48">Valgono tutte e quattro insieme: se una cade, il movimento diventa decorazione.</div>
+    </div>
+    <div style="width:1440px;max-width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div class="scheda"><h3>Ogni movimento ha una causa</h3><p>Dichiarabile a parole: &egrave; nata una bolla, ne hai messa via una, una ha finito. <b>Niente respiro decorativo, niente galleggiamento perpetuo.</b> Una scrivania ferma non &egrave; una scrivania spenta.</p></div>
+      <div class="scheda"><h3>Nessuna collisione</h3><p>Nessuna bolla passa sopra un&rsquo;altra mentre si muove: si spostano, si comprimono appena, ruotano attorno. La sovrapposizione di bordo &egrave; ammessa <b>a riposo</b>, la collisione in movimento no.</p></div>
+      <div class="scheda"><h3>L&rsquo;acqua non rimbalza</h3><p>Ogni spostamento parte veloce e si spegne. Nessun rimbalzo elastico, nessuna molla: quello che si muove sta cedendo il posto, non festeggiando.</p></div>
+      <div class="scheda"><h3>Il posto non &egrave; assegnato</h3><p>Una bolla sta dove c&rsquo;&egrave; spazio. Se un&rsquo;altra cresce si allontana, se un&rsquo;altra sparisce si riavvicina &mdash; ma <b>solo quando il movimento ha una causa</b> che la riguarda.</p></div>
+    </div>
+  </div>
+
+  <!-- 1 · NASCITA -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">1 &middot; Nascita &middot; dalla dropzone alla scrivania</div>
+      <div style="font-size:16px;color:#4A4E48">Una bolla non compare dal nulla: arriva da dove l&rsquo;hai composta.</div>
+    </div>
+    <div style="width:1440px;max-width:100%;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:26px;align-items:start">
+      <div class="palco">
+        <div class="b" style="left:300px;top:36px;width:210px"><div class="n">Riordino dei documenti</div><div class="d">128 / 412</div></div>
+        <div class="b" style="left:540px;top:120px;width:190px"><div class="n">Revisione contratto</div><div class="d">alle 16:00</div></div>
+        <div class="b" style="left:250px;top:128px;width:196px;opacity:.5;border:1px dashed rgba(26,28,25,.3);box-shadow:none;background:rgba(251,251,249,.42)"><div class="n">Mandare la v3 a Paolo</div><div class="d">in arrivo</div></div>
+        <svg class="arco" style="left:0;top:0;width:100%;height:100%"><path d="M 120 196 C 150 150, 200 130, 250 150"/></svg>
+        <div class="drop"><div style="font-size:12.5px;font-weight:500">Mandare la v3 a Paolo</div><div style="font-size:11px;color:#5A5F58;font-style:italic;margin-top:2px">Bozza</div></div>
+        <div class="freccia" style="left:150px;top:118px">vola, 420 ms</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="scheda"><h3>Parte dal basso a sinistra</h3><p>Alla conferma, la bozza <b>lascia la dropzone e vola al suo posto</b> lungo un arco, non in linea retta. Si vede che quella bolla &egrave; la cosa che hai appena composto: il legame fra le due non lo devi ricostruire tu.</p><div class="misure">PARTENZA DROPZONE &middot; ARCO &middot; 420 MS<br>ARRIVO: IL PUNTO PI&Ugrave; LIBERO DELLA SCRIVANIA</div></div>
+        <div class="scheda"><h3>E le vicine fanno spazio</h3><p>All&rsquo;arrivo, la bolla <b>entra nella superficie</b> come un corpo che entra nell&rsquo;acqua. Le vicine si allontanano lungo la retta che le unisce al punto d&rsquo;arrivo: le pi&ugrave; vicine di pi&ugrave;, e ognuna parte 40 ms dopo la precedente. &Egrave; quello che fa leggere il movimento come un&rsquo;onda e non come uno scatto simultaneo.</p><div class="misure">&minus;6 / &minus;8 / &minus;12 PX, IN DIREZIONE OPPOSTA<br>SFALSAMENTO 40 MS &middot; RIENTRO 40%</div></div>
+        <div class="scheda"><h3>Nessun annuncio</h3><p>La nascita non ha suono, n&eacute; bordo che pulsa, n&eacute; alone. Se il task aspetta te lo dice <b>il suo colore</b>, non il movimento.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 · ACTIVE -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">2 &middot; Active &middot; quando parli di una bolla</div>
+      <div style="font-size:16px;color:#4A4E48">La scrivania non si riorganizza perch&eacute; hai nominato qualcosa.</div>
+    </div>
+    <div style="width:1440px;max-width:100%;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:26px;align-items:start">
+      <div class="palco">
+        <div class="b alta" style="left:300px;top:44px;width:218px"><div class="n"><span class="pv"></span>Riordino dei documenti</div><div class="d">128 / 412</div></div>
+        <div class="b" style="left:560px;top:130px;width:190px"><div class="n">Revisione contratto</div><div class="d">alle 16:00</div></div>
+        <div class="b" style="left:236px;top:150px;width:196px"><div class="n">Foto di Monaco</div><div class="d">6 immagini</div></div>
+        <div class="freccia" style="left:300px;top:20px">ombra pi&ugrave; profonda &middot; film +12%</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="scheda"><h3>Il pallino, e nient&rsquo;altro che si sposta</h3><p>Cambiare active <b>accende un pallino e ne spegne un altro</b>. Nessuna bolla cresce, nessuna cede spazio, nessuna migra: mentre parli la scrivania sta ferma, perch&eacute; una scrivania che si riorganizza a ogni frase &egrave; una scrivania che non si pu&ograve; guardare.</p></div>
+        <div class="scheda"><h3>Viene in primo piano di poco</h3><p>Un secondo segno, e non &egrave; una dimensione: la bolla active prende <b>il film pi&ugrave; denso e l&rsquo;ombra pi&ugrave; profonda</b> &mdash; si stacca dal piano, resta della sua misura, al suo posto. La dimensione racconta il contenuto, mai il rango (legge 10).</p><div class="misure">FILM --LIQUID-FOCUS &middot; +12%<br>OMBRA PI&Ugrave; PROFONDA &middot; 180 MS<br>NESSUN CAMBIO DI SCALA, NESSUNO SPOSTAMENTO</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 · MESSA DA PARTE -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">3 &middot; Messa da parte &middot; la discesa nella Sidebar</div>
+      <div style="font-size:16px;color:#4A4E48">&Egrave; una tua scelta, mai un timer.</div>
+    </div>
+    <div style="width:1440px;max-width:100%;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:26px;align-items:start">
+      <div class="palco">
+        <div class="b via" style="left:300px;top:44px;width:218px"><div class="n">Riordino dei documenti</div><div class="d">128 / 412</div></div>
+        <svg class="arco" style="left:0;top:0;width:100%;height:100%"><path d="M 480 60 C 600 40, 680 40, 720 44"/></svg>
+        <div class="chip" style="right:20px;top:32px">Riordino <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#5A5F58">128/412</span></div>
+        <div class="b" style="left:300px;top:140px;width:196px"><div class="n">Foto di Monaco</div><div class="d">6 immagini</div></div>
+        <div class="freccia" style="left:500px;top:96px">si contrae 280 ms, poi migra 420 ms</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="scheda"><h3>Lo chiedi tu</h3><p><b>Nessun timer la fa scendere.</b> Il sistema non decide da solo che un tuo lavoro ha smesso di interessarti: la migrazione in Sidebar &egrave; una cosa che dici.</p></div>
+        <div class="scheda"><h3>Perde le righe una alla volta</h3><p>Prima il contesto, poi l&rsquo;anteprima, infine restano nome e dato: <b>la contrazione &egrave; leggibile</b>. Poi diventa chip e vola all&rsquo;ancoraggio della Sidebar lungo un arco, non in linea retta.</p><div class="misure">CONTRAZIONE 280 MS &middot; MIGRAZIONE 420 MS<br>ANCORAGGIO 44 / 180 &middot; ARCO, MAI RETTA</div></div>
+        <div class="scheda"><h3>E risale quando la nomini</h3><p>Un chip &egrave; la stessa bolla a un altro livello di contrazione, e <b>conserva il diritto di risalire dove stava</b>. Basta la parola con cui l&rsquo;hai chiamata: &laquo;riprendi il riordino&raquo;.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 · USCITA -->
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+      <div style="font-size:28px;font-weight:500;letter-spacing:-0.025em">4 &middot; Uscita &middot; quando una bolla ha finito</div>
+      <div style="font-size:16px;color:#4A4E48">Svanisce sul posto. Non si contrae, non migra, non lascia un chip.</div>
+    </div>
+    <div style="width:1440px;max-width:100%;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:26px;align-items:start">
+      <div class="palco">
+        <div class="b via" style="left:330px;top:48px;width:210px"><div class="n">Mandare la v3 a Paolo</div><div class="d">mandata alle 09:41</div></div>
+        <div class="b" style="left:266px;top:148px;width:196px"><div class="n">Foto di Monaco</div><div class="d">6 immagini</div></div>
+        <div class="b" style="left:568px;top:136px;width:190px"><div class="n">Revisione contratto</div><div class="d">alle 16:00</div></div>
+        <div class="freccia" style="left:330px;top:22px">sfuma sul posto, si contrae del 6%</div>
+        <div class="freccia" style="left:266px;top:198px">&larr; rientro 40%</div>
+        <div class="freccia" style="left:600px;top:186px">rientro 40% &rarr;</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="scheda"><h3>Sfuma dov&rsquo;&egrave;</h3><p>Il film diventa <b>--liquid-quiet</b>, pi&ugrave; trasparente, e la bolla si contrae del 6% mentre svanisce: <b>non vola via, non implode</b>. Chi ha finito esce senza farsi guardare.</p><div class="misure">FILM --LIQUID-QUIET &middot; SCALA 94% &middot; 320 MS</div></div>
+        <div class="scheda"><h3>Le vicine si riavvicinano</h3><p>&Egrave; l&rsquo;onda al contrario: lo spazio liberato viene <b>in parte</b> riassorbito, con lo stesso passo della nascita &mdash; 40% del vuoto, sfalsate di 40 ms, le pi&ugrave; vicine per prime. La scrivania si ricompone senza tornare com&rsquo;era: <b>ha una configurazione nuova, non un rimbalzo</b>.</p><div class="misure">RIENTRO 40% &middot; SFALSAMENTO 40 MS<br>IN DIREZIONE DEL VUOTO</div></div>
+        <div class="scheda"><h3>L&rsquo;invio in Delay non &egrave; un&rsquo;uscita</h3><p>Se il task ha prodotto un invio verso l&rsquo;esterno, per novanta secondi resta in Sidebar e <b>sta ancora lavorando</b>: &egrave; azzurro, non ha finito. L&rsquo;uscita viene dopo.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="width:1440px;max-width:100%;border-radius:20px;padding:24px 28px;box-sizing:border-box;background:#1A1C19;color:#F4F3EE">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.05em;line-height:2">OGNI SPOSTAMENTO HA UN MOTIVO DICHIARABILE A PAROLE<br>NESSUNA BOLLA PASSA SOPRA UN&rsquo;ALTRA<br>L&rsquo;ACQUA NON RIMBALZA</div>
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>
