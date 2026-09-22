@@ -612,7 +612,7 @@ combacia col documento**
   con cui il frontend può scrivere `.md` fuori da `memory/`, cioè aggirare l'unica
   restrizione che la porta dichiara
 - **Evidenza**: riprodotta contro il dev server con dati sintetici nell'audit del ramo
-  `CHATGPT` (`audit-oneassistant/evidenze/http-test.log`, finding `A032`/`A033`):
+  `CHATGPT` (`../chatgpt/evidenze/http-test.log`, finding `A032`/`A033`):
   ```
   GET  /archivio/user_123/../audit_sibling/probe.txt              → 200  "SYNTHETIC_SIBLING_DATA"
   POST /archivio/user_123/memory {"percorso":"../services/audit-probe.md"}       → 200
@@ -1011,7 +1011,7 @@ precedente in §6.2: conformità dedotta dalla presenza di un controllo, invece 
 percorso di esecuzione. L'ho fatto nel paragrafo in cui dichiaravo di non farlo.
 
 Segnalato dall'audit indipendente del ramo `CHATGPT`
-(`audit-oneassistant/`, finding `A032`/`A033`), che lo ha riprodotto contro il dev server
+(`../chatgpt/`, finding `A032`/`A033`), che lo ha riprodotto contro il dev server
 invece di dedurlo. L'evidenza è citata per intero in AUD-53.
 
 **Conseguenza di metodo, che vale per tutto il resto di questo documento**: le conformità
