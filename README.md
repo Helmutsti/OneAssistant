@@ -14,3 +14,10 @@ I file dentro **tasks/** invece rappresentano lo stato dei lavori. Cosa c'è da 
 **tasks/storico.md** contiene tutte le decisioni grezze e le motivazioni che hanno definito un cambio di rotta. qui vengono scritti i task implementati e i cambi di documentazione e cambiamenti di decisioni prese. In questo modo abbiamo sempre modo di capire perché una certa nozione è stata ridisegnata in modo diverso.
 
 **design/** contiene tutta la parte grafica e decisioni importanti estetiche e movimenti grafici
+
+**audit/** contiene la distanza misurata fra la documentazione e il codice.
+`audit/AUDIT.md` è il registro unico — 119 finding, codici `F-001`…`F-119` — nato dalla
+fusione di tre audit indipendenti condotti il 21 e il 22 settembre 2026; i tre rapporti
+originali restano in `audit/fonti/` come prova e come dettaglio, e non vanno aggiornati.
+L'audit **non è documentazione**: `docs/` resta la verità assoluta, e ogni voce del
+registro si chiude o adeguando il codice al documento, o estendendo il documento.

@@ -9,9 +9,13 @@ CSS), di `src/**`, di `vite.config.ts`, `index.html`, `package.json` e dell'arch
 esempio. Ogni affermazione qui sotto porta il file e la riga da cui viene.
 
 > **`docs/` è la verità assoluta.** L'elenco puntuale delle divergenze e di ciò che è
-> stato implementato senza menzione nella documentazione sta in `DIVERGENZE.md`, nella
-> radice del progetto, con codici stabili (`D-xx`, `N-xx`, `A-xx`). Questo file è il
-> **piano di rientro**: dice in che ordine si chiudono quelle voci.
+> stato implementato senza menzione nella documentazione sta in `audit/AUDIT.md`, il
+> registro unico, con codici stabili `F-nnn`. Questo file è il **piano di rientro**: dice
+> in che ordine si chiudono quelle voci.
+>
+> Il registro precedente — `audit/fonti/claude/DIVERGENZE.md`, codici `D-xx`, `N-xx`,
+> `A-xx` — è confluito lì insieme agli altri due audit ed è conservato come fonte. Le sue
+> voci restano citabili: `audit/AUDIT.md` porta la tabella di corrispondenza.
 
 ---
 

@@ -13,9 +13,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:778](<../src/modello/motore.ts#L778>), [src/modello/motore.ts:921](<../src/modello/motore.ts#L921>).
+**File e posizione:** [src/modello/motore.ts:778](<../../../src/modello/motore.ts#L778>), [src/modello/motore.ts:921](<../../../src/modello/motore.ts#L921>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:58](<../docs/L01-struttura_e_task.md#L58>), [docs/L04-aspetti_tecnici.md:41](<../docs/L04-aspetti_tecnici.md#L41>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:58](<../../../docs/L01-struttura_e_task.md#L58>), [docs/L04-aspetti_tecnici.md:41](<../../../docs/L04-aspetti_tecnici.md#L41>).
 
 **Previsto:** Attendere 90 secondi prima di chiamare il servizio; no, aspetta impedisce la chiamata.
 
@@ -34,9 +34,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_MISSING_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/tipi.ts:229](<../src/modello/tipi.ts#L229>), [src/ai-engine/api.ts:180](<../src/ai-engine/api.ts#L180>), [src/modello/motore.ts:778](<../src/modello/motore.ts#L778>).
+**File e posizione:** [src/modello/tipi.ts:229](<../../../src/modello/tipi.ts#L229>), [src/ai-engine/api.ts:180](<../../../src/ai-engine/api.ts#L180>), [src/modello/motore.ts:778](<../../../src/modello/motore.ts#L778>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:66](<../docs/L01-struttura_e_task.md#L66>), [docs/L04-aspetti_tecnici.md:41](<../docs/L04-aspetti_tecnici.md#L41>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:66](<../../../docs/L01-struttura_e_task.md#L66>), [docs/L04-aspetti_tecnici.md:41](<../../../docs/L04-aspetti_tecnici.md#L41>).
 
 **Previsto:** Richiesta esplicita: invio immediato definitivo soltanto per quel task.
 
@@ -55,9 +55,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/tipi.ts:18](<../src/modello/tipi.ts#L18>), [src/modello/motore.ts:337](<../src/modello/motore.ts#L337>), [src/modello/motore.ts:1106](<../src/modello/motore.ts#L1106>).
+**File e posizione:** [src/modello/tipi.ts:18](<../../../src/modello/tipi.ts#L18>), [src/modello/motore.ts:337](<../../../src/modello/motore.ts#L337>), [src/modello/motore.ts:1106](<../../../src/modello/motore.ts#L1106>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:38](<../docs/L01-struttura_e_task.md#L38>), [docs/design/L0 - Sistema.md:131](<../docs/design/L0 - Sistema.md#L131>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:38](<../../../docs/L01-struttura_e_task.md#L38>), [docs/design/L0 - Sistema.md:131](<../../../docs/design/L0 - Sistema.md#L131>).
 
 **Previsto:** Quattro stati T_NUOVO, T_LAVORAZIONE, T_ATTESA, T_CONCLUSIONE; task su desk o sidebar.
 
@@ -76,9 +76,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/ai-engine.ts:83](<../src/ai-engine/ai-engine.ts#L83>), [src/ai-engine/strumenti.ts:1](<../src/ai-engine/strumenti.ts#L1>), [src/modello/motore.ts:1106](<../src/modello/motore.ts#L1106>).
+**File e posizione:** [src/ai-engine/ai-engine.ts:83](<../../../src/ai-engine/ai-engine.ts#L83>), [src/ai-engine/strumenti.ts:1](<../../../src/ai-engine/strumenti.ts#L1>), [src/modello/motore.ts:1106](<../../../src/modello/motore.ts#L1106>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:23](<../docs/L01-struttura_e_task.md#L23>), [docs/L01-struttura_e_task.md:50](<../docs/L01-struttura_e_task.md#L50>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:23](<../../../docs/L01-struttura_e_task.md#L23>), [docs/L01-struttura_e_task.md:50](<../../../docs/L01-struttura_e_task.md#L50>).
 
 **Previsto:** Separare richiesta/contesto, creare task e sotto-task autonomi nel flusso previsto.
 
@@ -97,9 +97,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:810](<../src/modello/motore.ts#L810>), [src/modello/motore.ts:911](<../src/modello/motore.ts#L911>), [src/modello/motore.ts:945](<../src/modello/motore.ts#L945>).
+**File e posizione:** [src/modello/motore.ts:810](<../../../src/modello/motore.ts#L810>), [src/modello/motore.ts:911](<../../../src/modello/motore.ts#L911>), [src/modello/motore.ts:945](<../../../src/modello/motore.ts#L945>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:141](<../docs/design/L0 - Sistema.md#L141>), [docs/L01-struttura_e_task.md:11](<../docs/L01-struttura_e_task.md#L11>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:141](<../../../docs/design/L0 - Sistema.md#L141>), [docs/L01-struttura_e_task.md:11](<../../../docs/L01-struttura_e_task.md#L11>).
 
 **Previsto:** La memoria non è un terzo luogo dei task; conoscenza selettiva distinta dai task conclusi.
 
@@ -118,9 +118,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:109](<../src/modello/motore.ts#L109>), [src/modello/motore.ts:337](<../src/modello/motore.ts#L337>), [src/main.ts:439](<../src/main.ts#L439>), [src/aree/schermo.ts:567](<../src/aree/schermo.ts#L567>).
+**File e posizione:** [src/modello/motore.ts:109](<../../../src/modello/motore.ts#L109>), [src/modello/motore.ts:337](<../../../src/modello/motore.ts#L337>), [src/main.ts:439](<../../../src/main.ts#L439>), [src/aree/schermo.ts:567](<../../../src/aree/schermo.ts#L567>).
 
-**Riferimento documentale:** [docs/L02-componenti.md:38](<../docs/L02-componenti.md#L38>), [docs/design/L2 - Notificationbar.dc.html:46](<../docs/design/L2 - Notificationbar.dc.html#L46>), [docs/design/L0 - Sistema.md:294](<../docs/design/L0 - Sistema.md#L294>).
+**Riferimento documentale:** [docs/L02-componenti.md:38](<../../../docs/L02-componenti.md#L38>), [docs/design/L2 - Notificationbar.dc.html:46](<../../../docs/design/L2 - Notificationbar.dc.html#L46>), [docs/design/L0 - Sistema.md:294](<../../../docs/design/L0 - Sistema.md#L294>).
 
 **Previsto:** Arrivi esterni nella Notificationbar; promozione a task solo per scelta dell’utente.
 
@@ -139,9 +139,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:343](<../src/modello/motore.ts#L343>), [src/confini/filtro.ts:1](<../src/confini/filtro.ts#L1>).
+**File e posizione:** [src/modello/motore.ts:343](<../../../src/modello/motore.ts#L343>), [src/confini/filtro.ts:1](<../../../src/confini/filtro.ts#L1>).
 
-**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:66](<../docs/design/L2 - Notificationbar.dc.html#L66>).
+**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:66](<../../../docs/design/L2 - Notificationbar.dc.html#L66>).
 
 **Previsto:** Un arrivo filtrato non disturba ma resta consultabile nel cassetto.
 
@@ -160,9 +160,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:1053](<../src/modello/motore.ts#L1053>).
+**File e posizione:** [src/modello/motore.ts:1053](<../../../src/modello/motore.ts#L1053>).
 
-**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:133](<../docs/design/L2 - Notificationbar.dc.html#L133>).
+**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:133](<../../../docs/design/L2 - Notificationbar.dc.html#L133>).
 
 **Previsto:** La notifica resta nel cassetto dopo me ne occupo; nasce un task distinto.
 
@@ -181,9 +181,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:610](<../src/aree/schermo.ts#L610>), [src/modello/motore.ts:954](<../src/modello/motore.ts#L954>).
+**File e posizione:** [src/aree/schermo.ts:610](<../../../src/aree/schermo.ts#L610>), [src/modello/motore.ts:954](<../../../src/modello/motore.ts#L954>).
 
-**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:95](<../docs/design/L2 - Notificationbar.dc.html#L95>), [docs/L00-lo_scopo.md:42](<../docs/L00-lo_scopo.md#L42>).
+**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:95](<../../../docs/design/L2 - Notificationbar.dc.html#L95>), [docs/L00-lo_scopo.md:42](<../../../docs/L00-lo_scopo.md#L42>).
 
 **Previsto:** Una selezione ordinale identifica la riga visibile corrispondente.
 
@@ -202,9 +202,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/tipi.ts:190](<../src/modello/tipi.ts#L190>), [src/aree/schermo.ts:618](<../src/aree/schermo.ts#L618>), [src/confini/posta.ts:1](<../src/confini/posta.ts#L1>).
+**File e posizione:** [src/modello/tipi.ts:190](<../../../src/modello/tipi.ts#L190>), [src/aree/schermo.ts:618](<../../../src/aree/schermo.ts#L618>), [src/confini/posta.ts:1](<../../../src/confini/posta.ts#L1>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:294](<../docs/design/L0 - Sistema.md#L294>), [docs/design/L2 - Notificationbar.dc.html:95](<../docs/design/L2 - Notificationbar.dc.html#L95>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:294](<../../../docs/design/L0 - Sistema.md#L294>), [docs/design/L2 - Notificationbar.dc.html:95](<../../../docs/design/L2 - Notificationbar.dc.html#L95>).
 
 **Previsto:** Mittente e oggetto originali, ora, testo non riscritto dall’assistente.
 
@@ -223,9 +223,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:337](<../src/modello/motore.ts#L337>), [src/modello/motore.ts:369](<../src/modello/motore.ts#L369>), [src/modello/motore.ts:885](<../src/modello/motore.ts#L885>).
+**File e posizione:** [src/modello/motore.ts:337](<../../../src/modello/motore.ts#L337>), [src/modello/motore.ts:369](<../../../src/modello/motore.ts#L369>), [src/modello/motore.ts:885](<../../../src/modello/motore.ts#L885>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:50](<../docs/L01-struttura_e_task.md#L50>), [docs/L02-componenti.md:34](<../docs/L02-componenti.md#L34>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:50](<../../../docs/L01-struttura_e_task.md#L50>), [docs/L02-componenti.md:34](<../../../docs/L02-componenti.md#L34>).
 
 **Previsto:** Attesa in sidebar; al verificarsi dell’input/condizione si aggiorna il task e riparte la lavorazione.
 
@@ -244,9 +244,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:778](<../src/modello/motore.ts#L778>), [src/modello/motore.ts:945](<../src/modello/motore.ts#L945>), [src/modello/motore.ts:830](<../src/modello/motore.ts#L830>).
+**File e posizione:** [src/modello/motore.ts:778](<../../../src/modello/motore.ts#L778>), [src/modello/motore.ts:945](<../../../src/modello/motore.ts#L945>), [src/modello/motore.ts:830](<../../../src/modello/motore.ts#L830>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:50](<../docs/L01-struttura_e_task.md#L50>), [docs/L01-struttura_e_task.md:58](<../docs/L01-struttura_e_task.md#L58>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:50](<../../../docs/L01-struttura_e_task.md#L50>), [docs/L01-struttura_e_task.md:58](<../../../docs/L01-struttura_e_task.md#L58>).
 
 **Previsto:** Una operazione ha una sola esecuzione e gli esiti rispettano lo stato corrente.
 
@@ -265,9 +265,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:810](<../src/modello/motore.ts#L810>), [src/modello/motore.ts:921](<../src/modello/motore.ts#L921>).
+**File e posizione:** [src/modello/motore.ts:810](<../../../src/modello/motore.ts#L810>), [src/modello/motore.ts:921](<../../../src/modello/motore.ts#L921>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:63](<../docs/L01-struttura_e_task.md#L63>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:63](<../../../docs/L01-struttura_e_task.md#L63>).
 
 **Previsto:** Annullabile soltanto durante la finestra dell’invio corrente.
 
@@ -286,9 +286,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/ai-engine.ts:83](<../src/ai-engine/ai-engine.ts#L83>), [src/modello/motore.ts:1474](<../src/modello/motore.ts#L1474>), [src/main.ts:323](<../src/main.ts#L323>).
+**File e posizione:** [src/ai-engine/ai-engine.ts:83](<../../../src/ai-engine/ai-engine.ts#L83>), [src/modello/motore.ts:1474](<../../../src/modello/motore.ts#L1474>), [src/main.ts:323](<../../../src/main.ts#L323>).
 
-**Riferimento documentale:** [docs/L00-lo_scopo.md:35](<../docs/L00-lo_scopo.md#L35>), [docs/L01-struttura_e_task.md:73](<../docs/L01-struttura_e_task.md#L73>).
+**Riferimento documentale:** [docs/L00-lo_scopo.md:35](<../../../docs/L00-lo_scopo.md#L35>), [docs/L01-struttura_e_task.md:73](<../../../docs/L01-struttura_e_task.md#L73>).
 
 **Previsto:** Più richieste possono convivere mantenendo contesto e risposta correttamente associati.
 
@@ -307,9 +307,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:307](<../src/modello/motore.ts#L307>), [src/modello/motore.ts:1478](<../src/modello/motore.ts#L1478>), [src/main.ts:245](<../src/main.ts#L245>).
+**File e posizione:** [src/modello/motore.ts:307](<../../../src/modello/motore.ts#L307>), [src/modello/motore.ts:1478](<../../../src/modello/motore.ts#L1478>), [src/main.ts:245](<../../../src/main.ts#L245>).
 
-**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:548](<../docs/design/L2 - INPUT.dc.html#L548>).
+**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:548](<../../../docs/design/L2 - INPUT.dc.html#L548>).
 
 **Previsto:** Lo scambio resta visibile 30 secondi dall’ultimo scambio.
 
@@ -328,9 +328,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [src/modello/motore.ts:608](<../src/modello/motore.ts#L608>), [src/main.ts:310](<../src/main.ts#L310>), [src/ai-engine/ai-engine.ts:83](<../src/ai-engine/ai-engine.ts#L83>).
+**File e posizione:** [src/modello/motore.ts:608](<../../../src/modello/motore.ts#L608>), [src/main.ts:310](<../../../src/main.ts#L310>), [src/ai-engine/ai-engine.ts:83](<../../../src/ai-engine/ai-engine.ts#L83>).
 
-**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:437](<../docs/design/L2 - INPUT.dc.html#L437>), [docs/L01-struttura_e_task.md:63](<../docs/L01-struttura_e_task.md#L63>).
+**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:437](<../../../docs/design/L2 - INPUT.dc.html#L437>), [docs/L01-struttura_e_task.md:63](<../../../docs/L01-struttura_e_task.md#L63>).
 
 **Previsto:** Interruzione e annullamento devono avere un significato operativo coerente, soprattutto nella finestra Delay.
 
@@ -349,9 +349,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/api.ts:66](<../src/ai-engine/api.ts#L66>), [src/ai-engine/api.ts:165](<../src/ai-engine/api.ts#L165>), [vite.config.ts:55](<../vite.config.ts#L55>).
+**File e posizione:** [src/ai-engine/api.ts:66](<../../../src/ai-engine/api.ts#L66>), [src/ai-engine/api.ts:165](<../../../src/ai-engine/api.ts#L165>), [vite.config.ts:55](<../../../vite.config.ts#L55>).
 
-**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../docs/L00-lo_scopo.md#L42>), [docs/L01-struttura_e_task.md:50](<../docs/L01-struttura_e_task.md#L50>).
+**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../../../docs/L00-lo_scopo.md#L42>), [docs/L01-struttura_e_task.md:50](<../../../docs/L01-struttura_e_task.md#L50>).
 
 **Previsto:** Grammatica chiusa, argomenti validi e domanda in caso non determinabile.
 
@@ -370,9 +370,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/api.ts:125](<../src/ai-engine/api.ts#L125>), [src/modello/motore.ts:778](<../src/modello/motore.ts#L778>).
+**File e posizione:** [src/ai-engine/api.ts:125](<../../../src/ai-engine/api.ts#L125>), [src/modello/motore.ts:778](<../../../src/modello/motore.ts#L778>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../docs/L01-struttura_e_task.md#L73>), [docs/L00-lo_scopo.md:42](<../docs/L00-lo_scopo.md#L42>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../../../docs/L01-struttura_e_task.md#L73>), [docs/L00-lo_scopo.md:42](<../../../docs/L00-lo_scopo.md#L42>).
 
 **Previsto:** L’assistente deve conoscere ciò che è stato realmente eseguito.
 
@@ -391,9 +391,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/ai-engine.ts:188](<../src/ai-engine/ai-engine.ts#L188>), [src/main.ts:129](<../src/main.ts#L129>), [src/main.ts:177](<../src/main.ts#L177>).
+**File e posizione:** [src/ai-engine/ai-engine.ts:188](<../../../src/ai-engine/ai-engine.ts#L188>), [src/main.ts:129](<../../../src/main.ts#L129>), [src/main.ts:177](<../../../src/main.ts#L177>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:19](<../docs/L04-aspetti_tecnici.md#L19>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:19](<../../../docs/L04-aspetti_tecnici.md#L19>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -414,9 +414,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [src/ai-engine/ai-engine.ts:56](<../src/ai-engine/ai-engine.ts#L56>), [src/ai-engine/ai-engine.ts:90](<../src/ai-engine/ai-engine.ts#L90>), [src/ai-engine/ai-engine.ts:250](<../src/ai-engine/ai-engine.ts#L250>), [vite.config.ts:400](<../vite.config.ts#L400>).
+**File e posizione:** [src/ai-engine/ai-engine.ts:56](<../../../src/ai-engine/ai-engine.ts#L56>), [src/ai-engine/ai-engine.ts:90](<../../../src/ai-engine/ai-engine.ts#L90>), [src/ai-engine/ai-engine.ts:250](<../../../src/ai-engine/ai-engine.ts#L250>), [vite.config.ts:400](<../../../vite.config.ts#L400>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../docs/L01-struttura_e_task.md#L73>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../../../docs/L01-struttura_e_task.md#L73>).
 
 **Previsto:** Scambio comprensibile anche quando il lavoro non riesce.
 
@@ -435,9 +435,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/main.ts:137](<../src/main.ts#L137>), [src/ai-engine/secondari.ts:97](<../src/ai-engine/secondari.ts#L97>), [src/modello/motore.ts:188](<../src/modello/motore.ts#L188>).
+**File e posizione:** [src/main.ts:137](<../../../src/main.ts#L137>), [src/ai-engine/secondari.ts:97](<../../../src/ai-engine/secondari.ts#L97>), [src/modello/motore.ts:188](<../../../src/modello/motore.ts#L188>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:53](<../docs/L01-struttura_e_task.md#L53>), [docs/L04-aspetti_tecnici.md:19](<../docs/L04-aspetti_tecnici.md#L19>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:53](<../../../docs/L01-struttura_e_task.md#L53>), [docs/L04-aspetti_tecnici.md:19](<../../../docs/L04-aspetti_tecnici.md#L19>).
 
 **Previsto:** Durante lavorazione possono nascere sotto-task autonomi; elaborazione AI nel connettore.
 
@@ -456,9 +456,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:199](<../src/modello/motore.ts#L199>), [src/modello/motore.ts:224](<../src/modello/motore.ts#L224>).
+**File e posizione:** [src/modello/motore.ts:199](<../../../src/modello/motore.ts#L199>), [src/modello/motore.ts:224](<../../../src/modello/motore.ts#L224>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:50](<../docs/L01-struttura_e_task.md#L50>), [docs/L01-struttura_e_task.md:73](<../docs/L01-struttura_e_task.md#L73>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:50](<../../../docs/L01-struttura_e_task.md#L50>), [docs/L01-struttura_e_task.md:73](<../../../docs/L01-struttura_e_task.md#L73>).
 
 **Previsto:** Fallimenti e risultati identificabili per lavoro.
 
@@ -477,9 +477,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `CONFLICTING_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/confini/contatti.ts:77](<../src/confini/contatti.ts#L77>), [src/confini/posta.ts:1](<../src/confini/posta.ts#L1>), [src/main.ts:96](<../src/main.ts#L96>), [Archivio/users/user_123/services/contacts.txt:1](<../Archivio/users/user_123/services/contacts.txt#L1>).
+**File e posizione:** [src/confini/contatti.ts:77](<../../../src/confini/contatti.ts#L77>), [src/confini/posta.ts:1](<../../../src/confini/posta.ts#L1>), [src/main.ts:96](<../../../src/main.ts#L96>), [Archivio/users/user_123/services/contacts.txt:1](<../../../Archivio/users/user_123/services/contacts.txt#L1>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:30](<../docs/L01-struttura_e_task.md#L30>), [docs/L04-aspetti_tecnici.md:22](<../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:48](<../docs/L03-archivio.md#L48>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:30](<../../../docs/L01-struttura_e_task.md#L30>), [docs/L04-aspetti_tecnici.md:22](<../../../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:48](<../../../docs/L03-archivio.md#L48>).
 
 **Previsto:** Dati simulati ricavati dai documenti del singolo utente.
 
@@ -498,9 +498,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/confini/contatti.ts:48](<../src/confini/contatti.ts#L48>), [src/confini/contatti.ts:57](<../src/confini/contatti.ts#L57>).
+**File e posizione:** [src/confini/contatti.ts:48](<../../../src/confini/contatti.ts#L48>), [src/confini/contatti.ts:57](<../../../src/confini/contatti.ts#L57>).
 
-**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../docs/L00-lo_scopo.md#L42>).
+**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../../../docs/L00-lo_scopo.md#L42>).
 
 **Previsto:** Non indovinare persone o destinatari in caso di incertezza.
 
@@ -519,9 +519,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_MISSING_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/main.ts:124](<../src/main.ts#L124>), [src/confini/disco.ts:1](<../src/confini/disco.ts#L1>), [vite.config.ts:112](<../vite.config.ts#L112>), [Archivio/users/user_123/filesystem.txt:1](<../Archivio/users/user_123/filesystem.txt#L1>).
+**File e posizione:** [src/main.ts:124](<../../../src/main.ts#L124>), [src/confini/disco.ts:1](<../../../src/confini/disco.ts#L1>), [vite.config.ts:112](<../../../vite.config.ts#L112>), [Archivio/users/user_123/filesystem.txt:1](<../../../Archivio/users/user_123/filesystem.txt#L1>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:56](<../docs/L03-archivio.md#L56>), [docs/L03-archivio.md:59](<../docs/L03-archivio.md#L59>), [docs/L01-struttura_e_task.md:15](<../docs/L01-struttura_e_task.md#L15>).
+**Riferimento documentale:** [docs/L03-archivio.md:56](<../../../docs/L03-archivio.md#L56>), [docs/L03-archivio.md:59](<../../../docs/L03-archivio.md#L59>), [docs/L01-struttura_e_task.md:15](<../../../docs/L01-struttura_e_task.md#L15>).
 
 **Previsto:** Filesystem sempre disponibile e contesto letto dal documento dedicato.
 
@@ -540,9 +540,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/archivio/archivio.ts:67](<../src/archivio/archivio.ts#L67>), [src/archivio/archivio.ts:100](<../src/archivio/archivio.ts#L100>), [src/ai-engine/finto.ts:160](<../src/ai-engine/finto.ts#L160>), [src/modello/motore.ts:857](<../src/modello/motore.ts#L857>).
+**File e posizione:** [src/archivio/archivio.ts:67](<../../../src/archivio/archivio.ts#L67>), [src/archivio/archivio.ts:100](<../../../src/archivio/archivio.ts#L100>), [src/ai-engine/finto.ts:160](<../../../src/ai-engine/finto.ts#L160>), [src/modello/motore.ts:857](<../../../src/modello/motore.ts#L857>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:11](<../docs/L01-struttura_e_task.md#L11>), [docs/L04-aspetti_tecnici.md:22](<../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:45](<../docs/L03-archivio.md#L45>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:11](<../../../docs/L01-struttura_e_task.md#L11>), [docs/L04-aspetti_tecnici.md:22](<../../../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:45](<../../../docs/L03-archivio.md#L45>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -563,9 +563,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `CONFLICTING_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/archivio/archivio.ts:243](<../src/archivio/archivio.ts#L243>), [src/archivio/archivio.ts:309](<../src/archivio/archivio.ts#L309>), [src/aree/raccolta.ts:58](<../src/aree/raccolta.ts#L58>).
+**File e posizione:** [src/archivio/archivio.ts:243](<../../../src/archivio/archivio.ts#L243>), [src/archivio/archivio.ts:309](<../../../src/archivio/archivio.ts#L309>), [src/aree/raccolta.ts:58](<../../../src/aree/raccolta.ts#L58>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:45](<../docs/L03-archivio.md#L45>), [docs/L04-aspetti_tecnici.md:23](<../docs/L04-aspetti_tecnici.md#L23>).
+**Riferimento documentale:** [docs/L03-archivio.md:45](<../../../docs/L03-archivio.md#L45>), [docs/L04-aspetti_tecnici.md:23](<../../../docs/L04-aspetti_tecnici.md#L23>).
 
 **Previsto:** Unica memoria simulata in memory/general.txt.
 
@@ -584,9 +584,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [vite.config.ts:110](<../vite.config.ts#L110>), [src/conoscenza/profilo.ts:263](<../src/conoscenza/profilo.ts#L263>), [src/ai-engine/strumenti.ts:630](<../src/ai-engine/strumenti.ts#L630>).
+**File e posizione:** [vite.config.ts:110](<../../../vite.config.ts#L110>), [src/conoscenza/profilo.ts:263](<../../../src/conoscenza/profilo.ts#L263>), [src/ai-engine/strumenti.ts:630](<../../../src/ai-engine/strumenti.ts#L630>).
 
-**Riferimento documentale:** [docs/L02-componenti.md:11](<../docs/L02-componenti.md#L11>), [docs/L03-archivio.md:49](<../docs/L03-archivio.md#L49>).
+**Riferimento documentale:** [docs/L02-componenti.md:11](<../../../docs/L02-componenti.md#L11>), [docs/L03-archivio.md:49](<../../../docs/L03-archivio.md#L49>).
 
 **Previsto:** Leggere preferenze, lingua, luoghi e contesto; password esclusa dall’AI.
 
@@ -605,9 +605,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/conoscenza/profilo.ts:229](<../src/conoscenza/profilo.ts#L229>), [src/conoscenza/profilo.ts:263](<../src/conoscenza/profilo.ts#L263>), [Archivio/users/user_123/preferences.txt:20](<../Archivio/users/user_123/preferences.txt#L20>).
+**File e posizione:** [src/conoscenza/profilo.ts:229](<../../../src/conoscenza/profilo.ts#L229>), [src/conoscenza/profilo.ts:263](<../../../src/conoscenza/profilo.ts#L263>), [Archivio/users/user_123/preferences.txt:20](<../../../Archivio/users/user_123/preferences.txt#L20>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:49](<../docs/L03-archivio.md#L49>), [docs/L04-aspetti_tecnici.md:38](<../docs/L04-aspetti_tecnici.md#L38>).
+**Riferimento documentale:** [docs/L03-archivio.md:49](<../../../docs/L03-archivio.md#L49>), [docs/L04-aspetti_tecnici.md:38](<../../../docs/L04-aspetti_tecnici.md#L38>).
 
 **Previsto:** Preferenze e voce configurate dal documento locale.
 
@@ -626,9 +626,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/conoscenza/profilo.ts:207](<../src/conoscenza/profilo.ts#L207>), [src/conoscenza/profilo.ts:255](<../src/conoscenza/profilo.ts#L255>), [src/conoscenza/profilo.ts:384](<../src/conoscenza/profilo.ts#L384>).
+**File e posizione:** [src/conoscenza/profilo.ts:207](<../../../src/conoscenza/profilo.ts#L207>), [src/conoscenza/profilo.ts:255](<../../../src/conoscenza/profilo.ts#L255>), [src/conoscenza/profilo.ts:384](<../../../src/conoscenza/profilo.ts#L384>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:53](<../docs/L03-archivio.md#L53>), [docs/L02-componenti.md:26](<../docs/L02-componenti.md#L26>).
+**Riferimento documentale:** [docs/L03-archivio.md:53](<../../../docs/L03-archivio.md#L53>), [docs/L02-componenti.md:26](<../../../docs/L02-componenti.md#L26>).
 
 **Previsto:** Mostrare lo stato simulato indicato, senza attribuire capacità non disponibili.
 
@@ -647,9 +647,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_MISSING_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/conoscenza/profilo.ts:213](<../src/conoscenza/profilo.ts#L213>), [src/aree/schermo.ts:199](<../src/aree/schermo.ts#L199>), [src/conoscenza/contesto.ts:30](<../src/conoscenza/contesto.ts#L30>).
+**File e posizione:** [src/conoscenza/profilo.ts:213](<../../../src/conoscenza/profilo.ts#L213>), [src/aree/schermo.ts:199](<../../../src/aree/schermo.ts#L199>), [src/conoscenza/contesto.ts:30](<../../../src/conoscenza/contesto.ts#L30>).
 
-**Riferimento documentale:** [docs/L02-componenti.md:22](<../docs/L02-componenti.md#L22>), [docs/design/L2 - Profilebar.dc.html:70](<../docs/design/L2 - Profilebar.dc.html#L70>), [docs/design/Liquid glass.md:47](<../docs/design/Liquid glass.md#L47>).
+**Riferimento documentale:** [docs/L02-componenti.md:22](<../../../docs/L02-componenti.md#L22>), [docs/design/L2 - Profilebar.dc.html:70](<../../../docs/design/L2 - Profilebar.dc.html#L70>), [docs/design/Liquid glass.md:47](<../../../docs/design/Liquid glass.md#L47>).
 
 **Previsto:** Luogo noto senza città ridondante; WorkMode ricavato da posizione/orario, ad esempio Deep.
 
@@ -668,9 +668,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `SECURITY` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [vite.config.ts:687](<../vite.config.ts#L687>), [vite.config.ts:795](<../vite.config.ts#L795>).
+**File e posizione:** [vite.config.ts:687](<../../../vite.config.ts#L687>), [vite.config.ts:795](<../../../vite.config.ts#L795>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:31](<../docs/L04-aspetti_tecnici.md#L31>), [docs/L01-struttura_e_task.md:11](<../docs/L01-struttura_e_task.md#L11>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:31](<../../../docs/L04-aspetti_tecnici.md#L31>), [docs/L01-struttura_e_task.md:11](<../../../docs/L01-struttura_e_task.md#L11>).
 
 **Previsto:** Node espone soltanto file dell’utente attivo; scrittura dichiarata limitata a memory.
 
@@ -689,9 +689,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `SECURITY` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [vite.config.ts:694](<../vite.config.ts#L694>), [vite.config.ts:842](<../vite.config.ts#L842>), [vite.config.ts:807](<../vite.config.ts#L807>).
+**File e posizione:** [vite.config.ts:694](<../../../vite.config.ts#L694>), [vite.config.ts:842](<../../../vite.config.ts#L842>), [vite.config.ts:807](<../../../vite.config.ts#L807>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:31](<../docs/L04-aspetti_tecnici.md#L31>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:31](<../../../docs/L04-aspetti_tecnici.md#L31>).
 
 **Previsto:** Il file effettivo deve appartenere al perimetro utente.
 
@@ -710,9 +710,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** forte evidenza
 
-**File e posizione:** [src/archivio/chat-raw.ts:6](<../src/archivio/chat-raw.ts#L6>), [src/modello/motore.ts:430](<../src/modello/motore.ts#L430>).
+**File e posizione:** [src/archivio/chat-raw.ts:6](<../../../src/archivio/chat-raw.ts#L6>), [src/modello/motore.ts:430](<../../../src/modello/motore.ts#L430>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:22](<../docs/L01-struttura_e_task.md#L22>), [docs/L03-archivio.md:44](<../docs/L03-archivio.md#L44>), [docs/L04-aspetti_tecnici.md:26](<../docs/L04-aspetti_tecnici.md#L26>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:22](<../../../docs/L01-struttura_e_task.md#L22>), [docs/L03-archivio.md:44](<../../../docs/L03-archivio.md#L44>), [docs/L04-aspetti_tecnici.md:26](<../../../docs/L04-aspetti_tecnici.md#L26>).
 
 **Previsto:** Archivio integrale e persistente di ogni scambio.
 
@@ -731,9 +731,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/archivio/chat-raw.ts:6](<../src/archivio/chat-raw.ts#L6>), [vite.config.ts:739](<../vite.config.ts#L739>).
+**File e posizione:** [src/archivio/chat-raw.ts:6](<../../../src/archivio/chat-raw.ts#L6>), [vite.config.ts:739](<../../../vite.config.ts#L739>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:44](<../docs/L03-archivio.md#L44>).
+**Riferimento documentale:** [docs/L03-archivio.md:44](<../../../docs/L03-archivio.md#L44>).
 
 **Previsto:** Append cronologico dei messaggi originali.
 
@@ -752,9 +752,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/main.ts:290](<../src/main.ts#L290>), [src/archivio/chat-raw.ts:3](<../src/archivio/chat-raw.ts#L3>).
+**File e posizione:** [src/main.ts:290](<../../../src/main.ts#L290>), [src/archivio/chat-raw.ts:3](<../../../src/archivio/chat-raw.ts#L3>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:26](<../docs/L04-aspetti_tecnici.md#L26>), [docs/L03-archivio.md:44](<../docs/L03-archivio.md#L44>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:26](<../../../docs/L04-aspetti_tecnici.md#L26>), [docs/L03-archivio.md:44](<../../../docs/L03-archivio.md#L44>).
 
 **Previsto:** Conservare testo originale integrale.
 
@@ -773,9 +773,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [vite.config.ts:781](<../vite.config.ts#L781>), [src/confini/disco.ts:97](<../src/confini/disco.ts#L97>), [src/archivio/archivio.ts:330](<../src/archivio/archivio.ts#L330>).
+**File e posizione:** [vite.config.ts:781](<../../../vite.config.ts#L781>), [src/confini/disco.ts:97](<../../../src/confini/disco.ts#L97>), [src/archivio/archivio.ts:330](<../../../src/archivio/archivio.ts#L330>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:22](<../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:45](<../docs/L03-archivio.md#L45>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:22](<../../../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:45](<../../../docs/L03-archivio.md#L45>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -796,9 +796,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [package.json:1](<../package.json#L1>), [src/main.ts:1](<../src/main.ts#L1>), [src/aree/schermo.ts:1](<../src/aree/schermo.ts#L1>), [src/stile/base.css:1](<../src/stile/base.css#L1>).
+**File e posizione:** [package.json:1](<../../../package.json#L1>), [src/main.ts:1](<../../../src/main.ts#L1>), [src/aree/schermo.ts:1](<../../../src/aree/schermo.ts#L1>), [src/stile/base.css:1](<../../../src/stile/base.css#L1>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:29](<../docs/L04-aspetti_tecnici.md#L29>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:29](<../../../docs/L04-aspetti_tecnici.md#L29>).
 
 **Previsto:** Sito React, Vite e Tailwind.
 
@@ -817,9 +817,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Alta · **Certezza:** forte evidenza
 
-**File e posizione:** [package.json:7](<../package.json#L7>), [vite.config.ts:480](<../vite.config.ts#L480>), [vite.config.ts:713](<../vite.config.ts#L713>), [vite.config.ts:765](<../vite.config.ts#L765>).
+**File e posizione:** [package.json:7](<../../../package.json#L7>), [vite.config.ts:480](<../../../vite.config.ts#L480>), [vite.config.ts:713](<../../../vite.config.ts#L713>), [vite.config.ts:765](<../../../vite.config.ts#L765>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:26](<../docs/L04-aspetti_tecnici.md#L26>), [docs/L04-aspetti_tecnici.md:31](<../docs/L04-aspetti_tecnici.md#L31>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:26](<../../../docs/L04-aspetti_tecnici.md#L26>), [docs/L04-aspetti_tecnici.md:31](<../../../docs/L04-aspetti_tecnici.md#L31>).
 
 **Previsto:** Accesso Node ai documenti e chat raw funzionanti nell’esecuzione supportata.
 
@@ -838,9 +838,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [package.json:1](<../package.json#L1>), [package.json:10](<../package.json#L10>), [package-lock.json:1](<../package-lock.json#L1>).
+**File e posizione:** [package.json:1](<../../../package.json#L1>), [package.json:10](<../../../package.json#L10>), [package-lock.json:1](<../../../package-lock.json#L1>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:15](<../docs/L04-aspetti_tecnici.md#L15>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:15](<../../../docs/L04-aspetti_tecnici.md#L15>).
 
 **Previsto:** Runtime Node 24 riproducibile.
 
@@ -859,9 +859,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DEAD_CODE` · **Severità:** Bassa · **Certezza:** forte evidenza
 
-**File e posizione:** [package.json:22](<../package.json#L22>), [package-lock.json:1](<../package-lock.json#L1>).
+**File e posizione:** [package.json:22](<../../../package.json#L22>), [package-lock.json:1](<../../../package-lock.json#L1>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:44](<../docs/L04-aspetti_tecnici.md#L44>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:44](<../../../docs/L04-aspetti_tecnici.md#L44>).
 
 **Previsto:** Dipendenze motivate da funzionalità previste.
 
@@ -880,9 +880,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DEAD_CODE` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [vite.config.ts:140](<../vite.config.ts#L140>), [vite.config.ts:259](<../vite.config.ts#L259>), [vite.config.ts:541](<../vite.config.ts#L541>), [src/ai-engine/finto.ts:3](<../src/ai-engine/finto.ts#L3>).
+**File e posizione:** [vite.config.ts:140](<../../../vite.config.ts#L140>), [vite.config.ts:259](<../../../vite.config.ts#L259>), [vite.config.ts:541](<../../../vite.config.ts#L541>), [src/ai-engine/finto.ts:3](<../../../src/ai-engine/finto.ts#L3>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:19](<../docs/L04-aspetti_tecnici.md#L19>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:19](<../../../docs/L04-aspetti_tecnici.md#L19>).
 
 **Previsto:** OpenRouter unico provider del prototipo; altri provider futuri.
 
@@ -901,9 +901,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/strumenti.ts:1](<../src/ai-engine/strumenti.ts#L1>), [src/modello/motore.ts:36](<../src/modello/motore.ts#L36>), [vite.config.ts:188](<../vite.config.ts#L188>), [vite.config.ts:280](<../vite.config.ts#L280>).
+**File e posizione:** [src/ai-engine/strumenti.ts:1](<../../../src/ai-engine/strumenti.ts#L1>), [src/modello/motore.ts:36](<../../../src/modello/motore.ts#L36>), [vite.config.ts:188](<../../../vite.config.ts#L188>), [vite.config.ts:280](<../../../vite.config.ts#L280>).
 
-**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../docs/L00-lo_scopo.md#L42>), [docs/L04-aspetti_tecnici.md:19](<../docs/L04-aspetti_tecnici.md#L19>).
+**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../../../docs/L00-lo_scopo.md#L42>), [docs/L04-aspetti_tecnici.md:19](<../../../docs/L04-aspetti_tecnici.md#L19>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -924,9 +924,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/main.ts:38](<../src/main.ts#L38>), [src/main.ts:175](<../src/main.ts#L175>), [src/aree/schermo.ts:1090](<../src/aree/schermo.ts#L1090>), [src/prova/pedana.ts:1](<../src/prova/pedana.ts#L1>).
+**File e posizione:** [src/main.ts:38](<../../../src/main.ts#L38>), [src/main.ts:175](<../../../src/main.ts#L175>), [src/aree/schermo.ts:1090](<../../../src/aree/schermo.ts#L1090>), [src/prova/pedana.ts:1](<../../../src/prova/pedana.ts#L1>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:105](<../docs/design/L0 - Sistema.md#L105>), [docs/L04-aspetti_tecnici.md:7](<../docs/L04-aspetti_tecnici.md#L7>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:105](<../../../docs/design/L0 - Sistema.md#L105>), [docs/L04-aspetti_tecnici.md:7](<../../../docs/L04-aspetti_tecnici.md#L7>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -947,9 +947,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/stile/base.css:1](<../src/stile/base.css#L1>), [src/stile/base.css:395](<../src/stile/base.css#L395>), [src/main.ts:1](<../src/main.ts#L1>).
+**File e posizione:** [src/stile/base.css:1](<../../../src/stile/base.css#L1>), [src/stile/base.css:395](<../../../src/stile/base.css#L395>), [src/main.ts:1](<../../../src/main.ts#L1>).
 
-**Riferimento documentale:** [docs/design/Liquid glass.md:7](<../docs/design/Liquid glass.md#L7>), [docs/design/liquid-glass.css:18](<../docs/design/liquid-glass.css#L18>), [docs/design/materiali.css:1](<../docs/design/materiali.css#L1>).
+**Riferimento documentale:** [docs/design/Liquid glass.md:7](<../../../docs/design/Liquid glass.md#L7>), [docs/design/liquid-glass.css:18](<../../../docs/design/liquid-glass.css#L18>), [docs/design/materiali.css:1](<../../../docs/design/materiali.css#L1>).
 
 **Previsto:** Unica ricetta condivisa per bubble, chip, INPUT, Profilebar e Notificationbar.
 
@@ -968,9 +968,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_MISSING_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/stile/tema.ts:21](<../src/stile/tema.ts#L21>), [src/main.ts:201](<../src/main.ts#L201>), [src/stile/base.css:1](<../src/stile/base.css#L1>).
+**File e posizione:** [src/stile/tema.ts:21](<../../../src/stile/tema.ts#L21>), [src/main.ts:201](<../../../src/main.ts#L201>), [src/stile/base.css:1](<../../../src/stile/base.css#L1>).
 
-**Riferimento documentale:** [docs/design/Liquid glass.md:76](<../docs/design/Liquid glass.md#L76>), [docs/design/L1 - Temi.dc.html:221](<../docs/design/L1 - Temi.dc.html#L221>).
+**Riferimento documentale:** [docs/design/Liquid glass.md:76](<../../../docs/design/Liquid glass.md#L76>), [docs/design/L1 - Temi.dc.html:221](<../../../docs/design/L1 - Temi.dc.html#L221>).
 
 **Previsto:** Tutti i componenti supportano vetro chiaro e scuro con inchiostri dedicati.
 
@@ -989,9 +989,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/stile/tema.ts:21](<../src/stile/tema.ts#L21>), [src/conoscenza/profilo.ts:222](<../src/conoscenza/profilo.ts#L222>).
+**File e posizione:** [src/stile/tema.ts:21](<../../../src/stile/tema.ts#L21>), [src/conoscenza/profilo.ts:222](<../../../src/conoscenza/profilo.ts#L222>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:164](<../docs/design/L0 - Sistema.md#L164>), [docs/design/L1 - Temi.dc.html:248](<../docs/design/L1 - Temi.dc.html#L248>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:164](<../../../docs/design/L0 - Sistema.md#L164>), [docs/design/L1 - Temi.dc.html:248](<../../../docs/design/L1 - Temi.dc.html#L248>).
 
 **Previsto:** Colore esprime stato e tavolozze rispettano semantica invariata.
 
@@ -1010,9 +1010,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:199](<../src/aree/schermo.ts#L199>), [src/stile/base.css:268](<../src/stile/base.css#L268>).
+**File e posizione:** [src/aree/schermo.ts:199](<../../../src/aree/schermo.ts#L199>), [src/stile/base.css:268](<../../../src/stile/base.css#L268>).
 
-**Riferimento documentale:** [docs/design/Liquid glass.md:37](<../docs/design/Liquid glass.md#L37>), [docs/design/L2 - Profilebar.dc.html:55](<../docs/design/L2 - Profilebar.dc.html#L55>), [docs/design/profilebar.css:13](<../docs/design/profilebar.css#L13>).
+**Riferimento documentale:** [docs/design/Liquid glass.md:37](<../../../docs/design/Liquid glass.md#L37>), [docs/design/L2 - Profilebar.dc.html:55](<../../../docs/design/L2 - Profilebar.dc.html#L55>), [docs/design/profilebar.css:13](<../../../docs/design/profilebar.css#L13>).
 
 **Previsto:** Altezza60, raggio30, padding8/12/8/24, gap16/12, avatar44; nessun punto mediano; bolla condivisa.
 
@@ -1031,9 +1031,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_MISSING_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:299](<../src/aree/schermo.ts#L299>).
+**File e posizione:** [src/aree/schermo.ts:299](<../../../src/aree/schermo.ts#L299>).
 
-**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:205](<../docs/design/L2 - Sidebar.dc.html#L205>), [docs/L02-componenti.md:34](<../docs/L02-componenti.md#L34>).
+**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:205](<../../../docs/design/L2 - Sidebar.dc.html#L205>), [docs/L02-componenti.md:34](<../../../docs/L02-componenti.md#L34>).
 
 **Previsto:** Quattro chip visibili e indicazione +N dei restanti.
 
@@ -1052,9 +1052,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:306](<../src/aree/schermo.ts#L306>), [src/stile/base.css:1](<../src/stile/base.css#L1>).
+**File e posizione:** [src/aree/schermo.ts:306](<../../../src/aree/schermo.ts#L306>), [src/stile/base.css:1](<../../../src/stile/base.css#L1>).
 
-**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:204](<../docs/design/L2 - Sidebar.dc.html#L204>).
+**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:204](<../../../docs/design/L2 - Sidebar.dc.html#L204>).
 
 **Previsto:** Attenuazione45% quando la raccolta chiede attenzione.
 
@@ -1073,9 +1073,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/stile/base.css:386](<../src/stile/base.css#L386>), [src/stile/base.css:490](<../src/stile/base.css#L490>), [src/aree/scrivania.ts:94](<../src/aree/scrivania.ts#L94>).
+**File e posizione:** [src/stile/base.css:386](<../../../src/stile/base.css#L386>), [src/stile/base.css:490](<../../../src/stile/base.css#L490>), [src/aree/scrivania.ts:94](<../../../src/aree/scrivania.ts#L94>).
 
-**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:138](<../docs/design/L2 - Bubble.dc.html#L138>), [docs/design/L0 - Sistema.md:222](<../docs/design/L0 - Sistema.md#L222>).
+**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:138](<../../../docs/design/L2 - Bubble.dc.html#L138>), [docs/design/L0 - Sistema.md:222](<../../../docs/design/L0 - Sistema.md#L222>).
 
 **Previsto:** Misure tipografiche e spazi della tavola corrente; dimensioni determinate dal contenuto.
 
@@ -1094,9 +1094,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Bassa · **Certezza:** forte evidenza
 
-**File e posizione:** [src/aree/schermo.ts:1](<../src/aree/schermo.ts#L1>), [src/stile/base.css:1](<../src/stile/base.css#L1>).
+**File e posizione:** [src/aree/schermo.ts:1](<../../../src/aree/schermo.ts#L1>), [src/stile/base.css:1](<../../../src/stile/base.css#L1>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:174](<../docs/design/L0 - Sistema.md#L174>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:174](<../../../docs/design/L0 - Sistema.md#L174>).
 
 **Previsto:** Non più di due punti colorati nello schermo.
 
@@ -1115,9 +1115,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [src/aree/schermo.ts:430](<../src/aree/schermo.ts#L430>), [src/stile/base.css:480](<../src/stile/base.css#L480>), [src/stile/base.css:699](<../src/stile/base.css#L699>).
+**File e posizione:** [src/aree/schermo.ts:430](<../../../src/aree/schermo.ts#L430>), [src/stile/base.css:480](<../../../src/stile/base.css#L480>), [src/stile/base.css:699](<../../../src/stile/base.css#L699>).
 
-**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:138](<../docs/design/L2 - Bubble.dc.html#L138>), [docs/design/L2 - Bubble.dc.html:604](<../docs/design/L2 - Bubble.dc.html#L604>), [docs/design/L2 - INPUT.dc.html:556](<../docs/design/L2 - INPUT.dc.html#L556>).
+**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:138](<../../../docs/design/L2 - Bubble.dc.html#L138>), [docs/design/L2 - Bubble.dc.html:604](<../../../docs/design/L2 - Bubble.dc.html#L604>), [docs/design/L2 - INPUT.dc.html:556](<../../../docs/design/L2 - INPUT.dc.html#L556>).
 
 **Previsto:** Corpo breve, lettura estesa controllata; INPUT solo parole/raccolta/scambio.
 
@@ -1136,9 +1136,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [src/aree/schermo.ts:352](<../src/aree/schermo.ts#L352>), [src/aree/schermo.ts:375](<../src/aree/schermo.ts#L375>).
+**File e posizione:** [src/aree/schermo.ts:352](<../../../src/aree/schermo.ts#L352>), [src/aree/schermo.ts:375](<../../../src/aree/schermo.ts#L375>).
 
-**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:882](<../docs/design/L2 - Bubble.dc.html#L882>).
+**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:882](<../../../docs/design/L2 - Bubble.dc.html#L882>).
 
 **Previsto:** Richiamo ripristina il task nella scrivania e conserva posizione quando possibile.
 
@@ -1157,9 +1157,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_MISSING_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:36](<../src/modello/motore.ts#L36>), [src/aree/schermo.ts:352](<../src/aree/schermo.ts#L352>).
+**File e posizione:** [src/modello/motore.ts:36](<../../../src/modello/motore.ts#L36>), [src/aree/schermo.ts:352](<../../../src/aree/schermo.ts#L352>).
 
-**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:583](<../docs/design/L2 - Bubble.dc.html#L583>), [docs/design/L2 - Bubble.dc.html:850](<../docs/design/L2 - Bubble.dc.html#L850>).
+**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:583](<../../../docs/design/L2 - Bubble.dc.html#L583>), [docs/design/L2 - Bubble.dc.html:850](<../../../docs/design/L2 - Bubble.dc.html#L850>).
 
 **Previsto:** La tavola descrive conclusione visibile6s e riposo dopo30min; invio comunque soggetto al Delay normativo.
 
@@ -1178,9 +1178,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:773](<../src/aree/schermo.ts#L773>), [src/main.ts:444](<../src/main.ts#L444>), [src/prova/pedana.ts:69](<../src/prova/pedana.ts#L69>).
+**File e posizione:** [src/aree/schermo.ts:773](<../../../src/aree/schermo.ts#L773>), [src/main.ts:444](<../../../src/main.ts#L444>), [src/prova/pedana.ts:69](<../../../src/prova/pedana.ts#L69>).
 
-**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:548](<../docs/design/L2 - INPUT.dc.html#L548>), [docs/design/L2 - INPUT.dc.html:556](<../docs/design/L2 - INPUT.dc.html#L556>).
+**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:548](<../../../docs/design/L2 - INPUT.dc.html#L548>), [docs/design/L2 - INPUT.dc.html:556](<../../../docs/design/L2 - INPUT.dc.html#L556>).
 
 **Previsto:** Nell’ultima revisione INPUT raccoglie parole, raccolta e scambio; nessun avanzamento task o frasi operative.
 
@@ -1199,9 +1199,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [src/aree/raccolta.ts:43](<../src/aree/raccolta.ts#L43>), [src/aree/schermo.ts:690](<../src/aree/schermo.ts#L690>).
+**File e posizione:** [src/aree/raccolta.ts:43](<../../../src/aree/raccolta.ts#L43>), [src/aree/schermo.ts:690](<../../../src/aree/schermo.ts#L690>).
 
-**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:194](<../docs/design/L2 - INPUT.dc.html#L194>), [docs/design/L2 - INPUT.dc.html:349](<../docs/design/L2 - INPUT.dc.html#L349>).
+**Riferimento documentale:** [docs/design/L2 - INPUT.dc.html:194](<../../../docs/design/L2 - INPUT.dc.html#L194>), [docs/design/L2 - INPUT.dc.html:349](<../../../docs/design/L2 - INPUT.dc.html#L349>).
 
 **Previsto:** Raccolta di contenuti agganciati allo scambio, con limiti/selezione/anteprima descritti nelle proposte di interazione.
 
@@ -1220,9 +1220,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/motore.ts:1533](<../src/modello/motore.ts#L1533>), [src/ai-engine/regole.ts:150](<../src/ai-engine/regole.ts#L150>), [src/main.ts:301](<../src/main.ts#L301>).
+**File e posizione:** [src/modello/motore.ts:1533](<../../../src/modello/motore.ts#L1533>), [src/ai-engine/regole.ts:150](<../../../src/ai-engine/regole.ts#L150>), [src/main.ts:301](<../../../src/main.ts#L301>).
 
-**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:175](<../docs/design/L2 - Bubble.dc.html#L175>).
+**Riferimento documentale:** [docs/design/L2 - Bubble.dc.html:175](<../../../docs/design/L2 - Bubble.dc.html#L175>).
 
 **Previsto:** La prima frase è quella probabile, seguita dal sì/azione primaria indicata.
 
@@ -1241,9 +1241,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `LEGACY_OR_UNKNOWN` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:273](<../src/aree/schermo.ts#L273>), [src/main.ts:355](<../src/main.ts#L355>), [src/conoscenza/canali.ts:1](<../src/conoscenza/canali.ts#L1>).
+**File e posizione:** [src/aree/schermo.ts:273](<../../../src/aree/schermo.ts#L273>), [src/main.ts:355](<../../../src/main.ts#L355>), [src/conoscenza/canali.ts:1](<../../../src/conoscenza/canali.ts#L1>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:16](<../docs/L04-aspetti_tecnici.md#L16>), [docs/design/L2 - Systembar.dc.html:119](<../docs/design/L2 - Systembar.dc.html#L119>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:16](<../../../docs/L04-aspetti_tecnici.md#L16>), [docs/design/L2 - Systembar.dc.html:119](<../../../docs/design/L2 - Systembar.dc.html#L119>).
 
 **Previsto:** Prototipo soltanto tastiera; indicazione SCRIVI coerente con l’assenza di ricezione vocale.
 
@@ -1262,9 +1262,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/timeline.ts:52](<../src/aree/timeline.ts#L52>), [src/aree/timeline.ts:60](<../src/aree/timeline.ts#L60>), [src/aree/timeline.ts:206](<../src/aree/timeline.ts#L206>), [src/modello/motore.ts:898](<../src/modello/motore.ts#L898>).
+**File e posizione:** [src/aree/timeline.ts:52](<../../../src/aree/timeline.ts#L52>), [src/aree/timeline.ts:60](<../../../src/aree/timeline.ts#L60>), [src/aree/timeline.ts:206](<../../../src/aree/timeline.ts#L206>), [src/modello/motore.ts:898](<../../../src/modello/motore.ts#L898>).
 
-**Riferimento documentale:** [docs/design/L2 - TIMELINE.dc.html:229](<../docs/design/L2 - TIMELINE.dc.html#L229>), [docs/design/L2 - TIMELINE.dc.html:335](<../docs/design/L2 - TIMELINE.dc.html#L335>).
+**Riferimento documentale:** [docs/design/L2 - TIMELINE.dc.html:229](<../../../docs/design/L2 - TIMELINE.dc.html#L229>), [docs/design/L2 - TIMELINE.dc.html:335](<../../../docs/design/L2 - TIMELINE.dc.html#L335>).
 
 **Previsto:** Mostrare lavoro attuale, prossimo impegno valido e tempo libero corretto.
 
@@ -1283,9 +1283,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/timeline.ts:134](<../src/aree/timeline.ts#L134>), [src/aree/timeline.ts:161](<../src/aree/timeline.ts#L161>).
+**File e posizione:** [src/aree/timeline.ts:134](<../../../src/aree/timeline.ts#L134>), [src/aree/timeline.ts:161](<../../../src/aree/timeline.ts#L161>).
 
-**Riferimento documentale:** [docs/design/L2 - TIMELINE.dc.html:229](<../docs/design/L2 - TIMELINE.dc.html#L229>).
+**Riferimento documentale:** [docs/design/L2 - TIMELINE.dc.html:229](<../../../docs/design/L2 - TIMELINE.dc.html#L229>).
 
 **Previsto:** Niente passato nella rappresentazione descritta.
 
@@ -1304,9 +1304,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/voce/lettura.ts:27](<../src/voce/lettura.ts#L27>), [src/voce/bocca.ts:43](<../src/voce/bocca.ts#L43>), [src/voce/piper.ts:28](<../src/voce/piper.ts#L28>).
+**File e posizione:** [src/voce/lettura.ts:27](<../../../src/voce/lettura.ts#L27>), [src/voce/bocca.ts:43](<../../../src/voce/bocca.ts#L43>), [src/voce/piper.ts:28](<../../../src/voce/piper.ts#L28>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:44](<../docs/L04-aspetti_tecnici.md#L44>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:44](<../../../docs/L04-aspetti_tecnici.md#L44>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -1327,9 +1327,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [src/voce/turno.ts:75](<../src/voce/turno.ts#L75>), [src/voce/turno.ts:112](<../src/voce/turno.ts#L112>), [src/voce/lettura.ts:77](<../src/voce/lettura.ts#L77>), [src/modello/motore.ts:663](<../src/modello/motore.ts#L663>).
+**File e posizione:** [src/voce/turno.ts:75](<../../../src/voce/turno.ts#L75>), [src/voce/turno.ts:112](<../../../src/voce/turno.ts#L112>), [src/voce/lettura.ts:77](<../../../src/voce/lettura.ts#L77>), [src/modello/motore.ts:663](<../../../src/modello/motore.ts#L663>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../docs/L01-struttura_e_task.md#L73>), [docs/design/L2 - INPUT.dc.html:548](<../docs/design/L2 - INPUT.dc.html#L548>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../../../docs/L01-struttura_e_task.md#L73>), [docs/design/L2 - INPUT.dc.html:548](<../../../docs/design/L2 - INPUT.dc.html#L548>).
 
 **Previsto:** Canale vocale coerente con lo scambio scritto; comando di silenzio effettivo.
 
@@ -1348,9 +1348,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/voce/suono.ts:16](<../src/voce/suono.ts#L16>), [src/conoscenza/profilo.ts:261](<../src/conoscenza/profilo.ts#L261>), [vite.config.ts:687](<../vite.config.ts#L687>).
+**File e posizione:** [src/voce/suono.ts:16](<../../../src/voce/suono.ts#L16>), [src/conoscenza/profilo.ts:261](<../../../src/conoscenza/profilo.ts#L261>), [vite.config.ts:687](<../../../vite.config.ts#L687>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:38](<../docs/L03-archivio.md#L38>).
+**Riferimento documentale:** [docs/L03-archivio.md:38](<../../../docs/L03-archivio.md#L38>).
 
 **Previsto:** Suono predefinito Archivio/system-storage/campanello.mp3.
 
@@ -1369,9 +1369,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/voce/piper.ts:40](<../src/voce/piper.ts#L40>), [src/voce/piper.ts:76](<../src/voce/piper.ts#L76>), [src/voce/lettura.ts:65](<../src/voce/lettura.ts#L65>).
+**File e posizione:** [src/voce/piper.ts:40](<../../../src/voce/piper.ts#L40>), [src/voce/piper.ts:76](<../../../src/voce/piper.ts#L76>), [src/voce/lettura.ts:65](<../../../src/voce/lettura.ts#L65>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:44](<../docs/L04-aspetti_tecnici.md#L44>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:44](<../../../docs/L04-aspetti_tecnici.md#L44>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -1392,9 +1392,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [strumenti/banco-ascolto.html:311](<../strumenti/banco-ascolto.html#L311>).
+**File e posizione:** [strumenti/banco-ascolto.html:311](<../../../strumenti/banco-ascolto.html#L311>).
 
-**Riferimento documentale:** [strumenti/LEGGIMI.md:11](<../strumenti/LEGGIMI.md#L11>).
+**Riferimento documentale:** [strumenti/LEGGIMI.md:11](<../../../strumenti/LEGGIMI.md#L11>).
 
 **Previsto:** Banco apribile e funzionante per confrontare voci.
 
@@ -1413,9 +1413,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [strumenti/prepara-voce.mjs:23](<../strumenti/prepara-voce.mjs#L23>).
+**File e posizione:** [strumenti/prepara-voce.mjs:23](<../../../strumenti/prepara-voce.mjs#L23>).
 
-**Riferimento documentale:** [pubblico/LEGGIMI.md:1](<../pubblico/LEGGIMI.md#L1>), [docs/L04-aspetti_tecnici.md:44](<../docs/L04-aspetti_tecnici.md#L44>).
+**Riferimento documentale:** [pubblico/LEGGIMI.md:1](<../../../pubblico/LEGGIMI.md#L1>), [docs/L04-aspetti_tecnici.md:44](<../../../docs/L04-aspetti_tecnici.md#L44>).
 
 **Previsto:** Asset necessari presenti per voce funzionante.
 
@@ -1434,9 +1434,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `TEST_MISMATCH` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/prova/scenario.ts:1](<../src/prova/scenario.ts#L1>), [src/prova/stato.ts:1](<../src/prova/stato.ts#L1>), [src/prova/alfabeto.ts:1](<../src/prova/alfabeto.ts#L1>), [src/prova/flussi.ts:1](<../src/prova/flussi.ts#L1>).
+**File e posizione:** [src/prova/scenario.ts:1](<../../../src/prova/scenario.ts#L1>), [src/prova/stato.ts:1](<../../../src/prova/stato.ts#L1>), [src/prova/alfabeto.ts:1](<../../../src/prova/alfabeto.ts#L1>), [src/prova/flussi.ts:1](<../../../src/prova/flussi.ts#L1>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:38](<../docs/L01-struttura_e_task.md#L38>), [docs/L01-struttura_e_task.md:58](<../docs/L01-struttura_e_task.md#L58>), [docs/L04-aspetti_tecnici.md:23](<../docs/L04-aspetti_tecnici.md#L23>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:38](<../../../docs/L01-struttura_e_task.md#L38>), [docs/L01-struttura_e_task.md:58](<../../../docs/L01-struttura_e_task.md#L58>), [docs/L04-aspetti_tecnici.md:23](<../../../docs/L04-aspetti_tecnici.md#L23>).
 
 **Previsto:** Test derivati dai requisiti attuali, incluso invio differito e percorsi attuali.
 
@@ -1455,9 +1455,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/prova/scia.ts:51](<../src/prova/scia.ts#L51>), [src/ai-engine/ai-engine.ts:145](<../src/ai-engine/ai-engine.ts#L145>), [src/modello/motore.ts:448](<../src/modello/motore.ts#L448>).
+**File e posizione:** [src/prova/scia.ts:51](<../../../src/prova/scia.ts#L51>), [src/ai-engine/ai-engine.ts:145](<../../../src/ai-engine/ai-engine.ts#L145>), [src/modello/motore.ts:448](<../../../src/modello/motore.ts#L448>).
 
-**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../docs/L00-lo_scopo.md#L42>).
+**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../../../docs/L00-lo_scopo.md#L42>).
 
 **Previsto:** Diagnostica deve rappresentare causalità reale; nessun contratto attuale della scia in docs.
 
@@ -1476,9 +1476,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `TEST_MISMATCH` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [src/main.ts:323](<../src/main.ts#L323>), [src/prova/alfabeto.ts:84](<../src/prova/alfabeto.ts#L84>), [src/prova/pedana.ts:135](<../src/prova/pedana.ts#L135>).
+**File e posizione:** [src/main.ts:323](<../../../src/main.ts#L323>), [src/prova/alfabeto.ts:84](<../../../src/prova/alfabeto.ts#L84>), [src/prova/pedana.ts:135](<../../../src/prova/pedana.ts#L135>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../docs/L01-struttura_e_task.md#L73>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:73](<../../../docs/L01-struttura_e_task.md#L73>).
 
 **Previsto:** Verifiche valutano l’esito dopo completamento della richiesta.
 
@@ -1497,9 +1497,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `LEGACY_OR_UNKNOWN` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/modello/tipi.ts:1](<../src/modello/tipi.ts#L1>), [src/ai-engine/finto.ts:3](<../src/ai-engine/finto.ts#L3>), [src/archivio/archivio.ts:1](<../src/archivio/archivio.ts#L1>), [strumenti/LEGGIMI.md:37](<../strumenti/LEGGIMI.md#L37>).
+**File e posizione:** [src/modello/tipi.ts:1](<../../../src/modello/tipi.ts#L1>), [src/ai-engine/finto.ts:3](<../../../src/ai-engine/finto.ts#L3>), [src/archivio/archivio.ts:1](<../../../src/archivio/archivio.ts#L1>), [strumenti/LEGGIMI.md:37](<../../../strumenti/LEGGIMI.md#L37>).
 
-**Riferimento documentale:** [README.md:11](<../README.md#L11>).
+**Riferimento documentale:** [README.md:11](<../../../README.md#L11>).
 
 **Previsto:** docs attuali fonte di verità; riferimenti risolvibili.
 
@@ -1518,9 +1518,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `LEGACY_OR_UNKNOWN` · **Severità:** Bassa · **Certezza:** forte evidenza
 
-**File e posizione:** [src/conoscenza/profilo.ts:356](<../src/conoscenza/profilo.ts#L356>), [src/archivio/archivio.ts:330](<../src/archivio/archivio.ts#L330>), [src/confini/disco.ts:97](<../src/confini/disco.ts#L97>).
+**File e posizione:** [src/conoscenza/profilo.ts:356](<../../../src/conoscenza/profilo.ts#L356>), [src/archivio/archivio.ts:330](<../../../src/archivio/archivio.ts#L330>), [src/confini/disco.ts:97](<../../../src/confini/disco.ts#L97>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:33](<../docs/L04-aspetti_tecnici.md#L33>), [docs/L04-aspetti_tecnici.md:22](<../docs/L04-aspetti_tecnici.md#L22>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:33](<../../../docs/L04-aspetti_tecnici.md#L33>), [docs/L04-aspetti_tecnici.md:22](<../../../docs/L04-aspetti_tecnici.md#L22>).
 
 **Previsto:** Un solo utente e memoria documentale nel prototipo.
 
@@ -1539,9 +1539,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/conoscenza/contesto.ts:23](<../src/conoscenza/contesto.ts#L23>), [src/confini/filtro.ts:20](<../src/confini/filtro.ts#L20>), [src/modello/motore.ts:276](<../src/modello/motore.ts#L276>).
+**File e posizione:** [src/conoscenza/contesto.ts:23](<../../../src/conoscenza/contesto.ts#L23>), [src/confini/filtro.ts:20](<../../../src/confini/filtro.ts#L20>), [src/modello/motore.ts:276](<../../../src/modello/motore.ts#L276>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:49](<../docs/L03-archivio.md#L49>), [docs/L02-componenti.md:22](<../docs/L02-componenti.md#L22>).
+**Riferimento documentale:** [docs/L03-archivio.md:49](<../../../docs/L03-archivio.md#L49>), [docs/L02-componenti.md:22](<../../../docs/L02-componenti.md#L22>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -1562,9 +1562,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:273](<../src/aree/schermo.ts#L273>), [src/aree/schermo.ts:640](<../src/aree/schermo.ts#L640>).
+**File e posizione:** [src/aree/schermo.ts:273](<../../../src/aree/schermo.ts#L273>), [src/aree/schermo.ts:640](<../../../src/aree/schermo.ts#L640>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:16](<../docs/L04-aspetti_tecnici.md#L16>), [docs/design/L0 - Sistema.md:112](<../docs/design/L0 - Sistema.md#L112>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:16](<../../../docs/L04-aspetti_tecnici.md#L16>), [docs/design/L0 - Sistema.md:112](<../../../docs/design/L0 - Sistema.md#L112>).
 
 **Previsto:** Tastiera supportata; controlli interattivi identificabili e azionabili.
 
@@ -1583,9 +1583,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `SECURITY` · **Severità:** Bassa · **Certezza:** forte evidenza
 
-**File e posizione:** [src/conoscenza/profilo.ts:306](<../src/conoscenza/profilo.ts#L306>), [src/aree/schermo.ts:207](<../src/aree/schermo.ts#L207>), [src/aree/schermo.ts:923](<../src/aree/schermo.ts#L923>).
+**File e posizione:** [src/conoscenza/profilo.ts:306](<../../../src/conoscenza/profilo.ts#L306>), [src/aree/schermo.ts:207](<../../../src/aree/schermo.ts#L207>), [src/aree/schermo.ts:923](<../../../src/aree/schermo.ts#L923>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:49](<../docs/L03-archivio.md#L49>), [docs/L04-aspetti_tecnici.md:31](<../docs/L04-aspetti_tecnici.md#L31>).
+**Riferimento documentale:** [docs/L03-archivio.md:49](<../../../docs/L03-archivio.md#L49>), [docs/L04-aspetti_tecnici.md:31](<../../../docs/L04-aspetti_tecnici.md#L31>).
 
 **Previsto:** Dati del profilo rappresentati come dati, non markup eseguibile.
 
@@ -1604,9 +1604,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Media · **Certezza:** forte evidenza
 
-**File e posizione:** [vite.config.ts:497](<../vite.config.ts#L497>), [vite.config.ts:722](<../vite.config.ts#L722>), [vite.config.ts:795](<../vite.config.ts#L795>).
+**File e posizione:** [vite.config.ts:497](<../../../vite.config.ts#L497>), [vite.config.ts:722](<../../../vite.config.ts#L722>), [vite.config.ts:795](<../../../vite.config.ts#L795>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:31](<../docs/L04-aspetti_tecnici.md#L31>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:31](<../../../docs/L04-aspetti_tecnici.md#L31>).
 
 **Previsto:** Contratti validati; errori distinguibili. I limiti numerici non sono definiti dai docs.
 
@@ -1625,9 +1625,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [vite.config.ts:605](<../vite.config.ts#L605>).
+**File e posizione:** [vite.config.ts:605](<../../../vite.config.ts#L605>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:44](<../docs/L03-archivio.md#L44>), [docs/L04-aspetti_tecnici.md:26](<../docs/L04-aspetti_tecnici.md#L26>).
+**Riferimento documentale:** [docs/L03-archivio.md:44](<../../../docs/L03-archivio.md#L44>), [docs/L04-aspetti_tecnici.md:26](<../../../docs/L04-aspetti_tecnici.md#L26>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -1648,9 +1648,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `LEGACY_OR_UNKNOWN` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [pubblico/volto.png:1](<../pubblico/volto.png#L1>), [docs/design/volto.png:1](<../docs/design/volto.png#L1>), [strumenti/LEGGIMI.md:3](<../strumenti/LEGGIMI.md#L3>), [strumenti/banco-voci.html:136](<../strumenti/banco-voci.html#L136>).
+**File e posizione:** [pubblico/volto.png:1](<../../../pubblico/volto.png#L1>), [docs/design/volto.png:1](<../../../docs/design/volto.png#L1>), [strumenti/LEGGIMI.md:3](<../../../strumenti/LEGGIMI.md#L3>), [strumenti/banco-voci.html:136](<../../../strumenti/banco-voci.html#L136>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:38](<../docs/L03-archivio.md#L38>), [strumenti/LEGGIMI.md:9](<../strumenti/LEGGIMI.md#L9>).
+**Riferimento documentale:** [docs/L03-archivio.md:38](<../../../docs/L03-archivio.md#L38>), [strumenti/LEGGIMI.md:9](<../../../strumenti/LEGGIMI.md#L9>).
 
 **Previsto:** Asset di sistema e strumenti chiaramente inventariati.
 
@@ -1669,9 +1669,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L0 - Sistema.md:60](<../docs/design/L0 - Sistema.md#L60>), [docs/design/L0 - Sistema.md:263](<../docs/design/L0 - Sistema.md#L263>).
+**File e posizione:** [docs/design/L0 - Sistema.md:60](<../../../docs/design/L0 - Sistema.md#L60>), [docs/design/L0 - Sistema.md:263](<../../../docs/design/L0 - Sistema.md#L263>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:60](<../docs/design/L0 - Sistema.md#L60>), [docs/design/L0 - Sistema.md:263](<../docs/design/L0 - Sistema.md#L263>), [docs/design/L2 - Bubble.dc.html:33](<../docs/design/L2 - Bubble.dc.html#L33>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:60](<../../../docs/design/L0 - Sistema.md#L60>), [docs/design/L0 - Sistema.md:263](<../../../docs/design/L0 - Sistema.md#L263>), [docs/design/L2 - Bubble.dc.html:33](<../../../docs/design/L2 - Bubble.dc.html#L33>).
 
 **Previsto:** Legge0: ogni contenuto leggibile in bolla, sola eccezione Systembar.
 
@@ -1690,9 +1690,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L0 - Sistema.md:247](<../docs/design/L0 - Sistema.md#L247>), [src/aree/schermo.ts:157](<../src/aree/schermo.ts#L157>).
+**File e posizione:** [docs/design/L0 - Sistema.md:247](<../../../docs/design/L0 - Sistema.md#L247>), [src/aree/schermo.ts:157](<../../../src/aree/schermo.ts#L157>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:247](<../docs/design/L0 - Sistema.md#L247>), [docs/design/L0 - Sistema.md:263](<../docs/design/L0 - Sistema.md#L263>), [docs/design/L2 - Profilebar.dc.html:80](<../docs/design/L2 - Profilebar.dc.html#L80>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:247](<../../../docs/design/L0 - Sistema.md#L247>), [docs/design/L0 - Sistema.md:263](<../../../docs/design/L0 - Sistema.md#L263>), [docs/design/L2 - Profilebar.dc.html:80](<../../../docs/design/L2 - Profilebar.dc.html#L80>).
 
 **Previsto:** Niente contenitori/colonne condivise, scomparsa di un componente non muove altri.
 
@@ -1711,9 +1711,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L2 - Sidebar.dc.html:130](<../docs/design/L2 - Sidebar.dc.html#L130>), [docs/design/L2 - INPUT.dc.html:32](<../docs/design/L2 - INPUT.dc.html#L32>).
+**File e posizione:** [docs/design/L2 - Sidebar.dc.html:130](<../../../docs/design/L2 - Sidebar.dc.html#L130>), [docs/design/L2 - INPUT.dc.html:32](<../../../docs/design/L2 - INPUT.dc.html#L32>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:275](<../docs/design/L0 - Sistema.md#L275>), [docs/design/L0 - Sistema.md:291](<../docs/design/L0 - Sistema.md#L291>), [docs/design/L2 - Sidebar.dc.html:130](<../docs/design/L2 - Sidebar.dc.html#L130>), [docs/design/L2 - Sidebar.dc.html:150](<../docs/design/L2 - Sidebar.dc.html#L150>), [docs/design/L2 - INPUT.dc.html:32](<../docs/design/L2 - INPUT.dc.html#L32>), [docs/design/L0 - Sistema.md:285](<../docs/design/L0 - Sistema.md#L285>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:275](<../../../docs/design/L0 - Sistema.md#L275>), [docs/design/L0 - Sistema.md:291](<../../../docs/design/L0 - Sistema.md#L291>), [docs/design/L2 - Sidebar.dc.html:130](<../../../docs/design/L2 - Sidebar.dc.html#L130>), [docs/design/L2 - Sidebar.dc.html:150](<../../../docs/design/L2 - Sidebar.dc.html#L150>), [docs/design/L2 - INPUT.dc.html:32](<../../../docs/design/L2 - INPUT.dc.html#L32>), [docs/design/L0 - Sistema.md:285](<../../../docs/design/L0 - Sistema.md#L285>).
 
 **Previsto:** Un ancoraggio verificabile per componente.
 
@@ -1732,9 +1732,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L1 - Icone.dc.html:1](<../docs/design/L1 - Icone.dc.html#L1>), [docs/design/L2 - Bubble.dc.html:138](<../docs/design/L2 - Bubble.dc.html#L138>).
+**File e posizione:** [docs/design/L1 - Icone.dc.html:1](<../../../docs/design/L1 - Icone.dc.html#L1>), [docs/design/L2 - Bubble.dc.html:138](<../../../docs/design/L2 - Bubble.dc.html#L138>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:197](<../docs/design/L0 - Sistema.md#L197>), [docs/design/L0 - Sistema.md:206](<../docs/design/L0 - Sistema.md#L206>), [docs/design/L2 - Bubble.dc.html:138](<../docs/design/L2 - Bubble.dc.html#L138>), [docs/design/L2 - Profilebar.dc.html:70](<../docs/design/L2 - Profilebar.dc.html#L70>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:197](<../../../docs/design/L0 - Sistema.md#L197>), [docs/design/L0 - Sistema.md:206](<../../../docs/design/L0 - Sistema.md#L206>), [docs/design/L2 - Bubble.dc.html:138](<../../../docs/design/L2 - Bubble.dc.html#L138>), [docs/design/L2 - Profilebar.dc.html:70](<../../../docs/design/L2 - Profilebar.dc.html#L70>).
 
 **Previsto:** Lucide14–16 e Manrope200/300/500; eccezione Deep600 esplicita.
 
@@ -1753,9 +1753,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L0 - Sistema.md:177](<../docs/design/L0 - Sistema.md#L177>), [docs/design/L1 - Moodboard.dc.html:163](<../docs/design/L1 - Moodboard.dc.html#L163>).
+**File e posizione:** [docs/design/L0 - Sistema.md:177](<../../../docs/design/L0 - Sistema.md#L177>), [docs/design/L1 - Moodboard.dc.html:163](<../../../docs/design/L1 - Moodboard.dc.html#L163>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:177](<../docs/design/L0 - Sistema.md#L177>), [docs/design/L1 - Moodboard.dc.html:163](<../docs/design/L1 - Moodboard.dc.html#L163>), [docs/design/Liquid glass.md:24](<../docs/design/Liquid glass.md#L24>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:177](<../../../docs/design/L0 - Sistema.md#L177>), [docs/design/L1 - Moodboard.dc.html:163](<../../../docs/design/L1 - Moodboard.dc.html#L163>), [docs/design/Liquid glass.md:24](<../../../docs/design/Liquid glass.md#L24>).
 
 **Previsto:** Un’unica palette approvata.
 
@@ -1774,9 +1774,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L2 - Bubble.dc.html:583](<../docs/design/L2 - Bubble.dc.html#L583>), [docs/design/L3 - Flusso task.dc.html:178](<../docs/design/L3 - Flusso task.dc.html#L178>).
+**File e posizione:** [docs/design/L2 - Bubble.dc.html:583](<../../../docs/design/L2 - Bubble.dc.html#L583>), [docs/design/L3 - Flusso task.dc.html:178](<../../../docs/design/L3 - Flusso task.dc.html#L178>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:58](<../docs/L01-struttura_e_task.md#L58>), [docs/design/L0 - Sistema.md:153](<../docs/design/L0 - Sistema.md#L153>), [docs/design/L2 - Bubble.dc.html:583](<../docs/design/L2 - Bubble.dc.html#L583>), [docs/design/L3 - Flusso task.dc.html:178](<../docs/design/L3 - Flusso task.dc.html#L178>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:58](<../../../docs/L01-struttura_e_task.md#L58>), [docs/design/L0 - Sistema.md:153](<../../../docs/design/L0 - Sistema.md#L153>), [docs/design/L2 - Bubble.dc.html:583](<../../../docs/design/L2 - Bubble.dc.html#L583>), [docs/design/L3 - Flusso task.dc.html:178](<../../../docs/design/L3 - Flusso task.dc.html#L178>).
 
 **Previsto:** Delay prima della chiamata; nessuna promessa di ritiro dopo consegna reale.
 
@@ -1795,9 +1795,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L2 - Bubble.dc.html:768](<../docs/design/L2 - Bubble.dc.html#L768>), [docs/design/L2 - INPUT.dc.html:548](<../docs/design/L2 - INPUT.dc.html#L548>).
+**File e posizione:** [docs/design/L2 - Bubble.dc.html:768](<../../../docs/design/L2 - Bubble.dc.html#L768>), [docs/design/L2 - INPUT.dc.html:548](<../../../docs/design/L2 - INPUT.dc.html#L548>).
 
-**Riferimento documentale:** [docs/design/L0 - Sistema.md:217](<../docs/design/L0 - Sistema.md#L217>), [docs/design/L2 - Bubble.dc.html:768](<../docs/design/L2 - Bubble.dc.html#L768>), [docs/design/L2 - INPUT.dc.html:548](<../docs/design/L2 - INPUT.dc.html#L548>).
+**Riferimento documentale:** [docs/design/L0 - Sistema.md:217](<../../../docs/design/L0 - Sistema.md#L217>), [docs/design/L2 - Bubble.dc.html:768](<../../../docs/design/L2 - Bubble.dc.html#L768>), [docs/design/L2 - INPUT.dc.html:548](<../../../docs/design/L2 - INPUT.dc.html#L548>).
 
 **Previsto:** Durante acquisizione cambiano solo parole/raccolta; azioni dopo interpretazione.
 
@@ -1816,9 +1816,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L2 - Notificationbar.dc.html:136](<../docs/design/L2 - Notificationbar.dc.html#L136>), [docs/design/L2 - Sidebar.dc.html:114](<../docs/design/L2 - Sidebar.dc.html#L114>).
+**File e posizione:** [docs/design/L2 - Notificationbar.dc.html:136](<../../../docs/design/L2 - Notificationbar.dc.html#L136>), [docs/design/L2 - Sidebar.dc.html:114](<../../../docs/design/L2 - Sidebar.dc.html#L114>).
 
-**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:46](<../docs/design/L2 - Notificationbar.dc.html#L46>), [docs/design/L2 - Notificationbar.dc.html:136](<../docs/design/L2 - Notificationbar.dc.html#L136>), [docs/design/L2 - Sidebar.dc.html:114](<../docs/design/L2 - Sidebar.dc.html#L114>), [docs/L02-componenti.md:34](<../docs/L02-componenti.md#L34>).
+**Riferimento documentale:** [docs/design/L2 - Notificationbar.dc.html:46](<../../../docs/design/L2 - Notificationbar.dc.html#L46>), [docs/design/L2 - Notificationbar.dc.html:136](<../../../docs/design/L2 - Notificationbar.dc.html#L136>), [docs/design/L2 - Sidebar.dc.html:114](<../../../docs/design/L2 - Sidebar.dc.html#L114>), [docs/L02-componenti.md:34](<../../../docs/L02-componenti.md#L34>).
 
 **Previsto:** Notificationbar=mondo esterno, rinvii dell’utente in sidebar.
 
@@ -1837,9 +1837,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/L01-struttura_e_task.md:11](<../docs/L01-struttura_e_task.md#L11>), [docs/L05-design.md:1](<../docs/L05-design.md#L1>).
+**File e posizione:** [docs/L01-struttura_e_task.md:11](<../../../docs/L01-struttura_e_task.md#L11>), [docs/L05-design.md:1](<../../../docs/L05-design.md#L1>).
 
-**Riferimento documentale:** [docs/L01-struttura_e_task.md:11](<../docs/L01-struttura_e_task.md#L11>), [docs/L03-archivio.md:45](<../docs/L03-archivio.md#L45>), [docs/L04-aspetti_tecnici.md:3](<../docs/L04-aspetti_tecnici.md#L3>).
+**Riferimento documentale:** [docs/L01-struttura_e_task.md:11](<../../../docs/L01-struttura_e_task.md#L11>), [docs/L03-archivio.md:45](<../../../docs/L03-archivio.md#L45>), [docs/L04-aspetti_tecnici.md:3](<../../../docs/L04-aspetti_tecnici.md#L3>).
 
 **Previsto:** Le lacune devono essere dichiarate, senza usare implementazione come specifica.
 
@@ -1858,9 +1858,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_MISSING_IMPLEMENTATION` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/temi.css:23](<../docs/design/temi.css#L23>), [docs/design/L1 - Temi.dc.html:87](<../docs/design/L1 - Temi.dc.html#L87>).
+**File e posizione:** [docs/design/temi.css:23](<../../../docs/design/temi.css#L23>), [docs/design/L1 - Temi.dc.html:87](<../../../docs/design/L1 - Temi.dc.html#L87>).
 
-**Riferimento documentale:** [docs/design/L1 - Temi.dc.html:87](<../docs/design/L1 - Temi.dc.html#L87>), [docs/design/temi.css:23](<../docs/design/temi.css#L23>).
+**Riferimento documentale:** [docs/design/L1 - Temi.dc.html:87](<../../../docs/design/L1 - Temi.dc.html#L87>), [docs/design/temi.css:23](<../../../docs/design/temi.css#L23>).
 
 **Previsto:** Token rigenerabili con il generatore indicato dalla tavola.
 
@@ -1879,9 +1879,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Bassa · **Certezza:** forte evidenza
 
-**File e posizione:** [docs/design/liquid-glass.css:42](<../docs/design/liquid-glass.css#L42>), [docs/design/materiali.css:13](<../docs/design/materiali.css#L13>).
+**File e posizione:** [docs/design/liquid-glass.css:42](<../../../docs/design/liquid-glass.css#L42>), [docs/design/materiali.css:13](<../../../docs/design/materiali.css#L13>).
 
-**Riferimento documentale:** [docs/design/Liquid glass.md:16](<../docs/design/Liquid glass.md#L16>).
+**Riferimento documentale:** [docs/design/Liquid glass.md:16](<../../../docs/design/Liquid glass.md#L16>).
 
 **Previsto:** In assenza backdrop o con trasparenza ridotta, fallback opaco coerente per i materiali.
 
@@ -1900,9 +1900,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Alta · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/finto.ts:77](<../src/ai-engine/finto.ts#L77>), [src/ai-engine/regole.ts:224](<../src/ai-engine/regole.ts#L224>), [src/ai-engine/regole.ts:264](<../src/ai-engine/regole.ts#L264>).
+**File e posizione:** [src/ai-engine/finto.ts:77](<../../../src/ai-engine/finto.ts#L77>), [src/ai-engine/regole.ts:224](<../../../src/ai-engine/regole.ts#L224>), [src/ai-engine/regole.ts:264](<../../../src/ai-engine/regole.ts#L264>).
 
-**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../docs/L00-lo_scopo.md#L42>), [docs/L01-struttura_e_task.md:23](<../docs/L01-struttura_e_task.md#L23>).
+**Riferimento documentale:** [docs/L00-lo_scopo.md:42](<../../../docs/L00-lo_scopo.md#L42>), [docs/L01-struttura_e_task.md:23](<../../../docs/L01-struttura_e_task.md#L23>).
 
 **Previsto:** Il destinatario dell’azione coincide con il task indicato dall’utente.
 
@@ -1921,9 +1921,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `UNDOCUMENTED_IMPLEMENTATION` · **Severità:** Media · **Certezza:** fatto verificato
 
-**File e posizione:** [src/confini/calendario.ts:68](<../src/confini/calendario.ts#L68>), [src/confini/promemoria.ts:110](<../src/confini/promemoria.ts#L110>), [src/confini/contatti.ts:35](<../src/confini/contatti.ts#L35>), [src/confini/note.ts:1](<../src/confini/note.ts#L1>).
+**File e posizione:** [src/confini/calendario.ts:68](<../../../src/confini/calendario.ts#L68>), [src/confini/promemoria.ts:110](<../../../src/confini/promemoria.ts#L110>), [src/confini/contatti.ts:35](<../../../src/confini/contatti.ts#L35>), [src/confini/note.ts:1](<../../../src/confini/note.ts#L1>).
 
-**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:22](<../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:48](<../docs/L03-archivio.md#L48>).
+**Riferimento documentale:** [docs/L04-aspetti_tecnici.md:22](<../../../docs/L04-aspetti_tecnici.md#L22>), [docs/L03-archivio.md:48](<../../../docs/L03-archivio.md#L48>).
 
 **Base autorizzativa:** i riferimenti definiscono il perimetro funzionale, non autorizzano il dettaglio descritto. Nessun contratto specifico rintracciato nel corpus attuale `docs/`; commenti legacy e test non sono stati usati come autorizzazione.
 
@@ -1944,9 +1944,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOCUMENTATION_AMBIGUITY` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [.gitignore:12](<../.gitignore#L12>), [Archivio/users/user_123/preferences.txt:1](<../Archivio/users/user_123/preferences.txt#L1>).
+**File e posizione:** [.gitignore:12](<../../../.gitignore#L12>), [Archivio/users/user_123/preferences.txt:1](<../../../Archivio/users/user_123/preferences.txt#L1>).
 
-**Riferimento documentale:** [docs/L03-archivio.md:41](<../docs/L03-archivio.md#L41>), [docs/L03-archivio.md:49](<../docs/L03-archivio.md#L49>), [docs/L04-aspetti_tecnici.md:22](<../docs/L04-aspetti_tecnici.md#L22>).
+**Riferimento documentale:** [docs/L03-archivio.md:41](<../../../docs/L03-archivio.md#L41>), [docs/L03-archivio.md:49](<../../../docs/L03-archivio.md#L49>), [docs/L04-aspetti_tecnici.md:22](<../../../docs/L04-aspetti_tecnici.md#L22>).
 
 **Previsto:** Dati fittizi del prototipo distinti da dati locali reali; password locale non inviata all’AI.
 
@@ -1965,9 +1965,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/aree/schermo.ts:318](<../src/aree/schermo.ts#L318>), [src/modello/motore.ts:346](<../src/modello/motore.ts#L346>), [src/stile/base.css:342](<../src/stile/base.css#L342>).
+**File e posizione:** [src/aree/schermo.ts:318](<../../../src/aree/schermo.ts#L318>), [src/modello/motore.ts:346](<../../../src/modello/motore.ts#L346>), [src/stile/base.css:342](<../../../src/stile/base.css#L342>).
 
-**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:55](<../docs/design/L2 - Sidebar.dc.html#L55>), [docs/design/L2 - Sidebar.dc.html:64](<../docs/design/L2 - Sidebar.dc.html#L64>).
+**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:55](<../../../docs/design/L2 - Sidebar.dc.html#L55>), [docs/design/L2 - Sidebar.dc.html:64](<../../../docs/design/L2 - Sidebar.dc.html#L64>).
 
 **Previsto:** Nome massimo due parole; se lungo, tagliare il dato e non il nome.
 
@@ -1986,9 +1986,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `DOC_CODE_MISMATCH` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/stile/base.css:309](<../src/stile/base.css#L309>).
+**File e posizione:** [src/stile/base.css:309](<../../../src/stile/base.css#L309>).
 
-**Riferimento documentale:** [docs/design/L2 - Systembar.dc.html:30](<../docs/design/L2 - Systembar.dc.html#L30>).
+**Riferimento documentale:** [docs/design/L2 - Systembar.dc.html:30](<../../../docs/design/L2 - Systembar.dc.html#L30>).
 
 **Previsto:** Valori Systembar in monospaziato11px.
 
@@ -2007,9 +2007,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `PARTIAL_IMPLEMENTATION` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [src/ai-engine/strumenti.ts:67](<../src/ai-engine/strumenti.ts#L67>), [src/aree/schermo.ts:430](<../src/aree/schermo.ts#L430>).
+**File e posizione:** [src/ai-engine/strumenti.ts:67](<../../../src/ai-engine/strumenti.ts#L67>), [src/aree/schermo.ts:430](<../../../src/aree/schermo.ts#L430>).
 
-**Riferimento documentale:** [docs/design/L2 - Profilebar.dc.html:80](<../docs/design/L2 - Profilebar.dc.html#L80>).
+**Riferimento documentale:** [docs/design/L2 - Profilebar.dc.html:80](<../../../docs/design/L2 - Profilebar.dc.html#L80>).
 
 **Previsto:** Profilo esteso raccontato in una bolla Desk con ritratto54px.
 
@@ -2028,9 +2028,9 @@ Indice sintetico e limiti: [AUDIT.md](<AUDIT.md>). Matrici: [matrice-documentazi
 
 **Categoria:** `BUG` · **Severità:** Bassa · **Certezza:** fatto verificato
 
-**File e posizione:** [docs/design/L2 - Sidebar.dc.html:192](<../docs/design/L2 - Sidebar.dc.html#L192>), [docs/design/L2 - INPUT.dc.html:507](<../docs/design/L2 - INPUT.dc.html#L507>).
+**File e posizione:** [docs/design/L2 - Sidebar.dc.html:192](<../../../docs/design/L2 - Sidebar.dc.html#L192>), [docs/design/L2 - INPUT.dc.html:507](<../../../docs/design/L2 - INPUT.dc.html#L507>).
 
-**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:192](<../docs/design/L2 - Sidebar.dc.html#L192>), [docs/design/L2 - INPUT.dc.html:507](<../docs/design/L2 - INPUT.dc.html#L507>).
+**Riferimento documentale:** [docs/design/L2 - Sidebar.dc.html:192](<../../../docs/design/L2 - Sidebar.dc.html#L192>), [docs/design/L2 - INPUT.dc.html:507](<../../../docs/design/L2 - INPUT.dc.html#L507>).
 
 **Previsto:** Campioni renderizzabili secondo le misure indicate.
 
