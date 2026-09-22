@@ -383,3 +383,20 @@ l'acqua non rimbalza · il posto non è assegnato.
 Ripresa dalle sezioni cancellate la **messa da parte**, ora dichiarata come scelta
 dell'utente: contrazione leggibile 280 ms, migrazione 420 ms lungo un arco, ancoraggio
 `44 / 180`, e il diritto del chip di risalire quando lo nomini.
+
+---
+
+## 22 settembre 2026 — i tre decisi e non scritti, e lo stato dell'audit
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 87 | **Scritti i tre punti che erano decisi e non scritti**: il formato di `preferences.txt` in `docs/L03` (`F-112`), la proprietà «attraversa il confine» per il Delay in `docs/L01` (`F-006`), la deroga dichiarata e limitata alla legge 11 in `docs/design/L0` (`F-106`) | una decisione che non è scritta non esiste |
+| 88 | **Corretto il refuso `assitant:` in `Archivio/users/user_123/preferences.txt`** | il formato ora è documentato, e il file distribuito deve corrispondere |
+| 89 | **Il codice si allinea alla documentazione**: è la regola predefinita per chiudere le voci dell'audit che restano. Se durante una correzione emerge un vuoto vero — una cosa che `docs/` non determina — **ci si ferma**, si scrive in `tasks/da_definire.md` e se ne parla | non si sceglie l'opzione ragionevole per andare avanti: un vuoto del genere è una decisione mancante, non un dettaglio di implementazione |
+
+**Segnato in `audit/AUDIT.md`**: un blocco di stato in testa e la marcatura voce per voce.
+Sette finding chiusi — `F-006`, `F-104`, `F-105`, `F-106`, `F-109`, `F-110`, `F-112` — e
+quattro chiusi in parte: `F-101`, `F-107`, `F-108`, `F-119`. Ogni nota rimanda alla
+decisione che l'ha chiusa.
+
+**Resta tutto il codice.** Da cominciare: `F-009`, il confine dell'archivio.

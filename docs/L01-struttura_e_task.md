@@ -133,3 +133,11 @@ non cambia l'impostazione predefinita dei task successivi.
 
 # Importante
 Ogni scambio deve avvenire tramite comunicazione tra l'utente e l'assistente. Essa può essere via chat o per via parlata e può anche essere ibrida. L'assistente può parlare e l'utente può scrivere e viceversa.
+
+Il Delay non vale per tutte le operazioni: vale per quelle che **attraversano il confine**
+del computer — mandare, pubblicare, trasmettere. Leggere, cercare, calcolare e salvare in
+locale non lo attraversano, e partono subito.
+
+Ogni destinazione dichiara quindi una sola cosa: **se attraversa il confine o no.** Non
+esiste un elenco di eccezioni da ricordare, e non si deduce dal nome del servizio: una
+destinazione nuova la dichiara, o il Delay non la protegge.

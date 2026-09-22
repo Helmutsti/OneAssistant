@@ -15,6 +15,35 @@ nessuno dei tre audit.**
 
 ---
 
+## 0 · Stato al 22 settembre 2026
+
+**Le dodici domande di §5 hanno tutte una risposta.** Erano il blocco dichiarato del
+registro — «finché non si risponde, ogni correzione è provvisoria» — e sono state sciolte
+in una sessione di lavoro. Le decisioni, con data e motivo, stanno in `tasks/storico.md`.
+
+**Sette finding sono chiusi e quattro chiusi in parte**, tutti documentali: sono segnati
+voce per voce qui sotto.
+
+**Tutto il resto è codice, e nessun file di `src/` è stato toccato** — né durante l'audit
+né dopo. Restano interi i 28 `BUG`, i 15 `PARTIAL_IMPLEMENTATION`, i 16
+`UNDOCUMENTED_IMPLEMENTATION`.
+
+### Come si chiudono le voci che restano
+
+**Il codice si allinea alla documentazione.** Adesso che le dodici domande hanno una
+risposta, per quasi tutte le voci non c'è più niente da decidere: c'è da leggere cosa dice
+`docs/` e farlo fare al codice. Questa è la regola, e vale come predefinito.
+
+**Se durante una correzione emerge un vuoto vero** — una cosa che la documentazione non
+determina, e che il codice non può dedurre — non si sceglie l'opzione ragionevole per
+andare avanti: si ferma, si scrive in `tasks/da_definire.md`, e se ne parla. Un gap del
+genere è una decisione mancante, non un dettaglio di implementazione.
+
+**Da dove cominciare non cambia:** `F-009`, il confine dell'archivio che si attraversa con
+`..`, non dipendeva da nessuna delle dodici domande e non dipende da niente adesso.
+
+---
+
 ## 0 · Le tre fonti, e cosa vale ciascuna
 
 | Fonte | Dove | Finding | Metodo | Forza |
@@ -174,6 +203,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 
 **F-006 · Il Delay non è classificato per destinazione**
 `DOC_MISSING_IMPLEMENTATION` · alta · verificato · Origine: `CL:AUD-07`
+
+> **Chiuso · 22 settembre 2026.** la documentazione dichiara ora la proprietà «attraversa il confine» (`docs/L01`, §Funzione Delay). Storico §87
 
 - **Dove**: `src/modello/tipi.ts:105`, `:120`
 - **Documentazione**: `docs/L01` — vale per «*qualsiasi servizio che invia, pubblica o
@@ -1310,6 +1341,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-101 ⊕ · Riferimenti rotti e file vitali vuoti**
 `DOCUMENTATION_AMBIGUITY` · media · verificato · Origine: `CL:AUD-35`, `CL:AUD-36`, `CG:A088`, `CG:A087`
 
+> **Chiuso in parte · 22 settembre 2026.** i rimandi al corpus scomparso dentro `docs/` sono stati riportati ai documenti veri, e `strumenti/` ha di nuovo un generatore. **Restano** i file vuoti e i rimandi dentro `src/`
+
 - Riferimenti a file inesistenti, verificati uno per uno:
 
   | citato in | riferimento |
@@ -1370,6 +1403,8 @@ conforme il componente corrispondente.
 **F-104 ⊕ · Due modelli dei task in due corpus, e la cascata non arbitra**
 `DOCUMENTATION_AMBIGUITY` · **alta** · da decidere · Origine: `CL:§7.1`, `CG:A087`, `DIV:appendice 1`
 
+> **Chiuso · 22 settembre 2026.** il modello dei task è uno solo: `T_DRAFT` prende il posto di `T_NUOVO` e gli stati restano quattro (`docs/L01`). Storico §25
+
 `docs/L01` definisce quattro stati `T_*`. `docs/design/L0 - Sistema` parla delle «*sette
 facce del modello, non i quattro stati*» e rimanda a `docs/01-modello §2`, che non esiste.
 I due appartengono a corpus diversi e nessuno dei due è «più basso» dell'altro: **serve
@@ -1377,6 +1412,8 @@ una decisione**, non una lettura più attenta. → §5 Q1
 
 **F-105 · La legge zero è contraddetta dalla Timeline dentro lo stesso `L0`**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CG:A079`
+
+> **Chiuso · 22 settembre 2026.** le eccezioni alla legge zero sono **due**, SYSTEMBAR e TIMELINE, ed è scritto (`L0`). Storico §51
 
 `L0` dice che ogni contenuto leggibile sta in una bolla, con **una sola** eccezione
 dichiarata (SYSTEMBAR); e poi, nella sezione delle aree, definisce la TIMELINE «*inchiostro
@@ -1386,6 +1423,8 @@ glass. Non si può certificare la conformità della Timeline rispetto a entrambe
 **F-106 · Autonomia dei componenti contro la guida verticale condivisa**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CG:A080`
 
+> **Chiuso · 22 settembre 2026.** la pila verticale è una **deroga dichiarata e limitata** a TIMELINE → PROFILEBAR → SYSTEMBAR (`L0`, legge 11). Storico §87
+
 La legge 11 dice che nessun componente è in colonna con un altro e che «*se un componente
 scompare, nessun altro si muove*». Lo stesso `L0`, e `L2 - Profilebar`, dicono che
 PROFILEBAR e SYSTEMBAR **seguono** l'altezza della Timeline con 22 px d'aria. Il codice
@@ -1393,6 +1432,8 @@ implementa una guida flex. Le due regole non sono simultaneamente soddisfacibili
 
 **F-107 · Quote e ancoraggi discordanti fra norme, testo e scene**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CG:A081`, `CL:§7.5`, `DIV:appendice 2,4`
+
+> **Chiuso in parte · 22 settembre 2026.** la quota della SIDEBAR è `44 / 180` ovunque, e il pallino è 9 px. **Restano** le quote della SYSTEMBAR
 
 SIDEBAR a `top 132` nel testo di `L2 - Sidebar` e `44 / 180` in `L0`; SYSTEMBAR a `44 / 126`
 insieme a una guida dichiarata dinamica; INPUT «*bottom 44 · centrato*» nel titolo di
@@ -1402,6 +1443,8 @@ vince `L0`, e il codice è conforme; per le quote no.
 **F-108 · Tipografia e icone: i campioni non sono coerenti con le leggi superiori**
 `DOCUMENTATION_AMBIGUITY` · bassa · da decidere · Origine: `CG:A082`, `CL:§7.6`, `DIV:appendice 3`
 
+> **Chiuso in parte · 22 settembre 2026.** la misura delle icone segue la legge 06 — 14 nella bolla e nel chip, 16 nella cornice — in tutti i documenti. **Resta** l'eccezione del peso 600
+
 `L0` legge 06 dice icone 14–16 px; `L1 - Icone` le mostra a 19. `L0` legge 07 dice tre pesi
 (200/300/500) e «*il grassetto non esiste*»; `L2 - Bubble` usa titoli 600/27 px e
 `L2 - Profilebar` dichiara un 600 come «eccezione esplicita». Non tutte le misure dei
@@ -1410,6 +1453,8 @@ mockup possono essere normative insieme.
 **F-109 · La tavolozza è descritta insieme come irrisolta e come già riconciliata**
 `DOCUMENTATION_AMBIGUITY` · bassa · da decidere · Origine: `CG:A083`
 
+> **Chiuso · 22 settembre 2026.** la tavolozza è decisa e unica: grigio, azzurro, ambra, nessun colore — più il verde, che non è uno stato. La nota sulle due tavolozze è sparita da `L0`. Storico §46
+
 `L0` legge 04 rimanda a `docs/11-aperte` (inesistente) e descrive la tavolozza del
 prototipo come ancora divergente; `L1 - Moodboard` la dichiara chiusa il 18 settembre
 («*il prototipo è stato smentito*»). Da qui dipende l'autorità degli override ancora
@@ -1417,6 +1462,8 @@ implementati (`F-067`).
 
 **F-110 · Il fuoco durante la frase contraddice l'ultima revisione di INPUT**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CG:A085`
+
+> **Chiuso · 22 settembre 2026.** INPUT è stato riscritto: mentre si scrive non si muove niente e nessun fuoco si sposta. Storico §18
 
 `L2 - Bubble` e `L3 - Flusso task` descrivono il fuoco immediato e la crescita del 50%
 **mentre** parli; `L2 - INPUT`, nella revisione finale, dice che durante l'acquisizione si
@@ -1433,6 +1480,8 @@ versione vecchia (`schermo.ts:589-610` mescola `m.notifiche` e `m.in('ORARIO')`)
 
 **F-112 · Il formato di `preferences.txt` non è documentato da nessuna parte**
 `DOCUMENTATION_AMBIGUITY` · **alta** · da decidere · Origine: `CL:§7.3`
+
+> **Chiuso · 22 settembre 2026.** il formato di `preferences.txt` è scritto in `docs/L03`, in inglese, e il refuso `assitant` è corretto nel file distribuito. Storico §87
 
 `docs/L03` dice **cosa** contiene («lingua, tema, luoghi conosciuti, configurazione della
 voce»), mai **con quali chiavi**. Il file di esempio e il parser divergono (`F-040`) e non
@@ -1489,6 +1538,8 @@ applicano, ed è il motivo per cui `F-050` è un finding e non una conformità.
 
 **F-119 · Le scene di `L4` e i documenti citano ancora misure superate**
 `DOCUMENTATION_AMBIGUITY` · bassa · verificato · Origine: `DIV:appendice`, `CG:A081`
+
+> **Chiuso in parte · 22 settembre 2026.** colori, pallino e quota della SIDEBAR allineati nelle scene. **Resta** il resto delle misure di `L4`
 
 `L4 - Schermate` porta una nota del 21 settembre che chiude sei divergenze, ma `L2 - Sidebar`
 non è stato aggiornato di conseguenza (quota della colonna), e `L1 - Icone` continua a

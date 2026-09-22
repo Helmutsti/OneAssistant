@@ -17,7 +17,7 @@ System preferences
 		Piazza della speranza, Bologna - Casa
 
 	theme: cenere
-assitant:
+assistant:
 	reading: on
 	settings:
 		voice: femminile

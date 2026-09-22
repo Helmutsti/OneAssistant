@@ -50,6 +50,31 @@ definito in futuro.
 luoghi conosciuti e configurazione della voce dell'assistente. Nel prototipo l'eventuale
 campo `password` è soltanto un dato locale: non implementa autenticazione e non viene
 inviato al provider AI.
+
+Il file è in **inglese**, e questo è il formato. Le chiavi sono quelle, l'indentazione è a
+tabulazione, e i due punti separano chiave e valore.
+
+```
+Utente:
+	name:             nome e cognome dell'utente
+	datebirth:        AAAA-M-G
+	sex:              female | male
+	language:         italian | english
+	password:         dato locale, non è autenticazione e non raggiunge il provider
+System preferences
+	focuses:          uno per riga, «indirizzo - nome del luogo»
+	theme:            il nome di uno dei dodici temi
+assistant:
+	reading:          on | off — la lettura ad alta voce
+	settings:
+		voice:            femminile | maschile
+		name:             come si chiama l'assistente. Lo sceglie l'utente
+		assistant gender: female | male
+	copione:          prosa libera: come parla
+```
+
+Quello che il file non dichiara resta al valore predefinito. Una chiave che il file scrive e
+il sistema non conosce **non viene ignorata in silenzio**: è un errore di formato, e va detto.
 **system.txt**: Stato corrente del sistema per questo utente, compresi microfono,
 batteria, rete, volume e posizione. Nel prototipo è un documento di contesto aggiornato
 manualmente, non una lettura reale della macchina.

@@ -259,6 +259,16 @@ lasciato libero da un vicino**, né si restringe per farne posto.
 Non esistono contenitori condivisi, righe, colonne o larghezze residue: **se un componente
 scompare, nessun altro si muove.**
 
+**Una deroga, dichiarata e limitata.** Nella guida di destra tre componenti stanno in colonna:
+la TIMELINE cresce col contenuto, e PROFILEBAR e SYSTEMBAR scorrono sotto di lei a 22 px di
+distanza. È una **pila a dipendenza limitata**, non una griglia: riguarda quei tre e nessun
+altro, e non si estende al DESK, a INPUT, alla NOTIFICATIONBAR né alla SIDEBAR.
+
+L'ancoraggio orizzontale resta fisso al pixel per tutti. La legge 11 vale intera in
+orizzontale, e in verticale vale ovunque tranne in quei tre. INPUT ha anch'esso una pila — la
+dropzone sopra la bolla in cui si scrive — ma è **interna a un componente**, quindi non lo
+mette in colonna con un altro e non chiede una deroga.
+
 ---
 
 ## Le sette aree e la loro competenza
