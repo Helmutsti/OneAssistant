@@ -107,29 +107,45 @@ non sai dire quando, ti riguarda adesso, e il suo posto è il centro.
 
 ---
 
-## Una bolla che non è un task: documento / informazione
+## La bolla documento / informazione
 
-Emerso il 22 settembre 2026. **Non è deciso, e non è disegnato.**
+Definita il 22 settembre 2026. **Parzialmente decisa**, e non ancora disegnata.
 
-Una bolla senza lavoro da fare: nessun avanzamento, nessuna conclusione. Una cosa che
-tieni davanti perché ti serve leggerla.
+### Cosa è stato definito
 
-Tocca tre regole che oggi sono scritte in termini di task:
+- **Ha l'aspetto di una bolla**, e solo quello: ne prende il vetro, il bordo, le ombre.
+- **Ha le frasi in INPUT**, come qualunque altra bolla: può essere la bolla *active*, e
+  quando lo è le frasi che puoi dire riguardano lei.
+- **Non ha stati.** Non nasce, non lavora, non aspetta, non conclude.
+- **Mostra il contenuto di un file**: un testo, un'immagine, un filmato. **Niente musica,
+  per ora.**
+- **Può essere messa in SIDEBAR.**
+- **Può essere chiusa dentro un task**: la bolla documento sparisce, e il documento diventa
+  un elemento di quel task, come qualunque altra cosa agganciata.
 
-1. **Il colore è stato** (`L0` legge 04) — un documento non ha stato. Resta senza colore
-   per sempre? E allora il «senza colore» significa due cose diverse;
-2. **Un task in un posto solo** (`L0` legge 03) — un documento può stare in SIDEBAR? Col
-   criterio proposto sopra no: non aspetta te e non torna da sé, semplicemente *sta*;
-3. **Esce quando ha finito** — un documento non finisce mai. Esce quando lo chiudi tu, ed è
-   il primo oggetto del sistema che va congedato a mano.
+### Cosa ne discende
 
-**Due domande prima di disegnarlo:**
+- **Non ha colore, mai.** La legge 04 dice che il colore è stato; un documento non ne ha,
+  quindi resta fuori dalla tavolozza. Attenzione: «nessun colore» oggi vuol dire *il
+  rimandato*, e diventerebbe due cose — va scritto in modo che non si confondano.
+- **Se può essere active, prende il pallino verde** accanto al titolo, come le altre.
+- **È il primo oggetto che si congeda a mano**: non finisce da sé, quindi esce solo perché
+  lo chiudi tu o perché lo assorbi in un task.
 
-- **Da dove arriva?** Nasce da una risposta («fammi vedere il preventivo»), o è una cosa
-  che ci trascini dentro?
-- **A cosa serve tenerlo a schermo?** Per leggerlo mentre fai altro, oppure per averlo
-  sottomano come riferimento quando parli con l'assistente?
+### Cosa resta da decidere
 
-La differenza cambia la natura dell'oggetto: nel primo caso è una finestra di lettura, nel
-secondo è **contesto messo a vista** — e allora somiglia più alle tessere della dropzone
-che a una bolla.
+- **Che taglia ha.** Un testo e un filmato non occupano lo stesso spazio, e la sezione
+  «Tre taglie» di `L2 - Bubble` è stata rimossa il 22 settembre: oggi le misure di Chip,
+  Task e Pannello non stanno scritte da nessuna parte.
+- **Che cosa mostra il suo chip in SIDEBAR.** Nome e tipo, ma il terzo posto — quello del
+  dato — in un documento che cosa dice?
+- **Come si chiude.** A voce («chiudila»), e basta?
+- **Da dove arriva.** Nasce da una risposta («fammi vedere il preventivo»), o è una cosa
+  che ci trascini dentro? Si lega alla questione del trascinamento nella dropzone.
+
+### Una tensione da sciogliere
+
+Sta in SIDEBAR — ma il criterio proposto nella questione qui sopra dice che in SIDEBAR
+sta **ciò che non chiede niente adesso: va avanti da solo, oppure torna da solo a un'ora**.
+Un documento non fa né l'una né l'altra cosa: sta, e basta. O il criterio ammette una terza
+voce, o la SIDEBAR torna ad avere due mestieri — che è il problema da cui si era partiti.
