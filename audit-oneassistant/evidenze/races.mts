@@ -1,0 +1,15 @@
+import { Motore } from './repo/src/modello/motore.ts';
+import { Orologio } from './repo/src/modello/tempo.ts';
+import { Archivio } from './repo/src/archivio/archivio.ts';
+import { Disco } from './repo/src/confini/disco.ts';
+import { Contatti } from './repo/src/confini/contatti.ts';
+import { turno } from './repo/src/ai-engine/ai-engine.ts';
+import { AiEngineFinto } from './repo/src/ai-engine/finto.ts';
+const o=new Orologio(new Date(2026,8,22,10));
+const m=new Motore(o,{contatti:new Contatti()},new Archivio(new Disco(),'Audit'));
+const resolvers:any={};const engine={nome:'controlled',passo(d:any){return new Promise<any>(r=>resolvers[d.frase]=r)}};
+const a=turno(engine,'prima domanda',m,o);const b=turno(engine,'seconda domanda',m,o);resolvers['prima domanda']([{nome:'parla',argomenti:{testo:'risposta alla prima'}}]);await a;resolvers['seconda domanda']([{nome:'parla',argomenti:{testo:'risposta alla seconda'}}]);await b;
+console.log('overlapping_turns',JSON.stringify(m.scambio.map(x=>({question:x.tua,answer:x.risposta}))));
+m.esegui({tipo:'componi',a:'mamma',richiesta:'ciao'});const first=m.task.at(-1)!;m.esegui({tipo:'componi',a:'giulia',richiesta:'ciao'});const second=m.task.at(-1)!;
+first.nome='Messaggio mamma';
+console.log('named_send',JSON.stringify({named:first.id,focused:second.id,moves:new AiEngineFinto(m).passo({frase:'manda Messaggio mamma',passato:[],prima:[]})}));

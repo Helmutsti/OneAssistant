@@ -1,0 +1,107 @@
+file,componente_comportamento,documento,riga,stato,findings
+.gitignore,"Output build, binari voce, chat raw e segreti esclusi",docs/L04-aspetti_tecnici.md,3,Base funzionale documentata; dettagli/esiti nel registro,A092
+Archivio/system-settings.txt,File intenzionalmente vuoto,docs/L03-archivio.md,19,Esaminato; nessun finding autonomo non equivale a conformità,
+Archivio/system-storage/campanello.mp3,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Esaminato; nessun finding autonomo non equivale a conformità,
+Archivio/users/user_123/filesystem.txt,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Base funzionale documentata; dettagli/esiti nel registro,A025
+Archivio/users/user_123/filesystem/Home/avatar.jpg,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Esaminato; nessun finding autonomo non equivale a conformità,
+Archivio/users/user_123/filesystem/Home/wallpaper.jpg,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Esaminato; nessun finding autonomo non equivale a conformità,
+Archivio/users/user_123/memory/general.txt,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Esaminato; nessun finding autonomo non equivale a conformità,
+Archivio/users/user_123/preferences.txt,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Base funzionale documentata; dettagli/esiti nel registro,A029 A092
+Archivio/users/user_123/services/contacts.txt,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Base funzionale documentata; dettagli/esiti nel registro,A023
+Archivio/users/user_123/services/email.txt,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Esaminato; nessun finding autonomo non equivale a conformità,
+Archivio/users/user_123/system.txt,Fixture di contesto o asset utente/sistema,docs/L03-archivio.md,19,Esaminato; nessun finding autonomo non equivale a conformità,
+README.md,Scopo prototipo e autorità docs rispetto a tasks,docs/L04-aspetti_tecnici.md,3,Esaminato; nessun finding autonomo non equivale a conformità,
+docs/L00-lo_scopo.md,Documento normativo/tavola di riferimento,docs/L00-lo_scopo.md,1,Fonte letta; nessun finding autonomo registrato,
+docs/L01-struttura_e_task.md,Documento normativo/tavola di riferimento,docs/L01-struttura_e_task.md,1,Fonte di verità; contraddizioni/bug di tavola elencati,A087
+docs/L02-componenti.md,Documento normativo/tavola di riferimento,docs/L02-componenti.md,1,Fonte letta; nessun finding autonomo registrato,
+docs/L03-archivio.md,Documento normativo/tavola di riferimento,docs/L03-archivio.md,1,Fonte letta; nessun finding autonomo registrato,
+docs/L04-aspetti_tecnici.md,Documento normativo/tavola di riferimento,docs/L04-aspetti_tecnici.md,1,Fonte letta; nessun finding autonomo registrato,
+docs/L05-design.md,Documento normativo/tavola di riferimento,docs/L05-design.md,1,Fonte di verità; contraddizioni/bug di tavola elencati,A087
+docs/design/L0 - Sistema.md,Documento normativo/tavola di riferimento,docs/design/L0 - Sistema.md,1,Fonte di verità; contraddizioni/bug di tavola elencati,A079 A080 A083
+docs/design/L1 - Icone.dc.html,Documento normativo/tavola di riferimento,docs/design/L1 - Icone.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A082
+docs/design/L1 - Moodboard.dc.html,Documento normativo/tavola di riferimento,docs/design/L1 - Moodboard.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A083
+docs/design/L1 - Temi.dc.html,Documento normativo/tavola di riferimento,docs/design/L1 - Temi.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A088
+docs/design/L2 - Bubble.dc.html,Documento normativo/tavola di riferimento,docs/design/L2 - Bubble.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A082 A084 A085
+docs/design/L2 - INPUT.dc.html,Documento normativo/tavola di riferimento,docs/design/L2 - INPUT.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A081 A085 A096
+docs/design/L2 - Notificationbar.dc.html,Documento normativo/tavola di riferimento,docs/design/L2 - Notificationbar.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A086
+docs/design/L2 - Profilebar.dc.html,Documento normativo/tavola di riferimento,docs/design/L2 - Profilebar.dc.html,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/L2 - Sidebar.dc.html,Documento normativo/tavola di riferimento,docs/design/L2 - Sidebar.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A081 A086 A096
+docs/design/L2 - Systembar.dc.html,Documento normativo/tavola di riferimento,docs/design/L2 - Systembar.dc.html,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/L2 - TIMELINE.dc.html,Documento normativo/tavola di riferimento,docs/design/L2 - TIMELINE.dc.html,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/L3 - Flusso task.dc.html,Documento normativo/tavola di riferimento,docs/design/L3 - Flusso task.dc.html,1,Fonte di verità; contraddizioni/bug di tavola elencati,A084
+docs/design/L4 - Schermate.dc.html,Documento normativo/tavola di riferimento,docs/design/L4 - Schermate.dc.html,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/Liquid glass.md,Documento normativo/tavola di riferimento,docs/design/Liquid glass.md,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/composizioni.js,Toggle materiale chiaro/scuro delle scene,docs/design/composizioni.js,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/image-slot.js,Placeholder immagini dei documenti,docs/design/image-slot.js,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/index.html,Navigazione tavole e stato decisioni,docs/design/index.html,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/liquid-glass.css,Ricetta ottica canonica e fallback,docs/design/liquid-glass.css,1,Fonte di verità; contraddizioni/bug di tavola elencati,A089
+docs/design/materiali.css,Materiali chiaro/scuro e inchiostri,docs/design/materiali.css,1,Fonte di verità; contraddizioni/bug di tavola elencati,A089
+docs/design/profilebar.css,Geometria Profilebar e varianti di tavola,docs/design/profilebar.css,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/support.js,"Scaffold x-dc, normalizzazione documenti e intestazioni",docs/design/support.js,1,Fonte letta; nessun finding autonomo registrato,
+docs/design/temi.css,Dodici palette per materiale,docs/design/temi.css,1,Fonte di verità; contraddizioni/bug di tavola elencati,A088
+docs/design/volto.png,Asset di riferimento della tavola,docs/design/volto.png,1,Fonte di verità; contraddizioni/bug di tavola elencati,A078
+env.example,Variabili OpenRouter e modello predefinito,docs/L04-aspetti_tecnici.md,3,Esaminato; nessun finding autonomo non equivale a conformità,
+index.html,"Entry DOM, font remoti Google Fonts e caricamento main",docs/L04-aspetti_tecnici.md,3,Esaminato; nessun finding autonomo non equivale a conformità,
+package-lock.json,"Versioni/integrità, dipendenze transitive e binari opzionali multipiattaforma",docs/L04-aspetti_tecnici.md,3,Base funzionale documentata; dettagli/esiti nel registro,A040 A041
+package.json,"Script, dipendenze dirette e postinstall",docs/L04-aspetti_tecnici.md,3,Base funzionale documentata; dettagli/esiti nel registro,A038 A039 A040 A041
+pubblico/LEGGIMI.md,Asset statici/voce e procedura preparazione,docs/L03-archivio.md,38,Esaminato; nessun finding autonomo non equivale a conformità,
+pubblico/suoni/notifica.mp3,Asset statico binario,docs/L03-archivio.md,38,Esaminato; nessun finding autonomo non equivale a conformità,
+pubblico/suoni/soundshelfstudio-ui-click-deep-512211.mp3,Asset statico binario,docs/L03-archivio.md,38,Esaminato; nessun finding autonomo non equivale a conformità,
+pubblico/volto.png,Asset statico binario,docs/L03-archivio.md,38,Base funzionale documentata; dettagli/esiti nel registro,A078
+src/ai-engine/ai-engine.ts,"Turno sincrono/asincrono, permessi, registro mosse, connettore e fallback",docs/L00-lo_scopo.md,42,Base funzionale documentata; dettagli/esiti nel registro,A004 A014 A016 A019 A020 A069
+src/ai-engine/api.ts,Validazione parziale argomenti e traduzione tool→comandi,docs/L00-lo_scopo.md,42,Base funzionale documentata; dettagli/esiti nel registro,A002 A017 A018
+src/ai-engine/finto.ts,"Interpretazione locale, memorizzazione euristica e traduzione chiamate",docs/L00-lo_scopo.md,42,Base funzionale documentata; dettagli/esiti nel registro,A026 A042 A071 A090
+src/ai-engine/regole.ts,"Regex lingua, sequenze, conferme, targeting, gruppi e composizione",docs/L00-lo_scopo.md,42,Base funzionale documentata; dettagli/esiti nel registro,A058 A090
+src/ai-engine/secondari.ts,Loop secondario limitato e SecondarioFinto con ritardi/estratti,docs/L00-lo_scopo.md,42,Base funzionale documentata; dettagli/esiti nel registro,A021
+src/ai-engine/strumenti.ts,"40 strumenti, JSON schema, permessi principali/secondari e prompt sistema",docs/L00-lo_scopo.md,42,Base funzionale documentata; dettagli/esiti nel registro,A004 A028 A043 A095
+src/ai-engine/testi.ts,"Trasformazioni deterministiche riassunto, composizione e aggiunte",docs/L00-lo_scopo.md,42,Meccanismo concreto non specificato; non determinabile/richiede decisione,A043
+src/ai-engine/vista.ts,"Fotografia testuale di stato, gruppi, notifiche e contesto per AI",docs/L00-lo_scopo.md,42,Esaminato; nessun finding autonomo non equivale a conformità,
+src/archivio/archivio.ts,"Lettura general.txt, entità/menzioni/ipotesi temporanee, smentite, no-op persistenza",docs/L03-archivio.md,44,Base funzionale documentata; dettagli/esiti nel registro,A026 A027 A037 A071 A072
+src/archivio/chat-raw.ts,Invio messaggi al writer JSONL,docs/L03-archivio.md,44,Base funzionale documentata; dettagli/esiti nel registro,A034 A035 A036
+src/aree/raccolta.ts,Riconoscimento per sottostringa task/entità/contatti,docs/design/L0 - Sistema.md,257,Base funzionale documentata; dettagli/esiti nel registro,A027 A057
+src/aree/schermo.ts,"Template HTML per sette aree, icone, interazioni e diagnostica",docs/design/L0 - Sistema.md,257,Base funzionale documentata; dettagli/esiti nel registro,A006 A009 A010 A031 A038 A044 A048 A049 A050 A052 A053 A054 A055 A056 A057 A059 A074 A075 A080 A093 A095
+src/aree/scrivania.ts,"Layout fisico molle/repulsioni, focus, collisioni e memoria posizioni",docs/design/L0 - Sistema.md,257,Base funzionale documentata; dettagli/esiti nel registro,A051
+src/aree/testo.ts,Escape testo HTML e attributi nei punti che lo chiamano,docs/design/L0 - Sistema.md,257,Esaminato; nessun finding autonomo non equivale a conformità,
+src/aree/timeline.ts,"Attuale/prossimo, tempo libero e segmenti giornalieri",docs/design/L0 - Sistema.md,257,Base funzionale documentata; dettagli/esiti nel registro,A060 A061
+src/confini/calendario.ts,Fixture appuntamenti e aggiunte con timestamp corrente,docs/L04-aspetti_tecnici.md,22,Base funzionale documentata; dettagli/esiti nel registro,A091
+src/confini/contatti.ts,"Rubrica hardcoded, ricerca alias e aggiunte senza recapito",docs/L04-aspetti_tecnici.md,22,Base funzionale documentata; dettagli/esiti nel registro,A023 A024 A091
+src/confini/disco.ts,"Cache documenti memory per utente, letture e POST markdown",docs/L04-aspetti_tecnici.md,22,Base funzionale documentata; dettagli/esiti nel registro,A025 A037 A072
+src/confini/filtro.ts,Classificazione arrivi perTe/azionabile/orario/carte,docs/L04-aspetti_tecnici.md,22,Base funzionale documentata; dettagli/esiti nel registro,A007 A073
+src/confini/note.ts,Append note in memoria e guasto simulato,docs/L04-aspetti_tecnici.md,22,Base funzionale documentata; dettagli/esiti nel registro,A091
+src/confini/posta.ts,"Fixture posta, iniezione arrivi, guasto e consegne temporanee",docs/L04-aspetti_tecnici.md,22,Base funzionale documentata; dettagli/esiti nel registro,A010 A023
+src/confini/promemoria.ts,"Fixture, completamento per somiglianza testuale e guasto",docs/L04-aspetti_tecnici.md,22,Base funzionale documentata; dettagli/esiti nel registro,A091
+src/confini/servizio.ts,"Contratti Proposta, Servizio, Sorgente, Registro ed errori di consegna",docs/L04-aspetti_tecnici.md,22,Esaminato; nessun finding autonomo non equivale a conformità,
+src/conoscenza/canali.ts,Stato tastiera/ascolto simulato e voce in uscita,docs/L03-archivio.md,49,Base funzionale documentata; dettagli/esiti nel registro,A059
+src/conoscenza/contesto.ts,Identità/focus temporale/luogo e regole lavoro hardcoded,docs/L03-archivio.md,49,Base funzionale documentata; dettagli/esiti nel registro,A031 A073
+src/conoscenza/profilo.ts,"Parser testo preferenze/sistema, file media, default, utente fisso",docs/L03-archivio.md,49,Base funzionale documentata; dettagli/esiti nel registro,A028 A029 A030 A031 A047 A064 A072 A075
+src/main.ts,"Bootstrap profilo/Disco, registro servizi, AI fallback, voce, UI, timer, tastiera e banco prove",docs/L04-aspetti_tecnici.md,3,Base funzionale documentata; dettagli/esiti nel registro,A006 A014 A015 A016 A019 A021 A023 A025 A036 A038 A044 A045 A046 A056 A058 A059 A070
+src/modello/motore.ts,"Lifecycle, invii/undo/lotti, rinvio, focus, conversazione, memoria, notifiche e delega",docs/L01-struttura_e_task.md,38,Base funzionale documentata; dettagli/esiti nel registro,A001 A002 A003 A004 A005 A006 A007 A008 A009 A011 A012 A013 A014 A015 A016 A018 A021 A022 A026 A034 A043 A055 A058 A060 A063 A069 A073 A093
+src/modello/tempo.ts,"Orologio reale/simulato, timer e salti temporali",docs/L01-struttura_e_task.md,38,Meccanismo concreto non specificato; non determinabile/richiede decisione,A043
+src/modello/tipi.ts,"Task, stati/luoghi, matrice combinazioni, gruppi, notifiche, uscite e comandi",docs/L01-struttura_e_task.md,38,Base funzionale documentata; dettagli/esiti nel registro,A002 A003 A010 A071
+src/prova/alfabeto.ts,Catalogo comandi e runner verifiche linguistiche,docs/L01-struttura_e_task.md,38,Base funzionale documentata; dettagli/esiti nel registro,A068 A070
+src/prova/flussi.ts,Copioni e azioni dimostrative,docs/L01-struttura_e_task.md,38,Meccanismo concreto non specificato; non determinabile/richiede decisione,A068 A043
+src/prova/pedana.ts,"Stato banco, compositore arrivi, reset e varianti UI",docs/L01-struttura_e_task.md,38,Meccanismo concreto non specificato; non determinabile/richiede decisione,A044 A056 A070 A043
+src/prova/scenario.ts,"Suite Node con asserzioni, fixture e attese reali/simulate",docs/L01-struttura_e_task.md,38,Base funzionale documentata; dettagli/esiti nel registro,A068
+src/prova/scia.ts,Storico transizioni di test e attribuzione causale,docs/L01-struttura_e_task.md,38,Base funzionale documentata; dettagli/esiti nel registro,A069
+src/prova/stato.ts,Preparazione precondizioni e scenari di stato legacy,docs/L01-struttura_e_task.md,38,Base funzionale documentata; dettagli/esiti nel registro,A068
+src/prova/timeline-prova.ts,Controlli segmenti timeline e libero,docs/L01-struttura_e_task.md,38,Esaminato; nessun finding autonomo non equivale a conformità,
+src/stile/base.css,"Tutti i componenti, animazioni, font, icone, responsive e banco",docs/design/Liquid glass.md,7,Base funzionale documentata; dettagli/esiti nel registro,A038 A045 A046 A048 A050 A051 A052 A053 A093 A094
+src/stile/tema.ts,Traduzione override preferenze→custom properties,docs/design/Liquid glass.md,7,Base funzionale documentata; dettagli/esiti nel registro,A046 A047
+src/voce/bocca.ts,"Browser TTS, Piper, segmentazione, audio/cancellazione e fallback",docs/L04-aspetti_tecnici.md,44,Base funzionale documentata; dettagli/esiti nel registro,A062
+src/voce/espeak-ng.d.ts,Tipi adapter eSpeak-NG,docs/L04-aspetti_tecnici.md,44,Esaminato; nessun finding autonomo non equivale a conformità,
+src/voce/lettura.ts,"Selezione bocca, caricamento modello e gate lettura",docs/L04-aspetti_tecnici.md,44,Base funzionale documentata; dettagli/esiti nel registro,A062 A063 A065
+src/voce/piper.ts,"Download modelli, eSpeak, ONNX/WASM, fonemi e PCM/WAV",docs/L04-aspetti_tecnici.md,44,Base funzionale documentata; dettagli/esiti nel registro,A062 A065
+src/voce/suono.ts,"Campanello, volume, throttling900ms e coordinamento audio",docs/L04-aspetti_tecnici.md,44,Base funzionale documentata; dettagli/esiti nel registro,A064
+src/voce/turno.ts,"Accodamento voce, esclusione sovrapposizioni e sintesi degli arretrati",docs/L04-aspetti_tecnici.md,44,Base funzionale documentata; dettagli/esiti nel registro,A063
+strumenti/LEGGIMI.md,Istruzioni banco e sua esplicita non autorità progettuale,strumenti/LEGGIMI.md,1,Base funzionale documentata; dettagli/esiti nel registro,A071 A078
+strumenti/banco-ascolto.html,"Confronto browser speechSynthesis, controllo voci e frasi",strumenti/LEGGIMI.md,1,Base funzionale documentata; dettagli/esiti nel registro,A066
+strumenti/banco-voci.html,"Confronto4 modelli Piper, download e riproduzione WAV",strumenti/LEGGIMI.md,1,Base funzionale documentata; dettagli/esiti nel registro,A078
+strumenti/prepara-voce.mjs,Copia5 asset WASM/MJS da pacchetti al public,strumenti/LEGGIMI.md,1,Base funzionale documentata; dettagli/esiti nel registro,A067
+strumenti/taratura-materia.html,"Taratura35 spazi/14 colori/vetro/icone, localStorage e clipboard",strumenti/LEGGIMI.md,1,Esaminato; nessun finding autonomo non equivale a conformità,
+strumenti/taratura-testo.html,"Taratura valori testo/icone, localStorage e clipboard",strumenti/LEGGIMI.md,1,Esaminato; nessun finding autonomo non equivale a conformità,
+tasks/da_definire.md,Registro lavori/decisioni aperte; non sostituisce docs,README.md,11,Stato lavori; non requisito né prova di conformità,
+tasks/future.md,Registro lavori/decisioni aperte; non sostituisce docs,README.md,11,Stato lavori; non requisito né prova di conformità,
+tasks/pronti_per_lo_sviluppo.md,Registro lavori/decisioni aperte; non sostituisce docs,README.md,11,Stato lavori; non requisito né prova di conformità,
+tasks/storico.md,Registro lavori/decisioni aperte; non sostituisce docs,README.md,11,Stato lavori; non requisito né prova di conformità,
+tsconfig.json,"TS strict, DOM/ES2022, bundler, noEmit e unused checks",docs/L04-aspetti_tecnici.md,3,Esaminato; nessun finding autonomo non equivale a conformità,
+vite.config.ts,Provider OpenRouter due dialetti; middleware archivio/chat; config dev/build e asset WASM,docs/L04-aspetti_tecnici.md,3,Base funzionale documentata; dettagli/esiti nel registro,A017 A020 A025 A028 A032 A033 A035 A037 A039 A042 A043 A064 A076 A077

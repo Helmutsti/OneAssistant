@@ -1,0 +1,1217 @@
+[
+  {
+    "file": "docs/design/L0 - Sistema.md",
+    "line": 112,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "docs/design/L0 - Sistema.md",
+    "line": 122,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L0 - Sistema.md",
+    "line": 175,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L0 - Sistema.md",
+    "line": 179,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "docs/design/L2 - Notificationbar.dc.html",
+    "line": 46,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L2 - Notificationbar.dc.html",
+    "line": 46,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L2 - Profilebar.dc.html",
+    "line": 47,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L2 - Sidebar.dc.html",
+    "line": 106,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L2 - Sidebar.dc.html",
+    "line": 114,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L2 - TIMELINE.dc.html",
+    "line": 352,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "docs/design/L3 - Flusso task.dc.html",
+    "line": 41,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "docs/design/L3 - Flusso task.dc.html",
+    "line": 46,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/ai-engine/ai-engine.ts",
+    "line": 34,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/ai-engine/ai-engine.ts",
+    "line": 125,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/ai-engine/ai-engine.ts",
+    "line": 147,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/ai-engine/ai-engine.ts",
+    "line": 162,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "line": 6,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "line": 47,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "line": 134,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "line": 198,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "line": 225,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "line": 250,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/ai-engine/finto.ts",
+    "line": 3,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/ai-engine/finto.ts",
+    "line": 10,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/ai-engine/finto.ts",
+    "line": 43,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/finto.ts",
+    "line": 49,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 6,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 50,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 63,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 122,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 135,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 148,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 177,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "line": 251,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/ai-engine/secondari.ts",
+    "line": 1,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/ai-engine/secondari.ts",
+    "line": 85,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "line": 19,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "line": 64,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "line": 415,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "line": 482,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "line": 533,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "line": 542,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "line": 621,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/ai-engine/testi.ts",
+    "line": 6,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/ai-engine/vista.ts",
+    "line": 15,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/ai-engine/vista.ts",
+    "line": 24,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/ai-engine/vista.ts",
+    "line": 108,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/ai-engine/vista.ts",
+    "line": 127,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 1,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 4,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 18,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 31,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 38,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 65,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 93,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 113,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 153,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 166,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 186,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 204,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 313,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 324,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "line": 364,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/aree/raccolta.ts",
+    "line": 7,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/aree/raccolta.ts",
+    "line": 31,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/aree/raccolta.ts",
+    "line": 56,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 243,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 308,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 399,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 517,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 667,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 707,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 755,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 887,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "line": 949,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/aree/scrivania.ts",
+    "line": 93,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/aree/timeline.ts",
+    "line": 31,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/confini/calendario.ts",
+    "line": 1,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/calendario.ts",
+    "line": 7,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/contatti.ts",
+    "line": 1,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/contatti.ts",
+    "line": 22,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/confini/contatti.ts",
+    "line": 54,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/confini/disco.ts",
+    "line": 1,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/disco.ts",
+    "line": 45,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/filtro.ts",
+    "line": 1,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/note.ts",
+    "line": 1,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/posta.ts",
+    "line": 2,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/posta.ts",
+    "line": 4,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/confini/promemoria.ts",
+    "line": 1,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/servizio.ts",
+    "line": 1,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/confini/servizio.ts",
+    "line": 39,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/confini/servizio.ts",
+    "line": 49,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/conoscenza/canali.ts",
+    "line": 3,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/conoscenza/canali.ts",
+    "line": 96,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/conoscenza/contesto.ts",
+    "line": 1,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/conoscenza/contesto.ts",
+    "line": 6,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 15,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 16,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 17,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 19,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 30,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 35,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 57,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 61,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 70,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 95,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 97,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 129,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "line": 231,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 9,
+    "target": "docs/04-metalinguaggio"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 12,
+    "target": "docs/design/temi.css';"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 96,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 111,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 114,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 130,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 148,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 163,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 204,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 332,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 411,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 437,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/main.ts",
+    "line": 444,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 2,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 35,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 54,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 89,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 99,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 103,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 121,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 149,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 160,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 172,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 221,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 229,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 304,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 328,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 382,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 454,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 467,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 485,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 551,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 663,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 697,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 734,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 751,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 762,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 776,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 808,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 828,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 855,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 879,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 925,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 933,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 984,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1029,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1113,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1177,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1218,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1240,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1249,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1254,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1298,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1339,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1398,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1495,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "line": 1568,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/modello/tempo.ts",
+    "line": 3,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 1,
+    "target": "docs/01-modello.md"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 4,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 29,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 60,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 76,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 90,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 104,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 109,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 120,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 140,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 177,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 191,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 262,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 268,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 279,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 286,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 305,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "line": 308,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "line": 7,
+    "target": "docs/04-metalinguaggio"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "line": 141,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "line": 149,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "line": 208,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "line": 230,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "line": 267,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/prova/flussi.ts",
+    "line": 57,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/prova/pedana.ts",
+    "line": 29,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/prova/pedana.ts",
+    "line": 69,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 59,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 72,
+    "target": "docs/07"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 189,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 195,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 209,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 307,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 338,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 382,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 446,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 514,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 599,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 639,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 647,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 726,
+    "target": "docs/02-parallelo"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 759,
+    "target": "docs/04-metalinguaggio"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 790,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 791,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 792,
+    "target": "docs/03-architettura"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "line": 793,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/scia.ts",
+    "line": 6,
+    "target": "docs/07-memoria"
+  },
+  {
+    "file": "src/prova/stato.ts",
+    "line": 29,
+    "target": "docs/09-catene"
+  },
+  {
+    "file": "src/prova/stato.ts",
+    "line": 220,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/prova/stato.ts",
+    "line": 230,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/prova/stato.ts",
+    "line": 266,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/prova/stato.ts",
+    "line": 294,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/stile/base.css",
+    "line": 348,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/stile/base.css",
+    "line": 351,
+    "target": "docs/01-modello"
+  },
+  {
+    "file": "src/stile/base.css",
+    "line": 687,
+    "target": "docs/03-conoscenza"
+  },
+  {
+    "file": "src/stile/base.css",
+    "line": 699,
+    "target": "docs/00-aperte"
+  },
+  {
+    "file": "src/stile/tema.ts",
+    "line": 10,
+    "target": "docs/11-aperte"
+  },
+  {
+    "file": "src/voce/bocca.ts",
+    "line": 3,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/bocca.ts",
+    "line": 32,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/bocca.ts",
+    "line": 228,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/lettura.ts",
+    "line": 1,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/voce/lettura.ts",
+    "line": 86,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/piper.ts",
+    "line": 3,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/piper.ts",
+    "line": 28,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/suono.ts",
+    "line": 3,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "src/voce/suono.ts",
+    "line": 8,
+    "target": "docs/06-confini"
+  },
+  {
+    "file": "src/voce/suono.ts",
+    "line": 56,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/turno.ts",
+    "line": 1,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/turno.ts",
+    "line": 42,
+    "target": "docs/08-voce"
+  },
+  {
+    "file": "src/voce/turno.ts",
+    "line": 59,
+    "target": "docs/05-interfaccia"
+  },
+  {
+    "file": "strumenti/LEGGIMI.md",
+    "line": 35,
+    "target": "docs/00-aperte.md"
+  },
+  {
+    "file": "vite.config.ts",
+    "line": 9,
+    "target": "docs/04-motore"
+  },
+  {
+    "file": "vite.config.ts",
+    "line": 79,
+    "target": "docs/04-motore"
+  },
+  {
+    "file": "vite.config.ts",
+    "line": 101,
+    "target": "docs/04-motore"
+  },
+  {
+    "file": "vite.config.ts",
+    "line": 305,
+    "target": "docs/04-motore"
+  },
+  {
+    "file": "vite.config.ts",
+    "line": 786,
+    "target": "docs/05-archivio"
+  }
+]

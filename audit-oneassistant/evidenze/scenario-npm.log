@@ -1,0 +1,304 @@
+
+> oneassist@0.0.0 scenario
+> esbuild src/prova/scenario.ts --bundle --format=esm --platform=node --outfile=.lavoro/scenario.mjs --log-level=error && node .lavoro/scenario.mjs
+
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+
+una mail che arriva, passa il filtro e viene consegnata
+
+  ok  la mail passa il filtro e diventa una carta
+  ok  la carta aspetta te
+  ok  le frasi sono tre
+  ok  newsletter e fattura non passano il filtro
+
+nominare un task lo porta a fuoco, e nient’altro
+
+  ok  il task nominato prende il fuoco
+  ok  l’avanzamento non si muove
+  ok  le frasi sono le sue
+  ok  lo scambio resta in INPUT
+  ok  è uscita dalla pila
+  ok  va avanti da sola come chip
+  ok  la consegna è andata
+  ok  la risposta è dicibile
+  ok  offre di annullare
+  ok  dopo 90 secondi cade nella memoria
+  ok  la posta ricorda la consegna
+
+una consegna che fallisce
+
+  ok  il task si blocca
+  ok  il blocco ha sempre un’uscita
+  ok  lasciata stare
+
+il calendario e i promemoria: due confini che prima non c’erano
+
+  ok  l’invito è per te, ed è adesso: diventa una carta
+  ok  e il tipo lo dà il servizio, non il motore
+  ok  ha un’ora lontana: dorme in ORARIO
+  ok  e non è salita nella pila
+  ok  niente da decidere: non diventa niente
+  ok  una scadenza che matura è una carta
+  ok  e il promemoria è sempre una sveglia
+
+il disco resta un confine, anche adesso che nessuno ci scrive
+
+  ok  quello che scrivi si rilegge
+
+la memoria sospesa: dura quanto la sessione (docs/07-memoria §6)
+
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+  ok  se lo segna
+  ok  ma non tocca il disco
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+  ok  e alla ricarica riparte
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+  ok  fra profili non passa niente
+
+il seme: il contesto minimo, e si pesca per nome
+
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+  ok  il commento non entra
+  NO  pesca la riga che ti serve — atteso true, ottenuto false
+  NO  e non rovescia il resto — atteso 1, ottenuto 0
+  ok  chi non nomini non esce
+
+l’archivio: si scrive, ma non si mostra
+
+  ok  ha capito di cosa parlavi
+  ok  ha collegato Paolo
+  ok  chi l’ha detto se lo segna
+  ok  e dice solo dove l’ha messo, non come
+  ok  nessun percorso esce mai
+  ok  racconta contenuti
+  ok  e mai posizioni
+  ok  smentisce, non cancella
+  ok  la riga resta dov’era
+  ok  e smette di pescarla
+
+fra profili non passa niente
+
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+  ok  un altro profilo non sa niente di te
+  ok  e la tua memoria resta piena
+
+le autorizzazioni: alla terza volta lo propone
+
+  ok  giro 1 · chiede prima di uscire
+  ok  giro 2 · chiede prima di uscire
+  ok  giro 3 · chiede prima di uscire
+  ok  alla terza propone di farlo da solo
+  ok  e intanto le note sono uscite
+  ok  promossa in preferenze
+  ok  la quarta parte da sola
+  ok  e non ha chiesto niente
+  ok  lo racconta a parole
+  ok  e si revoca a voce
+
+una risposta a una delega sa dove tornare
+
+  ok  risorge dalla memoria
+  ok  con il nome di prima
+
+chi non ha la sessione non comanda
+
+  ok  una voce che non conosce non muove niente
+  ok  e il sistema lo dice
+  ok  chi conosce lascia un messaggio
+  ok  e un task, non una riga di memoria
+  ok  con la fonte scritta
+
+i flussi · il riassunto (docs/09-catene §2)
+
+  ok  la mail passa il filtro
+  ok  nasce un task che lavora
+  ok  ed è un riassunto
+  ok  la mail di partenza non si è mossa
+  ok  e dice che ci pensa lei
+  ok  quando ha finito aspetta te
+  ok  e chiede se leggerlo
+  ok  il riassunto è più corto dell’originale
+  ok  e quello che ha prodotto è il suo esito
+  ok  e i convenevoli non ci sono
+  ok  offre tre frasi
+  ok  un no non muove niente
+  ok  ed è un esito, non un’aperta
+  ok  metterla da parte è rimandarla
+  ok  e ti dice fra quanto te la rimette davanti
+
+i flussi · due cose insieme, e un messaggio (docs/09-catene §3)
+
+  ok  la prima è al centro
+  ok  la seconda aspetta te
+  ok  la nuova prende il centro
+  ok  e la prima si mette da parte, senza cambiare stato
+  ok  un task sta in un posto solo
+  ok  il fuoco torna indietro
+  ok  nasce la terza, ed è una composizione
+  ok  il contatto è già pescato
+  ok  e il testo è in discorso diretto
+  ok  non è uscito niente: aspetta te
+  ok  e chiede
+  ok  le altre due sono da parte
+  ok  offre quattro frasi
+  ok  una frase, due comandi: il cuore c’è
+  ok  e la consegna è partita
+  ok  mandata
+  ok  e la posta se lo ricorda col cuore
+  ok  una consegna con destinatari non si autorizza mai
+
+la voce · una cosa alla volta (docs/08-voce §3.1)
+
+  ok  ha preso la parola subito
+  ok  e le altre aspettano
+  ok  ma ne dice una sola
+  ok  non si è mai sovrapposta
+  ok  non ha detto tutto: ha detto la prima e il riepilogo
+  ok  e il riepilogo è l’ultima
+  ok  quando ha finito non aspetta più niente
+  ok  una domanda senza risposta non si butta, e va in fondo
+  ok  «aspetta» si porta via anche l’arretrato
+  ok  una sola cosa resta quella che è
+  ok  niente da dire non dice niente
+
+il profilo · una riga si cambia e si ricarica (docs/07-memoria §3)
+
+  ok  la lingua si legge com’è scritta
+  ok  e diventa un codice per la bocca
+  ok  il sesso del personaggio non è il timbro della voce
+  ok  il campanello è acceso
+  ok  fra parentesi c’era la scelta, non il valore
+  ok  e il suono tiene il suo nome
+  ok  la tavolozza arriva intera
+  ok  e il «era» resta fuori dal valore
+  ok  anche quando il valore è un numero
+  ok  e quando è una parola
+  ok  i commenti non entrano
+  ok  un percorso relativo vale com’è
+  NO  uno di Windows tiene solo il nome, e va fra le cose tue — atteso "storage/foresta.jpg", ottenuto "/archivio/user_123/filesystem/Home/foresta.jpg"
+  ok  un indirizzo in rete passa intero
+  ok  silent vuol dire spento
+  ok  un profilo senza niente non si rompe
+
+il gruppo · l’ordine è tuo, non suo (docs/01-modello §6)
+
+  ok  tre carte nella pila
+  ok  e nessun gruppo, perché non l’hai chiesto
+  ok  il gruppo nasce quando lo nomini
+  ok  e chi ci è finito ha lasciato la pila
+  ok  è in mano, non rimandato
+  ok  il nome l’hai scelto tu, maiuscola compresa
+  ok  ci stanno in tre
+  ok  la pila è vuota
+  ok  la TASKBAR mostra un elemento solo
+  ok  un task sta al massimo in un gruppo: nell’altro migra
+  ok  separare non muove i chip
+  ok  e il gruppo vuoto non esiste più
+  ok  aprirlo è un momento, non una schermata
+  ok  e allora ha voce
+
+un gruppo misto non si manda tutto insieme
+
+  ok  con un membro in corso «manda tutte» sparisce
+  ok  e parla il più urgente, non il primo
+  ok  un blocco non si nasconde dietro un numero
+
+ciò che parte insieme si annulla insieme
+
+  ok  partono tutte e tre
+  ok  e l’elenco si chiude
+  ok  sono consegnate
+  ok  ma il sistema lo dice una volta sola
+  ok  la posta ne ricorda tre
+  ok  si ritira il lotto intero
+  ok  e tornano al cancello, non a «in corso»
+  ok  lo dice al plurale
+  ok  annullate, non cadono nella memoria
+
+i contenuti · due, non quattro (docs/01-modello §1)
+
+  ok  nasce con quello che è arrivato
+  ok  e con quello che c’è da decidere
+  ok  l’uscita dice dove e a chi, non cosa
+  ok  dentro vince l’esito
+  ok  quello che esce è l’esito, non la riga
+
+un task che non ha ancora prodotto niente mostra il suo ingresso
+
+  ok  senza esito si vede l’ingresso
+  ok  il riassunto nasce con dentro quello che deve leggere
+  ok  e quello che scrive è il suo esito
+  ok  averlo prodotto è essere aspetta te
+
+nessuno aspetta te a proposito di niente
+
+  ok  ogni ambra ha un esito o una frase
+
+dentro un task · attivo non vuol dire aperto (docs/01-modello §7)
+
+  ok  è attiva
+  ok  ma non è aperta: sono due cose diverse
+  ok  adesso è aperta
+  ok  e restare aperta non le ha cambiato niente
+  ok  mostra, non dice: la voce non legge il corpo
+  ok  le frasi restano le sue, più l’uscita
+  ok  e non sfondano il tetto di quattro
+  ok  aprire un elenco chiude il dentro
+  ok  riaperta
+  ok  se il task se ne va, il dentro si chiude da sé
+  ok  e il task è andato davvero
+
+un task senza niente dentro non si apre
+
+  ok  non si apre vuoto
+  ok  e lo dice
+
+l’alfabeto · la lingua è chiusa, si pronuncia tutta, e si prova tutta
+
+  ok  l’alfabeto nomina ogni comando della lingua
+  ok  ogni situazione che una parola presuppone si sa costruire
+  ok  e ogni frase produce il comando che dichiara
+  ok  nessuna parola resta solo da leggere
+
+i secondari lavorano dentro un task, e non ne creano uno
+
+  ok  non nasce un task nuovo: lavorano dentro quello che c’è
+  ok  il task lavora
+  ok  e la frazione è la loro faccia
+  ok  la frazione sale, non salta: si vede anche a metà
+  ok  quando hanno finito la frazione se ne va
+  ok  torna al cancello, che è tuo: non consegnano
+  ok  quello che hanno prodotto è l’esito
+  ok  due riporti, uno per secondario
+  ok  un secondario non consegna
+  ok  e non scrive nella memoria
+  ok  un livello solo: non delega a sua volta
+  ok  e non parla con chi usa il sistema
+  ok  ma guardare lo sa fare
+
+l’AI engine ricorda la giornata, non la conversazione
+
+  ok  quello che è a schermo è la coda
+  ok  e la memoria tiene i giri già avvenuti, non quello di adesso
+  ok  fuori dall’orario di lavoro la memoria riparte
+
+la timeline situa nel tempo
+
+  ok  il filo della giornata somma 242
+  ok  nessun tratto invisibile
+  ok  c’è sempre un adesso
+  ok  c’è sempre un dopo
+  ok  non offre frasi
+  ok  non si preme
+  ok  niente «prima»
+  ok  quando sei libero dice quanto tempo hai
+
+quello che ancora non gira
+
+  --  sms e notizie — dei sette servizi ce ne sono cinque
+  --  la promozione di una persona nota ai contatti (docs/07-memoria §5)
+  --  gli agenti di terzi, e con che contratto si dichiara cosa esce (docs/06-confini §5)
+  --  l’AI engine vero gira solo col server e una chiave: qui pensa il finto (docs/03-architettura §8)
+  --  gli archi temporali di un progetto che cresce (docs/07-memoria §7)
+
+3 verifiche fallite

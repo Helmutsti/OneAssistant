@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "R001",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 8,
+    "requisito": "Assistente personale conversazionale, lavoro mediante task",
+    "implementazione": "main, Motore, AI engine",
+    "stato": "Parziale",
+    "findings": "A003 A004"
+  },
+  {
+    "id": "R002",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 35,
+    "requisito": "Più intenzioni/task concorrenti e raccolta di contesto",
+    "implementazione": "turno, delega, raccolta",
+    "stato": "Divergente",
+    "findings": "A014 A021 A022"
+  },
+  {
+    "id": "R003",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "requisito": "Grammatica chiusa; non indovinare in caso di incertezza",
+    "implementazione": "STRUMENTI, chiama, Contatti, AiEngineFinto",
+    "stato": "Parziale",
+    "findings": "A017 A024 A090"
+  },
+  {
+    "id": "R004",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 3,
+    "requisito": "Memoria e servizi simulati tramite documenti; non integrazioni reali",
+    "implementazione": "ilPrompt, Archivio, Registro",
+    "stato": "Conflittuale",
+    "findings": "A023 A026 A091"
+  },
+  {
+    "id": "R005",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 20,
+    "requisito": "Input tastiera e invio nel prototipo",
+    "implementazione": "main keydown scrittura",
+    "stato": "Presente; percorsi legacy ulteriori",
+    "findings": "A059"
+  },
+  {
+    "id": "R006",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 22,
+    "requisito": "Salvare prompt e intero scambio in chat raw",
+    "implementazione": "haiDetto, rispondi, salvaMessaggio, chatRaw",
+    "stato": "Parziale",
+    "findings": "A034 A035 A036"
+  },
+  {
+    "id": "R007",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 23,
+    "requisito": "Separare richiesta da contesto e arricchire con memoria, desk, servizi",
+    "implementazione": "istruzioni, guarda, ilPrompt, tool loop",
+    "stato": "Parziale",
+    "findings": "A004 A023 A028"
+  },
+  {
+    "id": "R008",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 29,
+    "requisito": "Richiesta operativa e contesto formano task",
+    "implementazione": "creazioni specializzate nel Motore",
+    "stato": "Parziale",
+    "findings": "A004"
+  },
+  {
+    "id": "R009",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 41,
+    "requisito": "T_NUOVO prima della lavorazione",
+    "implementazione": "tipi, costruttori task",
+    "stato": "Mancante",
+    "findings": "A003"
+  },
+  {
+    "id": "R010",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 42,
+    "requisito": "Comprensione ed esecuzione nello stesso T_LAVORAZIONE",
+    "implementazione": "avanzamenti e AI engine separati",
+    "stato": "Divergente",
+    "findings": "A003 A004"
+  },
+  {
+    "id": "R011",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 43,
+    "requisito": "T_ATTESA e aggiornamento contesto all’arrivo input",
+    "implementazione": "rientro, sciogli, rimanda",
+    "stato": "Parziale",
+    "findings": "A003 A011"
+  },
+  {
+    "id": "R012",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 44,
+    "requisito": "T_CONCLUSIONE quando scopo terminato",
+    "implementazione": "consegnato/concluso",
+    "stato": "Divergente",
+    "findings": "A001 A003 A005"
+  },
+  {
+    "id": "R013",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 50,
+    "requisito": "Transizioni di lifecycle definite",
+    "implementazione": "Motore.sposta e combinazioneLegale",
+    "stato": "Divergente",
+    "findings": "A003 A012 A013"
+  },
+  {
+    "id": "R014",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 53,
+    "requisito": "Sotto-task autonomo T_NUOVO",
+    "implementazione": "delega/SecondarioFinto",
+    "stato": "Mancante come contratto autonomo",
+    "findings": "A004 A021"
+  },
+  {
+    "id": "R015",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 58,
+    "requisito": "Delay su tutti i servizi di invio/pubblicazione, letture escluse",
+    "implementazione": "Motore.consegna; read tool indipendenti",
+    "stato": "Divergente sugli invii; letture separate",
+    "findings": "A001"
+  },
+  {
+    "id": "R016",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 62,
+    "requisito": "90s prima della chiamata effettiva",
+    "implementazione": "timer dopo .consegna",
+    "stato": "Divergente",
+    "findings": "A001"
+  },
+  {
+    "id": "R017",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 63,
+    "requisito": "No, aspetta impedisce l’invio e permette modifica",
+    "implementazione": "annulla",
+    "stato": "Divergente",
+    "findings": "A001 A013"
+  },
+  {
+    "id": "R018",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 66,
+    "requisito": "Bypass esplicito, definitivo, solo singolo invio",
+    "implementazione": "nessun campo o API",
+    "stato": "Mancante",
+    "findings": "A002"
+  },
+  {
+    "id": "R019",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 73,
+    "requisito": "Scambi attraverso comunicazione assistente/utente",
+    "implementazione": "INPUT, rispondi, Lettura, pedana",
+    "stato": "Parziale",
+    "findings": "A014 A020 A044 A063"
+  },
+  {
+    "id": "R020",
+    "documento": "docs/L02-componenti.md",
+    "riga": 8,
+    "requisito": "INPUT: raccolta e testo; voce ingresso/occhi futuri",
+    "implementazione": "main, canali, raccolta",
+    "stato": "Parziale",
+    "findings": "A057 A059"
+  },
+  {
+    "id": "R021",
+    "documento": "docs/L02-componenti.md",
+    "riga": 11,
+    "requisito": "Contesto da general, preferences, system, services",
+    "implementazione": "ilPrompt, caricaProfilo",
+    "stato": "Parziale",
+    "findings": "A028 A029"
+  },
+  {
+    "id": "R022",
+    "documento": "docs/L02-componenti.md",
+    "riga": 15,
+    "requisito": "Desk ospita le attività",
+    "implementazione": "schermo.table e Scrivania",
+    "stato": "Presente con modello divergente",
+    "findings": "A003 A005 A051"
+  },
+  {
+    "id": "R023",
+    "documento": "docs/L02-componenti.md",
+    "riga": 18,
+    "requisito": "Timeline della giornata",
+    "implementazione": "timeline.ts",
+    "stato": "Parziale",
+    "findings": "A060 A061"
+  },
+  {
+    "id": "R024",
+    "documento": "docs/L02-componenti.md",
+    "riga": 22,
+    "requisito": "Profilebar ora, data, posizione e WorkMode",
+    "implementazione": "profilebar/profilo",
+    "stato": "Parziale",
+    "findings": "A031 A048"
+  },
+  {
+    "id": "R025",
+    "documento": "docs/L02-componenti.md",
+    "riga": 26,
+    "requisito": "Systembar: microfono, volume, rete, batteria; stato simulato",
+    "implementazione": "systembar e system.txt",
+    "stato": "Parziale",
+    "findings": "A030 A059"
+  },
+  {
+    "id": "R026",
+    "documento": "docs/L02-componenti.md",
+    "riga": 34,
+    "requisito": "Sidebar per sospesi e rimandati",
+    "implementazione": "CHIP taskbar; ORARIO fuori",
+    "stato": "Divergente",
+    "findings": "A003 A011 A049"
+  },
+  {
+    "id": "R027",
+    "documento": "docs/L02-componenti.md",
+    "riga": 38,
+    "requisito": "Notificationbar prima della promozione a task",
+    "implementazione": "conCassetto/accogli",
+    "stato": "Divergente",
+    "findings": "A006 A007 A008 A010"
+  },
+  {
+    "id": "R028",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "requisito": "Struttura Archivio/users/user_123 e cartelle previste",
+    "implementazione": "albero Archivio",
+    "stato": "Presente; chat-raw creata al primo messaggio",
+    "findings": ""
+  },
+  {
+    "id": "R029",
+    "documento": "docs/L03-archivio.md",
+    "riga": 37,
+    "requisito": "system-settings.txt vuoto in questa fase",
+    "implementazione": "file vuoto",
+    "stato": "Verificato staticamente",
+    "findings": ""
+  },
+  {
+    "id": "R030",
+    "documento": "docs/L03-archivio.md",
+    "riga": 38,
+    "requisito": "Campanello in system-storage",
+    "implementazione": "asset presente, runtime altro path",
+    "stato": "Divergente",
+    "findings": "A064"
+  },
+  {
+    "id": "R031",
+    "documento": "docs/L03-archivio.md",
+    "riga": 41,
+    "requisito": "Un solo utente principale user_123",
+    "implementazione": "costanti lato server e frontend",
+    "stato": "Presente",
+    "findings": ""
+  },
+  {
+    "id": "R032",
+    "documento": "docs/L03-archivio.md",
+    "riga": 44,
+    "requisito": "JSONL giornaliero, timestamp/role/testo, append",
+    "implementazione": "chatRaw endpoint",
+    "stato": "Struttura presente; integrità parziale",
+    "findings": "A034 A035 A036"
+  },
+  {
+    "id": "R033",
+    "documento": "docs/L03-archivio.md",
+    "riga": 45,
+    "requisito": "Memoria selettiva futura, general.txt contesto attuale",
+    "implementazione": "ilPrompt + SEME=general.txt",
+    "stato": "Lettura presente; comportamento aggiuntivo",
+    "findings": "A026 A027"
+  },
+  {
+    "id": "R034",
+    "documento": "docs/L03-archivio.md",
+    "riga": 48,
+    "requisito": "Services come documenti di contesto",
+    "implementazione": "ilPrompt e services/*.txt",
+    "stato": "Lettura presente; dati operativi conflittuali",
+    "findings": "A023 A091"
+  },
+  {
+    "id": "R035",
+    "documento": "docs/L03-archivio.md",
+    "riga": 49,
+    "requisito": "Preferenze stabili, lingua, tema, voce, luoghi",
+    "implementazione": "leggiProfilo",
+    "stato": "Parziale",
+    "findings": "A028 A029 A031"
+  },
+  {
+    "id": "R036",
+    "documento": "docs/L03-archivio.md",
+    "riga": 52,
+    "requisito": "Password locale non inviata all’AI",
+    "implementazione": "ilPrompt serializza solo p.assistente",
+    "stato": "Verificato staticamente per percorso previsto",
+    "findings": ""
+  },
+  {
+    "id": "R037",
+    "documento": "docs/L03-archivio.md",
+    "riga": 53,
+    "requisito": "System.txt stato macchina simulato",
+    "implementazione": "caricaProfilo e ilPrompt",
+    "stato": "Presente con default/validazioni problematici",
+    "findings": "A030"
+  },
+  {
+    "id": "R038",
+    "documento": "docs/L03-archivio.md",
+    "riga": 56,
+    "requisito": "Filesystem.txt contesto e filesystem cartella dati",
+    "implementazione": "file presenti; reader non collegato",
+    "stato": "Parziale",
+    "findings": "A025"
+  },
+  {
+    "id": "R039",
+    "documento": "docs/L03-archivio.md",
+    "riga": 59,
+    "requisito": "Filesystem servizio obbligatorio",
+    "implementazione": "Registro senza disco/filesystem",
+    "stato": "Mancante nel flusso assistente",
+    "findings": "A025"
+  },
+  {
+    "id": "R040",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 15,
+    "requisito": "Node24",
+    "implementazione": "verifiche effettuate con24.21.0",
+    "stato": "Compatibile nella prova, vincolo assente",
+    "findings": "A040"
+  },
+  {
+    "id": "R041",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 16,
+    "requisito": "Whisper e eye tracking fuori scope",
+    "implementazione": "nessuna integrazione operativa",
+    "stato": "Corretta esclusione; simulazione UI da separare",
+    "findings": "A059"
+  },
+  {
+    "id": "R042",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 19,
+    "requisito": "OpenRouter unico provider attivo",
+    "implementazione": "fornitore e viaChat/messages",
+    "stato": "Presente staticamente; remoto non provato",
+    "findings": "A019 A042"
+  },
+  {
+    "id": "R043",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 26,
+    "requisito": "Chat raw distinta dalla memoria semantica",
+    "implementazione": "cartella separata; nessuna lettura raw in ilPrompt",
+    "stato": "Separazione presente; affidabilità parziale",
+    "findings": "A034 A035"
+  },
+  {
+    "id": "R044",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 29,
+    "requisito": "React, Vite, Tailwind",
+    "implementazione": "Vite, TS e DOM/CSS manuali",
+    "stato": "Divergente",
+    "findings": "A038"
+  },
+  {
+    "id": "R045",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 30,
+    "requisito": "Contenitore desktop futuro da decidere",
+    "implementazione": "nessun wrapper desktop",
+    "stato": "Fuori scope attuale; non mancanza",
+    "findings": ""
+  },
+  {
+    "id": "R046",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 31,
+    "requisito": "Accesso locale attraverso Node soltanto all’utente attivo",
+    "implementazione": "archivio middleware",
+    "stato": "Divergente, riprodotto",
+    "findings": "A032 A033"
+  },
+  {
+    "id": "R047",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 33,
+    "requisito": "Autenticazione e cambio utente futuri",
+    "implementazione": "utente fisso; nessun login",
+    "stato": "Fuori scope attuale; non mancanza",
+    "findings": ""
+  },
+  {
+    "id": "R048",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 38,
+    "requisito": "Preferences/system letti localmente da Node",
+    "implementazione": "endpoint + ilPrompt",
+    "stato": "Presente; selezione campi errata",
+    "findings": "A028 A029"
+  },
+  {
+    "id": "R049",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 44,
+    "requisito": "Piper Serena HIGH",
+    "implementazione": "Piper e espeak/ONNX",
+    "stato": "Presente, alternative extra e runtime non ascoltato",
+    "findings": "A062 A065 A067"
+  },
+  {
+    "id": "R050",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 3,
+    "requisito": "Gerarchia L0>L1>L2>L3>L4",
+    "implementazione": "confronto normativo applicato nell’audit",
+    "stato": "Conflitti interni ancora da risolvere",
+    "findings": "A079 A080 A081 A082 A084 A085"
+  },
+  {
+    "id": "R051",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 60,
+    "requisito": "Tutto ciò che si legge in bolla salvo Systembar",
+    "implementazione": "Timeline fuori bolla, Profilebar velo",
+    "stato": "Ambiguo nei documenti e divergente in parte",
+    "findings": "A045 A048 A079"
+  },
+  {
+    "id": "R052",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 105,
+    "requisito": "Massimo4 frasi, nessun bottone salvo eccezioni",
+    "implementazione": "frasi e scorciatoie; controlli volume/pedana",
+    "stato": "Parziale; eccezioni discordanti",
+    "findings": "A044 A058 A074"
+  },
+  {
+    "id": "R053",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 131,
+    "requisito": "Un task in un solo luogo visibile desk/sidebar",
+    "implementazione": "Luogo e proiezioni",
+    "stato": "Modello divergente",
+    "findings": "A003 A005 A006"
+  },
+  {
+    "id": "R054",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 153,
+    "requisito": "Terminati verso l’esterno lasciano dopo invio effettivo/Delay",
+    "implementazione": "consegna CHIP poi MEMORIA",
+    "stato": "Divergente",
+    "findings": "A001 A005"
+  },
+  {
+    "id": "R055",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 164,
+    "requisito": "Colori semantici, max2 punti colore",
+    "implementazione": "tinta per singolo componente e override",
+    "stato": "Parziale",
+    "findings": "A047 A052 A083"
+  },
+  {
+    "id": "R056",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 181,
+    "requisito": "Leggibilità del materiale vetro",
+    "implementazione": "CSS app e CSS docs",
+    "stato": "Parziale; render multipiattaforma non verificato",
+    "findings": "A045 A089"
+  },
+  {
+    "id": "R057",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 197,
+    "requisito": "Lucide14–16, sette icone di tipo",
+    "implementazione": "sprite ICONE e CSS14",
+    "stato": "Famiglia presente; tavole discordanti",
+    "findings": "A082"
+  },
+  {
+    "id": "R058",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 206,
+    "requisito": "Manrope e IBM Plex Mono, pesi ammessi",
+    "implementazione": "Google Fonts/index, CSS",
+    "stato": "Font presenti; pesi in conflitto",
+    "findings": "A082"
+  },
+  {
+    "id": "R059",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 213,
+    "requisito": "Cornice a margine44 su riferimento1440x900",
+    "implementazione": "CSS e misuraPalco",
+    "stato": "Staticamente presente; varianti quote ambigue",
+    "findings": "A081"
+  },
+  {
+    "id": "R060",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 217,
+    "requisito": "Nessun task si muove mentre si acquisisce la frase",
+    "implementazione": "raccolta senza mutazioni; turno dopo Enter",
+    "stato": "Percorso tastiera coerente; documenti contrastanti",
+    "findings": "A085"
+  },
+  {
+    "id": "R061",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 222,
+    "requisito": "Scrivania irregolare, contenuto determina dimensione",
+    "implementazione": "campo molle, larghezze per focus",
+    "stato": "Parziale",
+    "findings": "A051"
+  },
+  {
+    "id": "R062",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 247,
+    "requisito": "Componenti indipendenti senza colonna comune",
+    "implementazione": "guida flex",
+    "stato": "Non determinabile per conflitto interno",
+    "findings": "A080"
+  },
+  {
+    "id": "R063",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 263,
+    "requisito": "Timeline destra44/top40, altezza contenuto; seguaci22px",
+    "implementazione": "guida/timeline CSS",
+    "stato": "Impostazione presente; conflitto con autonomia",
+    "findings": "A080 A081"
+  },
+  {
+    "id": "R064",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 285,
+    "requisito": "INPUT basso sinistra e assente a riposo",
+    "implementazione": "scrittura resta in modalità tastiera",
+    "stato": "Eccezione tastiera ammessa da revisione INPUT",
+    "findings": "A081"
+  },
+  {
+    "id": "R065",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 294,
+    "requisito": "Notifiche originali senza riscrittura",
+    "implementazione": "Proposta/Notifica e rendering",
+    "stato": "Parziale",
+    "findings": "A010"
+  },
+  {
+    "id": "R066",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 7,
+    "requisito": "Ricetta ottica comune liquid-glass.css",
+    "implementazione": "docs condividono; app duplica",
+    "stato": "Divergente",
+    "findings": "A045"
+  },
+  {
+    "id": "R067",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 14,
+    "requisito": "Nessun movimento hover gratuito",
+    "implementazione": "CSS app/scene",
+    "stato": "Non osservata violazione statica specifica; runtime non verificato",
+    "findings": ""
+  },
+  {
+    "id": "R068",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 16,
+    "requisito": "Fallback opaco con trasparenza ridotta/no backdrop",
+    "implementazione": "root token docs; app ricetta precedente",
+    "stato": "Parziale",
+    "findings": "A045 A089"
+  },
+  {
+    "id": "R069",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 37,
+    "requisito": "Geometria Profilebar60/r30/gap16/avatar44",
+    "implementazione": "profilebar.css canonico vs base.css",
+    "stato": "Divergente",
+    "findings": "A048"
+  },
+  {
+    "id": "R070",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 42,
+    "requisito": "Niente punti mediani nei gruppi Profilebar",
+    "implementazione": "template profilebar",
+    "stato": "Divergente",
+    "findings": "A048"
+  },
+  {
+    "id": "R071",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 47,
+    "requisito": "Luogo noto Casa e Deep600 eccezione",
+    "implementazione": "ilLuogo/profilo",
+    "stato": "Parziale",
+    "findings": "A031 A048"
+  },
+  {
+    "id": "R072",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 76,
+    "requisito": "Materiali chiaro/scuro su tutti i componenti",
+    "implementazione": "materiali.css soltanto nelle tavole",
+    "stato": "Mancante in app",
+    "findings": "A046"
+  },
+  {
+    "id": "R073",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 81,
+    "requisito": "Notificationbar stessa materia degli altri componenti",
+    "implementazione": "CSS cassetto locale",
+    "stato": "Divergente",
+    "findings": "A045"
+  },
+  {
+    "id": "R074",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 86,
+    "requisito": "Dodici temi; tinta separata da materiale",
+    "implementazione": "temi.css e data-colori",
+    "stato": "Palette presenti; scuro/generazione incompleti",
+    "findings": "A046 A088"
+  },
+  {
+    "id": "R075",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 138,
+    "requisito": "Anatomia, misure testo, padding e contenuto principale",
+    "implementazione": "dentroLaBolla/base.css",
+    "stato": "Divergente",
+    "findings": "A051 A053 A082"
+  },
+  {
+    "id": "R076",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 175,
+    "requisito": "Frase primaria verde e sì coerente",
+    "implementazione": "frasiPer/regole",
+    "stato": "Divergente",
+    "findings": "A058"
+  },
+  {
+    "id": "R077",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 583,
+    "requisito": "Conclusione6s e successivo chip, da riconciliare con Delay",
+    "implementazione": "nessun timer6s",
+    "stato": "Parziale/contraddittorio",
+    "findings": "A055 A084"
+  },
+  {
+    "id": "R078",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 768,
+    "requisito": "Focus e aumento dimensione durante parola",
+    "implementazione": "fuoco dopo turno",
+    "stato": "Tavola subordinata contraddice L0/revisione INPUT",
+    "findings": "A085"
+  },
+  {
+    "id": "R079",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 850,
+    "requisito": "Riposo automatico dopo30min",
+    "implementazione": "nessun timer30min",
+    "stato": "Mancante",
+    "findings": "A055"
+  },
+  {
+    "id": "R080",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 882,
+    "requisito": "Memoria posizioni1h e ritorno libero",
+    "implementazione": "Scrivania ricordi/MEMORIA",
+    "stato": "Presente; race DOM non coperta",
+    "findings": "A054"
+  },
+  {
+    "id": "R081",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 917,
+    "requisito": "Movimenti non simultanei e causali",
+    "implementazione": "campo forze e timers CSS",
+    "stato": "Parziale; coreografia non verificata in browser",
+    "findings": "A054 A085"
+  },
+  {
+    "id": "R082",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 32,
+    "requisito": "Ancoraggio e durata30s",
+    "implementazione": "main/schermo",
+    "stato": "Quote ambigue; timeout errato per risposte lente",
+    "findings": "A015 A081"
+  },
+  {
+    "id": "R083",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 194,
+    "requisito": "Proposte raccolta, anteprima e grandi insiemi",
+    "implementazione": "raccolta.ts",
+    "stato": "Parziale; decisione su idee ancora necessaria",
+    "findings": "A057"
+  },
+  {
+    "id": "R084",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 437,
+    "requisito": "Risveglio/voce e verbi configurabili",
+    "implementazione": "regole/canali simulati",
+    "stato": "Parte vocale futura; dettagli non implementati non contati come obblighi",
+    "findings": "A059"
+  },
+  {
+    "id": "R085",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 548,
+    "requisito": "Sei momenti: tastiera resta; attesa interpretazione; risposta testo/voce",
+    "implementazione": "main/turno/schermo",
+    "stato": "Parziale",
+    "findings": "A015 A056 A063"
+  },
+  {
+    "id": "R086",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 556,
+    "requisito": "Solo parole/raccolta/scambio, niente task o virgolette; domanda semplice non crea task",
+    "implementazione": "INPUT e varianti pedana",
+    "stato": "Parziale; scambio semplice legittimo",
+    "findings": "A004 A056"
+  },
+  {
+    "id": "R087",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 41,
+    "requisito": "Campanella44/badge16/cassetto400max420/animazione420 e stagger40",
+    "implementazione": "CSS cassetto",
+    "stato": "Percorso alternativo presente; ricetta e default divergenti",
+    "findings": "A006 A045"
+  },
+  {
+    "id": "R088",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 66,
+    "requisito": "Filtro silenzioso conserva arrivi",
+    "implementazione": "accogli/nelCassetto",
+    "stato": "Dipende da flag",
+    "findings": "A007"
+  },
+  {
+    "id": "R089",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 95,
+    "requisito": "Mittente originale, oggetto, ora e ordine leggibile",
+    "implementazione": "righe cassetto",
+    "stato": "Parziale",
+    "findings": "A009 A010"
+  },
+  {
+    "id": "R090",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 133,
+    "requisito": "Promozione esplicita conserva notifica",
+    "implementazione": "estrai",
+    "stato": "Divergente",
+    "findings": "A008"
+  },
+  {
+    "id": "R091",
+    "documento": "docs/design/L2 - Profilebar.dc.html",
+    "riga": 55,
+    "requisito": "Bolla intrinseca e geometria canonica",
+    "implementazione": "profilebar/base.css",
+    "stato": "Divergente",
+    "findings": "A048"
+  },
+  {
+    "id": "R092",
+    "documento": "docs/design/L2 - Profilebar.dc.html",
+    "riga": 70,
+    "requisito": "Luoghi registrati e modalità focus",
+    "implementazione": "profilo/ilLuogo",
+    "stato": "Mancante in parte",
+    "findings": "A031"
+  },
+  {
+    "id": "R093",
+    "documento": "docs/design/L2 - Profilebar.dc.html",
+    "riga": 80,
+    "requisito": "Raccontami chi sono e follow verticale",
+    "implementazione": "tool parla/generazione generica; guida",
+    "stato": "Nessuna proiezione profilo specializzata; geometria ambigua",
+    "findings": "A080 A095"
+  },
+  {
+    "id": "R094",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 31,
+    "requisito": "Chip30/r20/pad14/gap9 con icona nome dato",
+    "implementazione": "taskbar/base.css",
+    "stato": "Dimensioni base presenti; ricetta diversa",
+    "findings": "A045"
+  },
+  {
+    "id": "R095",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 55,
+    "requisito": "Nome corto max due parole e mai troncato",
+    "implementazione": "nome da task/fixture, nessun vincolo",
+    "stato": "Parziale",
+    "findings": "A093"
+  },
+  {
+    "id": "R096",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 62,
+    "requisito": "Niente duplicato del task principale",
+    "implementazione": "elementi esclude MAIN",
+    "stato": "Presente, salvo eccezione fullscreen documentale da chiarire",
+    "findings": "A003"
+  },
+  {
+    "id": "R097",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 114,
+    "requisito": "Task rimandati qui, non cassetto",
+    "implementazione": "ORARIO nel cassetto",
+    "stato": "Divergente",
+    "findings": "A011 A086"
+  },
+  {
+    "id": "R098",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 204,
+    "requisito": "Attenuazione45% durante raccolta",
+    "implementazione": "aFuoco/attenuata",
+    "stato": "Divergente",
+    "findings": "A050"
+  },
+  {
+    "id": "R099",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 205,
+    "requisito": "Quattro chip e +N",
+    "implementazione": "slice(0,4)",
+    "stato": "Parziale",
+    "findings": "A049"
+  },
+  {
+    "id": "R100",
+    "documento": "docs/design/L2 - Systembar.dc.html",
+    "riga": 30,
+    "requisito": "Ordine fisso mic/volume/rete/batteria, mono11/icon14",
+    "implementazione": "systembar CSS mono10/icon14",
+    "stato": "Parziale",
+    "findings": "A030 A059 A094"
+  },
+  {
+    "id": "R101",
+    "documento": "docs/design/L2 - Systembar.dc.html",
+    "riga": 119,
+    "requisito": "SCRIVI/MUTA e comandi coerenti",
+    "implementazione": "canali, template, click voce",
+    "stato": "Parziale",
+    "findings": "A059 A063 A074"
+  },
+  {
+    "id": "R102",
+    "documento": "docs/design/L2 - TIMELINE.dc.html",
+    "riga": 162,
+    "requisito": "Tipografia/filo242x3/colonna fluida",
+    "implementazione": "timeline/CSS",
+    "stato": "Presenza statica, materiale e legge0 da chiarire",
+    "findings": "A079"
+  },
+  {
+    "id": "R103",
+    "documento": "docs/design/L2 - TIMELINE.dc.html",
+    "riga": 229,
+    "requisito": "Niente passato; timeline non cronologia",
+    "implementazione": "tratti e filtri",
+    "stato": "Divergente",
+    "findings": "A061"
+  },
+  {
+    "id": "R104",
+    "documento": "docs/design/L2 - TIMELINE.dc.html",
+    "riga": 335,
+    "requisito": "Tempo libero e prossimo lavoro valido",
+    "implementazione": "ilDopo/inCorso",
+    "stato": "Parziale",
+    "findings": "A060"
+  },
+  {
+    "id": "R105",
+    "documento": "docs/design/L2 - TIMELINE.dc.html",
+    "riga": 352,
+    "requisito": "Preavviso15 e criterio del prossimo",
+    "implementazione": "REGOLE.preavviso e sort ora",
+    "stato": "Presente in parte; rinvio non riparte",
+    "findings": "A011 A060"
+  },
+  {
+    "id": "R106",
+    "documento": "docs/design/L3 - Flusso task.dc.html",
+    "riga": 87,
+    "requisito": "Scene del ciclo task e voce",
+    "implementazione": "motore/scrivania",
+    "stato": "Contengono descrizioni superate; non normative contro L0",
+    "findings": "A071 A084 A085"
+  },
+  {
+    "id": "R107",
+    "documento": "docs/design/L4 - Schermate.dc.html",
+    "riga": 58,
+    "requisito": "Quattro scene integrate con materiali comuni",
+    "implementazione": "app non importa ricetta condivisa",
+    "stato": "Divergente; equivalenza visiva non testata",
+    "findings": "A045 A046 A048"
+  },
+  {
+    "id": "R108",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "requisito": "Decisioni tecniche esplicite, nessun valore dedotto dal codice",
+    "implementazione": "API/tool/parametri/servizi",
+    "stato": "Dettagli non determinabili",
+    "findings": "A043 A073 A076 A077 A087"
+  },
+  {
+    "id": "R109",
+    "documento": "docs/design/L1 - Temi.dc.html",
+    "riga": 87,
+    "requisito": "CSS temi generato dal tool citato",
+    "implementazione": "genera-temi.py assente",
+    "stato": "Mancante",
+    "findings": "A088"
+  },
+  {
+    "id": "R110",
+    "documento": "docs/L05-design.md",
+    "riga": 1,
+    "requisito": "Documento di collegamento design",
+    "implementazione": "vuoto",
+    "stato": "Nessun requisito estraibile",
+    "findings": "A087"
+  },
+  {
+    "id": "R111",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 192,
+    "requisito": "Validità del campione di raccolta/chip",
+    "implementazione": "margin inline invalido",
+    "stato": "Divergente",
+    "findings": "A096"
+  },
+  {
+    "id": "R112",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 507,
+    "requisito": "Validità del campione del punto esterno",
+    "implementazione": "margin inline invalido",
+    "stato": "Divergente",
+    "findings": "A096"
+  }
+]

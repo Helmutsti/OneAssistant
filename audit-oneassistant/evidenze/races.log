@@ -1,0 +1,5 @@
+(node:80559) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+overlapping_turns [{"question":"prima domanda"},{"question":"seconda domanda","answer":"risposta alla prima"},{"question":"","answer":"risposta alla seconda"}]
+named_send {"named":"t1","focused":"t2","moves":[{"nome":"al_centro","argomenti":{"task":"t1"}},{"nome":"consegna","argomenti":{"task":"t2"}}]}

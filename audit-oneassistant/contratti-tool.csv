@@ -1,0 +1,41 @@
+tool,argomenti,ambito,documento,riga,stato,findings
+guarda,—,principale secondario,docs/L01-struttura_e_task.md,27,Base: stato desk come contesto,A003
+ricorda,chi!:elenco,principale secondario,docs/L04-aspetti_tecnici.md,23,Base: lettura contesto; query concreta non specificata,A027 A043
+parla,testo!:testo,principale ,docs/L01-struttura_e_task.md,73,Base: scambio assistente; singola riga imposta dal tool non prescritta,A014 A020 A043
+chiedi,fra!:elenco,principale ,docs/L00-lo_scopo.md,42,Base: chiarimento; forma alternativa via stato bloccato legacy,A003 A017
+sciogli,task!:testo,principale ,docs/L01-struttura_e_task.md,50,Base: input atteso; mutazione legacy,A003
+no,—,principale ,docs/L01-struttura_e_task.md,73,Scambio; semantica concreta da approvare,A043
+al_centro,task!:testo,principale ,docs/design/L2 - Bubble.dc.html,768,Focus; documenti discordanti sul timing,A085 A090
+richiama,nome!:testo,principale ,docs/design/L2 - Sidebar.dc.html,63,Richiamo per nome previsto,A005
+indietro,—,principale ,docs/design/L2 - Bubble.dc.html,882,Richiamo/posizione; stack focus non specificato,A043
+scegli,indice!:numero,principale ,docs/design/L2 - Notificationbar.dc.html,95,Selezione conversazionale; indice non validato coerentemente,A009 A017
+dentro,task!:testo,principale ,docs/design/L2 - Bubble.dc.html,604,Contenuto del task,A053
+leggi,task!:testo,principale ,docs/L01-struttura_e_task.md,73,Voce assistente prevista,A062 A063
+mostra,area!:testo,principale ,docs/L02-componenti.md,34,"Aree previste, enum TASKBAR legacy",A003 A043
+chiudi,—,principale ,docs/design/L2 - Notificationbar.dc.html,41,Chiusura cassetto prevista,
+consegna,task!:testo,principale ,docs/L01-struttura_e_task.md,58,"Invio previsto, contratto violato",A001 A002 A012 A013
+rimanda,task!:testo,principale ,docs/design/L2 - Sidebar.dc.html,114,"Rinvio previsto, 2h hardcoded non autorizzate",A011 A043
+annulla,task!:testo,principale ,docs/L01-struttura_e_task.md,63,"Undo previsto, chiamata già eseguita",A001 A013
+lascia,task!:testo,principale ,docs/L01-struttura_e_task.md,50,Conclusione/abbandono; MEMORIA non consentito,A005 A012
+aspetta,—,principale ,docs/design/L2 - INPUT.dc.html,437,Interruzione; ambito da distinguere,A016
+voce,come!:testo,principale ,docs/design/L2 - Systembar.dc.html,123,MUTA previsto,A063
+non_ascoltare,—,principale ,docs/L04-aspetti_tecnici.md,16,Ingresso vocale futuro; ramo legacy,A059
+componi,"a!:testo, richiesta!:testo, testo?:testo",principale ,docs/L01-struttura_e_task.md,15,Composizione/invio esempio previsto,A023 A024 A058
+aggiungi,"task!:testo, cosa!:testo",principale ,docs/L01-struttura_e_task.md,64,Modifica prima di invio prevista; trasformazioni locali non specificate,A043
+riscrivi,task!:testo,principale ,docs/L01-struttura_e_task.md,64,Modifica prevista; formule deterministiche non specificate,A043
+riassumi,task!:testo,principale ,docs/L00-lo_scopo.md,8,Capacità generale assistente; algoritmo locale e lifecycle specializzato non definiti,A004 A043
+metti,"task!:testo, gruppo!:testo",principale ,docs/design/L2 - Sidebar.dc.html,31,Gruppi/lotti non contrattualizzati nei docs attuali,A043
+apri,gruppo!:testo,principale ,docs/design/L2 - Sidebar.dc.html,31,Espansione gruppo non contrattualizzata,A043
+separa,gruppo!:testo,principale ,docs/design/L2 - Sidebar.dc.html,31,Separazione gruppo non contrattualizzata,A043
+consegna_gruppo,gruppo!:testo,principale ,docs/L01-struttura_e_task.md,58,Invio sì; atomicità/undo lotto non definiti,A001 A012 A043
+rimanda_gruppo,gruppo!:testo,principale ,docs/design/L2 - Sidebar.dc.html,114,Rinvio sì; lotto/2h non definiti,A011 A043
+delega,"task!:testo, lavori!:elenco",principale ,docs/L01-struttura_e_task.md,53,"Sotto-task previsti, implementazione differente",A021 A022
+estrai,notifica!:testo,principale ,docs/design/L2 - Notificationbar.dc.html,133,Promozione prevista; conservazione violata,A008
+ricordami,"cosa!:testo, fra_minuti!:numero",principale ,docs/L01-struttura_e_task.md,15,Servizio simulato; timer non torna al lavoro,A011 A091
+segna,"nome!:testo, genere!:testo, testo!:testo, collegamenti?:elenco",principale ,docs/L04-aspetti_tecnici.md,22,Memoria automatica fuori scope attuale,A026
+racconta,su!:testo,principale ,docs/L01-struttura_e_task.md,73,Conversazione prevista; oggetti semantici aggiuntivi,A026
+dimentica,—,principale ,docs/L04-aspetti_tecnici.md,22,Smentita semantica non definita nel prototipo,A026
+conferma,—,principale ,docs/L04-aspetti_tecnici.md,22,Promozione abitudini non definita,A026
+revoca,—,principale ,docs/L04-aspetti_tecnici.md,22,Revoca abitudini non definita,A026
+salva_nota,testo!:testo,principale ,docs/L01-struttura_e_task.md,15,"Servizio simulato, autoautorizzazione non definita",A026 A091
+riporta,testo!:testo,secondario,docs/L01-struttura_e_task.md,53,"Risultato secondario, protocollo concreto non definito",A021 A022 A043

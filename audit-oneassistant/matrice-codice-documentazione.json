@@ -1,0 +1,850 @@
+[
+  {
+    "file": ".gitignore",
+    "componente_comportamento": "Output build, binari voce, chat raw e segreti esclusi",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A092"
+  },
+  {
+    "file": "Archivio/system-settings.txt",
+    "componente_comportamento": "File intenzionalmente vuoto",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "Archivio/system-storage/campanello.mp3",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "Archivio/users/user_123/filesystem.txt",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A025"
+  },
+  {
+    "file": "Archivio/users/user_123/filesystem/Home/avatar.jpg",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "Archivio/users/user_123/filesystem/Home/wallpaper.jpg",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "Archivio/users/user_123/memory/general.txt",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "Archivio/users/user_123/preferences.txt",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A029 A092"
+  },
+  {
+    "file": "Archivio/users/user_123/services/contacts.txt",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A023"
+  },
+  {
+    "file": "Archivio/users/user_123/services/email.txt",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "Archivio/users/user_123/system.txt",
+    "componente_comportamento": "Fixture di contesto o asset utente/sistema",
+    "documento": "docs/L03-archivio.md",
+    "riga": 19,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "README.md",
+    "componente_comportamento": "Scopo prototipo e autorità docs rispetto a tasks",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "docs/L00-lo_scopo.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/L01-struttura_e_task.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A087"
+  },
+  {
+    "file": "docs/L02-componenti.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/L02-componenti.md",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/L03-archivio.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/L03-archivio.md",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/L04-aspetti_tecnici.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/L05-design.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/L05-design.md",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A087"
+  },
+  {
+    "file": "docs/design/L0 - Sistema.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A079 A080 A083"
+  },
+  {
+    "file": "docs/design/L1 - Icone.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L1 - Icone.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A082"
+  },
+  {
+    "file": "docs/design/L1 - Moodboard.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L1 - Moodboard.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A083"
+  },
+  {
+    "file": "docs/design/L1 - Temi.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L1 - Temi.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A088"
+  },
+  {
+    "file": "docs/design/L2 - Bubble.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A082 A084 A085"
+  },
+  {
+    "file": "docs/design/L2 - INPUT.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A081 A085 A096"
+  },
+  {
+    "file": "docs/design/L2 - Notificationbar.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A086"
+  },
+  {
+    "file": "docs/design/L2 - Profilebar.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L2 - Profilebar.dc.html",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/L2 - Sidebar.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A081 A086 A096"
+  },
+  {
+    "file": "docs/design/L2 - Systembar.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L2 - Systembar.dc.html",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/L2 - TIMELINE.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L2 - TIMELINE.dc.html",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/L3 - Flusso task.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L3 - Flusso task.dc.html",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A084"
+  },
+  {
+    "file": "docs/design/L4 - Schermate.dc.html",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/L4 - Schermate.dc.html",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/Liquid glass.md",
+    "componente_comportamento": "Documento normativo/tavola di riferimento",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/composizioni.js",
+    "componente_comportamento": "Toggle materiale chiaro/scuro delle scene",
+    "documento": "docs/design/composizioni.js",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/image-slot.js",
+    "componente_comportamento": "Placeholder immagini dei documenti",
+    "documento": "docs/design/image-slot.js",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/index.html",
+    "componente_comportamento": "Navigazione tavole e stato decisioni",
+    "documento": "docs/design/index.html",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/liquid-glass.css",
+    "componente_comportamento": "Ricetta ottica canonica e fallback",
+    "documento": "docs/design/liquid-glass.css",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A089"
+  },
+  {
+    "file": "docs/design/materiali.css",
+    "componente_comportamento": "Materiali chiaro/scuro e inchiostri",
+    "documento": "docs/design/materiali.css",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A089"
+  },
+  {
+    "file": "docs/design/profilebar.css",
+    "componente_comportamento": "Geometria Profilebar e varianti di tavola",
+    "documento": "docs/design/profilebar.css",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/support.js",
+    "componente_comportamento": "Scaffold x-dc, normalizzazione documenti e intestazioni",
+    "documento": "docs/design/support.js",
+    "riga": 1,
+    "stato": "Fonte letta; nessun finding autonomo registrato",
+    "findings": ""
+  },
+  {
+    "file": "docs/design/temi.css",
+    "componente_comportamento": "Dodici palette per materiale",
+    "documento": "docs/design/temi.css",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A088"
+  },
+  {
+    "file": "docs/design/volto.png",
+    "componente_comportamento": "Asset di riferimento della tavola",
+    "documento": "docs/design/volto.png",
+    "riga": 1,
+    "stato": "Fonte di verità; contraddizioni/bug di tavola elencati",
+    "findings": "A078"
+  },
+  {
+    "file": "env.example",
+    "componente_comportamento": "Variabili OpenRouter e modello predefinito",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "index.html",
+    "componente_comportamento": "Entry DOM, font remoti Google Fonts e caricamento main",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "package-lock.json",
+    "componente_comportamento": "Versioni/integrità, dipendenze transitive e binari opzionali multipiattaforma",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A040 A041"
+  },
+  {
+    "file": "package.json",
+    "componente_comportamento": "Script, dipendenze dirette e postinstall",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A038 A039 A040 A041"
+  },
+  {
+    "file": "pubblico/LEGGIMI.md",
+    "componente_comportamento": "Asset statici/voce e procedura preparazione",
+    "documento": "docs/L03-archivio.md",
+    "riga": 38,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "pubblico/suoni/notifica.mp3",
+    "componente_comportamento": "Asset statico binario",
+    "documento": "docs/L03-archivio.md",
+    "riga": 38,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "pubblico/suoni/soundshelfstudio-ui-click-deep-512211.mp3",
+    "componente_comportamento": "Asset statico binario",
+    "documento": "docs/L03-archivio.md",
+    "riga": 38,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "pubblico/volto.png",
+    "componente_comportamento": "Asset statico binario",
+    "documento": "docs/L03-archivio.md",
+    "riga": 38,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A078"
+  },
+  {
+    "file": "src/ai-engine/ai-engine.ts",
+    "componente_comportamento": "Turno sincrono/asincrono, permessi, registro mosse, connettore e fallback",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A004 A014 A016 A019 A020 A069"
+  },
+  {
+    "file": "src/ai-engine/api.ts",
+    "componente_comportamento": "Validazione parziale argomenti e traduzione tool→comandi",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A002 A017 A018"
+  },
+  {
+    "file": "src/ai-engine/finto.ts",
+    "componente_comportamento": "Interpretazione locale, memorizzazione euristica e traduzione chiamate",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A026 A042 A071 A090"
+  },
+  {
+    "file": "src/ai-engine/regole.ts",
+    "componente_comportamento": "Regex lingua, sequenze, conferme, targeting, gruppi e composizione",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A058 A090"
+  },
+  {
+    "file": "src/ai-engine/secondari.ts",
+    "componente_comportamento": "Loop secondario limitato e SecondarioFinto con ritardi/estratti",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A021"
+  },
+  {
+    "file": "src/ai-engine/strumenti.ts",
+    "componente_comportamento": "40 strumenti, JSON schema, permessi principali/secondari e prompt sistema",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A004 A028 A043 A095"
+  },
+  {
+    "file": "src/ai-engine/testi.ts",
+    "componente_comportamento": "Trasformazioni deterministiche riassunto, composizione e aggiunte",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Meccanismo concreto non specificato; non determinabile/richiede decisione",
+    "findings": "A043"
+  },
+  {
+    "file": "src/ai-engine/vista.ts",
+    "componente_comportamento": "Fotografia testuale di stato, gruppi, notifiche e contesto per AI",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "src/archivio/archivio.ts",
+    "componente_comportamento": "Lettura general.txt, entità/menzioni/ipotesi temporanee, smentite, no-op persistenza",
+    "documento": "docs/L03-archivio.md",
+    "riga": 44,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A026 A027 A037 A071 A072"
+  },
+  {
+    "file": "src/archivio/chat-raw.ts",
+    "componente_comportamento": "Invio messaggi al writer JSONL",
+    "documento": "docs/L03-archivio.md",
+    "riga": 44,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A034 A035 A036"
+  },
+  {
+    "file": "src/aree/raccolta.ts",
+    "componente_comportamento": "Riconoscimento per sottostringa task/entità/contatti",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 257,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A027 A057"
+  },
+  {
+    "file": "src/aree/schermo.ts",
+    "componente_comportamento": "Template HTML per sette aree, icone, interazioni e diagnostica",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 257,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A006 A009 A010 A031 A038 A044 A048 A049 A050 A052 A053 A054 A055 A056 A057 A059 A074 A075 A080 A093 A095"
+  },
+  {
+    "file": "src/aree/scrivania.ts",
+    "componente_comportamento": "Layout fisico molle/repulsioni, focus, collisioni e memoria posizioni",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 257,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A051"
+  },
+  {
+    "file": "src/aree/testo.ts",
+    "componente_comportamento": "Escape testo HTML e attributi nei punti che lo chiamano",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 257,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "src/aree/timeline.ts",
+    "componente_comportamento": "Attuale/prossimo, tempo libero e segmenti giornalieri",
+    "documento": "docs/design/L0 - Sistema.md",
+    "riga": 257,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A060 A061"
+  },
+  {
+    "file": "src/confini/calendario.ts",
+    "componente_comportamento": "Fixture appuntamenti e aggiunte con timestamp corrente",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A091"
+  },
+  {
+    "file": "src/confini/contatti.ts",
+    "componente_comportamento": "Rubrica hardcoded, ricerca alias e aggiunte senza recapito",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A023 A024 A091"
+  },
+  {
+    "file": "src/confini/disco.ts",
+    "componente_comportamento": "Cache documenti memory per utente, letture e POST markdown",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A025 A037 A072"
+  },
+  {
+    "file": "src/confini/filtro.ts",
+    "componente_comportamento": "Classificazione arrivi perTe/azionabile/orario/carte",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A007 A073"
+  },
+  {
+    "file": "src/confini/note.ts",
+    "componente_comportamento": "Append note in memoria e guasto simulato",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A091"
+  },
+  {
+    "file": "src/confini/posta.ts",
+    "componente_comportamento": "Fixture posta, iniezione arrivi, guasto e consegne temporanee",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A010 A023"
+  },
+  {
+    "file": "src/confini/promemoria.ts",
+    "componente_comportamento": "Fixture, completamento per somiglianza testuale e guasto",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A091"
+  },
+  {
+    "file": "src/confini/servizio.ts",
+    "componente_comportamento": "Contratti Proposta, Servizio, Sorgente, Registro ed errori di consegna",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "src/conoscenza/canali.ts",
+    "componente_comportamento": "Stato tastiera/ascolto simulato e voce in uscita",
+    "documento": "docs/L03-archivio.md",
+    "riga": 49,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A059"
+  },
+  {
+    "file": "src/conoscenza/contesto.ts",
+    "componente_comportamento": "Identità/focus temporale/luogo e regole lavoro hardcoded",
+    "documento": "docs/L03-archivio.md",
+    "riga": 49,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A031 A073"
+  },
+  {
+    "file": "src/conoscenza/profilo.ts",
+    "componente_comportamento": "Parser testo preferenze/sistema, file media, default, utente fisso",
+    "documento": "docs/L03-archivio.md",
+    "riga": 49,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A028 A029 A030 A031 A047 A064 A072 A075"
+  },
+  {
+    "file": "src/main.ts",
+    "componente_comportamento": "Bootstrap profilo/Disco, registro servizi, AI fallback, voce, UI, timer, tastiera e banco prove",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A006 A014 A015 A016 A019 A021 A023 A025 A036 A038 A044 A045 A046 A056 A058 A059 A070"
+  },
+  {
+    "file": "src/modello/motore.ts",
+    "componente_comportamento": "Lifecycle, invii/undo/lotti, rinvio, focus, conversazione, memoria, notifiche e delega",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A001 A002 A003 A004 A005 A006 A007 A008 A009 A011 A012 A013 A014 A015 A016 A018 A021 A022 A026 A034 A043 A055 A058 A060 A063 A069 A073 A093"
+  },
+  {
+    "file": "src/modello/tempo.ts",
+    "componente_comportamento": "Orologio reale/simulato, timer e salti temporali",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Meccanismo concreto non specificato; non determinabile/richiede decisione",
+    "findings": "A043"
+  },
+  {
+    "file": "src/modello/tipi.ts",
+    "componente_comportamento": "Task, stati/luoghi, matrice combinazioni, gruppi, notifiche, uscite e comandi",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A002 A003 A010 A071"
+  },
+  {
+    "file": "src/prova/alfabeto.ts",
+    "componente_comportamento": "Catalogo comandi e runner verifiche linguistiche",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A068 A070"
+  },
+  {
+    "file": "src/prova/flussi.ts",
+    "componente_comportamento": "Copioni e azioni dimostrative",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Meccanismo concreto non specificato; non determinabile/richiede decisione",
+    "findings": "A068 A043"
+  },
+  {
+    "file": "src/prova/pedana.ts",
+    "componente_comportamento": "Stato banco, compositore arrivi, reset e varianti UI",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Meccanismo concreto non specificato; non determinabile/richiede decisione",
+    "findings": "A044 A056 A070 A043"
+  },
+  {
+    "file": "src/prova/scenario.ts",
+    "componente_comportamento": "Suite Node con asserzioni, fixture e attese reali/simulate",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A068"
+  },
+  {
+    "file": "src/prova/scia.ts",
+    "componente_comportamento": "Storico transizioni di test e attribuzione causale",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A069"
+  },
+  {
+    "file": "src/prova/stato.ts",
+    "componente_comportamento": "Preparazione precondizioni e scenari di stato legacy",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A068"
+  },
+  {
+    "file": "src/prova/timeline-prova.ts",
+    "componente_comportamento": "Controlli segmenti timeline e libero",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 38,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "src/stile/base.css",
+    "componente_comportamento": "Tutti i componenti, animazioni, font, icone, responsive e banco",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 7,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A038 A045 A046 A048 A050 A051 A052 A053 A093 A094"
+  },
+  {
+    "file": "src/stile/tema.ts",
+    "componente_comportamento": "Traduzione override preferenze→custom properties",
+    "documento": "docs/design/Liquid glass.md",
+    "riga": 7,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A046 A047"
+  },
+  {
+    "file": "src/voce/bocca.ts",
+    "componente_comportamento": "Browser TTS, Piper, segmentazione, audio/cancellazione e fallback",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 44,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A062"
+  },
+  {
+    "file": "src/voce/espeak-ng.d.ts",
+    "componente_comportamento": "Tipi adapter eSpeak-NG",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 44,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "src/voce/lettura.ts",
+    "componente_comportamento": "Selezione bocca, caricamento modello e gate lettura",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 44,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A062 A063 A065"
+  },
+  {
+    "file": "src/voce/piper.ts",
+    "componente_comportamento": "Download modelli, eSpeak, ONNX/WASM, fonemi e PCM/WAV",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 44,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A062 A065"
+  },
+  {
+    "file": "src/voce/suono.ts",
+    "componente_comportamento": "Campanello, volume, throttling900ms e coordinamento audio",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 44,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A064"
+  },
+  {
+    "file": "src/voce/turno.ts",
+    "componente_comportamento": "Accodamento voce, esclusione sovrapposizioni e sintesi degli arretrati",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 44,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A063"
+  },
+  {
+    "file": "strumenti/LEGGIMI.md",
+    "componente_comportamento": "Istruzioni banco e sua esplicita non autorità progettuale",
+    "documento": "strumenti/LEGGIMI.md",
+    "riga": 1,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A071 A078"
+  },
+  {
+    "file": "strumenti/banco-ascolto.html",
+    "componente_comportamento": "Confronto browser speechSynthesis, controllo voci e frasi",
+    "documento": "strumenti/LEGGIMI.md",
+    "riga": 1,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A066"
+  },
+  {
+    "file": "strumenti/banco-voci.html",
+    "componente_comportamento": "Confronto4 modelli Piper, download e riproduzione WAV",
+    "documento": "strumenti/LEGGIMI.md",
+    "riga": 1,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A078"
+  },
+  {
+    "file": "strumenti/prepara-voce.mjs",
+    "componente_comportamento": "Copia5 asset WASM/MJS da pacchetti al public",
+    "documento": "strumenti/LEGGIMI.md",
+    "riga": 1,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A067"
+  },
+  {
+    "file": "strumenti/taratura-materia.html",
+    "componente_comportamento": "Taratura35 spazi/14 colori/vetro/icone, localStorage e clipboard",
+    "documento": "strumenti/LEGGIMI.md",
+    "riga": 1,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "strumenti/taratura-testo.html",
+    "componente_comportamento": "Taratura valori testo/icone, localStorage e clipboard",
+    "documento": "strumenti/LEGGIMI.md",
+    "riga": 1,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "tasks/da_definire.md",
+    "componente_comportamento": "Registro lavori/decisioni aperte; non sostituisce docs",
+    "documento": "README.md",
+    "riga": 11,
+    "stato": "Stato lavori; non requisito né prova di conformità",
+    "findings": ""
+  },
+  {
+    "file": "tasks/future.md",
+    "componente_comportamento": "Registro lavori/decisioni aperte; non sostituisce docs",
+    "documento": "README.md",
+    "riga": 11,
+    "stato": "Stato lavori; non requisito né prova di conformità",
+    "findings": ""
+  },
+  {
+    "file": "tasks/pronti_per_lo_sviluppo.md",
+    "componente_comportamento": "Registro lavori/decisioni aperte; non sostituisce docs",
+    "documento": "README.md",
+    "riga": 11,
+    "stato": "Stato lavori; non requisito né prova di conformità",
+    "findings": ""
+  },
+  {
+    "file": "tasks/storico.md",
+    "componente_comportamento": "Registro lavori/decisioni aperte; non sostituisce docs",
+    "documento": "README.md",
+    "riga": 11,
+    "stato": "Stato lavori; non requisito né prova di conformità",
+    "findings": ""
+  },
+  {
+    "file": "tsconfig.json",
+    "componente_comportamento": "TS strict, DOM/ES2022, bundler, noEmit e unused checks",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Esaminato; nessun finding autonomo non equivale a conformità",
+    "findings": ""
+  },
+  {
+    "file": "vite.config.ts",
+    "componente_comportamento": "Provider OpenRouter due dialetti; middleware archivio/chat; config dev/build e asset WASM",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 3,
+    "stato": "Base funzionale documentata; dettagli/esiti nel registro",
+    "findings": "A017 A020 A025 A028 A032 A033 A035 A037 A039 A042 A043 A064 A076 A077"
+  }
+]

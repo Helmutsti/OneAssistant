@@ -1,0 +1,362 @@
+[
+  {
+    "tool": "guarda",
+    "argomenti": "—",
+    "ambito": "principale secondario",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 27,
+    "stato": "Base: stato desk come contesto",
+    "findings": "A003"
+  },
+  {
+    "tool": "ricorda",
+    "argomenti": "chi!:elenco",
+    "ambito": "principale secondario",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 23,
+    "stato": "Base: lettura contesto; query concreta non specificata",
+    "findings": "A027 A043"
+  },
+  {
+    "tool": "parla",
+    "argomenti": "testo!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 73,
+    "stato": "Base: scambio assistente; singola riga imposta dal tool non prescritta",
+    "findings": "A014 A020 A043"
+  },
+  {
+    "tool": "chiedi",
+    "argomenti": "fra!:elenco",
+    "ambito": "principale ",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 42,
+    "stato": "Base: chiarimento; forma alternativa via stato bloccato legacy",
+    "findings": "A003 A017"
+  },
+  {
+    "tool": "sciogli",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 50,
+    "stato": "Base: input atteso; mutazione legacy",
+    "findings": "A003"
+  },
+  {
+    "tool": "no",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 73,
+    "stato": "Scambio; semantica concreta da approvare",
+    "findings": "A043"
+  },
+  {
+    "tool": "al_centro",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 768,
+    "stato": "Focus; documenti discordanti sul timing",
+    "findings": "A085 A090"
+  },
+  {
+    "tool": "richiama",
+    "argomenti": "nome!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 63,
+    "stato": "Richiamo per nome previsto",
+    "findings": "A005"
+  },
+  {
+    "tool": "indietro",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 882,
+    "stato": "Richiamo/posizione; stack focus non specificato",
+    "findings": "A043"
+  },
+  {
+    "tool": "scegli",
+    "argomenti": "indice!:numero",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 95,
+    "stato": "Selezione conversazionale; indice non validato coerentemente",
+    "findings": "A009 A017"
+  },
+  {
+    "tool": "dentro",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Bubble.dc.html",
+    "riga": 604,
+    "stato": "Contenuto del task",
+    "findings": "A053"
+  },
+  {
+    "tool": "leggi",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 73,
+    "stato": "Voce assistente prevista",
+    "findings": "A062 A063"
+  },
+  {
+    "tool": "mostra",
+    "argomenti": "area!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L02-componenti.md",
+    "riga": 34,
+    "stato": "Aree previste, enum TASKBAR legacy",
+    "findings": "A003 A043"
+  },
+  {
+    "tool": "chiudi",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 41,
+    "stato": "Chiusura cassetto prevista",
+    "findings": ""
+  },
+  {
+    "tool": "consegna",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 58,
+    "stato": "Invio previsto, contratto violato",
+    "findings": "A001 A002 A012 A013"
+  },
+  {
+    "tool": "rimanda",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 114,
+    "stato": "Rinvio previsto, 2h hardcoded non autorizzate",
+    "findings": "A011 A043"
+  },
+  {
+    "tool": "annulla",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 63,
+    "stato": "Undo previsto, chiamata già eseguita",
+    "findings": "A001 A013"
+  },
+  {
+    "tool": "lascia",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 50,
+    "stato": "Conclusione/abbandono; MEMORIA non consentito",
+    "findings": "A005 A012"
+  },
+  {
+    "tool": "aspetta",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - INPUT.dc.html",
+    "riga": 437,
+    "stato": "Interruzione; ambito da distinguere",
+    "findings": "A016"
+  },
+  {
+    "tool": "voce",
+    "argomenti": "come!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Systembar.dc.html",
+    "riga": 123,
+    "stato": "MUTA previsto",
+    "findings": "A063"
+  },
+  {
+    "tool": "non_ascoltare",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 16,
+    "stato": "Ingresso vocale futuro; ramo legacy",
+    "findings": "A059"
+  },
+  {
+    "tool": "componi",
+    "argomenti": "a!:testo, richiesta!:testo, testo?:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 15,
+    "stato": "Composizione/invio esempio previsto",
+    "findings": "A023 A024 A058"
+  },
+  {
+    "tool": "aggiungi",
+    "argomenti": "task!:testo, cosa!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 64,
+    "stato": "Modifica prima di invio prevista; trasformazioni locali non specificate",
+    "findings": "A043"
+  },
+  {
+    "tool": "riscrivi",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 64,
+    "stato": "Modifica prevista; formule deterministiche non specificate",
+    "findings": "A043"
+  },
+  {
+    "tool": "riassumi",
+    "argomenti": "task!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L00-lo_scopo.md",
+    "riga": 8,
+    "stato": "Capacità generale assistente; algoritmo locale e lifecycle specializzato non definiti",
+    "findings": "A004 A043"
+  },
+  {
+    "tool": "metti",
+    "argomenti": "task!:testo, gruppo!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 31,
+    "stato": "Gruppi/lotti non contrattualizzati nei docs attuali",
+    "findings": "A043"
+  },
+  {
+    "tool": "apri",
+    "argomenti": "gruppo!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 31,
+    "stato": "Espansione gruppo non contrattualizzata",
+    "findings": "A043"
+  },
+  {
+    "tool": "separa",
+    "argomenti": "gruppo!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 31,
+    "stato": "Separazione gruppo non contrattualizzata",
+    "findings": "A043"
+  },
+  {
+    "tool": "consegna_gruppo",
+    "argomenti": "gruppo!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 58,
+    "stato": "Invio sì; atomicità/undo lotto non definiti",
+    "findings": "A001 A012 A043"
+  },
+  {
+    "tool": "rimanda_gruppo",
+    "argomenti": "gruppo!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Sidebar.dc.html",
+    "riga": 114,
+    "stato": "Rinvio sì; lotto/2h non definiti",
+    "findings": "A011 A043"
+  },
+  {
+    "tool": "delega",
+    "argomenti": "task!:testo, lavori!:elenco",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 53,
+    "stato": "Sotto-task previsti, implementazione differente",
+    "findings": "A021 A022"
+  },
+  {
+    "tool": "estrai",
+    "argomenti": "notifica!:testo",
+    "ambito": "principale ",
+    "documento": "docs/design/L2 - Notificationbar.dc.html",
+    "riga": 133,
+    "stato": "Promozione prevista; conservazione violata",
+    "findings": "A008"
+  },
+  {
+    "tool": "ricordami",
+    "argomenti": "cosa!:testo, fra_minuti!:numero",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 15,
+    "stato": "Servizio simulato; timer non torna al lavoro",
+    "findings": "A011 A091"
+  },
+  {
+    "tool": "segna",
+    "argomenti": "nome!:testo, genere!:testo, testo!:testo, collegamenti?:elenco",
+    "ambito": "principale ",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Memoria automatica fuori scope attuale",
+    "findings": "A026"
+  },
+  {
+    "tool": "racconta",
+    "argomenti": "su!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 73,
+    "stato": "Conversazione prevista; oggetti semantici aggiuntivi",
+    "findings": "A026"
+  },
+  {
+    "tool": "dimentica",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Smentita semantica non definita nel prototipo",
+    "findings": "A026"
+  },
+  {
+    "tool": "conferma",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Promozione abitudini non definita",
+    "findings": "A026"
+  },
+  {
+    "tool": "revoca",
+    "argomenti": "—",
+    "ambito": "principale ",
+    "documento": "docs/L04-aspetti_tecnici.md",
+    "riga": 22,
+    "stato": "Revoca abitudini non definita",
+    "findings": "A026"
+  },
+  {
+    "tool": "salva_nota",
+    "argomenti": "testo!:testo",
+    "ambito": "principale ",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 15,
+    "stato": "Servizio simulato, autoautorizzazione non definita",
+    "findings": "A026 A091"
+  },
+  {
+    "tool": "riporta",
+    "argomenti": "testo!:testo",
+    "ambito": "secondario",
+    "documento": "docs/L01-struttura_e_task.md",
+    "riga": 53,
+    "stato": "Risultato secondario, protocollo concreto non definito",
+    "findings": "A021 A022 A043"
+  }
+]

@@ -1,0 +1,64 @@
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+[memoria] nessun seme: la sessione parte da zero (docs/07-memoria §6)
+[
+  {
+    "test": "delay_before_90_seconds",
+    "calls": 1,
+    "elapsed": 0
+  },
+  {
+    "test": "duplicate_send_while_pending",
+    "calls": 2
+  },
+  {
+    "test": "completion_after_leave",
+    "state": "consegnato",
+    "place": "CHIP",
+    "calls": 2
+  },
+  {
+    "test": "undo_after_91_seconds",
+    "state": "aspetta te",
+    "place": "CHIP",
+    "calls": 2,
+    "response": "Annullata. A mamma non è uscita."
+  },
+  {
+    "test": "postpone_after_due",
+    "state": "aspetta te",
+    "place": "ORARIO"
+  },
+  {
+    "test": "fractional_tool_index",
+    "result": {
+      "visto": "fatto",
+      "comando": "scegli"
+    }
+  },
+  {
+    "test": "null_arguments",
+    "threw": true,
+    "message": "TypeError: Cannot read properties of null (reading 'testo')"
+  },
+  {
+    "test": "contact_substring",
+    "giuliano": "Giulia",
+    "capolavoro": "Capo",
+    "marco": null
+  },
+  {
+    "test": "current_preferences_parser",
+    "assistant": {
+      "lettura": true
+    },
+    "machine": {
+      "microphone": false,
+      "volume": 40
+    }
+  },
+  {
+    "test": "documented_reading_off",
+    "reading": true
+  }
+]
