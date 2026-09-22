@@ -68,3 +68,68 @@ Bubble` diceva 34 e `L0 - Sistema` 30, adesso dicono tutti 30». La prima metà 
 si riferisce a una sezione che non esiste più.
 
 Da decidere: le misure si riscrivono, e dove, oppure cadono e si toglie anche il rimando.
+
+---
+
+## DESK e SIDEBAR: due mestieri in un posto solo
+
+Emerso il 22 settembre 2026, dopo l'allineamento. **Non è deciso.**
+
+Oggi la SIDEBAR fa due cose che non hanno la stessa natura:
+
+- **il background** — cose che vanno avanti da sole e non ti riguardano finché non finiscono;
+- **il parcheggio** — cose che aspettano **te**, ma che hai tolto dal centro per vedere meglio.
+
+Il primo è una proprietà del task, il secondo è una comodità dell'utente. Si accavallano
+perché stanno nello stesso posto per ragioni diverse.
+
+**Il criterio proposto**, che ne usa uno solo — *chi deve muoversi perché la cosa avanzi*:
+
+| | |
+|---|---|
+| **DESK** | tutto ciò che aspetta te: bozze in pausa, task fermi, task pronti da confermare |
+| **SIDEBAR** | ciò che non chiede niente adesso: va avanti da solo, oppure torna da solo a un'ora |
+
+**Il parcheggio non si perde, cambia nome.** `docs/L00` elenca fra le quattro prove che il
+prodotto è riuscito: «Ti fidi di lasciar andare una cosa: dici *dopo* e smetti di pensarci,
+**perché sai che torna e sai fra quanto**». Il parcheggio senza scadenza è proprio ciò che
+quella riga esclude — e il **rimandato** esiste già: è un chip con un'ora, sta in SIDEBAR,
+torna da sé. Liberare il desk resterebbe possibile, ma dicendo *quando* la cosa torna. Se
+non sai dire quando, ti riguarda adesso, e il suo posto è il centro.
+
+**Cosa cambierebbe, se si adotta:**
+
+- le **bozze sganciate** oggi vanno in SIDEBAR (storico §30): andrebbero sulla DESK, perché
+  una bozza aspetta te per definizione;
+- la **notifica accettata mentre ne stai componendo un'altra** (storico §31) cambierebbe
+  destinazione;
+- `docs/L02` §SIDEBAR e `docs/design/L0` legge 03 andrebbero riscritti.
+
+---
+
+## Una bolla che non è un task: documento / informazione
+
+Emerso il 22 settembre 2026. **Non è deciso, e non è disegnato.**
+
+Una bolla senza lavoro da fare: nessun avanzamento, nessuna conclusione. Una cosa che
+tieni davanti perché ti serve leggerla.
+
+Tocca tre regole che oggi sono scritte in termini di task:
+
+1. **Il colore è stato** (`L0` legge 04) — un documento non ha stato. Resta senza colore
+   per sempre? E allora il «senza colore» significa due cose diverse;
+2. **Un task in un posto solo** (`L0` legge 03) — un documento può stare in SIDEBAR? Col
+   criterio proposto sopra no: non aspetta te e non torna da sé, semplicemente *sta*;
+3. **Esce quando ha finito** — un documento non finisce mai. Esce quando lo chiudi tu, ed è
+   il primo oggetto del sistema che va congedato a mano.
+
+**Due domande prima di disegnarlo:**
+
+- **Da dove arriva?** Nasce da una risposta («fammi vedere il preventivo»), o è una cosa
+  che ci trascini dentro?
+- **A cosa serve tenerlo a schermo?** Per leggerlo mentre fai altro, oppure per averlo
+  sottomano come riferimento quando parli con l'assistente?
+
+La differenza cambia la natura dell'oggetto: nel primo caso è una finestra di lettura, nel
+secondo è **contesto messo a vista** — e allora somiglia più alle tessere della dropzone
+che a una bolla.
