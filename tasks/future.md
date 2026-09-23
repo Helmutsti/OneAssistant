@@ -72,12 +72,6 @@ Le voci ancora aperte sono passate il 23 settembre 2026 in
 - [ ] **Il microfono che si preme.** `docs/L02` §SYSTEMBAR dice che si spegne e si riaccende
   premendolo; nel prototipo non c'è ascolto, quindi per ora premerlo non fa niente e la
   SYSTEMBAR lo mostra soltanto (storico §138). Arriva con la voce dell'utente.
-
-## Proposte da decidere
-
-Proposte fatte al proprietario del progetto il 23 settembre 2026, dopo la prima prova dal
-vivo con Anthropic (storico §152–§154). Nessuna è decisa.
-
 - [ ] **Togliere il passo `guarda` all'inizio di ogni frase.** Oggi ogni frase costa tre
   chiamate al modello: guarda lo schermo, fa la mossa, risponde. Se la prima richiesta
   portasse già lo schermo, dopo il prefisso in cache, le chiamate scenderebbero a due e
