@@ -436,6 +436,7 @@ concluso non si vede — e comprende la bolla documento.
 | 103 | **«posta» diventa «email»** ovunque | scelta del proprietario del progetto |
 | 104 | **Il catalogo di `L2 - Bubble` tiene solo i domini che hanno un'icona fra le dieci**: persone, indirizzo e immagine si aggiungono alle sette già portate; escono viaggi, spedizioni, liste, trascrizione, sistema e domande | non interessano al proprietario del progetto |
 | 105 | **Le icone disegnate seguono la legge 06**: 14 px le icone di tipo, le targhe, la spunta del flusso e la TIMELINE nelle scene; 16 px la campanella, che è di cornice. 66 icone riportate in `L1 - Icone` (il campione sul vetro), `L2 - Bubble`, `L2 - Notificationbar`, `L3 - Flusso task`, `L4 - Schermate` | le tavole disegnavano 12, 15, 18 e 19 px contro una legge che dice 14 e 16. Resta a 19 solo il confronto fra famiglie di `L1 - Icone`, che è un ingrandimento dichiarato |
+| 106 | **Corregge il §100**: l'icona di un task dipende dal tipo di task che si sta svolgendo, e quasi sempre coincide col dato che tratta. Non dal primo dato agganciato | il §100 era un'interpretazione sbagliata, corretta dal proprietario del progetto |
 
 **Scritto in:** `L0` legge 06, `docs/L01` (tabella dei nomi), `L1 - Icone`, `L2 - Bubble`
 (targa a 14 px, colore «nella bolla», catalogo con i nomi Lucide), `L2 - Sidebar`,

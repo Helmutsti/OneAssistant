@@ -208,10 +208,10 @@ aspetta, 62% ciò che informa.
 bolla e nel chip, 16 nel banner e nella cornice), sempre accompagnata da un numero o da
 una parola: si legge da lontano e si può dire a voce.
 
-**Le icone di tipo** dicono che cos'è un dato: email, cartella, documento, contatto,
-persone, conversazione, immagine, sveglia, indirizzo, appuntamento. Un task porta l'icona
-del suo primo dato agganciato; se non ne ha, quella della conversazione. L'elenco può
-crescere. Nessun logo di app, nessun mimetismo.
+**Le icone di tipo** dicono che tipo di task si sta svolgendo, e quasi sempre coincidono
+col dato che quel task tratta: email, cartella, documento, contatto, persone,
+conversazione, immagine, sveglia, indirizzo, appuntamento. Le stesse icone segnano i dati
+nelle tessere della dropzone. L'elenco può crescere. Nessun logo di app, nessun mimetismo.
 
 **Le icone di cornice** dicono lo stato della macchina e del contesto: microfono, volume,
 rete, batteria, luogo, campanella, tastiera. Non sono un elenco chiuso e non contano fra

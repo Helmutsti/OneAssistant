@@ -1156,7 +1156,7 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-085 · L'ottava icona esiste già nel codice, e la domanda è dichiarata aperta**
 `UNDOCUMENTED_IMPLEMENTATION` · bassa · verificato · Origine: `CL:AUD-32`
 
-> **Chiuso · 23 settembre 2026.** la legge 06 distingue ora le dieci icone di tipo, che seguono il dato, dalle icone di cornice, che non contano fra quelle; il riquadro «Aperta / l'ottava icona» è uscito da `L2 - Profilebar`. Storico §100–§103
+> **Chiuso · 23 settembre 2026.** la legge 06 distingue ora le dieci icone di tipo, che dicono il tipo di task, dalle icone di cornice, che non contano fra quelle; il riquadro «Aperta / l'ottava icona» è uscito da `L2 - Profilebar`. Storico §100–§103
 
 - **Dove**: `src/aree/schermo.ts:213-217`
 - **Documentazione**: `L0` legge 06 — «*Sette icone di tipo in tutto il sistema*»;
