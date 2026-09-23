@@ -320,7 +320,8 @@ acceso.
 ### SIDEBAR
 I chip, i flussi e i rimandati; l'ambra sta in cima. Un chip è **una bolla che si è
 stretta**: icona di tipo, nome come lo diresti, un dato solo. **Il vetro del chip prende
-per intero il colore del suo stato**, e non porta un pallino di stato; il verde della
+per intero il colore del suo stato**, velato — ambra al 30%, azzurro al 22% — e non porta un
+pallino di stato; il verde della
 active invece resta, perché non è uno stato. Nella guida di destra, **44 / 180**, in
 verticale.
 
@@ -347,4 +348,4 @@ PROFILEBAR, che hanno una geometria propria (`L2 - INPUT`, `L2 - Profilebar`).
 | **Banner** | largo 400 · raggio 20 · margini interni 13 / 16 | NOTIFICATIONBAR, i banner del cassetto |
 | **Chip** | alto 30 · raggio 20 · largo quanto il contenuto | SIDEBAR |
 | **Task** | largo 348–452 · raggio 26 | DESK |
-| **Focus** | largo 496–720 · raggio 30 | la bolla aperta in focus |
+| **Focus** | 920 × 690 · raggio 30 · titolo 46 / 200 · corpo 19 / 300 | la bolla aperta in focus: tutta la DESK |

@@ -453,3 +453,20 @@ concluso non si vede — e comprende la bolla documento.
 | 109 | **La memoria resta, per ora, il documento di contesto** `memory/general.txt` (`F-116`). Il criterio di ciò che è utile salvare non si decide adesso | nel prototipo la memoria è simulata: deciderne il criterio adesso vorrebbe dire deciderlo senza vederla lavorare |
 | 110 | **L'orario di lavoro lo inserisce l'utente**; nel prototipo è un valore di prova, 9–13 e 14–18, in `memory/general.txt`, ed è l'orizzonte della TIMELINE (`docs/L02`) | c'erano due valori, 9–19 nel documento dell'utente e 8–19 nella tavola (`F-113`) |
 | 111 | **Il suono delle notifiche è `Archivio/system-storage/notification.mp3`**, ricavato da `soundshelfstudio-ui-click-deep-512211.mp3`; `campanello.mp3` esce. `pubblico/suoni/notifica.mp3` resta finché il codice non legge quello nuovo | scelta del proprietario del progetto (`F-115`) |
+
+---
+
+## 23 settembre 2026 — le tre proposte grafiche
+
+Scelte su una tavola di proposta in `tasks/`, poi cancellata. Da portare nei documenti L2,
+e per cascata in L3 e L4.
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 112 | **Col focus il fondo resta com'è**: nessun velo intorno | il focus è un modo di lavorare che dura; il velo è il segno del cassetto, che è «un momento, non una schermata» |
+| 113 | **La bolla documento porta la targa**, neutra: icona del tipo e provenienza, nessuno stato | la legge zero vuole «da chi o da dove viene» dentro la bolla |
+| 114 | **Nel chip la tinta di stato è velata**: ambra al 30%, azzurro al 22%, sopra il film del vetro | scelta del proprietario del progetto, contro la tinta piena (55% / 42%) disegnata finora in `L2 - Sidebar` |
+| 115 | **La taglia Focus è 920 × 690, raggio 30, e cambia scala dentro**: titolo Manrope 200 / 46, corpo 300 / 19, gli elementi agganciati in una colonna di 340 a destra. Occupa tutta la DESK | a 720 px sembrava una normale bolla active; scelta la variante C della proposta, poi cancellata |
+
+**Scritto in:** `L0` (§Le quattro taglie; §SIDEBAR con la tinta velata), `L2 - Bubble` (due
+sezioni nuove, «La bolla focus» e «La bolla documento»), `L2 - Sidebar` (chip velati).
