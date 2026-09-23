@@ -65,6 +65,8 @@ da dove viene, il suo stato, e le frasi che la riguardano. Mai il contesto fuori
 del suo task.
 
 **Una bolla, un task.** Due task non condividono una bolla e un task non si spezza in due.
+L'unica bolla che non contiene un task è la **bolla documento**, che mostra un contenuto e
+non ha stato (`docs/L02`).
 Il vetro satinato è il bordo del pensiero: dove finisce la bolla, finisce l'argomento.
 
 **Le eccezioni sono due** — e il 19 settembre 2026 erano tre.
@@ -138,8 +140,10 @@ Nessun task appare in due aree contemporaneamente.
 
 | dove | cosa ci sta |
 |---|---|
-| **DESK** | le bolle: quella a fuoco e quelle che stanno sulla scrivania |
-| **SIDEBAR** | i chip — quello che hai in mano e dorme — e i **rimandati**, che sono chip con un'ora |
+| **DESK** | le bolle |
+| **SIDEBAR** | i chip, cioè le bolle tolte dalla DESK, e i **rimandati**, che sono chip con un'ora |
+
+Cosa sta dove lo decide l'utente, non il sistema (`docs/L02`).
 
 **La NOTIFICATIONBAR non compare in questa tabella**, ed è la cosa più importante della
 legge: lì dentro non ci sono task. C'è il mondo.
@@ -168,7 +172,7 @@ Quando un task cambia stato, **migra**: esce da un'area ed entra nell'altra, non
 | **grigio** | `#94968E` | non è ancora partito: è una bozza |
 | **azzurro** | `#009DD6` | il sistema sta lavorando |
 | **ambra** | `#EDA31C` | la palla è tua |
-| **nessun colore** | | non chiede niente: ha finito, oppure l'hai rimandato |
+| **nessun colore** | | non chiede niente: l'hai rimandato, oppure è un documento |
 
 Grigio e azzurro stanno alla stessa luminanza — 0,30 e 0,29 — così sullo stesso vetro
 nessuno dei due pesa più dell'altro. L'ambra è più chiara apposta: è l'unica che chiede
@@ -201,7 +205,7 @@ aspetta, 62% ciò che informa.
 ### 06 · Icona con valore, mai icona sola
 
 **Lucide** — tratto uniforme, terminazioni arrotondate, licenza MIT — 14–16 px (14 nella
-bolla e nel chip, 16 nella riga del cassetto e nella cornice), sempre accompagnata da un numero o da
+bolla e nel chip, 16 nel banner e nella cornice), sempre accompagnata da un numero o da
 una parola: si legge da lontano e si può dire a voce.
 
 **Sette icone di tipo** in tutto il sistema: posta, cartella, documento, persone,
@@ -221,7 +225,8 @@ schermate **1440 × 900**.
 
 Niente riempie lo spazio solo perché c'è — se non c'è nulla da fare, lo schermo lo dice e
 resta vuoto. **Un task non si sposta perché stai parlando**: cede attenzione (opacità), mai
-posizione.
+posizione. L'unica eccezione è il **focus**, che apri tu: le altre bolle passano in SIDEBAR
+e ne tornano da sole quando esci.
 
 ### 09 · Una scrivania, non un sito — *solo in DESK*
 
@@ -292,7 +297,7 @@ primo; **il colore qui significa privacy**. Subito sotto la Profilebar, **44 / 1
 Inchiostro, nessun contenitore. Più piccola perché conta meno.
 
 ### DESK
-Quello che sta andando avanti: le bolle. La **active** è una sola per volta ed è quella a cui
+Le bolle. La **active** è una sola per volta ed è quella a cui
 INPUT sta parlando; le altre restano sulla scrivania, intere. Centro, nessun ancoraggio:
 è l'unica area senza griglia (legge 09).
 
@@ -307,17 +312,32 @@ cambiano con lei. Il pallino verde dell'ascolto sta fuori a sinistra quando l'as
 acceso.
 
 ### SIDEBAR
-Quello che hai in mano: i chip, i flussi, e i rimandati. Un chip è **una bolla che si è
-stretta**: icona di tipo, nome come lo diresti, un dato solo. Nella guida di destra,
-**44 / 180**, in verticale. Chip alti 30, raggio 20.
+I chip, i flussi e i rimandati; l'ambra sta in cima. Un chip è **una bolla che si è
+stretta**: icona di tipo, nome come lo diresti, un dato solo. **Il vetro del chip prende
+per intero il colore del suo stato**, e non porta un pallino di stato; il verde della
+active invece resta, perché non è uno stato. Nella guida di destra, **44 / 180**, in
+verticale.
 
 ### NOTIFICATIONBAR
 **Il mondo.** Quello che arriva dai servizi, com'è arrivato — mittente e oggetto veri, mai
 riscritti. Una notifica **non è un task**: lo diventa quando dici «me ne occupo». Il badge
 conta solo quello che ti riguarda e non hai ancora visto.
 
-Le righe del cassetto sono **bolle come tutte le altre**: a dire che non sono tue sono il
+I banner del cassetto sono **bolle come tutte le altre**: a dire che non sono tue sono il
 contenuto e il comportamento — non migrano, non hanno stato — non il materiale.
 
 In fondo alla guida, **44 / 44 dal basso**. Campanella **44** con badge **16**; il cassetto
 sale da sotto di lei e intorno si spegne tutto.
+
+---
+
+## Le quattro taglie
+
+Ogni bolla ha una di queste quattro taglie, e nessun'altra.
+
+| taglia | misure | dove |
+|---|---|---|
+| **Banner** | largo 400 · raggio 20 · margini interni 13 / 16 | NOTIFICATIONBAR, i banner del cassetto |
+| **Chip** | alto 30 · raggio 20 · largo quanto il contenuto | SIDEBAR |
+| **Task** | largo 348–452 · raggio 26 | DESK |
+| **Focus** | largo 496–720 · raggio 30 | la bolla aperta in focus |

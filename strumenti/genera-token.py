@@ -75,12 +75,12 @@ INK = tabella("Inchiostro e fondo", "I valori base. Ogni tema li ridefinisce, e 
 
 GEOM = tabella("Geometria", "Raggi, margini e passo. <strong style=\"color:#8A5A17\">Oggi questi valori vivono solo in <span style=\"font-family:'IBM Plex Mono',monospace;font-size:14px\">src/stile/base.css</span></strong>: da qui in poi la fonte &egrave; questa.", [
     riga("raggio chip", "20 px", "la taglia pi&ugrave; contratta"),
-    riga("raggio carta", "22 px", "le righe del cassetto"),
+    riga("raggio banner", "20 px", "i banner del cassetto"),
     riga("raggio task", "26 px", "la bolla sulla scrivania"),
     riga("raggio pannello", "30 px", "la taglia aperta, e il velo della Profilebar"),
     riga("margine", "44 px", "ogni ancoraggio al bordo dello schermo"),
     riga("aria", "22 px", "fra i componenti della guida di destra &mdash; met&agrave; del margine"),
-    riga("icona", "14 / 16 px", "14 nella bolla e nel chip, 16 nella riga del cassetto e nella cornice (legge 06)"),
+    riga("icona", "14 / 16 px", "14 nella bolla e nel chip, 16 nel banner e nella cornice (legge 06)"),
     riga("pallino", "9 px", "un segno solo, un diametro solo: la bolla active, la frase pi&ugrave; probabile, l&rsquo;ascolto, l&rsquo;inizio di una cosa sulla Timeline"),
     riga("Sidebar", "44 / 180", "l&rsquo;ancoraggio del cassetto, dal bordo destro e dall&rsquo;alto"),
     riga("passo interno", "4 / 8 / 12 / 16 / 24", "le distanze dentro un componente. Niente separatori: sono gli spazi a distinguere i gruppi"),

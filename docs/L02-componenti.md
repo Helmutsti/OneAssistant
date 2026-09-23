@@ -18,9 +18,35 @@ la **dropzone**, che compare solo quando c'è qualcosa in formazione e mostra un
 volta — il task in `T_DRAFT` con gli elementi che ha agganciato.
 
 Il componente INPUT ha anche la capacità di creare il contesto consultando la Memory Engine dell'utente attivo, osservando la DESK o interrogando i servizi, e infine creare un task o modificarne uno esistente aggiornando richiesta e contesto. Il task nasce in bozza dentro la dropzone e non parte finché l'utente non lo conferma. Nel prototipo, INPUT legge `memory/general.txt`, `preferences.txt`, `system.txt` e i documenti nella cartella `services` dell'utente attivo. INPUT mostra l'ultimo scambio fra utente e assistente e poi sparisce: non è una finestra di conversazione. Ogni scambio viene comunque salvato integralmente nell'archivio `chat-raw` dell'utente attivo, separato dalla memoria simulata, ed è lì che la cronologia resta.
-## DESK — cosa sta andando avanti
 
-Contiene i task e  mostra i loro stati e permette all'utente di tenere sotto controlla la situazione dei task. Si tratta di una sorta di scrivania
+**Niente si trascina.** Né i file da fuori né le bolle sullo schermo: ogni cosa entra, si
+sposta o si aggancia perché l'utente lo dice.
+
+## DESK — la scrivania
+
+Contiene le bolle, ne mostra gli stati e permette all'utente di tenere sotto controllo la
+situazione. DESK e SIDEBAR **non hanno uno scopo assegnato**: dove mettere cosa lo decide
+l'utente, e il sistema non sposta mai una bolla da un'area all'altra di sua iniziativa. Si
+sposta solo per un'azione dell'utente — accettare una notifica, iniziare un task nuovo,
+aprire una bolla in focus.
+
+**Il focus.** L'utente può aprire una bolla in focus: si allarga, diventa la cosa
+principale dello schermo, e tutte le altre bolle di DESK passano in SIDEBAR. Quando esce
+dal focus, le bolle tornano da sole dov'erano.
+
+## La bolla documento
+
+Una bolla che **non è un task**: mostra un contenuto, e basta — un testo, un'immagine, un
+filmato; niente musica, per ora. Non ha stati e non ha colore, ma ha le sue frasi in INPUT
+e può essere la bolla active. Ha la stessa taglia e lo stesso chip di un task.
+
+Si apre **al centro dello schermo**, non dalla dropzone. Può essere messa in SIDEBAR. Esce
+in due modi soltanto: **la chiude l'utente**, oppure viene **assorbita in un task**, e
+allora il documento diventa uno degli elementi agganciati a quel task.
+
+I tipi di dato restano quelli di oggi. Qualunque dato può essere mostrato in una bolla
+documento, solo per vederlo.
+
 ## TIMELINE — dove sei dentro la giornata
 
 Questo componente ha lo scopo di orientare l'utente temporalmente durante la giornata di lavoro o in generale durante l'utilizzo del sistema. **A cosa serve.** A **situarti nel tempo** — e situarsi non vuol dire sapere semplicemente "che ore sono", vuol dire sapere **quanto tempo hai** e **quanto tempo è passato o sta passando**.
@@ -44,9 +70,16 @@ il sistema non può ricevere; e un assistente che apre il microfono da sé è un
 
 ## SIDEBAR — cosa hai in mano
 
-Si tratta di un componente complementare alla **DESK** perché contiene e mostra tutti i task **messi da parte** o **in pausa** che non sono ancora terminati o vogliono essere tolti dalla DESK temporaneamente per chiarezza mentale e visiva. Un task nella **SIDEBAR** può essere richiamato in qualsiasi momento. Contiene inoltre i
-**flussi** e i **rimandati**, che sono task con un'ora: quando l'ora scade tornano a
-chiedere attenzione in DESK, e non diventano notifiche.
+Contiene i chip: le bolle che l'utente ha tolto dalla DESK. Un chip nella **SIDEBAR** può
+essere richiamato in qualsiasi momento. Contiene anche i **flussi** e i **rimandati**, che
+sono task con un'ora: quando l'ora scade il rimandato **diventa ambra dove si trova** —
+non torna in DESK e non diventa una notifica.
+
+I chip in **ambra** stanno in cima; gli altri seguono nell'ordine in cui sono arrivati.
+
+Quando la bolla active è ambra — non può andare avanti senza l'utente — fra le frasi di
+INPUT il sistema propone di **metterla da parte**. È un suggerimento e basta: la bolla si
+sposta solo se l'utente lo dice.
 
 La SIDEBAR contiene anche le **bozze sganciate** dalla dropzone, che restano in bozza:
 `T_DRAFT` è uno stato, non un posto. Una bozza ci finisce quando l'utente la mette da

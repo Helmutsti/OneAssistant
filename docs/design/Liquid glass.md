@@ -80,7 +80,7 @@ sono diventati il vetro chiaro e il vetro scuro **di tutti**. Il documento che l
 
 **La cartina non esiste.** C'era una quarta forma, opaca, per dire «questa cosa non è
 nostra». Il materiale non era il posto dove dirlo: una cosa arrivata da fuori resta di
-qualcun altro anche vista attraverso il vetro. Le righe del cassetto sono bolle come le
+qualcun altro anche vista attraverso il vetro. I banner del cassetto sono bolle come le
 altre, e a dire che non sono tue restano il contenuto e il comportamento.
 
 **Ci sono dodici temi di colore.** Cambiano fondo e inchiostro, mai gli stati e mai le

@@ -400,3 +400,25 @@ quattro chiusi in parte: `F-101`, `F-107`, `F-108`, `F-119`. Ogni nota rimanda a
 decisione che l'ha chiusa.
 
 **Resta tutto il codice.** Da cominciare: `F-009`, il confine dell'archivio.
+
+---
+
+## 23 settembre 2026 — la libertà delle bolle, i chip colorati, le quattro taglie
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 90 | **DESK e SIDEBAR non hanno uno scopo assegnato**: cosa sta dove lo decide l'utente. Il sistema non sposta mai una bolla di sua iniziativa; la sposta solo un'azione dell'utente — accettare una notifica, iniziare un task nuovo, aprire il focus | massima libertà. Sostituisce il criterio proposto il 22 settembre («chi deve muoversi perché la cosa avanzi»), mai adottato |
+| 91 | **Il rimandato che scade diventa ambra dove si trova**: non torna in DESK | era l'ultimo automatismo di posizione |
+| 92 | **Quando la bolla active è ambra, fra le frasi di INPUT il sistema propone di metterla da parte**. Solo un suggerimento, e solo sulla bolla active o richiamata | le frasi sono l'unico controllo (legge 01) |
+| 93 | **Il chip prende per intero il colore del suo stato** e perde il pallino di stato; il verde della active resta. **I chip ambra stanno in cima**, gli altri in ordine di arrivo | ciò che chiede qualcosa a te si vede per primo |
+| 94 | **Il focus**: una bolla aperta in focus si allarga e le altre passano in SIDEBAR; uscendo, tornano da sole. È l'unica eccezione alla legge 08 | lo apre l'utente, quindi non è un automatismo |
+| 95 | **La bolla documento**: stessa taglia e stesso chip di un task; si apre al centro, non dalla dropzone; esce solo se la chiude l'utente o se viene assorbita in un task. Qualunque tipo di dato può essere mostrato in una bolla documento, solo per vederlo. I tipi di dato restano quelli attuali | chiude la questione aperta il 22 settembre |
+| 96 | **Niente si trascina**: né file da fuori né bolle | chiude la questione del trascinamento nella dropzone |
+| 97 | **Quattro taglie: Banner, Chip, Task, Focus**, scritte in `docs/design/L0`. «Banner» è il nome della forma usata nella NOTIFICATIONBAR, prima «riga del cassetto». Il Focus prende le misure del vecchio Pannello | le misure non stavano più scritte da nessuna parte dal 22 settembre (§65) |
+| 98 | **Il raggio del Banner è 20** anche in `L1 - Token`, che diceva 22 e chiamava la voce «raggio carta» | è la misura disegnata in `L2 - Notificationbar` e scritta in `L0` |
+
+**Già a posto, niente da scrivere:** `active` al posto di `main` e `T_DRAFT` al posto di
+`T_NUOVO` risultano già applicati in `docs/`; restavano solo in `tasks/da_definire.md`.
+
+**Corretto insieme:** in `L0` legge 04, «nessun colore» non dice più «ha finito» — un task
+concluso non si vede — e comprende la bolla documento.
