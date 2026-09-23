@@ -56,6 +56,7 @@ export function Notificationbar({ suono }: { suono: () => void }) {
             {lista.map((n, i) => (
               <div
                 key={n.id}
+                data-parte="banner"
                 className="vetro rounded-[20px] px-4 py-[13px]"
                 style={{
                   opacity: n.promossa ? 1 : 0.62,
@@ -64,16 +65,17 @@ export function Notificationbar({ suono }: { suono: () => void }) {
               >
                 <div className="flex items-center gap-2" style={{ color: 'var(--i-fioco)' }}>
                   <Icona tipo={n.tipo} misura={16} />
-                  <span className="targa truncate text-[11px]">{n.mittente}</span>
-                  <span className="mono ml-auto text-[11px]">{ora(n.quando)}</span>
+                  <span className="targa truncate text-[10px] font-normal tracking-[0.14em]">{n.mittente}</span>
+                  <span className="mono ml-auto text-[10px]">{ora(n.quando)}</span>
                 </div>
-                <div className="mt-[6px] truncate text-[15px]">{n.oggetto}</div>
+                <div className="mt-[6px] truncate text-[14px] leading-[1.35]" style={{ color: 'var(--testo-carta, var(--i))' }}>{n.oggetto}</div>
               </div>
             ))}
           </div>
         )}
         <button
           type="button"
+          data-parte="campanella"
           aria-label={aperto ? 'chiudi le notifiche' : 'apri le notifiche'}
           onClick={() => (aperto ? m.chiudiCassetto() : m.apriCassetto())}
           className="vetro relative flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full border-0 p-0 transition-transform duration-[340ms]"
@@ -84,7 +86,8 @@ export function Notificationbar({ suono }: { suono: () => void }) {
           </span>
           {badge > 0 && (
             <span
-              className="mono absolute -right-[6px] -top-[6px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full px-1 text-[10px] text-white"
+              data-parte="badge"
+              className="mono absolute -right-[6px] -top-[6px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full px-1 text-[11px] font-medium text-[#fbfaf7]"
               style={{ background: 'var(--ambra)' }}
             >
               {badge}

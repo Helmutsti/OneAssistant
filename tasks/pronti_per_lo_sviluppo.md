@@ -70,16 +70,20 @@ determina, ci si ferma e la si scrive in `tasks/da_definire.md`.
   riscrive una volta sola, e i componenti qui sotto si rifanno **dentro** la riscrittura,
   uno per volta, ognuno con la sua scheda «numero del documento → numero del codice →
   esito». Il materiale entra dai file di `docs/design/`, senza copie.
-- [ ] **PROFILEBAR, BUBBLE, NOTIFICATIONBAR, SIDEBAR, INPUT, SYSTEMBAR, DESK**, in
+- [x] **PROFILEBAR, BUBBLE, NOTIFICATIONBAR, SIDEBAR, INPUT, SYSTEMBAR, DESK**, in
   quest'ordine (ponte §6, Fase 2), sui valori di `L1 - Token` e sulle decisioni del 23
   settembre elencate in `F-120`: quattro taglie, focus 920 × 690, niente posizioni
   assolute tranne la NOTIFICATIONBAR, pallino 9 px a sinistra dell'icona, icone di tipo a
   14 / 16 px, targa nel colore dell'icona e senza età, chip colorato per intero con
   l'ambra in cima, niente trascinamento, la bolla documento.
-  *Fatta la prima passata*: ogni area c'è, con le misure di `L1 - Token` e `L2`, e le
-  scene di `L4` si riconoscono. Mancano le schede di conformità componente per
-  componente, l'onda delle vicine e l'arco della bozza che vola al suo posto
-  (`L2 - Bubble movement`), e il tema scuro (D7).
+  *Fatte le schede*, in `tasks/conformita.md` (storico §148, §149): ventidue divergenze
+  corrette nel codice, cinque contraddizioni chiuse nei documenti. Restano le voci ✗ qui sotto.
+- [ ] **I movimenti di `L2 - Bubble movement`**: la bozza che vola dalla dropzone lungo un
+  arco, l'onda delle vicine, la contrazione e la migrazione in SIDEBAR, l'uscita a scala 94%
+  con le vicine che si riavvicinano, la transizione della active.
+- [ ] **Le tre voci ✗ delle schede**: la chiusura del cassetto coi ritardi invertiti; i chip
+  al 45% quando INPUT cresce per la raccolta; le tessere di tre materiali (carta, vetro, filo
+  tratteggiato).
 - [x] **Il suono e l'orario di prova**: `Archivio/system-storage/notification.mp3`, e
   l'orario 9–13 e 14–18 letto da `memory/general.txt` (storico §110, §111).
 

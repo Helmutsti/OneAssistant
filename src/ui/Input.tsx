@@ -62,6 +62,41 @@ export function Input({ suFrase }: { suFrase: (testo: string) => void }) {
   const mostraFrasi = frasi.frasi.length > 0 && (frasi.da !== 'scambio' || scambioVisibile);
   const larghezza = Math.min(560, Math.max(200, 60 + testo.length * 8.2));
 
+  /**
+   * Quello che la bolla di INPUT mostra, uno alla volta (`L2 - INPUT`, sette momenti):
+   *
+   *   - `scrivi`: stai scrivendo, e c'è solo il campo — la bolla si espande sul posto;
+   *   - `turno`: la frase è partita e il sistema la sta leggendo, «sto pensando»;
+   *   - `scambio`: la risposta o la domanda, con le frasi sotto la barra, che va da bordo a
+   *     bordo. Il campo non si vede, ma c'è: il primo tasto lo riporta;
+   *   - `riposo`: il campo, e le frasi della bozza o della active, se ce ne sono.
+   */
+  const modo = testo
+    ? 'scrivi'
+    : f.pensa
+      ? 'turno'
+      : domanda || risposta || f.guasto
+        ? 'scambio'
+        : 'riposo';
+  const bollaDelloScambio = modo === 'turno' || modo === 'scambio';
+
+  const righeFrasi = mostraFrasi && modo !== 'scrivi' && modo !== 'turno' && (
+    <>
+      {modo === 'scambio' && <div className="incisione mt-3" />}
+      <div
+        data-parte="input-frasi"
+        className={`flex flex-wrap items-center gap-x-[14px] gap-y-1 text-[14.5px] ${modo === 'scambio' ? 'px-[18px] pb-[14px] pt-[10px]' : 'px-4 pt-[10px]'}`}
+        style={{ color: 'var(--i-corpo)' }}
+      >
+        {frasi.frasi.map((x, i) => (
+          <span key={x} className="flex items-center gap-2" style={{ color: 'var(--i)' }}>
+            {frasi.pallino && i === 0 && <span className="pallino" />}«{x}»
+          </span>
+        ))}
+      </div>
+    </>
+  );
+
   return (
     <div className="absolute bottom-[44px] left-[44px] flex flex-col items-start gap-3">
       {bozza && <Dropzone t={bozza} />}
@@ -69,38 +104,53 @@ export function Input({ suFrase }: { suFrase: (testo: string) => void }) {
         {/* L'ascolto è spento nel prototipo: niente pallino fuori, e l'icona della
             tastiera dentro la bolla (`L2 - INPUT` §Variante senza ascolto). Con una
             domanda aperta il punto diventa un anello che aspetta. */}
-        {domanda && <span className="absolute bottom-[15px] -left-[24px] h-[11px] w-[11px] rounded-full border-2" style={{ borderColor: 'var(--ambra)' }} />}
-        <div className="vetro flex max-w-[600px] flex-col rounded-[22px]" style={{ minWidth: larghezza }}>
-          {domanda && (
+        {domanda && modo === 'scambio' && (
+          <span className="absolute bottom-[15px] -left-[24px] h-[11px] w-[11px] rounded-full border-2" style={{ borderColor: 'var(--ambra)' }} />
+        )}
+        <div
+          data-parte="input"
+          className={`vetro flex max-w-[600px] flex-col ${bollaDelloScambio ? 'rounded-[26px]' : 'rounded-[22px]'}`}
+          style={{ minWidth: larghezza }}
+        >
+          {modo === 'turno' && (
+            <div className="px-[18px] py-[14px]">
+              <div className="text-[15px] leading-[21px]">{f.scambio?.tua}</div>
+              <div className="mt-2 flex items-center gap-2 text-[13.5px]" style={{ color: 'var(--i-tenue)' }}>
+                <span className="anello" /> sto pensando
+              </div>
+            </div>
+          )}
+          {modo === 'scambio' && (
             <div className="px-[18px] pt-[14px]">
-              <div className="targa flex items-center gap-2 text-[11px]" style={{ color: 'var(--ambra)' }}>
-                <CircleHelp size={14} /> ti sto chiedendo
-              </div>
-              <div className="mt-2 text-[16px] leading-6">{frasi.domanda}</div>
-            </div>
-          )}
-          {risposta && <div className="px-[18px] pt-[14px] text-[16px] leading-6">{risposta}</div>}
-          {f.guasto && (
-            <div className="flex items-start gap-2 px-[18px] pt-[14px] text-[14.5px] leading-6" style={{ color: 'var(--i)' }}>
-              <span className="mt-[5px] flex" style={{ color: 'var(--ambra)' }}>
-                <TriangleAlert size={14} />
-              </span>
-              {f.guasto}
-            </div>
-          )}
-          {mostraFrasi && (
-            <>
-              {(domanda || risposta) && <div className="incisione mt-3" />}
-              <div className="flex flex-wrap items-center gap-x-[14px] gap-y-1 px-[18px] pb-1 pt-[10px] text-[14.5px]" style={{ color: 'var(--i-corpo)' }}>
-                {frasi.frasi.map((x, i) => (
-                  <span key={x} className="flex items-center gap-2" style={{ color: 'var(--i)' }}>
-                    {frasi.pallino && i === 0 && <span className="pallino" />}«{x}»
+              {domanda && (
+                <>
+                  <div className="targa flex items-center gap-2" style={{ color: 'var(--ambra)' }}>
+                    <CircleHelp size={14} /> ti sto chiedendo
+                  </div>
+                  <div className="mt-2 text-[16px] leading-6">{frasi.domanda}</div>
+                </>
+              )}
+              {risposta && (
+                <div data-parte="input-risposta" className="text-[16px] leading-6">
+                  {risposta}
+                </div>
+              )}
+              {f.guasto && (
+                <div className={`flex items-start gap-2 text-[14.5px] leading-6 ${domanda || risposta ? 'mt-2' : ''}`} style={{ color: 'var(--i)' }}>
+                  <span className="mt-[5px] flex" style={{ color: 'var(--ambra)' }}>
+                    <TriangleAlert size={14} />
                   </span>
-                ))}
-              </div>
-            </>
+                  {f.guasto}
+                </div>
+              )}
+              {!mostraFrasi && <div className="h-[14px]" />}
+            </div>
           )}
-          <label className="flex items-start gap-[9px] px-4 py-[9px]">
+          {righeFrasi}
+          <label
+            data-parte="input-campo"
+            className={bollaDelloScambio ? 'pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0' : 'flex items-start gap-[9px] px-4 py-[9px]'}
+          >
             <span className="mt-[3px] flex flex-none" style={{ color: 'var(--i-fioco)' }}>
               <Keyboard size={14} />
             </span>
@@ -112,15 +162,10 @@ export function Input({ suFrase }: { suFrase: (testo: string) => void }) {
               onKeyDown={manda}
               placeholder="scrivi"
               aria-label="scrivi"
-              className="block w-full resize-none border-0 bg-transparent p-0 text-[15px] leading-[21px] outline-none placeholder:text-[var(--i-fioco)]"
+              className="block w-full resize-none border-0 bg-transparent p-0 text-[15px] leading-[21px] outline-none placeholder:text-[color-mix(in_srgb,var(--i)_40%,transparent)]"
               style={{ color: 'var(--i)', fontFamily: 'inherit' }}
             />
           </label>
-          {f.pensa && (
-            <div className="flex items-center gap-2 px-4 pb-[10px] text-[13.5px]" style={{ color: 'var(--i-tenue)' }}>
-              <span className="anello" /> sto pensando
-            </div>
-          )}
         </div>
       </div>
     </div>
@@ -135,7 +180,7 @@ function Dropzone({ t }: { t: Task }) {
   const viste = t.contesto.slice(0, TESSERE);
   const resto = t.contesto.length - viste.length;
   return (
-    <div className="vetro nasce max-w-[600px] rounded-[22px] px-[14px] py-3">
+    <div data-parte="dropzone" className="vetro nasce max-w-[600px] rounded-[22px] px-[14px] py-3">
       <div className="flex items-center gap-2" style={{ color: 'var(--grigio)' }}>
         <Icona tipo={t.tipo} />
         <span className="truncate text-[15px] font-medium" style={{ color: 'var(--i)' }}>{t.nome}</span>
@@ -162,13 +207,13 @@ function Dropzone({ t }: { t: Task }) {
 
 function Tessera({ tipo, nome, etichetta, dato }: { tipo: Task['contesto'][number]['tipo']; nome: string; etichetta: string; dato?: string }) {
   return (
-    <span className="flex items-center gap-2 rounded-[12px] px-[11px] py-[7px]" style={{ background: 'var(--tessera)' }}>
+    <span data-parte="tessera" className="flex items-center gap-2 rounded-[12px] px-[11px] py-[7px]" style={{ background: 'var(--tessera)' }}>
       <Icona tipo={tipo} />
       <span className="flex flex-col gap-[2px] leading-none">
         <span className="text-[13.5px] font-medium">{nome}</span>
-        <span className="mono text-[9.5px] uppercase tracking-[0.12em]" style={{ color: 'var(--i-fioco)' }}>{etichetta}</span>
+        <span className="mono text-[10px] uppercase tracking-[0.1em]" style={{ color: 'var(--i-fioco)' }}>{etichetta}</span>
       </span>
-      {dato && <span className="mono ml-1 text-[12px]" style={{ color: 'var(--i-tenue)' }}>{dato}</span>}
+      {dato && <span className="mono ml-1 text-[11px]" style={{ color: 'var(--i-tenue)' }}>{dato}</span>}
     </span>
   );
 }

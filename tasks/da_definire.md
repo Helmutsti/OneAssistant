@@ -35,5 +35,7 @@ D1–D10 e D12 sono chiuse (storico §133–§143). D11 è ferma: se ne riparla 
 ## Contraddizioni fra documenti di design, trovate ricostruendo
 
 Il codice segue il documento di numero più basso, o `docs/` dove si parla di logica. I
-documenti sbagliati vanno corretti per cascata. C8–C14 sono chiuse (storico §140–§147): al
-momento non ce n'è di aperte.
+documenti sbagliati vanno corretti per cascata. C8–C14 sono chiuse (storico §140–§147).
+
+Anche C15–C19, trovate con le schede di conformità, sono chiuse (storico §149): al momento
+non ce n'è di aperte.

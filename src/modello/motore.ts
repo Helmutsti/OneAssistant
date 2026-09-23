@@ -102,6 +102,8 @@ export class Motore {
   /** I guasti da dire a schermo, per chi li ha visti: l'AI, la chat raw. */
   private readonly guasti = new Map<string, string>();
   private progressivo = 0;
+  /** L'ordine d'arrivo nei luoghi, per la SIDEBAR. Non tocca gli id. */
+  private arrivi = 0;
   private versione = 0;
   private foto!: Fotografia;
   private readonly ascoltatori = new Set<() => void>();
@@ -768,7 +770,7 @@ export class Motore {
       throw new Rifiuto('nella dropzone sta solo una bozza');
     }
     b.luogo = dove as never;
-    b.arrivo = this.adesso() + ++this.progressivo / 1000;
+    b.arrivo = this.adesso() + ++this.arrivi / 1000;
     if (dove !== 'DESK' && this.active === b.id) this.active = undefined;
   }
 

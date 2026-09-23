@@ -618,3 +618,11 @@ Le strade provvisorie su quello che `docs/` non dice stanno in `tasks/da_definir
 |---|---|---|
 | 146 | **C13, scritto**: in `L2 - Sidebar` la riga di testa dice «larghezza intrinseca · fino alla campanella», e il riquadro «Oltre quattro si raggruppa» diventa «Fin dove c'è posto» col testo approvato | approvato dal proprietario del progetto; applica §145 |
 | 147 | **C14**: le tre bolle di `L1 - Icone` hanno il titolo a 21 px, come `L1 - Token` | approvato dal proprietario del progetto. Due documenti dello stesso livello si contraddicevano: la cascata non poteva risolverlo |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 148 | **Le schede di conformità**, componente per componente, in `tasks/conformita.md`: misurate con gli stili calcolati, sulle tavole e sull'app. Ventuno divergenze corrette nel codice — fra cui le classi del sistema, che scavalcavano le misure di Tailwind; la DESK e il focus, che finivano sotto la pila di INPUT; l'ora della PROFILEBAR, che era monospaziata. Cinque contraddizioni fra documenti annotate (C15–C19) | chiesto dal proprietario del progetto (`pronti_per_lo_sviluppo.md` §5). Il codice segue il documento; dove due documenti si contraddicono segue il livello più basso, e la voce resta da decidere |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 149 | **C15–C19 si chiudono coi criteri già dati.** C15: la targa della bolla focus in `L2 - Bubble` si disegna a 11, come dice la sua didascalia. C16: in `L2 - Sidebar` cade lo stato «Active a schermo intero» — un task non appare in due aree (legge 03) — e con lui la frase che lo annunciava; gli stati diventano cinque. C18: in `L2 - TIMELINE` le targhe passano da 600 a 500 (legge 07). C19: la targa dell'«adesso» e quella della bolla d'esempio di `L2 - TIMELINE` lasciano il salvia per l'azzurro dello stato in corso, e la targa d'esempio prende la misura di `L2 - Bubble`. Per cascata, in `L4 - Schermate` le dodici targhe della TIMELINE passano a 500, e quelle dell'«adesso» dal blu scuro `#0B5B7A` all'azzurro. C17 non era una contraddizione fra documenti: è il codice che si adegua a `L2 - INPUT` | il proprietario del progetto aveva già risposto: il disegno si allinea alla regola scritta e al livello più basso (§140–§144), e la tavolozza vecchia esce (§73) |

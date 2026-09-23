@@ -65,11 +65,20 @@ function trovaPosto(id: string, w: number, area: DOMRectLike, occupati: DOMRectL
   return meglio;
 }
 
-/** Lo spazio che resta alla DESK: fuori dai margini, dalla pila di destra e da INPUT. */
+/** Quanto può salire la dropzone sopra INPUT, anche quando ancora non c'è. */
+const RISERVA_DROPZONE = 160;
+
+/**
+ * Lo spazio che resta alla DESK (`docs/design/L0` legge 11): fuori dai margini, a sinistra
+ * della pila di destra, e sopra la pila di INPUT con la sua dropzone, più l'aria di 22.
+ */
 function areaDesk(): DOMRectLike {
   const W = window.innerWidth;
   const H = window.innerHeight;
-  return { x: 44 + 60, y: 90, w: Math.max(400, W - 44 - 60 - 470), h: Math.max(240, H - 90 - 200) };
+  const input = document.querySelector('[data-parte=input]')?.getBoundingClientRect().top ?? H - 44 - 40;
+  const guida = document.querySelector('[data-parte=guida]')?.getBoundingClientRect().left ?? W - 44 - 400;
+  const fondo = input - RISERVA_DROPZONE - 22;
+  return { x: 44, y: 40, w: Math.max(348, guida - 22 - 44), h: Math.max(170, fondo - 40) };
 }
 
 export function Desk() {
@@ -147,19 +156,20 @@ export function Bolla({ b, active }: { b: TBolla; active: boolean }) {
   const lavora = b.genere === 'task' && b.stato === 'T_LAVORAZIONE';
   return (
     <div
+      data-parte="bolla"
       className={`${active ? 'vetro-fuoco' : 'vetro'} ${lavora ? 'lavora' : ''} rounded-[26px] px-[22px] py-5`}
       style={{ width: larghezza(b) }}
     >
-      <div className="flex items-center gap-2" style={{ color: tinta(c) }}>
+      <div data-parte="bolla-targa" className="flex items-center gap-2" style={{ color: b.genere === 'documento' ? 'var(--i-fioco)' : tinta(c) }}>
         {active && <span className="pallino" aria-label="active" />}
         <Icona tipo={b.tipo} />
         <span className="targa">{targaDi(b, adesso)}</span>
       </div>
-      <div className="mt-3 truncate text-[21px] font-semibold leading-tight tracking-[-0.02em]" style={{ color: 'var(--i)' }}>
+      <div data-parte="bolla-titolo" className="mt-3 truncate text-[21px] font-semibold leading-tight tracking-[-0.035em]" style={{ color: 'var(--i)' }}>
         {b.nome}
       </div>
       {corpo && (
-        <div className="mt-2 line-clamp-2 text-[15.5px] leading-[1.45]" style={{ color: 'var(--i)', opacity: 0.7 }}>
+        <div data-parte="bolla-corpo" className="mt-2 line-clamp-2 text-[15.5px] leading-[1.45]" style={{ color: 'var(--i)', opacity: 0.7 }}>
           {corpo}
         </div>
       )}
@@ -173,6 +183,16 @@ function Focus({ id }: { id: string }) {
   const f = useFotografia();
   const m = useMotore();
   const adesso = useAdesso(m, 5000);
+  // Il focus prende tutta la DESK, e la DESK finisce 22 sopra la pila di INPUT, dropzone
+  // compresa: 690 a 1440 × 900 quando INPUT è a riposo, meno quando è cresciuto. Si misura
+  // dopo il disegno, perché la pila cresce nello stesso giro in cui cambia la scena.
+  const [altezza, setAltezza] = useState(690);
+  useLayoutEffect(() => {
+    const pila = document.querySelector('[data-parte=dropzone]') ?? document.querySelector('[data-parte=input]');
+    const fondo = (pila?.getBoundingClientRect().top ?? window.innerHeight - 148) - 22;
+    const h = Math.max(240, Math.min(690, fondo - 40));
+    if (h !== altezza) setAltezza(h);
+  });
   const b = f.bolle.find((x) => x.id === id);
   if (!b) return null;
   const c = colore(b, adesso);
@@ -181,25 +201,26 @@ function Focus({ id }: { id: string }) {
   const destinatario = task?.uscita ? ` · per ${task.uscita.a}` : '';
   return (
     <div
+      data-parte="focus"
       className="vetro-fuoco nasce pointer-events-auto absolute flex flex-col overflow-hidden rounded-[30px] px-[42px] py-[38px]"
       style={{
         left: 44,
         top: 40,
         width: 'min(920px, calc(100vw - 44px - 476px))',
-        height: 'min(690px, calc(100vh - 40px - 170px))',
+        height: altezza,
       }}
     >
-      <div className="flex items-center gap-2" style={{ color: tinta(c) }}>
+      <div className="flex items-center gap-2" style={{ color: b.genere === 'documento' ? 'var(--i-fioco)' : tinta(c) }}>
         {f.active === b.id && <span className="pallino" aria-label="active" />}
         <Icona tipo={b.tipo} misura={16} />
-        <span className="targa text-[11px]">
+        <span data-parte="focus-targa" className="targa text-[11px]">
           {targaDi(b, adesso)}
           {destinatario}
         </span>
       </div>
-      <div className="mt-4 truncate text-[46px] font-extralight leading-[1.1] tracking-[-0.035em]">{b.nome}</div>
+      <div data-parte="focus-titolo" className="mt-4 truncate text-[46px] font-extralight leading-[1.1] tracking-[-0.035em]">{b.nome}</div>
       <div className="mt-6 flex min-h-0 flex-1 gap-10">
-        <div className="min-w-0 flex-1 overflow-auto whitespace-pre-line text-[19px] font-light leading-[1.6]" style={{ opacity: 0.8 }}>
+        <div data-parte="focus-corpo" className="min-w-0 flex-1 overflow-auto whitespace-pre-line text-[19px] font-light leading-[1.6]" style={{ opacity: 0.8 }}>
           {b.genere === 'documento' && b.contenuto.forma === 'immagine' ? (
             <img src={b.contenuto.valore} alt={b.nome} className="max-h-full rounded-2xl" style={{ filter: 'saturate(.6)' }} />
           ) : (
@@ -207,9 +228,9 @@ function Focus({ id }: { id: string }) {
           )}
         </div>
         {task && task.contesto.length > 0 && (
-          <div className="flex w-[340px] flex-none flex-col gap-3">
+          <div data-parte="focus-colonna" className="flex w-[340px] flex-none flex-col gap-3">
             {task.contesto.map((e, i) => (
-              <div key={i} className="flex items-center gap-2 rounded-2xl px-3 py-2 text-[14px]" style={{ background: 'var(--tessera)' }}>
+              <div key={i} className="flex items-center gap-2 rounded-2xl px-3 py-2 text-[13.5px] font-medium" style={{ background: 'var(--tessera)' }}>
                 <Icona tipo={e.tipo} />
                 <span className="truncate">{e.nome}</span>
                 {e.dato && <span className="mono ml-auto text-[12px]" style={{ color: 'var(--i-fioco)' }}>{e.dato}</span>}

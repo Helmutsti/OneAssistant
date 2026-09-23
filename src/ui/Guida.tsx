@@ -17,7 +17,7 @@ export interface Ambiente {
 
 export function Guida({ ambiente, muta, suMuta }: { ambiente: Ambiente; muta: boolean; suMuta: () => void }) {
   return (
-    <div className="pointer-events-none absolute right-[44px] top-[40px] flex flex-col items-end gap-[22px]">
+    <div data-parte="guida" className="pointer-events-none absolute right-[44px] top-[40px] flex flex-col items-end gap-[22px]">
       <Timeline orario={ambiente.orario} />
       <Profilebar ambiente={ambiente} />
       <Systembar macchina={ambiente.macchina} muta={muta} suMuta={suMuta} />
@@ -81,29 +81,29 @@ function Timeline({ orario }: { orario: ReadonlyArray<{ da: number; a: number }>
   const daMin = minuti(dalla.current.da);
 
   return (
-    <div className="flex flex-col items-end gap-[6px] text-right">
+    <div data-parte="timeline" className="flex flex-col items-end gap-[6px] text-right">
       {active ? (
         <>
-          <span className="targa text-[10px]" style={{ color: tinta(colore(active, adesso)) }}>
+          <span className="targa text-[10px] tracking-[0.14em]" style={{ color: tinta(colore(active, adesso)) }}>
             adesso · da {breve(adesso - dalla.current.da)}
           </span>
           {/* 20/600: il peso che la legge 07 ammette per l'«adesso» (storico §142). */}
-          <span className="max-w-[300px] truncate text-[20px] font-semibold tracking-[-0.02em]">{active.nome}</span>
+          <span className="max-w-[300px] truncate text-[20px] font-semibold leading-[1.14] tracking-[-0.03em]">{active.nome}</span>
         </>
       ) : (
         <>
-          <span className="targa text-[10px]" style={{ color: 'var(--i-fioco)' }}>libero</span>
-          <span className="text-[18px] font-medium tracking-[-0.02em]">
+          <span className="targa text-[10px] tracking-[0.14em]" style={{ color: 'var(--i-fioco)' }}>libero</span>
+          <span className="text-[18px] font-medium leading-[1.14] tracking-[-0.03em]" style={{ color: 'var(--i-tenue)' }}>
             {Number.isFinite(libero) ? durata(libero) : 'fuori orario'}
           </span>
         </>
       )}
-      <span className="targa mt-1 text-[10px]" style={{ color: vicino ? 'var(--ambra)' : 'var(--i-fioco)' }}>
+      <span className="targa mt-1 text-[10px] tracking-[0.14em]" style={{ color: vicino ? 'var(--ambra)' : 'var(--i-fioco)' }}>
         dopo{dopo ? ` · fra ${breve(dopo.ora! - adesso)}` : ''}
       </span>
       <span
-        className="max-w-[300px] truncate text-[20px] font-medium tracking-[-0.02em]"
-        style={{ color: vicino ? 'var(--i)' : 'var(--i-corpo)' }}
+        className="max-w-[300px] truncate text-[20px] font-medium leading-[1.14] tracking-[-0.03em]"
+        style={{ color: vicino ? 'var(--i)' : 'var(--i-tenue)' }}
       >
         {dopo ? dopo.nome : 'niente in programma'}
       </span>
@@ -151,10 +151,10 @@ function Profilebar({ ambiente }: { ambiente: Ambiente }) {
   const luogo = luogoConosciuto(ambiente.macchina.posizione, ambiente.preferenze.focuses);
   const casa = luogo && /casa/i.test(luogo.nome);
   return (
-    <div className="profile-veil">
+    <div data-parte="profilebar" className="profile-veil">
       <div className="profile-context">
         <div className="profile-date">
-          <time className="mono">{ora(adesso)}</time>
+          <time>{ora(adesso)}</time>
           <span>{d.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' })}</span>
         </div>
         {(luogo || ambiente.macchina.posizione) && (
@@ -185,7 +185,7 @@ function Systembar({ macchina, muta, suMuta }: { macchina: Macchina; muta: boole
   const aperto = macchina.microfono === 'acceso';
   const rete = macchina.rete?.match(/"([^"]+)"/)?.[1] ?? macchina.rete;
   return (
-    <div className="mono flex items-center gap-4 text-[11px] uppercase tracking-[0.08em]" style={{ color: 'var(--i-corpo)' }}>
+    <div data-parte="systembar" className="mono flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.06em]" style={{ color: 'var(--i-corpo)' }}>
       <span className="flex items-center gap-[6px]" style={{ color: aperto ? 'var(--verde)' : 'var(--ambra)' }}>
         {aperto ? <Mic size={14} /> : <MicOff size={14} />}
         {aperto ? 'solo tu' : 'scrivi'}
@@ -285,15 +285,18 @@ function Chip({ b, adesso }: { b: Bolla; adesso: number }) {
   const tintaVetro = velo(c);
   return (
     <div
+      data-parte="chip"
       className={`${rimandato ? 'vetro-quieto' : 'vetro'} ${c === 'azzurro' ? 'lavora' : ''} nasce flex h-[30px] max-w-[320px] items-center gap-[9px] rounded-[20px] px-[14px]`}
       style={tintaVetro ? { background: `${tintaVetro}, var(--liquid-film)` } : undefined}
     >
       <span style={{ color: 'var(--i)' }} className="flex">
         <Icona tipo={b.tipo} />
       </span>
-      <span className="truncate text-[14px] leading-none">{b.nome}</span>
+      <span data-parte="chip-nome" className="truncate text-[14px] leading-none" style={rimandato ? { color: 'var(--i-corpo)' } : undefined}>
+        {b.nome}
+      </span>
       {dato && (
-        <span className="mono flex-none text-[11px] leading-none" style={{ color: 'var(--i-corpo)' }}>
+        <span data-parte="chip-dato" className="mono flex-none text-[10px] leading-none tracking-[0.06em]" style={{ color: 'var(--i)' }}>
           {dato}
         </span>
       )}

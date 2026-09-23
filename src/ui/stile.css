@@ -46,6 +46,9 @@ body {
   background: linear-gradient(180deg, var(--f1, #c6cbc9) 0%, var(--f2, #b9beb9) 42%, var(--f3, #9ba096) 68%, var(--f4, #7c8178) 100%);
 }
 
+/* Le classi del sistema stanno nel livello dei componenti: un'utility di Tailwind
+   accanto a loro — una misura, un colore — le precisa invece di perdere. */
+@layer components {
 .mono {
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
@@ -143,6 +146,7 @@ body {
 }
 .squilla {
   animation: squilla 640ms ease-in-out 1;
+}
 }
 
 @media (prefers-reduced-motion: reduce) {
