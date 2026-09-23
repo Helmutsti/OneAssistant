@@ -10,23 +10,29 @@ prova e come dettaglio.
 > cosa è un debito da documentare o da rimuovere. Quando due documenti si contraddicono
 > vale la cascata di `L0 - Sistema`: il numero più basso comanda.
 
-**119 finding**, codici stabili `F-nnn`. **Nessun file di codice è stato modificato da
+**120 finding**, codici stabili `F-nnn`. **Nessun file di codice è stato modificato da
 nessuno dei tre audit.**
 
 ---
 
-## 0 · Stato al 22 settembre 2026
+## 0 · Stato al 23 settembre 2026
 
 **Le dodici domande di §5 hanno tutte una risposta.** Erano il blocco dichiarato del
 registro — «finché non si risponde, ogni correzione è provvisoria» — e sono state sciolte
-in una sessione di lavoro. Le decisioni, con data e motivo, stanno in `tasks/storico.md`.
+il 22 settembre. Le decisioni, con data e motivo, stanno in `tasks/storico.md`.
 
-**Sette finding sono chiusi e quattro chiusi in parte**, tutti documentali: sono segnati
-voce per voce qui sotto.
+**Dodici finding sono chiusi e cinque chiusi in parte**, tutti documentali: sono segnati voce
+per voce qui sotto.
+
+- **22 settembre** — chiusi `F-006`, `F-104`, `F-105`, `F-106`, `F-109`, `F-110`, `F-112`;
+  in parte `F-101`, `F-107`, `F-108`, `F-119`;
+- **23 settembre** — chiusi `F-008`, `F-073`, `F-074`, `F-085`; in parte `F-111`.
+  Aggiornati, perché citavano documentazione nel frattempo cambiata: `F-015`, `F-024`,
+  `F-057`, `F-071`, `F-078`, `F-088`, `F-100`. Aggiunto `F-120`, le decisioni del giorno
+  che il codice non segue ancora.
 
 **Tutto il resto è codice, e nessun file di `src/` è stato toccato** — né durante l'audit
-né dopo. Restano interi i 28 `BUG`, i 15 `PARTIAL_IMPLEMENTATION`, i 16
-`UNDOCUMENTED_IMPLEMENTATION`.
+né dopo.
 
 ### Come si chiudono le voci che restano
 
@@ -229,6 +235,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-008 · Le tavole di design descrivono ancora la sequenza consegna→undo precedente al Delay**
 `DOCUMENTATION_AMBIGUITY` · alta · da decidere · Origine: `CG:A084`
 
+> **Chiuso · 23 settembre 2026.** le scene non raccontano più la consegna prima del Delay: il chip finito non esiste, e in SIDEBAR resta solo l'invio dentro i 90 secondi, azzurro (`L3 - Flusso task`, `L2 - Sidebar`). Verificato cercando la sequenza in `L2 - Bubble` e `L3`: non c'è più. Storico §58, §61
+
 - **Dove**: `docs/design/L2 - Bubble.dc.html:583`, `docs/design/L3 - Flusso task.dc.html:178`
 - **Effettivo**: le scene raccontano «fatto» a 6 s e il chip annullabile per 90 s **dopo**
   la consegna. La cascata risolve a favore di `L01`, ma le scene restano fuorvianti
@@ -324,10 +332,12 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-015 ⊕⊕ · Gli stati e i luoghi sono rimasti al contratto precedente**
 `DOC_CODE_MISMATCH` · **critica** · verificato · Origine: `CG:A003`, `CL:AUD-01`, `DIV:D-27`
 
+> **Aggiornato · 23 settembre 2026.** il «previsto» segue il modello deciso — `T_DRAFT` al posto di `T_NUOVO`, sotto-task già in `T_LAVORAZIONE`. La decisione umana è presa: il codice si adegua. Storico §2, §25
+
 - **Dove**: `src/modello/tipi.ts:17-41`; propagato a `motore.ts`, `vista.ts:24-31`, `strumenti.ts`
 - **Documentazione**: `docs/L01` §Gli stati dei task — quattro stati con le loro transizioni
-- **Previsto**: `T_NUOVO → T_LAVORAZIONE → {T_ATTESA | T_CONCLUSIONE}`, ritorno da
-  `T_ATTESA`, sotto-task in `T_NUOVO`
+- **Previsto**: `T_DRAFT → T_LAVORAZIONE → {T_ATTESA | T_CONCLUSIONE}`, ritorno da
+  `T_ATTESA`, sotto-task che nasce già in `T_LAVORAZIONE`
 - **Effettivo**: due assi — `Luogo` (6 valori) × `Avanzamento` (6 valori) — con tabella di
   combinazioni legali. **La stringa `T_NUOVO` non compare in nessun file di `src/`**.
   I task nascono direttamente in attesa o programmato; la comprensione non è rappresentata
@@ -432,6 +442,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 
 **F-024 · La promozione rimuove la notifica originale**
 `DOC_CODE_MISMATCH` · media · verificato · Origine: `CG:A008`
+
+> **Aggiornato · 23 settembre 2026.** la frase citata è uscita da `L2 - Bubble` con la sezione «Tre taglie». La regola resta in `L0` §NOTIFICATIONBAR: i banner del cassetto «*non migrano, non hanno stato*». Il finding resta aperto
 
 - **Dove**: `src/modello/motore.ts:1053`
 - **Documentazione**: `L2 - Bubble` — «*La riga resta dov'era: il mondo non si consuma
@@ -820,6 +832,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-057 ⊕⊕ · Lo stack prescritto non è quello del progetto: niente React, niente Tailwind**
 `DOC_CODE_MISMATCH` · **alta** · verificato · Origine: `CG:A038`, `CL:AUD-20`, `DIV:D-30`
 
+> **Aggiornato · 23 settembre 2026.** la decisione umana è presa: il codice passa a React, Vite e Tailwind. Storico §4
+
 - **Dove**: `package.json`, `src/main.ts`, `src/aree/schermo.ts`, `src/stile/base.css`
 - **Documentazione**: `docs/L04` — «*Il prototipo è un sito React, Vite e Tailwind*»
 - **Effettivo**: TypeScript vanilla con costruzione imperativa del DOM via template
@@ -997,6 +1011,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-071 ⊕ · La SIDEBAR tronca oltre quattro elementi senza indicare `+N`**
 `DOC_MISSING_IMPLEMENTATION` · media · verificato · Origine: `CG:A049`, `DIV:A-02`
 
+> **Aggiornato · 23 settembre 2026.** resta valido; il raggruppamento dovrà rispettare l'ordine nuovo della SIDEBAR, con i chip ambra in cima (`docs/L02`). Storico §93
+
 - **Dove**: `src/aree/schermo.ts:299` — `m.elementi().slice(0, 4)`
 - **Documentazione**: `L2 - Sidebar` — «*Oltre quattro si raggruppa. Il quinto chip diventa
   +3 IN CORSO*»
@@ -1016,6 +1032,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-073 · Il tetto di due punti di colore per schermo non è garantito**
 `DOC_CODE_MISMATCH` · bassa · verificato · Origine: `CG:A052`
 
+> **Chiuso · 23 settembre 2026.** la regola citata non esiste più: il tetto è caduto il 22 settembre, e dal 23 il chip prende per intero il colore del suo stato. Storico §74, §93
+
 - **Documentazione**: `L0` legge 04 — «*Massimo due punti di colore per schermo*»
 - **Effettivo**: ogni task, chip e targa prende la tinta dal proprio stato, indipendentemente
   dagli altri
@@ -1023,6 +1041,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 
 **F-074 · Contenuti lunghi e apertura interna non seguono il contratto «una cosa sola»**
 `PARTIAL_IMPLEMENTATION` · media · verificato · Origine: `CG:A053`
+
+> **Chiuso · 23 settembre 2026.** la regola citata — «*dentro si vede una cosa sola, e vince l'esito*» — non esiste più in nessun documento, e il finding cade per decisione del proprietario del progetto. Storico §99
 
 - **Dove**: `src/aree/schermo.ts:430`, `src/stile/base.css:480`, `:699`
 - **Documentazione**: `L2 - Bubble` («dentro si vede una cosa sola, e vince l'esito»);
@@ -1066,6 +1086,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 
 **F-078 · «Sì» e la prima frase verde fanno cose diverse nella composizione**
 `DOC_CODE_MISMATCH` · media · verificato · Origine: `CG:A058`
+
+> **Aggiornato · 23 settembre 2026.** `L2 - Bubble` dice ora «*quella che parte se rispondi «sì»*»: la frase è riformulata, la regola è la stessa. Il finding resta aperto
 
 - **Dove**: `src/modello/motore.ts:1533`, `src/ai-engine/regole.ts:150`, `src/main.ts:301`
 - **Documentazione**: `L2 - Bubble` — la prima frase porta il pallino ed è «quella che
@@ -1134,6 +1156,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-085 · L'ottava icona esiste già nel codice, e la domanda è dichiarata aperta**
 `UNDOCUMENTED_IMPLEMENTATION` · bassa · verificato · Origine: `CL:AUD-32`
 
+> **Chiuso · 23 settembre 2026.** la legge 06 distingue ora le dieci icone di tipo, che seguono il dato, dalle icone di cornice, che non contano fra quelle; il riquadro «Aperta / l'ottava icona» è uscito da `L2 - Profilebar`. Storico §100–§103
+
 - **Dove**: `src/aree/schermo.ts:213-217`
 - **Documentazione**: `L0` legge 06 — «*Sette icone di tipo in tutto il sistema*»;
   `L2 - Profilebar` §«Aperta / l'ottava icona» pone la domanda e non la chiude
@@ -1165,6 +1189,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 
 **F-088 · La scrivania a campo di forze non è descritta da nessun documento**
 `UNDOCUMENTED_IMPLEMENTATION` · media · verificato · Origine: `CL:N-20`
+
+> **Aggiornato · 23 settembre 2026.** il movimento sta ora in `L2 - Bubble movement` ed è stato ridefinito il 22 settembre (storico §84–86). Il confronto col codice va rifatto su quei valori
 
 - **Dove**: `src/aree/scrivania.ts`, `src/aree/schermo.ts:34-75`
 - **Documentazione**: `L2 - Bubble` §«Il movimento · soap bubbles» descrive onda,
@@ -1316,6 +1342,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-100 ⊕⊕ · Il codice cita centinaia di volte un corpus documentale che non esiste**
 `LEGACY_OR_UNKNOWN` · **critica** · verificato · Origine: `CG:A071`, `CL:AUD-25`, `DIV:D-33`
 
+> **Aggiornato · 23 settembre 2026.** la decisione umana è presa: i rimandi al corpus scomparso si cancellano, senza recuperare i documenti. Storico §9
+
 - **Dove**: 50 file. Concentrazioni: `motore.ts` (44 righe), `tipi.ts` (18),
   `scenario.ts` (18), `archivio.ts` (15), `profilo.ts` (13)
 - **Effettivo**: il codice cita `docs/01-modello`, `02-parallelo`, `03-architettura`,
@@ -1445,6 +1473,8 @@ vince `L0`, e il codice è conforme; per le quote no.
 
 > **Chiuso in parte · 22 settembre 2026.** la misura delle icone segue la legge 06 — 14 nella bolla e nel chip, 16 nella cornice — in tutti i documenti. **Resta** l'eccezione del peso 600
 
+> **Aggiornato · 23 settembre 2026.** la chiusura del 22 valeva per il testo, non per i disegni: 66 icone erano ancora a 12, 15, 18 o 19 px. Ora sono tutte a 14, e la campanella a 16. **Resta** l'eccezione del peso 600. Storico §105
+
 `L0` legge 06 dice icone 14–16 px; `L1 - Icone` le mostra a 19. `L0` legge 07 dice tre pesi
 (200/300/500) e «*il grassetto non esiste*»; `L2 - Bubble` usa titoli 600/27 px e
 `L2 - Profilebar` dichiara un 600 come «eccezione esplicita». Non tutte le misure dei
@@ -1472,6 +1502,8 @@ sono certificabili contro entrambe.
 
 **F-111 · Le notifiche future sono ancora descritte nel cassetto**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CG:A086`
+
+> **Chiuso in parte · 23 settembre 2026.** `L2 - Notificationbar` non include più le cose con un'ora: verificato cercando orari e rimandati nel testo della tavola. **Resta** il codice, che mescola ancora notifiche e task con un'ora
 
 `L2 - Notificationbar` dichiara caduta, il 18 settembre, la regola che metteva le cose con
 un'ora in fondo alla stessa lista — «*i rimandati sono tuoi, e il cassetto è il mondo*» —
@@ -1546,6 +1578,23 @@ non è stato aggiornato di conseguenza (quota della colonna), e `L1 - Icone` con
 mostrare 19 px contro i 14–16 di `L0`. La regola di cascata prescrive che chi modifica
 aggiorni **nella stessa risposta** tutte le occorrenze nei numeri più alti: qui non è
 successo.
+
+
+**F-120 · Le decisioni del 23 settembre non hanno ancora un corrispettivo nel codice**
+`DOC_MISSING_IMPLEMENTATION` · media · da verificare · Origine: sessione del 23 settembre 2026
+
+Non è una misura sul codice: è l'elenco di ciò che `docs/` prescrive da oggi e che il
+codice, scritto prima, non può fare. Va verificato voce per voce, e ogni voce confermata
+diventa un finding a sé.
+
+- **DESK e SIDEBAR senza scopo**: il sistema non sposta mai una bolla di sua iniziativa (`docs/L02` §DESK). Storico §90
+- **il rimandato che scade diventa ambra dove si trova**, non torna in DESK (`docs/L02` §SIDEBAR). Storico §91
+- **la frase «mettila da parte»** fra quelle di INPUT quando la active è ambra. Storico §92
+- **il chip colorato per intero**, senza pallino di stato, e **l'ambra in cima** (`L0` §SIDEBAR, `L2 - Sidebar`). Storico §93
+- **il focus**: le altre bolle passano in SIDEBAR e tornano da sole (`docs/L02` §DESK, `L0` legge 08). Storico §94
+- **la bolla documento** (`docs/L02`, `L0` legge zero). Storico §95
+- **niente si trascina** (`docs/L02` §INPUT). Storico §96
+- **le quattro taglie**, Banner, Chip, Task, Focus (`L0` §Le quattro taglie). Storico §97, §98
 
 ---
 

@@ -208,8 +208,14 @@ aspetta, 62% ciò che informa.
 bolla e nel chip, 16 nel banner e nella cornice), sempre accompagnata da un numero o da
 una parola: si legge da lontano e si può dire a voce.
 
-**Sette icone di tipo** in tutto il sistema: posta, cartella, documento, persone,
-conversazione, immagine, sveglia. Nessun logo di app, nessun mimetismo.
+**Le icone di tipo** dicono che cos'è un dato: email, cartella, documento, contatto,
+persone, conversazione, immagine, sveglia, indirizzo, appuntamento. Un task porta l'icona
+del suo primo dato agganciato; se non ne ha, quella della conversazione. L'elenco può
+crescere. Nessun logo di app, nessun mimetismo.
+
+**Le icone di cornice** dicono lo stato della macchina e del contesto: microfono, volume,
+rete, batteria, luogo, campanella, tastiera. Non sono un elenco chiuso e non contano fra
+quelle di tipo, ma obbediscono alla stessa regola: mai senza un valore o una parola.
 
 ### 07 · Tipografia: una famiglia, tre pesi
 

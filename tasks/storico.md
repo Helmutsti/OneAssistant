@@ -416,9 +416,27 @@ decisione che l'ha chiusa.
 | 96 | **Niente si trascina**: né file da fuori né bolle | chiude la questione del trascinamento nella dropzone |
 | 97 | **Quattro taglie: Banner, Chip, Task, Focus**, scritte in `docs/design/L0`. «Banner» è il nome della forma usata nella NOTIFICATIONBAR, prima «riga del cassetto». Il Focus prende le misure del vecchio Pannello | le misure non stavano più scritte da nessuna parte dal 22 settembre (§65) |
 | 98 | **Il raggio del Banner è 20** anche in `L1 - Token`, che diceva 22 e chiamava la voce «raggio carta» | è la misura disegnata in `L2 - Notificationbar` e scritta in `L0` |
+| 99 | **`F-074` cade**: la regola che misurava — «dentro si vede una cosa sola, e vince l'esito» — non esiste più in nessun documento | deciso dal proprietario del progetto nel riallineamento dell'audit |
 
 **Già a posto, niente da scrivere:** `active` al posto di `main` e `T_DRAFT` al posto di
 `T_NUOVO` risultano già applicati in `docs/`; restavano solo in `tasks/da_definire.md`.
 
 **Corretto insieme:** in `L0` legge 04, «nessun colore» non dice più «ha finito» — un task
 concluso non si vede — e comprende la bolla documento.
+
+---
+
+## 23 settembre 2026 — le icone
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 100 | **Un task porta l'icona del suo primo dato agganciato**; se non ne ha, quella della conversazione | un solo elenco per due usi: lo stesso segno non ha più due significati |
+| 101 | **Le icone di tipo sono dieci**, i tipi di dato disegnati nella dropzone: email, cartella, documento, contatto, persone, conversazione, immagine, sveglia, indirizzo, appuntamento. L'elenco può crescere | applica «sette, ma possono aumentare» e «i tipi di dato restano quelli attuali» |
+| 102 | **Le icone di cornice** — microfono, volume, rete, batteria, luogo, campanella, tastiera — sono una famiglia a parte: non contano fra quelle di tipo, non sono un elenco chiuso, e stanno sempre accanto a un valore o a una parola | chiude la domanda dell'ottava icona (`F-085`) |
+| 103 | **«posta» diventa «email»** ovunque | scelta del proprietario del progetto |
+| 104 | **Il catalogo di `L2 - Bubble` tiene solo i domini che hanno un'icona fra le dieci**: persone, indirizzo e immagine si aggiungono alle sette già portate; escono viaggi, spedizioni, liste, trascrizione, sistema e domande | non interessano al proprietario del progetto |
+| 105 | **Le icone disegnate seguono la legge 06**: 14 px le icone di tipo, le targhe, la spunta del flusso e la TIMELINE nelle scene; 16 px la campanella, che è di cornice. 66 icone riportate in `L1 - Icone` (il campione sul vetro), `L2 - Bubble`, `L2 - Notificationbar`, `L3 - Flusso task`, `L4 - Schermate` | le tavole disegnavano 12, 15, 18 e 19 px contro una legge che dice 14 e 16. Resta a 19 solo il confronto fra famiglie di `L1 - Icone`, che è un ingrandimento dichiarato |
+
+**Scritto in:** `L0` legge 06, `docs/L01` (tabella dei nomi), `L1 - Icone`, `L2 - Bubble`
+(targa a 14 px, colore «nella bolla», catalogo con i nomi Lucide), `L2 - Sidebar`,
+`L2 - INPUT`, `L2 - Profilebar` (tolto il riquadro «Aperta / l'ottava icona»).

@@ -102,7 +102,7 @@ voce. Una riga sola, al massimo 32 caratteri: quel che avanza è contesto, non n
 
 | tipo | come si scrive |
 | --- | --- |
-| posta | sempre il destinatario, mai l'oggetto per esteso |
+| email | sempre il destinatario, mai l'oggetto per esteso |
 | documento | il nome del file riscritto in italiano leggibile |
 | ricerca | il titolo è la domanda, non il numero di risultati |
 | conversazione | il conteggio nel nome è ammesso solo qui |
