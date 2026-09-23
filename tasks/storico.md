@@ -634,3 +634,12 @@ Le strade provvisorie su quello che `docs/` non dice stanno in `tasks/da_definir
 | # | Decisione | Motivo |
 |---|---|---|
 | 151 | **I test dell'interfaccia e delle porte.** `npm run test:interfaccia` (Playwright, nel Chrome di sistema, a 1440 × 900): le aree e i loro ancoraggi, il flusso della mail a Elena di `L3` con la Funzione Delay su un orologio finto, le misure delle schede di conformità, il cassetto, i movimenti, il movimento ridotto. L'AI è a copione e l'archivio è di prova: nessun test tocca i dati dell'utente. `npm test` aggiunge le porte del server — il confine dell'archivio, anche attraverso un collegamento — e la chat raw, sul server e nel browser | chiesto dal proprietario del progetto (`pronti_per_lo_sviluppo.md` §6). Una scheda di conformità scritta una volta sola non ferma la prossima deriva; un test sì |
+
+---
+
+## 23 settembre 2026 — il fornitore dell'AI
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 152 | **Il prototipo usa le API di Anthropic direttamente**, non più OpenRouter. È la decisione di oggi, e può cambiare. Il testo di `docs/L04` va sottoposto prima di scriverlo | scelta del proprietario del progetto, dopo la prima prova dal vivo: i modelli gratuiti di OpenRouter erano limitati o sovraccarichi a monte, e passando da OpenRouter si perdono il ripiego sui rifiuti e il controllo dello sforzo. Con Anthropic diretta restano la cache del prompt e i parametri nativi |
+| 153 | **`docs/L04` dice Anthropic, e il codice lo segue.** Scritto in `L04` il testo approvato: le API di Anthropic chiamate direttamente dal processo Node, Anthropic unico provider del prototipo, l'architettura aperta ad altri provider come OpenAI o OpenRouter. Il server legge `ANTHROPIC_API_KEY` e `ANTHROPIC_MODEL` (predefinito `claude-sonnet-5`) da `.env`; il ramo `chat/completions` di OpenRouter esce. Ogni passo va senza ragionamento e con sforzo basso, e il prompt di sistema resta in cache un'ora | approvato dal proprietario del progetto (§152). Un passo è una mossa sola sullo schermo: conta la prontezza. Il ragionamento resta fuori perché i passi passati tornano al modello ricostruiti dalle mosse, e un blocco di pensiero non si saprebbe rimandare |

@@ -90,8 +90,14 @@ export interface Task {
   richiesta: string;
   /** Le cose agganciate: il contesto che il task si porta dietro. */
   contesto: Elemento[];
-  /** Quello che la bolla mostra nel corpo: l'avanzamento, o quello che ha prodotto. */
+  /** Quello che la bolla mostra nel corpo: l'avanzamento, quello che ha prodotto, o perché è fermo. */
   corpo?: string;
+  /**
+   * Quello che il lavoro ha prodotto, e che esce se il task esce: la mail scritta. Solo
+   * `pronto` lo scrive. Un task che attraversa il confine senza esito non ha niente da
+   * mandare — e il corpo non lo sostituisce, perché può essere un avanzamento o un errore.
+   */
+  esito?: string;
   /** Un dato solo, per il chip: una frazione, un'ora, una parola. */
   dato?: string;
   /** Le frasi della bolla, che INPUT offre quando è la active. */

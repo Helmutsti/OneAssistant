@@ -95,7 +95,7 @@ describe('i confini del giro', () => {
   it('senza AI non si finge: il guasto si dice a schermo', async () => {
     const orologio = new OrologioFermo(0);
     const m = new Motore(orologio, async () => {});
-    const turni = new Turni(m, { passo: async () => { throw new Guasto('Manca la chiave di OpenRouter: va messa in .env.'); } }, { salva: () => {} });
+    const turni = new Turni(m, { passo: async () => { throw new Guasto('Manca la chiave di Anthropic: va messa in .env.'); } }, { salva: () => {} });
     await turni.conversa('ciao');
     expect(m.fotografia().guasto).toMatch(/chiave/);
     expect(m.fotografia().pensa).toBe(false);

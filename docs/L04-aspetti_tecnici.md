@@ -16,9 +16,9 @@ invece un archivio distinto che conserva integralmente gli scambi dell'utente at
 - Nel prototipo l'utente comunica soltanto tramite tastiera e input testuale. La ricezione
   vocale con Whisper e il tracking degli occhi restano possibilità future e non fanno
   parte dello scope attuale.
-- Il prompt viene analizzato dall'AI tramite un connettore API per OpenRouter. Nel
-  prototipo OpenRouter è l'unico provider. In futuro l'architettura dovrà permettere di
-  collegare anche le API di OpenAI e Anthropic.
+- Il prompt viene analizzato dall'AI tramite le API di Anthropic, chiamate direttamente dal
+  processo Node. Nel prototipo Anthropic è l'unico provider. In futuro l'architettura dovrà
+  permettere di collegare anche altri provider, come OpenAI o OpenRouter.
 - Memory Engine e servizi reali restano obiettivi futuri. Nel prototipo i dati
   necessari sono contenuti nei documenti dell'utente attivo: `memory/general.txt` simula
   la memoria e i file in `services` simulano i servizi. Non devono essere interpretati

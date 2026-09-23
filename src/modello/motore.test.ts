@@ -180,6 +180,23 @@ describe('la Funzione Delay', () => {
     expect(colore(t, m.adesso())).toBe('ambra');
   });
 
+  it('un task che non ha prodotto niente non esce: il corpo non sostituisce l\'esito', () => {
+    const { m } = banco();
+    const t = m.componi({ tipo: 'email', nome: 'Scrivere a Elena', richiesta: 'scrivi a Elena', uscita: MAIL });
+    m.conferma(t.id);
+    m.fermo(t.id, 'Anthropic non ha risposto');
+    expect(() => m.invia(t.id)).toThrow(/non è ancora stato scritto/);
+    expect(t.invio).toBeUndefined();
+  });
+
+  it('esce l\'esito, non l\'avanzamento', async () => {
+    const { m, chiamate, salta } = banco();
+    const t = mailPronta(m);
+    m.invia(t.id, true);
+    await salta(0);
+    expect(chiamate[0]!.cosa).toBe('Cara Elena, venerdì non sarò in ufficio.');
+  });
+
   it('INPUT offre «manda subito» e «no, aspetta» mentre l\'invio aspetta', () => {
     const { m } = banco();
     const t = mailPronta(m);

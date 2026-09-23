@@ -400,6 +400,7 @@ export class Motore {
     t.stato = 'T_ATTESA';
     t.attesa = 'parola';
     t.corpo = corpo;
+    t.esito = corpo;
     t.frasi = pulisciFrasi(frasi);
     if (t.luogo === 'DESK') this.active = t.id;
     this.cambia();
@@ -466,6 +467,9 @@ export class Motore {
     const t = this.task(id);
     if (t.stato === 'T_DRAFT') throw new Rifiuto(`${t.nome} è una bozza: prima va confermata`);
     if (!t.uscita) throw new Rifiuto(`${t.nome} non ha niente da mandare`);
+    if (t.uscita.attraversaConfine && !t.esito?.trim()) {
+      throw new Rifiuto(`${t.nome} non è ancora stato scritto: non c'è niente da mandare`);
+    }
     if (t.invio) {
       if (!bypass || t.invio.bypass || this.inVolo.has(t.invio.id)) {
         throw new Rifiuto(`${t.nome} ha già un invio in corso`);
@@ -553,7 +557,8 @@ export class Motore {
     this.inVolo.add(invio.id);
     if (this.scambio?.frasi) this.scambio = { ...this.scambio, frasi: undefined };
     this.cambia();
-    const cosa = t.corpo ?? t.richiesta;
+    // Esce quello che il lavoro ha prodotto. Salvare in locale può uscire anche senza.
+    const cosa = t.esito ?? t.richiesta;
     this.consegna(t.uscita, cosa).then(
       () => {
         this.inVolo.delete(invio.id);

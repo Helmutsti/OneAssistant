@@ -108,6 +108,6 @@ test('«no, aspetta» dentro la finestra: la mail torna sulla scrivania, ambra, 
 test('senza chiave non si finge: il guasto si dice in INPUT', async ({ page }) => {
   await prepara(page, { conversazione: [] }, { senzaChiave: true });
   await di(page, 'ciao');
-  await expect(page.locator('[data-parte=input]')).toContainText('Manca la chiave di OpenRouter');
+  await expect(page.locator('[data-parte=input]')).toContainText('Manca la chiave di Anthropic');
   await expect(page.locator('[data-parte=bolla]')).toHaveCount(0);
 });
