@@ -339,7 +339,8 @@ sale da sotto di lei e intorno si spegne tutto.
 
 ## Le quattro taglie
 
-Ogni bolla ha una di queste quattro taglie, e nessun'altra.
+Ogni bolla ha una di queste quattro taglie, e nessun'altra. Fanno eccezione INPUT e
+PROFILEBAR, che hanno una geometria propria (`L2 - INPUT`, `L2 - Profilebar`).
 
 | taglia | misure | dove |
 |---|---|---|

@@ -77,7 +77,7 @@ GEOM = tabella("Geometria", "Raggi, margini e passo. <strong style=\"color:#8A5A
     riga("raggio chip", "20 px", "la taglia pi&ugrave; contratta"),
     riga("raggio banner", "20 px", "i banner del cassetto"),
     riga("raggio task", "26 px", "la bolla sulla scrivania"),
-    riga("raggio pannello", "30 px", "la taglia aperta, e il velo della Profilebar"),
+    riga("raggio focus", "30 px", "la bolla in focus, e il velo della Profilebar"),
     riga("margine", "44 px", "ogni ancoraggio al bordo dello schermo"),
     riga("aria", "22 px", "fra i componenti della guida di destra &mdash; met&agrave; del margine"),
     riga("icona", "14 / 16 px", "14 nella bolla e nel chip, 16 nel banner e nella cornice (legge 06)"),

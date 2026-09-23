@@ -17,7 +17,7 @@ La fonte comune è `liquid-glass.css`, usata dai componenti L2 e dalle loro occo
 
 ## Confini
 
-La cornice di sistema conserva la sua assenza di bolla. Le cartine delle notifiche restano opache; non diventano task di vetro. Fondo, colori di stato, immagini, forme, ordine e posizioni non cambiano.
+La cornice di sistema conserva la sua assenza di bolla. I banner delle notifiche sono bolle di vetro come le altre, ma non diventano task. Fondo, colori di stato, immagini, forme, ordine e posizioni non cambiano.
 
 Questa revisione sostituisce le vecchie ricette di blur, film e ombra nei campioni attivi. Le annotazioni storiche con valori precedenti nei documenti vanno lette come descrizione del materiale di partenza; per il materiale corrente prevalgono questi token. La legge 05 di L0 rimanda a questa revisione per le densità del film; tutte le regole geometriche restano in vigore.
 

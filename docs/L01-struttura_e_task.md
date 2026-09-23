@@ -75,7 +75,7 @@ loro percorso.
 | **grigio** | `T_DRAFT` | non è ancora partito: si sta componendo, e lo puoi ancora cambiare o scartare |
 | **azzurro** | `T_LAVORAZIONE` | il sistema sta lavorando |
 | **ambra** | `T_ATTESA` | la palla è tua: il task non va avanti finché non dici qualcosa |
-| **nessun colore** | `T_ATTESA · di un'ora` | l'hai rimandato e torna da sé: non chiede niente |
+| **nessun colore** | `T_ATTESA · di un'ora` | l'hai rimandato: non chiede niente finché l'ora non scade, poi diventa ambra dove si trova |
 
 Un task **fermo**, che non può proseguire da solo, resta ambra: non ha un colore suo perché
 a sbloccarlo sei comunque tu.
