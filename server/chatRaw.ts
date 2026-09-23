@@ -32,7 +32,8 @@ export function oraDiRoma(istante: Date): { giorno: string; timestamp: string } 
   return { giorno, timestamp: `${giorno}T${parti.hour}:${parti.minute}:${parti.second}${segno}${hh}:${mm}` };
 }
 
-export const portaChatRaw: Connect.NextHandleFunction = (req, res) => {
+/** La porta, per la cartella di un utente. I test la aprono su una cartella temporanea. */
+export const creaPortaChatRaw = (casa: string): Connect.NextHandleFunction => (req, res) => {
   if (req.method !== 'POST') {
     res.statusCode = 405;
     res.end();
@@ -62,7 +63,7 @@ export const portaChatRaw: Connect.NextHandleFunction = (req, res) => {
     }
     try {
       const { giorno, timestamp } = oraDiRoma(istante);
-      const cartella = join(CASA, 'chat-raw');
+      const cartella = join(casa, 'chat-raw');
       mkdirSync(cartella, { recursive: true });
       appendFileSync(
         join(cartella, `${giorno}.jsonl`),
@@ -78,3 +79,5 @@ export const portaChatRaw: Connect.NextHandleFunction = (req, res) => {
     }
   });
 };
+
+export const portaChatRaw = creaPortaChatRaw(CASA);

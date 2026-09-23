@@ -90,10 +90,12 @@ determina, ci si ferma e la si scrive in `tasks/da_definire.md`.
 ## 6 · Chiusura
 
 - [ ] **Il runtime supportato**, dopo il passaggio a React (storico §15).
-- [ ] **Scenari e verifiche riscritti** per DESK, SIDEBAR, NOTIFICATIONBAR, doppio
+- [x] **Scenari e verifiche riscritti** per DESK, SIDEBAR, NOTIFICATIONBAR, doppio
   archivio, confine utente, persistenza e transizioni definitive; test automatici per
-  modello, motore, archivio e confini dei servizi. *In parte*: i test di modello, Delay e
-  AI ci sono; mancano quelli dell'interfaccia, delle porte del server e della chat raw.
+  modello, motore, archivio e confini dei servizi. *Fatto* (storico §151): `npm test` — 48
+  test su modello, Delay, AI, porte del server e chat raw; `npm run test:interfaccia` — 38
+  test nel browser su aree, flusso della mail a Elena, schede di conformità, cassetto e
+  movimenti, con l'AI a copione e un archivio di prova.
 - [ ] **Verifica finale di conformità.** Il codice non contiene comportamenti che `docs/`
   non definisce, e ogni area osservabile corrisponde alla documentazione. Le voci
   rimanenti di `audit/AUDIT.md` sono chiuse.

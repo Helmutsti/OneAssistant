@@ -18,5 +18,5 @@
     "noUncheckedIndexedAccess": true,
     "types": ["node"]
   },
-  "include": ["src", "server", "vite.config.ts", "vitest.config.ts"]
+  "include": ["src", "server", "test", "vite.config.ts", "vitest.config.ts", "playwright.config.ts"]
 }

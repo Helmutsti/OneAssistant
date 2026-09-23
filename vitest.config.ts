@@ -4,5 +4,5 @@ import { defineConfig } from 'vitest/config';
 // del sito (`vite.config.ts`) porta con sé le porte verso l'archivio e verso OpenRouter,
 // e qui non servono.
 export default defineConfig({
-  test: { include: ['src/**/*.test.ts'] },
+  test: { include: ['src/**/*.test.ts', 'server/**/*.test.ts'] },
 });

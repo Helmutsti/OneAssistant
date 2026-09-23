@@ -24,3 +24,7 @@ Archivio/users/*/chat-raw/*.jsonl
 .env.*
 chiave.txt
 pubblico/chiave.txt
+
+# I risultati dei test del browser.
+test-results/
+playwright-report/

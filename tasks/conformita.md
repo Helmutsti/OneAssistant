@@ -169,5 +169,6 @@ tessere, il focus e il cassetto aperto; gli elementi si ritrovano dagli attribut
 confrontano font, misura, peso, interlinea, spaziatura, colore, padding, raggio, gap e
 posizione.
 
-Gli script sono in `.playwright-mcp/` e non stanno nel repo: vanno portati nei test
-dell'interfaccia (`pronti_per_lo_sviluppo.md` §6).
+Le misure principali sono diventate test: `test/interfaccia/conformita.spec.ts`, che gira
+con `npm run test:interfaccia`. Se un numero del codice si allontana dal documento, lì si
+rompe.

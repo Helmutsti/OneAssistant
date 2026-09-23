@@ -630,3 +630,7 @@ Le strade provvisorie su quello che `docs/` non dice stanno in `tasks/da_definir
 | # | Decisione | Motivo |
 |---|---|---|
 | 150 | **Le voci ✗ delle schede sono fatte**: i movimenti di `L2 - Bubble movement` — la nascita lungo un arco dalla dropzone, l'onda delle vicine, la contrazione e il volo verso il chip, il richiamo che risale dove stava, l'uscita sul posto a scala 94% con le vicine che si riavvicinano, la dissolvenza di 180 ms della active —; la chiusura del cassetto coi ritardi invertiti; i chip al 45% durante la raccolta; le tessere di carta, vetro e tratteggio. Con `prefers-reduced-motion` non si muove niente | chiesto dal proprietario del progetto. Ogni movimento ha la sua causa scritta nel documento, e nessuno è decorativo |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 151 | **I test dell'interfaccia e delle porte.** `npm run test:interfaccia` (Playwright, nel Chrome di sistema, a 1440 × 900): le aree e i loro ancoraggi, il flusso della mail a Elena di `L3` con la Funzione Delay su un orologio finto, le misure delle schede di conformità, il cassetto, i movimenti, il movimento ridotto. L'AI è a copione e l'archivio è di prova: nessun test tocca i dati dell'utente. `npm test` aggiunge le porte del server — il confine dell'archivio, anche attraverso un collegamento — e la chat raw, sul server e nel browser | chiesto dal proprietario del progetto (`pronti_per_lo_sviluppo.md` §6). Una scheda di conformità scritta una volta sola non ferma la prossima deriva; un test sì |
