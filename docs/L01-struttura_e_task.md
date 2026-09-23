@@ -86,7 +86,7 @@ Se ha prodotto un invio verso l'esterno, resta in SIDEBAR per i 90 secondi della
 Delay — e in quella finestra è ancora `T_LAVORAZIONE`, azzurro, perché l'invio non è partito.
 
 Il **verde** non è un colore di stato: è il segno della bolla **active**, quella a cui stai
-parlando, e sta accanto al suo titolo. Nessun task è mai verde.
+parlando, e sta a sinistra della sua icona. Nessun task è mai verde.
 
 I valori esatti e il modo in cui i colori si comportano sul vetro stanno in
 `docs/design/L0 - Sistema`, legge 04.

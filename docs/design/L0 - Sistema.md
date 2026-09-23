@@ -131,7 +131,7 @@ hai chiesto tu e uno nato da una cosa arrivata hanno lo stesso vetro, lo stesso 
 stesso inchiostro. L'origine si sa, non si vede.
 
 La **active** è la bolla a cui INPUT sta parlando — una sola per volta — e si riconosce da
-un segno solo: **un pallino verde accanto al suo titolo**, mai dall'essere il doppio delle
+un segno solo: **un pallino verde a sinistra dell'icona della bolla**, mai dall'essere il doppio delle
 altre.
 
 ### 03 · Un task in un posto solo
@@ -179,7 +179,7 @@ nessuno dei due pesa più dell'altro. L'ambra è più chiara apposta: è l'unica
 qualcosa a te.
 
 Il **verde** `#00A878` non compare in questa tabella perché non è uno stato: è il pallino
-della bolla **active**, accanto al titolo e all'icona. È l'unico posto in cui il verde
+della bolla **active**, a sinistra della sua icona. È l'unico posto in cui il verde
 esiste, ed è per questo che si riconosce da lontano.
 
 Nessun colore «di app», nessun colore decorativo: contenuti e immagini si mostrano

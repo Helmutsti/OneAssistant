@@ -470,3 +470,22 @@ e per cascata in L3 e L4.
 
 **Scritto in:** `L0` (§Le quattro taglie; §SIDEBAR con la tinta velata), `L2 - Bubble` (due
 sezioni nuove, «La bolla focus» e «La bolla documento»), `L2 - Sidebar` (chip velati).
+Per cascata, `L4 - Schermate` ha due scene nuove: la 5, «In focus», e la 6, «Un documento».
+
+---
+
+## 23 settembre 2026 — il pallino della active
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 116 | **Il pallino verde della bolla active sta a sinistra della sua icona**, non accanto al titolo. Nel chip, davanti alla sua icona | era un malinteso: i documenti lo mettevano accanto al titolo, e così era stato disegnato |
+
+**Scritto in:** `L0` leggi 02 e 04, `docs/L01` §Il colore di uno stato, `L2 - Bubble` (tre testi,
+e il disegno delle sezioni focus e documento), `L4 - Schermate` (scene 5 e 6). La bolla
+canonica di `L2 - Bubble` e le scene di `L3` non disegnano il pallino, quindi non cambiano.
+| 117 | **La targa di stato prende il colore della sua icona**, a 12 px, peso 500: ambra `#EDA31C`, azzurro `#009DD6`, grigio `#94968E`; senza colore resta `#5A5F58`. Anche l'icona usa il colore di stato vero, non più le versioni scure `#8A5A17` e `#0B5B7A` | scelta del proprietario del progetto su una tavola di prova. Più tenue di prima — contrasto 1,9 per l'ambra, 2,7 per l'azzurro — e per questo più grande: la legge 07 non ammette il grassetto |
+
+**Scritto in:** `L2 - Bubble` (la scheda della targa, il catalogo dei titoli, la tabella dominio ×
+stato, le sezioni focus e documento), `L3 - Flusso task` (le targhe e il chip dei novanta
+secondi, che segue anche la tinta velata), `L4 - Schermate`. In `L3` le targhe restano alla
+misura della scena, che è disegnata in piccolo.
