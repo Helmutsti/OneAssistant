@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lucide-static@0.454.0/font/lucide.css" rel="stylesheet">
 <link rel="stylesheet" href="./liquid-glass.css">
 <link rel="stylesheet" href="./materiali.css">
 <style>
@@ -67,7 +68,7 @@
   .segno-punti{border-bottom:2px dotted rgba(26,28,25,.45);padding-bottom:1px}
   .dicibili{display:flex;gap:14px;margin:12px -18px -14px;padding:10px 18px 14px;border-top:1px solid rgba(26,28,25,.16);flex-wrap:wrap;font-size:14.5px;color:var(--tenue)}
   .dicibili .prima{color:var(--inchiostro)}
-  .pallino{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--salvia);vertical-align:2px;margin-right:5px}
+  .pallino{display:inline-block;width:9px;height:9px;border-radius:50%;background:#00A878;vertical-align:2px;margin-right:5px}
   .anello{display:inline-block;width:11px;height:11px;border-radius:50%;border:2.5px solid var(--ambra-viva);vertical-align:-1px;margin-right:6px}
   .conteggio{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 8px;border-radius:999px;background:rgba(255,255,255,.62);border:1px solid rgba(26,28,25,.12);font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;color:var(--salvia);flex:none}
   .dropzone{border-radius:22px;padding:12px 14px;
@@ -84,7 +85,7 @@
   .porta{position:absolute;left:26px;bottom:26px;display:flex;align-items:center;gap:11px}
   .porta .campo{position:static;left:auto;bottom:auto}
   .basso .porta,.basso .bolla{position:static;left:auto;right:auto;bottom:auto}
-  .ascolto{display:inline-block;width:9px;height:9px;border-radius:50%;background:#4E6B54;flex:none}
+  .ascolto{display:inline-block;width:9px;height:9px;border-radius:50%;background:#00A878;flex:none}
   .pensiero{width:15px;height:15px;border-radius:50%;border:2px solid rgba(26,28,25,.16);border-top-color:#4E6B54;animation:gira .85s linear infinite;flex:none}
   @keyframes gira{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion: reduce){ .pensiero{animation-duration:2.4s} }
@@ -249,6 +250,22 @@
     </div>
     <div class="palco">
       <div class="porta"><div class="campo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;flex:none;color:var(--tenue)"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M7 16h10"/></svg><span class="cursore"></span><span>scrivi</span></div></div>
+    </div>
+  </section>
+
+  <section class="banda">
+    <div class="titolo-sez">
+      <h2>Variante &middot; la domanda</h2>
+      <span class="spiega">Quando il sistema ha bisogno di sapere, lo chiede qui, in ambra. Il pallino dell&rsquo;ascolto diventa un anello che aspetta; le risposte non hanno pallino, perch&eacute; sono equivalenti.</span>
+    </div>
+    <div class="palco">
+      <div class="porta"><span style="display:inline-block;width:13px;height:13px;border-radius:50%;border:2px solid #EDA31C;box-sizing:border-box;flex:none;box-shadow:0 0 0 5px rgba(237,163,28,0.18)"></span>
+        <div class="bolla" style="position:static;width:560px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><i class="icon-circle-help" style="font-size:14px;line-height:1;color:#EDA31C"></i><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDA31C">Ti sto chiedendo</span></div>
+          <div class="frase">Le dico anche del luned&igrave;?</div>
+          <div class="dicibili"><span class="prima">&laquo;s&igrave;, anche luned&igrave;&raquo;</span><span class="prima">&laquo;no, solo venerd&igrave;&raquo;</span></div>
+        </div>
+      </div>
     </div>
   </section>
 

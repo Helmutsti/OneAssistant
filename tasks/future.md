@@ -107,3 +107,9 @@ commenti della vecchia versione non sono fonti di verità.
 - [ ] **Verifica finale di conformità.** Considerare completata la migrazione soltanto
   quando il codice non contiene più comportamenti non definiti dalla documentazione
   della root e ogni area osservabile corrisponde alla documentazione della root.
+
+## Da riprendere più avanti
+
+- [ ] **L'età nella targa.** Tolta il 23 settembre 2026 (storico §121): «2 min», «09:41» a destra
+  della targa. Forse utile per quello che arriva da fuori, rumore per i task aperti
+  dall'utente. Da riprendere quando si sarà vista una scrivania piena.

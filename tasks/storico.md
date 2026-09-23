@@ -508,3 +508,21 @@ inchiostro sul fondo; la partitura ha nove battute.
 
 **Non toccati:** i colori della partitura (ambra per TU, un verde salvia `#7FA083` per SISTEMA)
 non sono colori di stato. Il salvia però appartiene alla tavolozza caduta il 22 settembre.
+
+---
+
+## 23 settembre 2026 — le tre voci rimaste aperte
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 121 | **La targa non porta più l'età** — il tempo trascorso o l'ora a destra, «2 min», «09:41» —: restano icona e stato. Se ne riparla più avanti (`tasks/future.md`) | scelta del proprietario del progetto |
+| 122 | **La domanda del sistema è una faccia di INPUT**: «Variante · la domanda» in `L2 - INPUT` — targa ambra «ti sto chiedendo», il pallino dell'ascolto che diventa un anello, le risposte senza pallino | il flusso mostrava una faccia che il componente non aveva |
+| 123 | **La partitura di `L3` resta com'è**, col suo salvia per SISTEMA | è solo uno schema, non un colore di stato |
+
+**Scritto in:** `L1 - Icone`, `L1 - Temi`, `L2 - Bubble` (la scheda della targa perde «età a
+destra»), `L2 - Sidebar`, `L3 - Flusso task`, `L4 - Schermate` per l'età; `L2 - INPUT` per la
+domanda. Le ore d'inizio delle schede di `L3` e l'ora d'arrivo dei banner non sono età di una
+targa, e restano.
+
+**Corretto insieme, per cascata:** in `L2 - INPUT` il pallino dell'ascolto e quello della frase
+più probabile erano ancora salvia `#4E6B54`; ora sono verdi `#00A878`, come vuole la legge 04.
