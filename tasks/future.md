@@ -72,3 +72,25 @@ Le voci ancora aperte sono passate il 23 settembre 2026 in
 - [ ] **Il microfono che si preme.** `docs/L02` §SYSTEMBAR dice che si spegne e si riaccende
   premendolo; nel prototipo non c'è ascolto, quindi per ora premerlo non fa niente e la
   SYSTEMBAR lo mostra soltanto (storico §138). Arriva con la voce dell'utente.
+
+## Proposte da decidere
+
+Proposte fatte al proprietario del progetto il 23 settembre 2026, dopo la prima prova dal
+vivo con Anthropic (storico §152–§154). Nessuna è decisa.
+
+- [ ] **Togliere il passo `guarda` all'inizio di ogni frase.** Oggi ogni frase costa tre
+  chiamate al modello: guarda lo schermo, fa la mossa, risponde. Se la prima richiesta
+  portasse già lo schermo, dopo il prefisso in cache, le chiamate scenderebbero a due e
+  l'attesa di circa un terzo. Tocca soltanto il codice.
+- [ ] **Le frasi di sicurezza senza l'AI.** «no, aspetta» fermerebbe l'invio subito, nel
+  codice, senza chiedere al modello: oggi funziona, ma passa da due chiamate e qualche
+  secondo mentre i 90 secondi della Funzione Delay scorrono. Tocca `docs/L01`: il testo va
+  sottoposto prima di scriverlo.
+- [ ] **OneAssist come faccia di OpenClaw.** Un agente autonomo come OpenClaw potrebbe
+  lavorare dietro OneAssist come un servizio: OneAssist resta l'unico che muove lo schermo,
+  e mostra quello che l'agente fa come task, con la Funzione Delay e le conferme di sempre.
+  È la strada che tiene il controllo e la visibilità dell'utente.
+- [ ] **Chiamare Claude come fa Open Design.** Open Design avvia il `claude` da riga di
+  comando come processo separato, con gli strumenti esposti da un server MCP. Da valutare
+  solo se servisse usare un abbonamento invece dei crediti delle API: i termini d'uso non
+  sono verificati, e ogni chiamata aprirebbe una conversazione nuova.
