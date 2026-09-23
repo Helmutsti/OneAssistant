@@ -489,3 +489,22 @@ canonica di `L2 - Bubble` e le scene di `L3` non disegnano il pallino, quindi no
 stato, le sezioni focus e documento), `L3 - Flusso task` (le targhe e il chip dei novanta
 secondi, che segue anche la tinta velata), `L4 - Schermate`. In `L3` le targhe restano alla
 misura della scena, che è disegnata in piccolo.
+
+---
+
+## 23 settembre 2026 — il flusso dei task riallineato
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 118 | **Il flusso passa dalla bozza**: la scena 3 diventa «La bozza» — grigia, nella dropzone, con le sue tessere, mentre INPUT resta libero — e nasce una battuta tua, «La conferma»: dici «vai» e la bolla vola al suo posto lungo un arco, già azzurra. Le battute diventano nove | «Il parto» faceva nascere il task al centro e spegneva INPUT: contraddiceva `docs/L01` (`T_DRAFT`), `docs/L02` (INPUT non si occupa mai) e la decisione §84 |
+| 119 | **Mentre il sistema fa una domanda, il task è ambra**: targa «ti sto chiedendo», finché non rispondi | aspetta una tua parola, quindi è `T_ATTESA` (`docs/L01`) |
+| 120 | **Tolti dalla tavola il blocco «Deciso insieme · ora è legge» e il riquadro «Ancora aperta»** | una tavola non porta elenchi di decisioni (`AGENTS.md` §11), e tre voci su sei erano superate: «massimo 720 px», «NOTIFICATIONBAR inchiostro diretto», la SIDEBAR con uno scopo assegnato |
+
+**Corretto insieme, in `L3 - Flusso task`:** il pallino dell'ascolto e della frase più probabile
+è verde, non azzurro; le frasi della scena «Aspetta te» escono dalla bolla ed entrano in
+INPUT; la active non cresce più del 50% ma prende il pallino verde; «AMBRA → SALVIA» diventa
+«AMBRA → AZZURRO»; le frasi dette nelle scene 1 e 8 stanno in una bolla di INPUT, non a
+inchiostro sul fondo; la partitura ha nove battute.
+
+**Non toccati:** i colori della partitura (ambra per TU, un verde salvia `#7FA083` per SISTEMA)
+non sono colori di stato. Il salvia però appartiene alla tavolozza caduta il 22 settembre.
