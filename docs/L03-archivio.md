@@ -64,6 +64,7 @@ Utente:
 System preferences
 	focuses:          uno per riga, «indirizzo - nome del luogo»
 	theme:            il nome di uno dei dodici temi
+	material:         light | dark — il vetro chiaro o il vetro scuro; se manca, light
 assistant:
 	reading:          on | off — la lettura ad alta voce
 	settings:

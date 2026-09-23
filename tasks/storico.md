@@ -560,3 +560,61 @@ SIDEBAR).
 | # | Decisione | Motivo |
 |---|---|---|
 | 126 | **`L1 - Moodboard` resta com'è: è un file a sé**, un riferimento d'atmosfera, e non si allinea per cascata alle regole che cambiano — il «verde salvia sordo» dell'introduzione e «il grassetto non esiste» senza l'eccezione del 600 restano | scelta del proprietario del progetto |
+
+---
+
+## 23 settembre 2026 — `tasks/` riallineato, e si passa al codice
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 127 | **Il lavoro sul codice va in `tasks/pronti_per_lo_sviluppo.md`**, in ordine di dipendenza: toolchain e confine dell'archivio, l'invio verso l'esterno, il modello dei task, nomi e fonti, le aree dentro il passaggio a React, la chiusura. Da `future.md` escono le voci aperte del codice; la selezione della memoria passa in `da_definire.md`, e la Memory Engine permanente aspetta quella decisione. `bonifica-design.md` è chiuso, e `future.md` dice `T_DRAFT` invece di `T_NUOVO` | chiesto dal proprietario del progetto: `docs/` è la verità assoluta e il codice si adegua. I tre file di `tasks/` descrivevano ancora lo stato di prima del 22 e 23 settembre |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 128 | **Il codice si ricostruisce sul modello dei documenti, non si corregge pezzo per pezzo.** Restano i pezzi che non dipendono dal modello — server, connettore OpenRouter, chat raw, archivio, voce, servizi simulati; il motore dei task e l'interfaccia si rifanno in React e Tailwind sui quattro stati, con la Funzione Delay vera dall'inizio. Ordine: il modello coi suoi test, lo scheletro React con le aree ancorate, un componente per volta sui valori di `L1 - Token`, la rimozione del vecchio | scelta del proprietario del progetto. Il codice importato è un altro prodotto — sei luoghi, sei avanzamenti, gruppi, trentadue comandi — e correggere la Delay su un motore da buttare sarebbe lavoro fatto due volte (ponte §7) |
+
+**La ricostruzione, fatta il 23 settembre** (§128). Cosa è cambiato, e perché:
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 129 | **Il codice vecchio è uscito dal repo**: `src/` di prima (≈ 12 600 righe, compresi `src/prova/` e `base.css`), `pubblico/suoni/` e `pubblico/volto.png`. Il nuovo sta in `src/modello` (i quattro stati, la Delay), `src/ai` (vocabolario chiuso in due ruoli, conversazione e lavoro), `src/ui` (React e Tailwind, il materiale importato da `docs/design/`), `src/voce` (Piper), e le porte in `server/` | §2, §4, §5, §7, §9, §12. Il suono delle notifiche è quello di `Archivio/system-storage/` (§110); il volto di riserva e i campanelli non stavano in nessun documento |
+| 130 | **L'archivio si legge soltanto**, e confina alla cartella dell'utente anche sul percorso reale; la scrittura della memoria non esiste più | §5; audit `F-009`, `F-010` |
+| 131 | **La chat raw ha un fuso solo**, Europe/Rome, per il nome del file e per l'ora della riga, e il salvataggio riprova finché il server non conferma; un fallimento si dice a schermo | §16 |
+| 132 | **Il lavoro di un task non fa uscire niente da solo**: un task che esce dal computer si dichiara pronto e aspetta la parola dell'utente | `docs/L01`: niente parte verso il mondo senza l'utente; la Delay protegge l'invio, non la decisione di farlo |
+
+Le strade provvisorie su quello che `docs/` non dice stanno in `tasks/da_definire.md`
+(D1–D11), con sei contraddizioni fra documenti di design trovate strada facendo (C8–C13).
+
+---
+
+## 23 settembre 2026 — le prime risposte sulle strade provvisorie
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 133 | **Una bozza nuova, a dropzone occupata, manda in SIDEBAR quella che c'era**, ancora bozza: la stessa regola della notifica accettata (`da_definire` D1) | scelta del proprietario del progetto. La dropzone ne mostra una alla volta, e la regola è una sola per chiunque la occupi |
+| 134 | **Dopo «no, aspetta» il task torna da solo in DESK** e diventa la active: dirlo è richiamarlo. Resta in SIDEBAR solo se l'utente lo specifica (D3) | scelta del proprietario del progetto. Sostituisce la strada provvisoria, che lo lasciava in SIDEBAR |
+| 135 | **Confermate tre strade provvisorie**: il WorkMode non compare finché non è scritto come si calcola (D4); le notifiche del prototipo sono le righe «ricevuta» di `services/email.txt`, tutte promosse (D5); `wallpaper.jpg` non fa da fondo, il fondo è quello del tema (D6) | scelta del proprietario del progetto |
+| 136 | **Il tema scuro c'è**: i due materiali stanno in `docs/design/materiali.css` e `temi.css`, e il codice li usa così come sono (D7). Resta da scrivere in `docs/L03` con quale chiave di `preferences.txt` si sceglie | detto dal proprietario del progetto: chiaro e scuro sono definiti nel design. `L1 - Temi` dice «si sceglie nel profilo, non si deduce da niente», e `docs/L03` ha solo `theme` |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 137 | **Il materiale si sceglie con una chiave sua**, `material: light \| dark` in `System preferences` di `preferences.txt`; se manca, `light`. Il tema resta `theme`, e le due chiavi sono separate. Scritto in `docs/L03` col testo approvato. Chiude D7 | approvato dal proprietario del progetto. `L1 - Temi`: «un tema è una tinta, non un materiale: vale in chiaro e in scuro», e «si sceglie nel profilo, non si deduce da niente» |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 138 | **D2**: il sotto-task compare in DESK. **D8**: il microfono per ora non si preme, è un'implementazione futura (`tasks/future.md`). **D9**: una bozza in SIDEBAR prende il colore della bozza, il grigio. **D10**: l'ultimo scambio resta 12 secondi, se non offre frasi. **D11**: resta in `da_definire`, fermo | scelte del proprietario del progetto |
+| 139 | **La TIMELINE è un componente ancora completamente da scrivere**: esiste solo la struttura estetica, e al suo design non è stato attribuito nessun significato | detto dal proprietario del progetto rispondendo a C11. Annotato in `tasks/da_definire.md` (T1) |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 140 | **C8**: in `L4 - Schermate`, scene 3 e 4, la bolla «Acme — proposta commerciale» perde il divisore e le tre frasi: le frasi stanno in INPUT | approvato dal proprietario del progetto: `L4` si allinea a `L3 - Flusso task` e `L2 - Bubble` |
+| 141 | **C9**: in `L2 - Bubble` il titolo della bolla d'esempio e la sua didascalia passano da 27 a 21 px, il valore di `L1 - Token`. Per cascata, i quattro titoli di bolla di `L4 - Schermate` passano da 17 a 21. `L1 - Icone`, che ne disegna tre a 27, è di livello 1 e resta segnalato | approvato dal proprietario del progetto |
+| 142 | **C12**: la legge 07 ammette il 600 anche per l'«adesso» della TIMELINE | approvato dal proprietario del progetto. `L2 - TIMELINE` diceva già 20/600 |
+| 143 | **D12**: il chip di una bozza è velato di grigio al 22%, in `L0` §SIDEBAR e in `L2 - Sidebar` | approvato dal proprietario del progetto. Il grigio sta alla stessa luminanza dell'azzurro (legge 04) |
+| 144 | **C10**: in `L2 - Notificationbar` la notifica presa «nasce bozza, nella dropzone», e cade il riquadro «Passato e futuro nella stessa fila» | approvato dal proprietario del progetto: allinea il documento a `docs/L01` e `docs/L02` (bozza in `T_DRAFT`, rimandati in SIDEBAR) |
+| 145 | **C13**: la SIDEBAR non ha un tetto di quattro chip. Se ne mostrano quanti ne entrano fino alla campanella della NOTIFICATIONBAR; quelli che non entrano diventano un numero, **senza colore** | scelta del proprietario del progetto. Con l'ambra in cima, i chip nascosti tendono a non essere ambra; il numero resta comunque neutro. **Il testo di `L2 - Sidebar` va sottoposto** |
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 146 | **C13, scritto**: in `L2 - Sidebar` la riga di testa dice «larghezza intrinseca · fino alla campanella», e il riquadro «Oltre quattro si raggruppa» diventa «Fin dove c'è posto» col testo approvato | approvato dal proprietario del progetto; applica §145 |
+| 147 | **C14**: le tre bolle di `L1 - Icone` hanno il titolo a 21 px, come `L1 - Token` | approvato dal proprietario del progetto. Due documenti dello stesso livello si contraddicevano: la cascata non poteva risolverlo |

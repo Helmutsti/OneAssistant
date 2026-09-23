@@ -10,10 +10,11 @@ un utente, sta andando nel posto sbagliato.
 
 ```
 pubblico/
-  volto.png       il volto di riserva, quando un utente non ha un avatar suo
-  suoni/          i campanelli che spedisce l'app
   ort/            i binari della voce — NON nel repo, vedi sotto
 ```
+
+Il suono delle notifiche non sta qui: è un file del sistema, in
+`Archivio/system-storage/notification.mp3` (`docs/L03`), e lo serve la porta `/sistema`.
 
 ## `ort/` non è nel repo
 

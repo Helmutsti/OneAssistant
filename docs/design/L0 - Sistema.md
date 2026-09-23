@@ -223,8 +223,8 @@ quelle di tipo, ma obbediscono alla stessa regola: mai senza un valore o una par
 **IBM Plex Mono** per targhe, dati, stati e misure.
 
 Il grassetto non esiste nell'interfaccia: dove serve enfasi, **si cambia scala, non peso**.
-Unica eccezione, il **600** per il titolo di una bolla e per il WorkMode della PROFILEBAR:
-stacca dalle altre fasce senza diventare un'insegna.
+Uniche eccezioni, il **600** per il titolo di una bolla, per il WorkMode della PROFILEBAR e per
+l'«adesso» della TIMELINE: stacca dalle altre fasce senza diventare un'insegna.
 
 ### 08 · Il layer è sopra, non al posto
 
@@ -327,8 +327,8 @@ acceso.
 ### SIDEBAR
 I chip, i flussi e i rimandati; l'ambra sta in cima. Un chip è **una bolla che si è
 stretta**: icona di tipo, nome come lo diresti, un dato solo. **Il vetro del chip prende
-per intero il colore del suo stato**, velato — ambra al 30%, azzurro al 22% — e non porta un
-pallino di stato; il verde della
+per intero il colore del suo stato**, velato — ambra al 30%, azzurro al 22%, grigio al 22% per una bozza — e non porta
+un pallino di stato; il verde della
 active invece resta, perché non è uno stato. Subito sotto la SYSTEMBAR, a 22 px, in
 verticale: se la pila sopra cresce, scende con lei.
 

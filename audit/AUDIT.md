@@ -17,6 +17,13 @@ nessuno dei tre audit.**
 
 ## 0 · Stato al 23 settembre 2026
 
+> **Il codice misurato qui non c'è più.** Il 23 settembre 2026, sera, `src/` è stato
+> ricostruito sul modello di `docs/` (storico §128–§132): le voci di codice di questo
+> registro descrivono il codice di prima e **vanno rimisurate** sul nuovo, non chiuse a
+> occhio. Già verificati sul nuovo, con prova: `F-001` … `F-005` (la Delay, 36 test),
+> `F-009` e `F-010` (il confine, provato dal vivo), `F-100` (i rimandi al corpus scomparso
+> sono usciti col codice). Resta la regola: una voce si chiude solo con una verifica.
+
 **Le dodici domande di §5 hanno tutte una risposta.** Erano il blocco dichiarato del
 registro — «finché non si risponde, ogni correzione è provvisoria» — e sono state sciolte
 il 22 settembre. Le decisioni, con data e motivo, stanno in `tasks/storico.md`.

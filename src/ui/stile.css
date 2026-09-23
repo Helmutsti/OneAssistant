@@ -1,0 +1,150 @@
+/* Il materiale entra dal suo file, senza copie: il vetro, i due materiali, i dodici temi
+   (`docs/design/`). Qui stanno solo i valori di `L1 - Token` che nessun CSS del design
+   porta, e la ricetta della bolla di `L2 - Bubble`. */
+
+@import 'tailwindcss';
+@import '../../docs/design/liquid-glass.css';
+@import '../../docs/design/materiali.css';
+@import '../../docs/design/temi.css';
+
+:root {
+  /* Colore di stato (`L1 - Token`, `docs/L01`). Il verde non è uno stato. */
+  --grigio: #94968e;
+  --azzurro: #009dd6;
+  --ambra: #eda31c;
+  --verde: #00a878;
+  /* Inchiostro: il tema lo ridefinisce (`temi.css`), qui i valori base. */
+  --i: var(--inchiostro, #1a1c19);
+  --i-corpo: var(--inchiostro-tenue, #3e423c);
+  --i-tenue: var(--inchiostro-corpo, #4a4e48);
+  --i-fioco: var(--inchiostro-fioco, #5a5f58);
+  /* Le tessere, e il velo del cassetto: nero 54% in chiaro, 58% in scuro (`L1 - Temi`). */
+  --tessera: rgba(255, 255, 255, 0.55);
+  --velo: rgba(18, 22, 18, 0.54);
+  --margine: 44px;
+  --aria: 22px;
+  font-family: Manrope, system-ui, sans-serif;
+  color: var(--i);
+}
+
+:root[data-tema='scuro'] {
+  --tessera: rgba(255, 255, 255, 0.08);
+  --velo: rgba(0, 0, 0, 0.58);
+}
+
+html,
+body,
+#palco {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  /* Il fondo del sistema operativo: si vede ai bordi in ogni composizione (legge 08). */
+  background: linear-gradient(180deg, var(--f1, #c6cbc9) 0%, var(--f2, #b9beb9) 42%, var(--f3, #9ba096) 68%, var(--f4, #7c8178) 100%);
+}
+
+.mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* La ricetta, per intero (`L2 - Bubble`). */
+.vetro {
+  background: var(--liquid-film);
+  -webkit-backdrop-filter: var(--liquid-optics);
+  backdrop-filter: var(--liquid-optics);
+  box-shadow: var(--liquid-edge);
+}
+.vetro-fuoco {
+  background: var(--liquid-focus);
+  -webkit-backdrop-filter: var(--liquid-optics);
+  backdrop-filter: var(--liquid-optics);
+  box-shadow: var(--liquid-edge);
+}
+.vetro-quieto {
+  background: var(--liquid-quiet);
+  -webkit-backdrop-filter: var(--liquid-optics);
+  backdrop-filter: var(--liquid-optics);
+  box-shadow: var(--liquid-edge);
+}
+
+/* La targa: IBM Plex Mono 12 / 500 / +0.16em, nel colore dell'icona. */
+.targa {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Il divisore: il vetro che ha uno spessore inciso. */
+.incisione {
+  height: 2px;
+  background: linear-gradient(to bottom, var(--incisione-ombra, rgba(26, 28, 25, 0.11)) 0 1px, var(--incisione-luce, rgba(255, 255, 255, 0.72)) 1px 2px);
+}
+
+/* Il pallino: 9 px, un segno solo (`L1 - Token`). */
+.pallino {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--verde);
+}
+
+/* Ciò che lavora: il contorno pulsa una volta ogni 4 s, l'unico segno di vita. */
+@keyframes pulsa {
+  0%, 70%, 100% { box-shadow: var(--liquid-edge); }
+  85% { box-shadow: var(--liquid-edge), 0 0 0 2px rgba(0, 157, 214, 0.28); }
+}
+.lavora {
+  animation: pulsa 4s ease-in-out infinite;
+}
+
+@keyframes nasce {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.nasce {
+  animation: nasce 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes svanisce {
+  to { opacity: 0; }
+}
+.svanisce {
+  animation: svanisce 320ms ease-out both;
+  pointer-events: none;
+}
+
+@keyframes gira {
+  to { transform: rotate(360deg); }
+}
+.anello {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(148, 150, 142, 0.45);
+  border-top-color: var(--verde);
+  animation: gira 900ms linear infinite;
+}
+
+@keyframes squilla {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-12deg); }
+  45% { transform: rotate(8deg); }
+  60% { transform: rotate(-5deg); }
+  75% { transform: rotate(2deg); }
+}
+.squilla {
+  animation: squilla 640ms ease-in-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lavora, .nasce, .anello, .squilla { animation: none; }
+}

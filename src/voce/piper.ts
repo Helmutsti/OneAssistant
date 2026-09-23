@@ -1,17 +1,6 @@
-// Piper: un modello di voce che gira **qui dentro**, senza rete e senza che esca niente.
-//
-// È la terza strada di docs/08-voce: la sintesi di sistema non regge un personaggio, e
-// una voce in rete manderebbe fuori il contenuto delle tue cose a ogni frase. Un modello
-// in locale è l'unico modo di avere tutte e due.
-//
-// Tre pezzi in fila, e nessuno è magico:
-//
-//   1. **eSpeak NG** — in WebAssembly — trasforma le parole in fonemi. È il pezzo che sa
-//      l'italiano: che «gli» non è «g-l-i» e che «perché» non finisce come «perche».
-//   2. la **mappa dei fonemi** del modello li trasforma in numeri, con un separatore
-//      fra l'uno e l'altro: è la convenzione di Piper, non una nostra scelta.
-//   3. **onnxruntime** fa girare il modello e restituisce dei campioni audio.
-//
+// Piper: la voce dell'assistente, un modello che gira qui dentro, senza rete per il testo
+// (`docs/L04`: «Piper e Serena HIGH»). Tre pezzi in fila: eSpeak NG trasforma le parole in
+// fonemi, la mappa del modello li trasforma in numeri, onnxruntime restituisce l'audio.
 // Il modello si scarica la prima volta e resta nella cache del browser.
 
 import ESpeakNg from 'espeak-ng';
@@ -25,7 +14,7 @@ ort.env.wasm.numThreads = 1;
 ort.env.logLevel = 'error';
 
 /**
- * Le voci italiane di Piper. Il genere lo dice il profilo (docs/08-voce §3).
+ * Le voci italiane di Piper. Il genere lo dice il profilo (`docs/L03`, `voice`).
  *
  * Nel catalogo di Piper l'italiano ha quattro voci e basta: `paola-medium`,
  * `serena-medium`, `serena-high`, `riccardo-x_low`. Si prende la migliore che c'è, e
@@ -35,11 +24,11 @@ ort.env.logLevel = 'error';
  * Costa, e va detto: 114 MB invece di 63, e **otto volte** il tempo di generazione —
  * 8,5 s contro 1,05 s per una risposta lunga intera, su questa macchina.
  *
- * Quel numero però non è quello che si sente. `BoccaInLocale` spezza in frasi e genera
+ * Quel numero però non è quello che si sente. `voce.ts` spezza in frasi e genera
  * la prossima **mentre** questa suona, quindi si aspetta solo la prima: misurata,
  * **1,3 s** per «Me lo segno su Acme.» e **3,5 s** per la prima frase di una risposta
  * lunga. È il prezzo vero, ed è quello da riguardare se un giorno sembra troppo — il
- * posto dove intervenire è la pipeline in `bocca.ts`, non questa riga.
+ * posto dove intervenire è la fila in `voce.ts`, non questa riga.
  *
  * Per la maschile non c'è scelta da fare: `riccardo-x_low` è l'unica che esista, ed è
  * anche la più leggera del gruppo.
@@ -139,7 +128,7 @@ async function fonemizza(testo: string): Promise<string> {
     //     il separatore dei fonemi diventava il carattere `"`. Non serviva a niente e
     //     ora non c'è: Piper vuole i fonemi attaccati, ed è quello che escono.
     arguments: ['--phonout', 'fonemi', '-q', '-b', '1', '--ipa=3', '-v', 'it', testo],
-    // anche lui cerca il suo binario accanto a sé, e lì non c'è: sta in `ambiente/ort/`
+    // anche lui cerca il suo binario accanto a sé, e lì non c'è: sta in `pubblico/ort/`
     locateFile: (f: string) => `/ort/${f}`,
   });
   return (espeak.FS.readFile('fonemi', { encoding: 'utf8' }) as string)

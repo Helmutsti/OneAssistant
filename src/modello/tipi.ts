@@ -1,331 +1,203 @@
-// Le definizioni di docs/01-modello.md. Se questo file e quel documento divergono,
-// il documento ha ragione.
+// Il modello dei task, come lo definisce `docs/L01`. Se questo file e il documento
+// divergono, ha ragione il documento (AGENTS.md §6).
 
-/** docs/01-modello §1 — dice chi ha iniziato, non è uno stato. */
-export type Origine = 'tua' | 'esterna' | 'derivata';
-
-/** Le sette icone del sistema (L1 - Sistema, legge 06). Insieme chiuso. */
-export type Tipo =
-  | 'posta'
-  | 'cartella'
-  | 'documento'
-  | 'persone'
-  | 'conversazione'
-  | 'immagine'
-  | 'sveglia';
-
-/** Asse 1 — dove il task è visibile. Esclusivo: un task sta in un posto solo. */
-export type Luogo = 'MAIN' | 'APERTO' | 'CHIP' | 'CARTA' | 'ORARIO' | 'MEMORIA';
-
-/** Asse 2 — cosa sta succedendo. È il colore a comunicarlo. */
-export type Avanzamento =
-  | 'in corso'
-  | 'aspetta te'
-  | 'programmato'
-  | 'bloccato'
-  | 'concluso'
-  | 'consegnato';
-
-/** docs/01-modello §2 — le caselle vuote sono impossibili, non improbabili. */
-const LEGALI: Record<Luogo, readonly Avanzamento[]> = {
-  MAIN: ['in corso', 'aspetta te', 'programmato', 'bloccato', 'concluso', 'consegnato'],
-  APERTO: ['in corso', 'aspetta te', 'programmato', 'bloccato', 'concluso', 'consegnato'],
-  CHIP: ['in corso', 'aspetta te', 'programmato', 'bloccato', 'concluso', 'consegnato'],
-  CARTA: ['aspetta te'],
-  ORARIO: ['aspetta te', 'programmato'],
-  MEMORIA: ['concluso', 'consegnato'],
-};
-
-export function combinazioneLegale(luogo: Luogo, avanzamento: Avanzamento): boolean {
-  return LEGALI[luogo].includes(avanzamento);
-}
-
-/** Il colore è lo stato (legge 04). Tre soli, e `programmato` non ne ha. */
-export function colore(avanzamento: Avanzamento): 'salvia' | 'ambra' | 'rosso' | 'nessuno' {
-  switch (avanzamento) {
-    case 'in corso':
-    case 'concluso':
-    case 'consegnato':
-      return 'salvia';
-    case 'aspetta te':
-      return 'ambra';
-    case 'bloccato':
-      return 'rosso';
-    case 'programmato':
-      return 'nessuno';
-  }
-}
+/** I quattro stati di un task (`docs/L01` §Gli stati dei task). */
+export type Stato = 'T_DRAFT' | 'T_LAVORAZIONE' | 'T_ATTESA' | 'T_CONCLUSIONE';
 
 /**
- * Chi parla per il gruppo: il membro che ha più bisogno di te (docs/01-modello §6).
- * L'ordine non è estetico — dice di chi è la palla, e un blocco non si nasconde mai
- * dietro un numero.
+ * Dove una bolla si vede. La dropzone appartiene a INPUT e ospita **una bozza sola**;
+ * `T_DRAFT` è uno stato, non un posto, quindi una bozza può stare anche in SIDEBAR
+ * (`docs/L01`, `docs/L02` §SIDEBAR). La NOTIFICATIONBAR non è un luogo per i task.
  */
-const URGENZA: Record<Avanzamento, number> = {
-  bloccato: 1,
-  'aspetta te': 2,
-  'in corso': 3,
-  concluso: 4,
-  consegnato: 4,
-  programmato: 5,
-};
+export type Luogo = 'DROPZONE' | 'DESK' | 'SIDEBAR';
 
 /**
- * Un insieme di task a cui **tu** hai dato un nome. Non è un task: non ha id e non si
- * salva da nessuna parte se non come il nome che i suoi membri portano addosso. Finché
- * qualcuno lo porta esiste; quando l'ultimo lo lascia, non c'è più (docs/01-modello §6).
+ * Le icone di tipo (`docs/design/L0` legge 06): dicono che tipo di task si sta svolgendo
+ * e coincidono col dato che il task tratta. L'elenco può crescere.
  */
-export interface Gruppo {
+export const TIPI = [
+  'email', 'cartella', 'documento', 'contatto', 'persone', 'conversazione',
+  'immagine', 'sveglia', 'indirizzo', 'appuntamento',
+] as const;
+export type Tipo = (typeof TIPI)[number];
+
+/** Il colore di uno stato (`docs/L01` §Il colore di uno stato). Il verde non c'è: non è uno stato. */
+export type Colore = 'grigio' | 'azzurro' | 'ambra' | 'nessuno';
+
+/** Il nome di un task: una riga sola, al massimo 32 caratteri (`docs/L01` §Come si scrive il nome). */
+export const NOME_MASSIMO = 32;
+
+/** Frasi fra «» in INPUT: al massimo quattro, mai due uguali (`docs/design/L0` legge 01). */
+export const FRASI_MASSIME = 4;
+
+/** La finestra della Funzione Delay (`docs/L01` §Funzione Delay). */
+export const DELAY_MS = 90_000;
+
+/** Un task programmato entra nell'orizzonte quindici minuti prima (`docs/L01`). */
+export const PREAVVISO_MS = 15 * 60_000;
+
+/** Una cosa agganciata a un task: le tessere della dropzone (`docs/L02` §INPUT). */
+export interface Elemento {
+  readonly tipo: Tipo | 'task';
   readonly nome: string;
-  readonly membri: readonly Task[];
-  /** Il membro più urgente: al gruppo presta il colore e l'icona. */
-  readonly parla: Task;
-}
-
-export function chiParla(membri: readonly Task[]): Task {
-  return membri.reduce((a, b) => (URGENZA[a.avanzamento] <= URGENZA[b.avanzamento] ? a : b));
+  /** Un dato solo, in coda, dove serve. */
+  readonly dato?: string;
 }
 
 /**
- * Cosa si vede aprendo un task (docs/01-modello §1): **una cosa sola, e vince l'esito**.
- * L'ingresso è *perché* il task esiste, l'esito è ciò su cui devi decidere — e impilarli
- * farebbe della bolla un documento. Sta qui e non nel disegno: è una regola del modello.
- */
-export function dentroSiVede(t: Task): string | undefined {
-  return t.esito ?? t.ingresso;
-}
-
-/** Una frase fra «». Le virgolette sono l'affordance: non esistono bottoni. */
-export interface Frase {
-  readonly testo: string;
-  readonly comando: Comando;
-}
-
-/** docs/06-confini §2 — dove un task esce dal sistema. */
-export type Destinazione = 'posta' | 'sms' | 'calendario' | 'contatti' | 'promemoria' | 'note' | 'disco';
-
-/**
- * **Dove** un task esce, e **a chi**. Il *cosa* non è suo: è l'`esito` del task, e
- * l'uscita si limita a portarlo fuori (docs/01-modello §1). Finché non è consegnato,
- * non è uscito niente.
+ * Dove un task esce, e a chi. Ogni destinazione dichiara **una cosa sola**: se attraversa
+ * il confine del computer. Non si deduce dal nome del servizio (`docs/L01` §Importante).
  */
 export interface Uscita {
-  readonly destinazione: Destinazione;
+  readonly servizio: string;
   readonly a: string;
-  /** Se qualcuno lo riceve. Basta uno perché la consegna non sia mai autorizzabile. */
-  readonly destinatari?: readonly string[];
+  readonly attraversaConfine: boolean;
+}
+
+/** Un invio trattenuto dalla Funzione Delay, o partito col bypass. */
+export interface Invio {
+  readonly id: string;
+  /** Quando parte davvero la chiamata al servizio, in ms dell'orologio. */
+  readonly scadenza: number;
+  readonly bypass: boolean;
 }
 
 /**
- * docs/06-confini §6 — si autorizza una volta per tutte solo ciò che nessun altro vede.
- * Il test non è il servizio: una riga di qui con dei destinatari torna a chiedere.
+ * Perché un task in `T_ATTESA` aspetta. Non è un quinto stato: è il motivo dell'attesa, e
+ * decide soltanto il colore — l'ora non scaduta non ne ha, tutto il resto è ambra.
+ *
+ *   - `risposta`: il sistema ha fatto una domanda;
+ *   - `parola`: il lavoro è pronto e aspetta il sì dell'utente;
+ *   - `fermo`: non può proseguire da solo; resta ambra, perché a sbloccarlo è l'utente;
+ *   - `ora`: rimandato o programmato; non chiede niente finché l'ora non scade.
  */
-const AUTORIZZABILI: readonly Destinazione[] = ['calendario', 'contatti', 'promemoria', 'note', 'disco'];
-
-export function autorizzabile(u: Uscita): boolean {
-  return AUTORIZZABILI.includes(u.destinazione) && !u.destinatari?.length;
-}
+export type Attesa = 'risposta' | 'parola' | 'fermo' | 'ora';
 
 export interface Task {
+  readonly genere: 'task';
   readonly id: string;
-  readonly origine: Origine;
-  readonly tipo: Tipo;
-  /** Come lo diresti, due parole al massimo: è la parola con cui lo richiami. */
-  readonly nome: string;
+  tipo: Tipo;
+  nome: string;
+  stato: Stato;
   luogo: Luogo;
-  avanzamento: Avanzamento;
-  /** La riga che si legge nella carta o nella bolla. Dev'essere dicibile. */
-  testo: string;
-  /**
-   * **Quello con cui nasce, e non cambia mai** (docs/01-modello §1). Per un task esterno
-   * è quello che è arrivato — il corpo della mail, per intero; per un task tuo è quello
-   * che hai dettato. Se cambiasse, non sarebbe più lo stesso task.
-   */
-  ingresso?: string;
-  /**
-   * **Quello che produce**, se produce qualcosa: la bozza, il riassunto scritto, i file
-   * riordinati. Vuoto finché non c'è. Averlo e diventare `aspetta te` sono lo stesso
-   * fatto guardato da due parti — e quando attraversa il confine, è lui che passa.
-   */
-  esito?: string;
-  /** Una cosa sola, in monospaziato: una frazione, un'ora, una parola. */
+  /** La richiesta reale, estratta dal prompt. */
+  richiesta: string;
+  /** Le cose agganciate: il contesto che il task si porta dietro. */
+  contesto: Elemento[];
+  /** Quello che la bolla mostra nel corpo: l'avanzamento, o quello che ha prodotto. */
+  corpo?: string;
+  /** Un dato solo, per il chip: una frazione, un'ora, una parola. */
   dato?: string;
-  /** Al massimo quattro, la prima è la più probabile. */
-  frasi: Frase[];
-  /** Solo se programmato o rimandato. */
-  ora?: Date;
-  /** Da dove viene — solo per origine esterna o derivata. */
-  fonte?: string;
-  /** Cosa esce, se qualcosa esce. */
+  /** Le frasi della bolla, che INPUT offre quando è la active. */
+  frasi: string[];
+  /** Quello che l'utente ha risposto lungo la strada: il lavoro ne tiene conto. */
+  note: string[];
+  attesa?: Attesa;
+  /** Per `attesa: 'ora'`: quando torna a chiedere. */
+  ora?: number;
+  /** Rimandato dall'utente o programmato per un'ora: si vedono diversi in SIDEBAR. */
+  perOra?: 'rimandato' | 'programmato';
   uscita?: Uscita;
-  /** Quando è nato, in tempo simulato. */
-  readonly nascita: Date;
-  /** L'istante dell'ultimo cambio di avanzamento, per le scadenze. */
-  tocco: Date;
-  /** L'avanzamento da cui è venuto: serve a «no, aspetta». */
-  precedente?: Avanzamento;
-  /** Quando è `bloccato` nella forma «non ho capito quale»: fra cosa si sceglie. */
-  alternative?: readonly string[];
-  /**
-   * Che mestiere fa questo task, quando non è semplicemente una cosa arrivata. Cambia
-   * le frasi che offre, e nient'altro: il modello dei due assi resta quello di sempre.
-   */
-  forma?: 'riassunto' | 'composizione';
-  /** Quante volte l'hai fatta riscrivere. */
-  giro?: number;
-  /**
-   * Il nome del gruppo in cui l'hai messa, se ce l'hai messa (docs/01-modello §6).
-   * Lo decidi tu e nessun altro: il sistema non raggruppa mai da sé. Resta appeso al
-   * task anche fuori dalla TASKBAR — il gruppo si *vede* dove si raggruppa, *vale* ovunque.
-   */
-  gruppo?: string;
-  /**
-   * Cosa è partito insieme a cosa. Ce l'hanno solo le consegne fatte con «manda tutte»,
-   * e serve a una cosa sola: ciò che parte insieme si annulla insieme.
-   */
-  lotto?: string;
+  invio?: Invio;
+  /** Chi ha cominciato: si sa, non si vede (`docs/design/L0` legge 02). */
+  readonly origine: 'utente' | 'notifica' | 'sottotask';
+  /** Per un sotto-task: il task che l'ha fatto nascere. */
+  readonly genitore?: string;
+  /** Quando è arrivato nel suo luogo attuale: dà l'ordine della SIDEBAR. */
+  arrivo: number;
 }
 
 /**
- * Una cosa arrivata che **non è un task** — la seconda versione della NOTIFICATIONBAR,
- * in prova (docs/06-confini §3).
- *
- * Non ha luogo né avanzamento, e non è una dimenticanza: i due assi sono il modello dei
- * task, e una notifica non ci sta dentro. Sta nel cassetto, e basta.
- *
- * La tesi è una sola, e si può sbagliare: **oggi il filtro promuove da solo, qui
- * promuovi tu.** Quello che il filtro giudicava degno di una `CARTA` qui si posa nel
- * cassetto e aspetta che tu dica «me ne occupo»; e quello che il filtro scartava non è
- * più perso per sempre — non suona, non conta, ma c'è.
+ * La bolla che non è un task (`docs/L02` §La bolla documento): mostra un contenuto e
+ * basta. Non ha stati e non ha colore, ma ha le sue frasi e può essere la active.
+ */
+export interface Documento {
+  readonly genere: 'documento';
+  readonly id: string;
+  readonly tipo: Tipo;
+  readonly nome: string;
+  readonly contenuto: { readonly forma: 'testo' | 'immagine' | 'filmato'; readonly valore: string };
+  /** Da dove viene: la targa neutra dice tipo e provenienza. */
+  readonly provenienza?: string;
+  luogo: 'DESK' | 'SIDEBAR';
+  frasi: string[];
+  arrivo: number;
+}
+
+export type Bolla = Task | Documento;
+
+/**
+ * Una cosa arrivata dal mondo. **Non è un task**: non ha luogo né stato, e lo diventa
+ * solo con «me ne occupo» (`docs/L02` §NOTIFICATIONBAR). Mittente e oggetto veri, mai
+ * riscritti (`docs/design/L0` §NOTIFICATIONBAR).
  */
 export interface Notifica {
   readonly id: string;
   readonly tipo: Tipo;
-  /** Come la diresti. Due parole: è la parola con cui la scegli. */
-  readonly nome: string;
+  readonly servizio: string;
+  readonly mittente: string;
+  readonly oggetto: string;
   readonly testo: string;
-  readonly fonte?: string;
-  readonly ingresso?: string;
-  readonly esito?: string;
-  readonly uscita?: Uscita;
-  /** Quando è arrivata, in tempo simulato. */
-  readonly quando: Date;
+  readonly quando: number;
   /**
-   * Se il filtro ha detto che ti riguarda **e** che c'è qualcosa da fare. Solo queste
-   * suonano e contano nel badge: una notifica muta si posa e non chiede niente.
+   * Se il filtro la promuove. Quella che non promuove **entra muta**: non suona, non
+   * conta nel badge, ma c'è.
    */
-  readonly chiede: boolean;
-  /** Finché non hai aperto il cassetto. È questo che il badge conta. */
+  readonly promossa: boolean;
+  /** Finché il cassetto non è stato aperto. È questo che il badge conta. */
   nuova: boolean;
 }
 
-/**
- * Tutti i token della lingua, a runtime — perché un tipo non si può contare.
- *
- * Serve a una cosa sola e importante: l'alfabeto della pedana deve nominarli **tutti**
- * (src/prova/alfabeto.ts). Un comando che esiste nel modello e non ha una frase con cui
- * dirlo è una parola che il sistema capisce e che nessuno sa pronunciare.
- *
- * Dal 17 settembre 2026 quel giorno è arrivato: a comporre è l'AI engine, e questo elenco
- * è **esattamente** quello che le API gli mettono in mano (src/ai-engine/strumenti.ts). Per
- * questo `sequenza` e `aperta` non ci sono più — erano le due parole che parlavano fra i
- * due cervelli, e di cervelli ce n'è uno: più mosse in un turno sono più chiamate, e una
- * frase che non si capisce è una frase da capire, non un comando.
- */
-export const COMANDI = [
-  'consegna', 'rimanda', 'al-centro', 'richiama', 'annulla', 'mostra', 'chiudi',
-  'scegli', 'aspetta', 'lascia', 'racconta', 'dimentica', 'conferma', 'revoca',
-  'salva-nota', 'sciogli', 'riassumi', 'leggi', 'indietro', 'componi', 'aggiungi',
-  'riscrivi', 'no', 'metti', 'apri', 'separa', 'consegna-gruppo', 'rimanda-gruppo',
-  'dentro', 'estrai', 'non-ascoltare', 'voce',
-] as const;
+/** Una domanda del sistema, in INPUT, legata al task che l'ha generata. Una sola aperta. */
+export interface Domanda {
+  readonly task: string;
+  readonly testo: string;
+  readonly risposte: readonly string[];
+}
 
-export type Comando =
-  | { readonly tipo: 'consegna'; readonly task: string }
-  | { readonly tipo: 'rimanda'; readonly task: string }
-  | { readonly tipo: 'al-centro'; readonly task: string }
-  | { readonly tipo: 'richiama'; readonly nome: string }
-  | { readonly tipo: 'annulla'; readonly task: string }
-  /** Le aree che si possono aprire. WHEN non c'è più: le cose che hanno un'ora si
-   *  vedono nel cassetto delle notifiche, in fila con quello che è arrivato. */
-  | { readonly tipo: 'mostra'; readonly area: 'NOTIFICATIONBAR' | 'TASKBAR' }
-  | { readonly tipo: 'chiudi' }
-  | { readonly tipo: 'scegli'; readonly indice: number }
-  | { readonly tipo: 'aspetta' }
-  /** «non ascoltare», «scrivo»: il microfono si spegne e si entra in tastiera. È
-   *  l'unica mossa del microfono che esiste: **riaccenderlo non è una frase e non è
-   *  una mossa**, è un gesto e soltanto un gesto (src/conoscenza/canali.ts). */
-  | { readonly tipo: 'non-ascoltare' }
-  /** «non leggere», «torna a leggere»: la voce in uscita si spegne e si riaccende.
-   *  **Va in tutti e due i versi**, al contrario del microfono: spegnere la voce non
-   *  spegne l'orecchio, quindi una frase per riaccenderla arriva sempre. E non toglie
-   *  niente — il testo a schermo è la verità, la voce ne è la lettura (docs/03-architettura
-   *  §1). Perché l'orecchio invece sia asimmetrico sta in src/conoscenza/canali.ts. */
-  | { readonly tipo: 'voce'; readonly come: 'accesa' | 'spenta' }
-  | { readonly tipo: 'lascia'; readonly task: string }
-  /** Cosa sai di…: `su` è 'ultima', 'preferenze', o il nome di un'entità. */
-  | { readonly tipo: 'racconta'; readonly su: string }
-  /** «dimenticalo»: smentisce l'ultima cosa segnata. Non cancella (docs/07-memoria §10). */
-  | { readonly tipo: 'dimentica' }
-  /** «sì, fai pure»: promuove l'abitudine proposta da osservato.md a preferenze.md. */
-  | { readonly tipo: 'conferma' }
-  /** «chiedimi sempre»: revoca l'autorizzazione. */
-  | { readonly tipo: 'revoca' }
-  /** Una cosa da far uscire verso le note. Serve a provare le autorizzazioni. */
-  | { readonly tipo: 'salva-nota'; readonly testo: string }
-  /** La risposta a «non ho capito quale»: scioglie il blocco e mette a fuoco. */
-  | { readonly tipo: 'sciogli'; readonly task: string }
-  /** «riassumimela»: nasce un task derivato che legge l'ingresso e ne scrive una riga.
-   *  Il task che si riassume non si muove: il lavoro è un'altra cosa (docs/09-catene §2). */
-  | { readonly tipo: 'riassumi'; readonly task: string }
-  /** «leggila»: la porta a fuoco **e** la dice. Il richiamo da solo non parla. */
-  | { readonly tipo: 'leggi'; readonly task: string }
-  /** «torna a quella di prima»: il fuoco torna dov'era, e nient'altro si muove. */
-  | { readonly tipo: 'indietro' }
-  /** «scrivi a mia madre e chiedile…»: nasce un task di composizione, non una consegna.
-   *  Finché non dici di mandarlo non esce niente (docs/09-catene §3).
-   *
-   *  `richiesta` è quello che hai chiesto, e non cambia mai: è l'ingresso del task, e
-   *  da lì si riscrive. `testo` è il messaggio **già scritto**, e lo porta solo il
-   *  AI engine vero: scrivere in discorso diretto è un suo mestiere, non del motore. Se
-   *  manca, il testo lo mette `src/ai-engine/testi.ts` — che è finto, e si vede. */
-  | {
-      readonly tipo: 'componi';
-      readonly a: string;
-      readonly richiesta: string;
-      readonly testo?: string;
-    }
-  /** «aggiungi una emoji del cuore»: cambia il testo di una composizione, non lo manda. */
-  | { readonly tipo: 'aggiungi'; readonly task: string; readonly cosa: string }
-  /** «riscrivilo»: la stessa richiesta, detta in un altro modo. */
-  | { readonly tipo: 'riscrivi'; readonly task: string }
-  /** «no»: hai risposto no a una domanda. Non si muove niente — ed è un esito. */
-  | { readonly tipo: 'no' }
-  /** «aprila»: la bolla si allarga e mostra quello che tiene, intorno si spegne.
-   *  È una vista, non uno stato: non cambia luogo né avanzamento (docs/01-modello §7).
-   *  Mostra e basta — dirlo ad alta voce è un'altra frase, «leggila». */
-  | { readonly tipo: 'dentro'; readonly task: string }
-  /** «mettila con Acme»: la mette nel gruppo, che nasce se non c'è (docs/01-modello §6).
-   *  Un task sta al massimo in un gruppo: metterlo in un altro lo toglie dal primo. */
-  | { readonly tipo: 'metti'; readonly task: string; readonly gruppo: string }
-  /** «apri Acme»: espande il gruppo. È un momento, non una schermata. */
-  | { readonly tipo: 'apri'; readonly gruppo: string }
-  /** «separale»: il gruppo smette di esistere, i chip restano dov'erano.
-   *  Si chiama così e non «sciogli» perché «sciogli» è già un blocco che si scioglie. */
-  | { readonly tipo: 'separa'; readonly gruppo: string }
-  /** «manda tutte»: l'unica frase che fa attraversare il confine a più cose insieme.
-   *  Solo su un gruppo interamente `aspetta te`, e «no, aspetta» ritira tutto il lotto. */
-  | { readonly tipo: 'consegna-gruppo'; readonly gruppo: string }
-  /** «dopo», a gruppo aperto: rimanda tutti i membri. */
-  | { readonly tipo: 'rimanda-gruppo'; readonly gruppo: string }
-  /** «me ne occupo»: una notifica esce dal cassetto e **diventa un task**. È l'unico
-   *  momento in cui una cosa arrivata entra nel modello, e lo decidi tu. */
-  | { readonly tipo: 'estrai'; readonly notifica: string };
+/** L'ultimo scambio, che INPUT mostra e poi lascia andare (`docs/L02` §INPUT). */
+export interface Scambio {
+  readonly tua: string;
+  risposta?: string;
+  /** Le frasi che la risposta offre, quando ne offre: «manda subito», «no, aspetta». */
+  frasi?: string[];
+}
 
-/**
- * Se aggiungi un comando e non lo metti in `COMANDI`, questa riga non compila. È il
- * solo modo perché «la grammatica resta chiusa» sia un fatto e non un'intenzione.
- */
-type Scoperti = Exclude<Comando['tipo'], (typeof COMANDI)[number]>;
-const _copertura: Scoperti extends never ? true : ['manca in COMANDI:', Scoperti] = true;
-void _copertura;
+export function colore(b: Bolla, adesso: number): Colore {
+  if (b.genere === 'documento') return 'nessuno';
+  switch (b.stato) {
+    case 'T_DRAFT':
+      return 'grigio';
+    case 'T_LAVORAZIONE':
+      return 'azzurro';
+    case 'T_ATTESA':
+      return b.attesa === 'ora' && (b.ora ?? 0) > adesso ? 'nessuno' : 'ambra';
+    case 'T_CONCLUSIONE':
+      // Un task concluso non si vede: svanisce sul posto e lascia l'interfaccia.
+      return 'nessuno';
+  }
+}
+
+/** Il nome, come lo vuole `docs/L01`: una riga, al massimo 32 caratteri, niente puntini. */
+export function nomeValido(nome: string): string | undefined {
+  const n = nome.trim();
+  if (!n) return 'il nome è vuoto';
+  if (n.includes('\n')) return 'il nome sta su una riga sola';
+  if ([...n].length > NOME_MASSIMO) return `il nome supera i ${NOME_MASSIMO} caratteri`;
+  if (/(\.\.\.|…)/.test(n)) return 'nel nome non vanno i puntini di sospensione';
+  return undefined;
+}
+
+/** Al massimo quattro frasi, senza doppioni e senza virgolette: quelle le mette l'interfaccia. */
+export function pulisciFrasi(frasi: readonly string[]): string[] {
+  const viste = new Set<string>();
+  const fuori: string[] = [];
+  for (const f of frasi) {
+    const t = f.trim().replace(/^[«"]+|[»"]+$/g, '').trim();
+    if (!t || viste.has(t.toLowerCase())) continue;
+    viste.add(t.toLowerCase());
+    fuori.push(t);
+    if (fuori.length === FRASI_MASSIME) break;
+  }
+  return fuori;
+}

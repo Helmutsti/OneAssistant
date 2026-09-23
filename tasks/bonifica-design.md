@@ -6,6 +6,13 @@ le righe che **dettano comportamento** e dovrebbero stare in `docs/` (decisione 
 
 In coda, le **contraddizioni ancora aperte** trovate strada facendo.
 
+> **Chiuso · 23 settembre 2026.** Il registro è interamente evaso e resta come traccia.
+> **A** — A1, A3–A7 sono passate in `docs/` (storico §81) e nel design sono diventate
+> rimandi (§82); A2 è uscita da `L2 - Sidebar` (§81); A8 cade perché `L1 - Moodboard` non
+> è normativo (§80, §126). **B** — i valori stanno in `L1 - Token` (§71, §79). **C** — C3,
+> C4, C5, C7 chiuse (§72–75); C1 le icone seguono la legge 06, 14 / 16 px (§77); C2 il
+> pallino è 9 px (§76); C6 superata: non ci sono più quote fisse (§78, §124).
+
 ---
 
 ## A · Comportamento scritto nel design

@@ -1,0 +1,262 @@
+// La porta verso l'AI: `POST /ai-engine`. Sta nel processo Node perché la chiave di
+// OpenRouter non entra mai nel browser (`docs/L04`), e perché quello che torna al browser
+// passa da un punto solo.
+//
+// Un passo per chiamata: il browser manda il ruolo, la frase o la scheda del task, e le
+// mosse già fatte nel turno; qui si chiede al modello cosa fare adesso, e si restituiscono
+// le mosse. OpenRouter è l'unico provider del prototipo (`docs/L04`). Se la chiave non c'è
+// si risponde 503, e il browser lo dice a schermo: non esiste un ripiego finto (storico §7).
+
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import Anthropic from '@anthropic-ai/sdk';
+import type { Connect } from 'vite';
+import { istruzioni, strumentiPer, type Argomento, type Ruolo } from '../src/ai/vocabolario.ts';
+import { leggiPreferenze } from '../src/conoscenza/profilo.ts';
+import { CASA, documenti, elencoFile } from './archivio.ts';
+
+const MODELLO_PREDEFINITO = 'anthropic/claude-opus-5';
+const TTL = '1h' as const;
+
+function comeSchema(a: Argomento): Record<string, unknown> {
+  if (a.genere === 'numero') return { type: 'number', description: a.cosa };
+  if (a.genere === 'si-no') return { type: 'boolean', description: a.cosa };
+  if (a.genere === 'elenco') return { type: 'array', items: { type: 'string' }, description: a.cosa };
+  return a.fra ? { type: 'string', enum: [...a.fra], description: a.cosa } : { type: 'string', description: a.cosa };
+}
+
+/** Gli strumenti, dichiarati dal vocabolario: il modello sa fare esattamente quello che il codice esegue. */
+function arnesi(r: Ruolo) {
+  return strumentiPer(r).map((s) => ({
+    name: s.nome,
+    description: s.quando,
+    input_schema: {
+      type: 'object' as const,
+      properties: Object.fromEntries((s.argomenti ?? []).map((a) => [a.nome, comeSchema(a)])),
+      required: (s.argomenti ?? []).filter((a) => a.obbligatorio).map((a) => a.nome),
+      additionalProperties: false,
+    },
+  }));
+}
+
+const ARNESI = { conversazione: arnesi('conversazione'), lavoro: arnesi('lavoro') } as const;
+
+/**
+ * Il prompt: le istruzioni del ruolo, col personaggio di `preferences.txt`, e i documenti di
+ * contesto dell'utente attivo — memoria simulata, servizi simulati, stato della macchina
+ * (`docs/L02` §INPUT). La password non entra: è un dato locale e non raggiunge il provider
+ * (`docs/L03`).
+ */
+function prompt(r: Ruolo): string {
+  const leggi = (f: string) => (existsSync(join(CASA, f)) ? readFileSync(join(CASA, f), 'utf8').trim() : '');
+  const p = leggiPreferenze(leggi('preferences.txt'));
+  if (p.errori.length) console.warn(`[ai-engine] preferences.txt: ${p.errori.join('; ')}`);
+  const profilo = [
+    p.utente.name && `nome: ${p.utente.name}`,
+    p.utente.datebirth && `nata/o il: ${p.utente.datebirth}`,
+    p.utente.sex && `sesso: ${p.utente.sex}`,
+    `lingua: ${p.utente.language}`,
+    ...p.focuses.map((l) => `luogo conosciuto: ${l.nome} — ${l.indirizzo}`),
+  ].filter(Boolean).join('\n');
+  const contesto = [
+    `Profilo dell'utente:\n${profilo}`,
+    leggi('system.txt') && `Stato della macchina (system.txt):\n${leggi('system.txt')}`,
+    ...Object.entries(documenti(join(CASA, 'memory'))).map(([f, t]) => `Memoria (memory/${f}):\n${t.trim()}`),
+    ...Object.entries(documenti(join(CASA, 'services'))).map(([f, t]) => `Servizio (services/${f}):\n${t.trim()}`),
+    leggi('filesystem.txt') && `Servizio filesystem (filesystem.txt):\n${leggi('filesystem.txt')}`,
+    `File del servizio filesystem:\n${elencoFile(join(CASA, 'filesystem')).join('\n') || '(nessuno)'}`,
+  ].filter(Boolean).join('\n\n');
+  const personaggio = {
+    nome: p.assistente.name,
+    genere: p.assistente.gender,
+    copione: p.assistente.copione,
+    lingua: p.utente.language,
+  };
+  return `${istruzioni(r, personaggio)}\n\n# Documenti di contesto dell'utente\n\n${contesto}`;
+}
+
+function leggiChiave(nome: string): string | undefined {
+  const riga = existsSync('.env')
+    ? (readFileSync('.env', 'utf8').match(new RegExp('^\\s*' + nome + '\\s*=\\s*(.+)$', 'm'))?.[1] ?? '')
+        .trim()
+        .replace(/^["']|["']$/g, '')
+    : '';
+  return riga || process.env[nome] || undefined;
+}
+
+interface Fornitore {
+  readonly chiave: string;
+  readonly modello: string;
+  /** I modelli `anthropic/` parlano la Messages API, con la cache del prefisso; gli altri `chat/completions`. */
+  readonly client?: Anthropic;
+}
+
+let annunciato = false;
+
+function fornitore(): Fornitore | undefined {
+  const chiave = leggiChiave('OPENROUTER_API_KEY');
+  if (!chiave) return undefined;
+  const modello = leggiChiave('OPENROUTER_MODEL') ?? MODELLO_PREDEFINITO;
+  if (!annunciato) {
+    annunciato = true;
+    console.info(`[ai-engine] risponde OpenRouter · ${modello}`);
+  }
+  return {
+    chiave,
+    modello,
+    // `apiKey: null`: senza, l'SDK pescherebbe ANTHROPIC_API_KEY dall'ambiente e la
+    // manderebbe a OpenRouter sull'header sbagliato.
+    client: modello.startsWith('anthropic/')
+      ? new Anthropic({ apiKey: null, authToken: chiave, baseURL: 'https://openrouter.ai/api' })
+      : undefined,
+  };
+}
+
+interface Passato {
+  readonly nome: string;
+  readonly argomenti: Record<string, unknown>;
+  readonly visto: string;
+  readonly sbagliata: boolean;
+}
+
+interface Giro {
+  readonly tua: string;
+  readonly risposta?: string;
+}
+
+interface Esito {
+  readonly chiamate: Array<{ nome: string; argomenti: Record<string, unknown> }>;
+  readonly detto: string;
+  readonly perche?: string;
+}
+
+function apertura(r: Ruolo, frase: string): string {
+  return r === 'conversazione' ? `Ha scritto: ${frase}` : `Il task da lavorare:\n${frase}`;
+}
+
+async function viaMessages(f: Fornitore, r: Ruolo, frase: string, passato: readonly Passato[], prima: readonly Giro[]): Promise<Esito> {
+  const messaggi: Array<{ role: 'user' | 'assistant'; content: unknown }> = [];
+  for (const g of prima) {
+    messaggi.push({ role: 'user', content: g.tua });
+    if (g.risposta) messaggi.push({ role: 'assistant', content: g.risposta });
+  }
+  messaggi.push({ role: 'user', content: apertura(r, frase) });
+  for (const [i, p] of passato.entries()) {
+    messaggi.push({ role: 'assistant', content: [{ type: 'tool_use', id: `m${i}`, name: p.nome, input: p.argomenti }] });
+    messaggi.push({ role: 'user', content: [{ type: 'tool_result', tool_use_id: `m${i}`, content: p.visto, is_error: p.sbagliata }] });
+  }
+  const risposta = await f.client!.messages.create({
+    model: f.modello,
+    max_tokens: 4000,
+    system: [{ type: 'text', text: prompt(r), cache_control: { type: 'ephemeral', ttl: TTL } }],
+    tools: ARNESI[r] as never,
+    messages: messaggi as never,
+  } as never);
+  return {
+    chiamate: risposta.content
+      .filter((x): x is Extract<typeof x, { type: 'tool_use' }> => x.type === 'tool_use')
+      .map((x) => ({ nome: x.name, argomenti: x.input as Record<string, unknown> })),
+    detto: risposta.content
+      .filter((x): x is Extract<typeof x, { type: 'text' }> => x.type === 'text')
+      .map((x) => x.text.trim())
+      .join(' ')
+      .trim(),
+    perche: risposta.stop_reason === 'refusal' ? 'rifiuto' : risposta.stop_reason === 'max_tokens' ? 'troppo lungo' : undefined,
+  };
+}
+
+async function viaChat(f: Fornitore, r: Ruolo, frase: string, passato: readonly Passato[], prima: readonly Giro[]): Promise<Esito> {
+  const messaggi: unknown[] = [{ role: 'system', content: prompt(r) }];
+  for (const g of prima) {
+    messaggi.push({ role: 'user', content: g.tua });
+    if (g.risposta) messaggi.push({ role: 'assistant', content: g.risposta });
+  }
+  messaggi.push({ role: 'user', content: apertura(r, frase) });
+  for (const [i, p] of passato.entries()) {
+    messaggi.push({
+      role: 'assistant',
+      content: null,
+      tool_calls: [{ id: `m${i}`, type: 'function', function: { name: p.nome, arguments: JSON.stringify(p.argomenti) } }],
+    });
+    // `chat/completions` non ha `is_error`: una mossa rifiutata va detta nel testo.
+    messaggi.push({ role: 'tool', tool_call_id: `m${i}`, content: p.sbagliata ? `NON È ANDATA: ${p.visto}` : p.visto });
+  }
+  const risposta = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: { authorization: `Bearer ${f.chiave}`, 'content-type': 'application/json', 'x-title': 'OneAssist' },
+    body: JSON.stringify({
+      model: f.modello,
+      max_tokens: 4000,
+      messages: messaggi,
+      tools: ARNESI[r].map((a) => ({ type: 'function', function: { name: a.name, description: a.description, parameters: a.input_schema } })),
+    }),
+  });
+  const dati = (await risposta.json()) as {
+    error?: { message?: string };
+    choices?: Array<{
+      finish_reason?: string;
+      message?: { content?: string | null; tool_calls?: Array<{ function: { name: string; arguments: string } }> };
+    }>;
+  };
+  // OpenRouter sa rispondere 200 con dentro un errore.
+  if (!risposta.ok || dati.error) throw new Error(dati.error?.message ?? String(risposta.status));
+  const scelta = dati.choices?.[0];
+  const chiamate: Esito['chiamate'] = [];
+  for (const c of scelta?.message?.tool_calls ?? []) {
+    try {
+      chiamate.push({ nome: c.function.name, argomenti: JSON.parse(c.function.arguments || '{}') });
+    } catch {
+      console.warn(`[ai-engine] argomenti illeggibili per ${c.function.name}: la mossa si butta`);
+    }
+  }
+  return {
+    chiamate,
+    detto: (scelta?.message?.content ?? '').trim(),
+    perche: scelta?.finish_reason === 'length' ? 'troppo lungo' : scelta?.finish_reason === 'content_filter' ? 'rifiuto' : undefined,
+  };
+}
+
+export const portaAi: Connect.NextHandleFunction = (req, res) => {
+  res.setHeader('content-type', 'application/json');
+  if (req.method !== 'POST') {
+    res.statusCode = 405;
+    res.end();
+    return;
+  }
+  const f = fornitore();
+  if (!f) {
+    res.statusCode = 503;
+    res.end(JSON.stringify({ perche: 'manca la chiave' }));
+    return;
+  }
+  let corpo = '';
+  req.on('data', (c) => (corpo += c));
+  req.on('end', () => {
+    void (async () => {
+      try {
+        const { ruolo, frase, passato, prima } = JSON.parse(corpo) as {
+          ruolo?: Ruolo;
+          frase?: string;
+          passato?: Passato[];
+          prima?: Giro[];
+        };
+        if (!frase?.trim() || (ruolo !== 'conversazione' && ruolo !== 'lavoro')) {
+          res.statusCode = 400;
+          res.end(JSON.stringify({ perche: 'manca la frase o il ruolo' }));
+          return;
+        }
+        const esito = await (f.client ? viaMessages : viaChat)(f, ruolo, frase, passato ?? [], prima ?? []);
+        console.info(
+          `[ai-engine] ${ruolo} · passo ${(passato?.length ?? 0) + 1} · ` +
+            (esito.chiamate.length ? esito.chiamate.map((c) => c.nome).join(', ') : esito.detto ? 'solo parole' : 'niente') +
+            (esito.perche ? ` · fermato: ${esito.perche}` : ''),
+        );
+        res.end(JSON.stringify(esito));
+      } catch (e) {
+        console.warn('[ai-engine]', e instanceof Error ? e.message : e);
+        res.statusCode = 502;
+        res.end(JSON.stringify({ perche: e instanceof Error ? e.message : 'nessuna risposta' }));
+      }
+    })();
+  });
+};
