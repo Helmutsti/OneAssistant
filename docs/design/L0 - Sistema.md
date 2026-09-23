@@ -223,11 +223,15 @@ quelle di tipo, ma obbediscono alla stessa regola: mai senza un valore o una par
 **IBM Plex Mono** per targhe, dati, stati e misure.
 
 Il grassetto non esiste nell'interfaccia: dove serve enfasi, **si cambia scala, non peso**.
+Unica eccezione, il **600** per il titolo di una bolla e per il WorkMode della PROFILEBAR:
+stacca dalle altre fasce senza diventare un'insegna.
 
 ### 08 · Il layer è sopra, non al posto
 
-Il fondo del sistema operativo resta visibile ai bordi in ogni composizione: **margine 44**,
-schermate **1440 × 900**.
+Il fondo del sistema operativo resta visibile ai bordi in ogni composizione: **margine 44**.
+**Nessuna posizione è assoluta**: ogni componente è ancorato a un bordo dello schermo o al
+vicino su cui poggia, e tutto risponde alle dimensioni dello schermo. Le tavole disegnano a
+**1440 × 900**: è una misura di riferimento, non quella dello schermo.
 
 Niente riempie lo spazio solo perché c'è — se non c'è nulla da fare, lo schermo lo dice e
 resta vuoto. **Un task non si sposta perché stai parlando**: cede attenzione (opacità), mai
@@ -240,9 +244,10 @@ Dentro DESK: niente griglie, niente colonne allineate, niente header e footer. I
 appoggiano sul fondo come oggetti su un tavolo: posizioni irregolari, dimensioni diverse,
 bordi che non si allineano, con leggere sovrapposizioni dove è naturale.
 
-**Le altre aree fanno il contrario**: PROFILEBAR, SYSTEMBAR, INPUT, SIDEBAR e
-NOTIFICATIONBAR hanno ancoraggi fissi al pixel e non si spostano mai. È la loro immobilità
-che permette al centro di essere libero.
+**Le altre aree fanno il contrario**: TIMELINE, PROFILEBAR, SYSTEMBAR, SIDEBAR, INPUT e
+NOTIFICATIONBAR hanno un ancoraggio fisso — un bordo dello schermo, o il vicino su cui
+poggiano — e un ordine che non cambia. È la loro prevedibilità che permette al centro di
+essere libero.
 
 ### 10 · Tutti i task hanno lo stesso peso — *solo in DESK*
 
@@ -261,24 +266,26 @@ nessun disordine simulato: solo assenza di griglia.
 Vale per i task dentro DESK: la cornice — ora, voce, chip, cassetto — resta ordinata e
 prevedibile, perché è ciò che rende leggibile il disordine del centro.
 
-### 11 · Ogni componente è autonomo e flottante
+### 11 · Ancorati ai bordi, impilati fra loro
 
-Nessun componente è in griglia o in colonna con un altro. Ognuno ha il suo ancoraggio e la
-sua dimensione intrinseca: galleggia sul fondo e **non si allarga per riempire lo spazio
-lasciato libero da un vicino**, né si restringe per farne posto.
+Nessun componente ha una posizione assoluta: ognuno è ancorato a un bordo dello schermo o al
+componente su cui poggia, e ha la sua dimensione intrinseca — **non si allarga per riempire lo
+spazio lasciato libero da un vicino**, né si restringe per farne posto.
 
-Non esistono contenitori condivisi, righe, colonne o larghezze residue: **se un componente
-scompare, nessun altro si muove.**
+Le pile sono due, e l'ordine è fisso:
 
-**Una deroga, dichiarata e limitata.** Nella guida di destra tre componenti stanno in colonna:
-la TIMELINE cresce col contenuto, e PROFILEBAR e SYSTEMBAR scorrono sotto di lei a 22 px di
-distanza. È una **pila a dipendenza limitata**, non una griglia: riguarda quei tre e nessun
-altro, e non si estende al DESK, a INPUT, alla NOTIFICATIONBAR né alla SIDEBAR.
+| dove | dall'ancoraggio in poi |
+|---|---|
+| **in alto a destra** | TIMELINE, poi PROFILEBAR, poi SYSTEMBAR, poi SIDEBAR — ognuno 22 px sotto il precedente |
+| **in basso a sinistra** | INPUT, e la dropzone appoggiata sopra |
 
-L'ancoraggio orizzontale resta fisso al pixel per tutti. La legge 11 vale intera in
-orizzontale, e in verticale vale ovunque tranne in quei tre. INPUT ha anch'esso una pila — la
-dropzone sopra la bolla in cui si scrive — ma è **interna a un componente**, quindi non lo
-mette in colonna con un altro e non chiede una deroga.
+**Se un componente cresce, quelli che gli poggiano si muovono con lui**; se uno scompare, la
+sua pila si richiude. Fra le due pile non c'è dipendenza.
+
+**Un'eccezione sola: la NOTIFICATIONBAR**, ancorata in basso a destra a posizione assoluta,
+perché apre un cassetto sopra tutti gli altri elementi.
+
+Il DESK sta nello spazio che resta, senza ancoraggio (legge 09).
 
 ---
 
@@ -289,17 +296,17 @@ fa il lavoro di un'altra.
 
 ### TIMELINE
 Dove sei dentro la giornata: cosa stai facendo, da quanto tempo e cosa viene dopo. Sta in
-cima alla guida di destra, **44 / 40**, come inchiostro diretto sul fondo. Non si apre, non
-si contrae e non si preme. La sua altezza dipende dal contenuto; PROFILEBAR e SYSTEMBAR
-scorrono verticalmente con lei mantenendo **22 px** di distanza.
+cima alla pila di destra, ancorata in alto a destra — 44 dal bordo destro, 40 da quello
+alto — come inchiostro diretto sul fondo. Non si apre, non si contrae e non si preme. La sua
+altezza dipende dal contenuto, e la pila sotto di lei si muove con lei (legge 11).
 
 ### PROFILEBAR
-Quando sono, dove sono, chi sono. Sotto la TIMELINE, nella guida di destra. **È una
+Quando sono, dove sono, chi sono. Subito sotto la TIMELINE, a 22 px. **È una
 bolla**, dal 19 settembre 2026: si stringe sul suo contenuto e non si allarga sulla riga.
 
 ### SYSTEMBAR
 La macchina: chi ha la voce, volume, rete, batteria. Ordine fisso, il microfono sempre per
-primo; **il colore qui significa privacy**. Subito sotto la Profilebar, **44 / 126**.
+primo; **il colore qui significa privacy**. Subito sotto la PROFILEBAR, a 22 px.
 Inchiostro, nessun contenitore. Più piccola perché conta meno.
 
 ### DESK
@@ -308,7 +315,7 @@ INPUT sta parlando; le altre restano sulla scrivania, intere. Centro, nessun anc
 è l'unica area senza griglia (legge 09).
 
 ### INPUT
-Quello che dici, e quello che si sta formando. Due bolle, impilate in basso a sinistra:
+Quello che dici, e quello che si sta formando. Due bolle, ancorate in basso a sinistra al margine 44:
 sotto INPUT, dove si scrive e dove compare la risposta; sopra la **dropzone**, che c'è solo
 quando un task si sta componendo e ne mostra uno alla volta. INPUT non si occupa mai:
 qualunque cosa ci sia nella dropzone, resta pronto per la frase successiva.
@@ -322,8 +329,8 @@ I chip, i flussi e i rimandati; l'ambra sta in cima. Un chip è **una bolla che 
 stretta**: icona di tipo, nome come lo diresti, un dato solo. **Il vetro del chip prende
 per intero il colore del suo stato**, velato — ambra al 30%, azzurro al 22% — e non porta un
 pallino di stato; il verde della
-active invece resta, perché non è uno stato. Nella guida di destra, **44 / 180**, in
-verticale.
+active invece resta, perché non è uno stato. Subito sotto la SYSTEMBAR, a 22 px, in
+verticale: se la pila sopra cresce, scende con lei.
 
 ### NOTIFICATIONBAR
 **Il mondo.** Quello che arriva dai servizi, com'è arrivato — mittente e oggetto veri, mai
@@ -333,7 +340,8 @@ conta solo quello che ti riguarda e non hai ancora visto.
 I banner del cassetto sono **bolle come tutte le altre**: a dire che non sono tue sono il
 contenuto e il comportamento — non migrano, non hanno stato — non il materiale.
 
-In fondo alla guida, **44 / 44 dal basso**. Campanella **44** con badge **16**; il cassetto
+Ancorata in basso a destra, a 44 dai due bordi: è l'unica posizione assoluta del sistema,
+perché il suo cassetto si apre sopra tutto il resto (legge 11). Campanella **44** con badge **16**; il cassetto
 sale da sotto di lei e intorno si spegne tutto.
 
 ---
@@ -348,4 +356,4 @@ PROFILEBAR, che hanno una geometria propria (`L2 - INPUT`, `L2 - Profilebar`).
 | **Banner** | largo 400 · raggio 20 · margini interni 13 / 16 | NOTIFICATIONBAR, i banner del cassetto |
 | **Chip** | alto 30 · raggio 20 · largo quanto il contenuto | SIDEBAR |
 | **Task** | largo 348–452 · raggio 26 | DESK |
-| **Focus** | 920 × 690 · raggio 30 · titolo 46 / 200 · corpo 19 / 300 | la bolla aperta in focus: tutta la DESK |
+| **Focus** | tutta la DESK — 920 × 690 a 1440 × 900 · raggio 30 · titolo 46 / 200 · corpo 19 / 300 | la bolla aperta in focus |

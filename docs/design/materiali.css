@@ -42,3 +42,23 @@
   --testo-carta: #21251F;
   --incisione-ombra: rgba(26,28,25,.11); --incisione-luce: rgba(255,255,255,.72);
 }
+
+/* Il vetro opaco di riserva vale anche per lo scuro. `liquid-glass.css` lo definisce su
+   `:root`, ma questo ramo ridefinisce film e ottiche sul contenitore: senza queste due righe
+   le scene scure ignorerebbero il ripiego. I colori sono quelli del vetro scuro, senza
+   trasparenza. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-tema='scuro'] {
+    --liquid-film: linear-gradient(140deg,#1b2e35,#15262e);
+    --liquid-focus: linear-gradient(140deg,#20363e,#1a2f37);
+    --liquid-quiet: linear-gradient(140deg,#182a30,#132329);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  [data-tema='scuro'] {
+    --liquid-film: linear-gradient(140deg,#1b2e35,#15262e);
+    --liquid-focus: linear-gradient(140deg,#20363e,#1a2f37);
+    --liquid-quiet: linear-gradient(140deg,#182a30,#132329);
+    --liquid-optics: none;
+  }
+}

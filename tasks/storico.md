@@ -526,3 +526,33 @@ targa, e restano.
 
 **Corretto insieme, per cascata:** in `L2 - INPUT` il pallino dell'ascolto e quello della frase
 più probabile erano ancora salvia `#4E6B54`; ora sono verdi `#00A878`, come vuole la legge 04.
+
+---
+
+## 23 settembre 2026 — niente posizioni assolute
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 124 | **In tutto il design non ci sono posizioni assolute: tutto risponde alle dimensioni dello schermo.** INPUT è ancorata in basso a sinistra; la dropzone è appoggiata sopra INPUT; la NOTIFICATIONBAR è ancorata in basso a destra, ed è **l'unica posizione assoluta**, perché apre un cassetto sopra tutti gli altri elementi; la TIMELINE è ancorata in alto a destra; la PROFILEBAR sta subito sotto la TIMELINE; la SIDEBAR subito sotto la PROFILEBAR. **Se crescono, tutto si muove** | detto dal proprietario del progetto, una volta sola: vale come regola, non come proposta. Sostituisce le quote fisse — `44 / 126`, `44 / 180`, «top 132» — e la deroga limitata della legge 11 |
+
+**Da scrivere in `docs/`**, con testo da sottoporre: `L0` legge 08 (le schermate 1440 × 900),
+legge 11 (autonomia e deroga), §Le sette aree (le quote), e la cascata su `L1 - Token`,
+`L2 - Sidebar`, `L2 - Systembar`, `L2 - Bubble movement`, `L4 - Schermate`.
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 125 | **Il peso 600 è ammesso, ma solo per il titolo di una bolla e per il WorkMode della PROFILEBAR** (`F-108`). Per il resto vale la legge 07: si cambia scala, non peso | il 600 è già in tutte le bolle e tiene leggibile il titolo sul vetro |
+
+**Scritto il 23 settembre, dopo il §124 e il §125:** `L0` leggi 07 (l'eccezione del 600), 08
+(nessuna posizione assoluta, 1440 × 900 come misura di riferimento), 09 (le aree hanno un
+ancoraggio, non una posizione), 11 riscritta — «Ancorati ai bordi, impilati fra loro»: due
+pile, TIMELINE → PROFILEBAR → SYSTEMBAR → SIDEBAR in alto a destra e INPUT con la dropzone in
+basso a sinistra, e la NOTIFICATIONBAR unica posizione assoluta —; le quote delle sette aree;
+il Focus «tutta la DESK». Per cascata: `L1 - Token` (Sidebar), `L2 - Sidebar`, `L2 - Systembar`,
+`L2 - Bubble movement`.
+
+**Chiusi insieme, dall'audit:** `F-107` (le quote), `F-108` (il 600), `F-114` (la moodboard
+passa ai token del vetro), `F-117` (il vetro opaco di riserva anche nello scuro, in
+`materiali.css`), `F-118` (margine e ombra separati in `L2 - Sidebar`, e il pallino dell'ascolto
+di quella scena verde a 9 px), `F-119` (il confronto delle icone a 14 px, la quota della
+SIDEBAR).

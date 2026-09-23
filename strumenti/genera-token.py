@@ -82,7 +82,7 @@ GEOM = tabella("Geometria", "Raggi, margini e passo. <strong style=\"color:#8A5A
     riga("aria", "22 px", "fra i componenti della guida di destra &mdash; met&agrave; del margine"),
     riga("icona", "14 / 16 px", "14 nella bolla e nel chip, 16 nel banner e nella cornice (legge 06)"),
     riga("pallino", "9 px", "un segno solo, un diametro solo: la bolla active, la frase pi&ugrave; probabile, l&rsquo;ascolto, l&rsquo;inizio di una cosa sulla Timeline"),
-    riga("Sidebar", "44 / 180", "l&rsquo;ancoraggio del cassetto, dal bordo destro e dall&rsquo;alto"),
+    riga("Sidebar", "22 sotto la SYSTEMBAR", "la pila di destra: TIMELINE, PROFILEBAR, SYSTEMBAR, SIDEBAR. Se cresce, scende con lei"),
     riga("passo interno", "4 / 8 / 12 / 16 / 24", "le distanze dentro un componente. Niente separatori: sono gli spazi a distinguere i gruppi"),
 ])
 

@@ -21,12 +21,12 @@ nessuno dei tre audit.**
 registro — «finché non si risponde, ogni correzione è provvisoria» — e sono state sciolte
 il 22 settembre. Le decisioni, con data e motivo, stanno in `tasks/storico.md`.
 
-**Dodici finding sono chiusi e cinque chiusi in parte**, tutti documentali: sono segnati voce
+**Diciassette finding sono chiusi e quattro chiusi in parte**, tutti documentali: sono segnati voce
 per voce qui sotto.
 
 - **22 settembre** — chiusi `F-006`, `F-104`, `F-105`, `F-106`, `F-109`, `F-110`, `F-112`;
   in parte `F-101`, `F-107`, `F-108`, `F-119`;
-- **23 settembre** — chiusi `F-008`, `F-073`, `F-074`, `F-085`; in parte `F-111`.
+- **23 settembre** — chiusi `F-008`, `F-073`, `F-074`, `F-085`, `F-107`, `F-108`, `F-114`, `F-117`, `F-118`, `F-119`; in parte `F-111`, `F-113`, `F-115`.
   Aggiornati, perché citavano documentazione nel frattempo cambiata: `F-015`, `F-024`,
   `F-057`, `F-071`, `F-078`, `F-088`, `F-100`. Aggiunto `F-120`, le decisioni del giorno
   che il codice non segue ancora.
@@ -1463,6 +1463,8 @@ implementa una guida flex. Le due regole non sono simultaneamente soddisfacibili
 **F-107 · Quote e ancoraggi discordanti fra norme, testo e scene**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CG:A081`, `CL:§7.5`, `DIV:appendice 2,4`
 
+> **Chiuso · 23 settembre 2026, sera.** non ci sono più quote fisse: le aree sono ancorate ai bordi o al vicino, in due pile, e la NOTIFICATIONBAR è l'unica posizione assoluta (`L0` leggi 08, 09, 11). Storico §124
+
 > **Chiuso in parte · 22 settembre 2026.** la quota della SIDEBAR è `44 / 180` ovunque, e il pallino è 9 px. **Restano** le quote della SYSTEMBAR
 
 SIDEBAR a `top 132` nel testo di `L2 - Sidebar` e `44 / 180` in `L0`; SYSTEMBAR a `44 / 126`
@@ -1472,6 +1474,8 @@ vince `L0`, e il codice è conforme; per le quote no.
 
 **F-108 · Tipografia e icone: i campioni non sono coerenti con le leggi superiori**
 `DOCUMENTATION_AMBIGUITY` · bassa · da decidere · Origine: `CG:A082`, `CL:§7.6`, `DIV:appendice 3`
+
+> **Chiuso · 23 settembre 2026, sera.** la legge 07 ammette il 600 per il titolo di una bolla e per il WorkMode, e nient'altro. Storico §125
 
 > **Chiuso in parte · 22 settembre 2026.** la misura delle icone segue la legge 06 — 14 nella bolla e nel chip, 16 nella cornice — in tutti i documenti. **Resta** l'eccezione del peso 600
 
@@ -1533,6 +1537,8 @@ potatura della memoria (`F-044`).
 **F-114 · Materiale: `L1 - Moodboard` contro `Liquid glass`**
 `DOCUMENTATION_AMBIGUITY` · bassa · risolta dalla cascata · Origine: `CL:§7.7`, `DIV:appendice 5`
 
+> **Chiuso · 23 settembre 2026, sera.** `L1 - Moodboard` descrive e disegna il vetro con i token di `Liquid glass`, chiaro e scuro
+
 `L1 - Moodboard §2a` descrive «blur 44, film bianco al 62%»; `Liquid glass` prescrive blur
 12 e il film multistrato, e **dichiara** di sostituire le ricette precedenti. Risolta: vince
 la revisione. Resta da aggiornare `L1 - Moodboard`, che oggi è la ricetta che il codice
@@ -1560,6 +1566,8 @@ applicano, ed è il motivo per cui `F-050` è un finding e non una conformità.
 **F-117 · Il fallback opaco dei mockup non copre il ramo scuro**
 `BUG` (nella documentazione eseguibile) · bassa · verificato · Origine: `CG:A089`
 
+> **Chiuso · 23 settembre 2026, sera.** `materiali.css` porta il vetro opaco di riserva anche sul ramo scuro
+
 - **Dove**: `docs/design/liquid-glass.css:42`, `docs/design/materiali.css:13`
 - **Effettivo**: il fallback `@supports not` e `prefers-reduced-transparency` ridefinisce i
   token su `:root`, ma `[data-tema='scuro']` sui contenitori ridefinisce a sua volta film e
@@ -1568,6 +1576,8 @@ applicano, ed è il motivo per cui `F-050` è un finding e non una conformità.
 
 **F-118 · Due dichiarazioni CSS delle tavole sono sintatticamente invalide**
 `BUG` (nella documentazione eseguibile) · bassa · verificato · Origine: `CG:A096`
+
+> **Chiuso · 23 settembre 2026, sera.** la dichiarazione di `L2 - Sidebar` separa margine e ombra; quella di `L2 - INPUT` non c'era già più
 
 - **Dove**: `docs/design/L2 - Sidebar.dc.html:192`, `docs/design/L2 - INPUT.dc.html:507`
 - **Effettivo**: `margin-bottom: 15px, 0 0 0 18px rgba(...)` e
@@ -1578,6 +1588,8 @@ applicano, ed è il motivo per cui `F-050` è un finding e non una conformità.
 
 **F-119 · Le scene di `L4` e i documenti citano ancora misure superate**
 `DOCUMENTATION_AMBIGUITY` · bassa · verificato · Origine: `DIV:appendice`, `CG:A081`
+
+> **Chiuso · 23 settembre 2026, sera.** il confronto di `L1 - Icone` è a 14 px, la misura vera; la quota della SIDEBAR segue la legge 11
 
 > **Chiuso in parte · 22 settembre 2026.** colori, pallino e quota della SIDEBAR allineati nelle scene. **Resta** il resto delle misure di `L4`
 
@@ -1591,6 +1603,8 @@ successo.
 **F-120 · Le decisioni del 23 settembre non hanno ancora un corrispettivo nel codice**
 `DOC_MISSING_IMPLEMENTATION` · media · da verificare · Origine: sessione del 23 settembre 2026
 
+> **Aggiornato · 23 settembre 2026, sera.** l'elenco copre ora tutte le decisioni della giornata, dal §90 al §123.
+
 Non è una misura sul codice: è l'elenco di ciò che `docs/` prescrive da oggi e che il
 codice, scritto prima, non può fare. Va verificato voce per voce, e ogni voce confermata
 diventa un finding a sé.
@@ -1603,6 +1617,15 @@ diventa un finding a sé.
 - **la bolla documento** (`docs/L02`, `L0` legge zero). Storico §95
 - **niente si trascina** (`docs/L02` §INPUT). Storico §96
 - **le quattro taglie**, Banner, Chip, Task, Focus (`L0` §Le quattro taglie). Storico §97, §98
+- **il focus a 920 × 690**, con titolo Manrope 200 / 46 e corpo 300 / 19, e il fondo che resta com'è (`L0` §Le quattro taglie, `L2 - Bubble`). Storico §112, §115
+- **la bolla documento con la targa neutra**: tipo e provenienza, nessuno stato (`L2 - Bubble`). Storico §113
+- **la tinta velata del chip**: ambra al 30%, azzurro al 22% (`L0` §SIDEBAR, `L2 - Sidebar`). Storico §114
+- **il pallino verde della active a sinistra della sua icona**, non accanto al titolo (`L0` leggi 02 e 04, `docs/L01`). Storico §116
+- **la targa nel colore della sua icona**, a 12 px e peso 500, e le icone nel colore di stato vero (`L2 - Bubble`). Storico §117
+- **la targa senza età**: niente «2 min» né «09:41» a destra. Storico §121
+- **il flusso passa dalla bozza**: la bozza grigia nella dropzone, la conferma a voce, la bolla che vola al suo posto; e il task ambra mentre il sistema fa una domanda (`L3 - Flusso task`, `L2 - INPUT`). Storico §118, §119, §122
+- **le icone**: il tipo di task sceglie l'icona, dieci icone di tipo più quelle di cornice, 14 e 16 px (`L0` legge 06). Storico §100–§106
+- **il suono delle notifiche** è `Archivio/system-storage/notification.mp3`, e **l'orario di prova** è 9–13 e 14–18 in `memory/general.txt` (`docs/L03`, `docs/L02`). Storico §110, §111
 
 ---
 
