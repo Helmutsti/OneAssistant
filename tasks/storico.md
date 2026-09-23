@@ -556,3 +556,7 @@ passa ai token del vetro), `F-117` (il vetro opaco di riserva anche nello scuro,
 `materiali.css`), `F-118` (margine e ombra separati in `L2 - Sidebar`, e il pallino dell'ascolto
 di quella scena verde a 9 px), `F-119` (il confronto delle icone a 14 px, la quota della
 SIDEBAR).
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 126 | **`L1 - Moodboard` resta com'è: è un file a sé**, un riferimento d'atmosfera, e non si allinea per cascata alle regole che cambiano — il «verde salvia sordo» dell'introduzione e «il grassetto non esiste» senza l'eccezione del 600 restano | scelta del proprietario del progetto |
