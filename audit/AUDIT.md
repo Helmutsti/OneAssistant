@@ -315,6 +315,8 @@ riprodotto) · `da decidere` (dipende da una decisione umana).
 **F-014 · Fixture e dati reali non sono distinguibili nel repository**
 `DOCUMENTATION_AMBIGUITY` · bassa · da decidere · Origine: `CG:A092`
 
+> **Rimandato · 23 settembre 2026.** la decisione è stata rinviata dal proprietario del progetto. Storico §108
+
 - **Dove**: `Archivio/users/user_123/**`
 - **Effettivo**: profilo, sistema, servizi e media sono tracciati; solo `chat-raw` è
   ignorata. Non è specificato come sostituire le fixture con dati personali senza
@@ -1522,6 +1524,8 @@ esiste un documento che dica chi ha ragione. → §5 Q6
 **F-113 · L'orario di lavoro ha tre fonti e due valori**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CL:§7.4`
 
+> **Chiuso in parte · 23 settembre 2026.** l'orario lo inserisce l'utente; nel prototipo è 9–13 e 14–18 in `memory/general.txt`, e la tavola della TIMELINE lo segue. **Resta** il codice, che usa 8–19. Storico §110
+
 `memory/general.txt` dice 9–19; `L2 - TIMELINE` disegna 8–19; `contesto.ts` usa 8–19.
 Nessuno dei tre è dichiarato normativo, e il valore alimenta il filtro degli arrivi e la
 potatura della memoria (`F-044`).
@@ -1537,11 +1541,15 @@ implementa (`F-064`).
 **F-115 · Quale asset è il campanello**
 `DOCUMENTATION_AMBIGUITY` · bassa · da decidere · Origine: `CL:§7.8`
 
+> **Chiuso in parte · 23 settembre 2026.** il suono è `Archivio/system-storage/notification.mp3` (`docs/L03`). **Resta** il codice, che legge `pubblico/suoni/` da un percorso rotto (`F-090`). Storico §111
+
 `L03` nomina `Archivio/system-storage/campanello.mp3`; il codice usa `pubblico/suoni/` con
 un altro nome e un percorso rotto (`F-090`). Nessun documento spiega la differenza.
 
 **F-116 · I criteri della memoria selettiva restano dichiaratamente aperti**
 `DOCUMENTATION_AMBIGUITY` · media · da decidere · Origine: `CG:A087`
+
+> **Rimandato · 23 settembre 2026.** per ora la memoria resta il documento di contesto; il criterio si decide in una fase successiva. Le altre lacune elencate qui — API, errori, calendario, fuso orario, recupero della chat — restano aperte. Storico §109
 
 `docs/L01` e `L03` dichiarano che «*il confine di ciò che è utile salvare deve ancora
 essere definito*». Mancano inoltre schemi API, semantica degli errori, idempotenza,

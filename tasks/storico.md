@@ -442,3 +442,14 @@ concluso non si vede — e comprende la bolla documento.
 **Scritto in:** `L0` legge 06, `docs/L01` (tabella dei nomi), `L1 - Icone`, `L2 - Bubble`
 (targa a 14 px, colore «nella bolla», catalogo con i nomi Lucide), `L2 - Sidebar`,
 `L2 - INPUT`, `L2 - Profilebar` (tolto il riquadro «Aperta / l'ottava icona»).
+
+---
+
+## 23 settembre 2026 — le quattro domande rimaste nell'audit
+
+| # | Decisione | Motivo |
+|---|---|---|
+| 108 | **Rimandata: come si separano i dati di prova da quelli veri** (`F-014`). Oggi `Archivio/users/user_123/` è tutto nel repository, compreso `password: ciao` in `preferences.txt`; nessun documento dice come aggiungere un utente vero senza committarlo | scelta del proprietario del progetto. Resta aperta, e va ripresa prima che l'archivio ospiti dati personali |
+| 109 | **La memoria resta, per ora, il documento di contesto** `memory/general.txt` (`F-116`). Il criterio di ciò che è utile salvare non si decide adesso | nel prototipo la memoria è simulata: deciderne il criterio adesso vorrebbe dire deciderlo senza vederla lavorare |
+| 110 | **L'orario di lavoro lo inserisce l'utente**; nel prototipo è un valore di prova, 9–13 e 14–18, in `memory/general.txt`, ed è l'orizzonte della TIMELINE (`docs/L02`) | c'erano due valori, 9–19 nel documento dell'utente e 8–19 nella tavola (`F-113`) |
+| 111 | **Il suono delle notifiche è `Archivio/system-storage/notification.mp3`**, ricavato da `soundshelfstudio-ui-click-deep-512211.mp3`; `campanello.mp3` esce. `pubblico/suoni/notifica.mp3` resta finché il codice non legge quello nuovo | scelta del proprietario del progetto (`F-115`) |

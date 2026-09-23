@@ -14,7 +14,7 @@ progetto. La struttura è questa:
 
 Archivio
 	system-storage
-		campanello.mp3
+		notification.mp3
 	users
 		user_123
 			chat-raw
@@ -36,7 +36,7 @@ Archivio
 
 **system-settings.txt**: Impostazioni generali del sistema. Tutte le impostazioni che non sono specifiche dell'utente. In questo momento è vuoto.
 **system-storage**: Si tratta della cartella che contiene i file condivisi del sistema, come il suono delle notifiche
-**campanello.mp3**: Suono delle notifiche
+**notification.mp3**: Suono delle notifiche
 **users**: Cartella che contiene i dati degli utenti
 **user_123**: Cartella dell'unico utente del prototipo, considerato l'utente principale
 del sistema. Il nome è il suo identificatore tecnico. Il supporto per più utenti verrà

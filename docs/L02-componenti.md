@@ -51,6 +51,10 @@ documento, solo per vederlo.
 
 Questo componente ha lo scopo di orientare l'utente temporalmente durante la giornata di lavoro o in generale durante l'utilizzo del sistema. **A cosa serve.** A **situarti nel tempo** — e situarsi non vuol dire sapere semplicemente "che ore sono", vuol dire sapere **quanto tempo hai** e **quanto tempo è passato o sta passando**.
 
+**L'orizzonte** è l'orario di lavoro dell'utente, un'informazione che inserisce lui.
+Nel prototipo è un valore di prova, 9–13 e 14–18, scritto nel suo documento di contesto
+(`memory/general.txt`).
+
 ## PROFILEBAR — quando, dove e chi sei
 
  Serve a restituire all'utente un contesto di utilizzo e varie informazioni che riguardato l'utente stesso che sta utilizzando il sistema. Mostra la foto profilo, la data e l'ora e anche la posizione GPS. Inoltre a ogni posizione GPS può essere associato un luogo conosciuto come "casa" o "Ufficio". **GPS** e **Data e ora** contribuiscono a definire un **WorkMode** che rappresenta il tipo di utilizzo che l'utente può voler svolgere.
