@@ -19,7 +19,10 @@
   --i-tenue: var(--inchiostro-corpo, #4a4e48);
   --i-fioco: var(--inchiostro-fioco, #5a5f58);
   /* Le tessere, e il velo del cassetto: nero 54% in chiaro, 58% in scuro (`L1 - Temi`). */
-  --tessera: rgba(255, 255, 255, 0.55);
+  /* Le tessere della dropzone: carta, e il filo tratteggiato della memoria (`L2 - INPUT`). */
+  --tessera: rgba(255, 255, 255, 0.62);
+  --tessera-memoria: rgba(255, 255, 255, 0.4);
+  --tessera-bordo: rgba(26, 28, 25, 0.12);
   --velo: rgba(18, 22, 18, 0.54);
   --margine: 44px;
   --aria: 22px;
@@ -29,6 +32,8 @@
 
 :root[data-tema='scuro'] {
   --tessera: rgba(255, 255, 255, 0.08);
+  --tessera-memoria: rgba(255, 255, 255, 0.04);
+  --tessera-bordo: rgba(233, 255, 243, 0.18);
   --velo: rgba(0, 0, 0, 0.58);
 }
 
@@ -74,6 +79,28 @@ body {
   box-shadow: var(--liquid-edge);
 }
 
+/* La bolla della scrivania, a strati: il film di riposo e quello del fuoco stanno uno
+   sull'altro, e diventare la active è una dissolvenza di 180 ms — film +12% e ombra più
+   profonda, nessun cambio di misura (`L2 - Bubble movement` §Active). */
+.vetro-strati {
+  position: relative;
+  isolation: isolate;
+  -webkit-backdrop-filter: var(--liquid-optics);
+  backdrop-filter: var(--liquid-optics);
+  box-shadow: var(--liquid-edge);
+  transition: box-shadow 180ms ease-out;
+}
+.vetro-strati > .strato {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  transition: opacity 180ms ease-out;
+}
+.vetro-strati.active {
+  box-shadow: var(--liquid-edge), 0 22px 44px -18px rgba(37, 37, 37, 0.3);
+}
+
 /* La targa: IBM Plex Mono 12 / 500 / +0.16em, nel colore dell'icona. */
 .targa {
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
@@ -114,6 +141,12 @@ body {
 }
 .nasce {
   animation: nasce 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Il cassetto che si richiude: lo stesso movimento dell'apertura, al contrario. */
+@keyframes rientra {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(8px) scale(0.98); }
 }
 
 @keyframes svanisce {

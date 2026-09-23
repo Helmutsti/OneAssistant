@@ -7,6 +7,7 @@ import { Battery, House, MapPin, Mic, MicOff, Volume2, VolumeX, Wifi, WifiOff, B
 import { PREAVVISO_MS, type Bolla, type Task } from '../modello/tipi.ts';
 import type { Luogo, Macchina, Preferenze } from '../conoscenza/profilo.ts';
 import { Icona, colore, ora, tinta, useAdesso, useFotografia, useMotore, velo } from './comune.tsx';
+import { useInVolo } from './movimento.ts';
 
 export interface Ambiente {
   readonly preferenze: Preferenze;
@@ -234,6 +235,7 @@ function Sidebar() {
   const adesso = useAdesso(m, 5000);
   const pila = useRef<HTMLDivElement>(null);
   const [posti, setPosti] = useState(Infinity);
+  const inVolo = useInVolo();
   useLayoutEffect(() => {
     const misura = () => {
       const cima = pila.current?.getBoundingClientRect().top;
@@ -254,10 +256,17 @@ function Sidebar() {
   if (!chip.length) return null;
   const visti = chip.length > posti ? chip.slice(0, posti - 1) : chip;
   const resto = chip.length - visti.length;
+  // Durante la raccolta i chip cedono attenzione, mai posizione: scendono al 45% e restano
+  // dove sono (`L2 - Sidebar`). La raccolta è la bozza che si compone nella dropzone.
+  const raccolta = f.bolle.some((b) => b.luogo === 'DROPZONE');
   return (
-    <div ref={pila} className="flex flex-col items-end gap-[10px]">
+    <div
+      ref={pila}
+      className="flex flex-col items-end gap-[10px] transition-opacity duration-[180ms]"
+      style={{ opacity: raccolta ? 0.45 : 1 }}
+    >
       {visti.map((b) => (
-        <Chip key={b.id} b={b} adesso={adesso} />
+        <Chip key={b.id} b={b} adesso={adesso} nascosto={inVolo.has(b.id)} />
       ))}
       {resto > 0 && (
         <div className="vetro flex h-[30px] items-center rounded-[20px] px-[14px]">
@@ -278,7 +287,7 @@ function datoDelChip(b: Bolla, adesso: number): string | undefined {
 }
 
 /** Un chip è una bolla che si è stretta: icona di tipo, nome, un dato solo. Alto 30, raggio 20. */
-function Chip({ b, adesso }: { b: Bolla; adesso: number }) {
+function Chip({ b, adesso, nascosto }: { b: Bolla; adesso: number; nascosto: boolean }) {
   const c = colore(b, adesso);
   const rimandato = b.genere === 'task' && b.attesa === 'ora' && (b.ora ?? 0) > adesso;
   const dato = datoDelChip(b, adesso);
@@ -286,7 +295,8 @@ function Chip({ b, adesso }: { b: Bolla; adesso: number }) {
   return (
     <div
       data-parte="chip"
-      className={`${rimandato ? 'vetro-quieto' : 'vetro'} ${c === 'azzurro' ? 'lavora' : ''} nasce flex h-[30px] max-w-[320px] items-center gap-[9px] rounded-[20px] px-[14px]`}
+      data-id={b.id}
+      className={`${nascosto ? 'invisible' : ''} ${rimandato ? 'vetro-quieto' : 'vetro'} ${c === 'azzurro' ? 'lavora' : ''} nasce flex h-[30px] max-w-[320px] items-center gap-[9px] rounded-[20px] px-[14px]`}
       style={tintaVetro ? { background: `${tintaVetro}, var(--liquid-film)` } : undefined}
     >
       <span style={{ color: 'var(--i)' }} className="flex">

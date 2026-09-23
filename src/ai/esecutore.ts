@@ -42,9 +42,9 @@ function controlla(s: Strumento, a: Readonly<Record<string, unknown>>): string |
 function elementi(v: unknown): Elemento[] | undefined {
   if (!Array.isArray(v)) return undefined;
   return v.map((x: string) => {
-    const [tipo, nome, dato] = x.split('|').map((p) => p.trim());
+    const [tipo, nome, dato, da] = x.split('|').map((p) => p.trim());
     const t = (TIPI as readonly string[]).includes(tipo ?? '') || tipo === 'task' ? (tipo as Tipo | 'task') : 'documento';
-    return { tipo: t, nome: nome || tipo || x, dato: dato || undefined };
+    return { tipo: t, nome: nome || tipo || x, dato: dato || undefined, memoria: da === 'memoria' || undefined };
   });
 }
 

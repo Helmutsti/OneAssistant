@@ -42,6 +42,12 @@ export interface Elemento {
   readonly nome: string;
   /** Un dato solo, in coda, dove serve. */
   readonly dato?: string;
+  /**
+   * Se esiste solo nella memoria. Decide il materiale della tessera (`L2 - INPUT` §Le
+   * tessere): carta per le cose raccolte, vetro per i task già a schermo, filo tratteggiato
+   * per ciò che esiste solo nella memoria.
+   */
+  readonly memoria?: boolean;
 }
 
 /**

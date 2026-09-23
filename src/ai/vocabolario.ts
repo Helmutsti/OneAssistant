@@ -57,7 +57,9 @@ const FRASI: Argomento = {
 const ELEMENTI: Argomento = {
   nome: 'elementi',
   genere: 'elenco',
-  cosa: `le cose agganciate al task, una per voce, nella forma «tipo | nome | dato»; il dato è facoltativo. Tipi: ${[...TIPI, 'task'].join(', ')}`,
+  cosa:
+    `le cose agganciate al task, una per voce, nella forma «tipo | nome | dato | da»; dato e da sono facoltativi, ` +
+    `e da vale «memoria» quando la cosa viene solo dalla memoria dell'utente. Tipi: ${[...TIPI, 'task'].join(', ')}`,
 };
 const SERVIZIO: Argomento = {
   nome: 'servizio',

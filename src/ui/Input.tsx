@@ -4,7 +4,7 @@
 // volta. INPUT non si occupa mai: qualunque cosa ci sia nella dropzone, resta pronta per la
 // frase successiva. Solo tastiera: la voce è una fase futura.
 
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { CircleHelp, Keyboard, TriangleAlert } from 'lucide-react';
 import type { Task } from '../modello/tipi.ts';
 import { Icona, useFotografia, useMotore } from './comune.tsx';
@@ -40,13 +40,6 @@ export function Input({ suFrase }: { suFrase: (testo: string) => void }) {
     return () => window.removeEventListener('keydown', fn);
   }, []);
 
-  // La bolla cresce sul posto mentre scrivi: in larghezza fino a un tetto, poi in altezza.
-  useEffect(() => {
-    const c = campo.current;
-    if (!c) return;
-    c.style.height = '0px';
-    c.style.height = `${c.scrollHeight}px`;
-  }, [testo]);
 
   const manda = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key !== 'Enter' || e.shiftKey) return;
@@ -79,6 +72,16 @@ export function Input({ suFrase }: { suFrase: (testo: string) => void }) {
         ? 'scambio'
         : 'riposo';
   const bollaDelloScambio = modo === 'turno' || modo === 'scambio';
+
+  // La bolla cresce sul posto mentre scrivi: in larghezza fino a un tetto, poi in altezza.
+  // Si misura solo quando il campo si vede: nascosto ha larghezza zero, e ogni lettera
+  // sarebbe una riga.
+  useLayoutEffect(() => {
+    const c = campo.current;
+    if (!c || bollaDelloScambio) return;
+    c.style.height = '0px';
+    c.style.height = `${c.scrollHeight}px`;
+  }, [testo, bollaDelloScambio]);
 
   const righeFrasi = mostraFrasi && modo !== 'scrivi' && modo !== 'turno' && (
     <>
@@ -192,10 +195,17 @@ function Dropzone({ t }: { t: Task }) {
             <Tessera tipo="contatto" nome={t.uscita.a} etichetta={t.uscita.servizio} />
           )}
           {viste.map((e, i) => (
-            <Tessera key={i} tipo={e.tipo} nome={e.nome} etichetta={e.tipo} dato={e.dato} />
+            <Tessera
+              key={i}
+              tipo={e.tipo}
+              nome={e.nome}
+              etichetta={e.memoria ? 'ricordo' : e.tipo}
+              dato={e.dato}
+              materiale={e.tipo === 'task' ? 'vetro' : e.memoria ? 'memoria' : 'carta'}
+            />
           ))}
           {resto > 0 && (
-            <span className="mono flex items-center rounded-[12px] px-[11px] py-[7px] text-[12px]" style={{ color: 'var(--i-tenue)', background: 'var(--tessera)' }}>
+            <span className="mono flex items-center rounded-[12px] px-[11px] py-[7px] text-[12px]" style={{ color: 'var(--i-tenue)', background: 'var(--tessera)', border: '1px solid var(--tessera-bordo)' }}>
               +{resto}
             </span>
           )}
@@ -205,9 +215,33 @@ function Dropzone({ t }: { t: Task }) {
   );
 }
 
-function Tessera({ tipo, nome, etichetta, dato }: { tipo: Task['contesto'][number]['tipo']; nome: string; etichetta: string; dato?: string }) {
+/** I tre materiali di una tessera (`L2 - INPUT` §Le tessere). */
+const MATERIALI = {
+  carta: { background: 'var(--tessera)', border: '1px solid var(--tessera-bordo)' },
+  vetro: {
+    background: 'var(--liquid-film)',
+    backdropFilter: 'var(--liquid-optics)',
+    border: '1px solid rgba(255,255,255,.7)',
+    boxShadow: '0 1px 2px rgba(37,37,37,.1), inset 0 0 0 1px rgba(255,255,255,.5)',
+  },
+  memoria: { background: 'var(--tessera-memoria)', border: '1px dashed var(--tessera-bordo)' },
+} as const;
+
+function Tessera({
+  tipo,
+  nome,
+  etichetta,
+  dato,
+  materiale = 'carta',
+}: {
+  tipo: Task['contesto'][number]['tipo'];
+  nome: string;
+  etichetta: string;
+  dato?: string;
+  materiale?: keyof typeof MATERIALI;
+}) {
   return (
-    <span data-parte="tessera" className="flex items-center gap-2 rounded-[12px] px-[11px] py-[7px]" style={{ background: 'var(--tessera)' }}>
+    <span data-parte="tessera" data-materiale={materiale} className="flex items-center gap-2 rounded-[12px] px-[11px] py-[7px]" style={MATERIALI[materiale]}>
       <Icona tipo={tipo} />
       <span className="flex flex-col gap-[2px] leading-none">
         <span className="text-[13.5px] font-medium">{nome}</span>

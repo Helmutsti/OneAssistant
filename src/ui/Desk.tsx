@@ -7,6 +7,22 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { Bolla as TBolla, Task } from '../modello/tipi.ts';
 import { Icona, colore, targaDi, tinta, useAdesso, useFotografia, useMotore } from './comune.tsx';
+import {
+  CONTRAZIONE_MS,
+  CURVA,
+  MIGRAZIONE_MS,
+  NASCITA_MS,
+  ONDA,
+  RIENTRO,
+  SFALSAMENTO_MS,
+  USCITA_MS,
+  arco,
+  arriva,
+  fermo,
+  parte,
+  rettangolo,
+  type Rettangolo,
+} from './movimento.ts';
 
 interface Posto {
   x: number;
@@ -81,22 +97,143 @@ function areaDesk(): DOMRectLike {
   return { x: 44, y: 40, w: Math.max(348, guida - 22 - 44), h: Math.max(170, fondo - 40) };
 }
 
+/** Un'uscita dalla scrivania: la bolla, dov'era, e dove va se va da qualche parte. */
+interface Uscente {
+  readonly b: TBolla;
+  readonly posto: Posto;
+  /** Il chip in cui si trasforma, per la messa da parte. Senza, svanisce sul posto. */
+  readonly verso?: Rettangolo;
+}
+
+/** Le bolle più vicine a un punto, dalla più vicina, con la direzione che le allontana. */
+function vicine(punto: { x: number; y: number }, altre: Array<{ id: string; r: Rettangolo }>) {
+  return altre
+    .map(({ id, r }) => {
+      const cx = r.x + r.w / 2;
+      const cy = r.y + r.h / 2;
+      const d = Math.hypot(cx - punto.x, cy - punto.y) || 1;
+      return { id, r, d, ux: (cx - punto.x) / d, uy: (cy - punto.y) / d };
+    })
+    .sort((p, q) => p.d - q.d)
+    .slice(0, ONDA.length);
+}
+
 export function Desk() {
   const f = useFotografia();
   const posti = useRef(new Map<string, Posto>());
-  const [uscenti, setUscenti] = useState<TBolla[]>([]);
-  const prima = useRef<readonly TBolla[]>([]);
+  const [uscenti, setUscenti] = useState<Uscente[]>([]);
+  const prima = useRef<{ bolle: readonly TBolla[]; dropzone?: Rettangolo; chip: Map<string, Rettangolo> }>({
+    bolle: [],
+    chip: new Map(),
+  });
   const inDesk = f.bolle.filter((b) => b.luogo === 'DESK' && b.id !== f.focus);
 
-  // Chi esce da DESK in qualsiasi modo svanisce sul posto; chi ci torna riprende il suo posto.
   useLayoutEffect(() => {
-    const ora = new Set(inDesk.map((b) => b.id));
-    const usciti = prima.current.filter((b) => !ora.has(b.id) && b.id !== f.focus);
-    if (usciti.length) {
-      setUscenti((u) => [...u, ...usciti]);
-      setTimeout(() => setUscenti((u) => u.filter((x) => !usciti.includes(x))), 340);
+    const ieri = prima.current;
+    const eraInDesk = new Set(ieri.bolle.filter((b) => b.luogo === 'DESK').map((b) => b.id));
+    const oraInDesk = new Set(inDesk.map((b) => b.id));
+    const nodo = (id: string) => document.querySelector<HTMLElement>(`[data-posto="${CSS.escape(id)}"]`);
+    const cornici = () =>
+      inDesk
+        .map((b) => ({ id: b.id, r: rettangolo(nodo(b.id)) }))
+        .filter((x): x is { id: string; r: Rettangolo } => x.r !== undefined);
+
+    // ─── chi arriva ─────────────────────────────────────────────
+    for (const b of inDesk) {
+      if (eraInDesk.has(b.id)) continue;
+      const el = nodo(b.id);
+      const qui = rettangolo(el);
+      if (!el || !qui) continue;
+      const daDove = ieri.bolle.find((x) => x.id === b.id)?.luogo;
+      // Dalla dropzone vola lungo un arco (la nascita); da un chip risale dove stava (il
+      // richiamo). Quello che compare dal niente — un documento, un sotto-task — sale appena.
+      const da = daDove === 'DROPZONE' ? ieri.dropzone : daDove === 'SIDEBAR' ? ieri.chip.get(b.id) : undefined;
+      if (!fermo()) {
+        if (da) el.animate(arco(da, qui), { duration: NASCITA_MS, easing: CURVA });
+        else {
+          el.animate([{ opacity: 0, transform: 'translateY(8px) scale(.98)' }, { opacity: 1, transform: 'none' }], {
+            duration: NASCITA_MS,
+            easing: CURVA,
+          });
+        }
+      }
+      // E le vicine fanno spazio: si allontanano lungo la retta che le unisce al punto
+      // d'arrivo, le più vicine di più, ognuna 40 ms dopo la precedente, e restano dove
+      // l'onda le ha lasciate con un rientro del 40%.
+      const centro = { x: qui.x + qui.w / 2, y: qui.y + qui.h / 2 };
+      vicine(centro, cornici().filter((x) => x.id !== b.id && eraInDesk.has(x.id))).forEach((v, i) => {
+        const spinta = ONDA[i]!;
+        const resta = spinta * (1 - RIENTRO);
+        const p = posti.current.get(v.id);
+        const vn = nodo(v.id);
+        if (!p || !vn) return;
+        const dx = v.ux * resta;
+        const dy = v.uy * resta;
+        posti.current.set(v.id, { x: p.x + dx, y: p.y + dy });
+        vn.style.left = `${p.x + dx}px`;
+        vn.style.top = `${p.y + dy}px`;
+        if (!fermo()) {
+          vn.animate(
+            [
+              { transform: `translate(${-dx}px, ${-dy}px)` },
+              { transform: `translate(${v.ux * (spinta - resta)}px, ${v.uy * (spinta - resta)}px)`, offset: 0.45 },
+              { transform: 'none' },
+            ],
+            { duration: NASCITA_MS, easing: CURVA, delay: NASCITA_MS * 0.5 + i * SFALSAMENTO_MS, fill: 'backwards' },
+          );
+        }
+      });
     }
-    prima.current = inDesk;
+
+    // ─── chi se ne va ────────────────────────────────────────────
+    const nuovi: Uscente[] = [];
+    for (const id of eraInDesk) {
+      if (oraInDesk.has(id) || id === f.focus) continue;
+      const vecchia = ieri.bolle.find((x) => x.id === id)!;
+      const posto = posti.current.get(id);
+      if (!posto) continue;
+      const adesso = f.bolle.find((x) => x.id === id);
+      if (adesso?.luogo === 'SIDEBAR') {
+        // Messa da parte: il chip non compare finché la bolla non l'ha raggiunto.
+        const chip = rettangolo(document.querySelector(`[data-parte=chip][data-id="${CSS.escape(id)}"]`));
+        if (chip && !fermo()) parte(id);
+        nuovi.push({ b: vecchia, posto, verso: chip });
+      } else if (!adesso) {
+        nuovi.push({ b: vecchia, posto });
+        // Finita: svanisce sul posto, e le vicine si riavvicinano del 40% del vuoto.
+        const w = larghezza(vecchia);
+        const vuoto = { x: posto.x + w / 2, y: posto.y + 85 };
+        vicine(vuoto, cornici()).forEach((v, i) => {
+          const p = posti.current.get(v.id);
+          const vn = nodo(v.id);
+          if (!p || !vn) return;
+          const distanza = Math.max(0, v.d - (w + v.r.w) / 2);
+          const passo = Math.min(24, distanza * RIENTRO);
+          const dx = -v.ux * passo;
+          const dy = -v.uy * passo;
+          posti.current.set(v.id, { x: p.x + dx, y: p.y + dy });
+          vn.style.left = `${p.x + dx}px`;
+          vn.style.top = `${p.y + dy}px`;
+          if (!fermo()) {
+            vn.animate([{ transform: `translate(${-dx}px, ${-dy}px)` }, { transform: 'none' }], {
+              duration: USCITA_MS,
+              easing: CURVA,
+              delay: USCITA_MS * 0.5 + i * SFALSAMENTO_MS,
+              fill: 'backwards',
+            });
+          }
+        });
+      }
+    }
+    if (nuovi.length) setUscenti((u) => [...u.filter((x) => !nuovi.some((n) => n.b.id === x.b.id)), ...nuovi]);
+
+    // Quello che servirà al prossimo giro: dov'erano la dropzone e i chip.
+    const chip = new Map<string, Rettangolo>();
+    document.querySelectorAll<HTMLElement>('[data-parte=chip][data-id]').forEach((el) => {
+      const r = rettangolo(el);
+      if (r && el.dataset.id) chip.set(el.dataset.id, r);
+    });
+    prima.current = { bolle: f.bolle, dropzone: rettangolo(document.querySelector('[data-parte=dropzone]')), chip };
   });
 
   const area = areaDesk();
@@ -111,13 +248,11 @@ export function Desk() {
 
   return (
     <div className="absolute inset-0 pointer-events-none">
-      {uscenti.map((b) => (
-        <Posata key={`u-${b.id}`} posto={posti.current.get(b.id)} classe="svanisce">
-          <Bolla b={b} active={false} />
-        </Posata>
+      {uscenti.map((u) => (
+        <Uscita key={`u-${u.b.id}`} u={u} fine={() => setUscenti((x) => x.filter((y) => y !== u))} />
       ))}
       {inDesk.map((b) => (
-        <Posata key={b.id} posto={posti.current.get(b.id)} classe="nasce">
+        <Posata key={b.id} id={b.id} posto={posti.current.get(b.id)}>
           <Bolla b={b} active={f.active === b.id} />
         </Posata>
       ))}
@@ -126,11 +261,73 @@ export function Desk() {
   );
 }
 
-function Posata({ posto, classe, children }: { posto?: Posto; classe: string; children: React.ReactNode }) {
+function Posata({ id, posto, children }: { id: string; posto?: Posto; children: React.ReactNode }) {
   if (!posto) return null;
   return (
-    <div className={`absolute ${classe}`} style={{ left: posto.x, top: posto.y }}>
+    <div data-posto={id} className="absolute" style={{ left: posto.x, top: posto.y }}>
       {children}
+    </div>
+  );
+}
+
+/**
+ * La bolla che lascia la scrivania. Se va in SIDEBAR si contrae — perde le righe dal basso,
+ * restano nome e dato — e poi vola al suo chip lungo un arco. Se ha finito, sfuma sul
+ * posto: film più trasparente, scala 94%, e non vola da nessuna parte.
+ */
+function Uscita({ u, fine }: { u: Uscente; fine: () => void }) {
+  const nodo = useRef<HTMLDivElement>(null);
+  const involucro = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const el = nodo.current;
+    const dentro = involucro.current;
+    if (!el || !dentro) return;
+    const chiudi = () => {
+      arriva(u.b.id);
+      fine();
+    };
+    if (fermo()) {
+      chiudi();
+      return;
+    }
+    const verso = u.verso;
+    if (verso) {
+      const qui = rettangolo(el)!;
+      const alta = Math.min(qui.h, 76);
+      // Perde le righe dal basso: l'involucro si accorcia fino a nome e dato.
+      const contrazione = dentro.animate([{ height: `${qui.h}px` }, { height: `${alta}px` }], {
+        duration: CONTRAZIONE_MS,
+        easing: CURVA,
+        fill: 'forwards',
+      });
+      contrazione.onfinish = () => {
+        const dx = verso.x - qui.x;
+        const dy = verso.y - qui.y;
+        const s = verso.w / qui.w;
+        const volo = el.animate(
+          [
+            { transform: 'none', opacity: 1 },
+            { transform: `translate(${dx / 2}px, ${dy / 2 - 60}px) scale(${(s + 1) / 2})`, opacity: 0.9, offset: 0.5 },
+            { transform: `translate(${dx}px, ${dy}px) scale(${s}, ${verso.h / alta})`, opacity: 0 },
+          ],
+          { duration: MIGRAZIONE_MS, easing: CURVA, fill: 'forwards' },
+        );
+        volo.onfinish = chiudi;
+      };
+      return;
+    }
+    const via = el.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'scale(.94)' }], {
+      duration: USCITA_MS,
+      easing: CURVA,
+      fill: 'forwards',
+    });
+    via.onfinish = chiudi;
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  return (
+    <div ref={nodo} className="pointer-events-none absolute" style={{ left: u.posto.x, top: u.posto.y, transformOrigin: 'top left' }}>
+      <div ref={involucro} className="overflow-hidden rounded-[26px]">
+        <Bolla b={u.b} active={false} quieta={!u.verso} />
+      </div>
     </div>
   );
 }
@@ -148,7 +345,7 @@ function Frazione({ dato }: { dato?: string }) {
 }
 
 /** La bolla, taglia Task. Contesto e corpo; le frasi stanno in INPUT (`L2 - Bubble`, `L3 - Flusso task`). */
-export function Bolla({ b, active }: { b: TBolla; active: boolean }) {
+export function Bolla({ b, active, quieta = false }: { b: TBolla; active: boolean; quieta?: boolean }) {
   const m = useMotore();
   const adesso = useAdesso(m, 5000);
   const c = colore(b, adesso);
@@ -157,9 +354,11 @@ export function Bolla({ b, active }: { b: TBolla; active: boolean }) {
   return (
     <div
       data-parte="bolla"
-      className={`${active ? 'vetro-fuoco' : 'vetro'} ${lavora ? 'lavora' : ''} rounded-[26px] px-[22px] py-5`}
+      className={`vetro-strati ${active ? 'active' : ''} ${lavora ? 'lavora' : ''} rounded-[26px] px-[22px] py-5`}
       style={{ width: larghezza(b) }}
     >
+      <span className="strato" style={{ background: quieta ? 'var(--liquid-quiet)' : 'var(--liquid-film)', opacity: active ? 0 : 1 }} />
+      <span className="strato" style={{ background: 'var(--liquid-focus)', opacity: active ? 1 : 0 }} />
       <div data-parte="bolla-targa" className="flex items-center gap-2" style={{ color: b.genere === 'documento' ? 'var(--i-fioco)' : tinta(c) }}>
         {active && <span className="pallino" aria-label="active" />}
         <Icona tipo={b.tipo} />

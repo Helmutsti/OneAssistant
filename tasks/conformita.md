@@ -71,7 +71,7 @@ codice segue il livello più basso, e la voce va decisa.
 | Velo | nero 54%, saturate .62, brightness .86, 380 ms | così | ✓ |
 | Apertura | 420 ms dal basso a destra, righe sfalsate di 40 ms | così | ✓ |
 | Squillo | 640 ms, una volta sola | così | ✓ |
-| Chiusura | i ritardi si invertono | chiude di colpo | ✗ |
+| Chiusura | i ritardi si invertono | le righe rientrano dall'ultima alla prima, poi il cassetto | **corretto** |
 
 ## SIDEBAR · `L2 - Sidebar`, `L0` §SIDEBAR
 
@@ -87,7 +87,7 @@ codice segue il livello più basso, e la voce va decisa.
 | Rimandato | film a metà, nome tenue, un'ora al posto del dato | `--liquid-quiet` · era a inchiostro pieno | **corretto** |
 | Quanti | fino alla campanella, poi un numero senza colore (storico §145) | così | ✓ |
 | La active a schermo intero | nessun chip: un task sta in un posto solo (storico §149) | nessun chip | ✓ |
-| Durante la raccolta | i chip scendono al 45% quando INPUT cresce | no | ✗ |
+| Durante la raccolta | i chip scendono al 45% quando INPUT cresce, e restano al loro posto | al 45% mentre c'è una bozza nella dropzone | **corretto** |
 
 ## INPUT · `L2 - INPUT`, `L3 - Flusso task`
 
@@ -108,7 +108,7 @@ codice segue il livello più basso, e la voce va decisa.
 | Domanda | targa mono 12 / 500 / +0.16em in ambra; testo 16 / 24; anello fuori a sinistra; risposte senza pallino | la targa era 11 | **corretto** |
 | «sto pensando» | Manrope 13,5, inchiostro tenue, anello che gira | così | ✓ |
 | Lo scambio | la risposta o la domanda al posto del campo, raggio 26, padding 14 / 18, frasi sotto la barra; mentre pensa, la frase e «sto pensando»; il campo torna al primo tasto | il campo restava sempre, raggio 22 | **corretto** |
-| Le tessere | «carta per le cose raccolte, vetro per i task già a schermo, filo tratteggiato per ciò che esiste solo nella memoria» | tutte uguali | ✗ |
+| Le tessere | «carta per le cose raccolte, vetro per i task già a schermo, filo tratteggiato per ciò che esiste solo nella memoria» | carta, vetro e tratteggio, coi valori della tavola; l'AI segna «memoria» | **corretto** |
 
 ## SYSTEMBAR · `L2 - Systembar`
 
@@ -150,11 +150,13 @@ Solo la struttura estetica: il significato è ancora da scrivere (storico §139,
 
 | | Documento | Codice | Esito |
 |---|---|---|---|
-| Nascita | la bozza vola dalla dropzone lungo un arco, 420 ms | compare sul posto | ✗ |
-| Onda | le vicine si scostano di 6 / 8 / 12, sfalsate di 40 ms, rientro 40% | no | ✗ |
-| Active | film +12%, ombra più profonda, 180 ms | film +12%, senza transizione | ✗ |
-| Messa da parte | si contrae in 280 ms e vola alla SIDEBAR in 420 ms | svanisce e ricompare | ✗ |
-| Uscita | `--liquid-quiet`, scala 94%, 320 ms, e le vicine si riavvicinano | svanisce in 320 ms, senza scala né riavvicinamento | ✗ |
+| Nascita | la bozza vola dalla dropzone lungo un arco, 420 ms | così | **corretto** |
+| Onda | le vicine si scostano di 12 / 8 / 6, sfalsate di 40 ms, rientro 40% | così: le tre più vicine, e restano dove l'onda le lascia | **corretto** |
+| Active | film +12%, ombra più profonda, 180 ms, nessun cambio di scala né di posto | dissolvenza fra i due film, 180 ms | **corretto** |
+| Messa da parte | si contrae in 280 ms, poi vola al chip lungo un arco in 420 ms; il chip non compare prima | così | **corretto** |
+| Uscita | `--liquid-quiet`, scala 94%, 320 ms, e le vicine si riavvicinano del 40% del vuoto | così | **corretto** |
+| Richiamo | un chip risale dove stava | la bolla parte dal chip e torna al suo posto | **corretto** |
+| Movimento ridotto | — | con `prefers-reduced-motion` non si muove niente | ✓ |
 
 ---
 

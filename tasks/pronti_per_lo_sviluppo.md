@@ -78,10 +78,10 @@ determina, ci si ferma e la si scrive in `tasks/da_definire.md`.
   l'ambra in cima, niente trascinamento, la bolla documento.
   *Fatte le schede*, in `tasks/conformita.md` (storico §148, §149): ventidue divergenze
   corrette nel codice, cinque contraddizioni chiuse nei documenti. Restano le voci ✗ qui sotto.
-- [ ] **I movimenti di `L2 - Bubble movement`**: la bozza che vola dalla dropzone lungo un
+- [x] **I movimenti di `L2 - Bubble movement`**: la bozza che vola dalla dropzone lungo un
   arco, l'onda delle vicine, la contrazione e la migrazione in SIDEBAR, l'uscita a scala 94%
   con le vicine che si riavvicinano, la transizione della active.
-- [ ] **Le tre voci ✗ delle schede**: la chiusura del cassetto coi ritardi invertiti; i chip
+- [x] **Le tre voci ✗ delle schede**: la chiusura del cassetto coi ritardi invertiti; i chip
   al 45% quando INPUT cresce per la raccolta; le tessere di tre materiali (carta, vetro, filo
   tratteggiato).
 - [x] **Il suono e l'orario di prova**: `Archivio/system-storage/notification.mp3`, e

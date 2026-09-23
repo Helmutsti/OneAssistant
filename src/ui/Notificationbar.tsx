@@ -32,6 +32,26 @@ export function Notificationbar({ suono }: { suono: () => void }) {
   const aperto = f.cassettoAperto;
   const lista = [...f.notifiche].sort((a, b) => b.quando - a.quando);
 
+  // In chiusura i ritardi si invertono (`L2 - Notificationbar` §L'apertura): il cassetto
+  // resta a schermo il tempo di far rientrare le righe, dall'ultima alla prima.
+  const [visibile, setVisibile] = useState(aperto);
+  const [chiude, setChiude] = useState(false);
+  const righe = Math.max(1, lista.length);
+  useEffect(() => {
+    if (aperto) {
+      setVisibile(true);
+      setChiude(false);
+      return;
+    }
+    if (!visibile) return;
+    setChiude(true);
+    const id = setTimeout(() => {
+      setVisibile(false);
+      setChiude(false);
+    }, 320 + 40 * (righe - 1));
+    return () => clearTimeout(id);
+  }, [aperto]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <>
       {/* Il velo: la luce della scrivania che cala, stessa curva e stesso tempo del cassetto. */}
@@ -45,10 +65,15 @@ export function Notificationbar({ suono }: { suono: () => void }) {
         onClick={() => m.chiudiCassetto()}
       />
       <div className="absolute bottom-[44px] right-[44px] flex flex-col items-end gap-3">
-        {aperto && (
+        {visibile && (
           <div
             className="flex max-h-[420px] w-[400px] flex-col gap-2 overflow-auto"
-            style={{ transformOrigin: 'bottom right', animation: 'nasce 420ms cubic-bezier(.22,1,.36,1) both' }}
+            style={{
+              transformOrigin: 'bottom right',
+              animation: chiude
+                ? `rientra 320ms cubic-bezier(.22,1,.36,1) ${40 * (righe - 1)}ms both`
+                : 'nasce 420ms cubic-bezier(.22,1,.36,1) both',
+            }}
           >
             {lista.length === 0 && (
               <div className="vetro rounded-[20px] px-4 py-[13px] text-[15px]">Non è arrivato niente.</div>
@@ -60,7 +85,9 @@ export function Notificationbar({ suono }: { suono: () => void }) {
                 className="vetro rounded-[20px] px-4 py-[13px]"
                 style={{
                   opacity: n.promossa ? 1 : 0.62,
-                  animation: `nasce 320ms cubic-bezier(.22,1,.36,1) ${i * 40}ms both`,
+                  animation: chiude
+                    ? `rientra 320ms cubic-bezier(.22,1,.36,1) ${(lista.length - 1 - i) * 40}ms both`
+                    : `nasce 320ms cubic-bezier(.22,1,.36,1) ${i * 40}ms both`,
                 }}
               >
                 <div className="flex items-center gap-2" style={{ color: 'var(--i-fioco)' }}>
