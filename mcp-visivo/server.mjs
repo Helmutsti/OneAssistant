@@ -88,8 +88,43 @@ function applyScene(input) {
   notes.push(...semanticNotes(next));
   if(next.bubbles.length && !visible) notes.push('ATTENZIONE: tutte le Bubble sono nel Vassoio, la scrivania è vuota; togli da tray.ids quelle da mostrare');
   scene = next; broadcast();
-  const text = `Scena ${scene.sceneId} aggiornata alla revisione ${scene.revision}, ${visible} Bubble visibili` + (notes.length ? ` (${notes.join('; ')}).` : '.') + ` Finestre collegate: ${listeners.size}.`;
+  const text = `Scena ${scene.sceneId} aggiornata alla revisione ${scene.revision}, ${visible} Bubble visibili` + (notes.length ? ` (${notes.join('; ')}).` : '.') + ` Bubble: ${scene.bubbles.map(b => b.id + (scene.tray.ids.includes(b.id) ? ' (Vassoio)' : '')).join(', ') || 'nessuna'}. Finestre collegate: ${listeners.size}.`;
   return {content:[{type:'text',text}],structuredContent:{sceneId:scene.sceneId,revision:scene.revision,windows:listeners.size}};
+}
+
+// Modifiche parziali: il modello scrive solo ciò che cambia, non l'intera scena. Meno testo da generare, render più rapido.
+const bubbleFields = z.object({ title: z.string().min(1).optional(), subtitle: z.string().nullable().optional().describe('null per toglierlo.'), icon: z.string().optional(), state: bubble.shape.state.unwrap().optional(), size: bubble.shape.size.unwrap().optional(), suggestions: bubble.shape.suggestions.unwrap().nullable().optional().describe('null per toglierle.'), panel: bubble.shape.panel.unwrap().nullable().optional().describe('null per toglierlo.') });
+const operation = z.discriminatedUnion('op', [
+  z.object({ op: z.literal('add'), bubble: bubble.describe('Bubble completa: se l\'ID esiste la sostituisce, altrimenti la aggiunge sulla scrivania.') }),
+  z.object({ op: z.literal('patch'), id: z.string(), fields: bubbleFields.describe('Solo i campi da cambiare.') }),
+  z.object({ op: z.literal('set_items'), id: z.string(), items: z.array(item).describe('Sostituisce tutti gli item della Bubble.') }),
+  z.object({ op: z.literal('add_items'), id: z.string(), items: z.array(item).describe('Aggiunti in fondo agli item esistenti.') }),
+  z.object({ op: z.literal('remove'), id: z.string().describe('Toglie la Bubble del tutto (anche dal Vassoio).') }),
+  z.object({ op: z.literal('to_tray'), id: z.string().describe('Mette da parte la Bubble: resta solo come Chip nel Vassoio.') }),
+  z.object({ op: z.literal('from_tray'), id: z.string().describe('Riporta la Bubble sulla scrivania.') }),
+  z.object({ op: z.literal('set_bars'), theme: sceneSchema.shape.theme.unwrap().optional(), timeline: sceneSchema.shape.timeline.unwrap().partial().optional(), profile: sceneSchema.shape.profile.unwrap().partial().optional(), system: sceneSchema.shape.system.unwrap().partial().optional(), notifications: sceneSchema.shape.notifications.unwrap().optional(), notificationsOpen: z.boolean().optional() }).describe('Barre e tema: solo i campi da cambiare.')
+]);
+const patchSchema = z.object({ ops: z.array(operation).min(1).describe('Applicate in ordine, tutte o nessuna.') });
+
+function applyOps(input) {
+  let ops;
+  try { ({ops} = patchSchema.parse(input)); } catch(error) { return failure(`Modifica non valida: ${error.message}`); }
+  const next = structuredClone(scene);
+  const find = id => { const found = next.bubbles.find(b => b.id === id); if(!found) throw new Error(`Bubble «${id}» non presente; ID attuali: ${next.bubbles.map(b => b.id).join(', ') || 'nessuno'}`); return found; };
+  try {
+    for(const o of ops) {
+      if(o.op === 'add') { const i = next.bubbles.findIndex(b => b.id === o.bubble.id); if(i >= 0) next.bubbles[i] = o.bubble; else next.bubbles.push(o.bubble); }
+      else if(o.op === 'patch') { const b = find(o.id); for(const [key, value] of Object.entries(o.fields)) { if(value === null) delete b[key]; else if(value !== undefined) b[key] = value; } }
+      else if(o.op === 'set_items') find(o.id).items = o.items;
+      else if(o.op === 'add_items') find(o.id).items.push(...o.items);
+      else if(o.op === 'remove') { find(o.id); next.bubbles = next.bubbles.filter(b => b.id !== o.id); next.tray.ids = next.tray.ids.filter(id => id !== o.id); }
+      else if(o.op === 'to_tray') { find(o.id); if(!next.tray.ids.includes(o.id)) next.tray.ids.push(o.id); }
+      else if(o.op === 'from_tray') { find(o.id); next.tray.ids = next.tray.ids.filter(id => id !== o.id); }
+      else if(o.op === 'set_bars') { const {op, ...bars} = o; for(const [key, value] of Object.entries(bars)) if(value !== undefined) next[key] = value && typeof value === 'object' && !Array.isArray(value) ? {...next[key], ...value} : value; }
+    }
+  } catch(error) { return failure(`Modifica non applicata: ${error.message}`); }
+  delete next.revision;
+  return applyScene(next);
 }
 
 // Più host (una chat nuova, un secondo client) avviano ciascuno un processo: solo il primo tiene la porta
@@ -103,31 +138,43 @@ function listen() {
     listener.once('error', error => error.code === 'EADDRINUSE' ? done(false) : fail(error));
   });
 }
-async function render(args) {
-  if(owner) return applyScene(args);
+async function forward(args, route, apply) {
+  if(owner) return apply(args);
   try {
-    const response = await fetch(`http://${host}:${port}/scene`, {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify(args)});
+    const response = await fetch(`http://${host}:${port}${route}`, {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify(args)});
     if(!response.ok) return failure(`La porta ${port} è occupata da un altro programma (risposta ${response.status}).`);
     return await response.json();
   } catch {
-    if(await listen()) return applyScene(args);
+    if(await listen()) return apply(args);
     return failure(`La finestra OneAssistant non è raggiungibile su ${host}:${port}.`);
   }
 }
 
 function makeMcpServer() {
-  const server=new McpServer({name:'oneassistant-visual',version:'0.3.0'});
-  server.registerTool('render_scene',{title:'Aggiorna OneAssistant',description:[
-    'Sostituisce l\'intera scena della finestra OneAssistant (http://127.0.0.1:'+port+'/). È la superficie della conversazione: nessun elemento è cliccabile, l\'utente risponde a voce o per iscritto.',
+  const server=new McpServer({name:'oneassistant-visual',version:'0.4.0'});
+  const rules=[
     'Regole (dal file Figma dei componenti):',
     '- Una Bubble = un task. Un task non si spezza: i risultati di una ricerca, la domanda che ne segue e le frasi possibili stanno nella STESSA Bubble.',
     '- Quando serve una risposta dell\'utente: state «In attesa», il titolo È la domanda (max 32 caratteri, es. «Quale foto cercavi?»), subtitle con il contesto (es. «Repository OneAssistant · 3 immagini»), suggestions con la frase più probabile in primary e al massimo 3 alternative.',
     '- Più foto fra cui scegliere: una Bubble Focus con un item «Griglia foto»; le foto sono numerate, quindi le frasi possono essere «La 1», «La 2». Una foto sola: item «Immagine».',
     '- Una raccolta da riassumere senza anteprime: item «Pila».',
-    '- Al massimo una Bubble Focus; quando c\'è, le altre Bubble vanno nel Vassoio (tray.ids). Stati: Base, In corso (sto lavorando), In attesa (tocca all\'utente), Completato, Errore (bloccato: il perché nel testo).',
-    '- Invia sempre tutte le Bubble che devono restare, mantieni lo stesso sceneId; revision è facoltativa. imageUrl accetta un percorso locale assoluto di un file del repository.',
+    '- Al massimo una Bubble Focus; quando c\'è, le altre Bubble vanno nel Vassoio. Stati: Base, In corso (sto lavorando), In attesa (tocca all\'utente), Completato, Errore (bloccato: il perché nel testo).',
+    '- imageUrl accetta un percorso locale assoluto di un file del repository.',
     '- Leggi gli avvisi nella risposta: indicano una regola violata da correggere con un nuovo invio.'
-  ].join('\n'),inputSchema:sceneSchema.shape},render);
+  ];
+  server.registerTool('update_scene',{title:'Modifica OneAssistant',description:[
+    'Modifica la scena della finestra OneAssistant (http://127.0.0.1:'+port+'/) inviando SOLO ciò che cambia. È il modo normale di aggiornare la finestra: più veloce di render_scene perché non si riscrive la scena intera.',
+    'La finestra è la superficie della conversazione: nessun elemento è cliccabile, l\'utente risponde a voce o per iscritto.',
+    'Operazioni, applicate in ordine: add (Bubble nuova o sostituita per intero), patch (solo alcuni campi: state, title, suggestions…), set_items / add_items, remove, to_tray / from_tray (Vassoio), set_bars (tema, Timeline, Profilebar, Systembar, notifiche).',
+    'Esempio: una Bubble finisce e ne arriva una nuova → [{op:"patch",id:"mail",fields:{state:"Completato"}},{op:"to_tray",id:"mail"},{op:"add",bubble:{…}}].',
+    'Se un ID non esiste la modifica non viene applicata e la risposta elenca gli ID presenti.',
+    ...rules
+  ].join('\n'),inputSchema:patchSchema.shape},args=>forward(args,'/patch',applyOps));
+  server.registerTool('render_scene',{title:'Sostituisci la scena OneAssistant',description:[
+    'Sostituisce l\'intera scena della finestra OneAssistant. Usalo solo per la prima scena di una conversazione o per ripartire da zero; per tutto il resto usa update_scene, che è più veloce.',
+    '- Invia tutte le Bubble che devono restare, mantieni lo stesso sceneId; revision è facoltativa. Le Bubble messe da parte vanno in tray.ids.',
+    ...rules
+  ].join('\n'),inputSchema:sceneSchema.shape},args=>forward(args,'/scene',applyScene));
   return server;
 }
 
@@ -135,6 +182,7 @@ app.post('/mcp',async(request,response)=>{const server=makeMcpServer();const tra
 app.get('/mcp',(_request,response)=>response.sendStatus(405));
 app.delete('/mcp',(_request,response)=>response.sendStatus(405));
 app.post('/scene',(request,response)=>response.json(applyScene(request.body)));
+app.post('/patch',(request,response)=>response.json(applyOps(request.body)));
 app.get('/state',(_request,response)=>response.json(scene));
 app.get('/events',(_request,response)=>{response.setHeader('Content-Type','text/event-stream');response.setHeader('Cache-Control','no-cache');response.setHeader('Connection','keep-alive');response.flushHeaders();listeners.add(response);response.write(`event: scene\ndata: ${JSON.stringify(scene)}\n\n`);response.on('close',()=>listeners.delete(response))});
 app.get('/file',async(request,response)=>{

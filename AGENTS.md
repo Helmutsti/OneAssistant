@@ -129,12 +129,12 @@ toccare un concetto, cercarlo in tutto `docs/` — non solo nel file che si sta 
 
 ## 13 · Conversazioni con OneAssistant
 
-Quando l'utente usa una chat Codex di questo progetto per provare OneAssistant, la finestra OneAssistant è la superficie principale della conversazione. Il tool MCP è `oneassistant_visual.render_scene`.
+Quando l'utente usa una chat Codex di questo progetto per provare OneAssistant, la finestra OneAssistant è la superficie principale della conversazione. I tool MCP sono `oneassistant_visual.update_scene` e `oneassistant_visual.render_scene`.
 
 - All'inizio della conversazione verifica che il tool sia disponibile. Se non lo è, dillo chiaramente: non fingere di aver aggiornato la finestra.
-- Per ogni risposta rivolta all'utente durante la prova, aggiorna la scena con `render_scene` **prima** della risposta finale in chat. Metti nella GUI il contenuto sostanziale della risposta, comprese domande, scelte e risultati. In chat lascia una conferma breve o duplica la risposta se necessario.
+- Per ogni risposta rivolta all'utente durante la prova, aggiorna la scena **prima** della risposta finale in chat. Metti nella GUI il contenuto sostanziale della risposta, comprese domande, scelte e risultati. In chat lascia una conferma breve o duplica la risposta se necessario.
 - Non aspettare che l'utente nomini MCP, GUI o Bubble a ogni turno. Una richiesta come «mostrami», «trova», «che cosa faccio?» o una risposta a una tua domanda deve produrre l'aggiornamento della scena.
-- Mantieni lo stesso `sceneId` durante la conversazione, aumenta `revision` a ogni aggiornamento e invia la scena completa, conservando le Bubble ancora pertinenti. Se il server rifiuta una revisione, correggila e riprova.
+- Usa `render_scene` solo per la prima scena o per ripartire da zero. Per il resto usa `update_scene` e invia solo ciò che cambia (`patch` dello stato, `add` di una Bubble, `to_tray`…): la finestra si aggiorna prima perché non riscrivi la scena intera. Se un ID non esiste, la risposta elenca quelli presenti: correggi e riprova.
 - Se trovi più risultati e devi chiedere quale scegliere, rappresenta prima le alternative nella GUI e poni la domanda lì. Riporta la domanda anche in chat, così l'utente può rispondere.
 - Per mostrare un'immagine del repository, metti in `imageUrl` il suo percorso assoluto (per esempio `/Users/manuelcucca/Progetti/Repos/OneAssistant/pubblico/volto.png`): il server lo converte in un indirizzo che la finestra può caricare. Vanno bene anche URL `https:`. Se il tool risponde che l'immagine non è stata trovata o non è consentita, non dichiarare che è visibile nella GUI.
 - Dopo la chiamata verifica l'esito restituito dal tool. Se fallisce, informa l'utente e non sostituire silenziosamente la GUI con una risposta solo in chat.

@@ -38,3 +38,14 @@
 .bubble-position:has(>.bubble-wrap.focus),.bubble-position:has(>.bubble-wrap.zen){width:min(1024px,100%)}.bubble-wrap.focus,.bubble-wrap.zen{height:auto;max-height:min(710px,calc(100vh - 80px))}.bubble-wrap.focus .bubble-card{overflow:auto}
 /* Sfondo: screenshot del desktop sfocato dietro la scrivania. */
 .surface{isolation:isolate;background:#000 url(/sfondo.jpg) center/100% 100% no-repeat}.surface::before{content:"";position:absolute;inset:0;z-index:-1;background:url(/sfondo.jpg) center/100% 100% no-repeat;filter:blur(10px);pointer-events:none}
+/* Misure delle Bubble: niente esce dalla scrivania, niente scroll (la finestra non è interattiva). */
+.desk{overflow:visible}
+.bubble-position{max-height:100%;display:flex}
+.bubble-wrap{max-height:100%;min-height:0}
+.bubble-card{display:flex;flex-direction:column;min-height:0;flex:0 1 auto}
+.bubble-header{flex:0 0 auto}.bubble-body{flex:1 1 auto;min-height:0;height:auto}.bubble-items,.side-panel{min-height:0;overflow:hidden}
+.bubble-wrap.focus .bubble-card{overflow:hidden;height:auto}
+.image-preview{position:relative;overflow:hidden}.image-preview img{position:absolute;inset:0}
+.bubble-wrap.zen .bubble-card{height:min(710px,calc(100vh - 120px))}.zen-content{height:100%}.zen-content>.bubble-item{width:100%;height:100%}
+.zen-content>.image-card{display:flex;flex-direction:column}.zen-content>.image-card .image-preview{flex:1;height:auto}
+.zen-content>.photo-grid{align-content:start;overflow:hidden}
