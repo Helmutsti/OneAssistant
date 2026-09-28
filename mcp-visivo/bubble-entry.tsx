@@ -1,0 +1,50 @@
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import { Mail, CalendarDays, File, FileText, Folder, Image, MapPin, Contact, MessageCircle, Mic, Volume2, VolumeX, Wifi, WifiOff, BatteryMedium, BatteryLow, Bell, House, LoaderCircle, CircleHelp, CircleCheck, CircleAlert, Check, Circle, List, AlignLeft } from 'lucide-react';
+import { BubbleSystem, captureSnapshot, type Snapshot } from './BubbleSystem.tsx';
+
+type Item = { type:string; text?:string; title?:string; detail?:string; meta?:string; entries?:string[]; entryStates?:string[]; objects?:string[]; imageUrl?:string; photos?:{imageUrl?:string;title:string;detail?:string;selected?:boolean}[] };
+type Bubble = { id:string; title:string; subtitle?:string; icon:string; state:string; size:string; items:Item[]; suggestions?:{primary:string;alternatives:string[]}; panel?:{open:boolean;sections:{title:string;items:Item[]}[]} };
+type Scene = {sceneId:string;revision:number;theme:string;bubbles:Bubble[];tray:{orientation:string;style:string;ids:string[]};timeline:{state:string;now:string;next:string};profile:{place:string;mode:string;initials:string};system:{mic:string;volume:number;muted:boolean;wifi:string;battery:number};notifications:{id:string;meta:string;title:string;text:string}[];notificationsOpen:boolean};
+
+const icons:Record<string,React.ComponentType<any>>={mail:Mail,calendar:CalendarDays,file:File,document:FileText,folder:Folder,image:Image,location:MapPin,contact:Contact,message:MessageCircle,mic:Mic};
+// Tipi della Pila come in Figma (01 · Bubble › Bubble · pila · pallini).
+const pileIcons:Record<string,string>={'Immagine':'image','File':'file','Documento':'document','Cartella':'folder','Posizione':'location','Email':'mail','Evento':'calendar','Messaggio':'message','Nota vocale':'mic','Contatto':'contact'};
+function PileDot({kind}: {kind:string}) { if(kind==='In arrivo')return <span className="pile-dot incoming"><LoaderCircle size={16}/></span>; if(kind==='Mancante')return <span className="pile-dot missing"/>; return <span className="pile-dot"><Icon name={pileIcons[kind]||'file'} size={16}/></span>; }
+const stateIcons:Record<string,React.ComponentType<any>>={'In corso':LoaderCircle,'In attesa':CircleHelp,'Completato':CircleCheck,'Errore':CircleAlert};
+function Icon({name,size=20}: {name:string;size?:number}) { const Component=icons[name]||Mail; return <Component size={size} strokeWidth={size<=16?1.5:2} aria-hidden="true"/>; }
+function ItemView({item}: {item:Item}) {
+  const kind=item.type;
+  if(kind==='Card contenuto') return <div className="bubble-item content-card"><small>{item.meta}</small><strong>{item.title}</strong><p>{item.text}</p></div>;
+  if(kind==='Immagine') return <div className="bubble-item image-card"><div className="image-preview">{item.imageUrl?<img src={item.imageUrl} alt=""/>:<Image size={20}/>}</div><div className="image-caption"><strong>{item.title}</strong><small>{item.detail}</small></div></div>;
+  if(['File','Cartella','Documento','Posizione','Contatto'].includes(kind)) {
+    const symbol:Record<string,string>={'File':'file','Cartella':'folder','Documento':'file','Posizione':'location','Contatto':'contact'};
+    return <div className="bubble-item object"><span className="object-icon">{kind==='Contatto'?<span className="contact-initials">{item.title?.split(' ').map(x=>x[0]).slice(0,2).join('')}</span>:<Icon name={symbol[kind]} size={20}/>}</span><span className="object-copy"><strong>{item.title||kind}</strong><small>{item.detail||item.text||''}</small></span></div>;
+  }
+  if(kind==='Pila') { const objects=item.objects||[]; const shown=objects.length>5?objects.slice(0,4):objects; return <div className="bubble-item pile"><span className="pile-dots">{shown.map((o,i)=><PileDot kind={o} key={i}/>)}{objects.length>5&&<span className="pile-dot more">+{objects.length-4}</span>}</span><span className="object-copy"><strong>{item.title||item.text}</strong>{item.detail&&<small className={item.objects?.includes('Mancante')?'missing-text':''}>{item.detail}</small>}</span></div>; }
+  // Figma: Focus · gruppo di foto — griglia numerata, così a voce si può dire «la 2».
+  if(kind==='Griglia foto') return <div className="bubble-item photo-grid">{(item.photos||[]).map((photo,i)=><figure key={i} className={photo.selected?'selected':''}><div className="photo-frame">{photo.imageUrl?<img src={photo.imageUrl} alt=""/>:<Image size={20}/>}<span className="photo-number">{i+1}</span></div><figcaption><strong>{photo.title}</strong>{photo.detail&&<small>{photo.detail}</small>}</figcaption></figure>)}</div>;
+  if(['Lista numerata','Lista puntata','Checklist'].includes(kind)) return <div className="bubble-item entries">{(item.entries||[]).map((entry,i)=><div className="entry" key={i}><span className="entry-mark">{kind==='Lista numerata'?`${i+1}`:kind==='Checklist'?item.entryStates?.[i]==='Completato'?<CircleCheck size={16} className="done"/>:item.entryStates?.[i]==='In corso'?<LoaderCircle size={16} className="active"/>:<Circle size={16}/>: '•'}</span><span>{entry}</span></div>)}</div>;
+  return <div className="bubble-item text"><AlignLeft size={16} strokeWidth={1.5}/><span>{item.text||item.title||''}</span></div>;
+}
+function Suggestions({value}: {value:{primary:string;alternatives:string[]}}) {return <div className="suggestions"><strong>“{value.primary}”</strong>{value.alternatives.length>0&&<span> · {value.alternatives.map(x=>`“${x}”`).join(' · ')}</span>}</div>}
+function BubbleView({bubble}: {bubble:Bubble}) {
+  const StateIcon=stateIcons[bubble.state];
+  const zen=bubble.size==='Zen';
+  return <div className={`bubble-wrap ${bubble.size.toLowerCase()} state-${bubble.state.replaceAll(' ','-').toLowerCase()}`}>
+    {zen&&<div className="zen-title">{bubble.title}</div>}
+    {bubble.suggestions&&bubble.size!=='Task'&&<Suggestions value={bubble.suggestions}/>}
+    <article className="bubble-card">
+      {!zen&&<><header className="bubble-header"><span className="bubble-symbol">{StateIcon?<StateIcon size={bubble.size==='Focus'?24:20} strokeWidth={2}/>:<Icon name={bubble.icon} size={bubble.size==='Focus'?24:20}/>}</span><div><h2>{bubble.title}</h2>{bubble.size==='Focus'&&bubble.subtitle&&<p>{bubble.subtitle}</p>}</div></header><div className="bubble-body"><div className="bubble-items">{bubble.items.map((item,i)=><ItemView key={i} item={item}/>)}</div>{bubble.size==='Focus'&&bubble.panel&&<aside className={`side-panel ${bubble.panel.open?'open':'closed'}`}>{bubble.panel.open?bubble.panel.sections.map((section,i)=><section key={i}><h3>{section.title}</h3>{section.items.map((item,j)=><ItemView item={item} key={j}/>)}</section>):bubble.panel.sections.map((_,i)=><List key={i} size={16}/>)}</aside>}</div></>}
+      {zen&&<div className="zen-content">{bubble.items.map((item,i)=><ItemView item={item} key={i}/>)}</div>}
+    </article>
+    {bubble.suggestions&&bubble.size==='Task'&&<Suggestions value={bubble.suggestions}/>}
+  </div>;
+}
+function Tray({scene}: {scene:Scene}) { if(!scene.tray.ids.length)return null;const byId=new Map(scene.bubbles.map(b=>[b.id,b]));return <div className={`tray ${scene.tray.orientation.toLowerCase()} ${scene.tray.style.toLowerCase()}`}>{scene.tray.ids.map(id=>{const bubble=byId.get(id);return bubble&&<div className={`chip state-${bubble.state.replaceAll(' ','-').toLowerCase()}`} data-chip-id={id} key={id}><Icon name={bubble.icon} size={16}/><span>{bubble.title}</span></div>})}</div>}
+function Timeline({scene}: {scene:Scene}) {return <div className={`timeline state-${scene.timeline.state.replaceAll(' ','-').toLowerCase()}`}><div><small>{scene.timeline.state==='Libero'?'LIBERO':'ADESSO'}</small><strong>{scene.timeline.now}</strong></div><div><small>DOPO</small><strong>{scene.timeline.next||'—'}</strong></div><div className="timeline-line"><span/><i/><i/></div></div>}
+function Notificationbar({scene}: {scene:Scene}) {return scene.notificationsOpen?<div className="notifications open">{scene.notifications.map(n=><div className="notification" key={n.id}><small><Mail size={16}/>{n.meta}</small><strong>{n.title}</strong><p>{n.text}</p></div>)}</div>:<div className="notifications closed"><Bell size={16}/><span>{scene.notifications.length}</span></div>}
+function Profilebar({scene}: {scene:Scene}) { const [now,setNow]=useState(new Date());useEffect(()=>{const id=setInterval(()=>setNow(new Date()),30000);return()=>clearInterval(id)},[]);return <div className="profilebar"><div className="profile-copy"><strong><House size={16}/>{scene.profile.place}{scene.profile.mode&&` · ${scene.profile.mode}`}</strong><small>{now.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'})} · {now.toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long'})}</small></div><img src="/profile-volto.png" alt=""/></div>}
+function Systembar({scene}: {scene:Scene}) {const s=scene.system;return <div className="systembar"><span><Mic size={16}/> {s.mic}</span><span>{s.muted?<VolumeX size={16}/>:<Volume2 size={16}/>} {s.muted?'Muto':s.volume}</span><span>{s.wifi==='Senza rete'?<WifiOff size={16}/>:<Wifi size={16}/>} {s.wifi}</span><span>{s.battery<20?<BatteryLow size={16}/>:<BatteryMedium size={16}/>} {s.battery}</span></div>}
+function App() {const [scene,setScene]=useState<Scene|null>(null);const [snapshot,setSnapshot]=useState<Snapshot|null>(null);useEffect(()=>{fetch('/state').then(r=>r.json()).then(setScene).catch(()=>{});const source=new EventSource('/events');source.addEventListener('scene',event=>{setSnapshot(captureSnapshot());setScene(JSON.parse((event as MessageEvent).data))});return()=>source.close()},[]);if(!scene)return null;const visible=scene.bubbles.filter(b=>!scene.tray.ids.includes(b.id));return <main className="surface" data-theme={scene.theme}><BubbleSystem bubbles={visible} trayIds={scene.tray.ids} snapshot={snapshot} revision={scene.revision} renderBubble={bubble=><BubbleView bubble={bubble}/>}/><aside className="right-rail"><Timeline scene={scene}/><Profilebar scene={scene}/><Systembar scene={scene}/><Tray scene={scene}/><Notificationbar scene={scene}/></aside></main>}
+createRoot(document.getElementById('app')!).render(<App/>);

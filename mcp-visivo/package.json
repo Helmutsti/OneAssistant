@@ -1,0 +1,22 @@
+{
+  "name": "oneassistant-visual-mcp-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "npm run build:ui && node server.mjs",
+    "demo": "node demo.mjs",
+    "build:ui": "vite build --config vite.config.mjs",
+    "finestra": "open -na \"Brave Browser\" --args --user-data-dir=\"$HOME/.oneassistant-brave\" --kiosk --app=http://127.0.0.1:4318/"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^5.4.21",
+    "zod": "^4.0.0"
+  }
+}
