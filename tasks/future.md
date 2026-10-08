@@ -88,3 +88,9 @@ Le voci ancora aperte sono passate il 23 settembre 2026 in
   comando come processo separato, con gli strumenti esposti da un server MCP. Da valutare
   solo se servisse usare un abbonamento invece dei crediti delle API: i termini d'uso non
   sono verificati, e ogni chiamata aprirebbe una conversazione nuova.
+- [ ] **I promemoria anche per l'agente.** Il servizio promemoria esiste già fra i sette
+  del codice, ma come strumento di produttività dell'utente. L'idea è dare all'agente
+  strumenti suoi, da usare end-to-end: segnarsi delle cose e seguire regole rigide che
+  non può dimenticare. «Ricordami di parlarne dopo» può diventare un promemoria
+  dell'utente, oppure un promemoria interno dell'agente che non tocca lo spazio utente.
+  Da chiarire dove vivono questi appunti rispetto alla memoria e chi decide fra i due.
